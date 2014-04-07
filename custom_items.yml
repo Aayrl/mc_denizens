@@ -269,6 +269,16 @@
    enchantments:
    - protection_fall:5
    - durability:10
+ 
+# JBoots Effect
+"Bootstrutter Blessing":
+   type: world
+   events:
+     on use command:
+       - if <player.item_in_hand.lore> == "<green>Use<&co> Bootstrutter<&sq>s Blessing" {
+         - narrate "<&9>You feel your speed quicken!"
+         - cast speed duration:45 power:3
+         }
    
 "Dragon Maul":
    type: item

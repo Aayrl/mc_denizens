@@ -1,0 +1,66 @@
+# Bandit is a simple usage of assignment 
+# script actions and constants. The bandit 
+# will confront the the player on proximity
+# enter and when the player tries to
+# escape, attack!
+
+bandit:
+  type: assignment
+
+  default constants:
+    approach message: Give me your stuff or prepare to die!
+    fleeing message: Time to die!
+    death message: Aaarrgghhh!
+    victory message: Hahahaha!
+
+  actions:
+    on assignment:
+    - trigger name:proximity 
+      toggle:true radius:4
+    - trigger name:damage toggle:true
+    - health toggle:true
+    - vulnerable
+
+    on spawn:
+    # Respawns Bandit at a certain point.
+    - execute as_server "npc tpto 6 7"
+    - flag npc in_pursuit:!
+    - trigger name:proximity 
+      toggle:true radius:4
+    - trigger name:damage toggle:true
+    - health 30 state:true
+    - vulnerable
+
+    on enter proximity:
+    - if <npc.flag[in_pursuit]> 
+      queue clear
+    - flag npc in_pursuit:true
+    - lookclose toggle:true
+    - narrate "<npc.name> says, 
+      '<cons:approach message>'"
+
+    on exit proximity:
+    - if !<npc.flag[in_pursuit]> 
+      queue clear
+    - attack
+    - lookclose toggle:false
+    - narrate "<npc.name> yells at you, 
+      '<cons:fleeing message>'"
+
+    on damage:
+    - if !<npc.flag[in_pursuit]> 
+      queue clear
+    - attack
+
+    on death:
+    - narrate "<npc.name> yells, 
+      '<cons:death message>"
+    - drop XP qty:25 location:<npc.location>
+    - flag npc in_pursuit:!
+
+    on player death:
+    - narrate "<cons:victory message>"
+    - flag npc in_pursuit:!   
+
+    on despawn:
+    - flag npc in_pursuit:!   

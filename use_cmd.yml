@@ -1,0 +1,10 @@
+"use command":
+    type: world
+    events:
+       on use command:
+         - if <player.item_in_hand.display> == null {
+           - narrate "<&9>You use your <player.item_in_hand>!"
+           }
+         - if <player.item_in_hand.display> != null {
+           - narrate "<&9>You use your <player.item_in_hand.display>!"
+           }

@@ -1,0 +1,20 @@
+"spawnhome commands":
+    type: world
+    events:
+       on spawn command:
+          - announce "<yellow><player.name> warped to spawn!"
+          - execute as_server "mv spawn <player.name>"
+       on home command:
+          - if "<flag.p:home repeatTimer || false>" == true {
+            - narrate "<yellow>You must wait <flag.p:home repeatTimer.expiration> before you can use the home command again."
+            } 
+          - if "<flag.p:home repeatTimer || false>" == false {
+            - narrate "<yellow>Teleporting to last set home location."
+            - announce "<yellow><player.name> teleported to their home location."
+            - teleport <player> <player.flag[respawnpoint]>
+            - flag player "home repeatTimer:true" duration:1800
+            } 
+       on sethome command:
+          - narrate "<yellow>Your home has been set to <&co>"
+          - narrate "<yellow><player.location>"
+          - flag player respawnpoint:<player.location>

@@ -1,0 +1,32 @@
+# Items
+# Tyler J. Sawyer
+# Last Updated : 4/3/14
+
+"Hammer of the Gods":
+   type: item
+   material: diamond_axe
+   display name: "Hammer of the Gods"
+   lore:
+   - <green>Effect<&co> <red>Lightning Call
+   enchantments:
+   - durability:3
+   - damage_all:5
+   
+"Firework Wand":
+   type: item
+   material: firework_charge
+   display name: "Firework Wand"
+   lore:
+   - <green>Effect<&co> <red>Launch Firework
+
+# Item Effects
+   
+#"Item Effects":
+#  type: world
+#  events:
+#    on entity damaged by player:
+#    - if "<player.item_in_Hand.lore>" == "<green>Effect<&co> <red>Lightning Call" {
+#      - if <context.entity.is_player> && "<player.flag[Hit by Hammer of the Gods]>" == null {
+#        - flag <player> "Hit by Hammer of the Gods" duration:120s
+#        - narrate "<red>The gods curse you... your end is near..." targets:<context.entity> }
+#      - strike destination:<context.entity.location> }

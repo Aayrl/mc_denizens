@@ -1,0 +1,13 @@
+"loc command":
+    type: world
+    events:
+       on loc command:
+          - narrate "<yellow><player.name>'s Location in zone '<player.location.world.name>'<&co>"
+          - narrate "<yellow>X<&co> <player.location.x.asint>, Y<&co> <player.location.y.asint>, Z<&co> <player.location.z.asint>"
+       on location command:
+          - narrate "<yellow><player.name>'s Location in zone '<player.location.world.name>'<&co>"
+          - narrate "<yellow>X<&co> <player.location.x.asint>, Y<&co> <player.location.y.asint>, Z<&co> <player.location.z.asint>"
+       on locationall command:
+          - announce "<red><player.name> has announced their location to the server!"
+          - announce "<yellow><player.name>'s Location in zone '<player.location.world.name>'<&co>"
+          - announce "<yellow>X<&co> <player.location.x.asint>, Y<&co> <player.location.y.asint>, Z<&co> <player.location.z.asint>"

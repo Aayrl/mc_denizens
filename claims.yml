@@ -1,0 +1,67 @@
+"cscrew claims":
+    type: world
+    events:
+       on claim command:
+          # Claims Menu
+          - ^if <context.args.get[1]> == null {
+            - narrate "<gold>--- Available Claims ---"
+            - narrate "<gold>--- Type /claim <&lb>number<&rb> to claim a reward! ---"
+            - if "<flag.p:claims Daily || false>" == true narrate "<gold>1) Daily Reward - <red>Resets in<&co> <flag.p:claims Daily.expiration>."
+            - if "<flag.p:claims Daily || false>" == false narrate "<gold>1) Daily Reward - <green>Available!"
+            - if "<flag.p:claims BeginnerPack || false>" == true narrate "<gold>2) Beginner Pack - <red>Claimed."
+            - if "<flag.p:claims BeginnerPack || false>" == false narrate "<gold>2) Beginner Pack - <green>Available!"
+            - if "<flag.p:claims Cake || false>" == true narrate "<gold>3) Free Cake - <red>Claimed."
+            - if "<flag.p:claims Cake || false>" == false narrate "<gold>3) Free Cake - <green>Available!"
+            - if "<flag.p:claims FireworkWand || false>" == true narrate "<gold>4) Firework Wand - <red>Claimed."
+            - if "<flag.p:claims FireworkWand || false>" == false narrate "<gold>4) Firework Wand - <green>Available!"
+            }
+
+          # Claims Menu : Daily Reward
+          - if "<context.args.get[1]>" == 1 && "<flag.p:claims Daily || false>" == true {
+            - narrate "<gold>Daily Reward will reset in<&co> <flag.p:claims Daily.expiration>."
+            } 
+          - if "<context.args.get[1]>" == 1 && "<flag.p:claims Daily || false>" == false {
+            - narrate "<gold>Claiming Reward<&co> Daily Reward..."
+            - give 264 QTY:2
+            - narrate "<gold>Reward successfully claimed!"
+            - flag player "claims Daily:true" duration:86400
+            }
+
+          # Claims Menu : Beginner Pack
+          - if "<context.args.get[1]>" == 2 && "<flag.p:claims BeginnerPack || false>" == true {
+            - narrate "<red>You have already claimed the Beginner Pack!"
+            } 
+          - if "<context.args.get[1]>" == 2 && "<flag.p:claims BeginnerPack || false>" == false {
+            - narrate "<gold>Claiming Reward<&co> Beginner Pack..."
+            - give 272 QTY:1
+            - give 273 QTY:1
+            - give 274 QTY:1
+            - give 275 QTY:1
+            - give 291 QTY:1
+            - give 50 QTY:25
+            - give 364 QTY:10
+            - narrate "<gold>Reward successfully claimed!"
+            - flag player "claims BeginnerPack:true"
+            }
+
+          # Claims Menu : Cake
+          - if "<context.args.get[1]>" == 3 && "<flag.p:claims Cake || false>" == true {
+            - narrate "<red>You have already claimed the Free Cake!"
+            } 
+          - if "<context.args.get[1]>" == 3 && "<flag.p:claims Cake || false>" == false {
+            - narrate "<gold>Claiming Reward<&co> Free Cake..."
+            - give 354 QTY:1
+            - narrate "<gold>Reward successfully claimed!"
+            - flag player "claims Cake:true"
+            }
+
+          # Claims Menu : Firework Wand
+          - if "<context.args.get[1]>" == 4 && "<flag.p:claims FireworkWand || false>" == true {
+            - narrate "<red>You have already claimed the Firework Wand!"
+            } 
+          - if "<context.args.get[1]>" == 4 && "<flag.p:claims FireworkWand || false>" == false {
+            - narrate "<gold>Claiming Reward<&co> Firework Wand..."
+            - give item:"Firework Wand" QTY:1
+            - narrate "<gold>Reward successfully claimed!"
+            - flag player "claims FireworkWand:true"
+            }

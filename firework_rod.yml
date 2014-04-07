@@ -1,0 +1,43 @@
+# Fireworks Rod!
+# 4/3/14 : Tyler J. Sawyer
+# Sample_Fireworks: ball|ball_large|burst|creeper|star
+# Sample_Colors: aqua|black|blue|fuchsia|gray|green|lime|maroon|navy|olive|orange|purple|red|silver|teal|white|yellow 
+
+fireworkrod:
+    type: world
+    events:
+        on fw command:
+          - if <context.args.get[1]> != null && <context.args.get[1]> != help {
+            - flag player "FireworkType:<context.args.get[1]>"
+            - narrate "<yellow>Firework Type set to <context.args.get[1]>"
+            }
+          - if <context.args.get[1]> == help {
+            - narrate "<gold>--------------------------"
+            - narrate "<gold>-- Firework Type Colors --"
+            - narrate "<gold>-- Type /fw [color] to set! --"
+            - narrate "<gold>-- Current Color<&co> <player.flag[FireworkType]> --"
+            - narrate "<gold>--------------------------"
+            - narrate "<&b>aqua<&f> | <&0>black<&f> | <&1>blue<&f> | <&d>fuchsia<&f> | <&8>gray<&f> | <&2>green<&f>"
+            - narrate "<&a>lime<&f> | <&4>maroon<&f> | <&9>navy<&f> | <&2>olive<&f> | <&6>orange<&f> | <&5>purple<&f>"
+            - narrate "<&c>red<&f> | <&7>silver<&f> | <&3>teal<&f> | <&f>white<&f> | <&e>yellow<&f>"
+            - narrate "<gold>--------------------------"
+            }
+          - if <context.args.get[1]> == null {
+            - narrate "<gold>--------------------------"
+            - narrate "<gold>-- Firework Type Colors --"
+            - narrate "<gold>-- Type /fw [color] to set! --"
+            - narrate "<gold>-- Current Color<&co> <player.flag[FireworkType]> --"
+            - narrate "<gold>--------------------------"
+            - narrate "<&b>aqua<&f> | <&0>black<&f> | <&1>blue<&f> | <&d>fuchsia<&f> | <&8>gray<&f> | <&2>green<&f>"
+            - narrate "<&a>lime<&f> | <&4>maroon<&f> | <&9>navy<&f> | <&2>olive<&f> | <&6>orange<&f> | <&5>purple<&f>"
+            - narrate "<&c>red<&f> | <&7>silver<&f> | <&3>teal<&f> | <&f>white<&f> | <&e>yellow<&f>"\
+            - narrate "<gold>--------------------------"
+            }
+        on player right clicks player:
+        - if <player.item_in_hand.display> != "Firework Wand" queue clear
+        - if <player.flag[firework_cd]> queue clear
+        - flag player firework_cd duration:3s
+        - narrate player:<context.entity> "<&9><^player.name.display> launches a roman candle at you!"
+        - firework location:<context.entity.location> power:0 type:ball_large primary:<player.flag[FireworkType]> flicker trail
+        - playsound <context.entity.location> sound:hurt
+        - playsound <context.entity.location> sound:successful_hit

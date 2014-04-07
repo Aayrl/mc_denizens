@@ -1,0 +1,32 @@
+# Via http://scripts.citizensnpcs.co/view/39njlb
+'entity count command':
+  type: world
+  events:  
+
+    on entitycount command:  
+    - narrate "<&a><&lb> <&f>INFO <&a><&rb> <&5><&co> <&e>List of mob(s) in this world <&co>"
+    - flag global 'TEMP.CMD.ENTITYCOUNT:!'
+    - flag global 'TEMP.CMD.ENTITYCOUNT.TYPES:!'
+    - foreach <player.world.living_entities> {
+      - if <%value%.is_mob> {
+        - define qty <el@<server.flag[TEMP.CMD.ENTITYCOUNT.<%value%.entity_type>]>.add[1]>
+        - if %qty% EQUALS null define qty 1
+        - flag global 'TEMP.CMD.ENTITYCOUNT.<%value%.entity_type>:%qty%'
+        - flag global 'TEMP.CMD.ENTITYCOUNT.TYPES:<-:<%value%.entity_type>'
+        - flag global 'TEMP.CMD.ENTITYCOUNT.TYPES:->:<%value%.entity_type>'
+        }
+      }
+    - if <server.flag[TEMP.CMD.ENTITYCOUNT.TYPES].as_list> EQUALS null {
+      - narrate "<&b>     NO MOBS !!!!"
+      } else {
+      - foreach <server.flag[TEMP.CMD.ENTITYCOUNT.TYPES].as_list> {
+        - define qty <server.flag[TEMP.CMD.ENTITYCOUNT.%value%].as_integer>
+        - if %qty% MORE 1 {
+          - narrate "<&f>   %qty% <&e>%value%S"
+          } else {
+          - narrate "<&f>   %qty% <&e>%value%"
+          }
+        }
+      }
+    - flag global 'TEMP.CMD.ENTITYCOUNT:!'
+    - determine fulfilled

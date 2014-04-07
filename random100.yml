@@ -1,0 +1,9 @@
+"random 100 command":
+    type: world
+    events:
+       on random100 command:
+          - announce "<yellow><player.name> rolls a magic die..."
+          - announce "<yellow><player.name> rolled <util.random.int[1].to[<101>]>"
+       on roll command:
+          - announce "<yellow><player.name> rolls a magic die..."
+          - announce "<yellow><player.name> rolled <util.random.int[1].to[<101>]>"

@@ -1,0 +1,30 @@
+# Via http://scripts.citizensnpcs.co/view/e3v2ee
+#Script by Entez
+#Last Updated January 23, 2014
+
+#When an arrow hits, determines if the arrow was on the head. If so, damage is multiplied 1.5x for entities without helmets, and 1.25x for entities with helmets
+'SniperShot':
+  Type: World
+  Events:
+    on entity damaged by arrow:
+    - If <context.projectile.location.y> >= <math:<context.entity.eye_location.y>-0.05> && <context.projectile.location.y> <= <math:<context.entity.eye_location.y>+0.70> {
+     - ^playeffect <context.entity.eye_location> effect:RED_DUST qty:10 offset:0.5     
+     - ^If <context.damager.is_player> Narrate targets:<context.damager> "<proc:Headshot>"
+     - ^If <context.entity.equipment.helmet> == null determine <math:<context.damage>*1.5>
+       else determine <math:<context.damage>*1.25>
+     }
+ 
+#Determines the message to send on headshot
+'Headshot':
+  type: Procedure
+  script:
+  - If <context.entity.name> == "Spider"{
+    - Random 2
+    - determine "<yellow>You score a Critical Hit!"
+    - determine "<yellow>You decimate your target with a powerful Abdomen Shot!!"
+    }
+    Else {
+    - Random 2
+    - determine "<yellow>You score a Critical Hit!"
+    - determine "<yellow>You decimate your target with a powerful Headshot!!"
+    }

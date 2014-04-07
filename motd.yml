@@ -1,0 +1,60 @@
+# Message of the day
+# Simple usage of the "on player join" event.
+# Symbols:
+# <&co> : 
+# newline <&nl>
+# <&cm> ,
+# <&ss> §
+# <&sq> '
+# <&dq> "
+# <&lb> [
+# <&rb> ]
+# <&cl> {
+# <&cr> }
+# <&auml> ä
+# <&auml> Ä
+# <&ouml> ö
+# <&Ouml> Ö
+# <&uuml> ü
+# <&Uuml> Ü
+
+"MOTD":
+  type: world
+
+  events:
+    on player join:
+    - narrate "<green><&lb><&d>MOTD<green><&rb> Welcome to CS Crew Minecraft!"
+    - narrate "<green><&lb><&d>MOTD<green><&rb> <red>NEW<green> CSCrew custom chat commands! Type /commands <&lb>Page<&rb> to discover fun commands!"
+    - announce "<yellow><player.name> has gained consciousness!"
+
+    on player quit:
+    - announce "<yellow><player.name> has been knocked unconscious!"
+
+"MOTD-Announce":
+  type: world
+  
+  events:
+    on 7:00 in w@world:
+      - random 6
+      - announce "<green><&lb><&d>SERVER<green><&rb> <red>NEW<green> CSCrew custom chat commands! Type /commands <&lb>Page<&rb> to discover fun commands!"
+      - announce "<green><&lb><&d>SERVER<green><&rb> Need a quick way back to spawn? Try using the <gold>/spawn<green> command!"
+      - announce "<green><&lb><&d>SERVER<green><&rb> Tell your friends where you are with the <gold>/locationall<green> command!"
+      - announce "<green><&lb><&d>SERVER<green><&rb> Poke nearby players by right clicking them with nothing in your hand."
+      - announce "<green><&lb><&d>SERVER<green><&rb> You can use <gold>/sethome<green> to set a home point and return to it once every 30 minutes with the <gold>/home<green> command."
+      - announce "<green><&lb><&d>SERVER<green><&rb> Claim your daily reward using the <gold>/claim<green> command! Diamonds await you!"
+    on 14:00 in w@world:
+      - random 6
+      - announce "<green><&lb><&d>SERVER<green><&rb> <red>NEW<green> CSCrew custom chat commands! Type /commands <&lb>Page<&rb> to discover fun commands!"
+      - announce "<green><&lb><&d>SERVER<green><&rb> Need a quick way back to spawn? Try using the <gold>/spawn<green> command!"
+      - announce "<green><&lb><&d>SERVER<green><&rb> Tell your friends where you are the <gold>/locationall<green> command!"
+      - announce "<green><&lb><&d>SERVER<green><&rb> Poke nearby players by right clicking them with nothing in your hand."
+      - announce "<green><&lb><&d>SERVER<green><&rb> You can use <gold>/sethome<green> to set a home point and return to it once every 30 minutes with the <gold>/home<green> command."
+      - announce "<green><&lb><&d>SERVER<green><&rb> Claim your daily reward using the <gold>/claim<green> command! Diamonds await you!"
+    on 21:00 in w@world:
+      - random 6
+      - announce "<green><&lb><&d>SERVER<green><&rb> <red>NEW<green> CSCrew custom chat commands! Type /commands <&lb>Page<&rb> to discover fun commands!"
+      - announce "<green><&lb><&d>SERVER<green><&rb> Need a quick way back to spawn? Try using the <gold>/spawn<green> command!"
+      - announce "<green><&lb><&d>SERVER<green><&rb> Tell your friends where you are with the <gold>/locationall<green> command!"
+      - announce "<green><&lb><&d>SERVER<green><&rb> Poke nearby players by right clicking them with nothing in your hand."
+      - announce "<green><&lb><&d>SERVER<green><&rb> You can use <gold>/sethome<green> to set a home point and return to it once every 30 minutes with the <gold>/home<green> command."
+      - announce "<green><&lb><&d>SERVER<green><&rb> Claim your daily reward using the <gold>/claim<green> command! Diamonds await you!"

@@ -1,0 +1,76 @@
+# Zombies Quest
+# Simple whack-10-Zombies script with XP reward.
+# Tyler J. Sawyer - 3/26/14
+
+# Basic Task Assignment Value
+"KillZombies":
+    type: assignment
+    
+    interact scripts:
+    - 10 KillZombiesQuest
+
+# NPC Chatter Task
+'KillZombiesQuest':
+    type: interact
+    
+    steps:
+        # Handout Step - First Interaction
+        'Zombie Quest Handout*':
+            Proximity Trigger:
+                entry radius: 5
+                entry:
+                    script:
+                    - chat "Hey there, adventurer! I sure could use some help.."
+            Click Trigger:
+                script:
+                - chat "Zombies hinder my ability to shoot Skeletons in the foot. Would you be willing to [<red>slay<green>] some zombies?"
+            Chat Trigger:
+                1:
+                    Trigger: I will /slay/ some Zombies for you.
+                    Script:
+                    - chat "Slaughter 10 of those pesky Zombies and return when you are finished."
+                    - wait 1
+                    - chat "Good Luck, <player.name>!"
+                    - listen kill type:entity name:Zombie qty:1 script:ZombieKillProgress 
+                    - flag player ZombieCount:0
+                    - narrate '<yellow>You have accepted the task "Kill Zombies".'
+                    - zap 'step:Zombie Quest IP'
+
+        # If the player has accepted the quest, display this flavor text.
+        'Zombie Quest IP':
+            click trigger:
+                script:
+                - narrate '<white>Joey appears to be sleeping...'
+                - narrate '<yellow>Progress<&co> <player.flag[ZombieCount].asint> / 10 Zombies Slain.'
+
+        # If the player has been flagged as 'complete', launch this process.
+        'Zombie Quest Reward':
+            click trigger:
+                script:
+                    - chat "Ugh. About time. Here, I have no use for these. You may have them."
+                    - give 388 QTY:3
+                    - give XP QTY:250
+                    - narrate "<yellow>You received <aqua>Emerald<yellow>x3!"
+                    - narrate "<yellow>You've gained 250 experience!"
+                    - wait 1
+                    - chat "If you feel like slaying more zombies, speak with me again shortly."    
+                    - zap 'step:Zombie Quest Handout'
+
+ZombieKillProgress:
+    type: task
+    script:
+    - flag player ZombieCount:++
+    - narrate "<yellow>Zombies Slain<&co> <player.flag[ZombieCount].asint>/10"
+    - if <player.flag[ZombieCount].asint> >= 10 run ZombieKillDone
+      else run ZombieKillContinue
+
+ZombieKillContinue:
+    type: task
+    script:
+    - listen kill type:entity name:Zombie qty:1 script:ZombieKillProgress
+
+ZombieKillDone:
+    type: task
+    script:
+    - narrate "<yellow>You have slain <player.flag[ZombieCount].asint>/10 Zombies! Return to <npc.name> for your reward!"
+    - zap 'step:Zombie Quest Reward' script:KillZombiesQuest

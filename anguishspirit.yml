@@ -1,0 +1,61 @@
+# Ghost of Anguish Encounter
+
+soanguish:
+  type: assignment
+
+  default constants:
+    approach message: Leave this place...
+    fleeing message: You have lingered here too long...
+    death message: Thank you ...
+    victory message: Seriously.
+
+  actions:
+    on assignment:
+    - trigger name:proximity 
+      toggle:true radius:4
+    - trigger name:damage toggle:true
+    - health toggle:true
+    - vulnerable
+
+    on spawn:
+    - flag npc in_pursuit:!
+    - trigger name:proximity 
+      toggle:true radius:4
+    - trigger name:damage toggle:true
+    - health 100 state:true
+    - vulnerable
+
+    on enter proximity:
+    - if <npc.flag[in_pursuit]> 
+      queue clear
+    - flag npc in_pursuit:true
+    - lookclose toggle:true
+    - narrate "<&D><npc.name> whispers, 
+      '<cons:approach message>'"
+
+    on exit proximity:
+    - if !<npc.flag[in_pursuit]> 
+      queue clear
+    - attack
+    - lookclose toggle:false
+    - narrate "<&D><npc.name> whispers, 
+      '<cons:fleeing message>'"
+
+    on damage:
+    - if !<npc.flag[in_pursuit]> 
+      queue clear
+    - attack
+
+    on death:
+    - narrate "<&D><npc.name> whispers, 
+      '<cons:death message>"
+    - drop XP qty:500
+      location:<npc.location>
+    - flag npc in_pursuit:!
+
+    on player death:
+    - narrate "<&D><npc.name> whispers, <cons:victory message>"
+    - flag npc in_pursuit:!   
+
+    on despawn:
+    - flag npc in_pursuit:!   

@@ -1,0 +1,26 @@
+"walk listener":
+    type: world
+    events:
+       on walktalk command:
+          - narrate "<yellow>Okay, tracking your movement, sir."
+          - listen travel type:distance distance:1 script:walkTalk
+
+walkTalk:
+    type: task
+    script:
+    - flag player randomBandit:<util.random.int[1].to[<1001>]>
+    - narrate "<white>You moved!"
+    - narrate "<red>Bandit Spawn Chance - <player.flag[randomBandit].asint>"
+    - if <player.flag[randomBandit].asint> >= 100 run walkTalkDone
+      else run walkTalkGoOn
+
+walkTalkGoOn:
+    type: task
+    script:
+    - listen travel type:distance distance:1 script:walkTalk
+
+walkTalkDone:
+    type: task
+    script:
+    - narrate "<yellow>You walked 100 blocks!"
+    - narrate "<red>A Bandit appears from the shadows!"

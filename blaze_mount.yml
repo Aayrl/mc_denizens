@@ -1,0 +1,10 @@
+# Blazeling Mount
+# Tyler J. Sawyer
+# 4/3/14
+
+"Blazling Egg":
+   type: item
+   material: emerald
+   display name: "Blazline Egg"
+   lore:
+   - <green>Effect<&co> <red>Summon Blazling Mount

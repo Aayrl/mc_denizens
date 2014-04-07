@@ -1,0 +1,76 @@
+# Skeletons Quest
+# Simple whack-10-skeletons script with XP reward.
+# Tyler J. Sawyer - 3/26/14
+
+# Basic Task Assignment Value
+"KillSkeletons":
+    type: assignment
+    
+    interact scripts:
+    - 10 KillSkeletonsQuest
+
+# NPC Chatter Task
+'KillSkeletonsQuest':
+    type: interact
+    
+    steps:
+        # Handout Step - First Interaction
+        'Skeleton Quest Handout*':
+            Proximity Trigger:
+                entry radius: 5
+                entry:
+                    script:
+                    - chat "Hey there, adventurer! I sure could use some help.."
+            Click Trigger:
+                script:
+                - chat "I keep getting ambushed by Skeletons at night. Would you please [<red>kill<green>] some of them for me?"
+            Chat Trigger:
+                1:
+                    Trigger: I will /kill/ some Skeletons for you.
+                    Script:
+                    - chat "Oh, good! I am so sick of being spawn camped by Skeletons!"
+                    - wait 1
+                    - chat "Go kill 10 Skeletons and speak with me when you are finished."
+                    - listen kill type:entity name:Skeleton qty:1 script:SkeletonKillProgress 
+                    - flag player SkeletonCount:0
+                    - narrate '<yellow>You have accepted the task "Kill Skeletons".'
+                    - zap 'step:Skeleton Quest IP'
+
+        # If the player has accepted the quest, display this flavor text.
+        'Skeleton Quest IP':
+            click trigger:
+                script:
+                - chat "What are you still doing here? Go kill 10 Skeletons!"
+                - narrate '<yellow>Progress<&co> <player.flag[SkeletonCount].asint> / 10 Skeletons Slain.'
+
+        # If the player has been flagged as 'complete', launch this process.
+        'Skeleton Quest Reward':
+            click trigger:
+                script:
+                    - chat "Thank you so much! Here, take this as a reward!"
+                    - give 388 QTY:3
+                    - give XP QTY:250
+                    - narrate "<yellow>You received <aqua>Emerald<yellow>x3!"
+                    - narrate "<yellow>You've gained 250 experience!"
+                    - wait 1
+                    - chat "Speak with me again shortly if you wish to slay more Skeletons!"    
+                    - zap 'step:Skeleton Quest Handout'
+
+SkeletonKillProgress:
+    type: task
+    script:
+    - flag player SkeletonCount:++
+    - narrate "<yellow>Skeletons Slain<&co> <player.flag[SkeletonCount].asint>/10"
+    - if <player.flag[SkeletonCount].asint> >= 10 run SkeletonKillDone
+      else run SkeletonKillContinue
+
+SkeletonKillContinue:
+    type: task
+    script:
+    - listen kill type:entity name:Skeleton qty:1 script:SkeletonKillProgress
+
+SkeletonKillDone:
+    type: task
+    script:
+    - narrate "<yellow>You have slain <player.flag[SkeletonCount].asint>/10 Skeletons! Return to <npc.name> for your reward!"
+    - zap 'step:Skeleton Quest Reward' script:KillSkeletonsQuest

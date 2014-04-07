@@ -1,0 +1,69 @@
+# Avatar of Hakkar is a boss fight.
+# Tyler J. Sawyer
+
+aohakkar:
+  type: assignment
+
+  default constants:
+    approach message: <red>YOU CANNOT STOP THE POWER OF HAKKAR!
+    fleeing message: <red>FOOL! YOU CANNOT FLEE!
+    death message: <red>YOU HAVE NOT SEEN THE LAST OF HAKKAR!!
+    victory message: <red>AAHH..ANOTHER SACRIFICE FOR HAKKAR!
+    random message1: <red>-HISSSSS-
+    random message2: <red>MADNESS WILL CONSUME YOU!
+    random message3: <red>DEATH TO ALL WHO OPPOSE HAKKAR!
+
+  actions:
+    on assignment:
+    - trigger name:proximity 
+      toggle:true radius:15
+    - trigger name:damage toggle:true
+    - health toggle:true
+    - vulnerable
+
+    on spawn:
+    - execute as_server "npc tpto 10 11"
+    - flag npc in_pursuit:!
+    - trigger name:proximity 
+      toggle:true radius:4
+    - trigger name:damage toggle:true
+    - health 250 state:true
+    - vulnerable
+
+    on enter proximity:
+    - if <npc.flag[in_pursuit]> 
+      queue clear
+    - attack
+    - flag npc in_pursuit:true
+    - lookclose toggle:true
+    - narrate "<&5>A strange voice in your head says, 
+      '<cons:approach message>'"
+    - announce "<&5>You hear a low pitched hiss far in the distance.."
+
+    on exit proximity:
+    - if !<npc.flag[in_pursuit]> 
+      queue clear
+    - attack
+    - lookclose toggle:false
+    - narrate "<&5>Your head throbbs as you hear the words, 
+      '<cons:fleeing message>'"
+
+    on damage:
+    - if !<npc.flag[in_pursuit]> 
+      queue clear
+    - attack
+
+    on death:
+    - drop XP qty:2500
+      location:<npc.location>
+    - announce "<red><npc.name> yells, <cons:death message>"
+    - announce "<&5><npc.name> has been slain!"
+    - flag npc in_pursuit:!
+
+    on player death:
+    - narrate "<red><npc.name> yells, <cons:victory message>"
+    - announce "<&5>A piercing shriek is heard far in the distance.."
+    - flag npc in_pursuit:!   
+
+    on despawn:
+    - flag npc in_pursuit:!   

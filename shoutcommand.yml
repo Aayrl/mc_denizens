@@ -1,0 +1,23 @@
+"chat flavor commands":
+    type: world
+    events:
+       on shout command:
+          - announce "<red><player.name> shouts for help!"
+       on yell command:
+          - announce "<red><player.name> yells for help!"
+       on taunt command:
+          - announce "<&9><player.name> taunts their target."
+       on wave command:
+          - announce "<&9><player.name> waves."
+       on cheer command:
+          - announce "<&9><player.name> cheers!"
+       on cry command:
+          - announce "<&9><player.name> cries."
+       on dance command:
+          - announce "<&9><player.name> bursts into dance."
+       on yes command:
+          - announce "<&9><player.name> agrees."
+       on no command:
+          - announce "<&9><player.name> disagrees."
+       on lore command:
+          - narrate "<&9>Item Lore<&co> <player.item_in_hand.lore>"

@@ -1,0 +1,76 @@
+# Spiders Quest
+# Simple whack-10-Spiders script with XP reward.
+# Tyler J. Sawyer - 4/1/14
+
+# Basic Task Assignment Value
+"KillSpiders":
+    type: assignment
+    
+    interact scripts:
+    - 10 KillSpidersQuest
+
+# NPC Chatter Task
+'KillSpidersQuest':
+    type: interact
+    
+    steps:
+        # Handout Step - First Interaction
+        'Spider Quest Handout*':
+            Proximity Trigger:
+                entry radius: 5
+                entry:
+                    script:
+                    - chat "Hey there, adventurer! I sure could use some help.."
+            Click Trigger:
+                script:
+                - chat "I am a weak adventurer and can't [<red>kill<green>] spiders on my own.."
+            Chat Trigger:
+                1:
+                    Trigger: I will /kill/ some Spiders for you.
+                    Script:
+                    - chat "Really? You will?"
+                    - wait 1
+                    - chat "I'd appreciate it if you'd kill 10 Spiders for me."
+                    - listen kill type:entity name:Spider qty:1 script:SpiderKillProgress 
+                    - flag player SpiderCount:0
+                    - narrate '<yellow>You have accepted the task "Kill Spiders".'
+                    - zap 'step:Spider Quest IP'
+
+        # If the player has accepted the quest, display this flavor text.
+        'Spider Quest IP':
+            click trigger:
+                script:
+                - chat "How goes the hunt for icky spiders?"
+                - narrate '<yellow>Progress<&co> <player.flag[SpiderCount].asint> / 10 Spiders Slain.'
+
+        # If the player has been flagged as 'complete', launch this process.
+        'Spider Quest Reward':
+            click trigger:
+                script:
+                    - chat "Thank you so much! Here, take this as a reward!"
+                    - give 388 QTY:3
+                    - give XP QTY:250
+                    - narrate "<yellow>You received <aqua>Emerald<yellow>x3!"
+                    - narrate "<yellow>You've gained 250 experience!"
+                    - wait 1
+                    - chat "Spiders are gross!"    
+                    - zap 'step:Spider Quest Handout'
+
+SpiderKillProgress:
+    type: task
+    script:
+    - flag player SpiderCount:++
+    - narrate "<yellow>Spiders Slain<&co> <player.flag[SpiderCount].asint>/10"
+    - if <player.flag[SpiderCount].asint> >= 10 run SpiderKillDone
+      else run SpiderKillContinue
+
+SpiderKillContinue:
+    type: task
+    script:
+    - listen kill type:entity name:Spider qty:1 script:SpiderKillProgress
+
+SpiderKillDone:
+    type: task
+    script:
+    - narrate "<yellow>You have slain <player.flag[SpiderCount].asint>/10 Spiders! Return to <npc.name> for your reward!"
+    - zap 'step:Spider Quest Reward' script:KillSpidersQuest

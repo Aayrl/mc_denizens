@@ -1,0 +1,6 @@
+# Faction Lord Check
+# Tyler J. Sawyer - 4/7/14
+# Checks a user's current faction level with an emissary of a particular faction.
+# If the user has attained 'Ally' status, they will be directed to the 
+# Lord of interest for a title flag and a server announcement.
+

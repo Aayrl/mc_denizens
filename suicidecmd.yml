@@ -1,0 +1,6 @@
+"suicide commands":
+    type: world
+    events:
+       on suicide command:
+          - announce "<red><player.name> decided to end it all!"
+          - execute as_player "kill"

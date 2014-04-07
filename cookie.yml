@@ -1,0 +1,59 @@
+# Cookie
+# Despite the filename, Karol now gives out pie.
+
+"Cookies":
+    type: assignment
+
+    interact scripts:
+    - 10 Cookie Greeting
+
+    actions:
+        on assignment:
+        - trigger name:chat toggle:true
+
+'Cookie Greeting':
+    type: interact
+
+    steps:
+        'Spreading the Word*':
+            click trigger:
+                script:
+                - chat 'I like [<red>pie<green>]! How about you?'
+
+            chat trigger:
+                'Cookies':
+                    trigger: 'I want /pie/!'
+                    script: 
+                    - chat 'Here, have some pie!'
+                    - narrate '<npc.name> gives 
+                      you some pie.'
+                    - narrate '<yellow>You have completed the quest, Pie!'
+                    - give item:400 qty:1
+                    - zap 'step:Cookies given'
+                'Pearls':
+                    trigger: 'What /pearls/?'
+                    script: 
+                    - chat 'Who told you about Ender Pearls?'
+                    - wait 1
+                    - chat 'Well, since the secret is out, I will give you a special reward if you bring me 10 Ender Pearls.'
+                    - narrate '<npc.name> winks at you.'
+                    - narrate '<yellow>You have accepted the task "Pearls"'
+                    - zap 'step:wut pearls'
+
+        'Cookies given':
+            click trigger:
+                script:
+                - chat 'How was the pie?'
+                - zap 'step:Spreading the Word'
+
+        'wut pearls':
+            click trigger:
+                script:
+                - chat 'How goes the hunt for Pearls?'
+                - listen block type:collect block:368 qty:10 'script:Cookie Greeting' 
+                - zap 'step:wut pearls end'
+        'wut pearls end':
+            click trigger:
+                script:
+                - chat 'How goes the hunt for Pearls?'
+                - zap 'step:Spreading the Word'

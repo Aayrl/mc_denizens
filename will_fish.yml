@@ -1,0 +1,74 @@
+# Fishs Quest
+# Retrieve 10x item (Fish) Quest.
+# Tyler J. Sawyer - 4/1/14
+
+# Basic Task Assignment Value
+"GetFishs":
+    type: assignment
+    
+    interact scripts:
+    - 10 GetFishsQuest
+
+# NPC Chatter Task
+'GetFishsQuest':
+    type: interact
+    
+    steps:
+        # Handout Step - First Interaction
+        'Fish Quest Handout*':
+            Proximity Trigger:
+                entry radius: 5
+                entry:
+                    script:
+                    - chat "Hey there, adventurer! I sure could use some help.."
+            Click Trigger:
+                script:
+                - chat "Fish fish fish fish fish [<red>fish<green>] fish fish fish."
+            Chat Trigger:
+                1:
+                    Trigger: Do you like /fish/?
+                    Script:
+                    - chat "Fish! Fish fish fish!"
+                    - wait 1
+                    - chat "10 Fish for fish."
+                    - listen item type:fish item:fish qty:1 script:FishGetProgress 
+                    - flag player FishCount:0
+                    - narrate '<yellow>You have accepted the task "Fish for Will".'
+                    - zap 'step:Fish Quest IP'
+
+        # If the player has accepted the quest, display this flavor text.
+        'Fish Quest IP':
+            click trigger:
+                script:
+                - chat "FISH!"
+                - narrate '<yellow>Progress<&co> <player.flag[FishCount].asint> / 10 Fishs Collected.'
+
+        # If the player has been flagged as 'complete', launch this process.
+        'Fish Quest Reward':
+            click trigger:
+                script:
+                    - chat "FISHHHH!"
+                    - give 388 QTY:5
+                    - give XP QTY:750
+                    - narrate "<yellow>You received <aqua>Emerald<yellow>x5!"
+                    - narrate "<yellow>You've gained 750 experience!"
+                    - zap 'step:Fish Quest Handout'
+
+FishGetProgress:
+    type: task
+    script:
+    - flag player FishCount:++
+    - narrate "<yellow>Fish Collected<&co> <player.flag[FishCount].asint>/10"
+    - if <player.flag[FishCount].asint> >= 10 run FishGetDone
+      else run FishGetContinue
+
+FishGetContinue:
+    type: task
+    script:
+    - listen item type:fish item:fish qty:1 script:FishGetProgress
+
+FishGetDone:
+    type: task
+    script:
+    - narrate "<yellow>You have collected <player.flag[FishCount].asint>/10 Fish! Return to <npc.name> before he goes insane!"
+    - zap 'step:Fish Quest Reward' script:GetFishsQuest

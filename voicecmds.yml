@@ -1,0 +1,54 @@
+# DENIZENS COMMANDS
+# http://mcmonkey4eva.dyndns.org/cmds/
+
+#Name	playeffect
+#Syntax	 - playeffect [<location>|...] [effect:<name>] (data:<#.#>) (visibility:<#.#>) (qty:<#>) (offset:<#.#>) (targets:<player>|...)
+#Short Description	Plays a visible or audible effect at the location.
+#Author	David Cernat
+#Stability	stable
+#Full Description	Todo 
+#See language/Particle Effects for a list of valid effect names. 
+
+#Related Tags	Todo 
+#Usages	
+#» Todo 
+#Group	world
+# http://mcmonkey4eva.dyndns.org/lngs/Particle%20Effects
+
+#Name	playsound
+#Syntax	 - playsound [<location>|.../<player>|...] [sound:<name>] (volume:<#.#>) (pitch:<#.#>) (custom)
+#Short Description	Plays a sound at the location or to a list of players.
+#Author	Jeebiss
+#Stability	stable
+#Full Description	TODO 
+#Optionally, specify 'custom' to play a custom sound added by a resource pack, changing the sound string to something like 'random.click' 
+
+#Related Tags	Todo 
+#Usages	
+#» Todo 
+#Group	world
+
+#Name	midi
+#Syntax	 - midi (cancel) [<file>] (<location>/<entity>|...) (tempo:<#.#>)
+#Short Description	Plays a midi file at a given location or to a list of players using note block sounds.
+#Author	David Cernat
+#Stability	stable
+#Full Description	This will fully load a midi song file stored in the '../plugins/Denizen/midi/' folder. The file 
+#must be a valid midi file with the extension '.mid'. It will continuously play the song as 
+#noteblock songs at the given location or group of players until the song ends. If no location or 
+#entitiy is specified, by default this will play for the attached player. 
+
+#Also, an example Midi song file has been included: "Denizen" by Black Coyote. He made it just for us! 
+#Check out more of his amazing work at: http://www.youtube.com/user/BlaCoyProductions 
+
+#Related Tags	None 
+#Usages	
+#» Use to play a midi song file on the current player 
+#- midi file:Denizen 
+
+#» Use to play a midi song file at a given location 
+#- midi file:Denizen <player.location> 
+
+#» Use to play a midi song file at a given location to the specified player 
+#- midi file:Denizen <server.list_online_players> 
+#Group	world

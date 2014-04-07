@@ -1,0 +1,61 @@
+"custom cscrew commands":
+    type: world
+    events:
+       on commands command:
+          # Default reaction (if no number is typed after '/commands'
+          - if <context.args.get[1]> == null {
+            - narrate "<gold>--- CSCrew Commands [1/3] ---"
+            - narrate "<gold>/yell - Yell for help."
+            - narrate "<gold>/shout - Shout for help."
+            - narrate "<gold>/roll - Generate a random number between 1 and 100."
+            - narrate "<gold>/taunt - Taunt emote."
+            - narrate "<gold>/wave - Wave emote."
+            - narrate "<gold>/cheer - Cheer emote."
+            - narrate "<gold>/cry - Cry emote."
+            }
+          # /commands 1
+          - if <context.args.get[1]> == 1 {
+            - narrate "<gold>--- CSCrew Commands [1/3] ---"
+            - narrate "<gold>/yell - Yell for help."
+            - narrate "<gold>/shout - Shout for help."
+            - narrate "<gold>/roll - Generate a random number between 1 and 100."
+            - narrate "<gold>/taunt - Taunt emote."
+            - narrate "<gold>/wave - Wave emote."
+            - narrate "<gold>/cheer - Cheer emote."
+            - narrate "<gold>/cry - Cry emote."
+            }
+          # /commands 2
+          - if <context.args.get[1]> == 2 {
+            - narrate "<gold>--- CSCrew Commands [2/3] ---"
+            - narrate "<gold>/dance - Dance emote."
+            - narrate "<gold>/yes - Agree with someone."
+            - narrate "<gold>/no - Disagree with someone."
+            - narrate "<gold>/loc - Display your x-y-z coordinates."
+            - narrate "<gold>/locationall - Display your x-y-z coordinates to everyone."
+            - narrate "<gold>/spawn - Teleports you to the current world's spawn."
+            - narrate "<gold>/sethome - Sets your home location."
+            - narrate "<gold>/home - Warps you to your home location. [30 Min. Cooldown]"
+            }
+          # /commands 3
+          - if <context.args.get[1]> == 3 {
+            - narrate "<gold>--- CSCrew Commands [3/3] ---"
+            - narrate "<gold>/suicide - Kills your character."
+            - narrate "<gold>/fw help - Customize options for Firework Rod commands."
+            - narrate "<gold>/fw [color] - Toggle Color for Firework Rods."
+            - narrate "<gold>/lore - Lists lore context of the item in your hand." 
+            - narrate "<gold>/use - If an item has a 'Use' tag, this activates its power."
+            - narrate "<gold>PH"
+            - narrate "<gold>PH"
+            - narrate "<gold>PH"
+            }
+          #- if <context.args.get[1]> == 3 {
+            #- narrate "<gold>--- CSCrew Commands [3/3] ---"
+            #- narrate "<gold>PH"
+            #- narrate "<gold>PH"
+            #- narrate "<gold>PH"
+            #- narrate "<gold>PH"
+            #- narrate "<gold>PH"
+            #- narrate "<gold>PH"
+            #- narrate "<gold>PH"
+            #- narrate "<gold>PH"
+            #}

@@ -1,0 +1,42 @@
+# Bandit Lord Encounter
+# Tyler J. Sawyer - 3/20/14
+# A slightly tougher Bandit encounter..
+# A bit more health and a bit rougher.
+
+banditlord:
+  type: assignment
+
+  default constants:
+    approach message: Beg for your life!
+    fleeing message: Time to die!
+    death message: Aaarrgghhh!
+
+  actions:
+    on assignment:
+    - trigger name:proximity 
+      toggle:true radius:4
+    - trigger name:damage toggle:true
+    - health toggle:true
+    - vulnerable
+
+    on enter proximity:
+    - if <npc.flag[in_pursuit]> 
+      queue clear
+    - flag npc in_pursuit:true
+    - lookclose toggle:true
+    - narrate "<npc.name> says, <cons:approach message>"
+
+    on exit proximity:
+    - if !<npc.flag[in_pursuit]> 
+      queue clear
+    - attack
+    - lookclose toggle:false
+    - narrate "<red><npc.name> yells, <cons:fleeing message>"
+
+    on death:
+    - chat "<npc.name> says, <cons:death message>"
+    - drop XP qty:250 location:<npc.location>
+    - flag npc in_pursuit:false
+
+    on despawn:
+    - flag npc in_pursuit:false

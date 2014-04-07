@@ -2,6 +2,74 @@
 # Tyler J. Sawyer
 # Last Updated : 4/3/14
 
+# ========================================================
+# Common Tier Items - White Tag
+
+# [ Plane of Ender Loot ]
+"Enderparts":
+   type: item
+   material: 352
+   display name: "Enderparts"
+   lore:
+   - <white>You probably don't want to know..
+
+"Enderplate Rings":
+   type: item
+   material: 265
+   display name: "Enderplate Rings"
+   lore:
+   - <white>Perhaps these can be repurposed?
+ 
+"Enderplate Block":
+   type: item
+   material: 42
+   display name: "Enderplate Block"
+   lore:
+   - <white>Perhaps this can be repurposed?
+  
+"Enderdust":
+   type: item
+   material: 263
+   display name: "Enderdust"
+   lore:
+   - <white>A formidible fuel source, most likely.
+   
+"Endersoul":
+   type: item
+   material: 353
+   display name: "Endersoul"
+   lore:
+   - <white>The Soul of an Enderman. How quaint.
+   
+"Enderthread":
+   type: item
+   material: 287
+   display name: "Enderthread"
+   lore:
+   - <white>Perhaps someone can make use of this...
+   
+"Endermold":
+   type: item
+   material: 106
+   display name: "Endermold"
+   lore:
+   - <white>Yuck.
+
+# ========================================================
+# Uncommon Tier Items - Green Tag
+
+# ========================================================
+# Rare Tier Items - Blue Tag
+
+# ========================================================
+# Epic Tier Items - Purple Tag
+
+# ========================================================
+# Legendary Tier Items - Orange Tag
+
+# ========================================================
+# God / Event Tier Items - Red Tag
+
 "Hammer of the Gods":
    type: item
    material: diamond_axe

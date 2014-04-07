@@ -278,6 +278,7 @@
        - if <player.item_in_hand.lore> == "<green>Use<&co> Bootstrutter<&sq>s Blessing" {
          - narrate "<&9>You feel your speed quicken!"
          - cast speed duration:45 power:3
+         - playeffect location:<player.location> effect:splash qty:2500
          }
    
 "Dragon Maul":

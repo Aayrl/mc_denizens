@@ -4,6 +4,7 @@
        on spawn command:
           - announce "<yellow><player.name> warped to spawn!"
           - execute as_server "mv spawn <player.name>"
+          - playeffect location:<player.location> effect:portal qty:1000
        on home command:
           - if "<flag.p:home repeatTimer || false>" == true {
             - narrate "<yellow>You must wait <flag.p:home repeatTimer.expiration> before you can use the home command again."
@@ -13,6 +14,7 @@
             - announce "<yellow><player.name> teleported to their home location."
             - teleport <player> <player.flag[respawnpoint]>
             - flag player "home repeatTimer:true" duration:1800
+            - playeffect location:<player.location> effect:portal qty:1000
             } 
        on sethome command:
           - narrate "<yellow>Your home has been set to <&co>"

@@ -6,6 +6,7 @@ pokeybutton:
         - if <player.flag[pokeybutton_cooldown]> queue clear
         - flag player pokeybutton_cooldown duration:1s
         - narrate player:<context.entity> "<&9><^player.name.display> pokes you."
+        - narrate "<&9> You poke <context.entity.asplayer.name>."
         - playeffect <context.entity.location> effect:heart qty:15 offset:1
         - playsound <context.entity.location> sound:hurt
         - playsound <context.entity.location> sound:successful_hit

@@ -1,0 +1,11 @@
+# Custom Combat Text
+# Tyler J. Sawyer
+# 4-7-14
+# Defines custom combat text when fighting players or mobs..
+
+
+"DamagerContext":
+  type: world
+  events:
+    on entity damaged:
+      - if <context.damager.is_player> narrate targets:<context.damager> "You hit <context.entity> for <context.damage>."

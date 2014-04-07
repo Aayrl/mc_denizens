@@ -265,15 +265,15 @@
    type: world
    events:
      on use command:
+       - if <player.item_in_hand.lore> == "<green>Use<&co> Heal <&lb>5 Min CD<&rb>" && "<flag.p:roh reuse || false>" == true {
+         - narrate "<&9>You must wait <flag.p:roh reuse.expiration> before you can use that item again."
+         } 
        - if <player.item_in_hand.lore> == "<green>Use<&co> Heal <&lb>5 Min CD<&rb>" && "<flag.p:roh reuse || false>" == false {
          - narrate "<&9>You feel completely healed!"
          - cast heal duration:1 power:25
          - playeffect location:<player.location> effect:potion_break qty:15 data:5
-         flag player "roh reuse:true" duration:300
+         - flag player "roh reuse:true" duration:300
          }
-       - if <player.item_in_hand.lore> == "<green>Use<&co> Heal <&lb>5 Min CD<&rb>" && "<flag.p:roh reuse || false>" == true {
-         - narrate "<&9>You must wait <flag.p:roh reuse.expiration> before you can use that item again."
-         } 
    
 "Journeyman Boots":
    type: item

@@ -193,10 +193,10 @@
    lore:
    - <green>Use<&co> Fire Resistance II <&lb>30 Min CD<&rb>
    
-"Joey<&sq>s Incinerating Charge":
+"Joeys Incinerating Charge":
    type: item
    material: 46
-   display name: "<&9>Joey<&sq>s Incinerating Charge"
+   display name: "<&9>Joeys Incinerating Charge"
    lore:
    - <green>Use<&co> BOOM!
    
@@ -232,6 +232,84 @@
 # ========================================================
 # Epic Tier Items - Purple Tag
 
+# [Plane of Ender Loot]
+"Hurricane":
+   type: item
+   material: 261
+   display name: "<&5>Hurricane"
+   lore:
+   - <green>Effect<&co> <red>Swiftshot
+   enchantments:
+   - arrow_damage:5
+   - durability:5
+   
+"Flamecaller":
+   type: item
+   material: 261
+   display name: "<&5>Flamecaller"
+   lore:
+   - <green>Effect<&co> <red>Explosive Arrow
+   enchantments:
+   - arrow_damage:3
+   - arrow_fire:2
+   
+"Rune of Healing":
+   type: item
+   material: 336
+   display name: "<&5>Rune of Healing"
+   lore:
+   - <green>Use<&co> Heal <&lb>5 Min CD<&rb>
+   
+"Journeyman Boots":
+   type: item
+   material: 313
+   display name: "<&5>Journeyman<&sq>s Boots"
+   lore:
+   - <green>Use<&co> Bootstrutter<&sq>s Blessing
+   enchantments:
+   - protection_fall:5
+   - durability:10
+   
+"Dragon Maul":
+   type: item
+   material: 279
+   display name: "<&5>Dragon Maul"
+   lore:
+   - <white>The maul of a once powerful dragon.
+   - <green>Effect<&co> <red>Maul
+   enchantments:
+   - damage_all:7
+   - durability:5
+   
+"Bucket of Saturation":
+   type: item
+   material: 325
+   display name: "<&5>Bucket of Saturation"
+   lore:
+   - <green>Use<&co> Saturate
+   enchantments:
+   - durability:1
+   
+"Shapeshifters Rod":
+   type: item
+   material: 369
+   display name: "<&5>Shapeshifter<&sq>s Rod"
+   lore:
+   - <green>Use<&co> Guise of the Hunter
+   enchantments:
+   - knockback:1
+   
+# [Overworld Loot]
+"Wand of Hakkar":
+   type: item
+   material: 280
+   display name: "<&5>Wand of Hakkar"
+   lore:
+   - <green>Effect<&co> <red>Wither
+   enchantments:
+   - knockback:2
+   - damage_all:1
+   
 # ========================================================
 # Legendary Tier Items - Orange Tag
 

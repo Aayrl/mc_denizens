@@ -58,6 +58,90 @@
 # ========================================================
 # Uncommon Tier Items - Green Tag
 
+"Sword of Ender":
+   type: item
+   material:  267
+   display name: "<green>Sword of Ender"
+   lore:
+   - <white>A fine steel shortsword.
+   enchantments:
+   - damage_all:2
+   - durability:3
+   
+"Ender Scythe":
+   type: item
+   material: 292
+   display name: "<green>Ender Scythe"
+   lore:
+   - <white>A fine steel scythe.
+   enchantments:
+   - damage_all:2
+   - durability:3
+   
+"Enderplate Chestpiece":
+   type: item
+   material: 307
+   display name: "<green>Enderplate Chestpiece"
+   lore:
+   - <white>A fine steel chestpiece.
+   enchantments:
+   - durability:4
+   - protection_environmental:3
+   
+"Enderplate Leggings":
+   type: item
+   material: 308
+   display name: "<green>Enderplate Leggings"
+   lore:
+   - <white>A pair of fine steel leggings.
+   enchantments:
+   - durability:4
+   - protection_projectile:3
+   
+"Enderplate Boots":
+   type: item
+   material: 309
+   display name: "<green>Enderplate Boots"
+   lore:
+   - <white>A pair of fine steel boots.
+   enchantments:
+   - durability:3
+   - protection_fall:3
+   
+"Enderplate Helm":
+   type: item
+   material: 306
+   display name: "<green>Enderplate Helm"
+   lore:
+   - <white>A fine steel helmet.
+   enchantments:
+   - durability:3
+   - oxygen:1
+   
+"Ender Orb":
+   type: item
+   material: 368
+   display name: "<green>Ender Orb"
+   lore:
+   - <white>A teleportation device more potent than the traditional Ender Pearl.
+   - <green>Use<&co> Teleports you to the Plane of Ender. This item is consumed on use.
+   
+"Enderfish":
+   type: item
+   material: 350
+   display name: "<green>Enderfish"
+   lore:
+   - <white>Uhm..how is this even a thing?
+   - <green>Use<&co> Restore 5 Saturation points.
+   
+"Endercookie":
+   type: item
+   material: 357
+   display name: "<green>Endercookie"
+   lore:
+   - <white>Free cookies are never a bad thing.
+   - <green>Use<&co> Restore 1 Saturation point.
+
 # ========================================================
 # Rare Tier Items - Blue Tag
 

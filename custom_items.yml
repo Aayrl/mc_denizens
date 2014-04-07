@@ -58,6 +58,7 @@
 # ========================================================
 # Uncommon Tier Items - Green Tag
 
+# [Plane of Ender Loot]
 "Sword of Ender":
    type: item
    material:  267
@@ -144,6 +145,89 @@
 
 # ========================================================
 # Rare Tier Items - Blue Tag
+
+# [Plane of Ender Loot]
+"Runed Enderplate Helm":
+   type: item
+   material: 310
+   display name: "<&9>Runed Enderplate Helm"
+   lore:
+   - <yellow>An expert blacksmith may be able to repair this..
+   
+"Runed Enderplate Chestpiece":
+   type: item
+   material: 311
+   display name: "<&9>Runed Enderplate Chestpiece"
+   lore:
+   - <yellow>An expert blacksmith may be able to repair this..
+   
+"Runed Enderplate Leggings":
+   type: item
+   material: 312
+   display name: "<&9>Runed Enderplate Leggings"
+   lore:
+   - <yellow>An expert blacksmith may be able to repair this..
+   
+"Runed Enderplate Boots":
+   type: item
+   material: 313
+   display name: "<&9>Runed Enderplate Boots"
+   lore:
+   - <yellow>An expert blacksmith may be able to repair this..
+   
+"Darkblade":
+   type: item
+   material: 276
+   display name: "<&9>Darkblade"
+   lore:
+   - <white>Forged in the Heart of Darkness,
+   - <white>This blade punishes its target.
+   enchantments:
+   - damage_all:3
+   - durability:5
+   
+"Fire Puff":
+   type: item
+   material: 378
+   display name: "<&9>Fire Puff"
+   lore:
+   - <green>Use<&co> Fire Resistance II <&lb>30 Min CD<&rb>
+   
+"Joey<&sq>s Incinerating Charge":
+   type: item
+   material: 46
+   display name: "<&9>Joey<&sq>s Incinerating Charge"
+   lore:
+   - <green>Use<&co> BOOM!
+   
+"Digmaster 5000":
+   type: item
+   material: 256
+   display name: "<&9>Digmaster 5000"
+   lore:
+   - <green>Use<&co> Dig! <&lb>2 Min CD<&rb>
+
+# [Overworld Loot]
+"Pain":
+   type: item
+   material: 276
+   display name: "<&9>Pain"
+   lore:
+   - <white>The Left Hand of Anguish
+   enchantments:
+   - damage_all:5
+   - durability:5
+   
+"Anguish":
+   type: item
+   material: 276
+   display name: "<&9>Anguish"
+   lore:
+   - <white>The Right Hand of Anguish
+   - <green>Effect<&co> <red>Pain and Anguish
+   enchantments:
+   - damage_all:5
+   - durability:5
 
 # ========================================================
 # Epic Tier Items - Purple Tag

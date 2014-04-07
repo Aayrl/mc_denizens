@@ -324,6 +324,42 @@
 # ========================================================
 # Legendary Tier Items - Orange Tag
 
+"Singing Sword":
+   type: item
+   material: 276
+   display name: "<&6>Singing Sword"
+   lore:
+   - <green>Effect<&co> <red>Singing Sword
+   enchantments:
+   - damage_all:7
+   - durability:10
+
+# Singing Sword Effect
+"SwordSing":
+   type: world
+   events:
+     on use command:
+       - if <player.item_in_hand.lore> == "<green>Effect<&co> <red>Singing Sword" {
+         - narrate "<&9>Your sword begins to vibrate..."
+         - cast increase_damage duration:20 power:2
+         - cast fast_digging duration:20 power:2
+         - playeffect location:<player.location> effect:note qty:15 data:1
+         - wait 3
+         - narrate "<&9>The song continues!"
+         - playeffect location:<player.location> effect:note qty:15 data:1
+         - wait 3
+         - narrate "<&9>The song continues!"
+         - playeffect location:<player.location> effect:note qty:15 data:1
+         - wait 3
+         - narrate "<&9>The song continues!"
+         - playeffect location:<player.location> effect:note qty:15 data:1
+         - wait 3
+         - narrate "<&9>The song continues!"
+         - playeffect location:<player.location> effect:note qty:15 data:1
+         - wait 3
+         - narrate "<&9>The song ends."
+         }
+   
 # ========================================================
 # God / Event Tier Items - Red Tag
 

@@ -83,7 +83,6 @@
                 - chat "You still need to gather more Cobblestone<&cm> <player.name> Speak to me when you have 64."
                 - narrate '<yellow>Progress<&co> <player.flag[PoEnder_Cobble].asint> / 64 Cobblestone Gathered.'
 
-        # If the player has been flagged as 'complete', launch this process.
         'poend_gather3':
             click trigger:
                 script:
@@ -101,14 +100,13 @@
                 - chat "You still need to gather more Coal<&cm> <player.name> Speak to me when you have 20."
                 - narrate '<yellow>Progress<&co> <player.flag[PoEnder_Coal].asint> / 20 Coal Gathered.'
 
-        # If the player has been flagged as 'complete', launch this process.
         'poend_gather5':
             click trigger:
                 script:
                     - chat "Ah<&cm> I see you have returned<&cm> <player.name>. Do you have the 20 Coal? Let me see."
                     - take 'item:coal' qty:20
                     - wait 1
-                    - chat "Good Work<&cm> <player.name>. It seems you are ready for my next task."    
+                    - chat "Good Work<&cm> <player.name>. It seems you are ready for my next task. Are you ready to <&lb><red>craft<green><&rb> some items?"    
                     - flag player "POEnderAttune:Step2"
                     - announce "<aqua><player.name> has completed step 1 of 5 of the <&5>Attunement to Enderland<aqua> questline!"
 
@@ -150,6 +148,7 @@ PoEnder_CoalDone:
     script:
     - narrate "<yellow>You have gathered <player.flag[PoEnder_Coal].asint>/20 Coal! Speak to <npc.name> for further instructions!"
     - zap 'step:poend_gather5' script:GatherSupplies
+
 # STAGE 2 OF ATTUNEMENT : CRAFTING SUPPLIES
 # Create 4x Iron Sword
 # Create 1x Iron Helm
@@ -159,7 +158,114 @@ PoEnder_CoalDone:
 # Deliver these to the Blacksmith, then speak to Aayrl.
 # Upon complete:
 #	- announce "<aqua><player.name> has completed step 2 of 5 of the <maroon>Attunement to Enderland<aqua> questline!"
+"CraftSupplies":
+    type: interact
+    requirements:
+      mode: ALL
+      list: 
+      - FLAGGED 'POEnderAttune:Step2'
+    steps:
+        'poend_craft*':
+            click trigger:
+                script:
+                - chat "Good Work<&cm> <player.name>. It seems you are ready for my next task. Are you ready to <&lb><red>craft<green><&rb> some items?" 
 
+            chat trigger:
+                'gather1cont':
+                    trigger: 'What do you need me to /craft/?'
+                    script: 
+                    - chat 'Start by crafting 4 Iron Swords. Bring me the swords when you are finished.'
+                    - listen item type:craft item:iron_sword qty:1 script:PoEnder_IronSwordProg 
+                    - flag player PoEnder_IronSword:0
+                    - narrate '<yellow>You have accepted the task "POE<&co> Crafting Supplies".'
+                    - zap 'step:poend_craft2'
+        'poend_craft2':
+            click trigger:
+                script:
+                - chat "You still need to craft more Iron Swords<&cm> <player.name> Speak to me when you have 4."
+                - narrate '<yellow>Progress<&co> <player.flag[PoEnder_IronSword].asint> / 4 Iron Swords Crafted.'
+
+        'poend_craft3':
+            click trigger:
+                script:
+                    - chat "Ah<&cm> I see you have returned<&cm> <player.name>. Do you have the 4 Iron Swords? Let me see."
+                    - take 'item:iron_sword' qty:3
+                    - wait 1
+                    - chat "Excellent<&cm> <player.name>. You should build yourself some armor now. Start by crafting an Iron Helmet and follow the quest details carefully. Return to me when you are finished."
+                    - listen item type:craft item:306 qty:1 script:PoEnder_ArmorProg1
+                    - flag player PoEnder_ArmorStep:0
+                    - zap 'step:poend_gather4'
+
+        'poend_craft4':
+            click trigger:
+                script:
+                - chat "You have not crafted a full set of iron armor yet<&cm> <player.name> Speak to me again when you have done so."
+                - narrate '<yellow>Progress<&co> <player.flag[PoEnder_ArmorStep].asint> / 4 armor pieces crafted.'
+
+        'poend_craft5':
+            click trigger:
+                script:
+                    - chat "Excellent<&cm> you have crafted your own suit of armor <player.name>."
+                    - wait 1
+                    - chat "I think you are ready<&cm> <player.name>. It is time for you to <&lb><red>train<green><&rb> your blade."    
+                    - flag player "POEnderAttune:Step3"
+                    - announce "<aqua><player.name> has completed step 2 of 5 of the <&5>Attunement to Enderland<aqua> questline!"
+
+
+PoEnder_IronSwordProg:
+    type: task
+    script:
+    - flag player PoEnder_IronSword:++
+    - narrate "<yellow>Cobblestone Gathered<&co> <player.flag[PoEnder_IronSword].asint>/4"
+    - if <player.flag[PoEnder_IronSword].asint> >= 4 run PoEnder_IronSwordDone
+      else run PoEnder_IronSwordContinue
+
+PoEnder_IronSwordContinue:
+    type: task
+    script:
+    - listen item type:craft item:iron_sword qty:1 script:PoEnder_IronSwordProg 
+
+PoEnder_IronSwordDone:
+    type: task
+    script:
+    - narrate "<yellow>You have crafted <player.flag[PoEnder_IronSword].asint>/4 Iron Swords! Speak to <npc.name> for further instructions!"
+    - zap 'step:poend_craft3' script:CraftSupplies
+
+PoEnder_ArmorProg1:
+    type: task
+    script:
+    - flag player PoEnder_ArmorStep:++
+    - narrate "<yellow>You have crafted a fine iron helmet!"
+    - wait 1
+    - narrate "<yellow>Next, construct a fine iron chestplate."
+    - listen item type:craft item:307 qty:1 script:PoEnder_ArmorProg2
+
+PoEnder_ArmorProg2:
+    type: task
+    script:
+    - flag player PoEnder_ArmorStep:++
+    - narrate "<yellow>You have crafted a fine iron chestplate!"
+    - wait 1
+    - narrate "<yellow>Next, construct a pair of fine iron leggings."
+    - listen item type:craft item:308 qty:1 script:PoEnder_ArmorProg3
+
+PoEnder_ArmorProg3:
+    type: task
+    script:
+    - flag player PoEnder_ArmorStep:++
+    - narrate "<yellow>You have crafted a pair of fine iron leggings!"
+    - wait 1
+    - narrate "<yellow>Next, construct a pair of fine iron boots."
+    - listen item type:craft item:309 qty:1 script:PoEnder_ArmorProg4
+
+PoEnder_ArmorProg4:
+    type: task
+    script:
+    - flag player PoEnder_ArmorStep:++
+    - narrate "<yellow>You have crafted a pair of fine iron boots!"
+    - wait 1
+    - narrate "<yellow>Return to <npc.name> and show off your new armor!"
+    - zap 'step:poend_craft5' script:CraftSupplies
 
 
 # STAGE 3 OF ATTUNEMENT : KILLING THINGS

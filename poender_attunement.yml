@@ -10,7 +10,7 @@
     interact scripts:
     - 5 LoreStep
     - 10 GatherSupplies
-    #- 20 CraftingSupplies
+    - 20 CraftSupplies
     #- 30 KillingForJustice
     #- 40 Diplomacy
     #- 50 AvatarMustDie
@@ -134,7 +134,7 @@ PoEnder_CoalProg:
     type: task
     script:
     - flag player PoEnder_Coal:++
-    - narrate "<yellow>Coal Gathered<&co> <player.flag[PoEnder_Coal].asint>/64"
+    - narrate "<yellow>Coal Gathered<&co> <player.flag[PoEnder_Coal].asint>/20"
     - if <player.flag[PoEnder_Coal].asint> >= 20 run PoEnder_CoalDone
       else run PoEnder_CoalContinue
 

@@ -11,7 +11,7 @@
     - 5 LoreStep
     - 10 GatherSupplies
     - 20 CraftSupplies
-    #- 30 KillingForJustice
+    - 30 KillingForJustice
     #- 40 Diplomacy
     #- 50 AvatarMustDie
     #- 60 FlaggingForPOEnder
@@ -53,7 +53,7 @@
 
 # STAGE 1 OF ATTUNEMENT : GATHERING SUPPLIES
 # GATHER 64 Cobblestone, 20 Coal
-# Deliver to Karol and then speak to Aayrl.
+# Deliver to Aayrl.
 # Upon complete:
 #	- announce "<aqua><player.name> has completed step 1 of 5 of the <maroon>Attunement to Enderland<aqua> questline!"
 "GatherSupplies":
@@ -155,7 +155,7 @@ PoEnder_CoalDone:
 # Create 1x Iron Chestplate
 # Create 1x Iron Leggings
 # Create 1x Iron Boots
-# Deliver these to the Blacksmith, then speak to Aayrl.
+# Speak to Aayrl.
 # Upon complete:
 #	- announce "<aqua><player.name> has completed step 2 of 5 of the <maroon>Attunement to Enderland<aqua> questline!"
 "CraftSupplies":
@@ -269,11 +269,170 @@ PoEnder_ArmorProg4:
 
 
 # STAGE 3 OF ATTUNEMENT : KILLING THINGS
-# Kill 10 skeletons, 10 spiders, 10 zombies, 5 creepers.
+# Kill 10 skeletons, 10 zombies, 10 spiders, 10 creepers.
 # Then, speak to Aayrl.
 # Upon complete:
 #	- announce "<aqua><player.name> has completed step 3 of 5 of the <maroon>Attunement to Enderland<aqua> questline!"
+"KillingForJustice":
+    type: interact
+    requirements:
+      mode: ALL
+      list: 
+      - FLAGGED 'POEnderAttune:Step3'
+    steps:
+        'poend_kill*':
+            click trigger:
+                script:
+                - chat "I think you are ready<&cm> <player.name>. It is time for you to <&lb><red>train<green><&rb> your blade."   
 
+            chat trigger:
+                'gather1cont':
+                    trigger: 'What do you need me to /kill/?'
+                    script: 
+                    - chat 'Start by slaying 10 Skeletons. Speak with me when you are finished for the next task.'
+                    - listen kill type:entity name:Skeleton qty:1 script:PoEnder_SkeletonKillProg 
+                    - flag player PoEnder_SkeletonKill:0
+                    - narrate '<yellow>You have accepted the task "POE<&co> Killing For Justice".'
+                    - zap 'step:poend_kill2'
+        'poend_kill2':
+            click trigger:
+                script:
+                - chat "You still need to slay more Skeletons<&cm> <player.name> Speak to me when you have slain 10."
+                - narrate '<yellow>Progress<&co> <player.flag[PoEnder_SkeletonKill].asint> / 10 Skeletons slain.'
+
+        'poend_kill3':
+            click trigger:
+                script:
+                    - chat "My guards report you have slain <player.flag[PoEnder_SkeletonKill].asint> skeletons<&cm> <player.name>. Good work."
+                    - wait 1
+                    - listen kill type:entity name:Zombie qty:1 script:PoEnder_ZombieKillProg 
+                    - chat "Next<&cm> go and slay 10 Zombies. Speak with me when you are finished for the next task."
+                    - flag player PoEnder_ZombieKill:0
+                    - zap 'step:poend_kill4'
+
+        'poend_kill4':
+            click trigger:
+                script:
+                - chat "You still need to slay more Zombies<&cm> <player.name> Speak to me when you have slain 10."
+                - narrate '<yellow>Progress<&co> <player.flag[PoEnder_ZombieKill].asint> / 10 Zombies slain.'
+
+        'poend_kill5':
+            click trigger:
+                script:
+                    - chat "My guards report you have slain <player.flag[PoEnder_ZombieKill].asint> zombies<&cm> <player.name>. Good work."
+                    - wait 1
+                    - chat "Next<&cm> go and slay 10 Spiders. Speak with me when you are finished for the next task."
+                    - listen kill type:entity name:Spider qty:1 script:PoEnder_SpiderKillProg 
+                    - flag player PoEnder_SpiderKill:0
+                    - zap 'step:poend_kill6'
+
+        'poend_kill6':
+            click trigger:
+                script:
+                - chat "You still need to slay more Spiders<&cm> <player.name> Speak to me when you have slain 10."
+                - narrate '<yellow>Progress<&co> <player.flag[PoEnder_SpiderKill].asint> / 10 Spiders slain.'
+
+        'poend_kill7':
+            click trigger:
+                script:
+                    - chat "My guards report you have slain <player.flag[PoEnder_SpiderKill].asint> spiders<&cm> <player.name>. Good work."
+                    - wait 1
+                    - chat "Lastly<&cm> go and slay 10 Creepers. Speak with me when you are finished for the next task."
+                    - listen kill type:entity name:Creeper qty:1 script:PoEnder_CreeperKillProg 
+                    - flag player PoEnder_CreeperKill:0
+                    - zap 'step:poend_kill8'
+
+        'poend_kill8':
+            click trigger:
+                script:
+                - chat "You still need to slay more Creepers<&cm> <player.name> Speak to me when you have slain 10."
+                - narrate '<yellow>Progress<&co> <player.flag[PoEnder_CreeperKill].asint> / 10 Creepers slain.'
+
+        'poend_kill9':
+            click trigger:
+                script:
+                    - chat "Excellent<&cm> you have truly proven your worth<&cm> <player.name>."
+                    - wait 1
+                    - chat "Are you ready to speak to some of our allies<&cm> <player.name>? It is time for you to demonstrate your <&lb><red>diplomacy<green><&rb> skills."    
+                    - flag player "POEnderAttune:Step4"
+                    - announce "<aqua><player.name> has completed step 3 of 5 of the <&5>Attunement to Enderland<aqua> questline!"
+
+
+PoEnder_SkeletonKillProg:
+    type: task
+    script:
+    - flag player PoEnder_SkeletonKill:++
+    - narrate "<yellow>Skeletons Slain<&co> <player.flag[PoEnder_SkeletonKill].asint>/10"
+    - if <player.flag[PoEnder_SkeletonKill].asint> >= 10 run PoEnder_SkeletonKillDone
+      else run PoEnder_SkeletonKillContinue
+
+PoEnder_SkeletonKillContinue:
+    type: task
+    script:
+    - listen kill type:entity name:Skeleton qty:1 script:PoEnder_SkeletonKillProg 
+
+PoEnder_SkeletonKillDone:
+    type: task
+    script:
+    - narrate "<yellow>You have slain <player.flag[PoEnder_SkeletonKill].asint>/10 Skeletons! Speak to <npc.name> for further instructions!"
+    - zap 'step:poend_kill3' script:KillingForJustice
+
+PoEnder_ZombieKillProg:
+    type: task
+    script:
+    - flag player PoEnder_ZombieKill:++
+    - narrate "<yellow>Zombies Slain<&co> <player.flag[PoEnder_ZombieKill].asint>/10"
+    - if <player.flag[PoEnder_ZombieKill].asint> >= 10 run PoEnder_ZombieKillDone
+      else run PoEnder_ZombieKillContinue
+
+PoEnder_ZombieKillContinue:
+    type: task
+    script:
+    - listen kill type:entity name:Zombie qty:1 script:PoEnder_ZombieKillProg 
+
+PoEnder_ZombieKillDone:
+    type: task
+    script:
+    - narrate "<yellow>You have slain <player.flag[PoEnder_ZombieKill].asint>/10 Zombies! Speak to <npc.name> for further instructions!"
+    - zap 'step:poend_kill5' script:KillingForJustice
+
+PoEnder_SpiderKillProg:
+    type: task
+    script:
+    - flag player PoEnder_SpiderKill:++
+    - narrate "<yellow>Spiders Slain<&co> <player.flag[PoEnder_SpiderKill].asint>/10"
+    - if <player.flag[PoEnder_SpiderKill].asint> >= 10 run PoEnder_SpiderKillDone
+      else run PoEnder_SpiderKillContinue
+
+PoEnder_SpiderKillContinue:
+    type: task
+    script:
+    - listen kill type:entity name:Spider qty:1 script:PoEnder_SpiderKillProg 
+
+PoEnder_SpiderKillDone:
+    type: task
+    script:
+    - narrate "<yellow>You have slain <player.flag[PoEnder_SpiderKill].asint>/10 Spiders! Speak to <npc.name> for further instructions!"
+    - zap 'step:poend_kill7' script:KillingForJustice
+
+PoEnder_CreeperKillProg:
+    type: task
+    script:
+    - flag player PoEnder_CreeperKill:++
+    - narrate "<yellow>Creepers Slain<&co> <player.flag[PoEnder_CreeperKill].asint>/10"
+    - if <player.flag[PoEnder_CreeperKill].asint> >= 10 run PoEnder_CreeperKillDone
+      else run PoEnder_CreeperKillContinue
+
+PoEnder_CreeperKillContinue:
+    type: task
+    script:
+    - listen kill type:entity name:Creeper qty:1 script:PoEnder_CreeperKillProg 
+
+PoEnder_CreeperKillDone:
+    type: task
+    script:
+    - narrate "<yellow>You have slain <player.flag[PoEnder_CreeperKill].asint>/10 Creepers! Speak to <npc.name> for further instructions!"
+    - zap 'step:poend_kill9' script:KillingForJustice
 
 # STAGE 4 OF ATTUNEMENT : DIPLOMACY
 # Speak to the Kelethin Overlord. They will demand 25 Gold Bars for their support.

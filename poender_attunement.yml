@@ -10,15 +10,18 @@
     interact scripts:
     - 5 LoreStep
     - 10 GatherSupplies
-    - 20 CraftingSupplies
-    - 30 KillingForJustice
-    - 40 Diplomacy
-    - 50 AvatarMustDie
-    - 60 FlaggingForPOEnder
+    #- 20 CraftingSupplies
+    #- 30 KillingForJustice
+    #- 40 Diplomacy
+    #- 50 AvatarMustDie
+    #- 60 FlaggingForPOEnder
 
 # LORE STEP : PRE-ATTUNEMENT QUEST.
 "LoreStep":
     type: interact
+    requirements:
+      mode: NONE
+      list: 
     steps:
         'StartAttunePOEnd*':
             click trigger:
@@ -41,13 +44,59 @@
                     script:
                     - chat 'Ahh. You are very brave<&cm> <player.name>. I would welcome you to join our hunting party<&cm> but you must first <&lb><red>prove<green><&rb> yourself to my kingdom!'
                     - zap 'step:StartAttunePOEnd3'
+        'step:StartAttunePOEnd3':
+            click trigger:
+                script:
+                - chat 'Ahh. You are very brave<&cm> <player.name>. I would welcome you to join our hunting party<&cm> but you must first <&lb><red>prove<green><&rb> yourself to my kingdom!'
+            chat trigger:
+                'continuePOEnd2':
+                    trigger: 'I am willing to /prove/ myself.'
+                    script:
+                    - chat 'I am glad to hear you are excited to help<&cm> <player.name>. Your first task shall be to help us <&lb><red>gather<green><&rb> some supplies.'
+                    - flag player "POEnderAttune:Step1"
 	
 # STAGE 1 OF ATTUNEMENT : GATHERING SUPPLIES
 # GATHER 64 Wood, 64 Cobblestone, 20 Coal
 # Deliver to Karol and then speak to Aayrl.
 # Upon complete:
 #	- announce "<aqua><player.name> has completed step 1 of 5 of the <maroon>Attunement to Enderland<aqua> questline!"
+"GatherSupplies":
+    type: interact
+    requirements:
+      mode: NONE
+      list: 
+    steps:
+        'StartAttunePOEnd*':
+            click trigger:
+                script:
+                - chat 'Hail there, <player.name> Welcome to my kingdom! Are you looking for an <&lb><red>Epic Adventure<green><&rb>?'
 
+            chat trigger:
+                'continuePOEnd1':
+                    trigger: 'What /epic adventure/?'
+                    script: 
+                    - chat 'I am assembling a small hunting force to venture forth into a twisted place known as the <maroon>Plane of Ender<green>. Perhaps you have heard of it, <player.name>. Do you think you are up to the <&lb><red>challenge<green><&rb>?'
+                    - zap 'step:StartAttunePOEnd2'
+        'step:StartAttunePOEnd2':
+            click trigger:
+                script:
+                - chat 'I am assembling a small hunting force to venture forth into a twisted place known as the <maroon>Plane of Ender<green>. Perhaps you have heard of it, <player.name>. Do you think you are up to the <&lb><red>challenge<green><&rb>?'
+            chat trigger:
+                'continuePOEnd2':
+                    trigger: 'What /challenge/?'
+                    script:
+                    - chat 'Ahh. You are very brave<&cm> <player.name>. I would welcome you to join our hunting party<&cm> but you must first <&lb><red>prove<green><&rb> yourself to my kingdom!'
+                    - zap 'step:StartAttunePOEnd3'
+        'step:StartAttunePOEnd3':
+            click trigger:
+                script:
+                - chat 'Ahh. You are very brave<&cm> <player.name>. I would welcome you to join our hunting party<&cm> but you must first <&lb><red>prove<green><&rb> yourself to my kingdom!'
+            chat trigger:
+                'continuePOEnd2':
+                    trigger: 'I am willing to /prove/ myself.'
+                    script:
+                    - chat 'I am glad to hear you are excited to help<&cm> <player.name>. Your first task shall be to help us <&lb><red>gather<green><&rb> some supplies.'
+                    - flag player "POEnderAttune:Step1"
 
 # STAGE 2 OF ATTUNEMENT : CRAFTING SUPPLIES
 # Create 4x Iron Sword

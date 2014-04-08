@@ -35,26 +35,32 @@
   
   events:
     on 7:00 in w@world:
-      - random 6
+      - random 8
       - announce "<green><&lb><&d>SERVER<green><&rb> <red>NEW<green> CSCrew custom chat commands! Type /commands <&lb>Page<&rb> to discover fun commands!"
       - announce "<green><&lb><&d>SERVER<green><&rb> Need a quick way back to spawn? Try using the <gold>/spawn<green> command!"
-      - announce "<green><&lb><&d>SERVER<green><&rb> Tell your friends where you are with the <gold>/locationall<green> command!"
+      - announce "<green><&lb><&d>SERVER<green><&rb> Enable CombatText with the <gold>/combattext on/off/hitsmode<green> command!"
       - announce "<green><&lb><&d>SERVER<green><&rb> Poke nearby players by right clicking them with nothing in your hand."
       - announce "<green><&lb><&d>SERVER<green><&rb> You can use <gold>/sethome<green> to set a home point and return to it once every 30 minutes with the <gold>/home<green> command."
       - announce "<green><&lb><&d>SERVER<green><&rb> Claim your daily reward using the <gold>/claim<green> command! Diamonds await you!"
+      - announce "<green><&lb><&d>SERVER<green><&rb> Speak with Lord Aayrl about attunement to the Plane of Ender.. epic battles await you!"
+      - announce "<green><&lb><&d>SERVER<green><&rb> All mobs now have a chance to drop exciting new loot! Go kill some mobs!"
     on 14:00 in w@world:
-      - random 6
+      - random 8
       - announce "<green><&lb><&d>SERVER<green><&rb> <red>NEW<green> CSCrew custom chat commands! Type /commands <&lb>Page<&rb> to discover fun commands!"
       - announce "<green><&lb><&d>SERVER<green><&rb> Need a quick way back to spawn? Try using the <gold>/spawn<green> command!"
-      - announce "<green><&lb><&d>SERVER<green><&rb> Tell your friends where you are the <gold>/locationall<green> command!"
+      - announce "<green><&lb><&d>SERVER<green><&rb> Enable CombatText with the <gold>/combattext on/off/hitsmode<green> command!"
       - announce "<green><&lb><&d>SERVER<green><&rb> Poke nearby players by right clicking them with nothing in your hand."
       - announce "<green><&lb><&d>SERVER<green><&rb> You can use <gold>/sethome<green> to set a home point and return to it once every 30 minutes with the <gold>/home<green> command."
       - announce "<green><&lb><&d>SERVER<green><&rb> Claim your daily reward using the <gold>/claim<green> command! Diamonds await you!"
+      - announce "<green><&lb><&d>SERVER<green><&rb> Speak with Lord Aayrl about attunement to the Plane of Ender.. epic battles await you!"
+      - announce "<green><&lb><&d>SERVER<green><&rb> All mobs now have a chance to drop exciting new loot! Go kill some mobs!"
     on 21:00 in w@world:
-      - random 6
+      - random 8
       - announce "<green><&lb><&d>SERVER<green><&rb> <red>NEW<green> CSCrew custom chat commands! Type /commands <&lb>Page<&rb> to discover fun commands!"
       - announce "<green><&lb><&d>SERVER<green><&rb> Need a quick way back to spawn? Try using the <gold>/spawn<green> command!"
-      - announce "<green><&lb><&d>SERVER<green><&rb> Tell your friends where you are with the <gold>/locationall<green> command!"
+      - announce "<green><&lb><&d>SERVER<green><&rb> Enable CombatText with the <gold>/combattext on/off/hitsmode<green> command!"
       - announce "<green><&lb><&d>SERVER<green><&rb> Poke nearby players by right clicking them with nothing in your hand."
       - announce "<green><&lb><&d>SERVER<green><&rb> You can use <gold>/sethome<green> to set a home point and return to it once every 30 minutes with the <gold>/home<green> command."
       - announce "<green><&lb><&d>SERVER<green><&rb> Claim your daily reward using the <gold>/claim<green> command! Diamonds await you!"
+      - announce "<green><&lb><&d>SERVER<green><&rb> Speak with Lord Aayrl about attunement to the Plane of Ender.. epic battles await you!"
+      - announce "<green><&lb><&d>SERVER<green><&rb> All mobs now have a chance to drop exciting new loot! Go kill some mobs!"

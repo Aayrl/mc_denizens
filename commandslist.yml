@@ -44,7 +44,7 @@
             - narrate "<gold>/fw [color] - Toggle Color for Firework Rods."
             - narrate "<gold>/lore - Lists lore context of the item in your hand." 
             - narrate "<gold>/use - If an item has a 'Use' tag, this activates its power."
-            - narrate "<gold>PH"
+            - narrate "<gold>/combattext on/off/hitsmode - Toggles CombatText settings."
             - narrate "<gold>PH"
             - narrate "<gold>PH"
             }

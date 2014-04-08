@@ -1,0 +1,90 @@
+# Plane of Ender - Attunement Questline
+# Tyler J. Sawyer
+# 4-8-14
+
+# Base Quest Assignment for 'Aayrl' NPC.
+# Hands out the various steps.
+"poEnderAttunement":
+    type: assignment
+    
+    interact scripts:
+    - 5 LoreStep
+    - 10 GatherSupplies
+    - 20 CraftingSupplies
+    - 30 KillingForJustice
+    - 40 Diplomacy
+    - 50 AvatarMustDie
+    - 60 FlaggingForPOEnder
+
+# LORE STEP : PRE-ATTUNEMENT QUEST.
+"LoreStep":
+    type: interact
+    steps:
+        'StartAttunePOEnd*':
+            click trigger:
+                script:
+                - chat 'Hail there, <player.name> Welcome to my kingdom! Are you looking for an <&lb><red>Epic Adventure<green><&rb>?'
+
+            chat trigger:
+                'continuePOEnd1':
+                    trigger: 'What /epic adventure/?'
+                    script: 
+                    - chat 'I am assembling a small hunting force to venture forth into a twisted place known as the <maroon>Plane of Ender<green>. Perhaps you have heard of it, <player.name>. Do you think you are up to the <&lb><red>challenge<green><&rb>?'
+                    - zap 'step:StartAttunePOEnd2'
+        'step:StartAttunePOEnd2':
+            click trigger:
+                script:
+                - chat 'I am assembling a small hunting force to venture forth into a twisted place known as the <maroon>Plane of Ender<green>. Perhaps you have heard of it, <player.name>. Do you think you are up to the <&lb><red>challenge<green><&rb>?'
+            chat trigger:
+                'continuePOEnd2':
+                    trigger: 'What /challenge/?'
+                    script:
+                    - chat 'Ahh. You are very brave<&cm> <player.name>. I would welcome you to join our hunting party<&cm> but you must first <&lb><red>prove<green><&rb> yourself to my kingdom!'
+                    - zap 'step:StartAttunePOEnd3'
+	
+# STAGE 1 OF ATTUNEMENT : GATHERING SUPPLIES
+# GATHER 64 Wood, 64 Cobblestone, 20 Coal
+# Deliver to Karol and then speak to Aayrl.
+# Upon complete:
+#	- announce "<aqua><player.name> has completed step 1 of 5 of the <maroon>Attunement to Enderland<aqua> questline!"
+
+
+# STAGE 2 OF ATTUNEMENT : CRAFTING SUPPLIES
+# Create 4x Iron Sword
+# Create 1x Iron Helm
+# Create 1x Iron Chestplate
+# Create 1x Iron Leggings
+# Create 1x Iron Boots
+# Deliver these to the Blacksmith, then speak to Aayrl.
+# Upon complete:
+#	- announce "<aqua><player.name> has completed step 2 of 5 of the <maroon>Attunement to Enderland<aqua> questline!"
+
+
+
+# STAGE 3 OF ATTUNEMENT : KILLING THINGS
+# Kill 10 skeletons, 10 spiders, 10 zombies, 5 creepers.
+# Then, speak to Aayrl.
+# Upon complete:
+#	- announce "<aqua><player.name> has completed step 3 of 5 of the <maroon>Attunement to Enderland<aqua> questline!"
+
+
+# STAGE 4 OF ATTUNEMENT : DIPLOMACY
+# Speak to the Kelethin Overlord. They will demand 25 Gold Bars for their support.
+# Speak to Jennavb13 in Thurgadin. She will demand 10 Quartz Blocks for their support.
+# Then, speak to Aayrl.
+# Upon complete:
+#	- announce "<aqua><player.name> has completed step 4 of 5 of the <maroon>Attunement to Enderland<aqua> questline!"			
+
+
+# STAGE 5 (FINAL) OF ATTUNEMENT : AVATAR OF HAKKAR
+# Bring a small raid force (or solo) the Avatar of Hakkar.
+# Return his head as proof of the deed to Aayrl.
+
+
+# STAGE 6 : FLAGGING!
+# Quest wrap-up, this is where you character gets flagged to enter POEnder.
+# Upon complete:
+#	- announce "<red>Aayrl yells, 'Let it be known that on this day, <aqua><player.name><red> has defeated the Avatar of Hakkar, and as such, earned the highest rank of the Gondorian Guard!'"
+#	- announce "<red>Aayrl yells, 'Let their name ring thoughout the lands! All hail <aqua>General <player.name><red>!'"
+#	- announce "<aqua><player.name> has completed the final step of the <maroon>Attunement to Enderland<aqua> questline!"
+#	- announce "<aqua><player.name> is now attuned for the <maroon>Plane of Ender<aqua>!"

@@ -7,5 +7,11 @@
 "DamagerContext":
   type: world
   events:
-    on entity damaged:
-      - if <context.damager.is_player> narrate targets:<context.damager> "You hit <context.entity> for <context.damage>."
+    on entity damaged by player:
+      - if <context.damager.is_player> narrate targets:<context.damager> "<&6>You hit <context.entity.name> for <context.damage.asint> damage!"
+    on player damaged by entity:
+      - if <context.damager.is_player> == false narrate targets:<context.damager> "<red>You were hit by <context.damager.name> for <context.damage.asint> damage!"
+    on player damaged by player:
+      - if <context.damager.is_player> narrate targets:<context.entity> "<red>You were hit by <context.damager.name> for <context.damage.asint> damage!"
+    on entity death:
+     - if <context.damager.is_player> narrate targets:<context.damager> "<&6>You have slain <context.entity.name>!"

@@ -55,20 +55,6 @@
    display name: "Enderparts"
    lore:
    - <white>You probably don't want to know..
-
-"Enderplate Rings":
-   type: item
-   material: 265
-   display name: "Enderplate Rings"
-   lore:
-   - <white>Perhaps these can be repurposed?
- 
-"Enderplate Block":
-   type: item
-   material: 42
-   display name: "Enderplate Block"
-   lore:
-   - <white>Perhaps this can be repurposed?
   
 "Enderdust":
    type: item
@@ -246,6 +232,20 @@
    lore:
    - <white>Free cookies are never a bad thing.
    - <green>Use<&co> Restore 1 Saturation point.
+   
+"Enderplate Rings":
+   type: item
+   material: 265
+   display name: "<green>Enderplate Rings"
+   lore:
+   - <white>Perhaps these can be repurposed?
+ 
+"Enderplate Block":
+   type: item
+   material: 265
+   display name: "<green>Enderplate Block"
+   lore:
+   - <white>Perhaps this can be repurposed?
    
 # [Plane of Earth Loot]
 "Fine Steel Plate Helm":

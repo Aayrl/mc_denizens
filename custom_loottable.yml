@@ -30,18 +30,18 @@
       else if %roll% >= 98 define quality "Epic"
  
     - if %quality% == Common {
-      - random 7
+      - random 5
       - determine "Enderparts"
       - determine "Endersoul" 
-      - determine "Enderplate Rings"
-      - determine "Enderplate Block"
       - determine "Enderdust"
       - determine "Enderthread"
       - determine "Endermold"
       }
  
     - if %quality% == Uncommon {
-        - random 8
+        - random 10
+        - determine "Enderplate Rings"
+        - determine "Enderplate Block"
         - determine "Sword of Ender"
         - determine "Ender Scythe"
         - determine "Enderplate Chestpiece"

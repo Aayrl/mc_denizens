@@ -10,6 +10,7 @@
       - if <context.damager.is_player> {
         - if <context.entity.entity_type> == "Skeleton" {
           - narrate targets:<context.damager> "<yellow>You killed a <context.entity.entity_type>!"
+          - drop "i@<proc:LootTable_Skeleton>" location:<context.entity.location>
           }
         - else if <context.entity.entity_type> == "Zombie" {
           - narrate targets:<context.damager> "<yellow>You killed a <context.entity.entity_type>!"

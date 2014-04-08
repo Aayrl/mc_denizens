@@ -118,8 +118,8 @@ PoEnder_CobbleProg:
     script:
     - flag player PoEnder_Cobble:++
     - narrate "<yellow>Cobblestone Gathered<&co> <player.flag[PoEnder_Cobble].asint>/64"
-    - if <player.flag[PoEnder_Cobble].asint> >= 64 run PoEnder_CobbleContinue
-      else run PoEnder_CobbleDone
+    - if <player.flag[PoEnder_Cobble].asint> >= 64 run PoEnder_CobbleDone
+      else run PoEnder_CobbleContinue
 
 PoEnder_CobbleContinue:
     type: task
@@ -137,8 +137,8 @@ PoEnder_CoalProg:
     script:
     - flag player PoEnder_Coal:++
     - narrate "<yellow>Coal Gathered<&co> <player.flag[PoEnder_Coal].asint>/64"
-    - if <player.flag[PoEnder_Coal].asint> >= 20 run PoEnder_CoalContinue
-      else run PoEnder_CoalDone
+    - if <player.flag[PoEnder_Coal].asint> >= 20 run PoEnder_CoalDone
+      else run PoEnder_CoalContinue
 
 PoEnder_CoalContinue:
     type: task

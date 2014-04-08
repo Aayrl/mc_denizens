@@ -1,6 +1,31 @@
 # Avatar of Hakkar is a boss fight.
 # Tyler J. Sawyer
 
+# AOH
+# on attack
+# flag player inBossFight:true
+# on player death:
+# if flag player inboosfight == true
+# retain player inventory
+
+# AOH Fight
+# Phase 1:
+# 100 - 50%
+# Knock back : 10 block teleport in air random player on hate list
+# 30 sec cooldown
+# Summon 2 zombie adds one of four corner locations randomly
+# 30 sec cooldown
+# Spalsh potion of poison on boss every 20 sec
+# do splash potion effect on boss
+
+# Phase 2:
+# 49 - 0%
+# All of phase 1 abilities
+# Sacrifice:
+#  TP random palyer to alter
+# Poison and blind the player
+# 30 sec cooldown
+
 aohakkar:
   type: assignment
 

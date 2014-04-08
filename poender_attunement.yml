@@ -287,7 +287,7 @@ PoEnder_ArmorProg4:
 
             chat trigger:
                 'gather1cont':
-                    trigger: 'What do you need me to /kill/?'
+                    trigger: 'What do you mean<&cm> /train/ my blade?'
                     script: 
                     - chat 'Start by slaying 10 Skeletons. Speak with me when you are finished for the next task.'
                     - listen kill type:entity name:Skeleton qty:1 script:PoEnder_SkeletonKillProg 

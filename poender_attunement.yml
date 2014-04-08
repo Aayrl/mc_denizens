@@ -54,7 +54,7 @@
                     script:
                     - chat 'I am glad to hear you are excited to help<&cm> <player.name>. Your first task shall be to help us <&lb><red>gather<green><&rb> some supplies.'
                     - flag player "POEnderAttune:Step1"
-	
+
 # STAGE 1 OF ATTUNEMENT : GATHERING SUPPLIES
 # GATHER 64 Wood, 64 Cobblestone, 20 Coal
 # Deliver to Karol and then speak to Aayrl.

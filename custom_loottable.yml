@@ -25,24 +25,32 @@
 
     script:
     - define roll <util.random.int[1].to[100]>
-    - if %roll% >= 0 && %roll% < 50 define quality "Common"
-      else if %roll% >= 50 && %roll% < 80 define quality "Uncommon"
-      else if %roll% >= 80 && %roll% < 95 define quality "Rare"
-      else if %roll% >= 95 define quality "Epic"
+    - if %roll% >= 0 && %roll% < 90 define quality "Common"
+      else if %roll% >= 85 && %roll% < 93 define quality "Uncommon"
+      else if %roll% >= 93 && %roll% < 98 define quality "Rare"
+      else if %roll% >= 98 define quality "Epic"
  
-    - if %quality% == Common random {
+    - if %quality% == Common {
+      - random 2
       - determine "Enderparts"
-      - determine "Endersoul" }
+      - determine "Endersoul" 
+      }
  
-      else if %quality% == Uncommon random {
+    - if %quality% == Uncommon {
+        - random 2
         - determine "Sword of Ender"
-        - determine "Ender Scythe" }
+        - determine "Ender Scythe"
+        }
  
-      else if %quality% == Rare random {
+    - if %quality% == Rare {
+        - random 2
         - determine "Darkblade"
-        - determine "Pain" }
+        - determine "Pain"
+        }
  
-      else if %quality% == Epic random {
+    - if %quality% == Epic {
+        - random 2
         - determine "Rune of Healing"
-        - determine "Journeyman Boots" }
+        - determine "Journeyman Boots"
+        }
 

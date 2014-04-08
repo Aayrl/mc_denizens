@@ -8,11 +8,10 @@
   events:
     on entity death:
       - if <context.damager.is_player> {
-        - if <context.entity.entity_type> == "Skeleton" {
-          - narrate targets:<context.damager> "<yellow>You killed a <context.entity.entity_type>!"
-          - drop "i@<proc:LootTable_Skeleton>" location:<context.entity.location>
+        - if <context.entity.entity_type> == "Enderman" {
+          - drop "i@<proc:LootTable_Enderman>" location:<context.entity.location>
           }
-        - else if <context.entity.entity_type> == "Zombie" {
+        - if <context.entity.entity_type> == "Zombie" {
           - narrate targets:<context.damager> "<yellow>You killed a <context.entity.entity_type>!"
           }
         }
@@ -20,32 +19,47 @@
 # Procedure based on an example from :
 # http://scripts.citizensnpcs.co/view/34aapf
 # 
-"LootTable_Skeleton":
+"LootTable_Enderman":
     type: procedure
 
     script:
     - define roll <util.random.int[1].to[100]>
-    - if %roll% >= 0 && %roll% < 90 define quality "Common"
-      else if %roll% >= 85 && %roll% < 93 define quality "Uncommon"
-      else if %roll% >= 93 && %roll% < 98 define quality "Rare"
+    - if %roll% >= 0 && %roll% < 75 define quality "Common"
+      else if %roll% >= 75 && %roll% < 92 define quality "Uncommon"
+      else if %roll% >= 92 && %roll% < 98 define quality "Rare"
       else if %roll% >= 98 define quality "Epic"
  
     - if %quality% == Common {
-      - random 2
+      - random 7
       - determine "Enderparts"
       - determine "Endersoul" 
+      - determine "Enderplate Rings"
+      - determine "Enderplate Block"
+      - determine "Enderdust"
+      - determine "Enderthread"
+      - determine "Endermold"
       }
  
     - if %quality% == Uncommon {
-        - random 2
+        - random 8
         - determine "Sword of Ender"
         - determine "Ender Scythe"
+        - determine "Enderplate Chestpiece"
+        - determine "Enderplate Leggings" 
+        - determine "Enderplate Boots"
+        - determine "Enderplate Helm" 
+        - determine "Enderfish"
+        - determine "Endercookie"
         }
  
     - if %quality% == Rare {
         - random 2
         - determine "Darkblade"
-        - determine "Pain"
+        - determine "Digmaster 5000"
+        - determine "Runed Enderplate Helm"
+        - determine "Runed Enderplate Chestpiece"
+        - determine "Runed Enderplate Leggings"
+        - determine "Runed Enderplate Boots"
         }
  
     - if %quality% == Epic {

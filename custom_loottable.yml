@@ -16,7 +16,7 @@
           - narrate targets:<context.damager> "<yellow>You killed a <context.entity.entity_type>!"
           }
         }
-		
+
 # Procedure based on an example from :
 # http://scripts.citizensnpcs.co/view/34aapf
 # 

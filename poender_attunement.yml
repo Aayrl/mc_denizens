@@ -30,14 +30,20 @@
                     script: 
                     - chat 'I am assembling a small hunting force to venture forth into a twisted place known as the <&5>Plane of Ender<green>. Perhaps you have heard of it, <player.name>. Do you think you are up to the <&lb><red>challenge<green><&rb>?'
                     - zap 'step:StartAttunePOEnd2'
-        'step:StartAttunePOEnd2':
+        'StartAttunePOEnd2':
+            click trigger:
+                script:
+                - chat 'I am assembling a small hunting force to venture forth into a twisted place known as the <&5>Plane of Ender<green>. Perhaps you have heard of it, <player.name>. Do you think you are up to the <&lb><red>challenge<green><&rb>?'
             chat trigger:
                 'continuePOEnd2':
                     trigger: 'What /challenge/?'
                     script:
                     - chat 'Ahh. You are very brave<&cm> <player.name>. I would welcome you to join our hunting party<&cm> but you must first <&lb><red>prove<green><&rb> yourself to my kingdom!'
                     - zap 'step:StartAttunePOEnd3'
-        'step:StartAttunePOEnd3':
+        'StartAttunePOEnd3':
+            click trigger:
+                script:
+                - chat 'Ahh. You are very brave<&cm> <player.name>. I would welcome you to join our hunting party<&cm> but you must first <&lb><red>prove<green><&rb> yourself to my kingdom!'
             chat trigger:
                 'continuePOEnd2':
                     trigger: 'I am willing to /prove/ myself.'

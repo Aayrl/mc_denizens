@@ -5,6 +5,49 @@
 # ========================================================
 # Common Tier Items - White Tag
 
+# [ Plane of Fire Loot ]
+"Emberdust":
+   type: item
+   material: 331
+   display name: "Emberdust"
+   lore:
+   - <white>The remnants of a once powerful blaze.
+   
+"Charred Flesh":
+   type: item
+   material: 367
+   display name: "Charred Flesh"
+   lore:
+   - <white>Some charred<&cm> rubbery flesh.
+   
+"Blaze Eye":
+   type: item
+   material: 332
+   display name: "Blaze Eye"
+   lore:
+   - <white>Perhaps you can use it to see into the future?
+   
+"Pumpkin Soldier Helmet":
+   type: item
+   material: 91
+   display name: "Pumpkin Soldier Helmet"
+   lore:
+   - <white>Hah<&cm> not so tough now!
+   
+"Wither Parts":
+   type: item
+   material: 352
+   display name: "Wither Parts"
+   lore:
+   - <white>Some charred bone fragments
+   
+"Skeleton Skull":
+   type: item
+   material: 397
+   display name: "Skeleton Skull"
+   lore:
+   - <white>A skeletal skull
+
 # [ Plane of Ender Loot ]
 "Enderparts":
    type: item
@@ -57,6 +100,67 @@
 
 # ========================================================
 # Uncommon Tier Items - Green Tag
+
+# [Plane of Fire Loot]
+"Flame Ingot":
+   type: item
+   material: 405
+   display name: "<green>Flame Ingot"
+   lore:
+   - <white>Perhaps someone can make use of this...
+   
+"Grinding Stone":
+   type: item
+   material: 318
+   display name: "<green>Grinding Stone"
+   lore:
+   - <white>Perhaps someone can make use of this...
+   
+"Blaze Temper":
+   type: item
+   material: 377
+   display name: "<green>Blaze Temper"
+   lore:
+   - <white>Perhaps someone can make use of this...
+   
+"Polished Steel Sword":
+   type: item
+   material: 267
+   display name: "<green>Polished Steel Sword"
+   lore:
+   - <white>A polished steel shortsword.
+   enchantments:
+   - damage_all:1
+   - durability:1
+   
+"Polished Steel Axe":
+   type: item
+   material: 258
+   display name: "<green>Polished Steel Axe"
+   lore:
+   - <white>A polished steel axe.
+   enchantments:
+   - damage_all:1
+   - durability:1
+   
+"Polished Steel Scythe":
+   type: item
+   material: 292
+   display name: "<green>Polished Steel Scythe"
+   lore:
+   - <white>A polished steel scythe.
+   enchantments:
+   - damage_all:1
+   - durability:1
+   
+"Butterblade":
+   type: item
+   material: 283
+   display name: "<green>Butterblade"
+   lore:
+   - <white>A sword made of pure butter.
+   enchantments:
+   - damage_all:1
 
 # [Plane of Ender Loot]
 "Sword of Ender":
@@ -142,10 +246,163 @@
    lore:
    - <white>Free cookies are never a bad thing.
    - <green>Use<&co> Restore 1 Saturation point.
+   
+# [Plane of Earth Loot]
+"Fine Steel Plate Helm":
+   type: item
+   material: 306
+   display name: "<green>Fine Steel Plate Helm"
+   lore:
+   - <white>A finely crafted steel helmet.
+   enchantments:
+   - durability:3
+   
+"Fine Steel Plate Chestpiece":
+   type: item
+   material: 307
+   display name: "<green>Fine Steel Plate Chestpiece"
+   lore:
+   - <white>A finely crafted steel chestpiece.
+   enchantments:
+   - durability:3
+   
+"Fine Steel Plate Leggings":
+   type: item
+   material: 308
+   display name: "<green>Fine Steel Plate Leggings"
+   lore:
+   - <white>A finely crafted steel legplates.
+   enchantments:
+   - durability:3
+   
+"Fine Steel Plate Boots":
+   type: item
+   material: 309
+   display name: "<green>Fine Steel Plate Boots"
+   lore:
+   - <white>Some finely crafted plate boots..
+   enchantments:
+   - durability:3
+   
+"Fine Steel Longsword":
+   type: item
+   material: 267
+   display name: "<green>Fine Steel Longsword"
+   lore:
+   - <white>A finely crafted longsword.
+   enchantments:
+   - durability:3
+   - damage_all:2
+   
+"Fine Steel Shortsword":
+   type: item
+   material: 267
+   display name: "<green>Fine Steel Shortsword"
+   lore:
+   - <white>A finely crafted shortsword.
+   enchantments:
+   - durability:3
+   - damage_all:2
+   
+"Fine Steel Two Handed Sword":
+   type: item
+   material: 267
+   display name: "<green>Fine Steel Two-Handed Sword"
+   lore:
+   - <white>A finely crafted two-handed sword.
+   enchantments:
+   - durability:2
+   - damage_all:3
+   
+"Fine Steel Rapier":
+   type: item
+   material: 267
+   display name: "<green>Fine Steel Rapier"
+   lore:
+   - <white>A finely crafted rapier.
+   enchantments:
+   - durability:3
+   - damage_all:2
+   
+"Fine Steel Hammer":
+   type: item
+   material: 256
+   display name: "<green>Fine Steel Hammer"
+   lore:
+   - <white>A finely crafted hammer.
+   enchantments:
+   - durability:3
+   - damage_all:2
+   
+"Fine Steel Battleaxe":
+   type: item
+   material: 258
+   display name: "<green>Fine Steel Battleaxe"
+   lore:
+   - <white>A finely crafted battleaxe.
+   enchantments:
+   - durability:3
+   - damage_all:2
+   
+"Fine Steel Greataxe":
+   type: item
+   material: 258
+   display name: "<green>Fine Steel Greataxe"
+   lore:
+   - <white>A finely crafted greataxe.
+   enchantments:
+   - durability:2
+   - damage_all:3
+   
+"Fine Steel Cleaver":
+   type: item
+   material: 292
+   display name: "<green>Fine Steel Cleaver"
+   lore:
+   - <white>A finely crafted cleaver.
+   enchantments:
+   - durability:3
+   - damage_all:2
 
 # ========================================================
 # Rare Tier Items - Blue Tag
 
+# [Plane of Fire Loot]
+"Shattered Flamemail Helm":
+   type: item
+   material: 302
+   display name: "<&9>Shattered Flamemail Helm"
+   lore:
+   - <yellow>An expert blacksmith may be able to repair this..
+   
+"Shattered Flamemail Chestpiece":
+   type: item
+   material: 303
+   display name: "<&9>Shattered Flamemail Chestpiece"
+   lore:
+   - <yellow>An expert blacksmith may be able to repair this..
+   
+"Shattered Flamemail Kilt":
+   type: item
+   material: 304
+   display name: "<&9>Shattered Flamemail Kilt"
+   lore:
+   - <yellow>An expert blacksmith may be able to repair this..
+   
+"Shattered Flamemail Boots":
+   type: item
+   material: 305
+   display name: "<&9>Shattered Flamemail Boots"
+   lore:
+   - <yellow>An expert blacksmith may be able to repair this..
+
+"Wither Essence":
+   type: item
+   material: 385
+   display name: "<&9>Wither Essence"
+   lore:
+   - <yellow>The sphere pulses with energy.<&nl>Perhaps an enchanter can inspect it?
+   
 # [Plane of Ender Loot]
 "Runed Enderplate Helm":
    type: item
@@ -344,7 +601,7 @@
    material: 276
    display name: "<&6>Singing Sword"
    lore:
-   - <green>Effect<&co> <red>Singing Sword
+   - <green>Use<&co> <red>Singing Sword
    enchantments:
    - damage_all:7
    - durability:10
@@ -354,7 +611,7 @@
    type: world
    events:
      on use command:
-       - if <player.item_in_hand.lore> == "<green>Effect<&co> <red>Singing Sword" {
+       - if <player.item_in_hand.lore> == "<green>Use<&co> <red>Singing Sword" {
          - narrate "<&9>Your sword begins to vibrate..."
          - cast increase_damage duration:20 power:2
          - cast fast_digging duration:20 power:2
@@ -374,19 +631,96 @@
          - wait 3
          - narrate "<&9>The song ends."
          }
-   
-# ========================================================
-# God / Event Tier Items - Red Tag
 
+# [Plane of Ender Loot]
 "Hammer of the Gods":
    type: item
    material: diamond_axe
-   display name: "Hammer of the Gods"
+   display name: "<&6>Hammer of the Gods"
    lore:
    - <green>Effect<&co> <red>Lightning Call
    enchantments:
    - durability:3
    - damage_all:5
+   
+"Cloak of Invisibility":
+   type: item
+   material: 334
+   display name: "<&6>Cloak of Invisibility"
+   lore:
+   - <green>Use<&co> <red>Invisibility
+   enchantments:
+   - durability:1
+   
+# Cloak of Invisibility Use effect
+"inviscloak":
+   type: world
+   events:
+     on use command:
+       - if <player.item_in_hand.lore> == "<green>Use<&co> <red>Invisibility" {
+         - narrate "<&9>Your body fades in with your surroundings..."
+         - cast invisibility duration:60 power:3
+         - playeffect location:<player.location> effect:portal qty:500
+         }
+
+"Thunderfury":
+   type: item
+   material: 276
+   display name: "<&6>Thunderfury<&cm> Blessed Blade of the Windseeker"
+   lore:
+   - <green>Effect<&co> <red>Thunderfury
+   enchantments:
+   - damage_all:10
+   - durability:10
+   
+"Ripper":
+   type: item
+   material: 276
+   display name: "<&6>Ripper"
+   lore:
+   - <green>Effect<&co> <red>Mutilate
+   enchantments:
+   - damage_all:6
+   - durability:10
+   
+"Immortalius":
+   type: item
+   material: 311
+   display name: "<&6>Immortalius"
+   lore:
+   - <green>Effect<&co> <red>Protective Ward
+   enchantments:
+   - durability:15
+   - protection_environmental:10
+   - protection_fire:10
+   
+"Rhokdelar":
+   type: item
+   material: bow
+   display name: "<&6>Rhok<&sq>Delar<&cm> Longbow of the Ancient Keepers"
+   lore:
+   - <green>Use<&co> <red>Regenerate<&nl><green>Effect<&co> <red>Storm of Arrows
+   enchantments:
+   - durability:10
+   - arrow_damage:10
+   
+# RhokDelar Effects
+"rhokdelar_regen":
+   type: world
+   events:
+     on use command:
+       - if <player.item_in_hand.lore> == "<green>Use<&co> <red>Regenerate<&nl><green>Effect<&co> <red>Storm of Arrows" && "<flag.p:rdl reuse || false>" == true {
+         - narrate "<&9>You must wait <flag.p:rdl reuse.expiration> before you can use that item again."
+         } 
+       - if <player.item_in_hand.lore> == "<green>Use<&co> <red>Regenerate<&nl><green>Effect<&co> <red>Storm of Arrows" && "<flag.p:rdl reuse || false>" == false {
+         - narrate "<&9>You feel your wounds begin to heal."
+         - cast regeneration duration:15 power:1
+         - playeffect location:<player.location> effect:slime qty:500
+         - flag player "rdl reuse:true" duration:30
+         }
+   
+# ========================================================
+# God / Event Tier Items - Red Tag
    
 "Firework Wand":
    type: item

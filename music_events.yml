@@ -2,6 +2,8 @@
 # 4-7-14
 # Plays music when players walk over notable locations.
 
+# Pokemon files : http://www.khinsider.com/midi/gameboy/pokemon-red-blue-yellow-
+
 "playMusicify":
    type: world
    events:

@@ -192,9 +192,9 @@ PoEnder_CoalDone:
                     - take 'item:iron_sword' qty:3
                     - wait 1
                     - chat "Excellent<&cm> <player.name>. You should build yourself some armor now. Start by crafting an Iron Helmet and follow the quest details carefully. Return to me when you are finished."
-                    - listen item type:craft item:306 qty:1 script:PoEnder_ArmorProg1
+                    - listen item type:craft item:iron_helmet qty:1 script:PoEnder_ArmorProg1
                     - flag player PoEnder_ArmorStep:0
-                    - zap 'step:poend_gather4'
+                    - zap 'step:poend_craft4'
 
         'poend_craft4':
             click trigger:
@@ -216,7 +216,7 @@ PoEnder_IronSwordProg:
     type: task
     script:
     - flag player PoEnder_IronSword:++
-    - narrate "<yellow>Cobblestone Gathered<&co> <player.flag[PoEnder_IronSword].asint>/4"
+    - narrate "<yellow>Iron Swords Crafted<&co> <player.flag[PoEnder_IronSword].asint>/4"
     - if <player.flag[PoEnder_IronSword].asint> >= 4 run PoEnder_IronSwordDone
       else run PoEnder_IronSwordContinue
 
@@ -238,7 +238,7 @@ PoEnder_ArmorProg1:
     - narrate "<yellow>You have crafted a fine iron helmet!"
     - wait 1
     - narrate "<yellow>Next, construct a fine iron chestplate."
-    - listen item type:craft item:307 qty:1 script:PoEnder_ArmorProg2
+    - listen item type:craft item:iron_chestplate qty:1 script:PoEnder_ArmorProg2
 
 PoEnder_ArmorProg2:
     type: task
@@ -247,7 +247,7 @@ PoEnder_ArmorProg2:
     - narrate "<yellow>You have crafted a fine iron chestplate!"
     - wait 1
     - narrate "<yellow>Next, construct a pair of fine iron leggings."
-    - listen item type:craft item:308 qty:1 script:PoEnder_ArmorProg3
+    - listen item type:craft item:iron_leggings qty:1 script:PoEnder_ArmorProg3
 
 PoEnder_ArmorProg3:
     type: task
@@ -256,7 +256,7 @@ PoEnder_ArmorProg3:
     - narrate "<yellow>You have crafted a pair of fine iron leggings!"
     - wait 1
     - narrate "<yellow>Next, construct a pair of fine iron boots."
-    - listen item type:craft item:309 qty:1 script:PoEnder_ArmorProg4
+    - listen item type:craft item:iron_boots qty:1 script:PoEnder_ArmorProg4
 
 PoEnder_ArmorProg4:
     type: task

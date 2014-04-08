@@ -3,3 +3,45 @@
 # 4-7-14
 # Defines custom loot items for particular mobs when they are slain.
 
+"customLootTable":
+  type: world
+  events:
+    on entity death:
+      - if <context.damager.is_player> {
+        - if <context.entity.entity_type> == "Skeleton" {
+          - narrate targets:<context.damager> "<yellow>You killed a <context.entity.entity_type>!"
+          }
+        - else if <context.entity.entity_type> == "Zombie" {
+          - narrate targets:<context.damager> "<yellow>You killed a <context.entity.entity_type>!"
+          }
+        }
+		
+# Procedure based on an example from :
+# http://scripts.citizensnpcs.co/view/34aapf
+# 
+"LootTable_Skeleton":
+    type: procedure
+
+    script:
+    - define roll <util.random.int[1].to[100]>
+    - if %roll% >= 0 && %roll% < 50 define quality "Common"
+      else if %roll% >= 50 && %roll% < 80 define quality "Uncommon"
+      else if %roll% >= 80 && %roll% < 95 define quality "Rare"
+      else if %roll% >= 95 define quality "Epic"
+ 
+    - if %quality% == Common random {
+      - determine "Enderparts"
+      - determine "Endersoul" }
+ 
+      else if %quality% == Uncommon random {
+        - determine "Sword of Ender"
+        - determine "Ender Scythe" }
+ 
+      else if %quality% == Rare random {
+        - determine "Darkblade"
+        - determine "Pain" }
+ 
+      else if %quality% == Epic random {
+        - determine "Rune of Healing"
+        - determine "Journeyman Boots" }
+

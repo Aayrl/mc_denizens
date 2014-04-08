@@ -19,9 +19,6 @@
 # LORE STEP : PRE-ATTUNEMENT QUEST.
 "LoreStep":
     type: interact
-    requirements:
-      mode: NONE
-      list: 
     steps:
         'StartAttunePOEnd*':
             click trigger:

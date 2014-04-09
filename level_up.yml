@@ -10,3 +10,7 @@
       - announce "<yellow><player.name> has reached level <context.level>!"
     on player changes xp:
       - narrate "<yellow>You gain <context.amount> experience!"
+    on level command:
+      - narrate "<yellow><player.name><&co> Level <player.xp.level>"
+      - narrate "<yellow><player.xp.to_next_level.asint> Exp to Level <&lb><player.xp.asint> / <m:<player.xp.asint>+<player.xp.to_next_level.asint>><&rb>"
+      - narrate "<yellow>Total XP Earned<&co> <player.xp.total> Experience."

@@ -1,0 +1,136 @@
+# JennaVB NPC 
+# Tyler J. Sawyer
+# 4-9-14
+
+# Base Quest Assignment for 'Jennavb13' NPC.
+"jennavb_npc":
+    type: assignment
+    
+    interact scripts:
+    - 1 NoQuests_Jennavb
+    #- 5 FactionCheck_Jennavb
+    - 25 POEnder_Attuner_Jennavb
+
+# NO QUEST : If the player has no quests with this NPC, it will default to this 'search' quest.
+"NoQuests_Jennavb":
+    type: interact
+    steps:
+        'noquests_jvb*':
+            click trigger:
+                script:
+                - chat 'Hello there<&cm> <player.name>. Do you want to build a <&lb><red>snowman<green><&rb>?'
+            chat trigger:
+                'continue_noquests_vb':
+                    trigger: 'What /snowman/?'
+                    script: 
+                    - chat 'Yes<&cm> a snowman! If only my sister would come out and <&lb><red>play<green><&rb>...'
+                    - zap 'step:noquests_jvb2'
+        'noquests_jvb2':
+            click trigger:
+                script:
+                - chat 'Yes<&cm> a snowman! If only my sister would come out and <&lb><red>play<green><&rb>...'
+            chat trigger:
+                'continue_noquests_vb2':
+                    trigger: 'Why will your sister not come out and /play/?'
+                    script:
+                    - chat 'I wish I knew<&cm> <player.name>. She has been gone for quite some time. I worry for her. Hey<&cm> perhaps you could go <&lb><red>search<green><&rb> for her?'
+                    - zap 'step:noquests_jvb3'
+        'noquests_jvb3':
+            click trigger:
+                script:
+                - chat 'I wish I knew<&cm> <player.name>. She has been gone for quite some time. I worry for her. Hey<&cm> perhaps you could go <&lb><red>search<green><&rb> for her?'
+            chat trigger:
+                'continue_noquests_vb3':
+                    trigger: 'I will /search/ for her.'
+                    script:
+                    - chat 'Oh<&cm> wonderful! You may want to start by asking the guards if they have seen her and let me know what knowledge you discover!'
+                    - flag player "Thurgadin:FindJennavbSister"
+
+# Plane of Ender Attunement Step involving Jennavb NPC. 
+# Player must be flagged for POEnderAttune:Step4.
+# Must also be flagged from Lord Aayrl for Thurgadin:0.
+"POEnder_Attuner_Jennavb":
+    type: interact
+    requirements:
+      mode: ALL
+      list: 
+      - FLAGGED 'POEnderAttune:Step4'
+      - FLAGGED 'PoEnder_DiplomacyThurgadin:0'
+    steps:
+        'jennavb_craft_poender*':
+            click trigger:
+                script:
+                - chat 'Hello <&cm> <player.name>. I hear you are on a quest from Lord Aayrl. Is this rumor <&lb><red>true<green><&rb>?'
+            chat trigger:
+                'continue_noquests_vb':
+                    trigger: 'Yes this is /true/.'
+                    script: 
+                    - chat 'I hope you understand the dangers of entering a place such as the <&4>Plane of Ender<green>. How may <&lb><red>Thurgadin<green><&rb> assist you in this task?'
+                    - zap 'step:jennavb_craft_poender2'
+        'jennavb_craft_poender2':
+            click trigger:
+                script:
+                - chat 'I hope you understand the dangers of entering a place such as the <&4>Plane of Ender<green>. How may <&lb><red>Thurgadin<green><&rb> assist you in this task?'
+            chat trigger:
+                'continue_noquests_vb2':
+                    trigger: 'I request reinforcements from /Thurgadin/ to aid us in battle.'
+                    script:
+                    - chat 'My people are not aggresive<&cm> <player.name>. However<&cm> I am sure some are itching for battle. But first, I must ask a <&lb><red>favor<green><&rb> from you.'
+                    - zap 'step:jennavb_craft_poender3'
+        'jennavb_craft_poender3':
+            click trigger:
+                script:
+                - chat 'My people are not aggresive<&cm> <player.name>. However<&cm> I am sure some are itching for battle. But first, I must ask a <&lb><red>favor<green><&rb> from you.'
+            chat trigger:
+                'continue_noquests_vb3':
+                    trigger: 'What is your /favor/?'
+                    script:
+                    - chat 'In trade for some of my guards<&cm> I simply ask for you to <&lb><red>craft<green><&rb> a certain material for me.'
+                    - zap 'step:jennavb_craft_poender4'
+        'jennavb_craft_poender4':
+            click trigger:
+                script:
+                - chat 'In trade for some of my guards<&cm> I simply ask for you to <&lb><red>craft<green><&rb> a certain material for me.' 
+
+            chat trigger:
+                'gather1cont':
+                    trigger: 'What do you need me to /craft/?'
+                    script: 
+                    - chat 'I would like you to craft me 25 Quartz Blocks. If you bring me these blocks<&cm> I shall send some of my guards to assist you.'
+                    - listen item type:craft item:quartz_block qty:1 script:PoEnder_DipThurg_QuartzProg 
+                    - flag player PoEnder_DipThurg_Quartz:0
+                    - narrate '<yellow>You have accepted the task "POE<&co> Diplomacy in Thurgadin".'
+                    - zap 'step:jennavb_craft_poender5'
+        'jennavb_craft_poender5':
+            click trigger:
+                script:
+                - chat "I see you have some Quartz Blocks<&cm> but I requested 25 to be crafted. Speak to me when you have 25<&cm> <player.name>."
+                - narrate '<yellow>Progress<&co> <player.flag[PoEnder_DipThurg_Quartz].asint> / 25 Quartz Blocks Crafted.'
+
+        'jennavb_craft_poender6':
+            click trigger:
+                script:
+                    - chat "Hello again<&cm> <player.name>. I see you have crafted 25 Quartz Blocks like I asked. May I have them?"
+                    - take 'item:quartz_block' qty:25
+                    - wait 1
+                    - chat "I have sent some guards to Lord Aayrl<&cm> <player.name>. Please send him my best wishes in his quest."
+                    - flag player PoEnder_DiplomacyThurgadin:1
+
+PoEnder_DipThurg_QuartzProg:
+    type: task
+    script:
+    - flag player PoEnder_DipThurg_Quartz:++
+    - narrate "<yellow>Quartz Blocks Crafted<&co> <player.flag[PoEnder_DipThurg_Quartz].asint>/25"
+    - if <player.flag[PoEnder_DipThurg_Quartz].asint> >= 4 run PoEnder_DipThurg_QuartzDone
+      else run PoEnder_DipThurg_QuartzContinue
+
+PoEnder_DipThurg_QuartzContinue:
+    type: task
+    script:
+    - listen item type:craft item:quartz_block qty:1 script:PoEnder_DipThurg_QuartzProg 
+
+PoEnder_DipThurg_QuartzDone:
+    type: task
+    script:
+    - narrate "<yellow>You have crafted <player.flag[PoEnder_DipThurg_Quartz].asint>/25 Quartz Blocks! Return to <npc.name> with the Quartz in hand."
+    - zap 'step:jennavb_craft_poender6' script:POEnder_Attuner_Jennavb

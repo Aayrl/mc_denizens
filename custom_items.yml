@@ -852,7 +852,7 @@
          - if "<player.flag[snareProc]>" == null {
            - narrate "<&9>Your <&5>Willsapper<&9> ensnares your target!"
            - if <context.entity.is_player> narrate targets:<context.entity> "<red>You were snared by <player.name><&sq>s <&5>Willsapper<red>!"
-           - cast slow duration:10 power:1
+           - cast slow duration:10 power:1 <context.entity>
            - flag <player> "snareProc" duration:5
            }
          }
@@ -886,7 +886,7 @@
          - playeffect location:<player.location> effect:smoke qty:10
          }
 
-"Meteorite Shard":
+"MeteoriteShard":
    type: item
    material: 385
    display name: "<&5>Meteorite Shard"
@@ -899,7 +899,7 @@
 "meteorAttack":
    type: world
    events:
-     on player right clicks with i@"Meteorite Shard":
+     on player right clicks with i@MeteoriteShard:
        - if "<player.flag[meteoriteCD]>" == null {
          - narrate "<&9>A blazing fireball falls from the sky!"
          - flag <player> "meteoriteCD" duration:300

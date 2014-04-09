@@ -12,7 +12,16 @@
           - drop "i@<proc:LootTable_Enderman>" location:<context.entity.location>
           }
         - if <context.entity.entity_type> == "Zombie" {
-          - narrate targets:<context.damager> "<yellow>You killed a <context.entity.entity_type>!"
+          - drop "i@<proc:LootTable_Zombie>" location:<context.entity.location>
+          }
+        - if <context.entity.entity_type> == "Skeleton" {
+          - drop "i@<proc:LootTable_Skeleton>" location:<context.entity.location>
+          }
+        - if <context.entity.entity_type> == "Creeper" {
+          - drop "i@<proc:LootTable_Creeper>" location:<context.entity.location>
+          }
+        - if <context.entity.entity_type> == "Spider" {
+          - drop "i@<proc:LootTable_Spider>" location:<context.entity.location>
           }
         }
 
@@ -23,11 +32,11 @@
     type: procedure
 
     script:
-    - define roll <util.random.int[1].to[100]>
-    - if %roll% >= 0 && %roll% < 75 define quality "Common"
-      else if %roll% >= 75 && %roll% < 92 define quality "Uncommon"
-      else if %roll% >= 92 && %roll% < 98 define quality "Rare"
-      else if %roll% >= 98 define quality "Epic"
+    - define roll <util.random.int[1].to[500]>
+    - if %roll% >= 0 && %roll% < 400 define quality "Common"
+      else if %roll% >= 400 && %roll% < 475 define quality "Uncommon"
+      else if %roll% >= 475 && %roll% < 497 define quality "Rare"
+      else if %roll% >= 497 define quality "Epic"
  
     - if %quality% == Common {
       - random 5
@@ -68,3 +77,274 @@
         - determine "Journeyman Boots"
         }
 
+"LootTable_Zombie":
+    type: procedure
+
+    script:
+    - define roll <util.random.int[1].to[500]>
+    - if %roll% >= 0 && %roll% < 400 define quality "Common"
+      else if %roll% >= 400 && %roll% < 475 define quality "Uncommon"
+      else if %roll% >= 475 && %roll% < 497 define quality "Rare"
+      else if %roll% >= 497 define quality "Epic"
+ 
+    - if %quality% == Common {
+      - random 20
+      - determine "Rock"
+      - determine "PetRock" 
+      - determine "Pile of Dirt"
+      - determine "Pile of Mud"
+      - determine "Torn Sheet of Paper"
+      - determine "Snapped Twig"
+      - determine "Driftwood"
+      - determine "Chunk of Flint"
+      - determine "Marshmellow"
+      - determine "Rusty Longsword"
+      - determine "Rusty Shortsword"
+      - determine "Rusty Two Handed Sword"
+      - determine "Rusty Dagger"
+      - determine "Rusty Rapier"
+      - determine "Rusty Scimitar"
+      - determine "Rusty Warhammer"
+      - determine "Rusty Axe"
+      - determine "Rusty Battleaxe"
+      - determine "Rusty Great Axe"
+      - determine "Rusty Scythe"
+      }
+ 
+    - if %quality% == Uncommon {
+        - random 20
+        - determine "Tarnished Longsword"
+        - determine "Tarnished Shortsword"
+        - determine "Tarnished Two Handed Sword"
+        - determine "Tarnished Dagger"
+        - determine "Tarnished Rapier"
+        - determine "Tarnished Scimitar"
+        - determine "Tarnished Warhammer"
+        - determine "Tarnished Axe"
+        - determine "Tarnished Battleaxe"
+        - determine "Tarnished Great Axe"
+        - determine "Tarnished Scythe"
+        - determine "Leather Scraps"
+        - determine "Patchwork Leather Hat"
+        - determine "Patchwork Leather Tunic"
+        - determine "Patchwork Leather Pants"
+        - determine "Patchwork Leather Boots"
+        - determine "Tattered Leather Hat"
+        - determine "Tattered Leather Tunic"
+        - determine "Tattered Leather Pants"
+        - determine "Tattered Leather Boots"
+        }
+ 
+    - if %quality% == Rare {
+        - random 4
+        - determine "Ringmail Coif"
+        - determine "Ringmail Tunic"
+        - determine "Ringmail Leggings"
+        - determine "Ringmail Boots"
+        }
+ 
+    - if %quality% == Epic {
+        - random 3
+        - determine "Nightblade"
+        - determine "Willsapper"
+        - determine "Eyepatch of Plunder"
+        }
+
+"LootTable_Skeleton":
+    type: procedure
+
+    script:
+    - define roll <util.random.int[1].to[500]>
+    - if %roll% >= 0 && %roll% < 400 define quality "Common"
+      else if %roll% >= 400 && %roll% < 475 define quality "Uncommon"
+      else if %roll% >= 475 && %roll% < 497 define quality "Rare"
+      else if %roll% >= 497 define quality "Epic"
+ 
+    - if %quality% == Common {
+      - random 20
+      - determine "Rock"
+      - determine "PetRock" 
+      - determine "Pile of Dirt"
+      - determine "Pile of Mud"
+      - determine "Torn Sheet of Paper"
+      - determine "Snapped Twig"
+      - determine "Driftwood"
+      - determine "Chunk of Flint"
+      - determine "Marshmellow"
+      - determine "Rusty Longsword"
+      - determine "Rusty Shortsword"
+      - determine "Rusty Two Handed Sword"
+      - determine "Rusty Dagger"
+      - determine "Rusty Rapier"
+      - determine "Rusty Scimitar"
+      - determine "Rusty Warhammer"
+      - determine "Rusty Axe"
+      - determine "Rusty Battleaxe"
+      - determine "Rusty Great Axe"
+      - determine "Rusty Scythe"
+      }
+ 
+    - if %quality% == Uncommon {
+        - random 20
+        - determine "Tarnished Longsword"
+        - determine "Tarnished Shortsword"
+        - determine "Tarnished Two Handed Sword"
+        - determine "Tarnished Dagger"
+        - determine "Tarnished Rapier"
+        - determine "Tarnished Scimitar"
+        - determine "Tarnished Warhammer"
+        - determine "Tarnished Axe"
+        - determine "Tarnished Battleaxe"
+        - determine "Tarnished Great Axe"
+        - determine "Tarnished Scythe"
+        - determine "Leather Scraps"
+        - determine "Patchwork Leather Hat"
+        - determine "Patchwork Leather Tunic"
+        - determine "Patchwork Leather Pants"
+        - determine "Patchwork Leather Boots"
+        - determine "Tattered Leather Hat"
+        - determine "Tattered Leather Tunic"
+        - determine "Tattered Leather Pants"
+        - determine "Tattered Leather Boots"
+        }
+ 
+    - if %quality% == Rare {
+        - random 4
+        - determine "Ringmail Coif"
+        - determine "Ringmail Tunic"
+        - determine "Ringmail Leggings"
+        - determine "Ringmail Boots"
+        }
+ 
+    - if %quality% == Epic {
+        - random 3
+        - determine "Nightblade"
+        - determine "Willsapper"
+        - determine "Eyepatch of Plunder"
+        }
+
+"LootTable_Creeper":
+    type: procedure
+
+    script:
+    - define roll <util.random.int[1].to[500]>
+    - if %roll% >= 0 && %roll% < 400 define quality "Common"
+      else if %roll% >= 400 && %roll% < 475 define quality "Uncommon"
+      else if %roll% >= 475 && %roll% < 497 define quality "Rare"
+      else if %roll% >= 497 define quality "Epic"
+ 
+    - if %quality% == Common {
+      - random 20
+      - determine "Rock"
+      - determine "PetRock" 
+      - determine "Pile of Dirt"
+      - determine "Pile of Mud"
+      - determine "Torn Sheet of Paper"
+      - determine "Snapped Twig"
+      - determine "Driftwood"
+      - determine "Chunk of Flint"
+      - determine "Marshmellow"
+      - determine "Rusty Longsword"
+      - determine "Rusty Shortsword"
+      - determine "Rusty Two Handed Sword"
+      - determine "Rusty Dagger"
+      - determine "Rusty Rapier"
+      - determine "Rusty Scimitar"
+      - determine "Rusty Warhammer"
+      - determine "Rusty Axe"
+      - determine "Rusty Battleaxe"
+      - determine "Rusty Great Axe"
+      - determine "Rusty Scythe"
+      }
+ 
+    - if %quality% == Uncommon {
+        - random 20
+        - determine "Tarnished Longsword"
+        - determine "Tarnished Shortsword"
+        - determine "Tarnished Two Handed Sword"
+        - determine "Tarnished Dagger"
+        - determine "Tarnished Rapier"
+        - determine "Tarnished Scimitar"
+        - determine "Tarnished Warhammer"
+        - determine "Tarnished Axe"
+        - determine "Tarnished Battleaxe"
+        - determine "Tarnished Great Axe"
+        - determine "Tarnished Scythe"
+        - determine "Leather Scraps"
+        - determine "Patchwork Leather Hat"
+        - determine "Patchwork Leather Tunic"
+        - determine "Patchwork Leather Pants"
+        - determine "Patchwork Leather Boots"
+        - determine "Tattered Leather Hat"
+        - determine "Tattered Leather Tunic"
+        - determine "Tattered Leather Pants"
+        - determine "Tattered Leather Boots"
+        }
+ 
+    - if %quality% == Rare {
+        - random 4
+        - determine "Ringmail Coif"
+        - determine "Ringmail Tunic"
+        - determine "Ringmail Leggings"
+        - determine "Ringmail Boots"
+        }
+ 
+    - if %quality% == Epic {
+        - random 3
+        - determine "Nightblade"
+        - determine "Willsapper"
+        - determine "Eyepatch of Plunder"
+        }
+
+"LootTable_Spider":
+    type: procedure
+
+    script:
+    - define roll <util.random.int[1].to[500]>
+    - if %roll% >= 0 && %roll% < 400 define quality "Common"
+      else if %roll% >= 400 && %roll% < 475 define quality "Uncommon"
+      else if %roll% >= 475 && %roll% < 497 define quality "Rare"
+      else if %roll% >= 497 define quality "Epic"
+ 
+    - if %quality% == Common {
+      - random 11
+      - determine "Rock"
+      - determine "PetRock" 
+      - determine "Pile of Dirt"
+      - determine "Pile of Mud"
+      - determine "Torn Sheet of Paper"
+      - determine "Snapped Twig"
+      - determine "Driftwood"
+      - determine "Chunk of Flint"
+      - determine "Marshmellow"
+      - determine "Dusty Cobwebs"
+      - determine "Piece of String"
+      }
+ 
+    - if %quality% == Uncommon {
+        - random 9
+        - determine "Leather Scraps"
+        - determine "Patchwork Leather Hat"
+        - determine "Patchwork Leather Tunic"
+        - determine "Patchwork Leather Pants"
+        - determine "Patchwork Leather Boots"
+        - determine "Tattered Leather Hat"
+        - determine "Tattered Leather Tunic"
+        - determine "Tattered Leather Pants"
+        - determine "Tattered Leather Boots"
+        }
+ 
+    - if %quality% == Rare {
+        - random 4
+        - determine "Ringmail Coif"
+        - determine "Ringmail Tunic"
+        - determine "Ringmail Leggings"
+        - determine "Ringmail Boots"
+        }
+ 
+    - if %quality% == Epic {
+        - random 3
+        - determine "Nightblade"
+        - determine "Willsapper"
+        - determine "Eyepatch of Plunder"
+        }

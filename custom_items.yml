@@ -1131,7 +1131,7 @@
 "Firework Wand":
    type: item
    material: firework_charge
-   display name: "Firework Wand"
+   display name: "<red>Firework Wand"
    lore:
    - <green>Effect<&co> <red>Launch Firework
 

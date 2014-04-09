@@ -1,0 +1,12 @@
+# Tyler J. Sawyer
+# 4 - 8 - 14
+# Anti-Creative Script
+# Prevents non-OPs from going into Creative Mode.
+
+"AntiCreativeStuff":
+  type: world
+  events:
+    on player changes gamemode:
+      # "CANCELLED" to stop the gamemode from being changed. 
+      - narrate "<red>You may not change your gamemode."
+      - determine cancelled

@@ -7,6 +7,8 @@
   type: world
   events:
     on player changes gamemode:
-      # "CANCELLED" to stop the gamemode from being changed. 
-      - narrate "<red>You may not change your gamemode."
-      - determine cancelled
+      - if <player.is_op> == false {
+        # "CANCELLED" to stop the gamemode from being changed. 
+        - narrate "<red>You may not change your gamemode."
+        - determine cancelled
+        }

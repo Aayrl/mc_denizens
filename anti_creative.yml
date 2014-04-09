@@ -8,7 +8,7 @@
   type: world
   events:
     on player changes gamemode:
-      - if !<player.is_op> {
+      - if <player.name> != "Aayrl" && <player.name> != "Jennavb13" && <player.name> != "mtotho" {
         - narrate "<red>You may not change your gamemode."
         - determine cancelled
         }

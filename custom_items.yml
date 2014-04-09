@@ -851,7 +851,7 @@
        - if <player.item_in_hand.lore> == "<green>Effect<&co> <red>Snare" {
          - if "<player.flag[snareProc]>" == null {
            - narrate "<&9>Your <&5>Willsapper<&9> ensnares your target!"
-           - if <context.entity.is_player> narrate targets:<context.entity> "<red>You were snared by <player.name><&sq>s <&5>Willsapper<red>!"
+           - narrate targets:<context.entity> "<red>You were snared by <player.name><&sq>s <&5>Willsapper<red>!"
            - cast slow duration:10 power:1 <context.entity>
            - flag <player> "snareProc" duration:5
            }
@@ -903,7 +903,10 @@
        - if "<player.flag[meteoriteCD]>" == null {
          - narrate "<&9>A blazing fireball falls from the sky!"
          - flag <player> "meteoriteCD" duration:300
-         - shoot e@fireball height:0.05 gravity:0.01 }
+         - shoot e@fireball origin:<player> speed:2  }
+       - if "<player.flag[meteoriteCD]>" != null {
+         - narrate "<&9>You must wait <flag.p:meteoriteCD.expiration> before you can use that item again."
+         }
 
 # [Plane of Ender Loot]
 "Hurricane":

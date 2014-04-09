@@ -2,6 +2,7 @@
 # 4 - 8 - 14
 # Level Up Script
 # Announces to the server when a player levels up.
+# NOTICE: <player.xp.to_next_level> seems to be stuck at '17'...
 
 "DingPlayerLevel":
   type: world

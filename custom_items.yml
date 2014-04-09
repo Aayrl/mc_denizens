@@ -851,7 +851,7 @@
        - if <player.item_in_hand.lore> == "<green>Effect<&co> <red>Snare" {
          - if "<player.flag[snareProc]>" == null {
            - narrate "<&9>Your <&5>Willsapper<&9> ensnares your target!"
-           - narrate targets:<context.entity> "<red>You were snared by <player.name><&sq>s <&5>Willsapper<red>!"
+           - if <context.entity.is_player> narrate targets:<context.entity> "<red>You were snared by <player.name><&sq>s <&5>Willsapper<red>!"
            - cast slow duration:10 power:1 <context.entity>
            - flag <player> "snareProc" duration:5
            }
@@ -886,27 +886,27 @@
          - playeffect location:<player.location> effect:smoke qty:10
          }
 
-"MeteoriteShard":
-   type: item
-   material: 385
-   display name: "<&5>Meteorite Shard"
-   lore:
-   - <green>Use<&co> <red>Summon Meteorite <&lb>5 Min CD<&rb>
-   enchantments:
-   - durability:1
+#"MeteoriteShard":
+#   type: item
+#   material: 385
+#   display name: "<&5>Meteorite Shard"
+#   lore:
+#   - <green>Use<&co> <red>Summon Meteorite <&lb>5 Min CD<&rb>
+#   enchantments:
+#   - durability:1
    
 # Meteorite Shard Item Effect
-"meteorAttack":
-   type: world
-   events:
-     on player right clicks with i@MeteoriteShard:
-       - if "<player.flag[meteoriteCD]>" == null {
-         - narrate "<&9>A blazing fireball falls from the sky!"
-         - flag <player> "meteoriteCD" duration:300
-         - shoot e@fireball origin:<player> speed:2  }
-       - if "<player.flag[meteoriteCD]>" != null {
-         - narrate "<&9>You must wait <flag.p:meteoriteCD.expiration> before you can use that item again."
-         }
+#"meteorAttack":
+#   type: world
+#   events:
+#     on player right clicks with i@MeteoriteShard:
+#       - if "<player.flag[meteoriteCD]>" == null {
+#         - narrate "<&9>A blazing fireball falls from the sky!"
+#         - flag <player> "meteoriteCD" duration:300
+#         - shoot e@fireball origin:<player> speed:2  }
+#       - if "<player.flag[meteoriteCD]>" != null {
+#         - narrate "<&9>You must wait <flag.p:meteoriteCD.expiration> before you can use that item again."
+#         }
 
 # [Plane of Ender Loot]
 "Hurricane":

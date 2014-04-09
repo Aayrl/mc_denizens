@@ -45,7 +45,7 @@
             - narrate "<gold>/lore - Lists lore context of the item in your hand." 
             - narrate "<gold>/use - If an item has a 'Use' tag, this activates its power."
             - narrate "<gold>/combattext on/off/hitsmode - Toggles CombatText settings."
-            - narrate "<gold>PH"
+            - narrate "<gold>/level - Displays information about your level and experience."
             - narrate "<gold>PH"
             }
           #- if <context.args.get[1]> == 3 {

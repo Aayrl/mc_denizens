@@ -8,3 +8,5 @@
   events:
     on player levels up:
       - announce "<yellow><player.name> has reached level <context.level>!"
+    on player changes xp:
+      - narrate "<yellow>You gain <context.amount> experience!"

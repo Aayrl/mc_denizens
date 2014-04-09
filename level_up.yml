@@ -1,0 +1,10 @@
+# Tyler J. Sawyer
+# 4 - 8 - 14
+# Level Up Script
+# Announces to the server when a player levels up.
+
+"DingPlayerLevel":
+  type: world
+  events:
+    on player levels up:
+      - announce "<yellow><player.name> has reached level <context.level>!"

@@ -5,6 +5,161 @@
 # ========================================================
 # Common Tier Items - White Tag
 
+# [ Overworld Loot ]
+"Rock":
+   type: item
+   material: 402
+   display name: "Rock"
+   lore:
+   - <white>It<&sq> just a rock<&cm> Jim.
+
+"PetRock":
+   type: item
+   material: 402
+   display name: "Pet Rock"
+   lore:
+   - <white>NO NO NO NO! NOT ON THE CARPET!!
+   
+"Pile of Dirt":
+   type: item
+   material: 3
+   display name: "Pile of Dirt"
+   lore:
+   - <white>Terribly exciting<&cm> throw some at your friends!
+   
+"Pile of Mud":
+   type: item
+   material: 337
+   display name: "Pile of Mud"
+   lore:
+   - <white>Perhaps this can be baked into clay?
+   
+"Torn Sheet of Paper":
+   type: item
+   material: 339
+   display name: "Torn Sheet of Paper"
+   lore:
+   - <white>It<&sq>s a little beat up<&cm> but it should do the trick.
+   
+"Dusty Cobwebs":
+   type: item
+   material: 30
+   display name: "Dusty Cobwebs"
+   lore:
+   - <white>You could probably fashion this into a trap.
+   
+"Snapped Twig":
+   type: item
+   material: 280
+   display name: "Snapped Twig"
+   lore:
+   - <white>Toast a marshmellow on this.
+   
+"Driftwood":
+   type: item
+   material: 280
+   display name: "Driftwood"
+   lore:
+   - <white>You could make a nice<&cm> sturdy weapon hilt from this.
+   
+"Piece of String":
+   type: item
+   material: 287
+   display name: "Piece of String"
+   lore:
+   - <white>This is much nicer than your generic string item.
+   
+"Chunk of Flint":
+   type: item
+   material: 318
+   display name: "Chunk of Flint"
+   lore:
+   - <white>Useful for making fires.
+   
+"Marshmellow":
+   type: item
+   material: 332
+   display name: "Marshmellow"
+   lore:
+   - <white>Throw at a friend!
+   
+"Rusty Longsword":
+   type: item
+   material: 268
+   display name: "Rusty Longsword"
+   lore:
+   - <white>A rusty longsword.
+   
+"Rusty Shortsword":
+   type: item
+   material: 268
+   display name: "Rusty Shortsword"
+   lore:
+   - <white>A rusty shortsword.
+   
+"Rusty Two Handed Sword":
+   type: item
+   material: 268
+   display name: "Rusty Two-Handed Sword"
+   lore:
+   - <white>A rusty two-handed sword.
+   
+"Rusty Dagger":
+   type: item
+   material: 268
+   display name: "Rusty Dagger"
+   lore:
+   - <white>A rusty dagger.
+   
+"Rusty Rapier":
+   type: item
+   material: 268
+   display name: "Rusty Rapier"
+   lore:
+   - <white>A rusty rapier.
+   
+"Rusty Scimitar":
+   type: item
+   material: 268
+   display name: "Rusty Scimitar"
+   lore:
+   - <white>A rusty scimitar.
+   
+"Rusty Warhammer":
+   type: item
+   material: 271
+   display name: "Rusty Warhammer"
+   lore:
+   - <white>A rusty warhammer.
+   
+"Rusty Axe":
+   type: item
+   material: 271
+   display name: "Rusty Axe"
+   lore:
+   - <white>A rusty axe.
+
+"Rusty Battleaxe":
+   type: item
+   material: 271
+   display name: "Rusty Battleaxe"
+   lore:
+   - <white>A rusty battleaxe.
+   
+"Rusty Great Axe":
+   type: item
+   material: 271
+   display name: "Rusty Great Axe"
+   lore:
+   - <white>A rusty great axe.
+   
+"Rusty Scythe":
+   type: item
+   material: 290
+   display name: "Rusty Scythe"
+   lore:
+   - <white>A rusty scythe.
+   
 # [ Plane of Fire Loot ]
 "Emberdust":
    type: item
@@ -86,6 +241,147 @@
 
 # ========================================================
 # Uncommon Tier Items - Green Tag
+
+# [Overworld Loot]
+"Tarnished Longsword":
+   type: item
+   material: 272
+   display name: "<green>Tarnished Longsword"
+   lore:
+   - <white>A Tarnished longsword.
+   
+"Tarnished Shortsword":
+   type: item
+   material: 272
+   display name: "<green>Tarnished Shortsword"
+   lore:
+   - <white>A Tarnished shortsword.
+   
+"Tarnished Two Handed Sword":
+   type: item
+   material: 272
+   display name: "<green>Tarnished Two-Handed Sword"
+   lore:
+   - <white>A Tarnished two-handed sword.
+   
+"Tarnished Dagger":
+   type: item
+   material: 272
+   display name: "<green>Tarnished Dagger"
+   lore:
+   - <white>A Tarnished dagger.
+   
+"Tarnished Rapier":
+   type: item
+   material: 272
+   display name: "<green>Tarnished Rapier"
+   lore:
+   - <white>A Tarnished rapier.
+   
+"Tarnished Scimitar":
+   type: item
+   material: 272
+   display name: "<green>Tarnished Scimitar"
+   lore:
+   - <white>A Tarnished scimitar.
+   
+"Tarnished Warhammer":
+   type: item
+   material: 275
+   display name: "<green>Tarnished Warhammer"
+   lore:
+   - <white>A Tarnished warhammer.
+   
+"Tarnished Axe":
+   type: item
+   material: 275
+   display name: "<green>Tarnished Axe"
+   lore:
+   - <white>A Tarnished axe.
+
+"Tarnished Battleaxe":
+   type: item
+   material: 275
+   display name: "<green>Tarnished Battleaxe"
+   lore:
+   - <white>A Tarnished battleaxe.
+   
+"Tarnished Great Axe":
+   type: item
+   material: 275
+   display name: "<green>Tarnished Great Axe"
+   lore:
+   - <white>A Tarnished great axe.
+   
+"Tarnished Scythe":
+   type: item
+   material: 291
+   display name: "<green>Tarnished Scythe"
+   lore:
+   - <white>A Tarnished scythe.
+   
+"Leather Scraps":
+   type: item
+   material: 334
+   display name: "<green>Leather Scraps"
+   lore:
+   - <white>You may be able to fashion this into some decent armor.
+   
+"Patchwork Leather Hat":
+   type: item
+   material: 298
+   display name: "<green>Patchwork Leather Hat"
+   lore:
+   - <white>A leather hat made from leather scraps and patches.
+   
+"Patchwork Leather Tunic":
+   type: item
+   material: 299
+   display name: "<green>Patchwork Leather Tunic"
+   lore:
+   - <white>A leather tunic made from leather scraps and patches.
+   
+"Patchwork Leather Pants":
+   type: item
+   material: 300
+   display name: "<green>Patchwork Leather Pants"
+   lore:
+   - <white>A pair of leather pants made from leather scraps and patches.
+   
+"Patchwork Leather Boots":
+   type: item
+   material: 301
+   display name: "<green>Patchwork Leather Boots"
+   lore:
+   - <white>A pair of leather boots made from leather scraps and patches.
+   
+"Tattered Leather Hat":
+   type: item
+   material: 298
+   display name: "<green>Tattered Leather Hat"
+   lore:
+   - <white>A tattered leather hat made from leather scraps and patches.
+   
+"Tattered Leather Tunic":
+   type: item
+   material: 299
+   display name: "<green>Tattered Leather Tunic"
+   lore:
+   - <white>A tattered leather tunic made from leather scraps and patches.
+   
+"Tattered Leather Pants":
+   type: item
+   material: 300
+   display name: "<green>Tattered Leather Pants"
+   lore:
+   - <white>A pair of tattered leather pants made from leather scraps and patches.
+   
+"Tattered Leather Boots":
+   type: item
+   material: 301
+   display name: "<green>Tattered Leather Boots"
+   lore:
+   - <white>A pair of tattered leather boots made from leather scraps and patches.
 
 # [Plane of Fire Loot]
 "Flame Ingot":
@@ -367,6 +663,43 @@
 # ========================================================
 # Rare Tier Items - Blue Tag
 
+# [Overworld Loot]
+"Ringmail Coif":
+   type: item
+   material: 302
+   display name: "<&9>Ringmail Coif"
+   lore:
+   - <white>A ringmail tunic made from iron ringlets.
+   enchantments:
+   - durability:2
+   
+"Ringmail Tunic":
+   type: item
+   material: 303
+   display name: "<&9>Ringmail Tunic"
+   lore:
+   - <white>A ringmail tunic made from iron ringlets.
+   enchantments:
+   - durability:2
+   
+"Ringmail Leggings":
+   type: item
+   material: 304
+   display name: "<&9>Ringmail Leggings"
+   lore:
+   - <white>A pair of ringmail leggings made from iron ringlets.
+   enchantments:
+   - durability:2
+   
+"Ringmail Boots":
+   type: item
+   material: 305
+   display name: "<&9>Ringmail Boots"
+   lore:
+   - <white>A pair of ringmail boots made from iron ringlets.
+   enchantments:
+   - durability:2
+
 # [Plane of Fire Loot]
 "Shattered Flamemail Helm":
    type: item
@@ -488,6 +821,89 @@
 
 # ========================================================
 # Epic Tier Items - Purple Tag
+
+# [Overworld Loot]
+"Nightblade":
+   type: item
+   material: 276
+   display name: "<&5>Nightblade"
+   lore:
+   - <white>A weapon only rumored of existing.
+   enchantments:
+   - damage_all:4
+   - durability:3
+   
+"Willsapper":
+   type: item
+   material: 276
+   display name: "<&5>Willsapper"
+   lore:
+   - <green>Effect<&co> <red>Snare
+   enchantments:
+   - damage_all:4
+   - durability:3
+   
+# Willsapper Snare Effect
+"willsapSnare":
+   type: world
+   events:
+     on entity damaged by player:
+       - if <player.item_in_hand.lore> == "<green>Effect<&co> <red>Snare" {
+         - if "<player.flag[snareProc]>" == null {
+           - narrate "<&9>Your <&5>Willsapper<&9> ensnares your target!"
+           - if <context.entity.is_player> narrate targets:<context.entity> "<red>You were snared by <player.name><&sq>s <&5>Willsapper<red>!"
+           - cast slow duration:10 power:1
+           - flag <player> "snareProc" duration:5
+           }
+         }
+
+"Pegasus Feather Cloak":
+   type: item
+   material: 288
+   display name: "<&5>Pegasus Feather Cloak"
+   lore:
+   - <green>Use<&co> <red>Levitate
+   enchantments:
+   - durability:3
+   
+"Eyepatch of Plunder":
+   type: item
+   material: 310
+   display name: "<&5>Eyepatch of Plunder"
+   lore:
+   - <green>Use<&co> <red>Haste
+   enchantments:
+   - durability:3
+
+# Eyepatch of Plunder Effect
+"patchyPlunder":
+   type: world
+   events:
+     on use command:
+       - if <player.item_in_hand.lore> == "<green>Use<&co> <red>Haste" {
+         - narrate "<&9>Your hand shakes with speed!"
+         - cast fast_digging duration:60 power:1
+         - playeffect location:<player.location> effect:smoke qty:10
+         }
+
+"Meteorite Shard":
+   type: item
+   material: 385
+   display name: "<&5>Meteorite Shard"
+   lore:
+   - <green>Use<&co> <red>Summon Meteorite <&lb>5 Min CD<&rb>
+   enchantments:
+   - durability:1
+   
+# Meteorite Shard Item Effect
+"meteorAttack":
+   type: world
+   events:
+     on player right clicks with i@"Meteorite Shard":
+       - if "<player.flag[meteoriteCD]>" == null {
+         - narrate "<&9>A blazing fireball falls from the sky!"
+         - flag <player> "meteoriteCD" duration:300
+         - shoot e@fireball height:0.05 gravity:0.01 }
 
 # [Plane of Ender Loot]
 "Hurricane":

@@ -32,11 +32,11 @@
     type: procedure
 
     script:
-    - define roll <util.random.int[1].to[500]>
-    - if %roll% >= 0 && %roll% < 400 define quality "Common"
-      else if %roll% >= 400 && %roll% < 475 define quality "Uncommon"
-      else if %roll% >= 475 && %roll% < 497 define quality "Rare"
-      else if %roll% >= 497 define quality "Epic"
+    - define roll <util.random.int[1].to[5000]>
+    - if %roll% >= 0 && %roll% < 4000 define quality "Common"
+      else if %roll% >= 4000 && %roll% < 4750 define quality "Uncommon"
+      else if %roll% >= 4750 && %roll% < 4970 define quality "Rare"
+      else if %roll% >= 4970 define quality "Epic"
  
     - if %quality% == Common {
       - random 5
@@ -81,11 +81,11 @@
     type: procedure
 
     script:
-    - define roll <util.random.int[1].to[500]>
-    - if %roll% >= 0 && %roll% < 400 define quality "Common"
-      else if %roll% >= 400 && %roll% < 475 define quality "Uncommon"
-      else if %roll% >= 475 && %roll% < 497 define quality "Rare"
-      else if %roll% >= 497 define quality "Epic"
+    - define roll <util.random.int[1].to[5000]>
+    - if %roll% >= 0 && %roll% < 4000 define quality "Common"
+      else if %roll% >= 4000 && %roll% < 4750 define quality "Uncommon"
+      else if %roll% >= 4750 && %roll% < 4970 define quality "Rare"
+      else if %roll% >= 4970 define quality "Epic"
  
     - if %quality% == Common {
       - random 20
@@ -154,11 +154,11 @@
     type: procedure
 
     script:
-    - define roll <util.random.int[1].to[500]>
-    - if %roll% >= 0 && %roll% < 400 define quality "Common"
-      else if %roll% >= 400 && %roll% < 475 define quality "Uncommon"
-      else if %roll% >= 475 && %roll% < 497 define quality "Rare"
-      else if %roll% >= 497 define quality "Epic"
+    - define roll <util.random.int[1].to[5000]>
+    - if %roll% >= 0 && %roll% < 4000 define quality "Common"
+      else if %roll% >= 4000 && %roll% < 4750 define quality "Uncommon"
+      else if %roll% >= 4750 && %roll% < 4970 define quality "Rare"
+      else if %roll% >= 4970 define quality "Epic"
  
     - if %quality% == Common {
       - random 20
@@ -227,11 +227,11 @@
     type: procedure
 
     script:
-    - define roll <util.random.int[1].to[500]>
-    - if %roll% >= 0 && %roll% < 400 define quality "Common"
-      else if %roll% >= 400 && %roll% < 475 define quality "Uncommon"
-      else if %roll% >= 475 && %roll% < 497 define quality "Rare"
-      else if %roll% >= 497 define quality "Epic"
+    - define roll <util.random.int[1].to[5000]>
+    - if %roll% >= 0 && %roll% < 4000 define quality "Common"
+      else if %roll% >= 4000 && %roll% < 4750 define quality "Uncommon"
+      else if %roll% >= 4750 && %roll% < 4970 define quality "Rare"
+      else if %roll% >= 4970 define quality "Epic"
  
     - if %quality% == Common {
       - random 20
@@ -300,11 +300,11 @@
     type: procedure
 
     script:
-    - define roll <util.random.int[1].to[500]>
-    - if %roll% >= 0 && %roll% < 400 define quality "Common"
-      else if %roll% >= 400 && %roll% < 475 define quality "Uncommon"
-      else if %roll% >= 475 && %roll% < 497 define quality "Rare"
-      else if %roll% >= 497 define quality "Epic"
+    - define roll <util.random.int[1].to[5000]>
+    - if %roll% >= 0 && %roll% < 4000 define quality "Common"
+      else if %roll% >= 4000 && %roll% < 4750 define quality "Uncommon"
+      else if %roll% >= 4750 && %roll% < 4970 define quality "Rare"
+      else if %roll% >= 4970 define quality "Epic"
  
     - if %quality% == Common {
       - random 11

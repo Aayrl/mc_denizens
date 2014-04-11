@@ -12,7 +12,8 @@
     - 10 GatherSupplies
     - 20 CraftSupplies
     - 30 KillingForJustice
-    #- 40 Diplomacy
+    - 40 DiplomacyStart
+    - 45 DiplomacyEnd
     #- 50 AvatarMustDie
     #- 60 FlaggingForPOEnder
 
@@ -435,12 +436,54 @@ PoEnder_CreeperKillDone:
     - zap 'step:poend_kill9' script:KillingForJustice
 
 # STAGE 4 OF ATTUNEMENT : DIPLOMACY
-# Speak to the Kelethin Overlord. They will demand 25 Gold Bars for their support.
-# Speak to Jennavb13 in Thurgadin. She will demand 10 Quartz Blocks for their support.
+# Speak to the Kelethin Overlord Thoridal. He will demand 25 Gold Bars for their support.
+# Speak to Jennavb13 in Thurgadin. She will demand 25 Quartz Blocks for their support.
 # Then, speak to Aayrl.
 # Upon complete:
 #	- announce "<aqua><player.name> has completed step 4 of 5 of the <maroon>Attunement to Enderland<aqua> questline!"			
-
+"DiplomacyStart":
+    type: interact
+    requirements:
+      mode: ALL
+      list: 
+      - FLAGGED 'POEnderAttune:Step4'
+    steps:
+        'StartDiplomacyPOEnd*':
+            click trigger:
+                script:
+                - chat "Are you ready to speak to some of our allies<&cm> <player.name>? It is time for you to demonstrate your <&lb><red>diplomacy<green><&rb> skills."
+            chat trigger:
+                'continuePOEnd1':
+                    trigger: 'What /diplomacy/?'
+                    script: 
+                    - chat 'You must speak with our allies in both Thurgadin and Kelethin<&cm> <player.name>. You must ask for their <&lb><red>assistance<green><&rb>.'
+                    - zap 'step:StartDiplomacyPOEnd2'
+        'StartDiplomacyPOEnd2':
+            click trigger:
+                script:
+                - chat 'You must speak with our allies in both Thurgadin and Kelethin<&cm> <player.name>. You must ask for their <&lb><red>assistance<green><&rb>.'
+            chat trigger:
+                'continuePOEnd2':
+                    trigger: 'What /assistance/?'
+                    script:
+                    - chat 'We will need their support to stop Lord Nefarious<&cm> a powerful black dragon keen on destroying our lands. Venture forth and <&lb><red>speak<green><&rb> to Jennavb in Thurgadin and Thoridal in Kelethin.'
+                    - zap 'step:StartDiplomacyPOEnd3'
+        'StartDiplomacyPOEnd3':
+            click trigger:
+                script:
+                - chat 'We will need their support to stop Lord Nefarious<&cm> a powerful black dragon keen on destroying our lands. Venture forth and <&lb><red>speak<green><&rb> to Jennavb in Thurgadin and Thoridal in Kelethin.'
+            chat trigger:
+                'continuePOEnd2':
+                    trigger: 'I will /speak/ to them.'
+                    script:
+                    - chat 'I eagerly await your return<&cm> <player.name>. Please meet any demands they set forth for you. We cannot fail!'
+                    - flag player "PoEnder_DiplomacyThurgadin:0"
+                    - flag player "PoEnder_DiplomacyKelethin:0"
+                    - zap 'step:StartDiplomacyPOEnd4'
+        'StartDiplomacyPOEnd4':
+            click trigger:
+                script:
+                - chat 'You must speak with our allies in both Thurgadin and Kelethin<&cm> <player.name>. I eagerly await their response.'
 
 # STAGE 5 (FINAL) OF ATTUNEMENT : AVATAR OF HAKKAR
 # Bring a small raid force (or solo) the Avatar of Hakkar.

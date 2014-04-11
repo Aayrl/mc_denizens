@@ -24,6 +24,6 @@
 		  - if <flag.p:home repeatTimer.expiration> == 0 {
 		   	- narrate "<yellow>The cooldown has expired."
 			}
-		  - if <flag.p:home repeatTimer.expiration> != 0 {
+		  - if <flag.p:home repeatTimer.expiration> > 0 {
 		  	- narrate "<yellow>Home Cooldown: <flag.p:home repeatTimer.expiration>"
-		  }
+		  } 

@@ -1,0 +1,119 @@
+# Thoridal NPC 
+# Tyler J. Sawyer
+# 4-9-14
+
+# Base Quest Assignment for 'Thoridal' NPC.
+"thoridal_npc":
+    type: assignment
+    
+    interact scripts:
+    - 1 NoQuests_Thoridal
+    #- 5 FactionCheck_Thoridal
+    - 25 POEnder_Attuner_Thoridal
+
+# NO QUEST : If the player has no quests with this NPC, it will default to this text.
+"NoQuests_Thoridal":
+    type: interact
+    steps:
+        'noquests_thoridal*':
+            click trigger:
+                script:
+                - chat 'Welcome to Kelethin<&cm> <player.name>. What brings you to our humble <&lb><red>homeland<green><&rb>?'
+            chat trigger:
+                'continue_noquests_thoridal':
+                    trigger: 'What /homeland/?'
+                    script: 
+                    - chat 'Why<&cm> our beautiful treetop city of course. Feel free to stay as long as you would like<&cm> <player.name>.'
+
+# Plane of Ender Attunement Step involving Thoridal NPC. 
+# Player must be flagged for POEnderAttune:Step4.
+# Must also be flagged from Lord Aayrl for Kelethin:0.
+"POEnder_Attuner_Thoridal":
+    type: interact
+    requirements:
+      mode: ALL
+      list: 
+      - FLAGGED 'POEnderAttune:Step4'
+      - FLAGGED 'PoEnder_DiplomacyKelethin:0'
+    steps:
+        'Thoridal_craft_poender*':
+            click trigger:
+                script:
+                - chat 'Welcome<&cm> <player.name>. I hear you are on a quest from Lord Aayrl. Is this rumor <&lb><red>true<green><&rb>?'
+            chat trigger:
+                'continue_noquests_thoridal':
+                    trigger: 'Yes this is /true/.'
+                    script: 
+                    - chat 'The Wood Elves originally sealed the <&4>Plane of Ender<green> from mortal beings. Why would you dare <&lb><red>venture<green><&rb> there?'
+                    - zap 'step:Thoridal_craft_poender2'
+        'Thoridal_craft_poender2':
+            click trigger:
+                script:
+                - chat 'The Wood Elves originally sealed the <&4>Plane of Ender<green> from mortal beings. Why would you dare <&lb><red>venture<green><&rb> there?'
+            chat trigger:
+                'continue_noquests_thoridal2':
+                    trigger: 'I dare /venture/ there to stop Lord Nefarious.'
+                    script:
+                    - chat 'Lord Nefarious has been awakened? Fair mortal, you do not understand the peril you will encounter.'
+                    - wait 1
+                    - chat 'You seem determined to stop this evil. Hmph.'
+                    - wait 1
+                    - chat 'Very well<&cm> <player.name>. I will assist you<&cm> but for a <&lb><red>price<green><&rb>.'
+                    - zap 'step:Thoridal_craft_poender3'
+        'Thoridal_craft_poender3':
+            click trigger:
+                script:
+                - chat 'Very well<&cm> <player.name>. I will assist you<&cm> but for a <&lb><red>price<green><&rb>.'
+            chat trigger:
+                'continue_noquests_thoridal3':
+                    trigger: 'What /price/?'
+                    script:
+                    - chat 'In trade for our blessed equipment<&cm> I require you to <&lb><red>smelt<green><&rb> a certain<&cm> special ore for me.'
+                    - zap 'step:Thoridal_craft_poender4'
+        'Thoridal_craft_poender4':
+            click trigger:
+                script:
+                - chat 'In trade for our blessed equipment<&cm> I require you to <&lb><red>smelt<green><&rb> a certain<&cm> special ore for me.'
+
+            chat trigger:
+                'gather1cont':
+                    trigger: 'What do you need me to /smelt/?'
+                    script: 
+                    - chat 'I would like you to smelt 25 Gold Ingots. They are required for the blessing rituals. If you bring me these ingots<&cm> I shall enchant your army and their equipment.'
+                    - listen item type:craft item:gold_ingot qty:1 script:PoEnder_DipKeleth_GoldProg 
+                    - flag player PoEnder_DipKeleth_Gold:0
+                    - narrate '<yellow>You have accepted the task "POE<&co> Diplomacy in Kelethin".'
+                    - zap 'step:Thoridal_craft_poender5'
+        'Thoridal_craft_poender5':
+            click trigger:
+                script:
+                - chat "I see you have some Gold Ingots<&cm> but I requested 25 to be smelted. Speak to me when you have 25<&cm> <player.name>."
+                - narrate '<yellow>Progress<&co> <player.flag[PoEnder_DipKeleth_Gold].asint> / 25 Gold Ingots Smelted.'
+
+        'Thoridal_craft_poender6':
+            click trigger:
+                script:
+                    - chat "Ahh<&cm> <player.name>. I see you have 25 Gold Ingots. I will send these along to my enchanters."
+                    - take 'item:gold_ingot' qty:25
+                    - wait 1
+                    - chat "Go and speak with Lord Aayrl<&cm> <player.name>. Good luck on your quest<&cm> you will need it."
+                    - flag player PoEnder_DiplomacyKelethin:1
+
+PoEnder_DipKeleth_GoldProg:
+    type: task
+    script:
+    - flag player PoEnder_DipKeleth_Gold:++
+    - narrate "<yellow>Gold Ingots Crafted<&co> <player.flag[PoEnder_DipKeleth_Gold].asint>/25"
+    - if <player.flag[PoEnder_DipKeleth_Gold].asint> >= 4 run PoEnder_DipKeleth_GoldDone
+      else run PoEnder_DipKeleth_GoldContinue
+
+PoEnder_DipKeleth_GoldContinue:
+    type: task
+    script:
+    - listen item type:craft item:gold_ingot qty:1 script:PoEnder_DipKeleth_GoldProg 
+
+PoEnder_DipKeleth_GoldDone:
+    type: task
+    script:
+    - narrate "<yellow>You have crafted <player.flag[PoEnder_DipKeleth_Gold].asint>/25 Gold Ingots! Return to <npc.name> with the Gold in hand."
+    - zap 'step:Thoridal_craft_poender6' script:POEnder_Attuner_Thoridal

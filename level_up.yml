@@ -8,7 +8,9 @@
   type: world
   events:
     on player levels up:
-      - announce "<yellow><player.name> has reached level <context.level>!"
+      - if <context.level.asint> >= 1 {
+        - announce "<yellow><player.name> has reached level <context.level>!"
+      }
       - if <context.level.asint> == 30 {
         - narrate "<aqua>You have reached the maximum enchantment level requirement. Perhaps you should enchant an item?"
       }

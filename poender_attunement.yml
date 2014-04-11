@@ -504,6 +504,8 @@ PoEnder_CreeperKillDone:
                     trigger: 'Our /allies/ will assist us!'
                     script: 
                     - chat 'This is terrific news<&cm> <player.name>! However<&cm> there is a more dangeous <&lb><red>foe<green><&rb> we need to deal with..'
+                    - flag player "POEnderAttune:Step5"
+                    - announce "<aqua><player.name> has completed step 4 of 5 of the <&5>Attunement to Enderland<aqua> questline!"
 
 # STAGE 5 (FINAL) OF ATTUNEMENT : AVATAR OF HAKKAR
 # Bring a small raid force (or solo) the Avatar of Hakkar.

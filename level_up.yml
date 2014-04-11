@@ -9,6 +9,24 @@
   events:
     on player levels up:
       - announce "<yellow><player.name> has reached level <context.level>!"
+      - if <context.level.asint> == 30 {
+        - narrate "<aqua>You have reached the maximum enchantment level requirement. Perhaps you should enchant an item?"
+      }
+      - if <context.level.asint> == 50 {
+        - announce "<aqua>The noble <player.name> has reached level <context.level>!!"
+      }
+      - if <context.level.asint> == 100 {
+        - announce "<aqua>Sweet baby zombies riding chickens<&cm> <player.name> has reached level <context.level>!!"
+      }
+      - if <context.level.asint> == 250 {
+        - announce "<aqua>Bow before <player.name><&cm> they have reached level <context.level>!!"
+      }
+      - if <context.level.asint> == 500 {
+        - announce "<aqua>Someone kill <player.name><&cm> they have reached level <context.level> and need to stop playing and go outside."
+      }
+      - if <context.level.asint> == 1000 {
+        - announce "<aqua>Fuck you<&cm> <player.name><&cm> for reaching level <context.level>. You have no life. Grats on level <context.level> though."
+      }
     on player changes xp:
       - narrate "<yellow>You gain <context.amount> experience!"
     on level command:

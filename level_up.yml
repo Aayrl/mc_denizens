@@ -30,8 +30,23 @@
         - announce "<aqua>Fuck you<&cm> <player.name><&cm> for reaching level <context.level>. You have no life. Grats on level <context.level> though."
         }
     on player changes xp:
-      - narrate "<yellow>You gain <context.amount> experience!"
+      - if <player.flag[toggleXpText]> == "on" {
+        - narrate "<yellow>You gain <context.amount> experience!"
+        }
     on level command:
       - narrate "<yellow><player.name><&co> Level <player.xp.level>"
       - narrate "<yellow><player.xp.to_next_level.asint> Exp to Level <&lb><player.xp.asint> / <m:<player.xp.asint>+<player.xp.to_next_level.asint>><&rb>"
       - narrate "<yellow>Total XP Earned<&co> <player.xp.total> Experience."
+    on togglexp command:
+      - if <context.args.get[1]> == on {
+        - flag player "toggleXpText:<context.args.get[1]>"
+        - narrate "<&6>You will now see experience gains in chat."
+        }
+      - if <context.args.get[1]> == off {
+        - flag player "toggleXpText:<context.args.get[1]>"
+        - narrate "<&6>You will no longer see experience gains in chat."
+        }
+      - if <context.args.get[1]> == null {
+        - flag player "toggleXpText:on"
+        - narrate "<&6>You will now see experience gains in chat." 
+        }

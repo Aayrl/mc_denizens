@@ -46,7 +46,7 @@
             - narrate "<gold>/use - If an item has a 'Use' tag, this activates its power."
             - narrate "<gold>/combattext on/off/hitsmode - Toggles CombatText settings."
             - narrate "<gold>/level - Displays information about your level and experience."
-            - narrate "<gold>PH"
+            - narrate "<gold>/togglexp on/off - Displays 'You Gain Experience' chat."
             }
           #- if <context.args.get[1]> == 3 {
             #- narrate "<gold>--- CSCrew Commands [3/3] ---"

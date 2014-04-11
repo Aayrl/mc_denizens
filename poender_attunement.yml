@@ -14,8 +14,8 @@
     - 30 KillingForJustice
     - 40 DiplomacyStart
     - 45 DiplomacyEnd
-    #- 50 AvatarMustDie
-    #- 60 FlaggingForPOEnder
+    - 50 AvatarMustDie
+    - 60 POEFlagify
 
 # LORE STEP : PRE-ATTUNEMENT QUEST.
 "LoreStep":
@@ -510,7 +510,51 @@ PoEnder_CreeperKillDone:
 # STAGE 5 (FINAL) OF ATTUNEMENT : AVATAR OF HAKKAR
 # Bring a small raid force (or solo) the Avatar of Hakkar.
 # Return his head as proof of the deed to Aayrl.
-
+"AvatarMustDie":
+    type: interact
+    requirements:
+      mode: ALL
+      list: 
+      - FLAGGED 'POEnderAttune:Step5'
+    steps:
+        'POEndKillAoHakkar*':
+            click trigger:
+                script:
+                - chat 'This is terrific news<&cm> <player.name>! However<&cm> there is a more dangeous <&lb><red>foe<green><&rb> we need to deal with..'
+            chat trigger:
+                'continueAOHAKKARPOEnd1':
+                    trigger: 'What /foe/?'
+                    script: 
+                    - chat 'He is known as the Avatar of Hakkar<&cm> a reincarnation of the powerful god Hakkar. He must be <&lb><red>dealt<green><&rb> with.'
+                    - zap 'step:POEndKillAoHakkar2'
+        'POEndKillAoHakkar2':
+            click trigger:
+                script:
+                - chat 'He is known as the Avatar of Hakkar<&cm> a reincarnation of the powerful god Hakkar. He must be <&lb><red>dealt<green><&rb> with.'
+            chat trigger:
+                'continueAOHAKKARPOEnd2':
+                    trigger: 'Why must he be /dealt/ with?'
+                    script:
+                    - chat 'He is currently preventing our most powerful magicians from opening the portal to the <&4>Plane of Ender<green>. Will you <&lb><red>take care<green><&rb> of our problem<&cm> <player.name>?'
+                    - zap 'step:POEndKillAoHakkar3'
+        'POEndKillAoHakkar3':
+            click trigger:
+                script:
+                - chat 'He is currently preventing our most powerful magicians from opening the portal to the <&4>Plane of Ender<green>. Will you <&lb><red>take care<green><&rb> of our problem<&cm> <player.name>?'
+            chat trigger:
+                'continueAOHAKKARPOEnd3':
+                    trigger: 'I will /take care/ of him.'
+                    script:
+                    - chat 'The Avatar of Hakkar is a strong entity<&cm> <player.name>. Consider bringing some friends for this feat.'
+                    - wait 1
+                    - chat 'Return with his head as proof of the deed.'
+                    - flag player "PoEnder_AvatarHakkarKilled:0"
+                    - narrate '<yellow>You have accepted the task "POE<&co> Avatar of Hakkar Must Die!".'
+                    - zap 'step:POEndKillAOHakkar4'
+        'POEndKillAoHakkar4':
+            click trigger:
+                script:
+                - chat 'Hurry<&cm> <player.name>! The Avatar of Hakkar must be stopped! Bring me his head as proof of the deed!'
 
 # STAGE 6 : FLAGGING!
 # Quest wrap-up, this is where you character gets flagged to enter POEnder.
@@ -518,4 +562,28 @@ PoEnder_CreeperKillDone:
 #	- announce "<red>Aayrl yells, 'Let it be known that on this day, <aqua><player.name><red> has defeated the Avatar of Hakkar, and as such, earned the highest rank of the Gondorian Guard!'"
 #	- announce "<red>Aayrl yells, 'Let their name ring thoughout the lands! All hail <aqua>General <player.name><red>!'"
 #	- announce "<aqua><player.name> has completed the final step of the <maroon>Attunement to Enderland<aqua> questline!"
-#	- announce "<aqua><player.name> is now attuned for the <maroon>Plane of Ender<aqua>!"
+#	- announce "<aqua><player.name> is now attuned to the <maroon>Plane of Ender<aqua>!"
+"POEFlagify":
+    type: interact
+    requirements:
+      mode: ALL
+      list: 
+      - FLAGGED 'POEnderAttune:Step6'
+      - FLAGGED 'PoEnder_AvatarHakkarKilled:1'
+    steps:
+        'POEndKillAoHakkar*':
+            click trigger:
+                script:
+                - chat 'Our mages have opened the portal<&cm> <player.name>! Did you bring his <&lb><red>head<green><&rb> as proof of your deed?'
+            chat trigger:
+                'continueAOHAKKARPOEnd1':
+                    trigger: 'Here is the /head/ of that heretic!'
+                    script: 
+                    - chat 'You truly are a hero among men<&cm> <player.name> It is time for us to ender the <&4>Plane of Ender<green>!'
+                    - flag player "POEnderAttune:ATTUNED"
+                    - announce "<aqua><player.name> has completed the final step of the <&4>Attunement to Enderland<aqua> questline!"
+                    - announce "<aqua><player.name> is now attuned to the <&4>Plane of Ender<aqua>!"
+                    - wait 1
+                    - announce "<red>Aayrl yells, 'Let it be known that on this day, <aqua><player.name><red> has defeated the Avatar of Hakkar, and as such, earned the highest rank of the Gondorian Guard!'"
+                    - wait 1
+                    - announce "<red>Aayrl yells, 'Let their name ring thoughout the lands! All hail <aqua>General <player.name><red>!'"

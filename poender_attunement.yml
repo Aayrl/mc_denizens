@@ -485,6 +485,25 @@ PoEnder_CreeperKillDone:
                 script:
                 - chat 'You must speak with our allies in both Thurgadin and Kelethin<&cm> <player.name>. I eagerly await their response.'
 
+"DiplomacyEnd":
+    type: interact
+    requirements:
+      mode: ALL
+      list: 
+      - FLAGGED 'POEnderAttune:Step4'
+      - FLAGGED 'PoEnder_DiplomacyThurgadin:1'
+      - FLAGGED 'PoEnder_DiplomacyKelethin:1'
+    steps:
+        'EndDiplomacyPOEnd*':
+            click trigger:
+                script:
+                - chat "Welcome back<&cm> <player.name>. What news do you have from our <&lb><red>allies<green><&rb>?"
+            chat trigger:
+                'continuePOEnd1':
+                    trigger: 'Our /allies/ will assist us!'
+                    script: 
+                    - chat 'This is terrific news<&cm> <player.name>! However<&cm> there is a more dangeous <&lb><red>foe<green><&rb> we need to deal with..'
+
 # STAGE 5 (FINAL) OF ATTUNEMENT : AVATAR OF HAKKAR
 # Bring a small raid force (or solo) the Avatar of Hakkar.
 # Return his head as proof of the deed to Aayrl.

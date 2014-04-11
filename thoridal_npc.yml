@@ -80,7 +80,7 @@
                     trigger: 'What do you need me to /smelt/?'
                     script: 
                     - chat 'I would like you to smelt 25 Gold Ingots. They are required for the blessing rituals. If you bring me these ingots<&cm> I shall enchant your army and their equipment.'
-                    - listen item type:craft item:gold_ingot qty:1 script:PoEnder_DipKeleth_GoldProg 
+                    - listen item type:smelt item:gold_ingot qty:1 script:PoEnder_DipKeleth_GoldProg 
                     - flag player PoEnder_DipKeleth_Gold:0
                     - narrate '<yellow>You have accepted the task "POE<&co> Diplomacy in Kelethin".'
                     - zap 'step:Thoridal_craft_poender5'
@@ -104,13 +104,13 @@ PoEnder_DipKeleth_GoldProg:
     script:
     - flag player PoEnder_DipKeleth_Gold:++
     - narrate "<yellow>Gold Ingots Crafted<&co> <player.flag[PoEnder_DipKeleth_Gold].asint>/25"
-    - if <player.flag[PoEnder_DipKeleth_Gold].asint> >= 4 run PoEnder_DipKeleth_GoldDone
+    - if <player.flag[PoEnder_DipKeleth_Gold].asint> >= 25 run PoEnder_DipKeleth_GoldDone
       else run PoEnder_DipKeleth_GoldContinue
 
 PoEnder_DipKeleth_GoldContinue:
     type: task
     script:
-    - listen item type:craft item:gold_ingot qty:1 script:PoEnder_DipKeleth_GoldProg 
+    - listen item type:smelt item:gold_ingot qty:1 script:PoEnder_DipKeleth_GoldProg 
 
 PoEnder_DipKeleth_GoldDone:
     type: task

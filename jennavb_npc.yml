@@ -121,7 +121,7 @@ PoEnder_DipThurg_QuartzProg:
     script:
     - flag player PoEnder_DipThurg_Quartz:++
     - narrate "<yellow>Quartz Blocks Crafted<&co> <player.flag[PoEnder_DipThurg_Quartz].asint>/25"
-    - if <player.flag[PoEnder_DipThurg_Quartz].asint> >= 4 run PoEnder_DipThurg_QuartzDone
+    - if <player.flag[PoEnder_DipThurg_Quartz].asint> >= 25 run PoEnder_DipThurg_QuartzDone
       else run PoEnder_DipThurg_QuartzContinue
 
 PoEnder_DipThurg_QuartzContinue:

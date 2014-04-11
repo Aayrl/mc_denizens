@@ -5,6 +5,6 @@
 "Blazling Egg":
    type: item
    material: emerald
-   display name: "Blazline Egg"
+   display name: "Blazling Egg"
    lore:
    - <green>Effect<&co> <red>Summon Blazling Mount

@@ -479,6 +479,7 @@ PoEnder_CreeperKillDone:
                     - chat 'I eagerly await your return<&cm> <player.name>. Please meet any demands they set forth for you. We cannot fail!'
                     - flag player "PoEnder_DiplomacyThurgadin:0"
                     - flag player "PoEnder_DiplomacyKelethin:0"
+                    - narrate '<yellow>You have accepted the task "POE<&co> Diplomacy".'
                     - zap 'step:StartDiplomacyPOEnd4'
         'StartDiplomacyPOEnd4':
             click trigger:

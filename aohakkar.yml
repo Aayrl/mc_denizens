@@ -1,5 +1,6 @@
 # Avatar of Hakkar is a boss fight.
 # Tyler J. Sawyer
+# Based loosely on : http://scripts.citizensnpcs.co/view/34aapf
 
 # AOH
 # on attack
@@ -26,69 +27,90 @@
 # Poison and blind the player
 # 30 sec cooldown
 
+# Respawn Timer : 43200 seconds - 12 hours
+
 aohakkar:
   type: assignment
 
   default constants:
-    approach message: <red>YOU CANNOT STOP THE POWER OF HAKKAR!
-    fleeing message: <red>FOOL! YOU CANNOT FLEE!
+    # Agro Message : Message to display when a player engages the boss.
+    agro message: <red>YOU CANNOT STOP THE POWER OF HAKKAR!
+    # Death Message : Message displayed when the boss is slain.
     death message: <red>YOU HAVE NOT SEEN THE LAST OF HAKKAR!!
+    # Victory Message : Message when a player is killed by the boss.
     victory message: <red>AAHH..ANOTHER SACRIFICE FOR HAKKAR!
+    # Random Message 1-3 : Random flavor text.
     random message1: <red>-HISSSSS-
     random message2: <red>MADNESS WILL CONSUME YOU!
     random message3: <red>DEATH TO ALL WHO OPPOSE HAKKAR!
 
+    # Avatar of Hakkar : Statistics
+    # Avatar of Hakkar Health Pool
+    aoh_health: 2000
+    # Avatar of Hakkar Damage / Swing
+    aoh_str: 5
+    # Avatar of Hakkar Armor Value
+    aoh_AC: 5
+    # Avatar of Hakkar Agro Radius (in Blocks)
+    aoh_AGRO_RADIUS: 15
+    # Avatar of Hakkar Movement Speed (Blocks / Tick)
+    aoh_Movement_Speed: 2.0
+    # Avatar of Hakkar's Spawnpoint
+    aoh_SpawnPoint: "23,69,536,world"
+    # Avatar of Hakkar Respawn Timer in seconds (43200 = 12 hrs)
+    aoh_Respawn_Timer: 10
+    # Avatar of Hakkar XP Amount he drops on death
+    aoh_XP_AMT: 2500
+
+    # Avatar of Hakkar : Adds
+    # Avatar of Hakkar Add Spawn Point Sphere
+    aoh_add_cuboid_1: "30,69,527,world"
+    aoh_add_cuboid_2: "14,69,537,world"
+
+  interact scripts:
+  - 10 AOHakkarScript
+
   actions:
     on assignment:
-    - trigger name:proximity 
-      toggle:true radius:15
+    - trigger name:proximity toggle:true "radius:<cons:aoh_AGRO_RADIUS>"
     - trigger name:damage toggle:true
-    - health toggle:true
-    - vulnerable
+
+    # Avatar of Hakkar Cuboid for Add Spawns.
+    - flag npc "cuboid:cu@<cons:aoh_add_cuboid_1>|<cons:aoh_add_cuboid_2>"
+
+    # Setup Avatar of Hakkar stats.
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "npc type player"
+    - execute as_server "npc speed <cons:aoh_Movement_Speed>"
+    - execute as_server "npc lookclose"
+    - execute as_server "trait sentry"
+    - execute as_server "sentry health <cons:aoh_health>"
+    - execute as_server "sentry respawn <cons:aoh_Respawn_Timer>"
+    - execute as_server "sentry speed <cons:aoh_Movement_Speed>"
+    - execute as_server "sentry strength <cons:aoh_str>"
+    - execute as_server "sentry armor <cons:aoh_AC>"
+    - execute as_server "sentry range <cons:aoh_AGRO_RADIUS>"
 
     on spawn:
-    - execute as_server "npc tpto 10 11"
-    - flag npc in_pursuit:!
-    - trigger name:proximity 
-      toggle:true radius:4
-    - trigger name:damage toggle:true
-    - health 250 state:true
-    - vulnerable
-
-    on enter proximity:
-    - if <npc.flag[in_pursuit]> 
-      queue clear
-    - attack
-    - flag npc in_pursuit:true
-    - lookclose toggle:true
-    - narrate "<&5>A strange voice in your head says, 
-      '<cons:approach message>'"
-    - announce "<&5>You hear a low pitched hiss far in the distance.."
-
-    on exit proximity:
-    - if !<npc.flag[in_pursuit]> 
-      queue clear
-    - attack
-    - lookclose toggle:false
-    - narrate "<&5>Your head throbbs as you hear the words, 
-      '<cons:fleeing message>'"
-
-    on damage:
-    - if !<npc.flag[in_pursuit]> 
-      queue clear
-    - attack
+    # Warp Avatar of Hakkar to its spawn point on spawn.
+    - teleport <npc> "location:<cons:aoh_SpawnPoint>"
+    # Clear previous targets from hate list
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "sentry target clear"
 
     on death:
-    - drop XP qty:2500
-      location:<npc.location>
+    # XP amount
+    - drop XP qty:<cons:aoh_XP_AMT> location:<npc.location>
+    # Reset npc effects and clear hate targets.
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "npc effect --play none"
+    - execute as_server "sentry target clear"
+    # Announce to players the boss is dead.
     - announce "<red><npc.name> yells, <cons:death message>"
     - announce "<&5><npc.name> has been slain!"
-    - flag npc in_pursuit:!
+
+    on enter proximity:
+    - announce "<red><npc.name> yells<&cm> <&sq><cons:agro message><&sq>"
 
     on player death:
-    - narrate "<red><npc.name> yells, <cons:victory message>"
-    - announce "<&5>A piercing shriek is heard far in the distance.."
-    - flag npc in_pursuit:!   
-
-    on despawn:
-    - flag npc in_pursuit:!   
+    - announce "<red><npc.name> yells<&cm> <&sq><cons:victory message><&sq>"

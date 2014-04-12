@@ -97,6 +97,7 @@ aohakkar:
     # Clear previous targets from hate list
     - execute as_server "npc sel <npc.id>"
     - execute as_server "sentry target clear"
+    - execute as_server "sentry target add entity:player"
 
     on death:
     # XP amount
@@ -109,12 +110,27 @@ aohakkar:
     - announce "<red><npc.name> yells, <cons:death message>"
     - announce "<&5><npc.name> has been slain!"
 
+    on damage:
+    # IF the boss is hit by a player, refresh the engaged flag.
+    - if <context.damager.is_player> flag player "AvatarOfHakkar_Engaged:1" duration:30
+
     on enter proximity:
     - announce "<red><npc.name> yells<&cm> <&sq><cons:agro message><&sq>"
+    - playsound location:<npc.location> sound:cat_hiss
+    # Flag the player as 'engaged' with the boss for 30 seconds.
+    # If the player attacks the NPC, this refreshes.
+    # If the player gets summoned, this refreshes.
+    # If the player warps to spawn or home, this duration will fade out.
+    - flag player "AvatarOfHakkar_Engaged:1" duration:30
 
     on exit proximity:
-    - announce "<red><npc.name> yells<&cm> <&sq>You will not evade me<&cm> <player.name>!<&sq>"
-    - teleport <player> "location:<npc.location>"
+    - if FLAGGED "AvatarOfHakkar_Engaged:1" {
+      - announce "<red><npc.name> yells<&cm> <&sq>You will not evade me<&cm> <player.name>!<&sq>"
+      - narrate "<yellow>You have been summoned!"
+      - teleport <player> "location:<npc.location>"
+      - playsound location:<player.location> sound:portal_travel
+      - playeffect location:<player.location> effect:portal qty:1000
+      }
 
     on player death:
     - announce "<red><npc.name> yells<&cm> <&sq><cons:victory message><&sq>"

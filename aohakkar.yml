@@ -124,7 +124,7 @@ aohakkar:
     - flag player "AvatarOfHakkar_Engaged:1" duration:30
 
     on exit proximity:
-    - if FLAGGED "AvatarOfHakkar_Engaged:1" {
+    - if <context.player> FLAGGED "AvatarOfHakkar_Engaged:1" {
       - announce "<red><npc.name> yells<&cm> <&sq>You will not evade me<&cm> <player.name>!<&sq>"
       - narrate "<yellow>You have been summoned!"
       - teleport <player> "location:<npc.location>"

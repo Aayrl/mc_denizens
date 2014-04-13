@@ -8,4 +8,4 @@
    type: world
    events:
      on walked over "Kelethin_Music_Trigger":
-       - midi "gfaydark 5" location:<player.location>
+       - narrate "<yellow>MUSIC_TRIGGER_KELETHIN_01"

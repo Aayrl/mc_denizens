@@ -901,7 +901,7 @@
    events:
      on use command:
        - if <player.item_in_hand.lore> == "<green>Use<&co> Heal <&lb>Consumes an Emerald when Cast<&rb>" {
-         if <p@Aayrl.inventory<inventory.contains[emerald]]>> {
+         if <p@<player.name>.inventory<inventory.contains[emerald]]>> {
            - narrate "<&9>You consume an Emerald and heal your wounds!"
            - take 'item:emerald' qty:1
            - cast heal duration:1 power:5

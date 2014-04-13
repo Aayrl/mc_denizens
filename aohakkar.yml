@@ -146,7 +146,8 @@ aohakkar:
            - if <npc.flag[BossPlayerList].aslist> !contains <player> && <player.name> != <npc.name> flag npc BossPlayerList:->:<player>
        damage trigger:
          script:
-           - if <context.damager.is_player> flag player "AvatarOfHakkar_Engaged:true" duration:30
+           - flag player "AvatarOfHakkar_Engaged:true" duration:30
            - playsound location:<npc.location> sound:cat_hiss
            - playeffect location:<npc.location> effect:RED_DUST qty:10
+           
            

@@ -144,6 +144,10 @@ aohakkar:
            script:
            # Add player to the boss list when they enter his proximity.
            - if <npc.flag[BossPlayerList].aslist> !contains <player> && <player.name> != <npc.name> flag npc BossPlayerList:->:<player>
+         move:
+           script:
+           # Here are the random events based on movement inside the boss' proximity
+           - announce "<yellow>YOU ARE MOVING!"
        damage trigger:
          script:
            - flag player "AvatarOfHakkar_Engaged:true" duration:30

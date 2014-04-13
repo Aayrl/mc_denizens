@@ -886,6 +886,30 @@
          - playeffect location:<player.location> effect:smoke qty:10
          }
 
+"Pendant of the Sun":
+   type: item
+   material: GLOWSTONE_DUST
+   display name: "<&5>Pendant of the Sun"
+   lore:
+   - <green>Use<&co> Heal <&lb>Consumes an Emerald when Cast<&rb>
+   enchantments:
+   - durability:1
+
+# Pendant of the Sun effect
+"pendantSunEffect":
+   type: world
+   events:
+     on use command:
+       - if <player.item_in_hand.lore> == "<green>Use<&co> Heal <&lb>Consumes an Emerald when Cast<&rb>" {
+         - narrate "<red>This item requires an Emerald to use."
+         } 
+       - if <player.item_in_hand.lore> == "<green>Use<&co> Heal <&lb>Consumes an Emerald when Cast<&rb>" {
+         - narrate "<&9>You consume an Emerald and heal your wounds!"
+         - take 'item:emerald' qty:1
+         - cast heal duration:1 power:5
+         - playeffect location:<player.location> effect:potion_break qty:15 data:5
+         }
+         
 #"MeteoriteShard":
 #   type: item
 #   material: 385

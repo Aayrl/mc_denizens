@@ -46,7 +46,7 @@ aohakkar:
 
     # Avatar of Hakkar : Statistics
     # Avatar of Hakkar Health Pool
-    aoh_health: 2000
+    aoh_health: 5000
     # Avatar of Hakkar Damage / Swing
     aoh_str: 5
     # Avatar of Hakkar Armor Value

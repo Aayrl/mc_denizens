@@ -36,7 +36,7 @@ aohakkar:
     # Agro Message : Message to display when a player engages the boss.
     agro message: <red>YOU CANNOT STOP THE POWER OF HAKKAR!
     # Death Message : Message displayed when the boss is slain.
-    death message: <red>YOU HAVE NOT SEEN THE LAST OF HAKKAR!!
+    death message: <red>YOU HAVE NOT SEEN THE LAST OF HAKKAR!
     # Victory Message : Message when a player is killed by the boss.
     victory message: <red>AAHH..ANOTHER SACRIFICE FOR HAKKAR!
     # Random Message 1-3 : Random flavor text.

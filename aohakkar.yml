@@ -168,7 +168,7 @@ aohakkar:
    # This knocks the player up in the air 12 blocks every 30 seconds.
    script:
      - narrate "Everything is Awesome! You are <player.name>!" 
-     - if "<flag.npc:AOH_Knockback_CD:true || false>" == true {
+     - if <npc.flag[AOH_Knockback_CD]> == false {
        - narrate "Teleporting You meow"
        - teleport "<player.location.x.asint>,<m:<player.location.y.asint>+12>,<player.location.z.asint>,world"
        - flag npc "AOH_Knockback_CD:true" duration:30

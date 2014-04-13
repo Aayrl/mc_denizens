@@ -98,6 +98,8 @@ aohakkar:
     - execute as_server "npc sel <npc.id>"
     - execute as_server "sentry target clear"
     - execute as_server "sentry target add entity:player"
+    # Clear boss flags
+    - flag npc BossPlayerList:!
 
     on death:
     # XP amount
@@ -133,3 +135,17 @@ aohakkar:
       - playeffect location:<player.location> effect:portal qty:1000
       }
 
+"AOHakkarScript":
+   type: interact
+   steps:
+     1:
+       click trigger:
+         script:
+         # Right Clicking on the boss tells you his % health.
+         - narrate "<yellow>Avatar of Hakkar<&co> <npc.health.percentage.as_int>%"
+       proximity trigger:
+         entry:
+           script:
+           # Add player to the boss list when they enter his proximity.
+           - if <npc.flag[BossPlayerList].aslist> !contains <player> && <player.name> != <npc.name> flag npc BossPlayerList:->:<player>
+           

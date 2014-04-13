@@ -153,7 +153,10 @@ aohakkar:
            script:
            # Here are the random events based on movement inside the boss' proximity
            - ^if <npc.health.percentage.as_int> >= 50 {
-             - run "AOH_Knockback_Ability" }
+             - random 2
+             - run "AOH_Poison_AE_Ability"
+             - run "AOH_Knockback_Ability"
+             }
            # For targeting the entire group..
            #- foreach <npc.flag[BossPlayerList].aslist> {
            #  - announce "<yellow><%value%.name> Is on the BOSS HITLIST." }
@@ -173,4 +176,17 @@ aohakkar:
        - narrate "<yellow>You are knocked backwards into the air!"
        - teleport "<player.location.x.asint>,<m:<player.location.y.asint>+6>,<player.location.z.asint>,world"
        - flag npc "AOH_Knockback_CD:true" duration:30
+       }
+       
+"AOH_Poison_AE_Ability":
+   type: task
+   # This knocks the player up in the air 12 blocks every 30 seconds.
+   script:
+     - if <npc.flag[AOH_PoisonAE_CD]> == null {
+       - announce "<yellow>The Avatar of Hakkar releases a deadly poison cloud!"
+       - flag npc "AOH_PoisonAE_CD:true" duration:20
+       - foreach <npc.flag[BossPlayerList].aslist> {
+         - narrate targets:<%value%> "<yellow>You have become poisoned!"
+         - cast poison duration:20s
+         }
        }

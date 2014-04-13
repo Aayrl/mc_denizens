@@ -901,13 +901,13 @@
    events:
      on use command:
        - if <player.item_in_hand.lore> == "<green>Use<&co> Heal <&lb>Consumes an Emerald when Cast<&rb>" {
-         - narrate "<red>This item requires an Emerald to use."
-         } 
-       - if <player.item_in_hand.lore> == "<green>Use<&co> Heal <&lb>Consumes an Emerald when Cast<&rb>" {
-         - narrate "<&9>You consume an Emerald and heal your wounds!"
-         - take 'item:emerald' qty:1
-         - cast heal duration:1 power:5
-         - playeffect location:<player.location> effect:potion_break qty:15 data:5
+         if <p@Aayrl.inventory<inventory.contains[emerald]]>> {
+           - narrate "<&9>You consume an Emerald and heal your wounds!"
+           - take 'item:emerald' qty:1
+           - cast heal duration:1 power:5
+           - playeffect location:<player.location> effect:potion_break qty:15 data:5 }
+         else {
+           - narrate "<red>This item requires an Emerald to use." }
          }
          
 #"MeteoriteShard":

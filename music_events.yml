@@ -15,7 +15,7 @@
        - if "<flag.p:music kelethin_music || false>" == false {
          - narrate "<yellow>TIME FOR MUSIC"
          - flag player "music kelethin_music:true" duration:150
-         - midi file:"gfaydark 5"
+         - midi "gfaydark 5"
          }
      on walked over kelethin_music02:
        - narrate "<yellow><player.name><&co> MUSIC_TRIGGER_KELETHIN_02"
@@ -25,5 +25,5 @@
        - if "<flag.p:music kelethin_music || false>" == false {
          - narrate "<yellow>TIME FOR MUSIC"
          - flag player "music kelethin_music:true" duration:150
-         - midi file:"gfaydark 5"
+         - midi "gfaydark 5"
          }

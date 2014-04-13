@@ -20,10 +20,10 @@
           - narrate "<yellow>Your home has been set to <&co>"
           - narrate "<yellow><player.location>"
           - flag player respawnpoint:<player.location>
-        on homecd command:
-            if "<flag.p:home repeatTimer || false>" == false {
-                - narrate "<yellow>Your teleport home spell is off cooldown."
+       on homecd command:
+          - if "<flag.p:home repeatTimer || false>" == false {
+            - narrate "<yellow>Your teleport home spell is off cooldown."
             }
-            if "<flag.p:home repeatTimer || false>" == true {
-                - narrate "<yellow>Time left on cooldown: <flag.p:home repeatTimer.expiration>"
+          - if "<flag.p:home repeatTimer || false>" == true {
+            - narrate "<yellow>Time left on cooldown<&co> <flag.p:home repeatTimer.expiration>"
             }

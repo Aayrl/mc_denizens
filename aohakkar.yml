@@ -54,7 +54,7 @@ aohakkar:
     # Avatar of Hakkar Agro Radius (in Blocks)
     aoh_AGRO_RADIUS: 15
     # Avatar of Hakkar Movement Speed (Blocks / Tick)
-    aoh_Movement_Speed: 1
+    aoh_Movement_Speed: 2
     # Avatar of Hakkar's Spawnpoint
     aoh_SpawnPoint: "23,69,536,world"
     # Avatar of Hakkar Respawn Timer in seconds (43200 = 12 hrs)

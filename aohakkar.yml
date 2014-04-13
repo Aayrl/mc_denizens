@@ -100,6 +100,11 @@ aohakkar:
     - execute as_server "sentry target add entity:player"
     # Clear boss flags
     - flag npc BossPlayerList:!
+    - flag npc AOH_PoisonAE_CD:!
+    - flag npc AOH_Knockback_CD:!
+    - flag npc AOH_AddSummon_CD:!
+    - flag npc AOH_Sacrifice_CD:!
+    - flag npc AOH_Grace_Period_CD:!
 
     on death:
     # XP amount
@@ -147,11 +152,19 @@ aohakkar:
          move:
            script:
            # Here are the random events based on movement inside the boss' proximity
-           - announce "<yellow>YOU ARE MOVING!"
+           - narrate "<yellow>AOHAKKAR_EVENT_01"
+           - ^if <npc.health.percentage.as_int> >= 90 {
+            - run "Testlol" }
        damage trigger:
          script:
+           # When the boss is hit, re-flag the player as engaged with the boss.
+           # We also add some flavor sound and effect. WOOOO.
            - flag player "AvatarOfHakkar_Engaged:true" duration:30
            - playsound location:<npc.location> sound:cat_hiss
            - playeffect location:<npc.location> effect:RED_DUST qty:10
            
-           
+"BossName Fight":
+   type: task
+   # This fires off  
+   script:
+     - narrate "Everything is Awesome!" 

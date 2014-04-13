@@ -124,7 +124,8 @@ aohakkar:
     - flag player "AvatarOfHakkar_Engaged:1" duration:30
 
     on exit proximity:
-    - if <context.player> FLAGGED "AvatarOfHakkar_Engaged:1" {
+    # summon player if they are still engaged by the boss.
+    - if "<flag.p:AvatarOfHakkar_Engaged:1 || false>" == true {
       - announce "<red><npc.name> yells<&cm> <&sq>You will not evade me<&cm> <player.name>!<&sq>"
       - narrate "<yellow>You have been summoned!"
       - teleport <player> "location:<npc.location>"
@@ -132,5 +133,3 @@ aohakkar:
       - playeffect location:<player.location> effect:portal qty:1000
       }
 
-    on player death:
-    - announce "<red><npc.name> yells<&cm> <&sq><cons:victory message><&sq>"

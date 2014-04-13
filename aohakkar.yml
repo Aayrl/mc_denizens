@@ -154,7 +154,7 @@ aohakkar:
            # Here are the random events based on movement inside the boss' proximity
            - ^if <npc.health.percentage.as_int> >= 50 {
              - run "AOH_Knockback_Ability" }
-           - foreach <npc.flag[BossHitList].aslist> {
+           - foreach <npc.flag[BossPlayerList].aslist> {
              - announce "<yellow><%value.name> Is on the BOSS HITLIST."
        damage trigger:
          script:
@@ -168,7 +168,6 @@ aohakkar:
    type: task
    # This knocks the player up in the air 12 blocks every 30 seconds.
    script:
-     - narrate "Everything is Awesome! You are <player.name>!" 
      - if <npc.flag[AOH_Knockback_CD]> == null {
        - narrate "<yellow>You are knocked backwards into the air!"
        - teleport "<player.location.x.asint>,<m:<player.location.y.asint>+7>,<player.location.z.asint>,world"

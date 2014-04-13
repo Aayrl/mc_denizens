@@ -152,9 +152,8 @@ aohakkar:
          move:
            script:
            # Here are the random events based on movement inside the boss' proximity
-           - narrate "<yellow>AOHAKKAR_EVENT_01"
            - ^if <npc.health.percentage.as_int> >= 90 {
-            - run "AOH_Knockback_Ability" }
+             - run "AOH_Knockback_Ability" }
        damage trigger:
          script:
            # When the boss is hit, re-flag the player as engaged with the boss.
@@ -168,7 +167,7 @@ aohakkar:
    # This knocks the player up in the air 12 blocks every 30 seconds.
    script:
      - narrate "Everything is Awesome! You are <player.name>!" 
-     - if <npc.flag[AOH_Knockback_CD]> == false {
+     - if <npc.flag[AOH_Knockback_CD]> == null {
        - narrate "Teleporting You meow"
        - teleport "<player.location.x.asint>,<m:<player.location.y.asint>+12>,<player.location.z.asint>,world"
        - flag npc "AOH_Knockback_CD:true" duration:30

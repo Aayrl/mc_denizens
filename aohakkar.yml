@@ -148,4 +148,11 @@ aohakkar:
            script:
            # Add player to the boss list when they enter his proximity.
            - if <npc.flag[BossPlayerList].aslist> !contains <player> && <player.name> != <npc.name> flag npc BossPlayerList:->:<player>
+       on damage:
+         script:
+           - playsound location:<npc.location> sound:cat_hiss
+           - playeffect location:<npc.location> effect:RED_DUST qty:10
+       on attack:
+         script:
+           - announce "I HAVE BEEN HIT! OH THE SHAME"
            

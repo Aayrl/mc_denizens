@@ -1036,6 +1036,67 @@
    - knockback:2
    - damage_all:1
    
+# [ Special Loot ]
+"XPPotion_2x":
+   type: item
+   material: 374
+   display name: "<&5>Potion of Double Experience Gain"
+   lore:
+   - <green>Use<&co> <red>Double Experience <&lb>Lasts One Hour<&rb>
+   enchantments:
+   - durability:1
+   
+# XP Potion effects
+"xppotion_2x_effect":
+   type: world
+   events:
+     on use command:
+       - if <player.item_in_hand.lore> == "<green>Use<&co> <red>Double Experience <&lb>Lasts One Hour<&rb>" {
+         - narrate "<aqua>Your experience gain for the next hour will be doubled."
+         - flag player "xppotion_double:true" duration:3600s
+         - playeffect location:<player.location> effect:splash qty:2500
+         }
+         
+"XPPotion_3x":
+   type: item
+   material: 374
+   display name: "<&5>Potion of Triple Experience Gain"
+   lore:
+   - <green>Use<&co> <red>Triple Experience <&lb>Lasts One Hour<&rb>
+   enchantments:
+   - durability:1
+   
+# XP Potion effects
+"xppotion_3x_effect":
+   type: world
+   events:
+     on use command:
+       - if <player.item_in_hand.lore> == "<green>Use<&co> <red>Triple Experience <&lb>Lasts One Hour<&rb>" {
+         - narrate "<aqua>Your experience gain for the next hour will be tripled."
+         - flag player "xppotion_triple:true" duration:3600s
+         - playeffect location:<player.location> effect:splash qty:2500
+         }
+         
+"XPPotion_4x":
+   type: item
+   material: 374
+   display name: "<&5>Potion of Quadruple Experience Gain"
+   lore:
+   - <green>Use<&co> <red>Quadruple Experience <&lb>Lasts One Hour<&rb>
+   enchantments:
+   - durability:1
+   
+# XP Potion effects
+"xppotion_4x_effect":
+   type: world
+   events:
+     on use command:
+       - if <player.item_in_hand.lore> == "<green>Use<&co> <red>Quadruple Experience <&lb>Lasts One Hour<&rb>" {
+         - narrate "<aqua>Your experience gain for the next hour will be quadrupled."
+         - flag player "xppotion_quadruple:true" duration:3600s
+         - playeffect location:<player.location> effect:splash qty:2500
+         }
+   
 # ========================================================
 # Legendary Tier Items - Orange Tag
 

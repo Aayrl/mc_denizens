@@ -30,6 +30,24 @@
         - announce "<aqua>Fuck you<&cm> <player.name><&cm> for reaching level <context.level>. You have no life. Grats on level <context.level> though."
         }
     on player changes xp:
+      - if "<flag.p:xppotion_double:true || false>" == true {
+        - experience give <context.amount>
+        - if <player.flag[toggleXpText]> == "on" {
+          - narrate "<yellow>You gain <context.amount> experience from your Potion of Experience!"
+          }
+        }
+      - if "<flag.p:xppotion_triple:true || false>" == true {
+        - experience give <m:<context.amount>*2>
+        - if <player.flag[toggleXpText]> == "on" {
+          - narrate "<yellow>You gain <m:<context.amount>*2> experience from your Potion of Experience!"
+          }
+        }
+      - if "<flag.p:xppotion_quadruple:true || false>" == true {
+        - experience give <m:<context.amount>*3>
+        - if <player.flag[toggleXpText]> == "on" {
+          - narrate "<yellow>You gain <m:<context.amount>*3> experience from your Potion of Experience!"
+          }
+        }
       - if <player.flag[toggleXpText]> == "on" {
         - narrate "<yellow>You gain <context.amount> experience!"
         }

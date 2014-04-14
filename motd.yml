@@ -31,10 +31,12 @@
     - announce "<yellow><player.name> has been knocked unconscious!"
     
     on player death:
-    - xp -100000L <player.name>
     - narrate "<red>You have died!"
     - narrate "<red>You have lost all of your experience!"
-    - narrate "<red>All gear in your inventory has taken a 25% durability hit."
+    - narrate "<red>All gear in your inventory have taken a 25% durability hit."
+    
+    on player respawn:
+    - execute as_server "xp -10000L <player.name>"
 
 "MOTD-Announce":
   type: world

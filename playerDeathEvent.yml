@@ -12,3 +12,5 @@
     - execute as_server "xp -50000L <player.name>"
     on testinv command:
     - narrate "<p@<player.name>.inventory<inventory.list_contents>>"
+    - foreach <p@<player.name>.inventory<inventory.list_contents>.as_list> {
+      - narrate "%value%"

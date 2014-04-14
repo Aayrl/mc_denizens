@@ -8,28 +8,28 @@
     on player death:
     - narrate "<red>You have died!"
     - narrate "<red>You have lost all of your experience!"
-    - narrate "<red>All gear in your inventory have taken a 25% durability hit."
+    #- narrate "<red>All gear in your inventory have taken a 25% durability hit."
     - execute as_server "xp -50000L <player.name>"
-    on player respawns:
-    - narrate "<yellow>You have respawned at your last saved home location."
-    - teleport <player> <player.flag[respawnpoint]>
-    - playeffect location:<player.location> effect:portal qty:1000
-    on testinv command:
-    - narrate "<&5>Running testinv command.."
-    - foreach <p@<player.name>.inventory<inventory.list_contents>.as_list> {
-      - narrate "Item<&co> %value%" 
-      - if <%value%.repairable> {
-        - narrate "<red>Durability<&co> <%value%.durability>/<%value%.max_durability> "
-        - narrate "<red>Attempting to modify durability amount<&co> -<math.as_int:<math.as_int:<%value%.max_durability>*0.25>+<%value%.durability>>"
-        - take %value%
-        - adjust %value% "durability:<math.as_int:<math.as_int:<%value%.max_durability>*0.25>+<%value%.durability>>" save:breakitem
-        - give <entry[breakitem].result> 
-        - narrate "<&5>Durability<&co> <%value%.durability>/<%value%.max_durability> "
-        }
-      }
-    on deleteinv command:
-    - narrate "<&5>Removing your Inventory..."
-    - foreach <p@<player.name>.inventory<inventory.list_contents>.as_list> {
-      - narrate "<red>Removing item<&co> %value%"
-      - take %value%
-      }
+    #on player respawns:
+    #- narrate "<yellow>You have respawned at your last saved home location."
+    #- teleport <player> <player.flag[respawnpoint]>
+    #- playeffect location:<player.location> effect:portal qty:1000
+    #on testinv command:
+    #- narrate "<&5>Running testinv command.."
+    #- foreach <p@<player.name>.inventory<inventory.list_contents>.as_list> {
+    #  - narrate "Item<&co> %value%" 
+    #  - if <%value%.repairable> {
+    #    - narrate "<red>Durability<&co> <%value%.durability>/<%value%.max_durability> "
+    #    - narrate "<red>Attempting to modify durability amount<&co> -<math.as_int:<math.as_int:<%value%.max_durability>*0.25>+<%value%.durability>>"
+    #    - take %value%
+    #    - adjust %value% "durability:<math.as_int:<math.as_int:<%value%.max_durability>*0.25>+<%value%.durability>>" save:breakitem
+    #    - give <entry[breakitem].result> 
+    #    - narrate "<&5>Durability<&co> <%value%.durability>/<%value%.max_durability> "
+    #    }
+    #  }
+    #on deleteinv command:
+    #- narrate "<&5>Removing your Inventory..."
+    #- foreach <p@<player.name>.inventory<inventory.list_contents>.as_list> {
+    #  - narrate "<red>Removing item<&co> %value%"
+    #  - take %value%
+    #  }

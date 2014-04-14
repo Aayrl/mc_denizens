@@ -18,7 +18,10 @@
       - if <%value%.repairable> {
         - narrate "<yellow>THIS ITEM HAS DURABILITY."
         - narrate "<yellow>Durability<&co> <%value%.durability>/<%value%.max_durability> "
-        - narrate "<red>Attempting to modify durability amount<&co> -<m:<%value%.max_durability>*0.25>"
+        - narrate "<red>Attempting to modify durability amount<&co> -<math.as_int:<math.as_int:<%value%.max_durability>*0.25>+<%value%.durability>>"
+        - adjust %value% "durability:<math.as_int:<math.as_int:<%value%.max_durability>*0.25>+<%value%.durability>>" save:myitem
+        - take %value%
+        - give <entry[myitem].result> 
         - narrate "<yellow>Durability<&co> <%value%.durability>/<%value%.max_durability> "
         }
       }

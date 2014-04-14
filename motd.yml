@@ -29,6 +29,12 @@
 
     on player quit:
     - announce "<yellow><player.name> has been knocked unconscious!"
+    
+    on player death:
+    - xp -100000L <player.name>
+    - narrate "<red>You have died!"
+    - narrate "<red>You have lost all of your experience!"
+    - narrate "<red>All gear in your inventory has taken a 25% durability hit."
 
 "MOTD-Announce":
   type: world

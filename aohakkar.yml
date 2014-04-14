@@ -54,7 +54,7 @@ aohakkar:
     # Avatar of Hakkar Health Pool
     aoh_health: 2500
     # Avatar of Hakkar Damage / Swing
-    aoh_str: 5
+    aoh_str: 1
     # Avatar of Hakkar Armor Value
     aoh_AC: 1
     # Avatar of Hakkar Agro Radius (in Blocks)

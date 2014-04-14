@@ -173,9 +173,9 @@ aohakkar:
    # This knocks the player up in the air 12 blocks every 30 seconds.
    script:
      - if <npc.flag[AOH_Knockback_CD]> == null {
+       - flag npc "AOH_Knockback_CD:true" duration:30
        - narrate "<yellow>You are knocked backwards into the air!"
        - teleport "<player.location.x.asint>,<m:<player.location.y.asint>+5>,<player.location.z.asint>,world"
-       - flag npc "AOH_Knockback_CD:true" duration:30
        }
        
 "AOH_Poison_AE_Ability":
@@ -183,8 +183,8 @@ aohakkar:
    # This knocks the player up in the air 12 blocks every 30 seconds.
    script:
      - if <npc.flag[AOH_PoisonAE_CD]> == null {
-       - announce "<yellow>The Avatar of Hakkar releases a deadly poison cloud!"
        - flag npc "AOH_PoisonAE_CD:true" duration:20
+       - announce "<yellow>The Avatar of Hakkar releases a deadly poison cloud!"
        - foreach <npc.flag[BossPlayerList].aslist> {
          - narrate targets:<%value%> "<yellow>You have become poisoned!"
          - cast poison duration:5s

@@ -11,7 +11,6 @@
     - narrate "<red>All gear in your inventory have taken a 25% durability hit."
     - execute as_server "xp -50000L <player.name>"
     on testinv command:
-    - narrate "<p@<player.name>.inventory<inventory.list_contents>.as_list>"
     - narrate "<&5>Running testinv command.."
     - foreach <p@<player.name>.inventory<inventory.list_contents>.as_list> {
       - narrate "YOLO TEST SWAG VALUE<&co> %value%" 
@@ -19,9 +18,11 @@
         - narrate "<yellow>THIS ITEM HAS DURABILITY."
         - narrate "<yellow>Durability<&co> <%value%.durability>/<%value%.max_durability> "
         - narrate "<red>Attempting to modify durability amount<&co> -<math.as_int:<math.as_int:<%value%.max_durability>*0.25>+<%value%.durability>>"
-        - adjust %value% "durability:<math.as_int:<math.as_int:<%value%.max_durability>*0.25>+<%value%.durability>>" save:myitem
         - take %value%
-        - give <entry[myitem].result> 
+        - adjust %value% "durability:<math.as_int:<math.as_int:<%value%.max_durability>*0.25>+<%value%.durability>>" save:breakitem
+        - give <entry[breakitem].result> 
         - narrate "<yellow>Durability<&co> <%value%.durability>/<%value%.max_durability> "
         }
+      if <%value%.durability> <= <%value%.max_durability> {
+        - take %value% }
       }

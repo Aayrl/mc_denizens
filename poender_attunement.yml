@@ -568,7 +568,7 @@ PoEnder_CreeperKillDone:
     requirements:
       mode: ALL
       list: 
-      - FLAGGED 'POEnderAttune:Step6'
+      - FLAGGED 'POEnderAttune:Step5'
       - FLAGGED 'PoEnder_AvatarHakkarKilled:1'
     steps:
         'POEndKillAoHakkar*':

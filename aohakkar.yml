@@ -211,15 +211,15 @@ aohakkar:
 "AOH_Sacrifice_Ability":
    type: task
    # This ability sacrifices a player.
-   # The player is rooted, blinded, and poisoned for 5 seconds.
+   # The player is rooted, blinded, and poisoned for 10 seconds.
    script:
      - if <npc.flag[AOH_Sacrifice_CD]> == null {
        - flag npc "AOH_Sacrifice_CD:true" duration:30
        - announce "<red><npc.name> yells<&cm> <&sq><cons:sacrifice_msg><&sq>"
        - narrate "<yellow>You are magically bound to the Altar of Hakkar!"
        - teleport "22,72,530,world"
-       - cast poison duration:5s
-       - cast blindness duration:5s
-       - cast slow duration:5s power:25
+       - cast poison duration:10s
+       - cast blindness duration:10s power:50
+       - cast slow duration:10s power:25
        - playeffect location:<player.location> effect:ENDER_SIGNAL qty:50
        }

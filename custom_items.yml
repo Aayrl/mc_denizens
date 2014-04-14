@@ -1055,6 +1055,7 @@
          - narrate "<aqua>Your experience gain for the next hour will be doubled."
          - flag player "xppotion_double:true" duration:3600s
          - playeffect location:<player.location> effect:splash qty:2500
+         - take "XPPotion_2x" qty:1
          }
          
 "XPPotion_3x":
@@ -1075,6 +1076,7 @@
          - narrate "<aqua>Your experience gain for the next hour will be tripled."
          - flag player "xppotion_triple:true" duration:3600s
          - playeffect location:<player.location> effect:splash qty:2500
+         - take "XPPotion_3x" qty:1
          }
          
 "XPPotion_4x":
@@ -1095,6 +1097,7 @@
          - narrate "<aqua>Your experience gain for the next hour will be quadrupled."
          - flag player "xppotion_quadruple:true" duration:3600s
          - playeffect location:<player.location> effect:splash qty:2500
+         - take "XPPotion_4x" qty:1
          }
    
 # ========================================================

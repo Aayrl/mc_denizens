@@ -221,4 +221,5 @@ aohakkar:
        - cast poison duration:5s
        - cast blindness duration:5s
        - cast slow duration:5s power:25
+       - playeffect location:<player.location> effect:ENDER_SIGNAL qty:50
        }

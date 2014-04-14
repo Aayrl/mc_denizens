@@ -14,4 +14,9 @@
     - narrate "<p@<player.name>.inventory<inventory.list_contents>.as_list>"
     - narrate "<&5>Running testinv command.."
     - foreach <p@<player.name>.inventory<inventory.list_contents>.as_list> {
-      - narrate "YOLO TEST SWAG VALUE<&co> %value%" }
+      - narrate "YOLO TEST SWAG VALUE<&co> %value%" 
+      - if <%value%.repairable> {
+        - narrate "<yellow>THIS ITEM HAS DURABILITY."
+        - narrate "<yellow>Durability<&co> <%value%.durability> "
+        }
+      }

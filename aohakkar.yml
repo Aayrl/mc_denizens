@@ -41,9 +41,9 @@ aohakkar:
     victory message: <red>Where is your god now<&cm> <player.name>?
     # Special Event Messages
     poisonAE_msg: <red>Choke on Hakkarian Blood!
-    knockback_msg: <red>Get out of my way<&cm> <player.name>!
+    knockback_msg: <red>Get out of my way!
     summonAdds_msg: <red>Rise my minions<&cm> show our friends the power of Hakkar!
-    sacrifice_msg: <red>You will make a good sacrifice<&cm> <player.name>!
+    sacrifice_msg: <red>You will make a good sacrifice...
 
     # Avatar of Hakkar : Statistics
     # Avatar of Hakkar Health Pool

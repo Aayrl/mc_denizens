@@ -34,15 +34,16 @@ aohakkar:
 
   default constants:
     # Agro Message : Message to display when a player engages the boss.
-    agro message: <red>YOU CANNOT STOP THE POWER OF HAKKAR!
+    agro message: <red>You cannot stop the power of Hakkar!
     # Death Message : Message displayed when the boss is slain.
-    death message: <red>YOU HAVE NOT SEEN THE LAST OF HAKKAR!
+    death message: <red>-HISSSS- You have not seen the last of Hakkar!
     # Victory Message : Message when a player is killed by the boss.
-    victory message: <red>AAHH..ANOTHER SACRIFICE FOR HAKKAR!
-    # Random Message 1-3 : Random flavor text.
-    random message1: <red>-HISSSSS-
-    random message2: <red>MADNESS WILL CONSUME YOU!
-    random message3: <red>DEATH TO ALL WHO OPPOSE HAKKAR!
+    victory message: <red>Where is your god now<&cm> <player.name>?
+    # Special Event Messages
+    poisonAE_msg: <red>Choke on Hakkarian Blood!
+    knockback_msg: <red>Get out of my way<&cm> <player.name>!
+    summonAdds_msg: <red>Rise my minions<&cm> show our friends the power of Hakkar!
+    sacrifice_msg: <red>You will make a good sacrifice<&cm> <player.name>!
 
     # Avatar of Hakkar : Statistics
     # Avatar of Hakkar Health Pool
@@ -152,10 +153,13 @@ aohakkar:
          move:
            script:
            # Here are the random events based on movement inside the boss' proximity
-           - ^if <npc.health.percentage.as_int> >= 50 {
+           - ^if <npc.health.percentage.as_int> <= 98 {
              - random 2
              - run "AOH_Poison_AE_Ability"
              - run "AOH_Knockback_Ability"
+             }
+           - ^if <npc.health.percentage.as_int> <= 50 {
+             - run "AOH_Sacrifice_Ability"
              }
            # For targeting the entire group..
            #- foreach <npc.flag[BossPlayerList].aslist> {
@@ -167,33 +171,54 @@ aohakkar:
            - flag player "AvatarOfHakkar_Engaged:true" duration:30
            - playsound location:<npc.location> sound:cat_hiss
            - playeffect location:<npc.location> effect:RED_DUST qty:10
-           # Here are the random events based on movement inside the boss' proximity
-           - ^if <npc.health.percentage.as_int> >= 50 {
+           # Here are the boss special events that fire off throughout the fight.
+           - ^if <npc.health.percentage.as_int> <= 98 {
              - random 2
              - run "AOH_Poison_AE_Ability"
              - run "AOH_Knockback_Ability"
              }
+           - ^if <npc.health.percentage.as_int> <= 50 {
+             - run "AOH_Sacrifice_Ability"
+             }
            
 "AOH_Knockback_Ability":
    type: task
-   # This knocks the player up in the air 12 blocks every 30 seconds.
+   # This knocks the player up in the air 6 blocks every 30 seconds.
    script:
      - if <npc.flag[AOH_Knockback_CD]> == null {
        - flag npc "AOH_Knockback_CD:true" duration:30
+       - announce "<red><npc.name> yells<&cm> <&sq><cons:knockback_msg><&sq>"
        - narrate "<yellow>You are knocked backwards into the air!"
-       - teleport "<player.location.x.asint>,<m:<player.location.y.asint>+5>,<player.location.z.asint>,world"
+       - teleport "<player.location.x.asint>,<m:<player.location.y.asint>+6>,<player.location.z.asint>,world"
        }
        
 "AOH_Poison_AE_Ability":
    type: task
-   # This knocks the player up in the air 12 blocks every 30 seconds.
+   # This is the boss' AoE Poison ability.
+   # This hits all players on his agro list with Poison II for 5 seconds
+   # every 20 seconds.
    script:
      - if <npc.flag[AOH_PoisonAE_CD]> == null {
        - flag npc "AOH_PoisonAE_CD:true" duration:20
-       - announce "<yellow>The Avatar of Hakkar releases a deadly poison cloud!"
+       - announce "<red><npc.name> yells<&cm> <&sq><cons:poisonAE_msg><&sq>"
        - foreach <npc.flag[BossPlayerList].aslist> {
          - narrate targets:<%value%> "<yellow>You have become poisoned!"
          - cast poison duration:5s
          - playeffect location:<player.location> effect:potion_break qty:5 data:4
          }
+       }
+
+"AOH_Sacrifice_Ability":
+   type: task
+   # This ability sacrifices a player.
+   # The player is rooted, blinded, and poisoned for 5 seconds.
+   script:
+     - if <npc.flag[AOH_Sacrifice_CD]> == null {
+       - flag npc "AOH_Sacrifice_CD:true" duration:30
+       - announce "<red><npc.name> yells<&cm> <&sq><cons:sacrifice_msg><&sq>"
+       - narrate "<yellow>You are magically bound to the Altar of Hakkar!"
+       - teleport "22,72,530,world"
+       - cast poison duration:5s
+       - cast blindness duration:5s
+       - cast slow duration:5s power:25
        }

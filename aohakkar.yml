@@ -167,6 +167,12 @@ aohakkar:
            - flag player "AvatarOfHakkar_Engaged:true" duration:30
            - playsound location:<npc.location> sound:cat_hiss
            - playeffect location:<npc.location> effect:RED_DUST qty:10
+           # Here are the random events based on movement inside the boss' proximity
+           - ^if <npc.health.percentage.as_int> >= 50 {
+             - random 2
+             - run "AOH_Poison_AE_Ability"
+             - run "AOH_Knockback_Ability"
+             }
            
 "AOH_Knockback_Ability":
    type: task

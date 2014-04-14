@@ -17,8 +17,8 @@
       - narrate "YOLO TEST SWAG VALUE<&co> %value%" 
       - if <%value%.repairable> {
         - narrate "<yellow>THIS ITEM HAS DURABILITY."
-        - narrate "<yellow>Durability<&co> <%value%.durability>/<%value.max_durability> "
-        - narrate "<red>Attempting to modify durability..."
-        - narrate "<yellow>Durability<&co> <%value%.durability>/<%value.max_durability> "
+        - narrate "<yellow>Durability<&co> <%value%.durability>/<%value%.max_durability> "
+        - narrate "<red>Attempting to modify durability amount<&co> -<m:<%value%.max_durability>*0.25>"
+        - narrate "<yellow>Durability<&co> <%value%.durability>/<%value%.max_durability> "
         }
       }

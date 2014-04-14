@@ -587,3 +587,15 @@ PoEnder_CreeperKillDone:
                     - announce "<red>Aayrl yells, 'Let it be known that on this day, <aqua><player.name><red> has defeated the Avatar of Hakkar, and as such, earned the highest rank of the Gondorian Guard!'"
                     - wait 1
                     - announce "<red>Aayrl yells, 'Let their name ring thoughout the lands! All hail <aqua>General <player.name><red>!'"
+                    
+"Port2POEnder":
+   type: world
+   events:
+     on walked over POEnder_Port:
+     - if "<flag.p:POEnderAttune:ATTUNED>" {
+       - execute as_server "mv tp <player.name> world_the_end"
+       }
+     else {
+       - narrate "<red>You are not attuned to the Plane of Ender!"
+       - narrate "<red>Speak with Lord Aayrl to attune yourself to this plane."
+     

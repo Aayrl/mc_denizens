@@ -36,6 +36,7 @@ guard_gondor:
     - execute as_server "sentry healrate 1"
     - execute as_server "sentry retaliate true"
     - execute as_server "sentry targetable true"
+    - execute as_server "sentry target add entity:monster"
     - execute as_server "sentry equip 267"
     - execute as_server "sentry equip 306"
     - execute as_server "sentry equip 307"

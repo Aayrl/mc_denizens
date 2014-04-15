@@ -1,66 +1,75 @@
-# Bandit is a simple usage of assignment 
-# script actions and constants. The bandit 
-# will confront the the player on proximity
-# enter and when the player tries to
-# escape, attack!
+# Bandit assignment
+# Tyler J. Sawyer - 4/15/14
+# Loosely based on the Bandit Example...
+# Much improved using Sentry plugin
+# REQUIREMENTS:
+#   Sentry      Denizens        Citizens2
 
 bandit:
   type: assignment
 
   default constants:
-    approach message: Give me your stuff or prepare to die!
-    fleeing message: Time to die!
-    death message: Aaarrgghhh!
-    victory message: Hahahaha!
+    attack message: <white>Hey<&cm> <n@<npc.name>.navigator.target_entity.name><&cm> you have some nice stuff there!
+    death message: <white>Aarrghh!
+    victory message: <white>Finally<&cm> some phat loots!
+
+    # Stats
+    bandit_str: 2
+    bandit_xp: 5
+    bandit_health: 50
+    bandit_respawn_delay: 60
 
   actions:
     on assignment:
-    - trigger name:proximity 
-      toggle:true radius:4
     - trigger name:damage toggle:true
-    - health toggle:true
-    - vulnerable
+
+    # Setup bandit Stats
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "npc type player"
+    - execute as_server "npc speed 1"
+    - execute as_server "npc lookclose"
+    - execute as_server "trait sentry"
+    - execute as_server "sentry health <cons:bandit_health>"
+    - execute as_server "sentry spawn"
+    - execute as_server "sentry respawn <cons:bandit_respawn_delay>"
+    - execute as_server "sentry speed 1"
+    - execute as_server "sentry strength <cons:bandit_str>"
+    - execute as_server "sentry killdrops false"
+    - execute as_server "sentry healrate 1"
+    - execute as_server "sentry retaliate true"
+    - execute as_server "sentry targetable true"
+    - execute as_server "sentry target add entity:monster"
+    - execute as_server "sentry equip 267"
+    - execute as_server "sentry equip 298"
+    - execute as_server "sentry equip 299"
+    - execute as_server "sentry equip 300"
+    - execute as_server "sentry equip 301"
 
     on spawn:
-    # Respawns Bandit at a certain point.
-    - execute as_server "npc tpto 6 7"
-    - flag npc in_pursuit:!
-    - trigger name:proximity 
-      toggle:true radius:4
-    - trigger name:damage toggle:true
-    - health 30 state:true
-    - vulnerable
-
-    on enter proximity:
-    - if <npc.flag[in_pursuit]> 
-      queue clear
-    - flag npc in_pursuit:true
-    - lookclose toggle:true
-    - narrate "<npc.name> says, 
-      '<cons:approach message>'"
-
-    on exit proximity:
-    - if !<npc.flag[in_pursuit]> 
-      queue clear
-    - attack
-    - lookclose toggle:false
-    - narrate "<npc.name> yells at you, 
-      '<cons:fleeing message>'"
-
-    on damage:
-    - if !<npc.flag[in_pursuit]> 
-      queue clear
-    - attack
+    # Clear previous targets from hate list
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "sentry target clear"
+    - execute as_server "sentry target add entity:player"
 
     on death:
-    - narrate "<npc.name> yells, 
-      '<cons:death message>"
-    - drop XP qty:25 location:<npc.location>
-    - flag npc in_pursuit:!
+    - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
+      - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:death message><&sq>" }
+    # XP amount
+    - drop XP qty:<cons:bandit_xp> location:<npc.location>
+    # Random loot
+    # LOOT TABLE HERE PERHAPS?
+    #- define roll <util.random.int[1].to[100]>
+    #- if %roll% >= 90 {
+    #  - drop "" location:<npc.location> }
+    # Reset npc effects and clear hate targets.
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "npc effect --play none"
+    - execute as_server "sentry target clear"
 
-    on player death:
-    - narrate "<cons:victory message>"
-    - flag npc in_pursuit:!   
-
-    on despawn:
-    - flag npc in_pursuit:!   
+    on attack: 
+    - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
+      - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:attack message><&sq>" }
+    
+    on kill:
+    - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
+      - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:victory message><&sq>" }

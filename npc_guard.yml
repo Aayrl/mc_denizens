@@ -49,6 +49,8 @@ guard_gondor:
     - execute as_server "sentry target add entity:monster"
 
     on death:
+    - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
+      - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:death message><&sq>" }
     # XP amount
     - drop XP qty:<cons:guard_xp> location:<npc.location>
     # Random loot
@@ -59,13 +61,11 @@ guard_gondor:
     - execute as_server "npc sel <npc.id>"
     - execute as_server "npc effect --play none"
     - execute as_server "sentry target clear"
-    # Announce to players the boss is dead.
-    - narrate "<npc.name> says<&cm> <&sq><cons:death message><&sq>"
 
-    on attack:
-    - define playersNearby <l@<npc.location>.find.players.within[<15>]>
-    - foreach playersNearby {
+    on attack: 
+    - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
       - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:attack message><&sq>" }
     
     on kill:
-    - narrate "<npc.name> says<&cm> <&sq><cons:victory message><&sq>"
+    - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
+      - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:victory message><&sq>" }

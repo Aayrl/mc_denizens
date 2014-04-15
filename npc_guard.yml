@@ -7,7 +7,7 @@ guard_gondor:
   type: assignment
 
   default constants:
-    attack message: <white>Time to die<&cm> <context.entity.name>!
+    attack message: <white>Time to die<&cm> <n@<npc.name>.navigator.target_entity.name>!
     death message: <white>I died in honor of Gondor!
     victory message: <white>You were foolish to challenge the Gondorian Guard!
 

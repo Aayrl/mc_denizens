@@ -848,11 +848,11 @@
       }
     - if %roll% == 6 {
       - narrate "<&9>You found a <aqua>Potato<&9>!"
-      - determine "POTATO"
+      - determine "392"
       }
     - if %roll% == 7 {
       - narrate "<&9>You found an <aqua>Carrot<&9>!"
-      - determine "CARROT"
+      - determine "391"
       }
     - if %roll% == 8 {
       - narrate "<&9>You found a <aqua>Cookie<&9>!"
@@ -864,7 +864,7 @@
       }
     - if %roll% == 10 {
       - narrate "<&9>You found a <aqua>Cake<&9>!"
-      - determine "CAKE"
+      - determine "354"
       }
 
 # [Overworld Loot]

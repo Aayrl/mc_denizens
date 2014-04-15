@@ -383,6 +383,13 @@
    lore:
    - <white>A pair of tattered leather boots made from leather scraps and patches.
 
+"Dented Militia Helm":
+   type: item
+   material: 306
+   display name: "<green>Dented Militia Helm"
+   lore:
+   - <white>A dented guard helmet.
+   
 # [Plane of Fire Loot]
 "Flame Ingot":
    type: item

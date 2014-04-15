@@ -62,6 +62,7 @@ guard_gondor:
     - execute as_server "npc sel <npc.id>"
     - execute as_server "npc effect --play none"
     - execute as_server "sentry target clear"
+    # Faction Hit
 
     on attack: 
     - foreach <l@<npc.location>.find.players.within[<15>].aslist> {

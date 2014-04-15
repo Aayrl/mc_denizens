@@ -803,6 +803,67 @@
    display name: "<&9>Digmaster 5000"
    lore:
    - <green>Use<&co> Dig! <&lb>2 Min CD<&rb>
+   
+# Digmaster Effect
+"DigmasterPROC":
+   type: world
+   events:
+     on use command:
+       - if <player.item_in_hand.lore> == "<green>Use<&co> Dig! <&lb>2 Min CD<&rb>" && "<flag.p:digmaster reuse || false>" == true {
+         - narrate "<&9>You must wait <flag.p:digmaster reuse.expiration> before you can use that item again."
+         } 
+       - if <player.item_in_hand.lore> == "<green>Use<&co> Dig! <&lb>2 Min CD<&rb>" && "<flag.p:digmaster reuse || false>" == false {
+         - narrate "<&9>You use your Digmaster 500 to dig the soil around you..."
+         - drop "i@<proc:DigmasterLewt>" location:<player.location>
+         - flag player "digmaster reuse:true" duration:120
+         }
+         
+"DigmasterLewt":
+    type: procedure
+
+    script:
+    - define roll <util.random.int[1].to[10]>
+ 
+    - if %roll% == 1 {
+      - narrate "<&9>You found an <aqua>Emerald<&9>!"
+      - determine "EMERALD"
+      }
+    - if %roll% == 2 {
+      - narrate "<&9>You found a <aqua>Gold Ingot<&9>!"
+      - determine "GOLD_INGOT"
+      }
+    - if %roll% == 3 {
+      - narrate "<&9>You found <aqua>Dirt<&9>."
+      - determine "DIRT"
+      }
+    - if %roll% == 4 {
+      - narrate "<&9>You found a <aqua>Glass Bottle<&9>!"
+      - determine "GLASS_BOTTLE"
+      }
+    - if %roll% == 5 {
+      - narrate "<&9>You found <aqua>Seeds<&9>!"
+      - determine "SEEDS"
+      }
+    - if %roll% == 6 {
+      - narrate "<&9>You found a <aqua>Potato<&9>!"
+      - determine "POTATO"
+      }
+    - if %roll% == 7 {
+      - narrate "<&9>You found an <aqua>Carrot<&9>!"
+      - determine "CARROT"
+      }
+    - if %roll% == 8 {
+      - narrate "<&9>You found a <aqua>Cookie<&9>!"
+      - determine "COOKIE"
+      }
+    - if %roll% == 9 {
+      - narrate "<&9>You found a chunk of <aqua>Coal<&9>!"
+      - determine "COAL"
+      }
+    - if %roll% == 10 {
+      - narrate "<&9>You found a <aqua>Cake<&9>!"
+      - determine "CAKE"
+      }
 
 # [Overworld Loot]
 "Pain":

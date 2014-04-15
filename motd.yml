@@ -38,9 +38,9 @@
       - announce "<yellow>The sun rises on the eastern horizon."
     on 11:00 in w@world:
       - announce "<yellow>It is now high noon."
-    on 17:00 in w@world:
+    on 18:00 in w@world:
       - announce "<yellow>The sun sets on the western horizon."
-    on 23:00 in w@world:
+    on 0:00 in w@world:
       - announce "<yellow>It is now midnight."
     on 7:00 in w@world:
       - random 8

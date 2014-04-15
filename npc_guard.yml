@@ -63,7 +63,9 @@ guard_gondor:
     - narrate "<npc.name> says<&cm> <&sq><cons:death message><&sq>"
 
     on attack:
-    - narrate "<npc.name> says<&cm> <&sq><cons:attack message><&sq>"
+    - define playersNearby <l@<npc.location>.find.players.within[<15>]>
+    - foreach playersNearby {
+      - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:attack message><&sq>" }
     
     on kill:
     - narrate "<npc.name> says<&cm> <&sq><cons:victory message><&sq>"

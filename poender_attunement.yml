@@ -598,4 +598,5 @@ PoEnder_CreeperKillDone:
      else {
        - narrate "<red>You are not attuned to the Plane of Ender!"
        - narrate "<red>Speak with Lord Aayrl to attune yourself to this plane."
+       }
      

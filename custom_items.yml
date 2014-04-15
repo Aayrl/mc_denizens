@@ -11,7 +11,7 @@
    material: 402
    display name: "Rock"
    lore:
-   - <white>It<&sq> just a rock<&cm> Jim.
+   - <white>It<&sq>s just a rock<&cm> Jim.
 
 "PetRock":
    type: item
@@ -32,35 +32,35 @@
    material: 337
    display name: "Pile of Mud"
    lore:
-   - <white>Perhaps this can be baked into clay?
+   - <yellow>Perhaps this can be baked into clay?
    
 "Torn Sheet of Paper":
    type: item
    material: 339
    display name: "Torn Sheet of Paper"
    lore:
-   - <white>It<&sq>s a little beat up<&cm> but it should do the trick.
+   - <yellow>It<&sq>s a little beat up<&cm> but it should do the trick.
    
 "Dusty Cobwebs":
    type: item
    material: 30
    display name: "Dusty Cobwebs"
    lore:
-   - <white>You could probably fashion this into a trap.
+   - <yellow>You could probably fashion this into a trap.
    
 "Snapped Twig":
    type: item
    material: 280
    display name: "Snapped Twig"
    lore:
-   - <white>Toast a marshmellow on this.
+   - <yellow>Toast a marshmellow on this.
    
 "Driftwood":
    type: item
    material: 280
    display name: "Driftwood"
    lore:
-   - <white>You could make a nice<&cm> sturdy weapon hilt from this.
+   - <yellow>You could make a nice<&cm> sturdy weapon hilt from this.
    
 "Piece of String":
    type: item
@@ -81,7 +81,7 @@
    material: 332
    display name: "Marshmellow"
    lore:
-   - <white>Throw at a friend!
+   - <yellow>Throw at a friend!
    
 "Rusty Longsword":
    type: item
@@ -1226,16 +1226,6 @@
          - cast invisibility duration:60 power:3
          - playeffect location:<player.location> effect:portal qty:500
          }
-
-"Thunderfury":
-   type: item
-   material: 276
-   display name: "<&6>Thunderfury<&cm> Blessed Blade of the Windseeker"
-   lore:
-   - <green>Effect<&co> <red>Thunderfury
-   enchantments:
-   - damage_all:10
-   - durability:10
    
 "Ripper":
    type: item
@@ -1257,13 +1247,148 @@
    - durability:15
    - protection_environmental:10
    - protection_fire:10
+
+# ---------------------------------------------------------------------------
+
+# Bindings
+"TF_BindingLeft":
+   type: item
+   material: 406
+   display name: "<&6>Left Bindings of the Windseeker"
+   lore:
+   - <yellow>The Left Bindings of a once powerful god.
+   enchantments:
+   - durability:1
    
+"TF_BindingRight":
+   type: item
+   material: 406
+   display name: "<&6>Right Bindings of the Windseeker"
+   lore:
+   - <yellow>The Right Bindings of a once powerful god.
+   enchantments:
+   - durability:1
+
+# Essences
+"EnderdragonOre":
+   type: item
+   material: 263
+   display name: "<&6>Enderdragon Ore"
+   lore:
+   - <yellow>An ore stronger than any seen by mortals.
+   enchantments:
+   - durability:1
+
+# Bars
+"EnchantedEDORE":
+   type: item
+   material: 405
+   display name: "<&6>Enchanted Bar of Enderdragon Ore"
+   lore:
+   - <yellow>An bar stronger than any seen by mortals.
+   enchantments:
+   - durability:1
+
+# Thunderfury Item
+"Thunderfury":
+   type: item
+   material: 276
+   display name: "<&6>Thunderfury<&cm> Blessed Blade of the Windseeker"
+   lore:
+   - <green>Effect<&co> <red>Thunderfury
+   enchantments:
+   - damage_all:12
+   - durability:10
+
+# Thunderfury Effects
+# Knock all enemies in a 15 block radius up in the air 15 blocks
+# Strike Lightning down on all enemies within 15 blocks
+   
+# ---------------------------------------------------------------------------
+# Used to start the Rhokdelar questline.
+"AncientLeaf":
+   type: item
+   material: 111
+   display name: "<&5>Ancient Petrified Leaf"
+   lore:
+   - <yellow>A very large petrified leaf.
+   enchantments:
+   - durability:1
+   
+# Components of Rhokdelar
+"BlessedStave":
+   type: item
+   material: 280
+   display name: "<&5>Blessed Stave of the Ancients"
+   lore:
+   - <yellow>A large<&cm> sturdy and enchanted stave.
+   enchantments:
+   - durability:10
+   - damage_all:1
+   
+"BlessedSinew":
+   type: item
+   material: 287
+   display name: "<&5>Black Dragon Sinew"
+   lore:
+   - <yellow>An Enchanted String from a once powerful Black Dragon.
+   enchantments:
+   - durability:10
+   
+"DemonEssence1":
+   type: item
+   material: 331
+   display name: "<&5>Demon Essence"
+   lore:
+   - <yellow>A strong demon essence.
+   enchantments:
+   - durability:1
+   
+"DemonEssence2":
+   type: item
+   material: 331
+   display name: "<&5>Demon Essence"
+   lore:
+   - <yellow>A powerful demon essence.
+   enchantments:
+   - durability:1
+   
+"DemonEssence3":
+   type: item
+   material: 331
+   display name: "<&5>Demon Essence"
+   lore:
+   - <yellow>A shimmering demon essence.
+   enchantments:
+   - durability:1
+
+"DemonEssence4":
+   type: item
+   material: 331
+   display name: "<&5>Demon Essence"
+   lore:
+   - <yellow>A fiery demon essence.
+   enchantments:
+   - durability:1
+   
+# Stave Portion
+"Lokdelar":
+   type: item
+   material: 280
+   display name: "<&6>Lok<&sq>Delar<&cm> Stave of the Ancient Keepers"
+   lore:
+   - <green>Use<&co> <red>Call of Lightning
+   enchantments:
+   - durability:10
+   - damage_all:10
+
+# Bow Portion
 "Rhokdelar":
    type: item
    material: bow
    display name: "<&6>Rhok<&sq>Delar<&cm> Longbow of the Ancient Keepers"
    lore:
-   - <green>Use<&co> <red>Regenerate<&nl><green>Effect<&co> <red>Storm of Arrows
+   - <green>Use<&co> <red>Regenerate <green>Effect<&co> <red>Storm of Arrows
    enchantments:
    - durability:10
    - arrow_damage:10
@@ -1273,16 +1398,18 @@
    type: world
    events:
      on use command:
-       - if <player.item_in_hand.lore> == "<green>Use<&co> <red>Regenerate<&nl><green>Effect<&co> <red>Storm of Arrows" && "<flag.p:rdl reuse || false>" == true {
+       - if <player.item_in_hand.lore> == "<green>Use<&co> <red>Regenerate <green>Effect<&co> <red>Storm of Arrows" && "<flag.p:rdl reuse || false>" == true {
          - narrate "<&9>You must wait <flag.p:rdl reuse.expiration> before you can use that item again."
          } 
-       - if <player.item_in_hand.lore> == "<green>Use<&co> <red>Regenerate<&nl><green>Effect<&co> <red>Storm of Arrows" && "<flag.p:rdl reuse || false>" == false {
+       - if <player.item_in_hand.lore> == "<green>Use<&co> <red>Regenerate <green>Effect<&co> <red>Storm of Arrows" && "<flag.p:rdl reuse || false>" == false {
          - narrate "<&9>You feel your wounds begin to heal."
          - cast regeneration duration:15 power:1
          - playeffect location:<player.location> effect:slime qty:500
          - flag player "rdl reuse:true" duration:30
          }
-   
+# ---------------------------------------------------------------------------
+
+
 # ========================================================
 # God / Event Tier Items - Red Tag
    

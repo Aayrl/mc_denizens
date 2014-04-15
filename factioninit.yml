@@ -1,0 +1,27 @@
+# Faction Initializer
+# Tyler J. Sawyer
+# 4/15/14
+# Gives players a faction flag for default factions if none is detected
+# on their accounts.
+
+# Faction Values:
+# Hostile : 0
+# Scowls : 1000
+# Threateningly : 2500
+# Dubiously : 5000
+# Indifferently : 10000
+# Ambiently : 15000
+# Kindly : 17500
+# Honorably : 19000
+# Ally : 20000
+
+"FactionInit":
+  type: world
+
+  events:
+    on player join:
+    # Faction Check - If player has no factions, set them to their defaults.
+    - if <player.flag[FACTION_Gondor]> == "null" {
+      - flag player "FACTION_Gondor:10000" }
+    - if <player.flag[FACTION_Bandit]> == "null" {
+      - flag player "FACTION_Bandit:1000" }

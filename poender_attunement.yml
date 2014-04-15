@@ -592,10 +592,11 @@ PoEnder_CreeperKillDone:
    type: world
    events:
      on walked over POEnder_Port:
-     - if "<flag.p:POEnderAttune:ATTUNED>" {
+     - if <player.flag[POEnderAttune]> == "Attuned" {
+       - narrate "<aqua>Your body is magically teleported to the <&4>Plane of Ender<aqua>."
        - execute as_server "mv tp <player.name> world_the_end"
        }
-     - if !"<flag.p:POEnderAttune:ATTUNED>" 
+     - if <player.flag[POEnderAttune]> != "Attuned" {
        - narrate "<red>You are not attuned to the Plane of Ender!"
        - narrate "<red>Speak with Lord Aayrl to attune yourself to this plane."
        }

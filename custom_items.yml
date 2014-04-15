@@ -816,13 +816,6 @@
          - narrate "<&9>You use your Digmaster 5000 to dig the soil around you..."
          - playsound location:<player.location> sound:dig_grass
          - playeffect location:<player.location> effect:large_smoke qty:50
-         - wait 1
-         - playsound location:<player.location> sound:dig_grass
-         - playeffect location:<player.location> effect:large_smoke qty:50
-         - wait 1
-         - playsound location:<player.location> sound:dig_grass
-         - playeffect location:<player.location> effect:large_smoke qty:50
-         - wait 1
          - drop "i@<proc:DigmasterLewt>" location:<player.location>
          - flag player "digmaster reuse:true" duration:120
          }

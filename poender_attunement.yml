@@ -16,6 +16,7 @@
     - 45 DiplomacyEnd
     - 50 AvatarMustDie
     - 60 POEFlagify
+    - 70 POEAttuned_Player
 
 # LORE STEP : PRE-ATTUNEMENT QUEST.
 "LoreStep":
@@ -587,7 +588,24 @@ PoEnder_CreeperKillDone:
                     - announce "<red>Aayrl yells, 'Let it be known that on this day, <aqua><player.name><red> has defeated the Avatar of Hakkar, and as such, earned the highest rank of the Gondorian Guard!'"
                     - wait 1
                     - announce "<red>Aayrl yells, 'Let their name ring thoughout the lands! All hail <aqua>General <player.name><red>!'"
-                    
+                 
+"POEAttuned_Player":
+    type: interact
+    requirements:
+      mode: ALL
+      list: 
+      - FLAGGED 'POEnderAttune:ATTUNED'
+    steps:
+        'defaultattunedplayer*':
+            click trigger:
+                script:
+                - chat 'Ahhh<&cm> <player.name>! How goes the hunt in the <&lb><red>Plane of Ender<green><&rb>?'
+            chat trigger:
+                'continueAOHAKKARPOEnd1':
+                    trigger: 'The /Plane of Ender/ conquest goes well.'
+                    script: 
+                    - chat 'Keep up the good work<&cm> <player.name>. Speak to me when you have conquered the <&4>Plane of Ender<green>!'
+                 
 "Port2POEnder":
    type: world
    events:

@@ -813,7 +813,16 @@
          - narrate "<&9>You must wait <flag.p:digmaster reuse.expiration> before you can use that item again."
          } 
        - if <player.item_in_hand.lore> == "<green>Use<&co> Dig! <&lb>2 Min CD<&rb>" && "<flag.p:digmaster reuse || false>" == false {
-         - narrate "<&9>You use your Digmaster 500 to dig the soil around you..."
+         - narrate "<&9>You use your Digmaster 5000 to dig the soil around you..."
+         - playsound location:<player.location> sound:dig_grass
+         - playeffect location:<player.location> effect:large_smoke qty:50
+         - wait 1
+         - playsound location:<player.location> sound:dig_grass
+         - playeffect location:<player.location> effect:large_smoke qty:50
+         - wait 1
+         - playsound location:<player.location> sound:dig_grass
+         - playeffect location:<player.location> effect:large_smoke qty:50
+         - wait 1
          - drop "i@<proc:DigmasterLewt>" location:<player.location>
          - flag player "digmaster reuse:true" duration:120
          }

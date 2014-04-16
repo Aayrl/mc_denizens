@@ -17,6 +17,11 @@ guard_gondor:
     guard_xp: 25
     guard_health: 150
     guard_respawn_delay: 60
+    
+    factionHit: 50
+    
+  interact scripts:
+  - 10 GuardInteractScript
 
   actions:
     on assignment:
@@ -49,6 +54,7 @@ guard_gondor:
     - execute as_server "npc sel <npc.id>"
     - execute as_server "sentry target clear"
     - execute as_server "sentry target add entity:monster"
+    - flag npc AgroList:!
 
     on death:
     - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
@@ -64,9 +70,9 @@ guard_gondor:
     - execute as_server "npc effect --play none"
     - execute as_server "sentry target clear"
     # Faction Hit
-    - foreach <l@<npc.location>.find.players.within[<5>].aslist> {
+    - foreach <npc.flag[AgroList].aslist> {
       - if <%value%.flag[FACTION_Gondor]> >= 0 {
-        - flag %value% "FACTION_Gondor:<math.as_int:<%value%.flag[FACTION_Gondor]>-50>"
+        - flag player:%value% "FACTION_Gondor:<math.as_int:<%value%.flag[FACTION_Gondor]>-<cons:factionHit>>"
         - narrate targets:%value% "<&9>Your faction standing with Gondor has gotten worse! (<%value%.flag[FACTION_Gondor]>)" }
       }
 
@@ -78,6 +84,29 @@ guard_gondor:
     - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
       - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:victory message><&sq>" }
       
+"GuardInteractScript":
+   type: interact
+   steps:
+     1:
+       click trigger:
+         script:
+         - narrate "<yellow><npc.name><&co> <npc.health.percentage.as_int>%"
+       proximity trigger:
+         entry:
+           script:
+           # If the player's faction is too low, guards auto-attack.
+           - if <player.flag[FACTION_Gondor]> <= 2500 {
+             - attack
+             # Add player to the agro list if the guard does not enjoy their existance.
+             - if <npc.flag[AgroList].aslist> !contains <player> && <player.name> != <npc.name> flag npc AgroList:->:<player>
+             - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
+               - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:hate message><&sq>" }
+             }
+       damage trigger:
+         script:
+           # Add player to the agro list when they hit the guard.
+           - if <npc.flag[AgroList].aslist> !contains <player> && <player.name> != <npc.name> flag npc AgroList:->:<player>
+           
     #on enter proximity :
     # If the player's faction is too low, guards auto-attack.
     #- if <player.flag[FACTION_Gondor]> <= 2500 {

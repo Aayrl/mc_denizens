@@ -1132,7 +1132,7 @@
    events:
      on player damaged by entity:
        - if <player.item_in_hand.lore> == "<green>Effect<&co> <red>Block" {
-         - if <util.random.int[1].to[100]> >= 75 {
+         - if <util.random.int[1].to[100]> >= 45 {
            - narrate "<&9>Your <&5>Hakkarian Shield Wall<&9> blocks an incoming attack!"
            - determine CANCELLED
            }

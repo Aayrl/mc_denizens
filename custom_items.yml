@@ -1557,7 +1557,7 @@
      on entity damaged by player:
        - if <player.item_in_hand.lore> == "<green>Effect<&co> <red>Bop!" {
          - if <context.entity.is_player> narrate targets:<context.entity> "<&9>You were bopped by <player.name><&sq>s <red>Bopping Stick 3.0<&9>!"
-         - playeffect location:<context.entity.location> effect:slime qty:500
+         - playeffect location:<context.entity.location> effect:drip_water qty:500
          }
    
 # Item Effects

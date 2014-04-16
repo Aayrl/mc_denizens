@@ -1,20 +1,69 @@
 # Con Command
 # Tyler J. Sawyer
 # Considers the player's current target (where their mouse is pointing).
+#
+# Faction Values:
+# Scowls : 0
+# Threateningly : 1000
+# Dubiously : 2500
+# Apprehensively : 5000
+# Indifferently : 10000
+# Ambiently : 15000
+# Kindly : 17500
+# Warmly : 19000
+# Ally : 20000
 
 "considerCommand":
     type: world
+    
+    default constants:
+      # Consider Faction Messages
+      faction_hostile: "scowls at you<&cm> ready to attack."
+      faction_scowls: "glares at you threateningly."
+      faction_dubiously: "glowers at you dubiously."
+      faction_apprehensive: "looks your way apprehensively."
+      faction_indifferent: "regards you indifferently."
+      faction_amiable: "judges you amiably."
+      faction_kindly: "kindly considers you."
+      faction_warmly: "looks upon you warmly."
+      faction_ally: "considers you an ally.
+      
+      # Consider Difficulty Messages
+      difficulty_gray: "<&7>Looks like a reasonably safe opponent."
+      difficulty_green: "<&2>You could probably win this fight."
+      difficulty_lblue: "<aqua>Looks like you would have the upper hand."
+      difficulty_dblue: "<&9>Looks kind of dangeous<&cm> but you might win."
+      difficulty_white: "<white>Looks like quite a gamble."
+      difficulty_yellow: "<yellow>Looks like it would wipe the floor with you!"
+      difficulty_red: "<red>What would you like your tombstone to say?"
+      
+      # Consider Color Tags
+      tag_red: "<red>"
+      tag_yellow: "<yellow>"
+      tag_white: "<white>"
+      tag_dblue: "<&9>"
+      tag_lblue: "<aqua>"
+      tag_green: "<&2>"
+      tag_gray: "<&7>"
+      
     events:
        on con command:
        - define entityName <p@<player.name>.target.name>
        - define entityType <p@<player.name>.target.entity_type>
        # Consider alignment
-       - if %entityType% == "ENDERMAN" narrate "<yellow>%entityName% scowls at you<&cm> ready to attack."
-         else if %entityType% == "SKELETON" narrate "<yellow>%entityName% scowls at you<&cm> ready to attack."
-         else if %entityType% == "ZOMBIE" narrate "<&9>%entityName% scowls at you<&cm> ready to attack."
-         else if %entityType% == "SPIDER" narrate "<&9>%entityName% scowls at you<&cm> ready to attack."
-         else if %entityType% == "CREEPER" narrate "<white>%entityName% scowls at you<&cm> ready to attack."
-         else if %entityName% == "Bandit" narrate "<white>%entityName% scowls at you<&cm> ready to attack."
-         else if %entityType% != null narrate "<white>%entityName% regards you indifferently."
+       - if %entityType% == "ENDERMAN" narrate "<cons:tag_red>%entityName% <cons:faction_hostile>"
+         else if %entityType% == "SKELETON" narrate "<cons:tag_yellow>%entityName% <cons:faction_hostile>"
+         else if %entityType% == "ZOMBIE" narrate "<cons:tag_lblue>%entityName% <cons:faction_hostile>"
+         else if %entityType% == "SPIDER" narrate "<cons:tag_dblue>%entityName% <cons:faction_hostile>"
+         else if %entityType% == "CREEPER" narrate "<cons:tag_white>%entityName% <cons:faction_hostile>"
+         else if %entityName% == "Bandit" narrate "<cons:tag_white>%entityName% <cons:faction_hostile>"
+         else if %entityType% != null narrate "<cons:tag_white>%entityName% <cons:faction_indifferent>"
          else if %entityType% == null narrate "<red>You need to hover over a target to consider it!"
        # Consider Difficulty
+       - if %entityType% == "ENDERMAN" narrate "<cons:difficulty_red>"
+         else if %entityType% == "SKELETON" narrate "<cons:difficulty_yellow>"
+         else if %entityType% == "ZOMBIE" narrate "<cons:difficulty_lblue>"
+         else if %entityType% == "SPIDER" narrate "<cons:difficulty_dblue>"
+         else if %entityType% == "CREEPER" narrate "<cons:difficulty_white>"
+         else if %entityName% == "Bandit" narrate "<cons:difficulty_white>"
+         else if %entityType% != null narrate "<cons:difficulty_white>"

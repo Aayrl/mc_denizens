@@ -5,14 +5,14 @@
 # on their accounts.
 
 # Faction Values:
-# Hostile : 0
-# Scowls : 1000
-# Threateningly : 2500
-# Dubiously : 5000
+# Scowls : 0
+# Threateningly : 1000
+# Dubiously : 2500
+# Apprehensively : 5000
 # Indifferently : 10000
 # Ambiently : 15000
 # Kindly : 17500
-# Honorably : 19000
+# Warmly : 19000
 # Ally : 20000
 
 "FactionInit":

@@ -1544,9 +1544,9 @@
 "BoppingStick3":
    type: item
    material: 369
-   display name: "<red>Bopping Stick 3.0"
+   display name: "<red><&k>X<&r><red>Bopping Stick 3.0<&k>X<&r>"
    lore:
-   - <green>Effect<&co> <red>Bop!
+   - <green>Effect<&co> <red>Bop <&hrt>!
    enchantments:
    - knockback:11
 
@@ -1555,7 +1555,7 @@
    type: world
    events:
      on entity damaged by player:
-       - if <player.item_in_hand.lore> == "<green>Effect<&co> <red>Bop!" {
+       - if <player.item_in_hand.lore> == "<green>Effect<&co> <red>Bop <&hrt>!" {
          - if <context.entity.is_player> narrate targets:<context.entity> "<&9>You were bopped by <player.name><&sq>s <red>Bopping Stick 3.0<&9>!"
          - playeffect location:<context.entity.location> effect:drip_water qty:500
          }

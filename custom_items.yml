@@ -1555,7 +1555,7 @@
    type: world
    events:
      on entity damaged by player:
-       - if <<context.damager>.item_in_hand.lore> == "<green>Effect<&co> <red>Bop <&lb>Use on a Player<&rb>" {
+       - if <<context.damager>.item_in_hand.lore> == "<green>Effect<&co> <red>Bop <&lb>Use on a Player<&rb>!" {
          - narrate player:<context.entity> "<&9>You were bopped by <player.name><&sq>s <red>Bopping Stick 3.0<&9>!"
          - narrate player:<context.damager> "<&9>You bopped <context.entity> with your <red>Bopping Stick 3.0<&9>!"
          - playeffect location:<context.entity.location> effect:drip_water qty:50

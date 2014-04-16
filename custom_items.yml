@@ -1554,7 +1554,7 @@
 "bopping3Effect":
    type: world
    events:
-     on player clicks player:
+     on entity damaged by player:
        - if <player.item_in_hand.lore> == "<green>Effect<&co> <red>Bop!" {
          - narrate player:<context.entity> "<&9>You were bopped by <player.name><&sq>s <red>Bopping Stick 3.0<&9>!"
          - narrate "<&9>You bopped <context.entity> with your <red>Bopping Stick 3.0<&9>!"

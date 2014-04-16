@@ -1546,18 +1546,21 @@
    material: 369
    display name: "<red><&k>X<&r><red>Bopping Stick 3.0<&k>X<&r>"
    lore:
-   - <green>Effect<&co> <red>Bop!
+   - <green>Effect<&co> <red>Bop <&lb>Use on a Player<&rb>!
    enchantments:
-   - knockback:11
+   - knockback:10
 
 # Nothing fancy, just some sounds and special graphic effects.   
 "bopping3Effect":
    type: world
    events:
-     on entity damaged by player:
+     on player clicks player:
        - if <player.item_in_hand.lore> == "<green>Effect<&co> <red>Bop!" {
-         - if <context.entity.is_player> narrate targets:<context.entity> "<&9>You were bopped by <player.name><&sq>s <red>Bopping Stick 3.0<&9>!"
+         - narrate player:<context.entity> "<&9>You were bopped by <player.name><&sq>s <red>Bopping Stick 3.0<&9>!"
+         - narrate "<&9>You bopped <context.entity> with your <red>Bopping Stick 3.0<&9>!"
          - playeffect location:<context.entity.location> effect:drip_water qty:50
+         - playsound <context.entity.location> sound:hurt
+         - playsound <context.entity.location> sound:successful_hit
          }
    
 # Item Effects

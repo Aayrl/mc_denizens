@@ -63,9 +63,9 @@ guard_gondor:
     - execute as_server "npc effect --play none"
     - execute as_server "sentry target clear"
     # Faction Hit
-    - if <<context.damager>.flag[FACTION_Gondor]> >= 0 && <context.damager.is_player> {
-      - flag <context.damager> "FACTION_Gondor:<math.as_int:<<context.damager>.flag[FACTION_Gondor]>-50>"
-      - narrate targets:<context.damager> "<&9>Your faction standing with Gondor has gotten worse <<context.damager>.flag[FACTION_Gondor]>." }
+    - if <<context.killer>.flag[FACTION_Gondor]> >= 0 && <context.killer.is_player>{
+      - flag <context.killer> "FACTION_Gondor:<math.as_int:<<context.killer>.flag[FACTION_Gondor]>-50>"
+      - narrate targets:<context.killer> "<&9>Your faction standing with Gondor has gotten worse <<context.killer>.flag[FACTION_Gondor]>." }
 
     on attack: 
     - foreach <l@<npc.location>.find.players.within[<15>].aslist> {

@@ -31,6 +31,7 @@
     - announce "<yellow><player.name> has been knocked unconscious!"
     
     on command:
+    - narrate <context.command>
     - determine FULFILLED
 
 "MOTD-Announce":

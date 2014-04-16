@@ -29,6 +29,9 @@
 
     on player quit:
     - announce "<yellow><player.name> has been knocked unconscious!"
+    
+    on command:
+    - determine FULFILLED
 
 "MOTD-Announce":
   type: world

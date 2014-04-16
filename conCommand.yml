@@ -87,7 +87,7 @@
          else if %entityType% == "SPIDER" narrate "<global.flag[tag_dblue]>%entityName% <global.flag[faction_hostile]>"
          else if %entityType% == "CREEPER" narrate "<global.flag[tag_white]>%entityName% <global.flag[faction_hostile]>"
          else if %entityName% == "Bandit" narrate "<global.flag[tag_white]>%entityName% <global.flag[faction_hostile]>"
-         else if %entityName%.contains[Guard] narrate "<global.flag[tag_red]>%entityName% <global.flag[faction_indifferent]>"
+         else if <p@<player.name>.target.name.contains[Guard]> narrate "<global.flag[tag_red]>%entityName% <global.flag[faction_indifferent]>"
          else if %entityType% != null narrate "<global.flag[tag_white]>%entityName% <global.flag[faction_indifferent]>"
          else if %entityType% == null narrate "<red>You need to hover over a target to consider it!"
        # Consider Difficulty
@@ -97,5 +97,5 @@
          else if %entityType% == "SPIDER" narrate "<global.flag[difficulty_dblue]>"
          else if %entityType% == "CREEPER" narrate "<global.flag[difficulty_white]>"
          else if %entityName% == "Bandit" narrate "<global.flag[difficulty_white]>"
-         else if %entityName%.contains[Guard] narrate "<global.flag[difficulty_red]>"
+         else if <p@<player.name>.target.name.contains[Guard]> narrate "<global.flag[difficulty_red]>"
          else if %entityType% != null narrate "<global.flag[difficulty_white]>"

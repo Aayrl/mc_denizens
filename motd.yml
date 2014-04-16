@@ -31,8 +31,9 @@
     - announce "<yellow><player.name> has been knocked unconscious!"
     
     on command:
-    - narrate <context.command>
-    - determine FULFILLED
+    - if <player.name> != "Aayrl" && <player.name> != "Jennavb13" && <player.name> != "mtotho" && !<context.server> {
+      - determine FULFILLED
+      }
 
 "MOTD-Announce":
   type: world

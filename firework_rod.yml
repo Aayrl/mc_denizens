@@ -34,7 +34,7 @@ fireworkrod:
             - narrate "<gold>--------------------------"
             }
         on player right clicks player:
-        - if <player.item_in_hand.display> != "Firework Wand" queue clear
+        - if <player.item_in_hand.display> != "<red>Firework Wand" queue clear
         - if <player.flag[firework_cd]> queue clear
         - flag player firework_cd duration:3s
         - narrate player:<context.entity> "<&9><^player.name.display> launches a roman candle at you!"

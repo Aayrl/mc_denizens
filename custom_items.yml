@@ -1,6 +1,24 @@
 # Items
 # Tyler J. Sawyer
-# Last Updated : 4/3/14
+# Last Updated : 4/16/14
+#
+# Symbols:
+# <&co> : 
+# newline <&nl>
+# <&cm> ,
+# <&ss> §
+# <&sq> '
+# <&dq> "
+# <&lb> [
+# <&rb> ]
+# <&cl> {
+# <&cr> }
+# <&auml> ä
+# <&auml> Ä
+# <&ouml> ö
+# <&Ouml> Ö
+# <&uuml> ü
+# <&Uuml> Ü
 
 # ========================================================
 # Common Tier Items - White Tag
@@ -1522,6 +1540,26 @@
    lore:
    - <green>Effect<&co> <red>Launch Firework
 
+# Bopping Stick 3.0 - Given out at the Wednesday Avatar of Hakkar Launch Event
+"BoppingStick3":
+   type: item
+   material: 369
+   display name: "<red>Bopping Stick 3.0"
+   lore:
+   - <green>Effect<&co> <red>Bop!
+   enchantments:
+   - knockback:11
+
+# Nothing fancy, just some sounds and special graphic effects.   
+"bopping3Effect":
+   type: world
+   events:
+     on entity damaged by player:
+       - if <player.item_in_hand.lore> == "<green>Effect<&co> <red>Bop!" {
+         - if <context.entity.is_player> narrate targets:<context.entity> "<&9>You were bopped by <player.name><&sq>s <red>Bopping Stick 3.0<&9>!"
+         - playeffect location:<context.entity.location> effect:slime qty:500
+         }
+   
 # Item Effects
    
 #"Item Effects":

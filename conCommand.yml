@@ -1,0 +1,20 @@
+# Con Command
+# Tyler J. Sawyer
+# Considers the player's current target (where their mouse is pointing).
+
+"considerCommand":
+    type: world
+    events:
+       on con command:
+       - narrate "<yellow><player.name> looks at you indifferently."
+       on player right clicks entity:
+       #- run "npcRightClickConsider"
+       - narrate "<yellow><context.entity> looks at you indifferently."
+
+
+# A process for determining an NPC's faction towards you.
+# Fires off when players right click NPCs.
+"npcRightClickConsider":
+   type: task
+   script:
+     - narrate "<yellow>TEST"

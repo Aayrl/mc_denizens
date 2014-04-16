@@ -39,6 +39,8 @@ aohakkar:
     death message: <red>-HISSSS- You have not seen the last of Hakkar!
     # Victory Message : Message when a player is killed by the boss.
     victory message: <red>Where is your god now<&cm> <player.name>?
+    # Respawn Message : Message that goes to the server when the mob repops in 12 hours.
+    respawn message: <red>I AM REBORN! The power of Hakkar shall rule these lands!
     # Special Event Messages
     phase1_msg: <red>Now you shall see the true power of Hakkar!
     phase2_msg: <red>The Altar of Hakkar demands your blood!
@@ -64,7 +66,7 @@ aohakkar:
     # Avatar of Hakkar's Spawnpoint
     aoh_SpawnPoint: "23,69,536,world"
     # Avatar of Hakkar Respawn Timer in seconds (43200 = 12 hrs)
-    aoh_Respawn_Timer: 10
+    aoh_Respawn_Timer: 43200
     # Avatar of Hakkar XP Amount he drops on death
     aoh_XP_AMT: 2500
 
@@ -98,6 +100,8 @@ aohakkar:
     - execute as_server "sentry range <cons:aoh_AGRO_RADIUS>"
 
     on spawn:
+    # Shout about how great it is.
+    - announce "<red><npc.name> yells<&cm> <&sq><cons:respawn message><&sq>"
     # Warp Avatar of Hakkar to its spawn point on spawn.
     - teleport <npc> "location:<cons:aoh_SpawnPoint>"
     # Clear previous targets from hate list
@@ -141,7 +145,7 @@ aohakkar:
     - foreach <npc.flag[BossPlayerList].aslist> {
       - flag player:%value% AvatarOfHakkar_Engaged:!
       - flag player:%value% "PoEnder_AvatarHakkarKilled:1"
-      - narrate targets:<%value%.name> "<aqua>You have obtained the Head of Hakkar! Lord Aayrl would be interested in this."
+      - narrate targets:<%value%.name> "<aqua>You have obtained the Head of Hakkar! Lord Aayrl would be interested in seeing this."
       }
 
     on enter proximity:
@@ -162,6 +166,9 @@ aohakkar:
       - playsound location:<player.location> sound:portal_travel
       - playeffect location:<player.location> effect:portal qty:1000
       }
+    
+    on kill:
+    - announce "<red><npc.name> yells<&cm> <&sq><cons:victory message><&sq>"
 
 "AOHakkarScript":
    type: interact

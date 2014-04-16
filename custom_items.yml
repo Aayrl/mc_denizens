@@ -956,30 +956,6 @@
          - playeffect location:<player.location> effect:smoke qty:10
          }
 
-"Pendant of the Sun":
-   type: item
-   material: GLOWSTONE_DUST
-   display name: "<&5>Pendant of the Sun"
-   lore:
-   - <green>Use<&co> Heal <&lb>Consumes an Emerald when Cast<&rb>
-   enchantments:
-   - durability:1
-
-# Pendant of the Sun effect
-"pendantSunEffect":
-   type: world
-   events:
-     on use command:
-       - if <player.item_in_hand.lore> == "<green>Use<&co> Heal <&lb>Consumes an Emerald when Cast<&rb>" {
-         if <p@<player.name>.inventory<inventory.contains[emerald]]>> {
-           - narrate "<&9>You consume an Emerald and heal your wounds!"
-           - take 'item:emerald' qty:1
-           - cast heal duration:1 power:5
-           - playeffect location:<player.location> effect:potion_break qty:15 data:5 }
-         else {
-           - narrate "<red>This item requires an Emerald to use." }
-         }
-         
 #"MeteoriteShard":
 #   type: item
 #   material: 385
@@ -1096,16 +1072,142 @@
    - knockback:1
    
 # [Overworld Loot]
+
+
+# [Avatar of Hakkar Loot]
+# ---------------------------------------------------------------------------
 "Wand of Hakkar":
    type: item
-   material: 280
+   material: 76
    display name: "<&5>Wand of Hakkar"
    lore:
    - <green>Effect<&co> <red>Wither
    enchantments:
    - knockback:2
    - damage_all:1
+
+"wandofHakkarEffect":
+   type: world
+   events:
+     on entity damaged by player:
+       - if <player.item_in_hand.lore> == "<green>Effect<&co> <red>Wither" {
+         - if <util.random.int[1].to[100]> >= 95 {
+           - narrate "<&9>Your <&5>Wand of Hakkar<&9> withers your target!"
+           - cast wither duration:5 power:1 <context.entity>
+           }
+         }
    
+"Fang of Hakkar":
+   type: item
+   material: 267
+   display name: "<&5>Fang of Hakkar"
+   lore:
+   - <green>Effect<&co> <red>Poison
+   enchantments:
+   - durability:5
+   - damage_all:3
+   
+"fangofHakkarEffect":
+   type: world
+   events:
+     on entity damaged by player:
+       - if <player.item_in_hand.lore> == "<green>Effect<&co> <red>Poison" {
+         - if <util.random.int[1].to[100]> >= 95 {
+           - narrate "<&9>Your <&5>Fang of Hakkar<&9> poisons your target!"
+           - cast poison duration:5 power:1 <context.entity>
+           }
+         }
+   
+"Hakkarian Shield Wall":
+   type: item
+   material: 96
+   display name: "<&5>Hakkarian Shield Wall"
+   lore:
+   - <green>Effect<&co> <red>Block
+   enchantments:
+   - durability:5
+   
+"hakkarShieldWallEffect":
+   type: world
+   events:
+     on player damaged by entity:
+       - if <player.item_in_hand.lore> == "<green>Effect<&co> <red>Block" {
+         - if <util.random.int[1].to[100]> >= 75 {
+           - narrate "<&9>Your <&5>Hakkarian Shield Wall<&9> blocks an incoming attack!"
+           - determine CANCELLED
+           }
+         }
+   
+"Moist Towelette":
+   type: item
+   material: 339
+   display name: "<&5>Lemon Scented Moist Towelette"
+   lore:
+   - <green>Use<&co> Purge Soul <&lb>5 Min CD<&rb>
+   enchantments:
+   - durability:5
+   - damage_all:3
+
+"moistTowelEffect":
+   type: world
+   events:
+     on use command:
+       - if <player.item_in_hand.lore> == "<green>Use<&co> Purge Soul <&lb>5 Min CD<&rb>" && "<flag.p:mtowel reuse || false>" == true {
+         - narrate "<&9>You must wait <flag.p:mtowel reuse.expiration> before you can use that item again."
+         } 
+       - if <player.item_in_hand.lore> == "<green>Use<&co> Purge Soul <&lb>5 Min CD<&rb>" && "<flag.p:mtowel reuse || false>" == false {
+         - narrate "<&9>You cleanse your soul of all effects!"
+         - execute as_server "effect <player.name> clear"
+         - playeffect location:<player.location> effect:potion_break qty:15 data:18
+         - flag player "mtowel reuse:true" duration:300
+         }
+   
+"Hakkarian Leather Whip":
+   type: item
+   material: 420
+   display name: "<&5>Hakkarian Leather Whip"
+   lore:
+   - <green>Effect<&co> <red>Lash
+   enchantments:
+   - durability:5
+   - damage_all:5
+   
+"hakkarWhipEffect":
+   type: world
+   events:
+     on entity damaged by player:
+       - if <player.item_in_hand.lore> == "<green>Effect<&co> <red>Lash" {
+         - if <util.random.int[1].to[100]> >= 95 {
+           - narrate "<&9>Your <&5>Hakkarian Leather Whip<&9> lashes your target!"
+           - cast harm duration:1 power:1 <context.entity>
+           }
+         }
+   
+"Pendant of the Sun":
+   type: item
+   material: GLOWSTONE_DUST
+   display name: "<&5>Pendant of the Sun"
+   lore:
+   - <green>Use<&co> Heal <&lb>Consumes an Emerald when Cast<&rb>
+   enchantments:
+   - durability:1
+
+# Pendant of the Sun effect
+"pendantSunEffect":
+   type: world
+   events:
+     on use command:
+       - if <player.item_in_hand.lore> == "<green>Use<&co> Heal <&lb>Consumes an Emerald when Cast<&rb>" {
+         if <p@<player.name>.inventory<inventory.contains[emerald]]>> {
+           - narrate "<&9>You consume an Emerald and heal your wounds!"
+           - take 'item:emerald' qty:1
+           - cast heal duration:1 power:5
+           - playeffect location:<player.location> effect:potion_break qty:15 data:5 }
+         else {
+           - narrate "<red>This item requires an Emerald to use." }
+         }
+# ---------------------------------------------------------------------------
+
 # [ Special Loot ]
 "XPPotion_2x":
    type: item

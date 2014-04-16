@@ -7,9 +7,13 @@
     events:
        on con command:
        - define entityName <p@<player.name>.target.name>
-       - define entityType <p@<player.name>.target.type>
+       - define entityType <p@<player.name>.target.entity_type>
        # Consider alignment
-       - if %entityType% == "Enderman" narrate "<yellow>%entityName% scowls at you<&cm> ready to attack."
-         else if %entityType% == "Skeleton" narrate "<yellow>%entityName% scowls at you<&cm> ready to attack."
-         else if %entityType% != null narrate "<yellow>%entityName% regards you indifferently."
+       - if %entityType% == "ENDERMAN" narrate "<yellow>%entityName% scowls at you<&cm> ready to attack."
+         else if %entityType% == "SKELETON" narrate "<yellow>%entityName% scowls at you<&cm> ready to attack."
+         else if %entityType% == "ZOMBIE" narrate "<&9>%entityName% scowls at you<&cm> ready to attack."
+         else if %entityType% == "SPIDER" narrate "<&9>%entityName% scowls at you<&cm> ready to attack."
+         else if %entityType% == "CREEPER" narrate "<white>%entityName% scowls at you<&cm> ready to attack."
+         else if %entityName% == "Bandit" narrate "<white>%entityName% scowls at you<&cm> ready to attack."
+         else if %entityType% != null narrate "<white>%entityName% regards you indifferently."
        # Consider Difficulty

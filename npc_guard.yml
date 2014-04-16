@@ -78,10 +78,10 @@ guard_gondor:
     - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
       - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:victory message><&sq>" }
       
-    on enter proximity :
+    #on enter proximity :
     # If the player's faction is too low, guards auto-attack.
-    - if <player.flag[FACTION_Gondor]> <= 2500 {
-      - attack
-      - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
-        - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:hate message><&sq>" }
-      }
+    #- if <player.flag[FACTION_Gondor]> <= 2500 {
+    #  - attack
+    #  - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
+    #    - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:hate message><&sq>" }
+    #  }

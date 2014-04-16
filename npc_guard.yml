@@ -96,9 +96,8 @@ guard_gondor:
          script:
          - narrate "<yellow><npc.name><&co> <npc.health.percentage.as_int>%"
        proximity trigger:
-         entry:
-           script:
-           - narrate "hello"
+         script:
+         - narrate "<yellow><npc.name><&co> PANCAKES YOU NEARBY."
        #    - if <player.flag[FACTION_Gondor]> <= 2500 {
        #      # If the player's faction is too low, guards auto-attack.
        #      - attack

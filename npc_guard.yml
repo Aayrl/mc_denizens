@@ -91,17 +91,17 @@ guard_gondor:
        click trigger:
          script:
          - narrate "<yellow><npc.name><&co> <npc.health.percentage.as_int>%"
-       proximity trigger:
-         entry:
-           script:
-           - if <player.flag[FACTION_Gondor]> <= 2500 {
-             # If the player's faction is too low, guards auto-attack.
-             - attack
-             # Add player to the agro list if the guard does not enjoy their existance.
-             - if <npc.flag[AgroList].aslist> !contains <player> && <player.name> != <npc.name> flag npc AgroList:->:<player>
-             - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
-               - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:hate message><&sq>" }
-             }
+       #proximity trigger:
+       #  entry:
+       #    script:
+       #    - if <player.flag[FACTION_Gondor]> <= 2500 {
+       #      # If the player's faction is too low, guards auto-attack.
+       #      - attack
+       #      # Add player to the agro list if the guard does not enjoy their existance.
+       #      - if <npc.flag[AgroList].aslist> !contains <player> && <player.name> != <npc.name> flag npc AgroList:->:<player>
+       #      - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
+       #        - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:hate message><&sq>" }
+       #      }
        damage trigger:
          script:
            # Add player to the agro list when they hit the guard.

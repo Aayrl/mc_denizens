@@ -63,6 +63,9 @@ guard_gondor:
     - execute as_server "npc effect --play none"
     - execute as_server "sentry target clear"
     # Faction Hit
+    - if <player.flag[FACTION_Gondor]> >= 0 {
+      - flag player "FACTION_Gondor:<math.as_int:<player.flag[FACTION_Gondor]>-50>"
+      - narrate "<&9>Your faction standing with Gondor has gotten worse <player.flag[FACTION_Gondor]>." }
 
     on attack: 
     - foreach <l@<npc.location>.find.players.within[<15>].aslist> {

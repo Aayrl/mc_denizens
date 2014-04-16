@@ -94,8 +94,8 @@ guard_gondor:
        proximity trigger:
          entry:
            script:
-           # If the player's faction is too low, guards auto-attack.
            - if <player.flag[FACTION_Gondor]> <= 2500 {
+             # If the player's faction is too low, guards auto-attack.
              - attack
              # Add player to the agro list if the guard does not enjoy their existance.
              - if <npc.flag[AgroList].aslist> !contains <player> && <player.name> != <npc.name> flag npc AgroList:->:<player>

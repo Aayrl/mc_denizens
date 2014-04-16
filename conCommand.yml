@@ -9,7 +9,7 @@
        - narrate "<yellow><player.name> looks at you indifferently."
        on player right clicks entity:
        #- run "npcRightClickConsider"
-       - narrate "<yellow><context.entity> looks at you indifferently."
+       - narrate "<yellow><context.entity.name> looks at you indifferently."
 
 
 # A process for determining an NPC's faction towards you.

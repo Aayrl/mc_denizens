@@ -1,0 +1,13 @@
+# Weather Events
+# Tyler J. Sawyer
+# Random announcements for various weather events.
+
+"weatherEvents":
+  type: world
+
+  events:
+    on weather rains:
+    - announce "<yellow>It begins to rain."
+    
+    on weather clears:
+    - announce "<yellow>The rain dissipates."

@@ -16,4 +16,5 @@
          else if %entityType% == "CREEPER" narrate "<white>%entityName% scowls at you<&cm> ready to attack."
          else if %entityName% == "Bandit" narrate "<white>%entityName% scowls at you<&cm> ready to attack."
          else if %entityType% != null narrate "<white>%entityName% regards you indifferently."
+         else if %entityType% == null narrate "<red>You need to hover over a target to consider it!"
        # Consider Difficulty

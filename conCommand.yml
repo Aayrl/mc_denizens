@@ -6,7 +6,7 @@
     type: world
     events:
        on con command:
-       - narrate "<yellow><player.name> looks at you indifferently."
+       - narrate "<yellow><p@player.target.name> looks at you indifferently."
        on player right clicks entity:
        #- run "npcRightClickConsider"
        - narrate "<yellow><context.entity.name> looks at you indifferently."

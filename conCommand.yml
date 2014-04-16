@@ -17,7 +17,6 @@
     type: world
     
     default constants:
-      # Consider Faction Messages
       faction_hostile: "scowls at you<&cm> ready to attack."
       faction_scowls: "glares at you threateningly."
       faction_dubiously: "glowers at you dubiously."
@@ -28,7 +27,6 @@
       faction_warmly: "looks upon you warmly."
       faction_ally: "considers you an ally.
       
-      # Consider Difficulty Messages
       difficulty_gray: "<&7>Looks like a reasonably safe opponent."
       difficulty_green: "<&2>You could probably win this fight."
       difficulty_lblue: "<aqua>Looks like you would have the upper hand."
@@ -37,7 +35,6 @@
       difficulty_yellow: "<yellow>Looks like it would wipe the floor with you!"
       difficulty_red: "<red>What would you like your tombstone to say?"
       
-      # Consider Color Tags
       tag_red: "<red>"
       tag_yellow: "<yellow>"
       tag_white: "<white>"

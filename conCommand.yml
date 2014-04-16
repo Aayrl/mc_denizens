@@ -6,4 +6,10 @@
     type: world
     events:
        on con command:
-       - narrate "<yellow><p@<player.name>.target.name> looks at you indifferently."
+       - define entityName <p@<player.name>.target.name>
+       - define entityType <p@<player.name>.target.type>
+       # Consider alignment
+       - if %entityType% == "Enderman" narrate "<yellow>%entityName% scowls at you<&cm> ready to attack."
+         else if %entityType% == "Skeleton" narrate "<yellow>%entityName% scowls at you<&cm> ready to attack."
+         else if %entityType% != null narrate "<yellow>%entityName% regards you indifferently."
+       # Consider Difficulty

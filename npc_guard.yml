@@ -43,6 +43,8 @@ guard_gondor:
     - execute as_server "sentry retaliate true"
     - execute as_server "sentry targetable true"
     - execute as_server "sentry target add entity:monster"
+    - execute as_server "sentry target add entity:PvP"
+    - execute as_server "sentry target add entity:PvNPC"
     - execute as_server "sentry equip 267"
     - execute as_server "sentry equip 306"
     - execute as_server "sentry equip 307"
@@ -54,6 +56,8 @@ guard_gondor:
     - execute as_server "npc sel <npc.id>"
     - execute as_server "sentry target clear"
     - execute as_server "sentry target add entity:monster"
+    - execute as_server "sentry target add entity:PvP"
+    - execute as_server "sentry target add entity:PvNPC"
     - flag npc AgroList:!
 
     on death:

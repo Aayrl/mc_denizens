@@ -87,7 +87,11 @@ guard_gondor:
     on kill:
     - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
       - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:victory message><&sq>" }
-      
+    
+    on enter proximity:
+    - narrate "<yellow><npc.name><&co> PANCAKES YOU NEARBY."
+
+
 "GuardInteractScript":
    type: interact
    steps:
@@ -95,9 +99,6 @@ guard_gondor:
        click trigger:
          script:
          - narrate "<yellow><npc.name><&co> <npc.health.percentage.as_int>%"
-       proximity trigger:
-         script:
-         - narrate "<yellow><npc.name><&co> PANCAKES YOU NEARBY."
        #    - if <player.flag[FACTION_Gondor]> <= 2500 {
        #      # If the player's faction is too low, guards auto-attack.
        #      - attack

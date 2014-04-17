@@ -1,0 +1,68 @@
+# hateFiend assignment
+# Tyler J. Sawyer - 4/15/14
+# REQUIREMENTS:
+#   Sentry      Denizens        Citizens2
+
+hateFiend:
+  type: assignment
+
+  default constants:
+    attack message: <white>a <npc.name> swings its arms wildly as it moves in to attack!
+    death message: <white><npc.name> collapses to the ground.
+    victory message: <white><npc.name> dances around the body of its recent victim.
+
+    # Stats
+    hateFiend_str: 4
+    hateFiend_xp: 20
+    hateFiend_health: 300
+    hateFiend_respawn_delay: 60
+
+  actions:
+    on assignment:
+    - trigger name:damage toggle:true
+
+    # Setup hateFiend Stats
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "npc type PIG_ZOMBIE"
+    - execute as_server "npc speed 1"
+    - execute as_server "npc lookclose"
+    - execute as_server "trait sentry"
+    - execute as_server "sentry health <cons:hateFiend_health>"
+    - execute as_server "sentry spawn"
+    - execute as_server "sentry respawn <cons:hateFiend_respawn_delay>"
+    - execute as_server "sentry speed 1"
+    - execute as_server "sentry strength <cons:hateFiend_str>"
+    - execute as_server "sentry killdrops false"
+    - execute as_server "sentry healrate 1"
+    - execute as_server "sentry retaliate true"
+    - execute as_server "sentry targetable true"
+    - execute as_server "sentry target add entity:player"
+
+    on spawn:
+    # Clear previous targets from hate list
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "sentry target clear"
+    - execute as_server "sentry target add entity:player"
+
+    on death:
+    - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
+      - narrate targets:%value% "<cons:death message>" }
+    # XP amount
+    - drop XP qty:<cons:hateFiend_xp> location:<npc.location>
+    # Random loot
+    # LOOT TABLE HERE PERHAPS?
+    #- define roll <util.random.int[1].to[100]>
+    #- if %roll% >= 90 {
+    #  - drop "" location:<npc.location> }
+    # Reset npc effects and clear hate targets.
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "npc effect --play none"
+    - execute as_server "sentry target clear"
+
+    on attack: 
+    - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
+      - narrate targets:%value% "<cons:attack message>" }
+    
+    on kill:
+    - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
+      - narrate targets:%value% "<cons:victory message>" }

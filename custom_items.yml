@@ -568,6 +568,47 @@
    lore:
    - <white>Perhaps this can be repurposed?
    
+# [Plane of Ender - Hate Keep Loot]
+"Hatesteel Chestpiece":
+   type: item
+   material: 307
+   display name: "<green>Hatesteel Chestpiece"
+   lore:
+   - <white>A fine steel chestpiece.
+   enchantments:
+   - durability:5
+   - protection_environmental:4
+   
+"Hatesteel Leggings":
+   type: item
+   material: 308
+   display name: "<green>Hatesteel Leggings"
+   lore:
+   - <white>A pair of fine steel leggings.
+   enchantments:
+   - durability:5
+   - protection_projectile:4
+   
+"Hatesteel Boots":
+   type: item
+   material: 309
+   display name: "<green>Hatesteel Boots"
+   lore:
+   - <white>A pair of fine steel boots.
+   enchantments:
+   - durability:4
+   - protection_fall:4
+   
+"Hatesteel Helm":
+   type: item
+   material: 306
+   display name: "<green>Hatesteel Helm"
+   lore:
+   - <white>A fine steel helmet.
+   enchantments:
+   - durability:4
+   - oxygen:1
+   
 # [Plane of Earth Loot]
 "Fine Steel Plate Helm":
    type: item
@@ -885,6 +926,27 @@
       - determine "354"
       }
 
+# [Plane of Ender - Hate Keep Loot]
+"Doom":
+   type: item
+   material: 276
+   display name: "<&9>Doom"
+   lore:
+   - <white>Denial of Service upon use.
+   enchantments:
+   - damage_all:4
+   - durability:2
+   
+"Blue Harbinger":
+   type: item
+   material: 276
+   display name: "<&9>Blue Harbinger"
+   lore:
+   - <white>This target smites undead foe.
+   enchantments:
+   - damage_undead:5
+   - durability:3
+      
 # [Overworld Loot]
 "Pain":
    type: item

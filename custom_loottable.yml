@@ -23,6 +23,15 @@
         - if <context.entity.entity_type> == "Spider" {
           - drop "i@<proc:LootTable_Spider>" location:<context.entity.location>
           }
+        - if <context.entity.entity_type> == "Hate Fiend" {
+          - drop "i@<proc:LootTable_HateKeep>" location:<context.entity.location>
+          }
+        - if <context.entity.entity_type> == "Hate Sprite" {
+          - drop "i@<proc:LootTable_HateKeep>" location:<context.entity.location>
+          }
+        - if <context.entity.entity_type> == "Hate Golem" {
+          - drop "i@<proc:LootTable_HateKeep>" location:<context.entity.location>
+          }
         }
 
 # Procedure based on an example from :
@@ -62,7 +71,7 @@
         }
  
     - if %quality% == Rare {
-        - random 2
+        - random 6
         - determine "Darkblade"
         - determine "Digmaster 5000"
         - determine "Runed Enderplate Helm"
@@ -347,4 +356,53 @@
         - determine "Nightblade"
         - determine "Willsapper"
         - determine "Eyepatch of Plunder"
+        }
+        
+"LootTable_HateKeep":
+    type: procedure
+
+    script:
+    - define roll <util.random.int[1].to[10000]>
+    - if %roll% >= 0 && %roll% < 9000 define quality "Common"
+      else if %roll% >= 9000 && %roll% < 9800 define quality "Uncommon"
+      else if %roll% >= 9800 && %roll% < 9950 define quality "Rare"
+      else if %roll% >= 9950 define quality "Epic"
+ 
+    - if %quality% == Common {
+      - random 5
+      - determine "Enderparts"
+      - determine "Endersoul" 
+      - determine "Enderdust"
+      - determine "Enderthread"
+      - determine "Endermold"
+      }
+ 
+    - if %quality% == Uncommon {
+        - random 10
+        - determine "Enderplate Chestpiece"
+        - determine "Enderplate Leggings" 
+        - determine "Enderplate Boots"
+        - determine "Enderplate Helm" 
+        - determine "Enderfish"
+        - determine "Endercookie"
+        - determine "Hatesteel Leggings"
+        - determine "Hatesteel Boots"
+        - determine "Hatesteel Chestpiece"
+        - determine "Hatesteel Helm"
+        }
+ 
+    - if %quality% == Rare {
+        - random 6
+        - determine "Doom"
+        - determine "Blue Harbinger"
+        - determine "Runed Enderplate Helm"
+        - determine "Runed Enderplate Chestpiece"
+        - determine "Runed Enderplate Leggings"
+        - determine "Runed Enderplate Boots"
+        }
+ 
+    - if %quality% == Epic {
+        - random 2
+        - determine "Hurricane"
+        - determine "Bucket of Saturation"
         }

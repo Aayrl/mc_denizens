@@ -23,7 +23,7 @@ hateSprite:
 
     # Setup hateSprite Stats
     - execute as_server "npc sel <npc.id>"
-    - execute as_server "npc type BAT"
+    - execute as_server "npc type SILVERFISH"
     - execute as_server "npc speed 1"
     - execute as_server "npc lookclose"
     - execute as_server "trait sentry"

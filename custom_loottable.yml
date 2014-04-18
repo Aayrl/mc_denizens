@@ -24,13 +24,13 @@
           - drop "i@<proc:LootTable_Spider>" location:<context.entity.location>
           }
         - if <context.entity.name> == "Hate Fiend" {
-          - drop "i@<proc:LootTable_HateKeep>" location:<context.entity.location>
+          - drop "i@<proc:LootTable_HateKeep>" location:<context.damager.location>
           }
         - if <context.entity.name> == "Hate Sprite" {
-          - drop "i@<proc:LootTable_HateKeep>" location:<context.entity.location>
+          - drop "i@<proc:LootTable_HateKeep>" location:<context.damager.location>
           }
         - if <context.entity.name> == "Hate Golem" {
-          - drop "i@<proc:LootTable_HateKeep>" location:<context.entity.location>
+          - drop "i@<proc:LootTable_HateKeep>" location:<context.damager.location>
           }
         }
 

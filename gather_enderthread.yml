@@ -1,0 +1,32 @@
+# Gather Enderthread quest
+# Simon T. Anguish
+# 4-14-14
+
+# Basic Task Assignment Value
+"GatherEnderthread":
+    type: assignment
+    
+    interact scripts:
+    - 10 GatherEnderthreadQuest
+    
+# NPC Chatter Task
+'GatherEnderthreadQuest':
+    type: interact
+    
+    steps:
+        # Handout Step - First Interaction
+        'Enderthread Quest Handout*':
+            Proximity Trigger:
+                entry radius: 5
+                entry:
+                    script:
+                    - chat "Hey there! I sure could use some help."
+            Click Trigger:
+                script:
+                - chat "I'm working on a new pattern for my cloak. I could use some [<red>Enderthread<green>]. Care to help?"
+            Chat Trigger:
+                1:
+                    Trigger: I will gather the /Enderthread/ for you.
+                    Script:
+                    - chat "Excellent! It can be found on Endermen all around here. Return here when you're finished."
+                    - listen item type:collect block:enderthread qty:1 script:Enderthread_prog

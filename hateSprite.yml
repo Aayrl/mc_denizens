@@ -7,9 +7,9 @@ hateSprite:
   type: assignment
 
   default constants:
-    attack message: <white>a <npc.name> swoops in to attack its target!
-    death message: <white><npc.name> falls to the ground<&cm> limp.
-    victory message: <white><npc.name> flaps its wings with delight.
+    attack message: <white>a <npc.name> skitters towards its target!
+    death message: <white><npc.name> curls up into a ball on the ground<&cm> limp.
+    victory message: <white><npc.name> wiggles with delight.
 
     # Stats
     hateSprite_str: 3

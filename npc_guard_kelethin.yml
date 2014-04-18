@@ -1,0 +1,101 @@
+# Kelethin Guard NPC
+# Tyler J. Sawyer
+# 4/18/14
+# Assigned to guards in Kelethin.
+
+guard_kelethin:
+  type: assignment
+
+  default constants:
+    attack message: <white>Time to die<&cm> <n@<npc.name>.navigator.target_entity.name>!
+    death message: <white>Tunare<&cm> bless my soul.
+    victory message: <white>Harmony has once again been restored to the Faydark.
+    hate message: <white>Your kind is not welcome here<&cm> <n@<npc.name>.navigator.target_entity.name>!
+
+    # Stats
+    guard_str: 10
+    guard_xp: 25
+    guard_health: 150
+    guard_respawn_delay: 60
+    
+    factionHit: 50
+    
+  interact scripts:
+  - 10 KGuardInteractScript
+
+  actions:
+    on assignment:
+    - trigger name:damage toggle:true
+
+    # Setup Guard Stats
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "npc type player"
+    - execute as_server "npc speed 1"
+    - execute as_server "npc lookclose"
+    - execute as_server "trait sentry"
+    - execute as_server "sentry health <cons:guard_health>"
+    - execute as_server "sentry spawn"
+    - execute as_server "sentry respawn <cons:guard_respawn_delay>"
+    - execute as_server "sentry speed 1"
+    - execute as_server "sentry strength <cons:guard_str>"
+    - execute as_server "sentry killdrops false"
+    - execute as_server "sentry healrate 1"
+    - execute as_server "sentry retaliate true"
+    - execute as_server "sentry targetable true"
+    - execute as_server "sentry target add entity:monster"
+    - execute as_server "sentry target add entity:PvP"
+    - execute as_server "sentry target add entity:PvNPC"
+    - execute as_server "sentry equip 261"
+    - execute as_server "sentry equip 298"
+    - execute as_server "sentry equip 299"
+    - execute as_server "sentry equip 300"
+    - execute as_server "sentry equip 301"
+
+    on spawn:
+    # Clear previous targets from hate list
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "sentry target clear"
+    - execute as_server "sentry target add entity:monster"
+    - execute as_server "sentry target add entity:PvP"
+    - execute as_server "sentry target add entity:PvNPC"
+    - flag npc AgroList:!
+
+    on death:
+    - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
+      - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:death message><&sq>" }
+    # XP amount
+    - drop XP qty:<cons:guard_xp> location:<npc.location>
+    # Random loot
+    #- define roll <util.random.int[1].to[100]>
+    #- if %roll% >= 90 {
+    #  - drop "Dented Militia Helm" location:<npc.location> }
+    # Reset npc effects and clear hate targets.
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "npc effect --play none"
+    - execute as_server "sentry target clear"
+    # Faction Hit
+    - foreach <npc.flag[AgroList].aslist> {
+      - if <%value%.flag[FACTION_Kelethin]> >= 0 {
+        - flag player:%value% "FACTION_Kelethin:<math.as_int:<%value%.flag[FACTION_Kelethin]>-<cons:factionHit>>"
+        - narrate targets:%value% "<&9>Your faction standing with Kelethin has gotten worse! (<%value%.flag[FACTION_Kelethin]>)" }
+      }
+
+    on attack: 
+    - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
+      - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:attack message><&sq>" }
+    
+    on kill:
+    - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
+      - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:victory message><&sq>" }
+
+"KGuardInteractScript":
+   type: interact
+   steps:
+     1:
+       click trigger:
+         script:
+         - narrate "<yellow><npc.name><&co> <npc.health.percentage.as_int>%"
+       damage trigger:
+         script:
+           # Add player to the agro list when they hit the guard.
+           - if <npc.flag[AgroList].aslist> !contains <player> && <player.name> != <npc.name> flag npc AgroList:->:<player>

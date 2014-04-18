@@ -21,7 +21,19 @@
   events:
     on player join:
     # Faction Check - If player has no factions, set them to their defaults.
+    # 'Good' factions - main cities
     - if <player.flag[FACTION_Gondor]> == "null" {
       - flag player "FACTION_Gondor:10000" }
+    - if <player.flag[FACTION_Kelethin]> == "null" {
+      - flag player "FACTION_Kelethin:5000" }
+    - if <player.flag[FACTION_Thurgadin]> == "null" {
+      - flag player "FACTION_Thurgadin:5000" }
+    # Neutral Factions
+    - if <player.flag[FACTION_BlackDragons]> == "null" {
+      - flag player "FACTION_BlackDragons:0" }
+    # Hostile Factions
     - if <player.flag[FACTION_Bandit]> == "null" {
       - flag player "FACTION_Bandit:1000" }
+    - if <player.flag[FACTION_HateKeep]> == "null" {
+      - flag player "FACTION_HateKeep:1000" }
+    # Misc. Factions

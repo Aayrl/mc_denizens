@@ -1151,8 +1151,46 @@
    enchantments:
    - knockback:1
    
-# [Overworld Loot]
+# [Plane of Earth Loot]
+"Fabled Journeyman Boots":
+   type: item
+   material: 313
+   display name: "<&5>Fabled Journeyman<&sq>s Boots"
+   lore:
+   - <green>Use<&co> Fabled Bootstrutter<&sq>s Blessing
+   enchantments:
+   - protection_fall:7
+   - durability:10
 
+"Fabled Bootstrutter Blessing":
+   type: world
+   events:
+     on use command:
+       - if <player.item_in_hand.lore> == "<green>Use<&co> Fabled Bootstrutter<&sq>s Blessing" {
+         - narrate "<&9>You feel your speed quicken!"
+         - cast speed duration:45 power:5
+         - playeffect location:<player.location> effect:splash qty:2500
+         }
+         
+"Shield of Earth":
+   type: item
+   material: 96
+   display name: "<&5>Shield of Earth"
+   lore:
+   - <green>Effect<&co> <red>Block <&lb>55%<&rb>
+   enchantments:
+   - durability:5
+   
+"SOEarthEffect":
+   type: world
+   events:
+     on player damaged by entity:
+       - if <player.item_in_hand.lore> == "<green>Effect<&co> <red>Block <&lb>55%<&rb>" {
+         - if <util.random.int[1].to[100]> >= 45 {
+           - narrate "<&9>Your <&5>Shield of Earth<&9> blocks an incoming attack!"
+           - determine CANCELLED
+           }
+         }
 
 # [Avatar of Hakkar Loot]
 # ---------------------------------------------------------------------------
@@ -1203,7 +1241,7 @@
    material: 96
    display name: "<&5>Hakkarian Shield Wall"
    lore:
-   - <green>Effect<&co> <red>Block
+   - <green>Effect<&co> <red>Block <&lb>45%<&rb>
    enchantments:
    - durability:5
    
@@ -1211,8 +1249,8 @@
    type: world
    events:
      on player damaged by entity:
-       - if <player.item_in_hand.lore> == "<green>Effect<&co> <red>Block" {
-         - if <util.random.int[1].to[100]> >= 45 {
+       - if <player.item_in_hand.lore> == "<green>Effect<&co> <red>Block <&lb>45%<&rb>" {
+         - if <util.random.int[1].to[100]> >= 55 {
            - narrate "<&9>Your <&5>Hakkarian Shield Wall<&9> blocks an incoming attack!"
            - determine CANCELLED
            }

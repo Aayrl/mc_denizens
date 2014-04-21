@@ -105,6 +105,8 @@ balthazar:
     - drop "Orb of Balthazar" qty:1 location:<npc.location>
     - drop "Skyfall" qty:1 location:<npc.location>
     - drop "Death Lash" qty:1 location:<npc.location>
+    # Drop the Ancient Petrified Leaf 2% of the time.
+    - if <util.random.int[1].to[100]> >= 98 drop "AncientLeaf" qty:1 location:<npc.location>
     # Reset npc effects and clear hate targets.
     - execute as_server "npc sel <npc.id>"
     - execute as_server "npc effect --play none"

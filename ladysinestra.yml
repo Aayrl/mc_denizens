@@ -1,0 +1,217 @@
+# Lady Sinestra is a boss encounter in the Plane of Ender.
+# Tyler J. Sawyer
+# 4/21/14
+
+# Respawn Timer : 86400 seconds - 24 hours
+
+
+
+ladysinestra:
+  type: assignment
+
+  default constants:
+    # Agro Message : Message to display when a player engages the boss.
+    agro message: <red>Bow before me<&cm> mortals! You are no match for my power!
+    # Death Message : Message displayed when the boss is slain.
+    death message: <red>NOOOOOO!!!
+    # Victory Message : Message when a player is killed by the boss.
+    victory message: <red>Ahahaha! My power only grows with your failure!
+    # Respawn Message : Message that goes to the server when the mob repops in 12 hours.
+    respawn message: <red>Come<&cm> mortals. Test your might against sinestraazar!
+    # Special Event Messages
+    deathtouch_msg: <red>Fall before the hand of Rhexthar!
+    enrage_msg: <red>Such anger .. such .. HATRED ..
+    flametouch_msg: <red>Fire<&cm> always a delightful end.
+    meteor_msg: <red>Fe Fi Fo Fireball!
+
+    # sinestraazar : Statistics
+    # sinestraazar Health Pool
+    sinestra_health: 5000
+    # sinestraazar Damage / Swing
+    sinestra_str: 4
+    # sinestraazar Armor Value
+    sinestra_AC: 1
+    # sinestraazar Agro Radius (in Blocks)
+    sinestra_AGRO_RADIUS: 15
+    # sinestraazar Movement Speed (Blocks / Tick)
+    sinestra_Movement_Speed: 2
+    # sinestraazar's Spawnpoint
+    sinestra_SpawnPoint: "34,46,-97,world_the_end"
+    # sinestraazar Respawn Timer in seconds (43200 = 12 hrs)
+    sinestra_Respawn_Timer: 86400
+    # sinestraazar XP Amount he drops on death
+    sinestra_XP_AMT: 5000
+
+  interact scripts:
+  - 10 sinestraScript
+
+  actions:
+    on assignment:
+    - trigger name:proximity toggle:true "radius:<cons:sinestra_AGRO_RADIUS>"
+    - trigger name:damage toggle:true
+
+    # Setup sinestraazar stats.
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "npc type MAGMA_CUBE"
+    - execute as_server "npc speed <cons:sinestra_Movement_Speed>"
+    - execute as_server "npc lookclose"
+    - execute as_server "trait sentry"
+    - execute as_server "sentry health <cons:sinestra_health>"
+    - execute as_server "sentry respawn <cons:sinestra_Respawn_Timer>"
+    - execute as_server "sentry speed <cons:sinestra_Movement_Speed>"
+    - execute as_server "sentry strength <cons:sinestra_str>"
+    - execute as_server "sentry armor <cons:sinestra_AC>"
+    - execute as_server "sentry range <cons:sinestra_AGRO_RADIUS>"
+
+    on spawn:
+    # Shout about how great it is.
+    - announce "<red><npc.name> yells<&cm> <&sq><cons:respawn message><&sq>"
+    # Warp sinestraazar to its spawn point on spawn.
+    - teleport <npc> "location:<cons:sinestra_SpawnPoint>"
+    # Clear previous targets from hate list
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "sentry target clear"
+    - execute as_server "sentry target add entity:player"
+    # Clear boss flags
+    - flag npc BossPlayerList:!
+    - flag npc sinestra_flametouch_CD:!
+    - flag npc sinestra_meteor_CD:!
+    - flag npc sinestra_deathtouch_CD:!
+    - flag npc sinestra_enrage:!
+
+    on death:
+    # XP amount
+    - drop XP qty:<cons:sinestra_XP_AMT> location:<npc.location>
+    # Random Loot Item 1
+    #- random 6
+    #- drop "Hate Harvester" qty:1 location:<npc.location>
+    #- drop "Amulet of Hate" qty:1 location:<npc.location>
+    #- drop "Face of Death" qty:1 location:<npc.location>
+    #- drop "Orb of sinestraazar" qty:1 location:<npc.location>
+    #- drop "Skyfall" qty:1 location:<npc.location>
+    #- drop "Death Lash" qty:1 location:<npc.location>
+    # Random Loot Item 2
+    #- random 6
+    #- drop "Hate Harvester" qty:1 location:<npc.location>
+    #- drop "Amulet of Hate" qty:1 location:<npc.location>
+    #- drop "Face of Death" qty:1 location:<npc.location>
+    #- drop "Orb of sinestraazar" qty:1 location:<npc.location>
+    #- drop "Skyfall" qty:1 location:<npc.location>
+    #- drop "Death Lash" qty:1 location:<npc.location>
+    # Reset npc effects and clear hate targets.
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "npc effect --play none"
+    - execute as_server "sentry target clear"
+    # Announce to players the boss is dead.
+    - announce "<red><npc.name> yells, <&sq><cons:death message><&sq>"
+    - announce "<&5><npc.name> has been slain!"
+    - foreach <npc.flag[BossPlayerList].aslist> {
+      - flag player:%value% sinestra_Engaged:!
+      - flag player:%value% "ENDER_sinestraKills:++"
+      }
+
+    on enter proximity:
+    - announce "<red><npc.name> yells<&cm> <&sq><cons:agro message><&sq>"
+    - playsound location:<npc.location> sound:enderman_scream
+    # Flag the player as 'engaged' with the boss for 30 seconds.
+    # If the player attacks the NPC, this refreshes.
+    # If the player gets summoned, this refreshes.
+    # If the player warps to spawn or home, this duration will fade out.
+    - flag player "sinestra_Engaged:true" duration:30
+
+    on exit proximity:
+    # summon player if they are still engaged by the boss.
+    - if "<flag.p:sinestra_Engaged:true || false>" == true {
+      - announce "<red><npc.name> yells<&cm> <&sq>You will not evade me<&cm> <player.name>!<&sq>"
+      - narrate "<yellow>You have been summoned!"
+      - teleport <player> "location:<npc.location>"
+      - playsound location:<player.location> sound:portal_travel
+      - playeffect location:<player.location> effect:portal qty:1000
+      }
+    
+    on kill:
+    - announce "<red><npc.name> yells<&cm> <&sq><cons:victory message><&sq>"
+
+"sinestraScript":
+   type: interact
+   steps:
+     1:
+       click trigger:
+         script:
+         # Right Clicking on the boss tells you his % health.
+         - narrate "<yellow>Lady Sinestra<&co> <npc.health.percentage.as_int>%"
+       proximity trigger:
+         entry:
+           script:
+           # Add player to the boss list when they enter his proximity.
+           - if <npc.flag[BossPlayerList].aslist> !contains <player> && <player.name> != <npc.name> flag npc BossPlayerList:->:<player>
+       damage trigger:
+         script:
+           # When the boss is hit, re-flag the player as engaged with the boss.
+           # We also add some flavor sound and effect. WOOOO.
+           - flag player "sinestra_Engaged:true" duration:30
+           - playsound location:<npc.location> sound:enderman_scream
+           - playeffect location:<npc.location> effect:portal qty:100
+           # Here are the boss special events that fire off throughout the fight.
+           - ^if <npc.health.percentage.as_int> <= 98 {
+             - run "sinestra_flametouch"
+             }
+           - ^if <npc.health.percentage.as_int> <= 74 {
+             - run "sinestra_meteor"
+             }
+           - ^if <npc.health.percentage.as_int> <= 49 {
+             - random 2
+             - run "sinestra_enrage"
+             - run "sinestra_deathtouch"
+             }
+
+"sinestra_flametouch":
+   type: task
+   # This sets a player on fire for 10 seconds every 30 seconds.
+   script:
+     - if <npc.flag[sinestra_flametouch_CD]> == null {
+       - flag npc "sinestra_flametouch_CD:true" duration:30
+       - announce "<red><npc.name> yells<&cm> <&sq><cons:flametouch_msg><&sq>"
+       - narrate "<yellow>You are set ablaze by <npc.name>!"
+       - burn <player> duration:10s
+       - playsound explode location:<player.location>
+       - playeffect location:<player.location> effect:lava qty:100
+       }
+       
+"sinestra_meteor":
+   type: task
+   # This ability drops a meteor on a random player every 45 seconds.
+   # Meteor hits for 5 damage and sets target on fire for 10 seconds.
+   script:
+     - if <npc.flag[sinestra_meteor_CD]> == null {
+       - flag npc "sinestra_meteor_CD:true" duration:45
+       - announce "<red><npc.name> yells<&cm> <&sq><cons:meteor_msg><&sq>"
+       - narrate "<yellow>You are hit by a large meteor!"
+       - push fireball origin:<player.location.x.asint>,<m:<player.location.y.asint>+15>,<player.location.z.asint>,<player.location.world> destination:<player.location> speed:2 duration:10s
+       - playsound ghast_charge location:<player.location>
+       - playeffect location:<player.location> effect:lava qty:100
+       }
+
+"sinestra_deathtouch":
+   type: task
+   # This ability sacrifices a player.
+   # The player is rooted, blinded, and poisoned for 10 seconds.
+   script:
+     - if <npc.flag[sinestra_deathtouch_CD]> == null {
+       - flag npc "sinestra_deathtouch_CD:true" duration:180
+       - announce "<red><npc.name> yells<&cm> <&sq><cons:deathtouch_msg><&sq>"
+       - narrate "<yellow><npc.name> casts DEATH TOUCH on you!"
+       - cast harm duration:10s power:3
+       - playsound enderman_stare location:<player.location>
+       - playeffect location:<player.location> effect:ENDER_SIGNAL qty:50
+       }
+       
+"sinestra_enrage":
+   type: task
+   # This ability sacrifices a player.
+   # The player is rooted, blinded, and poisoned for 10 seconds.
+   script:
+     - if <npc.flag[sinestra_enrage]> == null {
+       - flag npc "sinestra_enrage:true"
+       - announce "<red><npc.name> yells<&cm> <&sq><cons:enrage_msg><&sq>"
+       }

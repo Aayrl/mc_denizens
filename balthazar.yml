@@ -45,7 +45,7 @@ balthazar:
     # Balthazar's Spawnpoint
     balth_SpawnPoint: "163,77,17,world_the_end"
     # Balthazar Respawn Timer in seconds (43200 = 12 hrs)
-    balth_Respawn_Timer: 10
+    balth_Respawn_Timer: 86400
     # Balthazar XP Amount he drops on death
     balth_XP_AMT: 5000
 

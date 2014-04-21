@@ -111,7 +111,7 @@ balthazar:
 
     on enter proximity:
     - announce "<red><npc.name> yells<&cm> <&sq><cons:agro message><&sq>"
-    - playsound location:<npc.location> sound:cat_hiss
+    - playsound location:<npc.location> sound:enderman_scream
     # Flag the player as 'engaged' with the boss for 30 seconds.
     # If the player attacks the NPC, this refreshes.
     # If the player gets summoned, this refreshes.
@@ -149,8 +149,8 @@ balthazar:
            # When the boss is hit, re-flag the player as engaged with the boss.
            # We also add some flavor sound and effect. WOOOO.
            - flag player "Balthazar_Engaged:true" duration:30
-           - playsound location:<npc.location> sound:cat_hiss
-           - playeffect location:<npc.location> effect:RED_DUST qty:10
+           - playsound location:<npc.location> sound:enderman_scream
+           - playeffect location:<npc.location> effect:portal qty:100
            # Here are the boss special events that fire off throughout the fight.
            - ^if <npc.health.percentage.as_int> <= 98 {
              - run "balth_flametouch"

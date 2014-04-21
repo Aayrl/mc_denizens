@@ -43,7 +43,7 @@ balthazar:
     # Balthazar Movement Speed (Blocks / Tick)
     balth_Movement_Speed: 1
     # Balthazar's Spawnpoint
-    balth_SpawnPoint: "23,69,536,world"
+    balth_SpawnPoint: "163,77,17,world_the_end"
     # Balthazar Respawn Timer in seconds (43200 = 12 hrs)
     balth_Respawn_Timer: 10
     # Balthazar XP Amount he drops on death
@@ -81,31 +81,22 @@ balthazar:
     - execute as_server "sentry target add entity:player"
     # Clear boss flags
     - flag npc BossPlayerList:!
-    - flag npc balth_PoisonAE_CD:!
-    - flag npc balth_Knockback_CD:!
-    - flag npc balth_AddSummon_CD:!
-    - flag npc balth_Sacrifice_CD:!
-    - flag npc balth_Grace_Period_CD:!
+    - flag npc balth_flametouch_CD:!
+    - flag npc balth_meteor_CD:!
+    - flag npc balth_deathtouch_CD:!
+    - flag npc balth_enrage:!
 
     on death:
     # XP amount
     - drop XP qty:<cons:balth_XP_AMT> location:<npc.location>
     # Random Loot Item 1
-    - random 6
-    - drop "Wand of Hakkar" qty:1 location:<npc.location>
-    - drop "Fang of Hakkar" qty:1 location:<npc.location>
-    - drop "Hakkarian Shield Wall" qty:1 location:<npc.location>
-    - drop "Moist Towelette" qty:1 location:<npc.location>
-    - drop "Hakkarian Leather Whip" qty:1 location:<npc.location>
-    - drop "Pendant of the Sun" qty:1 location:<npc.location>
+    #- random 6
+    #- drop "Wand of Hakkar" qty:1 location:<npc.location>
+    #- drop "Fang of Hakkar" qty:1 location:<npc.location>
     # Random Loot Item 2
-    - random 6
-    - drop "Wand of Hakkar" qty:1 location:<npc.location>
-    - drop "Fang of Hakkar" qty:1 location:<npc.location>
-    - drop "Hakkarian Shield Wall" qty:1 location:<npc.location>
-    - drop "Moist Towelette" qty:1 location:<npc.location>
-    - drop "Hakkarian Leather Whip" qty:1 location:<npc.location>
-    - drop "Pendant of the Sun" qty:1 location:<npc.location>
+    #- random 6
+    #- drop "Wand of Hakkar" qty:1 location:<npc.location>
+    #- drop "Fang of Hakkar" qty:1 location:<npc.location>
     # Reset npc effects and clear hate targets.
     - execute as_server "npc sel <npc.id>"
     - execute as_server "npc effect --play none"
@@ -114,9 +105,8 @@ balthazar:
     - announce "<red><npc.name> yells, <cons:death message>"
     - announce "<&5><npc.name> has been slain!"
     - foreach <npc.flag[BossPlayerList].aslist> {
-      - flag player:%value% AvatarOfHakkar_Engaged:!
-      - flag player:%value% "PoEnder_AvatarHakkarKilled:1"
-      - narrate targets:<%value%.name> "<aqua>You have obtained the Head of Hakkar! Lord Aayrl would be interested in seeing this."
+      - flag player:%value% Balthazar_Engaged:!
+      - flag player:%value% "ENDER_BalthazarKills:++"
       }
 
     on enter proximity:
@@ -126,11 +116,11 @@ balthazar:
     # If the player attacks the NPC, this refreshes.
     # If the player gets summoned, this refreshes.
     # If the player warps to spawn or home, this duration will fade out.
-    - flag player "AvatarOfHakkar_Engaged:true" duration:30
+    - flag player "Balthazar_Engaged:true" duration:30
 
     on exit proximity:
     # summon player if they are still engaged by the boss.
-    - if "<flag.p:AvatarOfHakkar_Engaged:true || false>" == true {
+    - if "<flag.p:Balthazar_Engaged:true || false>" == true {
       - announce "<red><npc.name> yells<&cm> <&sq>You will not evade me<&cm> <player.name>!<&sq>"
       - narrate "<yellow>You have been summoned!"
       - teleport <player> "location:<npc.location>"
@@ -158,58 +148,69 @@ balthazar:
          script:
            # When the boss is hit, re-flag the player as engaged with the boss.
            # We also add some flavor sound and effect. WOOOO.
-           - flag player "AvatarOfHakkar_Engaged:true" duration:30
+           - flag player "Balthazar_Engaged:true" duration:30
            - playsound location:<npc.location> sound:cat_hiss
            - playeffect location:<npc.location> effect:RED_DUST qty:10
            # Here are the boss special events that fire off throughout the fight.
            - ^if <npc.health.percentage.as_int> <= 98 {
+             - run "balth_flametouch"
+             }
+           - ^if <npc.health.percentage.as_int> <= 74 {
+             - run "balth_meteor"
+             }
+           - ^if <npc.health.percentage.as_int> <= 49 {
              - random 2
-             - run "balth_Poison_AE_Ability"
-             - run "balth_Knockback_Ability"
+             - run "balth_enrage"
+             - run "balth_deathtouch"
              }
-           - ^if <npc.health.percentage.as_int> <= 50 {
-             - run "balth_Sacrifice_Ability"
-             }
-           
-"balth_Knockback_Ability":
+
+"balth_flametouch":
    type: task
-   # This knocks the player up in the air 6 blocks every 30 seconds.
+   # This sets a player on fire for 10 seconds every 30 seconds.
    script:
-     - if <npc.flag[balth_Knockback_CD]> == null {
-       - flag npc "balth_Knockback_CD:true" duration:30
-       - announce "<red><npc.name> yells<&cm> <&sq><cons:knockback_msg><&sq>"
-       - narrate "<yellow>You are knocked backwards into the air!"
-       - teleport "<player.location.x.asint>,<m:<player.location.y.asint>+6>,<player.location.z.asint>,world"
+     - if <npc.flag[balth_flametouch_CD]> == null {
+       - flag npc "balth_flametouch_CD:true" duration:30
+       - announce "<red><npc.name> yells<&cm> <&sq><cons:flametouch_msg><&sq>"
+       - narrate "<yellow>You are set ablaze by <npc.name>!"
+       - burn <player> duration:10s
+       - playsound explode location:<player.location>
+       - playeffect location:<player.location> effect:lava qty:100
        }
        
-"balth_Poison_AE_Ability":
+"balth_meteor":
    type: task
-   # This is the boss' AoE Poison ability.
-   # This hits all players on his agro list with Poison II for 5 seconds
-   # every 20 seconds.
+   # This ability drops a meteor on a random player every 45 seconds.
+   # Meteor hits for 5 damage and sets target on fire for 10 seconds.
    script:
-     - if <npc.flag[balth_PoisonAE_CD]> == null {
-       - flag npc "balth_PoisonAE_CD:true" duration:20
-       - announce "<red><npc.name> yells<&cm> <&sq><cons:poisonAE_msg><&sq>"
-       - foreach <npc.flag[BossPlayerList].aslist> {
-         - narrate targets:<%value%.name> "<yellow>You have become poisoned!"
-         - cast poison duration:5s <context.entity>
-         - playeffect location:<%value%.location> effect:potion_break qty:5 data:4
-         }
+     - if <npc.flag[balth_meteor_CD]> == null {
+       - flag npc "balth_meteor_CD:true" duration:45
+       - announce "<red><npc.name> yells<&cm> <&sq><cons:meteor_msg><&sq>"
+       - narrate "<yellow>You are hit by a large meteor!"
+       - push fireball origin:<player.location.x.asint>,<m:<player.location.y.asint>+15>,<player.location.z.asint>,world destination:<player.location> speed:2 duration:10s
+       - playsound ghast_charge location:<player.location>
+       - playeffect location:<player.location> effect:lava qty:100
        }
 
-"balth_Sacrifice_Ability":
+"balth_deathtouch":
    type: task
    # This ability sacrifices a player.
    # The player is rooted, blinded, and poisoned for 10 seconds.
    script:
-     - if <npc.flag[balth_Sacrifice_CD]> == null {
-       - flag npc "balth_Sacrifice_CD:true" duration:30
-       - announce "<red><npc.name> yells<&cm> <&sq><cons:sacrifice_msg><&sq>"
-       - narrate "<yellow>You are magically bound to the Altar of Hakkar!"
-       - teleport "22,72,530,world"
-       - cast poison duration:10s
-       - cast blindness duration:10s power:50
-       - cast slow duration:10s power:25
+     - if <npc.flag[balth_deathtouch_CD]> == null {
+       - flag npc "balth_deathtouch_CD:true" duration:180
+       - announce "<red><npc.name> yells<&cm> <&sq><cons:deathtouch_msg><&sq>"
+       - narrate "<yellow><npc.name> casts DEATH TOUCH on you!"
+       - cast harm duration:10s power:3
+       - playsound enderman_stare location:<player.location>
        - playeffect location:<player.location> effect:ENDER_SIGNAL qty:50
+       }
+       
+"balth_enrage":
+   type: task
+   # This ability sacrifices a player.
+   # The player is rooted, blinded, and poisoned for 10 seconds.
+   script:
+     - if <npc.flag[balth_enrage]> == null {
+       - flag npc "balth_enrage:true"
+       - announce "<red><npc.name> yells<&cm> <&sq><cons:enrage_msg><&sq>"
        }

@@ -968,6 +968,26 @@
    enchantments:
    - damage_all:5
    - durability:5
+   
+"Redwood Recurve Bow":
+   type: item
+   material: 261
+   display name: "<&9>Redwood Recurve Bow"
+   lore:
+   - <white>Made from an ancient redwood tree.
+   enchantments:
+   - arrow_damage:2
+   - durability:3
+   
+"Ashwood Recurve Bow":
+   type: item
+   material: 261
+   display name: "<&9>Ashwood Recurve Bow"
+   lore:
+   - <white>A sturdy recurve bow.
+   enchantments:
+   - arrow_damage:2
+   - durability:2
 
 # ========================================================
 # Epic Tier Items - Purple Tag
@@ -1612,6 +1632,8 @@
    enchantments:
    - durability:10
    - arrow_damage:10
+   - arrow_infinite:1
+   - arrow_knockback:2
    
 # RhokDelar Effects
 "rhokdelar_regen":

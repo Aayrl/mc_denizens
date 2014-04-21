@@ -145,11 +145,13 @@
         }
  
     - if %quality% == Rare {
-        - random 4
+        - random 6
         - determine "Ringmail Coif"
         - determine "Ringmail Tunic"
         - determine "Ringmail Leggings"
         - determine "Ringmail Boots"
+        - determine "Ashwood Recurve Bow"
+        - determine "Redwood Recurve Bow"
         }
  
     - if %quality% == Epic {
@@ -218,11 +220,13 @@
         }
  
     - if %quality% == Rare {
-        - random 4
+        - random 6
         - determine "Ringmail Coif"
         - determine "Ringmail Tunic"
         - determine "Ringmail Leggings"
         - determine "Ringmail Boots"
+        - determine "Ashwood Recurve Bow"
+        - determine "Redwood Recurve Bow"
         }
  
     - if %quality% == Epic {
@@ -291,11 +295,13 @@
         }
  
     - if %quality% == Rare {
-        - random 4
+        - random 6
         - determine "Ringmail Coif"
         - determine "Ringmail Tunic"
         - determine "Ringmail Leggings"
         - determine "Ringmail Boots"
+        - determine "Ashwood Recurve Bow"
+        - determine "Redwood Recurve Bow"
         }
  
     - if %quality% == Epic {
@@ -344,11 +350,13 @@
         }
  
     - if %quality% == Rare {
-        - random 4
+        - random 6
         - determine "Ringmail Coif"
         - determine "Ringmail Tunic"
         - determine "Ringmail Leggings"
         - determine "Ringmail Boots"
+        - determine "Ashwood Recurve Bow"
+        - determine "Redwood Recurve Bow"
         }
  
     - if %quality% == Epic {

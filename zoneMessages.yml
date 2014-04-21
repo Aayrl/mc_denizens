@@ -1,0 +1,21 @@
+# Zone Messages
+# Tyler J. Sawyer
+# 4/21/14
+# Shows custom zone loading comments for loading different world.
+# on player changes world (from <world>) to (<world>) 
+
+"zoneMessage":
+    type: world
+    events:
+       on player changes world to <w@world>:
+       - narrate "<red>LOADING...PLEASE WAIT!"
+       - narrate "<yellow>You have entered the Overworld."
+       on player changes world to <w@world_nether>:
+       - narrate "<red>LOADING...PLEASE WAIT!"
+       - narrate "<yellow>You have entered the Plane of Fire."
+       on player changes world to <w@world_the_end>:
+       - narrate "<red>LOADING...PLEASE WAIT!"
+       - narrate "<yellow>You have entered the Plane of Ender."
+       on player changes world to <w@skylands>:
+       - narrate "<red>LOADING...PLEASE WAIT!"
+       - narrate "<yellow>You have entered the Skylands."

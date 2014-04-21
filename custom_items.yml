@@ -1344,6 +1344,44 @@
          else {
            - narrate "<red>This item requires an Emerald to use." }
          }
+
+# [Balthazar Loot]
+# ---------------------------------------------------------------------------
+"Hate Harvester":
+   type: item
+   material: 278
+   display name: "<&5>Hate Harvester"
+   lore:
+   - <white>A powerful<&cm> enchanted pickaxe.
+   - <white>Favored tool of the Minions of Hate.
+   enchantments:
+   - durability:5
+   - dig_speed:2
+   - loot_bonus_blocks:2
+   - silk_touch:1
+
+"Amulet of Hate":
+   type: item
+   material: REDSTONE
+   display name: "<&5>Amulet of Hate"
+   lore:
+   - <green>Use<&co> Strength IV <&lb>Consumes an Emerald when Cast<&rb>
+   enchantments:
+   - durability:1
+
+"amuletHateEffect":
+   type: world
+   events:
+     on use command:
+       - if <player.item_in_hand.lore> == "<green>Use<&co> Strength IV <&lb>Consumes an Emerald when Cast<&rb>" {
+         if <p@<player.name>.inventory<inventory.contains[emerald]]>> {
+           - narrate "<&9>You consume an Emerald and your arms burst with strength!"
+           - take 'item:emerald' qty:1
+           - cast increase_damage duration:120 power:3
+           - playeffect location:<player.location> effect:potion_break qty:15 data:5 }
+         else {
+           - narrate "<red>This item requires an Emerald to use." }
+         }
 # ---------------------------------------------------------------------------
 
 # [ Special Loot ]

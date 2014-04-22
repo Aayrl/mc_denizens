@@ -146,7 +146,7 @@ inv_vendor_generic:
   slots:
     - "[] [] [] [diamond] [seeds] [] [wood] [] []"
     - "[] [] [] [] [] [] [stone] [] []"
-    - "[] [] [] [] [] [] [] [] []"
+    - "['i@Rusty Scimitar'] [] [] [] [] [] [] [] []"
 
 # Assignment
 "vendor_generic":

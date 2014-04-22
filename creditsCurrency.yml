@@ -1,0 +1,32 @@
+# ========================================
+# Credits Currency / Economy
+# Tyler J. Sawyer
+# Simon Anguish
+# Last Updated: 4/22/14
+# ========================================
+# 
+# Credits Currency
+# ----------------
+#
+# A custom Denizen-based economy scripting protocol that allows players to
+# buy, sell, and trade items to NPCs designated as the 'vendor' assignment.
+#
+# Item buy/sell values can be customized in the appropriate NPC assignment 
+# script. 
+#
+# NPCs can be customized to require a certain faction in order to speak to
+# a particular player.
+#
+# NPCs may also be assigned the 'Auction' assignment to allow players to 
+# sell unique or custom items obtained through the server (such as custom 
+# boss loot) to other players for credits.
+#
+# Credits may be used to buy (almost) all items in the game.
+#
+# Players can also transfer credits to one another in trade for 
+# specific items using the /credit transfer amt player command.
+#
+# See the individual commands below for comments and details.
+# ========================================
+#
+

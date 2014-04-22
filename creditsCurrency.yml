@@ -42,6 +42,9 @@
 "CreditsCommands":
   type: world
   events:
+    # Player Commands
+    # credits command
+    # Tells the player how many credits they have.
     on credits command:
     - narrate "<yellow>You have <player.flag[CURRENCY_Credits]> credits in your wallet."
     # Admin Commands
@@ -57,6 +60,10 @@
       - narrate "<red>Invalid Syntax for <gold>/creditadd<red> command."
       - narrate "<red>Usage<&co> <gold>/creditadd <green>Amount <white>PlayerName"
       - narrate "<red>Desc<&co> Adds specified amount of credits to a specified player<&sq> wallet."
+      - queue clear
+      }
+    - if <p@<context.args.get[2]>.is_online == "false" {
+      - narrate "<red><context.args.get[2]> is not online. Player must be online."
       - queue clear
       }
     - if <context.args.get[2]> != null {
@@ -80,6 +87,10 @@
       - narrate "<red>Desc<&co> Removes specified amount of credits from a specified player<&sq> wallet."
       - queue clear
       }
+    - if <p@<context.args.get[2]>.is_online == "false" {
+      - narrate "<red><context.args.get[2]> is not online. Player must be online."
+      - queue clear
+      }
     - if <context.args.get[2]> != null {
       - define creditAmt <context.args.get[1]>
       - define currentAmt <p@<context.args.get[2]>.flag[CURRENCY_Credits]>
@@ -99,6 +110,10 @@
       - narrate "<red>Invalid Syntax for <gold>/creditset<red> command."
       - narrate "<red>Usage<&co> <gold>/creditsset <green>Amount <white>PlayerName"
       - narrate "<red>Desc<&co> Sets a specified player<&sq>s wallet to the specified amount of credits."
+      - queue clear
+      }
+    - if <p@<context.args.get[2]>.is_online == "false" {
+      - narrate "<red><context.args.get[2]> is not online. Player must be online."
       - queue clear
       }
     - if <context.args.get[2]> != null {

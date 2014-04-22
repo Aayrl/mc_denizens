@@ -157,7 +157,13 @@ inv_vendor_generic:
     
     actions:
       on spawn:
-      - inventory swap d:<n@<npc.id>.inventory> o:<in@inv_vendor_generic>
+      - inventory set d:<n@<npc.id>.inventory> o:<in@inv_vendor_generic>
+      
+      on enter proximity:
+      - inventory set d:<n@<npc.id>.inventory> o:<in@inv_vendor_generic>
+      
+      on exit proximity:
+      - inventory set d:<n@<npc.id>.inventory> o:<in@inv_vendor_generic>
 
 'vendorGenericScript':
     type: interact

@@ -93,3 +93,27 @@
       - flag player "CURRENCY_Credits:%creditAmt%"
       - narrate "<yellow>Removing %creditAmt% credits to your wallet."
       }
+    # Creditset command.
+    # /creditset <amt> <player>
+    # Sets a <player> credit count to <amt>.
+    on creditset command:
+    - if <player.name> != "Aayrl" && <player.name> != "Jennavb13" && <player.name> != "mtotho" {
+      - narrate "<red>You may not use this command."
+      - queue clear
+      }
+    - if <context.args.get[2]> != null {
+      - if <context.args.get[1]> != null {
+        - define creditAmt <context.args.get[1]> }
+      - if <context.args.get[1]> == null {
+        - define creditAmt 0 }
+      - flag <context.args.get[2]> "CURRENCY_Credits:%creditAmt%"
+      - narrate targets:<context.args.get[2]> "<yellow>Setting your wallet to %creditAmt% credits."
+      }
+    - if <context.args.get[2]> == null {
+      - if <context.args.get[1]> != null {
+        - define creditAmt <context.args.get[1]> }
+      - if <context.args.get[1]> == null {
+        - define creditAmt 0 }
+      - flag player "CURRENCY_Credits:%creditAmt%"
+      - narrate "<yellow>Setting your wallet to %creditAmt% credits."
+      }

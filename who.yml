@@ -10,8 +10,9 @@
     - narrate "<&5>---- Online Players ----"
     - define playerList <server.list_online_players>
     - foreach <%playerList%.aslist> {
-      - define playerOP <%value%.is_op>
-      - if playerOP == true narrate "<&5>* GM * <%value%.name> <&lb>Level <%value%.xp.level><&rb> ZONE<&co> <%value%.world.name>"
-      - if playerOP == false narrate "<&5><%value%.name> <&lb>Level <%value%.xp.level><&rb> ZONE<&co> <%value%.world.name>"
+      - if <%value%.is_op> == true {
+        - narrate "<&5>* GM * <%value%.name> <&lb>Level <%value%.xp.level><&rb> ZONE<&co> <%value%.world.name>" }
+      - if <%value%.is_op> == false {
+        - narrate "<&5><%value%.name> <&lb>Level <%value%.xp.level><&rb> ZONE<&co> <%value%.world.name>" }
       }
     

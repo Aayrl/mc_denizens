@@ -124,11 +124,40 @@
       
 # ============================================================================================
 #
+
+# Generic Vendor
+
+# Inventory
+inv_vendor_generic:
+ 
+  type: inventory
+
+  # Valid inventory types: BREWING, CHEST, DISPENSER, ENCHANTING, ENDER_CHEST, HOPPER, PLAYER, WORKBENCH
+  inventory: CHEST
+
+  # Note that titles only work for CHEST type inventories.
+  title: <gold>Vendor
+ 
+  # The size must be a multiple of 9. It is recommended not to go above 54.
+  size: 27
+ 
+  # You can specify the items in the slots of the inventory. For empty spaces, simply put
+  # an empty "slot". Note the quotes around the entire lines.
+  slots:
+    - "[] [] [] [diamond] [seeds] [] [wood] [] []"
+    - "[] [] [] [] [] ["i@Rusty Scimitar"] [stone] [] []"
+    - "[] [] [] [] [] [] [] [] []"
+
+# Assignment
 "vendor_generic":
     type: assignment
     
     interact scripts:
     - 10 vendorGenericScript
+    
+    actions:
+      on spawn:
+      - inventory swap d:<n@npc.inventory> o:in@inv_vendor_generic
 
 'vendorGenericScript':
     type: interact
@@ -138,10 +167,9 @@
         click trigger:
           script:
             # Right Clicking on the vendor appraises the item in the player's hand.
-            - narrate "<yellow>I<&sq>ll give you NaN for your item."
+            - narrate "<yellow>Welcome to my shop<&cm> <player.name>."
+            - inventory open d:<n@npc.inventory>
         damage trigger:
           script:
-            # When a player left clicks, the player sells the item.
-            - narrate "<yellow>You sell your item for NaN."
-            - determine CANCELLED
+            - narrate "<yellow>OUCH!"
         

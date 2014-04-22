@@ -53,21 +53,16 @@
       - narrate "<red>You may not use this command."
       - queue clear
       }
-    - if <context.args.get[2]> != null {
-      - if <context.args.get[1]> != null {
-        - define creditAmt <math.as_int:<<context.args.get[2]>.flag[CURRENCY_Credits]>+<context.args.get[1]>> }
-      - if <context.args.get[1]> == null {
-        - define creditAmt <math.as_int:<<context.args.get[2]>.flag[CURRENCY_Credits]>+1> }
-      - flag <context.args.get[2]> "CURRENCY_Credits:%creditAmt%"
-      - narrate targets:<context.args.get[2]> "<yellow>Adding %creditAmt% credits to your wallet."
+    - if <context.args.get[2]> == null || <context.args.get[1]> == null {
+      - narrate "<red>Invalid Syntax for <gold>/creditadd<red> command."
+      - narrate "<red>Usage: <gold>/creditadd <green>Amount <white>PlayerName"
+      - narrate "<red>Desc<&co> Adds specified amount of credits to a specified player<&sq> wallet."
+      - queue clear
       }
-    - if <context.args.get[2]> == null {
-      - if <context.args.get[1]> != null {
-        - define creditAmt <math.as_int:<player.flag[CURRENCY_Credits]>+<context.args.get[1]>> }
-      - if <context.args.get[1]> == null {
-        - define creditAmt <math.as_int:<player.flag[CURRENCY_Credits]>+1> }
-      - flag player "CURRENCY_Credits:%creditAmt%"
-      - narrate "<yellow>Adding %creditAmt% credits to your wallet."
+    - if <context.args.get[2]> != null {
+      - define creditAmt <math.as_int:<<context.args.get[2]>.flag[CURRENCY_Credits]>+<context.args.get[1]>> }
+      - flag <context.args.get[2]> "CURRENCY_Credits:%creditAmt%"
+      - narrate targets:<context.args.get[2]> "<yellow>Adding <context.args.get[1]> credits to your wallet."
       }
     # Creditsub command.
     # /creditsub <amt> <player>
@@ -77,21 +72,16 @@
       - narrate "<red>You may not use this command."
       - queue clear
       }
-    - if <context.args.get[2]> != null {
-      - if <context.args.get[1]> != null {
-        - define creditAmt <math.as_int:<<context.args.get[2]>.flag[CURRENCY_Credits]>-<context.args.get[1]>> }
-      - if <context.args.get[1]> == null {
-        - define creditAmt <math.as_int:<<context.args.get[2]>.flag[CURRENCY_Credits]>-1> }
-      - flag <context.args.get[2]> "CURRENCY_Credits:%creditAmt%"
-      - narrate targets:<context.args.get[2]> "<yellow>Removing %creditAmt% credits to your wallet."
+    - if <context.args.get[2]> == null || <context.args.get[1]> == null {
+      - narrate "<red>Invalid Syntax for <gold>/creditsub<red> command."
+      - narrate "<red>Usage<&co> <gold>/creditsub <green>Amount <white>PlayerName"
+      - narrate "<red>Desc<&co> Removes specified amount of credits from a specified player<&sq> wallet."
+      - queue clear
       }
-    - if <context.args.get[2]> == null {
-      - if <context.args.get[1]> != null {
-        - define creditAmt <math.as_int:<player.flag[CURRENCY_Credits]>-<context.args.get[1]>> }
-      - if <context.args.get[1]> == null {
-        - define creditAmt <math.as_int:<player.flag[CURRENCY_Credits]>-1> }
-      - flag player "CURRENCY_Credits:%creditAmt%"
-      - narrate "<yellow>Removing %creditAmt% credits to your wallet."
+    - if <context.args.get[2]> != null {
+      - define creditAmt <math.as_int:<<context.args.get[2]>.flag[CURRENCY_Credits]>-<context.args.get[1]>> }
+      - flag <context.args.get[2]> "CURRENCY_Credits:%creditAmt%"
+      - narrate targets:<context.args.get[2]> "<yellow>Removing <context.args.get[1]> credits from your wallet."
       }
     # Creditset command.
     # /creditset <amt> <player>
@@ -101,19 +91,14 @@
       - narrate "<red>You may not use this command."
       - queue clear
       }
+    - if <context.args.get[2]> == null || <context.args.get[1]> == null {
+      - narrate "<red>Invalid Syntax for <gold>/creditset<red> command."
+      - narrate "<red>Usage<&co> <gold>/creditsset <green>Amount <white>PlayerName"
+      - narrate "<red>Desc<&co> Sets a specified player<&sq>s wallet to the specified amount of credits."
+      - queue clear
+      }
     - if <context.args.get[2]> != null {
-      - if <context.args.get[1]> != null {
-        - define creditAmt <context.args.get[1]> }
-      - if <context.args.get[1]> == null {
-        - define creditAmt 0 }
+      - define creditAmt <context.args.get[1]> }
       - flag <context.args.get[2]> "CURRENCY_Credits:%creditAmt%"
       - narrate targets:<context.args.get[2]> "<yellow>Setting your wallet to %creditAmt% credits."
-      }
-    - if <context.args.get[2]> == null {
-      - if <context.args.get[1]> != null {
-        - define creditAmt <context.args.get[1]> }
-      - if <context.args.get[1]> == null {
-        - define creditAmt 0 }
-      - flag player "CURRENCY_Credits:%creditAmt%"
-      - narrate "<yellow>Setting your wallet to %creditAmt% credits."
       }

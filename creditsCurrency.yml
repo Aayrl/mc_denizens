@@ -224,13 +224,27 @@ inv_vendor_generic:
     - narrate "<yellow>Coming Soon!"
     # When a player left clicks on an item, give price information about it.
     on player left clicks in inventory:
+    - if <context.inventory.id_holder> != n@109 queue clear
     - if <context.inventory.id_holder> == n@109 {
-      - narrate "<yellow>That<&sq>ll be CREDIT_AMT credits for the <context.item.display_name>."
+      - if <context.item.display_name> != null {
+        - narrate "<yellow>That<&sq>ll be <proc:vendorDetermineCredits> credits for <context.item.display_name>." }
+      - if <context.item.display_name> == null {
+        - narrate "<yellow>That<&sq>ll be <proc:vendorDetermineCredits> credits for <context.item.material.formatted>." }
       - determine CANCELLED
       }
     on player right clicks in inventory:
+    - if <context.inventory.id_holder> != n@109 queue clear
     - if <context.inventory.id_holder> == n@109 {
-      - narrate "<yellow>You receive CREDIT_AMT credits for your <context.item.display_name>."
+      - if <context.item.display_name> != null {
+        - narrate "<yellow>You receive <proc:vendorDetermineCredits> credits for <context.item.display_name>." }
+      - if <context.item.display_name> == null {
+        - narrate "<yellow>You receive <proc:vendorDetermineCredits> credits for <context.item.material.formatted>." }
       - determine CANCELLED
       }
-    
+  
+# Procedure for determining how much each item costs.  
+"vendorDetermineCredits":
+    type: procedure
+
+    script:
+    - determine 0

@@ -157,8 +157,7 @@ inv_vendor_generic:
     
     actions:
       on spawn:
-      - trigger name:proximity 
-      toggle:true radius:4
+      - trigger name:proximity toggle:true radius:4
       - inventory set d:<n@<npc.id>.inventory> o:<in@inv_vendor_generic>
       
       on enter proximity:

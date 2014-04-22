@@ -224,11 +224,11 @@ inv_vendor_generic:
     - narrate "<yellow>Coming Soon!"
     # When a player right clicks on an item, give price information about it.
     on player right clicks in inventory:
-    - if <context.inventory.title> == vendor_generic {
+    - if <context.inventory.id_holder> == n@109 {
       - narrate "<yellow>You Right Clicked an item on the Vendor Inventory!"
       }
     on player left clicks in inventory:
-    - if <context.inventory.title> == vendor_generic {
+    - if <context.inventory.title> == n@109 {
       - narrate "<yellow>You Left Clicked an item on the Vendor Inventory!"
       }
     

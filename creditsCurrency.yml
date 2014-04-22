@@ -72,6 +72,7 @@
       - define newAmt <math.as_int:%currentAmt%+%creditAmt%>
       - flag <p@<context.args.get[2]>> "CURRENCY_Credits:%newAmt%"
       - narrate targets:<context.args.get[2]> "<yellow>Adding <context.args.get[1]> credits to your wallet."
+      - narrate "<&7><&O>Giving <context.args.get[1]> credits to <context.args.get[2]>."
       }
     # Creditsub command.
     # /creditsub <amt> <player>
@@ -97,6 +98,7 @@
       - define newAmt <math.as_int:%currentAmt%-%creditAmt%>
       - flag <p@<context.args.get[2]>> "CURRENCY_Credits:%newAmt%"
       - narrate targets:<context.args.get[2]> "<yellow>Removing <context.args.get[1]> credits from your wallet."
+      - narrate "<&7><&O>Taking <context.args.get[1]> credits from <context.args.get[2]>."
       }
     # Creditset command.
     # /creditset <amt> <player>
@@ -120,6 +122,7 @@
       - define creditAmt <context.args.get[1]>
       - flag <p@<context.args.get[2]>> "CURRENCY_Credits:%creditAmt%"
       - narrate targets:<context.args.get[2]> "<yellow>Setting your wallet to %creditAmt% credits."
+      - narrate "<&7><&O>Setting <context.args.get[2]><&sq>s wallet to <context.args.get[1]> credits."
       }
       
 # ============================================================================================
@@ -144,7 +147,7 @@ inv_vendor_generic:
   # You can specify the items in the slots of the inventory. For empty spaces, simply put
   # an empty "slot". Note the quotes around the entire lines.
   slots:
-    - "[] [] [] [diamond] [seeds] [] [wood] [] []"
+    - "[] [] [] [] [seeds] [] [wood] [] []"
     - "[] [] [] [] [] [] [stone] [] []"
     - "[i@Rusty_Scimitar] [] [] [] [] [] [] [] []"
 

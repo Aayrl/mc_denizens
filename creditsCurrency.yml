@@ -258,3 +258,4 @@ inv_vendor_generic:
       else if %itemID% == 3 determine 1
       else if %itemID% == 4 determine 2
       else if %itemID% == 5 determine 1
+      else determine 0

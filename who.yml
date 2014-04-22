@@ -10,6 +10,6 @@
     - narrate "<yellow>---- Online Players ----"
     - define playerList <server.list_online_players>
     - foreach <%playerList%.aslist> {
-      - narrate "<white>%value%"
+      - narrate "<&5><%value%.name> <&lb>Level <%value%.xp.level><&rb> ZONE<&co> <%value%.world.name>"
       }
     

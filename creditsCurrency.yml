@@ -62,7 +62,7 @@
       - narrate "<red>Desc<&co> Adds specified amount of credits to a specified player<&sq> wallet."
       - queue clear
       }
-    - if <p@<context.args.get[2]>.is_online == "false" {
+    - if <p@<context.args.get[2]>.is_online> == false {
       - narrate "<red><context.args.get[2]> is not online. Player must be online."
       - queue clear
       }
@@ -87,7 +87,7 @@
       - narrate "<red>Desc<&co> Removes specified amount of credits from a specified player<&sq> wallet."
       - queue clear
       }
-    - if <p@<context.args.get[2]>.is_online == "false" {
+    - if <p@<context.args.get[2]>.is_online> == false {
       - narrate "<red><context.args.get[2]> is not online. Player must be online."
       - queue clear
       }
@@ -112,7 +112,7 @@
       - narrate "<red>Desc<&co> Sets a specified player<&sq>s wallet to the specified amount of credits."
       - queue clear
       }
-    - if <p@<context.args.get[2]>.is_online == "false" {
+    - if <p@<context.args.get[2]>.is_online> == false {
       - narrate "<red><context.args.get[2]> is not online. Player must be online."
       - queue clear
       }

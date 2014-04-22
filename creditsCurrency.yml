@@ -55,7 +55,7 @@
       }
     - if <context.args.get[2]> == null || <context.args.get[1]> == null {
       - narrate "<red>Invalid Syntax for <gold>/creditadd<red> command."
-      - narrate "<red>Usage: <gold>/creditadd <green>Amount <white>PlayerName"
+      - narrate "<red>Usage<&co> <gold>/creditadd <green>Amount <white>PlayerName"
       - narrate "<red>Desc<&co> Adds specified amount of credits to a specified player<&sq> wallet."
       - queue clear
       }

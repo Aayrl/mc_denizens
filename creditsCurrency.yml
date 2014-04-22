@@ -133,7 +133,7 @@ inv_vendor_generic:
   type: inventory
 
   # Valid inventory types: BREWING, CHEST, DISPENSER, ENCHANTING, ENDER_CHEST, HOPPER, PLAYER, WORKBENCH
-  inventory: PLAYER
+  inventory: CHEST
 
   # Note that titles only work for CHEST type inventories.
   title: <gold>Vendor

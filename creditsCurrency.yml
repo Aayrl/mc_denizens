@@ -52,7 +52,7 @@
     - if <context.args.get[1]> == null {
       - narrate "<yellow>You have <player.flag[CURRENCY_Credits]> credits in your wallet."
       }
-    - if <context.args.get[1]> != trade {
+    - if <context.args.get[1]> != null && <context.args.get[1]> != trade {
       - narrate "<red>Invalid Syntax for <gold>/credits trade<red> command."
       - narrate "<red>Usage<&co> <gold>/credits trade <green>Amount <white>PlayerName"
       - narrate "<red>Desc<&co> Gives the specified amount of credits to the specified player."
@@ -71,6 +71,10 @@
       - queue clear
       }
     - if <context.args.get[1]> == trade && <context.args.get[2]> != null && <context.args.get[3]> != null {
+      - if <context.args.get[3]> == <player.name> {
+        - narrate "<red>You cannot trade credits to yourself!"
+        - queue clear
+        }
       - define creditAmt <context.args.get[2]>
       - define destcurrentAmt <p@<context.args.get[3]>.flag[CURRENCY_Credits]>
       - define destnewAmt <math.as_int:%destcurrentAmt%+%creditAmt%>

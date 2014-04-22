@@ -226,6 +226,7 @@ inv_vendor_generic:
     on player left clicks in inventory:
     - if <context.inventory.id_holder> != n@109 queue clear
     - if <context.inventory.id_holder> == n@109 {
+      - determine passively cancelled 
       - if <context.item.scriptname> == null define vendorItem <context.item.id>
       - if <context.item.scriptname> != null define vendorItem <context.item.scriptname>
       - if <context.item.display_name> != null {
@@ -237,7 +238,6 @@ inv_vendor_generic:
         - narrate "Shift clicking <context.is_shift_click>"
         - narrate "action <context.action>"
         - if <context.item.material.formatted> != nothing narrate "<yellow>That<&sq>ll be <proc[vendorDetermineCredits].context[%vendorItem%]> credits for <context.item.material.formatted>." }
-      - determine CANCELLED
       }
     # When a player right clicks on an item, attempt to buy or sell the item.
     # If the player has insufficient funds, do not allow them to buy an item.
@@ -246,13 +246,13 @@ inv_vendor_generic:
     on player right clicks in inventory:
     - if <context.inventory.id_holder> != n@109 queue clear
     - if <context.inventory.id_holder> == n@109 {
+      - determine passively cancelled 
       - if <context.item.scriptname> == null define vendorItem <context.item.id>
       - if <context.item.scriptname> != null define vendorItem <context.item.scriptname>
       - if <context.item.display_name> != null {
         - narrate "<yellow>You receive <proc[vendorDetermineCredits].context[%vendorItem%]> credits for <context.item.display_name>." }
       - if <context.item.display_name> == null {
         - if <context.item.material.formatted> != nothing narrate "<yellow>You receive <proc[vendorDetermineCredits].context[%vendorItem%]> credits for <context.item.material.formatted>." }
-      - determine CANCELLED
       }
   
 # Procedure for determining how much each item costs.  

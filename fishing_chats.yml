@@ -1,9 +1,0 @@
-"fishing-flavor-chat":
-    type: world
-    events:
-       on player cast fishing rod:
-         - narrate "<yellow>You cast your line..."
-       on player catch fish:
-         - narrate "<yellow>You caught a fish!"
-       on player reel in fishing rod:
-         - narrate "<yellow>You reel your line back in."

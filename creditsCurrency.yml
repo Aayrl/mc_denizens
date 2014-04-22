@@ -60,8 +60,10 @@
       - queue clear
       }
     - if <context.args.get[2]> != null {
-      - define creditAmt <math.as_int:<<context.args.get[2]>.flag[CURRENCY_Credits]>+<context.args.get[1]>>
-      - flag <context.args.get[2]> "CURRENCY_Credits:%creditAmt%"
+      - define creditAmt <context.args.get[1]>
+      - define currentAmt <p@<context.args.get[2]>.flag[CURRENCY_Credits]>
+      - define newAmt <math.as_int:%currentAmt%+%creditAmt%>
+      - flag <context.args.get[2]> "CURRENCY_Credits:%newAmt%"
       - narrate targets:<context.args.get[2]> "<yellow>Adding <context.args.get[1]> credits to your wallet."
       }
     # Creditsub command.
@@ -79,8 +81,10 @@
       - queue clear
       }
     - if <context.args.get[2]> != null {
-      - define creditAmt <math.as_int:<<context.args.get[2]>.flag[CURRENCY_Credits]>-<context.args.get[1]>>
-      - flag <context.args.get[2]> "CURRENCY_Credits:%creditAmt%"
+      - define creditAmt <context.args.get[1]>
+      - define currentAmt <p@<context.args.get[2]>.flag[CURRENCY_Credits]>
+      - define newAmt <math.as_int:%currentAmt%-%creditAmt%>
+      - flag <context.args.get[2]> "CURRENCY_Credits:%newAmt%"
       - narrate targets:<context.args.get[2]> "<yellow>Removing <context.args.get[1]> credits from your wallet."
       }
     # Creditset command.

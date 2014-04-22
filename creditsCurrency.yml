@@ -30,3 +30,17 @@
 # ========================================
 #
 
+"CreditsInitializer":
+  type: world
+  events:
+    on player join:
+    # Credit Check - See if a player has a credit flag.
+    # If not, create one and set it equal to 0.
+    - if <player.flag[CURRENCY_Credits]> == "null" {
+      - flag player "CURRENCY_Credits:0" }
+      
+"CreditsCommands":
+  type: world
+  events:
+    on credits command:
+    - narrate "<yellow>You have <player.flag[CURRENCY_Credits]> credits in your wallet."

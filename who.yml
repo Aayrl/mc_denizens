@@ -7,9 +7,11 @@
   type: world
   events:
     on who command:
-    - narrate "<yellow>---- Online Players ----"
+    - narrate "<&5>---- Online Players ----"
     - define playerList <server.list_online_players>
     - foreach <%playerList%.aslist> {
-      - narrate "<&5><%value%.name> <&lb>Level <%value%.xp.level><&rb> ZONE<&co> <%value%.world.name>"
+      - define playerOP <%value%.is_op>
+      - if playerOP == true narrate "<&5>* GM * <%value%.name> <&lb>Level <%value%.xp.level><&rb> ZONE<&co> <%value%.world.name>"
+      - if playerOP == false narrate "<&5><%value%.name> <&lb>Level <%value%.xp.level><&rb> ZONE<&co> <%value%.world.name>"
       }
     

@@ -1,0 +1,54 @@
+# Tell Command
+# Tyler J. Sawyer
+# Last Updated: 4/22/14
+#
+# Sends a whisper/tell to a specified player.
+
+"whoCommand":
+  type: world
+  events:
+  
+    on tell command:
+    - if <context.args.get[3]> != null || <context.args.get[2]> == null || <context.args.get[1]> == null {
+      - narrate "<red>Invalid Syntax for <gold>/tell<red> command."
+      - narrate "<red>Usage<&co> <gold>/tell <white>PlayerName <green><&sq>message<&sq>"
+      - narrate "<red>Help<&co> Ensure your messages are enclosed by quotation marks!"
+      - queue clear
+      }
+    - narrate targets:<context.args.get[1]> "<&D><player.name> whispers<&cm> <context.args.get[2]>"
+    - narrate "<&D>You whisper to <context.args.get[1]><&cm> <context.args.get[2]>"
+    - determine fulfilled
+    
+    on t command:
+    - if <context.args.get[3]> != null || <context.args.get[2]> == null || <context.args.get[1]> == null {
+      - narrate "<red>Invalid Syntax for <gold>/tell<red> command."
+      - narrate "<red>Usage<&co> <gold>/tell <white>PlayerName <green><&sq>message<&sq>"
+      - narrate "<red>Help<&co> Ensure your messages are enclosed by quotation marks!"
+      - queue clear
+      }
+    - narrate targets:<context.args.get[1]> "<&D><player.name> whispers<&cm> <context.args.get[2]>"
+    - narrate "<&D>You whisper to <context.args.get[1]><&cm> <context.args.get[2]>"
+    - determine fulfilled
+    
+    on whisper command:
+    - if <context.args.get[3]> != null || <context.args.get[2]> == null || <context.args.get[1]> == null {
+      - narrate "<red>Invalid Syntax for <gold>/whisper<red> command."
+      - narrate "<red>Usage<&co> <gold>/whisper <white>PlayerName <green><&sq>message<&sq>"
+      - narrate "<red>Help<&co> Ensure your messages are enclosed by quotation marks!"
+      - queue clear
+      }
+    - narrate targets:<context.args.get[1]> "<&D><player.name> whispers<&cm> <context.args.get[2]>"
+    - narrate "<&D>You whisper to <context.args.get[1]><&cm> <context.args.get[2]>"
+    - determine fulfilled
+    
+    on w command:
+    - if <context.args.get[3]> != null || <context.args.get[2]> == null || <context.args.get[1]> == null {
+      - narrate "<red>Invalid Syntax for <gold>/whisper<red> command."
+      - narrate "<red>Usage<&co> <gold>/whisper <white>PlayerName <green><&sq>message<&sq>"
+      - narrate "<red>Help<&co> Ensure your messages are enclosed by quotation marks!"
+      - queue clear
+      }
+    - narrate targets:<context.args.get[1]> "<&D><player.name> whispers<&cm> <context.args.get[2]>"
+    - narrate "<&D>You whisper to <context.args.get[1]><&cm> <context.args.get[2]>"
+    - determine fulfilled
+    

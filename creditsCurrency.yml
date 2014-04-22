@@ -215,4 +215,20 @@ inv_vendor_generic:
             # Right Clicking on the vendor appraises the item in the player's hand.
             - narrate "<white><npc.name> says<&cm> <&sq>Welcome to my shop<&cm> <player.name>.<&sq>"
             - inventory open d:<n@<npc.id>.inventory>
-        
+
+"vendorInventoryEvents":
+  type: world
+  events:
+    # Tell the player how to use a merchant.
+    on vendorhelp command:
+    - narrate "<yellow>Coming Soon!"
+    # When a player right clicks on an item, give price information about it.
+    on player right clicks in inventory:
+    - if <context.inventory.title> == vendor_generic {
+      - narrate "<yellow>You Right Clicked an item on the Vendor Inventory!"
+      }
+    on player left clicks in inventory:
+    - if <context.inventory.title> == vendor_generic {
+      - narrate "<yellow>You Left Clicked an item on the Vendor Inventory!"
+      }
+    

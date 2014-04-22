@@ -60,7 +60,7 @@
       - queue clear
       }
     - if <context.args.get[2]> != null {
-      - define creditAmt <math.as_int:<<context.args.get[2]>.flag[CURRENCY_Credits]>+<context.args.get[1]>> }
+      - define creditAmt <math.as_int:<<context.args.get[2]>.flag[CURRENCY_Credits]>+<context.args.get[1]>>
       - flag <context.args.get[2]> "CURRENCY_Credits:%creditAmt%"
       - narrate targets:<context.args.get[2]> "<yellow>Adding <context.args.get[1]> credits to your wallet."
       }
@@ -79,7 +79,7 @@
       - queue clear
       }
     - if <context.args.get[2]> != null {
-      - define creditAmt <math.as_int:<<context.args.get[2]>.flag[CURRENCY_Credits]>-<context.args.get[1]>> }
+      - define creditAmt <math.as_int:<<context.args.get[2]>.flag[CURRENCY_Credits]>-<context.args.get[1]>>
       - flag <context.args.get[2]> "CURRENCY_Credits:%creditAmt%"
       - narrate targets:<context.args.get[2]> "<yellow>Removing <context.args.get[1]> credits from your wallet."
       }
@@ -98,7 +98,7 @@
       - queue clear
       }
     - if <context.args.get[2]> != null {
-      - define creditAmt <context.args.get[1]> }
+      - define creditAmt <context.args.get[1]>
       - flag <context.args.get[2]> "CURRENCY_Credits:%creditAmt%"
       - narrate targets:<context.args.get[2]> "<yellow>Setting your wallet to %creditAmt% credits."
       }

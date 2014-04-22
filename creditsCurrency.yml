@@ -224,15 +224,10 @@ inv_vendor_generic:
     - narrate "<yellow>Coming Soon!"
     # When a player left clicks on an item, give price information about it.
     on player left clicks in inventory:
-    - narrate "item <context.item>"
-    - narrate "inventory <context.inventory>"
-    - narrate "Click type <context.click>"
     - narrate "Slot type <context.slot_type>"
-    - narrate "Slot number <context.slot>"
-    - narrate "Shift clicking <context.is_shift_click>"
-    - narrate "cursor item <context.cursor_item>"
     - if <context.inventory.id_holder> != n@109 queue clear
     - if <context.inventory.id_holder> == n@109 {
+      - if <context.is_shift_click> == true inventory close d:<n@109.inventory>
       - determine passively cancelled 
       - if <context.item.scriptname> == null define vendorItem <context.item.id>
       - if <context.item.scriptname> != null define vendorItem <context.item.scriptname>
@@ -248,6 +243,7 @@ inv_vendor_generic:
     on player right clicks in inventory:
     - if <context.inventory.id_holder> != n@109 queue clear
     - if <context.inventory.id_holder> == n@109 {
+      - if <context.is_shift_click> == true inventory close d:<n@109.inventory>
       - determine passively cancelled 
       - if <context.item.scriptname> == null define vendorItem <context.item.id>
       - if <context.item.scriptname> != null define vendorItem <context.item.scriptname>
@@ -256,9 +252,6 @@ inv_vendor_generic:
       - if <context.item.display_name> == null {
         - if <context.item.material.formatted> != nothing narrate "<yellow>You receive <proc[vendorDetermineCredits].context[%vendorItem%]> credits for <context.item.material.formatted>." }
       }
-    # Prevent any items from 'moving' between inventories
-    on item moves from <n@109.inventory>:
-    - determine CANCELLED
   
 # Procedure for determining how much each item costs.  
 # Setup:

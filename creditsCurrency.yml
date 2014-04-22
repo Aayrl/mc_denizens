@@ -224,11 +224,9 @@ inv_vendor_generic:
     - narrate "<yellow>Coming Soon!"
     # When a player left clicks on an item, give price information about it.
     on player left clicks in inventory:
-    - narrate "Slot type <context.slot_type>"
+    #- narrate "Slot type <context.slot_type>"
     - if <context.inventory.id_holder> != n@109 queue clear
     - if <context.inventory.id_holder> == n@109 {
-      - if <context.is_shift_click> {
-        - inventory close d:<n@109.inventory> }
       - determine passively cancelled 
       - if <context.item.scriptname> == null define vendorItem <context.item.id>
       - if <context.item.scriptname> != null define vendorItem <context.item.scriptname>
@@ -244,8 +242,6 @@ inv_vendor_generic:
     on player right clicks in inventory:
     - if <context.inventory.id_holder> != n@109 queue clear
     - if <context.inventory.id_holder> == n@109 {
-      - if <context.is_shift_click> {
-        - inventory close d:<n@109.inventory> }
       - determine passively cancelled 
       - if <context.item.scriptname> == null define vendorItem <context.item.id>
       - if <context.item.scriptname> != null define vendorItem <context.item.scriptname>

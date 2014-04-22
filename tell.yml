@@ -7,7 +7,6 @@
 "whoCommand":
   type: world
   events:
-  
     on tell command:
     - if <context.args.get[3]> != null || <context.args.get[2]> == null || <context.args.get[1]> == null {
       - narrate "<red>Invalid Syntax for <gold>/tell<red> command."
@@ -18,7 +17,6 @@
     - narrate targets:<context.args.get[1]> "<&D><player.name> whispers<&cm> <context.args.get[2]>"
     - narrate "<&D>You whisper to <context.args.get[1]><&cm> <context.args.get[2]>"
     - determine fulfilled
-    
     on t command:
     - if <context.args.get[3]> != null || <context.args.get[2]> == null || <context.args.get[1]> == null {
       - narrate "<red>Invalid Syntax for <gold>/tell<red> command."
@@ -29,7 +27,6 @@
     - narrate targets:<context.args.get[1]> "<&D><player.name> whispers<&cm> <context.args.get[2]>"
     - narrate "<&D>You whisper to <context.args.get[1]><&cm> <context.args.get[2]>"
     - determine fulfilled
-    
     on whisper command:
     - if <context.args.get[3]> != null || <context.args.get[2]> == null || <context.args.get[1]> == null {
       - narrate "<red>Invalid Syntax for <gold>/whisper<red> command."
@@ -40,7 +37,6 @@
     - narrate targets:<context.args.get[1]> "<&D><player.name> whispers<&cm> <context.args.get[2]>"
     - narrate "<&D>You whisper to <context.args.get[1]><&cm> <context.args.get[2]>"
     - determine fulfilled
-    
     on w command:
     - if <context.args.get[3]> != null || <context.args.get[2]> == null || <context.args.get[1]> == null {
       - narrate "<red>Invalid Syntax for <gold>/whisper<red> command."

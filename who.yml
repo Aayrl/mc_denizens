@@ -1,0 +1,15 @@
+# WHO Command
+# Tyler J. Sawyer
+# Last Updated: 4/22/14
+#
+
+"whoCommand":
+  type: world
+  events:
+    on who command:
+    - narrate "<yellow>---- Online Players ----"
+    - define playerList <server.list_online_players>
+    - foreach <%playerList%.aslist> {
+      - narrate "<white>%value%"
+      }
+    

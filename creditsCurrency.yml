@@ -231,9 +231,18 @@ inv_vendor_generic:
       - if <context.item.display_name> != null {
         - narrate "<yellow>That<&sq>ll be <proc[vendorDetermineCredits].context[%vendorItem%]> credits for <context.item.display_name>." }
       - if <context.item.display_name> == null {
+        - narrate "Click type <context.click>"
+        - narrate "Slot type <context.slot_type>"
+        - narrate "Slot number <context.slot>"
+        - narrate "Shift clicking <context.is_shift_click>"
+        - narrate "action <context.action>"
         - if <context.item.material.formatted> != nothing narrate "<yellow>That<&sq>ll be <proc[vendorDetermineCredits].context[%vendorItem%]> credits for <context.item.material.formatted>." }
       - determine CANCELLED
       }
+    # When a player right clicks on an item, attempt to buy or sell the item.
+    # If the player has insufficient funds, do not allow them to buy an item.
+    # If the player is holding shift, attempt to buy or sell a stack of the item they
+    # clicked on.
     on player right clicks in inventory:
     - if <context.inventory.id_holder> != n@109 queue clear
     - if <context.inventory.id_holder> == n@109 {
@@ -247,6 +256,14 @@ inv_vendor_generic:
       }
   
 # Procedure for determining how much each item costs.  
+# Setup:
+# %itemID% will either be an actual literal item ID
+# OR it will be the name of the script that created
+# the custom item. 
+# The value that gets determined is the credit amount.
+# EG:
+# if %itemID% == 0 determine 0
+# If the itemID is 0, then it is worth 0 credits.
 "vendorDetermineCredits":
     type: procedure
     definitions: itemID

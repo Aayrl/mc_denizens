@@ -1,10 +1,9 @@
 # Custom Combat Text
 # Tyler J. Sawyer
-# 4-7-14
+# Last Updated: 4/22/14
 # Defines custom combat text when fighting players or mobs..
 
-
-"DamagerContext":
+"CombatTextDisplay":
   type: world
   events:
     on entity damaged by player:

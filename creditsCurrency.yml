@@ -145,7 +145,7 @@ inv_vendor_generic:
   # an empty "slot". Note the quotes around the entire lines.
   slots:
     - "[] [] [] [diamond] [seeds] [] [wood] [] []"
-    - "[] [] [] [] [] ['i@Rusty Scimitar'] [stone] [] []"
+    - "[] [] [] [] [] [i@Rusty Scimitar] [stone] [] []"
     - "[] [] [] [] [] [] [] [] []"
 
 # Assignment

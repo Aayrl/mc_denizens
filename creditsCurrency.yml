@@ -45,4 +45,6 @@
     on credits command:
     - narrate "<yellow>You have <player.flag[CURRENCY_Credits]> credits in your wallet."
     on creditadd command:
-    - flag player "CURRENCY_Credits:<math.as_int:<<player.flag[CURRENCY_Credits]>+5>"
+    - define creditAmt <math.as_int:<player.flag[CURRENCY_Credits]>+5>
+    - flag player "CURRENCY_Credits:%creditAmt%>"
+    - narrate "<yellow>Adding 5 credits to your wallet."

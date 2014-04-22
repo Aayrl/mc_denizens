@@ -226,25 +226,30 @@ inv_vendor_generic:
     on player left clicks in inventory:
     - if <context.inventory.id_holder> != n@109 queue clear
     - if <context.inventory.id_holder> == n@109 {
+      - if <context.item.scriptname> == null define vendorItem <context.item.id>
+      - if <context.item.scriptname> != null define vendorItem <context.item.scriptname>
       - if <context.item.display_name> != null {
-        - narrate "<yellow>That<&sq>ll be <proc:vendorDetermineCredits> credits for <context.item.display_name>." }
+        - narrate "<yellow>That<&sq>ll be <proc[vendorDetermineCredits].context[%vendorItem%]> credits for <context.item.display_name>." }
       - if <context.item.display_name> == null {
-        - narrate "<yellow>That<&sq>ll be <proc:vendorDetermineCredits> credits for <context.item.material.formatted>." }
+        - if <context.item.material.formatted> != nothing narrate "<yellow>That<&sq>ll be <proc[vendorDetermineCredits].context[%vendorItem%]> credits for <context.item.material.formatted>." }
       - determine CANCELLED
       }
     on player right clicks in inventory:
     - if <context.inventory.id_holder> != n@109 queue clear
     - if <context.inventory.id_holder> == n@109 {
+      - if <context.item.scriptname> == null define vendorItem <context.item.id>
+      - if <context.item.scriptname> != null define vendorItem <context.item.scriptname>
       - if <context.item.display_name> != null {
-        - narrate "<yellow>You receive <proc:vendorDetermineCredits> credits for <context.item.display_name>." }
+        - narrate "<yellow>You receive <proc[vendorDetermineCredits].context[%vendorItem%]> credits for <context.item.display_name>." }
       - if <context.item.display_name> == null {
-        - narrate "<yellow>You receive <proc:vendorDetermineCredits> credits for <context.item.material.formatted>." }
+        - if <context.item.material.formatted> != nothing narrate "<yellow>You receive <proc[vendorDetermineCredits].context[%vendorItem%]> credits for <context.item.material.formatted>." }
       - determine CANCELLED
       }
   
 # Procedure for determining how much each item costs.  
 "vendorDetermineCredits":
     type: procedure
+    definitions: itemID
 
     script:
     - determine 0

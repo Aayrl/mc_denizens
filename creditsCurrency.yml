@@ -166,9 +166,6 @@ inv_vendor_generic:
       on enter proximity:
       - narrate "<white><npc.name> says<&cm> <&sq>Hey there<&cm> <player.name>!<&sq>"
       - inventory swap d:<n@<npc.id>.inventory> o:<in@inv_vendor_generic>
-      
-      on exit proximity:
-      - inventory swap d:<n@<npc.id>.inventory> o:<in@inv_vendor_generic>
 
 'vendorGenericScript':
     type: interact
@@ -180,7 +177,4 @@ inv_vendor_generic:
             # Right Clicking on the vendor appraises the item in the player's hand.
             - narrate "<white><npc.name> says<&cm> <&sq>Welcome to my shop<&cm> <player.name>.<&sq>"
             - inventory open d:<n@<npc.id>.inventory>
-        damage trigger:
-          script:
-            - narrate "<yellow>OUCH!"
         

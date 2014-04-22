@@ -157,7 +157,7 @@ inv_vendor_generic:
     
     actions:
       on spawn:
-      - inventory swap d:<n@npc.inventory> o:in@inv_vendor_generic
+      - inventory swap d:<n@<npc.id>.inventory> o:<in@inv_vendor_generic>
 
 'vendorGenericScript':
     type: interact
@@ -168,7 +168,7 @@ inv_vendor_generic:
           script:
             # Right Clicking on the vendor appraises the item in the player's hand.
             - narrate "<yellow>Welcome to my shop<&cm> <player.name>."
-            - inventory open d:<n@npc.inventory>
+            - inventory open d:<n@<npc.id>.inventory>
         damage trigger:
           script:
             - narrate "<yellow>OUCH!"

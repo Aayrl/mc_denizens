@@ -121,3 +121,27 @@
       - flag <p@<context.args.get[2]>> "CURRENCY_Credits:%creditAmt%"
       - narrate targets:<context.args.get[2]> "<yellow>Setting your wallet to %creditAmt% credits."
       }
+      
+# ============================================================================================
+#
+"vendor_generic":
+    type: assignment
+    
+    interact scripts:
+    - 10 vendorGenericScript
+
+'vendorGenericScript':
+    type: interact
+    
+    steps:
+      1:
+        click trigger:
+          script:
+            # Right Clicking on the vendor appraises the item in the player's hand.
+            - narrate "<yellow>I<&sq>ll give you NaN for your item."
+        damage trigger:
+          script:
+            # When a player left clicks, the player sells the item.
+            - narrate "<yellow>You sell your item for NaN."
+            - determine CANCELLED
+        

@@ -146,7 +146,7 @@ inv_vendor_generic:
   slots:
     - "[] [] [] [diamond] [seeds] [] [wood] [] []"
     - "[] [] [] [] [] [] [stone] [] []"
-    - "['i@Rusty Scimitar'] [] [] [] [] [] [] [] []"
+    - "[i@Rusty_Scimitar] [] [] [] [] [] [] [] []"
 
 # Assignment
 "vendor_generic":
@@ -167,7 +167,7 @@ inv_vendor_generic:
         click trigger:
           script:
             # Right Clicking on the vendor appraises the item in the player's hand.
-            - narrate "<yellow>Welcome to my shop<&cm> <player.name>."
+            - narrate "<white><npc.name> says<&cm> <&sq>Welcome to my shop<&cm> <player.name>.<&sq>"
             - inventory open d:<n@<npc.id>.inventory>
         damage trigger:
           script:

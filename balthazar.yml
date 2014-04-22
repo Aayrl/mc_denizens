@@ -91,20 +91,20 @@ balthazar:
     - drop XP qty:<cons:balth_XP_AMT> location:<npc.location>
     # Random Loot Item 1
     - random 6
-    - drop "Hate Harvester" qty:1 location:<npc.location>
-    - drop "Amulet of Hate" qty:1 location:<npc.location>
-    - drop "Face of Death" qty:1 location:<npc.location>
-    - drop "Orb of Balthazar" qty:1 location:<npc.location>
+    - drop "Hate_Harvester" qty:1 location:<npc.location>
+    - drop "Amulet_of_Hate" qty:1 location:<npc.location>
+    - drop "Face_of_Death" qty:1 location:<npc.location>
+    - drop "Orb_of_Balthazar" qty:1 location:<npc.location>
     - drop "Skyfall" qty:1 location:<npc.location>
-    - drop "Death Lash" qty:1 location:<npc.location>
+    - drop "Death_Lash" qty:1 location:<npc.location>
     # Random Loot Item 2
     - random 6
-    - drop "Hate Harvester" qty:1 location:<npc.location>
-    - drop "Amulet of Hate" qty:1 location:<npc.location>
-    - drop "Face of Death" qty:1 location:<npc.location>
-    - drop "Orb of Balthazar" qty:1 location:<npc.location>
+    - drop "Hate_Harvester" qty:1 location:<npc.location>
+    - drop "Amulet_of_Hate" qty:1 location:<npc.location>
+    - drop "Face_of_Death" qty:1 location:<npc.location>
+    - drop "Orb_of_Balthazar" qty:1 location:<npc.location>
     - drop "Skyfall" qty:1 location:<npc.location>
-    - drop "Death Lash" qty:1 location:<npc.location>
+    - drop "Death_Lash" qty:1 location:<npc.location>
     # Drop the Ancient Petrified Leaf 2% of the time.
     - if <util.random.int[1].to[100]> >= 98 drop "AncientLeaf" qty:1 location:<npc.location>
     # Reset npc effects and clear hate targets.

@@ -1,6 +1,6 @@
 # Items
 # Tyler J. Sawyer
-# Last Updated : 4/16/14
+# Last Updated : 4/22/14
 #
 # Symbols:
 # <&co> : 
@@ -38,35 +38,35 @@
    lore:
    - <white>NO NO NO NO! NOT ON THE CARPET!!
    
-"Pile of Dirt":
+"Pile_of_Dirt":
    type: item
    material: 3
    display name: "Pile of Dirt"
    lore:
    - <white>Terribly exciting<&cm> throw some at your friends!
    
-"Pile of Mud":
+"Pile_of_Mud":
    type: item
    material: 337
    display name: "Pile of Mud"
    lore:
    - <yellow>Perhaps this can be baked into clay?
    
-"Torn Sheet of Paper":
+"Torn_Sheet_of_Paper":
    type: item
    material: 339
    display name: "Torn Sheet of Paper"
    lore:
    - <yellow>It<&sq>s a little beat up<&cm> but it should do the trick.
    
-"Dusty Cobwebs":
+"Dusty_Cobwebs":
    type: item
    material: 30
    display name: "Dusty Cobwebs"
    lore:
    - <yellow>You could probably fashion this into a trap.
    
-"Snapped Twig":
+"Snapped_Twig":
    type: item
    material: 280
    display name: "Snapped Twig"
@@ -80,14 +80,14 @@
    lore:
    - <yellow>You could make a nice<&cm> sturdy weapon hilt from this.
    
-"Piece of String":
+"Piece_of_String":
    type: item
    material: 287
    display name: "Piece of String"
    lore:
    - <white>This is much nicer than your generic string item.
    
-"Chunk of Flint":
+"Chunk_of_Flint":
    type: item
    material: 318
    display name: "Chunk of Flint"
@@ -101,77 +101,77 @@
    lore:
    - <yellow>Throw at a friend!
    
-"Rusty Longsword":
+"Rusty_Longsword":
    type: item
    material: 268
    display name: "Rusty Longsword"
    lore:
    - <white>A rusty longsword.
    
-"Rusty Shortsword":
+"Rusty_Shortsword":
    type: item
    material: 268
    display name: "Rusty Shortsword"
    lore:
    - <white>A rusty shortsword.
    
-"Rusty Two Handed Sword":
+"Rusty_Two_Handed_Sword":
    type: item
    material: 268
    display name: "Rusty Two-Handed Sword"
    lore:
    - <white>A rusty two-handed sword.
    
-"Rusty Dagger":
+"Rusty_Dagger":
    type: item
    material: 268
    display name: "Rusty Dagger"
    lore:
    - <white>A rusty dagger.
    
-"Rusty Rapier":
+"Rusty_Rapier":
    type: item
    material: 268
    display name: "Rusty Rapier"
    lore:
    - <white>A rusty rapier.
    
-"Rusty Scimitar":
+"Rusty_Scimitar":
    type: item
    material: 268
    display name: "Rusty Scimitar"
    lore:
    - <white>A rusty scimitar.
    
-"Rusty Warhammer":
+"Rusty_Warhammer":
    type: item
    material: 271
    display name: "Rusty Warhammer"
    lore:
    - <white>A rusty warhammer.
    
-"Rusty Axe":
+"Rusty_Axe":
    type: item
    material: 271
    display name: "Rusty Axe"
    lore:
    - <white>A rusty axe.
 
-"Rusty Battleaxe":
+"Rusty_Battleaxe":
    type: item
    material: 271
    display name: "Rusty Battleaxe"
    lore:
    - <white>A rusty battleaxe.
    
-"Rusty Great Axe":
+"Rusty_Great_Axe":
    type: item
    material: 271
    display name: "Rusty Great Axe"
    lore:
    - <white>A rusty great axe.
    
-"Rusty Scythe":
+"Rusty_Scythe":
    type: item
    material: 290
    display name: "Rusty Scythe"
@@ -186,35 +186,35 @@
    lore:
    - <white>The remnants of a once powerful blaze.
    
-"Charred Flesh":
+"Charred_Flesh":
    type: item
    material: 367
    display name: "Charred Flesh"
    lore:
    - <white>Some charred<&cm> rubbery flesh.
    
-"Blaze Eye":
+"Blaze_Eye":
    type: item
    material: 332
    display name: "Blaze Eye"
    lore:
    - <white>Perhaps you can use it to see into the future?
    
-"Pumpkin Soldier Helmet":
+"Pumpkin_Soldier_Helmet":
    type: item
    material: 91
    display name: "Pumpkin Soldier Helmet"
    lore:
    - <white>Hah<&cm> not so tough now!
    
-"Wither Parts":
+"Wither_Parts":
    type: item
    material: 352
    display name: "Wither Parts"
    lore:
    - <white>Some charred bone fragments
    
-"Skeleton Skull":
+"Skeleton_Skull":
    type: item
    material: 397
    display name: "Skeleton Skull"
@@ -261,147 +261,147 @@
 # Uncommon Tier Items - Green Tag
 
 # [Overworld Loot]
-"Tarnished Longsword":
+"Tarnished_Longsword":
    type: item
    material: 272
    display name: "<green>Tarnished Longsword"
    lore:
    - <white>A Tarnished longsword.
    
-"Tarnished Shortsword":
+"Tarnished_Shortsword":
    type: item
    material: 272
    display name: "<green>Tarnished Shortsword"
    lore:
    - <white>A Tarnished shortsword.
    
-"Tarnished Two Handed Sword":
+"Tarnished_Two_Handed_Sword":
    type: item
    material: 272
    display name: "<green>Tarnished Two-Handed Sword"
    lore:
    - <white>A Tarnished two-handed sword.
    
-"Tarnished Dagger":
+"Tarnished_Dagger":
    type: item
    material: 272
    display name: "<green>Tarnished Dagger"
    lore:
    - <white>A Tarnished dagger.
    
-"Tarnished Rapier":
+"Tarnished_Rapier":
    type: item
    material: 272
    display name: "<green>Tarnished Rapier"
    lore:
    - <white>A Tarnished rapier.
    
-"Tarnished Scimitar":
+"Tarnished_Scimitar":
    type: item
    material: 272
    display name: "<green>Tarnished Scimitar"
    lore:
    - <white>A Tarnished scimitar.
    
-"Tarnished Warhammer":
+"Tarnished_Warhammer":
    type: item
    material: 275
    display name: "<green>Tarnished Warhammer"
    lore:
    - <white>A Tarnished warhammer.
    
-"Tarnished Axe":
+"Tarnished_Axe":
    type: item
    material: 275
    display name: "<green>Tarnished Axe"
    lore:
    - <white>A Tarnished axe.
 
-"Tarnished Battleaxe":
+"Tarnished_Battleaxe":
    type: item
    material: 275
    display name: "<green>Tarnished Battleaxe"
    lore:
    - <white>A Tarnished battleaxe.
    
-"Tarnished Great Axe":
+"Tarnished_Great_Axe":
    type: item
    material: 275
    display name: "<green>Tarnished Great Axe"
    lore:
    - <white>A Tarnished great axe.
    
-"Tarnished Scythe":
+"Tarnished_Scythe":
    type: item
    material: 291
    display name: "<green>Tarnished Scythe"
    lore:
    - <white>A Tarnished scythe.
    
-"Leather Scraps":
+"Leather_Scraps":
    type: item
    material: 334
    display name: "<green>Leather Scraps"
    lore:
    - <white>You may be able to fashion this into some decent armor.
    
-"Patchwork Leather Hat":
+"Patchwork_Leather_Hat":
    type: item
    material: 298
    display name: "<green>Patchwork Leather Hat"
    lore:
    - <white>A leather hat made from leather scraps and patches.
    
-"Patchwork Leather Tunic":
+"Patchwork_Leather_Tunic":
    type: item
    material: 299
    display name: "<green>Patchwork Leather Tunic"
    lore:
    - <white>A leather tunic made from leather scraps and patches.
    
-"Patchwork Leather Pants":
+"Patchwork_Leather_Pants":
    type: item
    material: 300
    display name: "<green>Patchwork Leather Pants"
    lore:
    - <white>A pair of leather pants made from leather scraps and patches.
    
-"Patchwork Leather Boots":
+"Patchwork_Leather_Boots":
    type: item
    material: 301
    display name: "<green>Patchwork Leather Boots"
    lore:
    - <white>A pair of leather boots made from leather scraps and patches.
    
-"Tattered Leather Hat":
+"Tattered_Leather_Hat":
    type: item
    material: 298
    display name: "<green>Tattered Leather Hat"
    lore:
    - <white>A tattered leather hat made from leather scraps and patches.
    
-"Tattered Leather Tunic":
+"Tattered_Leather_Tunic":
    type: item
    material: 299
    display name: "<green>Tattered Leather Tunic"
    lore:
    - <white>A tattered leather tunic made from leather scraps and patches.
    
-"Tattered Leather Pants":
+"Tattered_Leather_Pants":
    type: item
    material: 300
    display name: "<green>Tattered Leather Pants"
    lore:
    - <white>A pair of tattered leather pants made from leather scraps and patches.
    
-"Tattered Leather Boots":
+"Tattered_Leather_Boots":
    type: item
    material: 301
    display name: "<green>Tattered Leather Boots"
    lore:
    - <white>A pair of tattered leather boots made from leather scraps and patches.
 
-"Dented Militia Helm":
+"Dented_Militia_Helm":
    type: item
    material: 306
    display name: "<green>Dented Militia Helm"
@@ -409,28 +409,28 @@
    - <white>A dented guard helmet.
    
 # [Plane of Fire Loot]
-"Flame Ingot":
+"Flame_Ingot":
    type: item
    material: 405
    display name: "<green>Flame Ingot"
    lore:
    - <white>Perhaps someone can make use of this...
    
-"Grinding Stone":
+"Grinding_Stone":
    type: item
    material: 318
    display name: "<green>Grinding Stone"
    lore:
    - <white>Perhaps someone can make use of this...
    
-"Blaze Temper":
+"Blaze_Temper":
    type: item
    material: 377
    display name: "<green>Blaze Temper"
    lore:
    - <white>Perhaps someone can make use of this...
    
-"Polished Steel Sword":
+"Polished_Steel_Sword":
    type: item
    material: 267
    display name: "<green>Polished Steel Sword"
@@ -440,7 +440,7 @@
    - damage_all:1
    - durability:1
    
-"Polished Steel Axe":
+"Polished_Steel_Axe":
    type: item
    material: 258
    display name: "<green>Polished Steel Axe"
@@ -450,7 +450,7 @@
    - damage_all:1
    - durability:1
    
-"Polished Steel Scythe":
+"Polished_Steel_Scythe":
    type: item
    material: 292
    display name: "<green>Polished Steel Scythe"
@@ -470,7 +470,7 @@
    - damage_all:1
 
 # [Plane of Ender Loot]
-"Sword of Ender":
+"Sword_of_Ender":
    type: item
    material:  267
    display name: "<green>Sword of Ender"
@@ -480,7 +480,7 @@
    - damage_all:2
    - durability:3
    
-"Ender Scythe":
+"Ender_Scythe":
    type: item
    material: 292
    display name: "<green>Ender Scythe"
@@ -490,7 +490,7 @@
    - damage_all:2
    - durability:3
    
-"Enderplate Chestpiece":
+"Enderplate_Chestpiece":
    type: item
    material: 307
    display name: "<green>Enderplate Chestpiece"
@@ -500,7 +500,7 @@
    - durability:4
    - protection_environmental:3
    
-"Enderplate Leggings":
+"Enderplate_Leggings":
    type: item
    material: 308
    display name: "<green>Enderplate Leggings"
@@ -510,7 +510,7 @@
    - durability:4
    - protection_projectile:3
    
-"Enderplate Boots":
+"Enderplate_Boots":
    type: item
    material: 309
    display name: "<green>Enderplate Boots"
@@ -520,7 +520,7 @@
    - durability:3
    - protection_fall:3
    
-"Enderplate Helm":
+"Enderplate_Helm":
    type: item
    material: 306
    display name: "<green>Enderplate Helm"
@@ -530,7 +530,7 @@
    - durability:3
    - oxygen:1
    
-"Ender Orb":
+"Ender_Orb":
    type: item
    material: 368
    display name: "<green>Ender Orb"
@@ -554,14 +554,14 @@
    - <white>Free cookies are never a bad thing.
    - <green>Use<&co> Restore 1 Saturation point.
    
-"Enderplate Rings":
+"Enderplate_Rings":
    type: item
    material: 265
    display name: "<green>Enderplate Rings"
    lore:
    - <white>Perhaps these can be repurposed?
  
-"Enderplate Block":
+"Enderplate_Block":
    type: item
    material: 265
    display name: "<green>Enderplate Block"
@@ -569,7 +569,7 @@
    - <white>Perhaps this can be repurposed?
    
 # [Plane of Ender - Hate Keep Loot]
-"Hatesteel Chestpiece":
+"Hatesteel_Chestpiece":
    type: item
    material: 307
    display name: "<green>Hatesteel Chestpiece"
@@ -579,7 +579,7 @@
    - durability:5
    - protection_environmental:4
    
-"Hatesteel Leggings":
+"Hatesteel_Leggings":
    type: item
    material: 308
    display name: "<green>Hatesteel Leggings"
@@ -589,7 +589,7 @@
    - durability:5
    - protection_projectile:4
    
-"Hatesteel Boots":
+"Hatesteel_Boots":
    type: item
    material: 309
    display name: "<green>Hatesteel Boots"
@@ -599,7 +599,7 @@
    - durability:4
    - protection_fall:4
    
-"Hatesteel Helm":
+"Hatesteel_Helm":
    type: item
    material: 306
    display name: "<green>Hatesteel Helm"
@@ -610,7 +610,7 @@
    - oxygen:1
    
 # [Plane of Earth Loot]
-"Fine Steel Plate Helm":
+"Fine_Steel_Plate_Helm":
    type: item
    material: 306
    display name: "<green>Fine Steel Plate Helm"
@@ -619,7 +619,7 @@
    enchantments:
    - durability:3
    
-"Fine Steel Plate Chestpiece":
+"Fine_Steel_Plate_Chestpiece":
    type: item
    material: 307
    display name: "<green>Fine Steel Plate Chestpiece"
@@ -628,7 +628,7 @@
    enchantments:
    - durability:3
    
-"Fine Steel Plate Leggings":
+"Fine_Steel_Plate_Leggings":
    type: item
    material: 308
    display name: "<green>Fine Steel Plate Leggings"
@@ -637,7 +637,7 @@
    enchantments:
    - durability:3
    
-"Fine Steel Plate Boots":
+"Fine_Steel_Plate_Boots":
    type: item
    material: 309
    display name: "<green>Fine Steel Plate Boots"
@@ -646,7 +646,7 @@
    enchantments:
    - durability:3
    
-"Fine Steel Longsword":
+"Fine_Steel_Longsword":
    type: item
    material: 267
    display name: "<green>Fine Steel Longsword"
@@ -656,7 +656,7 @@
    - durability:3
    - damage_all:2
    
-"Fine Steel Shortsword":
+"Fine_Steel_Shortsword":
    type: item
    material: 267
    display name: "<green>Fine Steel Shortsword"
@@ -666,7 +666,7 @@
    - durability:3
    - damage_all:2
    
-"Fine Steel Two Handed Sword":
+"Fine_Steel_Two_Handed_Sword":
    type: item
    material: 267
    display name: "<green>Fine Steel Two-Handed Sword"
@@ -676,7 +676,7 @@
    - durability:2
    - damage_all:3
    
-"Fine Steel Rapier":
+"Fine_Steel_Rapier":
    type: item
    material: 267
    display name: "<green>Fine Steel Rapier"
@@ -686,7 +686,7 @@
    - durability:3
    - damage_all:2
    
-"Fine Steel Hammer":
+"Fine_Steel_Hammer":
    type: item
    material: 256
    display name: "<green>Fine Steel Hammer"
@@ -696,7 +696,7 @@
    - durability:3
    - damage_all:2
    
-"Fine Steel Battleaxe":
+"Fine_Steel_Battleaxe":
    type: item
    material: 258
    display name: "<green>Fine Steel Battleaxe"
@@ -706,7 +706,7 @@
    - durability:3
    - damage_all:2
    
-"Fine Steel Greataxe":
+"Fine_Steel_Greataxe":
    type: item
    material: 258
    display name: "<green>Fine Steel Greataxe"
@@ -716,7 +716,7 @@
    - durability:2
    - damage_all:3
    
-"Fine Steel Cleaver":
+"Fine_Steel_Cleaver":
    type: item
    material: 292
    display name: "<green>Fine Steel Cleaver"
@@ -730,7 +730,7 @@
 # Rare Tier Items - Blue Tag
 
 # [Overworld Loot]
-"Ringmail Coif":
+"Ringmail_Coif":
    type: item
    material: 302
    display name: "<&9>Ringmail Coif"
@@ -739,7 +739,7 @@
    enchantments:
    - durability:2
    
-"Ringmail Tunic":
+"Ringmail_Tunic":
    type: item
    material: 303
    display name: "<&9>Ringmail Tunic"
@@ -748,7 +748,7 @@
    enchantments:
    - durability:2
    
-"Ringmail Leggings":
+"Ringmail_Leggings":
    type: item
    material: 304
    display name: "<&9>Ringmail Leggings"
@@ -757,7 +757,7 @@
    enchantments:
    - durability:2
    
-"Ringmail Boots":
+"Ringmail_Boots":
    type: item
    material: 305
    display name: "<&9>Ringmail Boots"
@@ -767,35 +767,35 @@
    - durability:2
 
 # [Plane of Fire Loot]
-"Shattered Flamemail Helm":
+"Shattered_Flamemail_Helm":
    type: item
    material: 302
    display name: "<&9>Shattered Flamemail Helm"
    lore:
    - <yellow>An expert blacksmith may be able to repair this..
    
-"Shattered Flamemail Chestpiece":
+"Shattered_Flamemail_Chestpiece":
    type: item
    material: 303
    display name: "<&9>Shattered Flamemail Chestpiece"
    lore:
    - <yellow>An expert blacksmith may be able to repair this..
    
-"Shattered Flamemail Kilt":
+"Shattered_Flamemail_Kilt":
    type: item
    material: 304
    display name: "<&9>Shattered Flamemail Kilt"
    lore:
    - <yellow>An expert blacksmith may be able to repair this..
    
-"Shattered Flamemail Boots":
+"Shattered_Flamemail_Boots":
    type: item
    material: 305
    display name: "<&9>Shattered Flamemail Boots"
    lore:
    - <yellow>An expert blacksmith may be able to repair this..
 
-"Wither Essence":
+"Wither_Essence":
    type: item
    material: 385
    display name: "<&9>Wither Essence"
@@ -803,28 +803,28 @@
    - <yellow>The sphere pulses with energy.<&nl>Perhaps an enchanter can inspect it?
    
 # [Plane of Ender Loot]
-"Runed Enderplate Helm":
+"Runed_Enderplate_Helm":
    type: item
    material: 310
    display name: "<&9>Runed Enderplate Helm"
    lore:
    - <yellow>An expert blacksmith may be able to repair this..
    
-"Runed Enderplate Chestpiece":
+"Runed_Enderplate_Chestpiece":
    type: item
    material: 311
    display name: "<&9>Runed Enderplate Chestpiece"
    lore:
    - <yellow>An expert blacksmith may be able to repair this..
    
-"Runed Enderplate Leggings":
+"Runed_Enderplate_Leggings":
    type: item
    material: 312
    display name: "<&9>Runed Enderplate Leggings"
    lore:
    - <yellow>An expert blacksmith may be able to repair this..
    
-"Runed Enderplate Boots":
+"Runed_Enderplate_Boots":
    type: item
    material: 313
    display name: "<&9>Runed Enderplate Boots"
@@ -842,21 +842,21 @@
    - damage_all:3
    - durability:5
    
-"Fire Puff":
+"Fire_Puff":
    type: item
    material: 378
    display name: "<&9>Fire Puff"
    lore:
    - <green>Use<&co> Fire Resistance II <&lb>30 Min CD<&rb>
    
-"Joeys Incinerating Charge":
+"Joeys_Incinerating_Charge":
    type: item
    material: 46
    display name: "<&9>Joeys Incinerating Charge"
    lore:
    - <green>Use<&co> BOOM!
    
-"Digmaster 5000":
+"Digmaster_5000":
    type: item
    material: 256
    display name: "<&9>Digmaster 5000"
@@ -937,7 +937,7 @@
    - damage_all:4
    - durability:2
    
-"Blue Harbinger":
+"Blue_Harbinger":
    type: item
    material: 276
    display name: "<&9>Blue Harbinger"
@@ -969,7 +969,7 @@
    - damage_all:5
    - durability:5
    
-"Redwood Recurve Bow":
+"Redwood_Recurve_Bow":
    type: item
    material: 261
    display name: "<&9>Redwood Recurve Bow"
@@ -979,7 +979,7 @@
    - arrow_damage:2
    - durability:3
    
-"Ashwood Recurve Bow":
+"Ashwood_Recurve_Bow":
    type: item
    material: 261
    display name: "<&9>Ashwood Recurve Bow"
@@ -1027,7 +1027,7 @@
            }
          }
 
-"Pegasus Feather Cloak":
+"Pegasus_Feather_Cloak":
    type: item
    material: 288
    display name: "<&5>Pegasus Feather Cloak"
@@ -1036,7 +1036,7 @@
    enchantments:
    - durability:3
    
-"Eyepatch of Plunder":
+"Eyepatch_of_Plunder":
    type: item
    material: 310
    display name: "<&5>Eyepatch of Plunder"
@@ -1099,7 +1099,7 @@
    - arrow_damage:3
    - arrow_fire:2
    
-"Rune of Healing":
+"Rune_of_Healing":
    type: item
    material: 336
    display name: "<&5>Rune of Healing"
@@ -1121,7 +1121,7 @@
          - flag player "roh reuse:true" duration:300
          }
    
-"Journeyman Boots":
+"Journeyman_Boots":
    type: item
    material: 313
    display name: "<&5>Journeyman<&sq>s Boots"
@@ -1142,7 +1142,7 @@
          - playeffect location:<player.location> effect:splash qty:2500
          }
    
-"Dragon Maul":
+"Dragon_Maul":
    type: item
    material: 279
    display name: "<&5>Dragon Maul"
@@ -1153,7 +1153,7 @@
    - damage_all:7
    - durability:5
    
-"Bucket of Saturation":
+"Bucket_of_Saturation":
    type: item
    material: 325
    display name: "<&5>Bucket of Saturation"
@@ -1162,7 +1162,7 @@
    enchantments:
    - durability:1
    
-"Shapeshifters Rod":
+"Shapeshifters_Rod":
    type: item
    material: 369
    display name: "<&5>Shapeshifter<&sq>s Rod"
@@ -1172,7 +1172,7 @@
    - knockback:1
    
 # [Plane of Earth Loot]
-"Fabled Journeyman Boots":
+"Fabled_Journeyman_Boots":
    type: item
    material: 313
    display name: "<&5>Fabled Journeyman<&sq>s Boots"
@@ -1192,7 +1192,7 @@
          - playeffect location:<player.location> effect:splash qty:2500
          }
          
-"Shield of Earth":
+"Shield_of_Earth":
    type: item
    material: 96
    display name: "<&5>Shield of Earth"
@@ -1216,7 +1216,7 @@
 
 # [Avatar of Hakkar Loot]
 # ---------------------------------------------------------------------------
-"Wand of Hakkar":
+"Wand_of_Hakkar":
    type: item
    material: 76
    display name: "<&5>Wand of Hakkar"
@@ -1237,7 +1237,7 @@
            }
          }
    
-"Fang of Hakkar":
+"Fang_of_Hakkar":
    type: item
    material: 267
    display name: "<&5>Fang of Hakkar"
@@ -1258,7 +1258,7 @@
            }
          }
    
-"Hakkarian Shield Wall":
+"Hakkarian_Shield_Wall":
    type: item
    material: 96
    display name: "<&5>Hakkarian Shield Wall"
@@ -1280,7 +1280,7 @@
            }
          }
    
-"Moist Towelette":
+"Moist_Towelette":
    type: item
    material: 339
    display name: "<&5>Lemon Scented Moist Towelette"
@@ -1304,7 +1304,7 @@
          - flag player "mtowel reuse:true" duration:300
          }
    
-"Hakkarian Leather Whip":
+"Hakkarian_Leather_Whip":
    type: item
    material: 420
    display name: "<&5>Hakkarian Leather Whip"
@@ -1325,7 +1325,7 @@
            }
          }
    
-"Pendant of the Sun":
+"Pendant_of_the_Sun":
    type: item
    material: GLOWSTONE_DUST
    display name: "<&5>Pendant of the Sun"
@@ -1351,7 +1351,7 @@
 
 # [Balthazar Loot]
 # ---------------------------------------------------------------------------
-"Hate Harvester":
+"Hate_Harvester":
    type: item
    material: 278
    display name: "<&5>Hate Harvester"
@@ -1364,7 +1364,7 @@
    - loot_bonus_blocks:2
    - silk_touch:1
 
-"Amulet of Hate":
+"Amulet_of_Hate":
    type: item
    material: REDSTONE
    display name: "<&5>Amulet of Hate"
@@ -1387,7 +1387,7 @@
            - narrate "<red>This item requires an Emerald to use." }
          }
 
-"Face of Death":
+"Face_of_Death":
    type: item
    material: 397
    display name: "<&5>Face of Death"
@@ -1409,7 +1409,7 @@
            }
          }
 
-"Orb of Balthazar":
+"Orb_of_Balthazar":
    type: item
    material: 381
    display name: "<&5>Orb of Balthazar"
@@ -1455,7 +1455,7 @@
            }
          }
          
-"Death Lash":
+"Death_Lash":
    type: item
    material: 420
    display name: "<&5>Death Lash"
@@ -1545,7 +1545,7 @@
 # ========================================================
 # Legendary Tier Items - Orange Tag
 
-"Singing Sword":
+"Singing_Sword":
    type: item
    material: 276
    display name: "<&6>Singing Sword"
@@ -1569,7 +1569,7 @@
          }
 
 # [Plane of Ender Loot]
-"Hammer of the Gods":
+"Hammer_of_the_Gods":
    type: item
    material: diamond_axe
    display name: "<&6>Hammer of the Gods"
@@ -1579,7 +1579,7 @@
    - durability:3
    - damage_all:5
    
-"Cloak of Invisibility":
+"Cloak_of_Invisibility":
    type: item
    material: 334
    display name: "<&6>Cloak of Invisibility"
@@ -1787,7 +1787,7 @@
 # ========================================================
 # God / Event Tier Items - Red Tag
    
-"Firework Wand":
+"Firework_Wand":
    type: item
    material: firework_charge
    display name: "<red>Firework Wand"

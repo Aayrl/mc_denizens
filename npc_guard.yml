@@ -68,7 +68,7 @@ guard_gondor:
     # Random loot
     - define roll <util.random.int[1].to[100]>
     - if %roll% >= 90 {
-      - drop "Dented Militia Helm" location:<npc.location> }
+      - drop "Dented_Militia_Helm" location:<npc.location> }
     # Reset npc effects and clear hate targets.
     - execute as_server "npc sel <npc.id>"
     - execute as_server "npc effect --play none"

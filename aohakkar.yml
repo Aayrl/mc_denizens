@@ -121,20 +121,20 @@ aohakkar:
     - drop XP qty:<cons:aoh_XP_AMT> location:<npc.location>
     # Random Loot Item 1
     - random 6
-    - drop "Wand of Hakkar" qty:1 location:<npc.location>
-    - drop "Fang of Hakkar" qty:1 location:<npc.location>
-    - drop "Hakkarian Shield Wall" qty:1 location:<npc.location>
-    - drop "Moist Towelette" qty:1 location:<npc.location>
-    - drop "Hakkarian Leather Whip" qty:1 location:<npc.location>
-    - drop "Pendant of the Sun" qty:1 location:<npc.location>
+    - drop "Wand_of_Hakkar" qty:1 location:<npc.location>
+    - drop "Fang_of_Hakkar" qty:1 location:<npc.location>
+    - drop "Hakkarian_Shield_Wall" qty:1 location:<npc.location>
+    - drop "Moist_Towelette" qty:1 location:<npc.location>
+    - drop "Hakkarian_Leather_Whip" qty:1 location:<npc.location>
+    - drop "Pendant_of_the_Sun" qty:1 location:<npc.location>
     # Random Loot Item 2
     - random 6
-    - drop "Wand of Hakkar" qty:1 location:<npc.location>
-    - drop "Fang of Hakkar" qty:1 location:<npc.location>
-    - drop "Hakkarian Shield Wall" qty:1 location:<npc.location>
-    - drop "Moist Towelette" qty:1 location:<npc.location>
-    - drop "Hakkarian Leather Whip" qty:1 location:<npc.location>
-    - drop "Pendant of the Sun" qty:1 location:<npc.location>
+    - drop "Wand_of_Hakkar" qty:1 location:<npc.location>
+    - drop "Fang_of_Hakkar" qty:1 location:<npc.location>
+    - drop "Hakkarian_Shield_Wall" qty:1 location:<npc.location>
+    - drop "Moist_Towelette" qty:1 location:<npc.location>
+    - drop "Hakkarian_Leather_Whip" qty:1 location:<npc.location>
+    - drop "Pendant_of_the_Sun" qty:1 location:<npc.location>
     # Reset npc effects and clear hate targets.
     - execute as_server "npc sel <npc.id>"
     - execute as_server "npc effect --play none"

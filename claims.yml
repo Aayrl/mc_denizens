@@ -61,7 +61,7 @@
             } 
           - if "<context.args.get[1]>" == 4 && "<flag.p:claims FireworkWand || false>" == false {
             - narrate "<gold>Claiming Reward<&co> Firework Wand..."
-            - give item:"Firework Wand" QTY:1
+            - give item:"Firework_Wand" QTY:1
             - narrate "<gold>Reward successfully claimed!"
             - flag player "claims FireworkWand:true"
             }

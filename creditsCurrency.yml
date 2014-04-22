@@ -222,13 +222,15 @@ inv_vendor_generic:
     # Tell the player how to use a merchant.
     on vendorhelp command:
     - narrate "<yellow>Coming Soon!"
-    # When a player right clicks on an item, give price information about it.
+    # When a player left clicks on an item, give price information about it.
+    on player left clicks in inventory:
+    - if <context.inventory.id_holder> == n@109 {
+      - narrate "<yellow>That<&sq>ll be CREDIT_AMT credits for the <context.item.display_name>."
+      - determine CANCELLED
+      }
     on player right clicks in inventory:
     - if <context.inventory.id_holder> == n@109 {
-      - narrate "<yellow>You Right Clicked an item on the Vendor Inventory!"
-      }
-    on player left clicks in inventory:
-    - if <context.inventory.title> == n@109 {
-      - narrate "<yellow>You Left Clicked an item on the Vendor Inventory!"
+      - narrate "<yellow>You receive CREDIT_AMT credits for your <context.item.display_name>."
+      - determine CANCELLED
       }
     

@@ -1,10 +1,32 @@
 # Lady Sinestra is a boss encounter in the Plane of Ender.
 # Tyler J. Sawyer
-# 4/21/14
-
+# 4/24/14
+#
 # Respawn Timer : 86400 seconds - 24 hours
-
-
+#
+# Phase 1 : 98% -> 75%
+# ABILITY: Ignite : Burns a random target for 10 seconds. [30s Cooldown]
+# ABILITY: Lava Dredge : Harm a random player for 50% of their health. [30s Cooldown]
+#
+# Phase 2 : 74% -> 50%
+# ADDS [60s Cooldown]
+#   Spawn 1 Large Cube in each corner of the area.
+#   "Sinestra Spawn"
+#   - 250 Health
+#   - Shoot Fireballs
+#   On Death:
+#       Spawn 2 Smaller Cubes
+#       "Sinestra-ling"
+#       - 100 Health
+#       - Shoot Fireballs
+#
+# Phase 3 : 49% -> 25%
+# ABILITY: Lava Geyser : Burns a random target for 10 seconds.
+#                        "Bounces" the target in the air [30s Cooldown]
+# ABILITY: Fear : Turns all targets away from the boss every second for 5 seconds. [45s Cooldown]
+#
+# Phase 4 : 24% -> 5%
+# ABILITY: Call of the Nest : Teleport all players to the nest (spawn point) and root for 10 sec. [20s Cooldown]
 
 ladysinestra:
   type: assignment

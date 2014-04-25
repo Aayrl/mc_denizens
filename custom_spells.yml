@@ -209,6 +209,7 @@
           - narrate "<&9>You must wait <flag.p:spell1 reuse.expiration> before you can use that item again."
           } 
         - if "<flag.p:spell1 reuse || false>" == false {
+         - narrate "<&9>You heal 2 of your hitpoints."
          - narrate "<&9>You feel better."
          - heal 2
          - feed -2
@@ -223,10 +224,59 @@
           - narrate "<&9>You must wait <flag.p:spell1 reuse.expiration> before you can use that item again."
           } 
         - if "<flag.p:spell1 reuse || false>" == false {
+         - narrate targets:<context.entity> "<&9><player.name> heals you for 2 hitpoints."
          - narrate targets:<context.entity> "<&9>You feel better."
          - heal 2 target:<context.entity>
          - feed -2
          - playeffect location:<context.entity.location> effect:potion_break qty:15 data:5
          - flag player "spell1 reuse:true" duration:10
+         - flag player "SPELL_GCD" duration:2
+         }
+         
+"spell2":
+   type: item
+   material: 339
+   display name: "<yellow>Spell<&co> Burst of Flame"
+   recipe:
+    - air|i@rune5|air
+    - i@words1|i@340|i@words1
+    - air|i@rune5|air
+   lore:
+   - <green>Burns your target for 4 damage <&lb>5s Cooldown<&rb>
+   - <&9>Costs 4 saturation to use cast.
+   enchantments:
+   - durability:1
+   
+"spell2Effect":
+   type: world
+   events:
+     on player right clicks:
+        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Burst of Flame" queue clear
+        - if <player.flag[SPELL_GCD]> queue clear
+        - if "<flag.p:spell2 reuse || false>" == true {
+          - narrate "<&9>You must wait <flag.p:spell2 reuse.expiration> before you can use that item again."
+          } 
+        - if "<flag.p:spell2 reuse || false>" == false {
+         - narrate "<&9>You burn yourself for 4 damage!"
+         - narrate "<&9>You feel your skin tingle as it ignites."
+         - heal 2
+         - feed -4
+         - playeffect location:<player.location> effect:lava qty:50
+         - flag player "spell2 reuse:true" duration:5
+         - flag player "SPELL_GCD" duration:2
+         }
+     on player right clicks entity:
+        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Burst of Flame" queue clear
+        - if <player.flag[SPELL_GCD]> queue clear
+        - if "<flag.p:spell2 reuse || false>" == true {
+          - narrate "<&9>You must wait <flag.p:spell2 reuse.expiration> before you can use that item again."
+          } 
+        - if "<flag.p:spell2 reuse || false>" == false {
+         - narrate targets:<context.entity> "<&9>You are burned for 4 damage!"
+         - narrate targets:<context.entity> "<&9>You feel your skin tingle as <player.name> ignites it."
+         - heal -4 target:<context.entity>
+         - feed -4
+         - playeffect location:<context.entity.location> effect:lava qty:50
+         - flag player "spell2 reuse:true" duration:5
          - flag player "SPELL_GCD" duration:2
          }

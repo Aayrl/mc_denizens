@@ -187,25 +187,27 @@
 
 "spell1":
    type: item
-   material: 386
-   display name: "<yellow>Spell<&co> Heal"
+   material: 339
+   display name: "<yellow>Spell<&co> Light Heal"
    recipe:
     - air|i@rune1|air
     - i@words8|i@340|i@words8
     - air|i@rune1|air
    lore:
-   - <green>Heals you for 2 hearts <&lb>10s Cooldown<&rb>
+   - <green>Heals you for 1 heart <&lb>10s Cooldown<&rb>
+   enchantments:
+   - durability:1
    
-"spell1_effect":
+"spell1Effect":
    type: world
    events:
      on use command:
-       - if <player.item_in_hand.lore> == "<green>Heals you for 2 hearts <&lb>10s Cooldown<&rb>" && "<flag.p:spell1 reuse || false>" == true {
+       - if <player.item_in_hand.display> == "<yellow>Spell<&co> Light Heal" && "<flag.p:spell1 reuse || false>" == true {
          - narrate "<&9>You must wait <flag.p:spell1 reuse.expiration> before you can use that item again."
          } 
-       - if <player.item_in_hand.lore> == "<green>Heals you for 2 hearts <&lb>10s Cooldown<&rb>" && "<flag.p:spell1 reuse || false>" == false {
+       - if <player.item_in_hand.display> == "<yellow>Spell<&co> Light Heal" && "<flag.p:spell1 reuse || false>" == false {
          - narrate "<&9>You feel better."
-         - heal 4
+         - heal 2
          - playeffect location:<player.location> effect:potion_break qty:15 data:5
          - flag player "spell1 reuse:true" duration:10
          }

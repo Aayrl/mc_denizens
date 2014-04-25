@@ -195,6 +195,7 @@
     - air|i@rune1|air
    lore:
    - <green>Heals you for 1 heart <&lb>10s Cooldown<&rb>
+   - <&9>Costs 2 saturation to use cast.
    enchantments:
    - durability:1
    
@@ -208,6 +209,7 @@
        - if <player.item_in_hand.display> == "<yellow>Spell<&co> Light Heal" && "<flag.p:spell1 reuse || false>" == false {
          - narrate "<&9>You feel better."
          - heal 2
+         - feed -2
          - playeffect location:<player.location> effect:potion_break qty:15 data:5
          - flag player "spell1 reuse:true" duration:10
          }

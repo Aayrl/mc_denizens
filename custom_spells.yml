@@ -1,7 +1,7 @@
 # -----------------------------------
 # Custom Minecraft 'Spells'
-# @author: Tyler J. Sawyer
-# @version: 1.0
+# Author: Tyler J. Sawyer
+# Version: 1.1
 # Last Updated: 13:34 on April 25, 2014 (Friday)
 # -----------------------------------
 # Custom 'spells' that users can create using custom items.
@@ -11,13 +11,14 @@
 # -----------------------------------
 # SPELL CRAFTING MATERIALS
 # Runes and Pages
+
 "rune1":
    type: item
    material: 402
    display name: "Rune of Alteration"
    lore:
    - <yellow>Used to craft powerful spells.
-   
+
 "rune2":
    type: item
    material: 402
@@ -42,7 +43,7 @@
 "rune5":
    type: item
    material: 402
-   display name: "Rune of Evocation
+   display name: "Rune of Evocation"
    lore:
    - <yellow>Used to craft powerful spells.
    
@@ -187,22 +188,22 @@
 "spell1":
    type: item
    material: 386
-   display name: "<yellow>Spell<&co> Heal <&lb>10s Cooldown<&rb>"
+   display name: "<yellow>Spell<&co> Heal"
    recipe:
     - air|i@rune1|air
     - i@words8|i@340|i@words8
     - air|i@rune1|air
    lore:
-   - <green>Heals you for 2 hearts <&lb>SPELL<&rb>.
+   - <green>Heals you for 2 hearts <&lb>SPELL 10s Cooldown<&rb>
    
 "spell1_effect":
    type: world
    events:
      on use command:
-       - if <player.item_in_hand.lore> == "<green>Heals you for 2 hearts <&lb>SPELL<&rb>." && "<flag.p:spell1 reuse || false>" == true {
+       - if <player.item_in_hand.lore> == "<green>Heals you for 2 hearts <&lb>SPELL 10s Cooldown<&rb>" && "<flag.p:spell1 reuse || false>" == true {
          - narrate "<&9>You must wait <flag.p:spell1 reuse.expiration> before you can use that item again."
          } 
-       - if <player.item_in_hand.lore> == "<green>Heals you for 2 hearts <&lb>SPELL<&rb>." && "<flag.p:spell1 reuse || false>" == false {
+       - if <player.item_in_hand.lore> == "<green>Heals you for 2 hearts <&lb>SPELL 10s Cooldown<&rb>" && "<flag.p:spell1 reuse || false>" == false {
          - narrate "<&9>You feel better."
          - heal 4
          - playeffect location:<player.location> effect:potion_break qty:15 data:5

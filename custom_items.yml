@@ -1845,7 +1845,7 @@
    material: 40
    display name: "<red><&k>X<&r><red>Magic Mushroom<&k>X<&r>"
    lore:
-   - <green>Use<&co> Far Out! <&lb>1 Min CD<&rb>
+   - <green>Use<&co> Far Out! <&lb>5 Min CD<&rb>
    enchantments:
    - durability:1
 
@@ -1853,16 +1853,16 @@
    type: world
    events:
      on use command:
-       - if <player.item_in_hand.lore> == "<green>Use<&co> Far Out! <&lb>1 Min CD<&rb>" && "<flag.p:magicshroom reuse || false>" == true {
+       - if <player.item_in_hand.lore> == "<green>Use<&co> Far Out! <&lb>5 Min CD<&rb>" && "<flag.p:magicshroom reuse || false>" == true {
          - narrate "<&9>You must wait <flag.p:magicshroom reuse.expiration> before you can use that item again."
          } 
-       - if <player.item_in_hand.lore> == "<green>Use<&co> Far Out! <&lb>1 Min CD<&rb>" && "<flag.p:magicshroom reuse || false>" == false {
+       - if <player.item_in_hand.lore> == "<green>Use<&co> Far Out! <&lb>5 Min CD<&rb>" && "<flag.p:magicshroom reuse || false>" == false {
          - narrate "<&9>WWOOOOAAAAHHH!!!"
          - playeffect location:<player.location> effect:red_dust qty:100
-         - cast confusion duration:20 power:2
-         - cast jump duration:20 power:2
+         - cast confusion duration:30 power:5
+         - cast jump duration:30 power:2
          - cast increase_damage duration:120
-         - flag player "magicshroom reuse:true" duration:60
+         - flag player "magicshroom reuse:true" duration:300
          }
    
 # Item Effects

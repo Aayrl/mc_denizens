@@ -205,6 +205,10 @@
      on player right clicks:
         - if <player.item_in_hand.display> != "<yellow>Spell<&co> Light Heal" queue clear
         - if <player.flag[SPELL_GCD]> queue clear
+        - if <player.food_level> <= 2 {
+          - narrate "<&9>You do not have enough saturation to cast that spell!"
+          - queue clear
+          }
         - if "<flag.p:spell1 reuse || false>" == true {
           - narrate "<&9>You must wait <flag.p:spell1 reuse.expiration> before you can use that item again."
           } 
@@ -220,6 +224,10 @@
      on player right clicks entity:
         - if <player.item_in_hand.display> != "<yellow>Spell<&co> Light Heal" queue clear
         - if <player.flag[SPELL_GCD]> queue clear
+        - if <player.food_level> <= 2 {
+          - narrate "<&9>You do not have enough saturation to cast that spell!"
+          - queue clear
+          }
         - if "<flag.p:spell1 reuse || false>" == true {
           - narrate "<&9>You must wait <flag.p:spell1 reuse.expiration> before you can use that item again."
           } 
@@ -253,6 +261,10 @@
      on player right clicks:
         - if <player.item_in_hand.display> != "<yellow>Spell<&co> Burst of Flame" queue clear
         - if <player.flag[SPELL_GCD]> queue clear
+        - if <player.food_level> <= 4 {
+          - narrate "<&9>You do not have enough saturation to cast that spell!"
+          - queue clear
+          }
         - if "<flag.p:spell2 reuse || false>" == true {
           - narrate "<&9>You must wait <flag.p:spell2 reuse.expiration> before you can use that item again."
           } 
@@ -268,6 +280,10 @@
      on player right clicks entity:
         - if <player.item_in_hand.display> != "<yellow>Spell<&co> Burst of Flame" queue clear
         - if <player.flag[SPELL_GCD]> queue clear
+        - if <player.food_level> <= 4 {
+          - narrate "<&9>You do not have enough saturation to cast that spell!"
+          - queue clear
+          }
         - if "<flag.p:spell2 reuse || false>" == true {
           - narrate "<&9>You must wait <flag.p:spell2 reuse.expiration> before you can use that item again."
           } 

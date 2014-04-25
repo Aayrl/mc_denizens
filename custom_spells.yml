@@ -1,0 +1,210 @@
+# -----------------------------------
+# Custom Minecraft 'Spells'
+# @author: Tyler J. Sawyer
+# @version: 1.0
+# Last Updated: 13:34 on April 25, 2014 (Friday)
+# -----------------------------------
+# Custom 'spells' that users can create using custom items.
+# Requires certain custom 'rune' items that are also generated in
+# this script and dropped randomly throughout the world.
+
+# -----------------------------------
+# SPELL CRAFTING MATERIALS
+# Runes and Pages
+"rune1":
+   type: item
+   material: 402
+   display name: "Rune of Alteration"
+   lore:
+   - <yellow>Used to craft powerful spells.
+   
+"rune2":
+   type: item
+   material: 402
+   display name: "Rune of Abjuration"
+   lore:
+   - <yellow>Used to craft powerful spells.
+   
+"rune3":
+   type: item
+   material: 402
+   display name: "Rune of Conjuration"
+   lore:
+   - <yellow>Used to craft powerful spells.
+   
+"rune4":
+   type: item
+   material: 402
+   display name: "Rune of Divination"
+   lore:
+   - <yellow>Used to craft powerful spells.
+   
+"rune5":
+   type: item
+   material: 402
+   display name: "Rune of Evocation
+   lore:
+   - <yellow>Used to craft powerful spells.
+   
+"rune6":
+   type: item
+   material: 402
+   display name: "Rune of Flame"
+   lore:
+   - <yellow>Used to craft powerful spells.
+   
+"rune7":
+   type: item
+   material: 402
+   display name: "Rune of Air"
+   lore:
+   - <yellow>Used to craft powerful spells.
+   
+"rune8":
+   type: item
+   material: 402
+   display name: "Rune of Earth"
+   lore:
+   - <yellow>Used to craft powerful spells.
+   
+"rune9":
+   type: item
+   material: 402
+   display name: "Rune of Water"
+   lore:
+   - <yellow>Used to craft powerful spells.
+   
+"rune10":
+   type: item
+   material: 402
+   display name: "Rune of Ice"
+   lore:
+   - <yellow>Used to craft powerful spells.
+   
+"rune11":
+   type: item
+   material: 402
+   display name: "Rune of Power"
+   lore:
+   - <yellow>Used to craft powerful spells.
+   
+"rune12":
+   type: item
+   material: 402
+   display name: "Rune of Concentration"
+   lore:
+   - <yellow>Used to craft powerful spells.
+
+"words1":
+   type: item
+   material: 339
+   display name: "Words of Agony"
+   lore:
+   - <yellow>Used to craft powerful spells.
+   
+"words2":
+   type: item
+   material: 339
+   display name: "Words of Power"
+   lore:
+   - <yellow>Used to craft powerful spells.
+   
+"words3":
+   type: item
+   material: 339
+   display name: "Words of Destruction"
+   lore:
+   - <yellow>Used to craft powerful spells.
+   
+"words4":
+   type: item
+   material: 339
+   display name: "Words of Doom"
+   lore:
+   - <yellow>Used to craft powerful spells.
+   
+"words5":
+   type: item
+   material: 339
+   display name: "Words of Bidding"
+   lore:
+   - <yellow>Used to craft powerful spells.
+   
+"words6":
+   type: item
+   material: 339
+   display name: "Words of Divination"
+   lore:
+   - <yellow>Used to craft powerful spells.
+   
+"words7":
+   type: item
+   material: 339
+   display name: "Words of Enchantment"
+   lore:
+   - <yellow>Used to craft powerful spells.
+   
+"words8":
+   type: item
+   material: 339
+   display name: "Words of Endurance"
+   lore:
+   - <yellow>Used to craft powerful spells.
+   
+"words9":
+   type: item
+   material: 339
+   display name: "Words of Lust"
+   lore:
+   - <yellow>Used to craft powerful spells.
+   
+"words10":
+   type: item
+   material: 339
+   display name: "Words of Rage"
+   lore:
+   - <yellow>Used to craft powerful spells.
+   
+"words11":
+   type: item
+   material: 339
+   display name: "Words of Harming"
+   lore:
+   - <yellow>Used to craft powerful spells.
+   
+"words12":
+   type: item
+   material: 339
+   display name: "Words of Time"
+   lore:
+   - <yellow>Used to craft powerful spells.
+   
+   
+# -----------------------------------
+# SPELL ITEMS AND RECIPES
+# The actual 'spell' items.
+
+"spell1":
+   type: item
+   material: 386
+   display name: "<yellow>Spell<&co> Heal <&lb>10s Cooldown<&rb>"
+   recipe:
+    - air|i@rune1|air
+    - i@words8|i@340|i@words8
+    - air|i@rune1|air
+   lore:
+   - <green>Heals you for 2 hearts <&lb>SPELL<&rb>.
+   
+"spell1_effect":
+   type: world
+   events:
+     on use command:
+       - if <player.item_in_hand.lore> == "<green>Heals you for 2 hearts <&lb>SPELL<&rb>." && "<flag.p:spell1 reuse || false>" == true {
+         - narrate "<&9>You must wait <flag.p:spell1 reuse.expiration> before you can use that item again."
+         } 
+       - if <player.item_in_hand.lore> == "<green>Heals you for 2 hearts <&lb>SPELL<&rb>." && "<flag.p:spell1 reuse || false>" == false {
+         - narrate "<&9>You feel better."
+         - heal 4
+         - playeffect location:<player.location> effect:potion_break qty:15 data:5
+         - flag player "spell1 reuse:true" duration:10
+         }

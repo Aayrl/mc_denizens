@@ -295,7 +295,6 @@ inv_vendor_generic:
 
     script:
     - if %itemID% == 0 determine 0
-      # MINECRAFT DEFAULT ITEMS
       else if %itemID% == 1 determine 5
       else if %itemID% == 2 determine 25
       else if %itemID% == 3 determine 1
@@ -566,7 +565,6 @@ inv_vendor_generic:
       else if %itemID% == 419 determine 13750
       else if %itemID% == 420 determine 100
       else if %itemID% == 421 determine 1000
-      # CUSTOM LOOT ITEMS
       else if %itemID% == "Rock" determine 1
       else if %itemID% == "PetRock" determine 2
       else if %itemID% == "Pile_of_Dirt" determine 1
@@ -655,7 +653,6 @@ inv_vendor_generic:
       else if %itemID% == "Fine_Steel_Battleaxe" determine 500
       else if %itemID% == "Fine_Steel_Greataxe" determine 500
       else if %itemID% == "Fine_Steel_Cleaver" determine 500
-      # CRAFTING MATERIALS
       else if %itemID% == "rune1" determine 5
       else if %itemID% == "rune2" determine 5
       else if %itemID% == "rune3" determine 5
@@ -680,5 +677,4 @@ inv_vendor_generic:
       else if %itemID% == "words10" determine 5
       else if %itemID% == "words11" determine 5
       else if %itemID% == "words12" determine 5
-      # DEFAULT VALUE
       else determine 0

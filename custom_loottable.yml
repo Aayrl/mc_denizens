@@ -10,30 +10,71 @@
       - if <context.damager.is_player> {
         - if <context.entity.entity_type> == "Enderman" {
           - drop "i@<proc:LootTable_Enderman>" location:<context.entity.location>
+          - drop "i@<proc:LootTable_RandomSpellMaterials" location:<context.entity.location>
           }
         - if <context.entity.entity_type> == "Zombie" {
           - drop "i@<proc:LootTable_Zombie>" location:<context.entity.location>
+          - drop "i@<proc:LootTable_RandomSpellMaterials" location:<context.entity.location>
           }
         - if <context.entity.entity_type> == "Skeleton" {
           - drop "i@<proc:LootTable_Skeleton>" location:<context.entity.location>
+          - drop "i@<proc:LootTable_RandomSpellMaterials" location:<context.entity.location>
           }
         - if <context.entity.entity_type> == "Creeper" {
           - drop "i@<proc:LootTable_Creeper>" location:<context.entity.location>
+          - drop "i@<proc:LootTable_RandomSpellMaterials" location:<context.entity.location>
           }
         - if <context.entity.entity_type> == "Spider" {
           - drop "i@<proc:LootTable_Spider>" location:<context.entity.location>
+          - drop "i@<proc:LootTable_RandomSpellMaterials" location:<context.entity.location>
           }
         - if <context.entity.name> == "Hate Fiend" {
           - drop "i@<proc:LootTable_HateKeep>" location:<context.damager.location>
+          - drop "i@<proc:LootTable_RandomSpellMaterials" location:<context.entity.location>
           }
         - if <context.entity.name> == "Hate Sprite" {
           - drop "i@<proc:LootTable_HateKeep>" location:<context.damager.location>
+          - drop "i@<proc:LootTable_RandomSpellMaterials" location:<context.entity.location>
           }
         - if <context.entity.name> == "Hate Golem" {
           - drop "i@<proc:LootTable_HateKeep>" location:<context.damager.location>
+          - drop "i@<proc:LootTable_RandomSpellMaterials" location:<context.entity.location>
           }
         }
 
+        
+"LootTable_RandomSpellMaterials":
+    type: procedure
+    script:
+    - define roll <util.random.int[1].to[100]>
+    - if %roll% >= 75 {
+      - random 24
+      - determine "rune1"
+      - determine "rune2"
+      - determine "rune3"
+      - determine "rune4"
+      - determine "rune5"
+      - determine "rune6"
+      - determine "rune7"
+      - determine "rune8"
+      - determine "rune9"
+      - determine "rune10"
+      - determine "rune11"
+      - determine "rune12"
+      - determine "words1"
+      - determine "words2"
+      - determine "words3"
+      - determine "words4"
+      - determine "words5"
+      - determine "words6"
+      - determine "words7"
+      - determine "words8"
+      - determine "words9"
+      - determine "words10"
+      - determine "words11"
+      - determine "words12"
+    }
+        
 # Procedure based on an example from :
 # http://scripts.citizensnpcs.co/view/34aapf
 # 

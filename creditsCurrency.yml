@@ -653,6 +653,20 @@ inv_vendor_generic:
       else if %itemID% == "Fine_Steel_Battleaxe" determine 500
       else if %itemID% == "Fine_Steel_Greataxe" determine 500
       else if %itemID% == "Fine_Steel_Cleaver" determine 500
+      else if %itemID% == "Ringmail_Coif" determine 2000
+      else if %itemID% == "Ringmail_Tunic" determine 5000
+      else if %itemID% == "Ringmail_Leggings" determine 4000
+      else if %itemID% == "Ringmail_Boots" determine 2000
+      else if %itemID% == "Shattered_Flamemail_Helm" determine 1000
+      else if %itemID% == "Shattered_Flamemail_Chestpiece" determine 1000
+      else if %itemID% == "Shattered_Flamemail_Kilt" determine 1000
+      else if %itemID% == "Shattered_Flamemail_Boots" determine 1000
+      else if %itemID% == "Wither_Essence" determine 5000
+      else if %itemID% == "Runed_Enderplate_Helm" determine 5000
+      else if %itemID% == "Runed_Enderplate_Chestpiece" determine 5000
+      else if %itemID% == "Runed_Enderplate_Leggings" determine 5000
+      else if %itemID% == "Runed_Enderplate_Boots" determine 5000
+      else if %itemID% == "Darkblade" determine 12500
       else if %itemID% == "rune1" determine 5
       else if %itemID% == "rune2" determine 5
       else if %itemID% == "rune3" determine 5

@@ -10,35 +10,35 @@
       - if <context.damager.is_player> {
         - if <context.entity.entity_type> == "Enderman" {
           - drop "i@<proc:LootTable_Enderman>" location:<context.entity.location>
-          - drop "i@<proc:LootTable_RandomSpellMaterials" location:<context.entity.location>
+          - drop "i@<proc:LootTable_RandomSpellMaterials>" location:<context.entity.location>
           }
         - if <context.entity.entity_type> == "Zombie" {
           - drop "i@<proc:LootTable_Zombie>" location:<context.entity.location>
-          - drop "i@<proc:LootTable_RandomSpellMaterials" location:<context.entity.location>
+          - drop "i@<proc:LootTable_RandomSpellMaterials>" location:<context.entity.location>
           }
         - if <context.entity.entity_type> == "Skeleton" {
           - drop "i@<proc:LootTable_Skeleton>" location:<context.entity.location>
-          - drop "i@<proc:LootTable_RandomSpellMaterials" location:<context.entity.location>
+          - drop "i@<proc:LootTable_RandomSpellMaterials>" location:<context.entity.location>
           }
         - if <context.entity.entity_type> == "Creeper" {
           - drop "i@<proc:LootTable_Creeper>" location:<context.entity.location>
-          - drop "i@<proc:LootTable_RandomSpellMaterials" location:<context.entity.location>
+          - drop "i@<proc:LootTable_RandomSpellMaterials>" location:<context.entity.location>
           }
         - if <context.entity.entity_type> == "Spider" {
           - drop "i@<proc:LootTable_Spider>" location:<context.entity.location>
-          - drop "i@<proc:LootTable_RandomSpellMaterials" location:<context.entity.location>
+          - drop "i@<proc:LootTable_RandomSpellMaterials>" location:<context.entity.location>
           }
         - if <context.entity.name> == "Hate Fiend" {
           - drop "i@<proc:LootTable_HateKeep>" location:<context.damager.location>
-          - drop "i@<proc:LootTable_RandomSpellMaterials" location:<context.entity.location>
+          - drop "i@<proc:LootTable_RandomSpellMaterials>" location:<context.entity.location>
           }
         - if <context.entity.name> == "Hate Sprite" {
           - drop "i@<proc:LootTable_HateKeep>" location:<context.damager.location>
-          - drop "i@<proc:LootTable_RandomSpellMaterials" location:<context.entity.location>
+          - drop "i@<proc:LootTable_RandomSpellMaterials>" location:<context.entity.location>
           }
         - if <context.entity.name> == "Hate Golem" {
           - drop "i@<proc:LootTable_HateKeep>" location:<context.damager.location>
-          - drop "i@<proc:LootTable_RandomSpellMaterials" location:<context.entity.location>
+          - drop "i@<proc:LootTable_RandomSpellMaterials>" location:<context.entity.location>
           }
         }
 
@@ -73,7 +73,7 @@
       - determine "words10"
       - determine "words11"
       - determine "words12"
-    }
+      }
         
 # Procedure based on an example from :
 # http://scripts.citizensnpcs.co/view/34aapf

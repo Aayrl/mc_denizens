@@ -206,6 +206,7 @@ inv_vendor_generic:
       
       on enter proximity:
       - narrate "<white><npc.name> says<&cm> <&sq>Hey there<&cm> <player.name>!<&sq>"
+      - narrate "<yellow>Type <gold>/vendorhelp<yellow> for assistance using Vendors."
       - inventory swap d:<n@<npc.id>.inventory> o:<in@inv_vendor_generic>
 
 'vendorGenericScript':
@@ -224,7 +225,12 @@ inv_vendor_generic:
   events:
     # Tell the player how to use a merchant.
     on vendorhelp command:
-    - narrate "<yellow>Coming Soon!"
+    - narrate "<yellow>---- Vendor Help ----"
+    - narrate "<yellow><green>Left click<yellow> on an item in your inventory to see how much the vendor is willing to offer you for it."
+    - narrate "<yellow><red>Right click<yellow> on an item in your inventory to sell your item to the vendor."
+    - narrate "<yellow><green>Left click<yellow> on an item in the vendor<&sq>s inventory to see how much the item costs."
+    - narrate "<yellow><red>Right click<yellow> on an item in the vendor<&sq>s inventory to buy the item."
+    - narrate "<red>You may see ghost items in your inventory. Talk to the vendor again to reset your inventory view if this occurs."
     # When a player left clicks on an item, give price information about it.
     on player left clicks in inventory:
     #- narrate "Slot type <context.slot_type>"

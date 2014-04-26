@@ -17,37 +17,37 @@
     type: world
       
     events:
-       on reload scripts:
+       #on reload scripts:
           # Consider Faction Messages
-          - flag global "faction_hostile:scowls at you<&cm> ready to attack."
-          - flag global "faction_scowls:glares at you threateningly."
-          - flag global "faction_dubiously:glowers at you dubiously."
-          - flag global "faction_apprehensive:looks your way apprehensively."
-          - flag global "faction_indifferent:regards you indifferently."
-          - flag global "faction_amiable:judges you amiably."
-          - flag global "faction_kindly:kindly considers you."
-          - flag global "faction_warmly:looks upon you warmly."
-          - flag global "faction_ally:considers you an ally."
-          
+          #- flag global "faction_hostile:scowls at you<&cm> ready to attack."
+          #- flag global "faction_scowls:glares at you threateningly."
+          #- flag global "faction_dubiously:glowers at you dubiously."
+          #- flag global "faction_apprehensive:looks your way apprehensively."
+          #- flag global "faction_indifferent:regards you indifferently."
+          #- flag global "faction_amiable:judges you amiably."
+          #- flag global "faction_kindly:kindly considers you."
+          #- flag global "faction_warmly:looks upon you warmly."
+          #- flag global "faction_ally:considers you an ally."
+          #
           # Consider Difficulty Messages
-          - flag global "difficulty_gray:<&7>Looks like a reasonably safe opponent."
-          - flag global "difficulty_green:<&2>You could probably win this fight."
-          - flag global "difficulty_lblue:<aqua>Looks like you would have the upper hand."
-          - flag global "difficulty_dblue:<&9>Looks kind of dangeous<&cm> but you might win."
-          - flag global "difficulty_white:<white>Looks like quite a gamble."
-          - flag global "difficulty_yellow:<yellow>Looks like it would wipe the floor with you!"
-          - flag global "difficulty_red:<red>What would you like your tombstone to say?"
-          - flag global "difficulty_boss:<red>This creature would take an army to defeat!"
-          
+          #- flag global "difficulty_gray:<&7>Looks like a reasonably safe opponent."
+          #- flag global "difficulty_green:<&2>You could probably win this fight."
+          #- flag global "difficulty_lblue:<aqua>Looks like you would have the upper hand."
+          #- flag global "difficulty_dblue:<&9>Looks kind of dangeous<&cm> but you might win."
+          #- flag global "difficulty_white:<white>Looks like quite a gamble."
+          #- flag global "difficulty_yellow:<yellow>Looks like it would wipe the floor with you!"
+          #- flag global "difficulty_red:<red>What would you like your tombstone to say?"
+          #- flag global "difficulty_boss:<red>This creature would take an army to defeat!"
+          #
           # Consider Color Tags
-          - flag global "tag_red:<red>"
-          - flag global "tag_yellow:<yellow>"
-          - flag global "tag_white:<white>"
-          - flag global "tag_dblue:<&9>"
-          - flag global "tag_lblue:<aqua>"
-          - flag global "tag_green:<&2>"
-          - flag global "tag_gray:<&7>"
-          
+          #- flag global "tag_red:<red>"
+          #- flag global "tag_yellow:<yellow>"
+          #- flag global "tag_white:<white>"
+          #- flag global "tag_dblue:<&9>"
+          #- flag global "tag_lblue:<aqua>"
+          #- flag global "tag_green:<&2>"
+          #- flag global "tag_gray:<&7>"
+          #
        on server start:
           # Consider Faction Messages
           - flag global "faction_hostile:scowls at you<&cm> ready to attack."

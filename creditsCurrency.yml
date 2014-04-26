@@ -185,9 +185,12 @@ inv_vendor_generic:
   # You can specify the items in the slots of the inventory. For empty spaces, simply put
   # an empty "slot". Note the quotes around the entire lines.
   slots:
-    - "[] [] [] [] [seeds] [] [wood] [] []"
-    - "[] [] [] [] [] [] [stone] [] []"
-    - "[i@Rusty_Scimitar] [] [] [] [] [] [] [] []"
+    #- "[] [] [] [] [seeds] [] [wood] [] []"
+    #- "[] [] [] [] [] [] [stone] [] []"
+    #- "[i@Rusty_Scimitar] [] [] [] [] [] [] [] []"
+    - "[] [] [] [] [] [] [] [] []"
+    - "[] [] [] [] [] [] [] [] []"
+    - "[] [] [] [] [] [] [] [] []"
 
 # Assignment
 "vendor_generic":
@@ -246,9 +249,19 @@ inv_vendor_generic:
       - if <context.item.scriptname> == null define vendorItem <context.item.id>
       - if <context.item.scriptname> != null define vendorItem <context.item.scriptname>
       - if <context.item.display_name> != null {
-        - narrate "<yellow>You receive <proc[vendorDetermineCredits].context[%vendorItem%]> credits for <context.item.display_name>." }
+        - define creditAmt <proc[vendorDetermineCredits].context[%vendorItem%]>
+        - take "i@<context.item>"
+        - define currentAmt <player.flag[CURRENCY_Credits]>
+        - define newAmt <math.as_int:%currentAmt%+%creditAmt%>
+        - flag <player> "CURRENCY_Credits:%newAmt%"
+        - narrate "<yellow>You receive %creditAmt% credits for <context.item.display_name>." }
       - if <context.item.display_name> == null {
-        - if <context.item.material.formatted> != nothing narrate "<yellow>You receive <proc[vendorDetermineCredits].context[%vendorItem%]> credits for <context.item.material.formatted>." }
+        - define creditAmt <proc[vendorDetermineCredits].context[%vendorItem%]>
+        - take "i@<context.item>"
+        - define currentAmt <player.flag[CURRENCY_Credits]>
+        - define newAmt <math.as_int:%currentAmt%+%creditAmt%>
+        - flag <player> "CURRENCY_Credits:%newAmt%"
+        - narrate "<yellow>You receive %creditAmt% credits for <context.item.material.formatted>." }
       }
   
 # Procedure for determining how much each item costs.  

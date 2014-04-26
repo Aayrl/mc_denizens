@@ -1565,6 +1565,11 @@
          - cast increase_damage duration:20 power:2
          - cast fast_digging duration:20 power:2
          - playeffect location:<player.location> effect:note qty:15 data:1
+         - repeat 10 {
+           - wait 2
+           - narrate "<&9>The song continues."
+           - playeffect location:<player.location> effect:note qty:15 data:1
+           }
          - narrate "<&9>The song ends."
          }
 

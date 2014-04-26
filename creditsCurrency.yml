@@ -90,7 +90,7 @@
     # /creditadd <amt> <player>
     # Gives a <player> <amt> credits.
     on creditadd command:
-    - if <player.name> != "Aayrl" && <player.name> != "Jennavb13" && <player.name> != "mtotho" {
+    - if <player.name> != "Aayrl" && <player.name> != "Jennavb13" && <player.name> != "mtotho" && <player.name> != "lenois" {
       - narrate "<red>You may not use this command."
       - queue clear
       }
@@ -116,7 +116,7 @@
     # /creditsub <amt> <player>
     # Takes <amt> credits from <player>.
     on creditsub command:
-    - if <player.name> != "Aayrl" && <player.name> != "Jennavb13" && <player.name> != "mtotho" {
+    - if <player.name> != "Aayrl" && <player.name> != "Jennavb13" && <player.name> != "mtotho" && <player.name> != "lenois" {
       - narrate "<red>You may not use this command."
       - queue clear
       }
@@ -142,7 +142,7 @@
     # /creditset <amt> <player>
     # Sets a <player> credit count to <amt>.
     on creditset command:
-    - if <player.name> != "Aayrl" && <player.name> != "Jennavb13" && <player.name> != "mtotho" {
+    - if <player.name> != "Aayrl" && <player.name> != "Jennavb13" && <player.name> != "mtotho" && <player.name> != "lenois" {
       - narrate "<red>You may not use this command."
       - queue clear
       }

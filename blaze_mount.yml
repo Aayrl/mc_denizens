@@ -6,12 +6,13 @@
 # Allows a player to summon and control a flying Blaze mount.
 #
 
-"Blazling Egg":
+"Blazling_Egg":
    type: item
    material: emerald
    display name: "<&5>Blazling Egg"
    lore:
-   - <green>Use<&co> <red>Summon Blazling Mount <&lb>Right Click to Activate<&rb>
+   - <green>Use<&co> Summon Blazling Mount <&lb>Right Click to Activate<&rb>
+   - <&9>Type <gold>/mountHelp<&9> for assistance using Mounts.
    enchantments:
    - durability:1
 
@@ -21,7 +22,7 @@
      on player right clicks:
         - if <player.item_in_hand.display> != "<&5>Blazling Egg" queue clear
         - if <player.flag[MOUNT_GCD]> queue clear
-        - flag player "MOUNT_GCD" duration:5
+        - flag player "MOUNT_GCD" duration:2
         - if <player.flag[hasMount]> == null {
           - narrate "<yellow>Summoning your Blazling Mount."
           - flag <player> "hasMount:summoned"
@@ -57,6 +58,7 @@
      
      on enter proximity:
      - playsound location:<npc.location> sound:blaze_breath
+     - execute as_server "npc controllable -y"
    
 "BlazlingMountInteract":
     type: interact
@@ -70,7 +72,5 @@
               - narrate "<red>You cannot mount another player<&sq>s mount!"
               - execute as_server "npc sel <npc.id>"
               - execute as_server "npc controllable -n" }
-            - if <npc.owner> == <player> {
-              - determine cancelled }
             
             

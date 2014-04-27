@@ -10,6 +10,7 @@
       - if <context.damager.is_player> {
         - if <context.entity.entity_type> == "Enderman" {
           - drop "i@<proc:LootTable_Enderman>" location:<context.entity.location>
+          - run "Drop_Credits" d:<context.damager>|<util.random.int[1].to[15]>
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
           }
         - if <context.entity.entity_type> == "Zombie" {
@@ -19,29 +20,36 @@
           }
         - if <context.entity.entity_type> == "Skeleton" {
           - drop "i@<proc:LootTable_Skeleton>" location:<context.entity.location>
+          - run "Drop_Credits" d:<context.damager>|<util.random.int[1].to[4]>
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
           }
         - if <context.entity.entity_type> == "Creeper" {
           - drop "i@<proc:LootTable_Creeper>" location:<context.entity.location>
+          - run "Drop_Credits" d:<context.damager>|<util.random.int[1].to[4]>
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
           }
         - if <context.entity.entity_type> == "Spider" {
           - drop "i@<proc:LootTable_Spider>" location:<context.entity.location>
+          - run "Drop_Credits" d:<context.damager>|<util.random.int[1].to[4]>
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
           }
         - if <context.entity.name> == "Bandit" {
+          - run "Drop_Credits" d:<context.damager>|<util.random.int[2].to[12]>
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
           }
         - if <context.entity.name> == "Hate Fiend" {
           - drop "i@<proc:LootTable_HateKeep>" location:<context.damager.location>
+          - run "Drop_Credits" d:<context.damager>|<util.random.int[25].to[50]>
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
           }
         - if <context.entity.name> == "Hate Sprite" {
           - drop "i@<proc:LootTable_HateKeep>" location:<context.damager.location>
+          - run "Drop_Credits" d:<context.damager>|<util.random.int[15].to[35]>
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
           }
         - if <context.entity.name> == "Hate Golem" {
           - drop "i@<proc:LootTable_HateKeep>" location:<context.damager.location>
+          - run "Drop_Credits" d:<context.damager>|<util.random.int[45].to[75]>
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
           }
         }
@@ -51,9 +59,9 @@
    type: task
    definitions: killerEntity|creditAmt
    script:
-     - define currentAmt <%killerEntity%>.flag[CURRENCY_Credits]>
+     - define currentAmt <<%killerEntity%>.flag[CURRENCY_Credits]>
      - define newAmt <math.as_int:%currentAmt%+%creditAmt%>
-     - flag <p@<%killerEntity%>> "CURRENCY_Credits:%newAmt%"
+     - flag <%killerEntity%> "CURRENCY_Credits:%newAmt%"
      - narrate targets:<%killerEntity%> "<&2>You loot %creditAmt% credits from the corpse."
         
 "LootTable_SpellMat":

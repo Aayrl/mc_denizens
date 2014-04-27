@@ -11,7 +11,8 @@
    material: emerald
    display name: "<&5>Blazling Egg"
    lore:
-   - <green>Use<&co> Summon Blazling Mount <&lb>Right Click to Activate<&rb>
+   - <green>Use<&co> Summon Blazling Mount
+   - <green><&lb>Right Click to Activate<&rb>
    - <&9>Type <gold>/mountHelp<&9> for assistance using Mounts.
    enchantments:
    - durability:1
@@ -36,7 +37,7 @@
           - execute as_server 'npc assignment --set "BlazlingMountScript"'
           - queue clear
         - if <player.flag[hasMount]> == "summoned" {
-          - narrate "<yellow>Despawning your Blazling Mount."
+          - narrate "<yellow>Despawning your current mount."
           - flag <player> hasMount:!
           - execute as_server 'npc select "<player.name><&sq>s Mount"'
           - execute as_server 'npc remove'

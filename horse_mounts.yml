@@ -11,7 +11,8 @@
    material: 420
    display name: "<&5>Reins of the Swift Skeletal Horse"
    lore:
-   - <green>Use<&co> Summon Swift Skeletal Horse Mount <&lb>Right Click to Activate<&rb>
+   - <green>Use<&co> Summon Swift Skeletal Horse Mount 
+   - <green><&lb>Right Click to Activate<&rb>
    - <&9>Type <gold>/mountHelp<&9> for assistance using Mounts.
    enchantments:
    - durability:1
@@ -37,7 +38,7 @@
           - execute as_server 'npc assignment --set "skeletonHorseMountScript"'
           - queue clear
         - if <player.flag[hasMount]> == "summoned" {
-          - narrate "<yellow>Despawning your Skeletal Horse Mount."
+          - narrate "<yellow>Despawning your current mount."
           - flag <player> hasMount:!
           - execute as_server 'npc select "<player.name><&sq>s Mount"'
           - execute as_server 'npc remove'
@@ -55,7 +56,7 @@
      - trigger name:proximity toggle:true
      - execute as_server "npc sel <npc.id>"
      - execute as_server "npc controllable"
-     - execute as_server "npc speed 5"
+     - execute as_server "npc speed 1"
      
      on enter proximity:
      - playsound location:<npc.location> sound:HORSE_SKELETON_IDLE

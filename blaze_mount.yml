@@ -71,7 +71,6 @@
               - execute as_server "npc sel <npc.id>"
               - execute as_server "npc controllable -n" }
             - if <npc.owner> == <player> {
-              - execute as_server "npc sel <npc.id>"
-              - execute as_server "npc controllable -y" }
+              - determine cancelled }
             
             

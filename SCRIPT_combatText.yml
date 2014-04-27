@@ -25,10 +25,11 @@
         - if <context.damager.is_player> narrate targets:<context.entity> "<red>You were hit by <context.damager.name> for <context.damage.asint> damage!"
         }
     on entity death:
+      - if !<context.damager.is_player> queue clear
       - if <player.flag[CombatText]> == "on" {
         - if <player.flag[cmbt_txt_cd_die]> queue clear
         - flag player cmbt_txt_cd_die duration:0.5s
-        - if <context.damager.is_player> narrate targets:<context.damager> "<&6>You have slain <context.entity.name>!"
+        - narrate targets:<context.damager> "<&6>You have slain <context.entity.name> using <context.cause>!"
         }
     on combattext command:
       - if <context.args.get[1]> == on {

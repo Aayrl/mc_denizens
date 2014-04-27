@@ -14,3 +14,9 @@
       - execute as_server 'npc select "<player.name><&sq>s Mount"'
       - execute as_server 'npc remove'
       }
+      
+    on mountHelp command:
+    - narrate "<yellow><green>Right Click<yellow> while <red>holding a mount summoning item to summon<yellow> your mount."
+    - narrate "<yellow>If you have <red>already summoned<yellow> a mount<&cm> <green>Right Click<yellow> while <red>holding any mount summoning item to despawn<yellow> your current mount."
+    - narrate "<yellow><green>Right Click<yellow> on your mount while <red>holding a non mount summoning item<yellow> to ride it."
+    - narrate "<yellow>Press <green>Left Shift<yellow> to <red>dismount<yellow> at any time."

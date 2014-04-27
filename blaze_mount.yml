@@ -20,14 +20,11 @@
    events:
      on player right clicks:
         - if <player.item_in_hand.display> != "<&5>Blazling Egg" queue clear
-        - if <player.flag[blazeMount]> == "summoned" {
-          - narrate "<yellow>Despawning your Blazling Mount."
-          - flag <player> blazeMount:!
-          - execute as_server 'npc select "<player.name><&sq>s Mount"'
-          - execute as_server 'npc remove'
-        - if <player.flag[blazeMount]> == null {
+        - if <player.flag[MOUNT_GCD]> queue clear
+        - flag player "MOUNT_GCD" duration:5
+        - if <player.flag[hasMount]> == null {
           - narrate "<yellow>Summoning your Blazling Mount."
-          - flag <player> "blazeMount:summoned"
+          - flag <player> "hasMount:summoned"
           - execute as_server 'npc create "<player.name><&sq>s Mount" --at <player.location.simple> --type blaze'
           - execute as_server 'npc select "<player.name><&sq>s Mount"'
           - execute as_server 'npc owner <player.name>'
@@ -36,6 +33,11 @@
           - execute as_server 'sentry retaliate false'
           - execute as_server 'sentry invincible true'
           - execute as_server 'npc assignment --set "BlazlingMountScript"'
+        - if <player.flag[hasMount]> == "summoned" {
+          - narrate "<yellow>Despawning your Blazling Mount."
+          - flag <player> hasMount:!
+          - execute as_server 'npc select "<player.name><&sq>s Mount"'
+          - execute as_server 'npc remove'
         
 "BlazlingMountScript":
    type: assignment
@@ -62,3 +64,5 @@
         click trigger:
           script:
             - narrate "<yellow><npc.name>"
+            
+            

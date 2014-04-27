@@ -1,0 +1,16 @@
+# MountCleanUp
+# Tyler J. Sawyer
+# Last Updated: 10:55 on April 27, 2014 (Sunday)
+# 
+# Removes mounts from server when a player disconnects.
+
+"MountCleanUp":
+  type: world
+  events:
+
+    on player quits:
+    - if <player.flag[hasMount]> != null {
+      - flag <player> hasMount:!
+      - execute as_server 'npc select "<player.name><&sq>s Mount"'
+      - execute as_server 'npc remove'
+      }

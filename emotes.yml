@@ -1,8 +1,6 @@
 "emote_commands":
     type: world
     events:
-       on shout command:
-          - announce "<red><player.name> shouts for help!"
        on yell command:
           - announce "<red><player.name> yells for help!"
        on taunt command:

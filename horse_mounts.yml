@@ -1,52 +1,53 @@
 # ----------------------------
-# Black Drake Mount
+# Horse Mounts
 # Tyler J. Sawyer
-# Last Updated: 11:54 on April 27, 2014 (Sunday)
+# Last Updated: 11:56 on April 27, 2014 (Sunday)
 # ----------------------------
-# Allows a player to summon and control a flying Dragon mount.
+# Allows a player to summon and control a variety of horse mounts.
 #
 
-"drake_reins":
+"reins_horse_skeleton":
    type: item
    material: 420
-   display name: "<&5>Reins of the Black Drake"
+   display name: "<&5>Reins of the Swift Skeletal Horse"
    lore:
-   - <green>Use<&co> Summon Black Drake Mount <&lb>Right Click to Activate<&rb>
+   - <green>Use<&co> Summon Swift Skeletal Horse Mount <&lb>Right Click to Activate<&rb>
    - <&9>Type <gold>/mountHelp<&9> for assistance using Mounts.
    enchantments:
    - durability:1
 
-"summonDrakeMount":
+"summonSkeletonHorseMount":
    type: world
    events:
      on player right clicks:
-        - if <player.item_in_hand.display> != "<&5>Reins of the Black Drake" queue clear
+        - if <player.item_in_hand.display> != "<&5>Reins of the Swift Skeletal Horse" queue clear
         - if <player.flag[MOUNT_GCD]> queue clear
         - flag player "MOUNT_GCD" duration:2
         - if <player.flag[hasMount]> == null {
-          - narrate "<yellow>Summoning your drake Mount."
+          - narrate "<yellow>Summoning your Skeletal Horse Mount."
           - flag <player> "hasMount:summoned"
-          - execute as_server 'npc create "<player.name><&sq>s Mount" --at <player.location.simple> --type enderdragon'
+          - execute as_server 'npc create "<player.name><&sq>s Mount" --at <player.location.simple> --type horse'
           - execute as_server 'npc select "<player.name><&sq>s Mount"'
           - execute as_server 'npc owner <player.name>'
+          - execute as_server 'npc horse --type skeleton'
           - execute as_server 'trait sentry'
           - execute as_server 'sentry guard <player.name>'
           - execute as_server 'sentry retaliate false'
           - execute as_server 'sentry invincible true'
-          - execute as_server 'npc assignment --set "drakeMountScript"'
+          - execute as_server 'npc assignment --set "skeletonHorseMountScript"'
           - queue clear
         - if <player.flag[hasMount]> == "summoned" {
-          - narrate "<yellow>Despawning your drake Mount."
+          - narrate "<yellow>Despawning your Skeletal Horse Mount."
           - flag <player> hasMount:!
           - execute as_server 'npc select "<player.name><&sq>s Mount"'
           - execute as_server 'npc remove'
           - queue clear
         
-"drakeMountScript":
+"skeletonHorseMountScript":
    type: assignment
    
    interact scripts:
-   - 10 drakeMountInteract
+   - 10 skeletonHorseMountInteract
    
    actions:
      on assignment:
@@ -54,14 +55,14 @@
      - trigger name:proximity toggle:true
      - execute as_server "npc sel <npc.id>"
      - execute as_server "npc controllable"
-     - execute as_server "npc speed 10"
+     - execute as_server "npc speed 5"
      
      on enter proximity:
-     - playsound location:<npc.location> sound:enderdragon_growl
+     - playsound location:<npc.location> sound:HORSE_SKELETON_IDLE
      - execute as_server "npc sel <npc.id>"
      - execute as_server "npc controllable -y"
    
-"drakeMountInteract":
+"skeletonHorseMountInteract":
     type: interact
     
     steps:

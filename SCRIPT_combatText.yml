@@ -1,6 +1,6 @@
 # Custom Combat Text
 # Tyler J. Sawyer
-# Last Updated: 4/22/14
+# Last Updated: 15:16 on April 27, 2014 (Sunday)
 # Defines custom combat text when fighting players or mobs..
 
 "CombatTextDisplay":
@@ -12,21 +12,11 @@
         - flag player cmbt_txt_cd_dmg duration:0.5s
         - if <context.damager.is_player> narrate targets:<context.damager> "<&6>You hit <context.entity.name> for <context.damage.asint> damage!"
         }
-      - if <player.flag[CombatText]> == "hitsmode" {
-        - if <player.flag[cmbt_txt_cd_dmg]> queue clear
-        - flag player cmbt_txt_cd_dmg duration:0.5s
-        - if <context.damager.is_player> narrate targets:<context.damager> "<&6>HIT for <context.damage.asint>"
-        }
     on player damaged by entity:
       - if <player.flag[CombatText]> == "on" {
         - if <player.flag[cmbt_txt_cd_hit]> queue clear
         - flag player cmbt_txt_cd_hit duration:0.5s
         - if <context.damager.is_player> == false narrate targets:<context.damager> "<red>You were hit by <context.damager.name> for <context.damage.asint> damage!"
-        }
-      - if <player.flag[CombatText]> == "hitsmode" {
-        - if <player.flag[cmbt_txt_cd_hit]> queue clear
-        - flag player cmbt_txt_cd_hit duration:0.5s
-        - if <context.damager.is_player> == false narrate targets:<context.damager> "<red><context.damager.name> HIT YOU for <context.damage.asint>"
         }
     on player damaged by player:
       - if <player.flag[CombatText]> == "on" {
@@ -34,21 +24,11 @@
         - flag player cmbt_txt_cd_pvp duration:0.5s
         - if <context.damager.is_player> narrate targets:<context.entity> "<red>You were hit by <context.damager.name> for <context.damage.asint> damage!"
         }
-      - if <player.flag[CombatText]> == "hitsmode" {
-        - if <player.flag[cmbt_txt_cd_pvp]> queue clear
-        - flag player cmbt_txt_cd_pvp duration:0.5s
-        - if <context.damager.is_player> narrate targets:<context.entity> "<red><context.damager.name> HIT YOU for <context.damage.asint>"
-        }
     on entity death:
       - if <player.flag[CombatText]> == "on" {
         - if <player.flag[cmbt_txt_cd_die]> queue clear
         - flag player cmbt_txt_cd_die duration:0.5s
         - if <context.damager.is_player> narrate targets:<context.damager> "<&6>You have slain <context.entity.name>!"
-        }
-      - if <player.flag[CombatText]> == "hitsmode" {
-        - if <player.flag[cmbt_txt_cd_die]> queue clear
-        - flag player cmbt_txt_cd_die duration:0.5s
-        - if <context.damager.is_player> narrate targets:<context.damager> "<&6>KILLED <context.entity.name>"
         }
     on combattext command:
       - if <context.args.get[1]> == on {
@@ -58,8 +38,4 @@
       - if <context.args.get[1]> == off {
         - flag player "CombatText:<context.args.get[1]>"
         - narrate "<&6>CombatText is now disabled."
-        }
-      - if <context.args.get[1]> == hitsmode {
-        - flag player "CombatText:<context.args.get[1]>"
-        - narrate "<&6>CombatText HitsMode is now enabled."
         }

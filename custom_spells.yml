@@ -194,7 +194,8 @@
     - i@words8|i@340|i@words8
     - air|i@rune1|air
    lore:
-   - <green>Heals your target for 1 heart <&lb>10s Cooldown<&rb>
+   - <green>Heals your target for 1 heart.
+   - <red>Cooldown<&co> 10 seconds.
    - <&9>Costs 2 saturation to use cast.
    enchantments:
    - durability:1
@@ -205,7 +206,7 @@
      on player right clicks:
         - if <player.item_in_hand.display> != "<yellow>Spell<&co> Light Heal" queue clear
         - if <player.flag[SPELL_GCD]> queue clear
-        - if <player.food_level> <= 2 {
+        - if <player.food_level> < 2 {
           - narrate "<&9>You do not have enough saturation to cast that spell!"
           - queue clear
           }
@@ -224,7 +225,7 @@
      on player right clicks entity:
         - if <player.item_in_hand.display> != "<yellow>Spell<&co> Light Heal" queue clear
         - if <player.flag[SPELL_GCD]> queue clear
-        - if <player.food_level> <= 2 {
+        - if <player.food_level> < 2 {
           - narrate "<&9>You do not have enough saturation to cast that spell!"
           - queue clear
           }
@@ -252,7 +253,8 @@
     - i@words1|i@340|i@words1
     - air|i@rune5|air
    lore:
-   - <green>Burns your target for 4 damage <&lb>5s Cooldown<&rb>
+   - <green>Burns your target for 4 damage.
+   - <red>Cooldown<&co> 5 seconds.
    - <&9>Costs 4 saturation to use cast.
    enchantments:
    - durability:1
@@ -263,7 +265,7 @@
      on player right clicks:
         - if <player.item_in_hand.display> != "<yellow>Spell<&co> Burst of Flame" queue clear
         - if <player.flag[SPELL_GCD]> queue clear
-        - if <player.food_level> <= 4 {
+        - if <player.food_level> < 4 {
           - narrate "<&9>You do not have enough saturation to cast that spell!"
           - queue clear
           }
@@ -282,7 +284,7 @@
      on player right clicks entity:
         - if <player.item_in_hand.display> != "<yellow>Spell<&co> Burst of Flame" queue clear
         - if <player.flag[SPELL_GCD]> queue clear
-        - if <player.food_level> <= 4 {
+        - if <player.food_level> < 4 {
           - narrate "<&9>You do not have enough saturation to cast that spell!"
           - queue clear
           }
@@ -311,18 +313,18 @@
     - air|i@rune4|air
    lore:
    - <green>Blinds your target for 20 seconds.
-   - <red><&lb>5s Cooldown<&rb>
+   - <red>Cooldown<&co> 5 seconds.
    - <&9>Costs 4 saturation to use cast.
    enchantments:
    - durability:1
    
-"spell2Effect":
+"spell3Effect":
    type: world
    events:
      on player right clicks:
         - if <player.item_in_hand.display> != "<yellow>Spell<&co> Blindness" queue clear
         - if <player.flag[SPELL_GCD]> queue clear
-        - if <player.food_level> <= 4 {
+        - if <player.food_level> < 4 {
           - narrate "<&9>You do not have enough saturation to cast that spell!"
           - queue clear
           }
@@ -340,7 +342,7 @@
      on player right clicks entity:
         - if <player.item_in_hand.display> != "<yellow>Spell<&co> Blindness" queue clear
         - if <player.flag[SPELL_GCD]> queue clear
-        - if <player.food_level> <= 4 {
+        - if <player.food_level> < 4 {
           - narrate "<&9>You do not have enough saturation to cast that spell!"
           - queue clear
           }
@@ -355,5 +357,119 @@
          - feed -4
          - playeffect location:<context.entity.location> effect:large_smoke qty:100
          - flag player "spell3 reuse:true" duration:5
+         - flag player "SPELL_GCD" duration:2
+         }
+
+"spell4":
+   type: item
+   material: 339
+   display name: "<yellow>Spell<&co> Ensnare"
+   recipe:
+    - air|i@rune3|air
+    - i@words5|i@340|i@words5
+    - air|i@rune3|air
+   lore:
+   - <green>Snares your target for 20 seconds.
+   - <red>Cooldown<&co> 5 seconds.
+   - <&9>Costs 4 saturation to use cast.
+   enchantments:
+   - durability:1
+   
+"spell4Effect":
+   type: world
+   events:
+     on player right clicks:
+        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Ensnare" queue clear
+        - if <player.flag[SPELL_GCD]> queue clear
+        - if <player.food_level> < 4 {
+          - narrate "<&9>You do not have enough saturation to cast that spell!"
+          - queue clear
+          }
+        - if "<flag.p:spell4 reuse || false>" == true {
+          - narrate "<&9>You must wait <flag.p:spell4 reuse.expiration> before you can use that item again."
+          } 
+        - if "<flag.p:spell4 reuse || false>" == false {
+         - narrate "<&9>You snare yourself!"
+         - cast slow duration:20 power:2
+         - feed -4
+         - playeffect location:<player.location> effect:slime qty:500 offset:0
+         - flag player "spell4 reuse:true" duration:5
+         - flag player "SPELL_GCD" duration:2
+         }
+     on player right clicks entity:
+        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Ensnare" queue clear
+        - if <player.flag[SPELL_GCD]> queue clear
+        - if <player.food_level> < 4 {
+          - narrate "<&9>You do not have enough saturation to cast that spell!"
+          - queue clear
+          }
+        - if "<flag.p:spell4 reuse || false>" == true {
+          - narrate "<&9>You must wait <flag.p:spell4 reuse.expiration> before you can use that item again."
+          } 
+        - if "<flag.p:spell4 reuse || false>" == false {
+         - if <context.entity.is_player> {
+           - narrate targets:<context.entity> "<&9>You are snared by <player.name>!" }
+         - narrate "<&9>You snare <context.entity.name>."
+         - cast slow target:<context.entity> duration:20 power:2
+         - feed -4
+         - playeffect location:<context.entity.location> effect:slime qty:500 offset:0
+         - flag player "spell4 reuse:true" duration:5
+         - flag player "SPELL_GCD" duration:2
+         }
+         
+"spell5":
+   type: item
+   material: 339
+   display name: "<yellow>Spell<&co> Tangling Roots"
+   recipe:
+    - air|i@rune8|air
+    - i@words5|i@340|i@words5
+    - air|i@rune8|air
+   lore:
+   - <green>Roots your target to the ground for 20 seconds.
+   - <red>Cooldown<&co> 10 seconds.
+   - <&9>Costs 6 saturation to use cast.
+   enchantments:
+   - durability:1
+   
+"spell5Effect":
+   type: world
+   events:
+     on player right clicks:
+        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Tangling Roots" queue clear
+        - if <player.flag[SPELL_GCD]> queue clear
+        - if <player.food_level> < 6 {
+          - narrate "<&9>You do not have enough saturation to cast that spell!"
+          - queue clear
+          }
+        - if "<flag.p:spell5 reuse || false>" == true {
+          - narrate "<&9>You must wait <flag.p:spell5 reuse.expiration> before you can use that item again."
+          } 
+        - if "<flag.p:spell5 reuse || false>" == false {
+         - narrate "<&9>You root yourself to the ground!"
+         - cast slow duration:20 power:10
+         - feed -6
+         - playeffect location:<player.location> effect:slime qty:500 offset:0
+         - flag player "spell5 reuse:true" duration:5
+         - flag player "SPELL_GCD" duration:2
+         }
+     on player right clicks entity:
+        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Tangling Roots" queue clear
+        - if <player.flag[SPELL_GCD]> queue clear
+        - if <player.food_level> < 6 {
+          - narrate "<&9>You do not have enough saturation to cast that spell!"
+          - queue clear
+          }
+        - if "<flag.p:spell5 reuse || false>" == true {
+          - narrate "<&9>You must wait <flag.p:spell5 reuse.expiration> before you can use that item again."
+          } 
+        - if "<flag.p:spell5 reuse || false>" == false {
+         - if <context.entity.is_player> {
+           - narrate targets:<context.entity> "<&9>You are rooted to the ground by <player.name>!" }
+         - narrate "<&9>You root <context.entity.name> to the ground."
+         - cast slow target:<context.entity> duration:20 power:10
+         - feed -6
+         - playeffect location:<context.entity.location> effect:slime qty:500 offset:0
+         - flag player "spell5 reuse:true" duration:5
          - flag player "SPELL_GCD" duration:2
          }

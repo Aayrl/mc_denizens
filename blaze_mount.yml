@@ -58,6 +58,7 @@
      
      on enter proximity:
      - playsound location:<npc.location> sound:blaze_breath
+     - execute as_server "npc sel <npc.id>"
      - execute as_server "npc controllable -y"
    
 "BlazlingMountInteract":

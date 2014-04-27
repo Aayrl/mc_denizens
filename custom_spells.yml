@@ -232,8 +232,10 @@
           - narrate "<&9>You must wait <flag.p:spell1 reuse.expiration> before you can use that item again."
           } 
         - if "<flag.p:spell1 reuse || false>" == false {
-         - narrate targets:<context.entity> "<&9><player.name> heals you for 2 hitpoints."
-         - narrate targets:<context.entity> "<&9>You feel better."
+         - if <context.entity.is_player> {
+           - narrate targets:<context.entity> "<&9><player.name> heals you for 2 hitpoints."
+           - narrate targets:<context.entity> "<&9>You feel better." }
+         - narrate "<&9>You heal <context.entity.name> for 2 hitpoints."
          - heal 2 target:<context.entity>
          - feed -2
          - playeffect location:<context.entity.location> effect:potion_break qty:15 data:5
@@ -288,8 +290,10 @@
           - narrate "<&9>You must wait <flag.p:spell2 reuse.expiration> before you can use that item again."
           } 
         - if "<flag.p:spell2 reuse || false>" == false {
-         - narrate targets:<context.entity> "<&9>You are burned for 4 damage!"
-         - narrate targets:<context.entity> "<&9>You feel your skin tingle as <player.name> ignites it."
+         - if <context.entity.is_player> {
+           - narrate targets:<context.entity> "<&9>You are burned for 4 damage!"
+           - narrate targets:<context.entity> "<&9>You feel your skin tingle as <player.name> ignites it." }
+         - narrate "<&9>You burn <context.entity.name> for 4 damage."
          - hurt 4 target:<context.entity>
          - feed -4
          - playeffect location:<context.entity.location> effect:lava qty:50

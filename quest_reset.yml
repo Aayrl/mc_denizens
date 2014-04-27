@@ -1,0 +1,14 @@
+# -----------------------------------
+# Quest Reset Command
+# @author: Tyler J. Sawyer
+# @version: 1.0
+# Last Updated: 14:23 on April 27, 2014 (Sunday)
+# -----------------------------------
+# Resets all of a player's current quests.
+
+"quest_reset_cmd":
+    type: world
+    events:
+       on questreset command:
+       - narrate "<red>Resetting all of your current quests..."
+       - narrate "<red>All of your quests have been reset."

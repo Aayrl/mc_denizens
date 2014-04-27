@@ -26,9 +26,9 @@
         }
     on entity death:
       - if !<context.damager.is_player> queue clear
-      - if <player.flag[CombatText]> == "on" {
-        - if <player.flag[cmbt_txt_cd_die]> queue clear
-        - flag player cmbt_txt_cd_die duration:0.5s
+      - if <<context.damager>.flag[CombatText]> == "on" {
+        - if <<context.damager>.flag[cmbt_txt_cd_die]> queue clear
+        - flag <context.damager> cmbt_txt_cd_die duration:0.5s
         - narrate targets:<context.damager> "<&6>You have slain <context.entity.name> using <context.cause>!"
         }
     on combattext command:

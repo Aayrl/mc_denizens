@@ -1,0 +1,16 @@
+# -----------------------------------
+# [ FILE TITLE HERE ]
+# @author: Tyler J. Sawyer
+# @version: 1.0
+# Last Updated: 17:26 on April 27, 2014 (Sunday)
+# -----------------------------------
+# PvP rewards for players who have PvP Badges from killing other players.
+# Yay.
+
+"pvp_badge":
+   type: item
+   material: 341
+   display name: "<yellow>Badge of Honor"
+   lore:
+   - <white>Earned by slaying players in combat.
+   - <yellow>Used for purchasing PvP Rewards.

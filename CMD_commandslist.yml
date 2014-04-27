@@ -6,10 +6,10 @@
           - if <context.args.get[1]> == null {
             - narrate "<yellow>--- CSCrew Commands [1/4] ---"
             - narrate "<gold>/auction <green><&sq>message<&sq><yellow> - Auction an item using the auction channel."
+            - narrate "<gold>/chatcommands<yellow> - List of chat and emote commands."
             - narrate "<gold>/claim<yellow> - View available item rewards and claims."
-            - narrate "<gold>/combattext <green>on/off<yellow> - Generate a random number between 1 and 100."
+            - narrate "<gold>/combattext <green>on/off<yellow> - Toggles CombatText display in chat."
             - narrate "<gold>/commands <green>page<yellow> - Page list of commands."
-            - narrate "<gold>/commands <green>chat<yellow> - List of chat and emote commands."
             - narrate "<gold>/con<yellow> - Considers the target<&sq> difficulty on your mouse cursor."
             - narrate "<gold>/credits<yellow> - Displays how many credits you have."
             }

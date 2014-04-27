@@ -12,8 +12,10 @@
           # Default reaction (if no number is typed after '/commands'
           - if <context.args.get[1]> == null {
             - narrate "<yellow>Available Emotes<&co>"
-            - narrate "<gold>/taunt <&co> /wave <&co> /cheer <&co> /cry <&co> /dance <&co> /yes
-            - narrate "<gold>/no
+            - narrate "<gold>/taunt <&co> /wave <&co> /cheer <&co> /cry <&co> /dance <&co> /yes"
+            - narrate "<gold>/no <&co> /point <&co> /bow <&co> /clap <&co> /mourn <&co> /raise"
+            - narrate "<gold>/ready <&co> /thank <&co> /sorry <&co> /smile <&co> /grin <&co> /laugh"
+            - narrate "<gold>/lol <&co> /hug <&co> /rude <&co> /mad"
             }
             
             
@@ -31,19 +33,105 @@
        on wave command:
           - define targetName <p@<player.name>.target.name>
           - foreach <l@<player.location>.find.players.within[<15>].aslist> {
-            - narrate targets:%value% "<&9><player.name> waves." }
+            - if %targetName% != null narrate targets:%value% "<&9><player.name> waves at %targetName%."
+              else narrate targets:%value% "<&9><player.name> waves." }
        on cheer command:
+          - define targetName <p@<player.name>.target.name>
           - foreach <l@<player.location>.find.players.within[<15>].aslist> {
-            - narrate targets:%value% "<&9><player.name> cheers!" }
+            - if %targetName% != null narrate targets:%value% "<&9><player.name> cheers at %targetName%!"
+              else narrate targets:%value% "<&9><player.name> cheers!" }
        on cry command:
+          - define targetName <p@<player.name>.target.name>
           - foreach <l@<player.location>.find.players.within[<15>].aslist> {
-            - narrate targets:%value% "<&9><player.name> cries." }
+            - if %targetName% != null narrate targets:%value% "<&9><player.name> cries on %targetName%<&sq> shoulder."
+              else narrate targets:%value% "<&9><player.name> cries." }
        on dance command:
+          - define targetName <p@<player.name>.target.name>
           - foreach <l@<player.location>.find.players.within[<15>].aslist> {
-            - narrate targets:%value% "<&9><player.name> bursts into a dance!" }
+            - if %targetName% != null narrate targets:%value% "<&9><player.name> grabs a hold of %targetName% and begins to dance!"
+              else narrate targets:%value% "<&9><player.name> bursts into a dance!" }
        on yes command:
+          - define targetName <p@<player.name>.target.name>
           - foreach <l@<player.location>.find.players.within[<15>].aslist> {
-            - narrate targets:%value% "<&9><player.name> agrees." }
+            - if %targetName% != null narrate targets:%value% "<&9><player.name> agrees with %targetName%."
+              else narrate targets:%value% "<&9><player.name> agrees." }
        on no command:
+          - define targetName <p@<player.name>.target.name>
           - foreach <l@<player.location>.find.players.within[<15>].aslist> {
-            - narrate targets:%value% "<&9><player.name> disagrees." }
+            - if %targetName% != null narrate targets:%value% "<&9><player.name> disagrees with %targetName%."
+              else narrate targets:%value% "<&9><player.name> disagrees." }
+       on point command:
+          - define targetName <p@<player.name>.target.name>
+          - foreach <l@<player.location>.find.players.within[<15>].aslist> {
+            - if %targetName% != null narrate targets:%value% "<&9><player.name> points at %targetName%."
+              else narrate targets:%value% "<&9><player.name> points straight ahead." }
+       on bow command:
+          - define targetName <p@<player.name>.target.name>
+          - foreach <l@<player.location>.find.players.within[<15>].aslist> {
+            - if %targetName% != null narrate targets:%value% "<&9><player.name> bows before %targetName%."
+              else narrate targets:%value% "<&9><player.name> takes a bow." }
+       on clap command:
+          - define targetName <p@<player.name>.target.name>
+          - foreach <l@<player.location>.find.players.within[<15>].aslist> {
+            - if %targetName% != null narrate targets:%value% "<&9><player.name> applauds %targetName%."
+              else narrate targets:%value% "<&9><player.name> claps happily." }
+       on mourn command:
+          - define targetName <p@<player.name>.target.name>
+          - foreach <l@<player.location>.find.players.within[<15>].aslist> {
+            - if %targetName% != null narrate targets:%value% "<&9><player.name> mourns the death of %targetName%."
+              else narrate targets:%value% "<&9><player.name> mourns in sorrow." }
+       on raise command:
+          - define targetName <p@<player.name>.target.name>
+          - foreach <l@<player.location>.find.players.within[<15>].aslist> {
+            - if %targetName% != null narrate targets:%value% "<&9><player.name> raises their hand and stares at %targetName%."
+              else narrate targets:%value% "<&9><player.name> raises their hand." }
+       on ready command:
+          - define targetName <p@<player.name>.target.name>
+          - foreach <l@<player.location>.find.players.within[<15>].aslist> {
+            - if %targetName% != null narrate targets:%value% "<&9><player.name> lets %targetName% know that they are ready."
+              else narrate targets:%value% "<&9><player.name> is ready. BRING THEM ON!" }
+       on thank command:
+          - define targetName <p@<player.name>.target.name>
+          - foreach <l@<player.location>.find.players.within[<15>].aslist> {
+            - if %targetName% != null narrate targets:%value% "<&9><player.name> thanks %targetName%."
+              else narrate targets:%value% "<&9><player.name> gives their thanks to the world around them." }
+       on sorry command:
+          - define targetName <p@<player.name>.target.name>
+          - foreach <l@<player.location>.find.players.within[<15>].aslist> {
+            - if %targetName% != null narrate targets:%value% "<&9><player.name> apologizes to %targetName%. Sorry!"
+              else narrate targets:%value% "<&9><player.name> apologizes to everyone. Sorry!" }
+       on smile command:
+          - define targetName <p@<player.name>.target.name>
+          - foreach <l@<player.location>.find.players.within[<15>].aslist> {
+            - if %targetName% != null narrate targets:%value% "<&9><player.name> smiles at %targetName%."
+              else narrate targets:%value% "<&9><player.name> smiles." }
+       on grin command:
+          - define targetName <p@<player.name>.target.name>
+          - foreach <l@<player.location>.find.players.within[<15>].aslist> {
+            - if %targetName% != null narrate targets:%value% "<&9><player.name> grins wickedly at %targetName%."
+              else narrate targets:%value% "<&9><player.name> grins<&cm> clearly up to no good." }
+       on laugh command:
+          - define targetName <p@<player.name>.target.name>
+          - foreach <l@<player.location>.find.players.within[<15>].aslist> {
+            - if %targetName% != null narrate targets:%value% "<&9><player.name> laughs at %targetName%."
+              else narrate targets:%value% "<&9><player.name> laughs out loud." }
+       on lol command:
+          - define targetName <p@<player.name>.target.name>
+          - foreach <l@<player.location>.find.players.within[<15>].aslist> {
+            - if %targetName% != null narrate targets:%value% "<&9><player.name> laughs at %targetName%."
+              else narrate targets:%value% "<&9><player.name> laughs out loud." }
+       on hug command:
+          - define targetName <p@<player.name>.target.name>
+          - foreach <l@<player.location>.find.players.within[<15>].aslist> {
+            - if %targetName% != null narrate targets:%value% "<&9><player.name> hugs %targetName%."
+              else narrate targets:%value% "<&9><player.name> hugs the air around them." }
+       on rude command:
+          - define targetName <p@<player.name>.target.name>
+          - foreach <l@<player.location>.find.players.within[<15>].aslist> {
+            - if %targetName% != null narrate targets:%value% "<&9><player.name> makes a rude gesture at %targetName%. How obscene!"
+              else narrate targets:%value% "<&9><player.name> makes a rude gesture. How obscene!" }
+       on mad command:
+          - define targetName <p@<player.name>.target.name>
+          - foreach <l@<player.location>.find.players.within[<15>].aslist> {
+            - if %targetName% != null narrate targets:%value% "<&9><player.name> makes a rude gesture at %targetName%. How obscene!"
+              else narrate targets:%value% "<&9><player.name> makes a rude gesture. How obscene!" }

@@ -48,9 +48,9 @@
             click trigger:
                 script:
                     - chat "Thank you so much! Here, take this as a reward!"
-                    - give 388 QTY:3
+                    - give 388 QTY:1
                     - give XP QTY:250
-                    - narrate "<yellow>You received <aqua>Emerald<yellow>x3!"
+                    - narrate "<yellow>You received an <aqua>Emerald<yellow>!"
                     - narrate "<yellow>You've gained 250 experience!"
                     - wait 1
                     - chat "Speak with me again shortly if you wish to slay more Skeletons!"    

@@ -48,9 +48,9 @@
             click trigger:
                 script:
                     - chat "FISHHHH!"
-                    - give 388 QTY:5
+                    - give 388 QTY:2
                     - give XP QTY:750
-                    - narrate "<yellow>You received <aqua>Emerald<yellow>x5!"
+                    - narrate "<yellow>You received <aqua>Emerald<yellow>x2!"
                     - narrate "<yellow>You've gained 750 experience!"
                     - zap 'step:Fish Quest Handout'
 

@@ -48,9 +48,9 @@
             click trigger:
                 script:
                     - chat "Ugh. About time. Here, I have no use for these. You may have them."
-                    - give 388 QTY:3
+                    - give 388 QTY:1
                     - give XP QTY:250
-                    - narrate "<yellow>You received <aqua>Emerald<yellow>x3!"
+                    - narrate "<yellow>You received an <aqua>Emerald<yellow>!"
                     - narrate "<yellow>You've gained 250 experience!"
                     - wait 1
                     - chat "If you feel like slaying more zombies, speak with me again shortly."    

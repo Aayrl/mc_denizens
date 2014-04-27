@@ -33,11 +33,13 @@
           - execute as_server 'sentry retaliate false'
           - execute as_server 'sentry invincible true'
           - execute as_server 'npc assignment --set "BlazlingMountScript"'
+          - queue clear
         - if <player.flag[hasMount]> == "summoned" {
           - narrate "<yellow>Despawning your Blazling Mount."
           - flag <player> hasMount:!
           - execute as_server 'npc select "<player.name><&sq>s Mount"'
           - execute as_server 'npc remove'
+          - queue clear
         
 "BlazlingMountScript":
    type: assignment
@@ -64,5 +66,12 @@
         click trigger:
           script:
             - narrate "<yellow><npc.name>"
+            - if <npc.owner> != <player> {
+              - narrate "<red>You cannot mount another player<&sq>s mount!"
+              - execute as_server "npc sel <npc.id>"
+              - execute as_server "npc controllable -n" }
+            - if <npc.owner> == <player> {
+              - execute as_server "npc sel <npc.id>"
+              - execute as_server "npc controllable -y" }
             
             

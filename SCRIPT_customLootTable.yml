@@ -14,6 +14,7 @@
           }
         - if <context.entity.entity_type> == "Zombie" {
           - drop "i@<proc:LootTable_Zombie>" location:<context.entity.location>
+          - run "Drop_Credits" d:<context.damager>|<util.random.int[1].to[4]>
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
           }
         - if <context.entity.entity_type> == "Skeleton" {
@@ -45,6 +46,15 @@
           }
         }
 
+# To call : -run "Drop_Credits" d:ARG1|ARG2
+"Drop_Credits":
+   type: task
+   definitions: killerEntity|creditAmt
+   script:
+     - define currentAmt <%killerEntity%>.flag[CURRENCY_Credits]>
+     - define newAmt <math.as_int:%currentAmt%+%creditAmt%>
+     - flag <p@<%killerEntity%>> "CURRENCY_Credits:%newAmt%"
+     - narrate targets:<%killerEntity%> "<&2>You loot %creditAmt% credits from the corpse."
         
 "LootTable_SpellMat":
     type: procedure

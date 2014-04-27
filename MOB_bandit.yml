@@ -9,7 +9,7 @@ bandit:
   type: assignment
 
   default constants:
-    attack message: <white>Hey<&cm> <n@<npc.name>.navigator.target_entity.name><&cm> you have some nice stuff there!
+    attack message: <white>Hey<&cm> you have some nice stuff there!
     death message: <white>Aarrghh!
     victory message: <white>Finally<&cm> some phat loots!
 

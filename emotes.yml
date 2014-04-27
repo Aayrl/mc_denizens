@@ -1,4 +1,4 @@
-"chat flavor commands":
+"emote_commands":
     type: world
     events:
        on shout command:

@@ -1,10 +1,60 @@
-# Blazeling Mount
+# ----------------------------
+# Blazling Mount
 # Tyler J. Sawyer
-# 4/3/14
+# Last Updated: 10:08 on April 27, 2014 (Sunday)
+# ----------------------------
+# Allows a player to summon and control a flying Blaze mount.
+#
 
 "Blazling Egg":
    type: item
    material: emerald
-   display name: "Blazling Egg"
+   display name: "<&5>Blazling Egg"
    lore:
-   - <green>Effect<&co> <red>Summon Blazling Mount
+   - <green>Use<&co> <red>Summon Blazling Mount <&lb>Right Click to Activate<&rb>
+   enchantments:
+   - durability:1
+
+"summonBlazeMount":
+   type: world
+   events:
+     on player right clicks:
+        - if <player.item_in_hand.display> != "<&5>Blazling Egg" queue clear
+        - if <player.flag[blazeMount]> == "summoned" {
+          - narrate "<yellow>Despawning your Blazling Mount."
+          - flag <player> blazeMount:!
+          - execute as_server 'npc select "<player.name><&sq>s Mount"'
+          - execute as_server 'npc remove'
+        - if <player.flag[blazeMount]> == null {
+          - narrate "<yellow>Summoning your Blazling Mount."
+          - flag <player> "blazeMount:summoned"
+          - execute as_server 'npc create "<player.name><&sq>s Mount" --at <player.location.simple> --type blaze'
+          - execute as_server 'npc select "<player.name><&sq>s Mount"'
+          - execute as_server 'npc owner <player.name>'
+          - execute as_server 'trait sentry'
+          - execute as_server 'sentry guard <player.name>'
+          - execute as_server 'sentry retaliate false'
+          - execute as_server 'sentry invincible true'
+          - execute as_server 'npc assignment --set "BlazlingMountScript"'
+        
+"BlazlingMountScript":
+   type: assignment
+   actions:
+     on assignment:
+     - trigger name:click toggle:true
+     - trigger name:proximity toggle:true
+     - execute as_server "npc sel <npc.id>"
+     - execute as_server "npc controllable"
+     - execute as_server "npc speed 10"
+     on enter proximity:
+     - playsound location:<npc.location> sound:blaze_breath
+   interact scripts:
+   - 10 BlazlingMountInteract
+   
+"BlazlingMountInteract":
+   type:interact
+   steps:
+     1:
+       click trigger:
+         script:
+         - narrate "<yellow><npc.name>"

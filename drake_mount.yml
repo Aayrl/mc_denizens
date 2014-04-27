@@ -1,0 +1,77 @@
+# ----------------------------
+# Black Drake Mount
+# Tyler J. Sawyer
+# Last Updated: 11:54 on April 27, 2014 (Sunday)
+# ----------------------------
+# Allows a player to summon and control a flying Dragon mount.
+#
+
+"drake_Egg":
+   type: item
+   material: emerald
+   display name: "<&5>Reins of the Black Drake"
+   lore:
+   - <green>Use<&co> Summon Black Drake Mount <&lb>Right Click to Activate<&rb>
+   - <&9>Type <gold>/mountHelp<&9> for assistance using Mounts.
+   enchantments:
+   - durability:1
+
+"summonDrakeMount":
+   type: world
+   events:
+     on player right clicks:
+        - if <player.item_in_hand.display> != "<&5>Reins of the Black Drake" queue clear
+        - if <player.flag[MOUNT_GCD]> queue clear
+        - flag player "MOUNT_GCD" duration:2
+        - if <player.flag[hasMount]> == null {
+          - narrate "<yellow>Summoning your drake Mount."
+          - flag <player> "hasMount:summoned"
+          - execute as_server 'npc create "<player.name><&sq>s Mount" --at <player.location.simple> --type enderdragon'
+          - execute as_server 'npc select "<player.name><&sq>s Mount"'
+          - execute as_server 'npc owner <player.name>'
+          - execute as_server 'trait sentry'
+          - execute as_server 'sentry guard <player.name>'
+          - execute as_server 'sentry retaliate false'
+          - execute as_server 'sentry invincible true'
+          - execute as_server 'npc assignment --set "drakeMountScript"'
+          - queue clear
+        - if <player.flag[hasMount]> == "summoned" {
+          - narrate "<yellow>Despawning your drake Mount."
+          - flag <player> hasMount:!
+          - execute as_server 'npc select "<player.name><&sq>s Mount"'
+          - execute as_server 'npc remove'
+          - queue clear
+        
+"drakeMountScript":
+   type: assignment
+   
+   interact scripts:
+   - 10 drakeMountInteract
+   
+   actions:
+     on assignment:
+     - trigger name:click toggle:true
+     - trigger name:proximity toggle:true
+     - execute as_server "npc sel <npc.id>"
+     - execute as_server "npc controllable"
+     - execute as_server "npc speed 10"
+     
+     on enter proximity:
+     - playsound location:<npc.location> sound:enderdragon_growl
+     - execute as_server "npc sel <npc.id>"
+     - execute as_server "npc controllable -y"
+   
+"drakeMountInteract":
+    type: interact
+    
+    steps:
+      1:
+        click trigger:
+          script:
+            - narrate "<yellow><npc.name>"
+            - if <npc.owner> != <player> {
+              - narrate "<red>You cannot mount another player<&sq>s mount!"
+              - execute as_server "npc sel <npc.id>"
+              - execute as_server "npc controllable -n" }
+            
+            

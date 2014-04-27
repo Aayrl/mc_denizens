@@ -10,11 +10,20 @@
     type: world
     events:
        on shout command:
-       - if <context.args.get[1]> == null || <context.args.get[2]> != null {
+       - if <context.args.get[1]> != null && <context.args.get[2]> == null {
+         - announce "<red><player.name> shouts<&cm> <&sq><context.args.get[1]><&sq>" }
+         else {
          - narrate "<red>Invalid Syntax for <gold>/shout<red> command."
          - narrate "<red>Usage<&co> <gold>/shout <green><&sq>message<&sq>"
          - narrate "<red>Desc<&co> Shouts the specified message - Note the quotes."
          - queue clear
          }
+       on auction command:
        - if <context.args.get[1]> != null && <context.args.get[2]> == null {
-         - announce "<red><player.name> shouts<&cm> <&sq><context.args.get[1]><&sq>" }
+         - announce "<&2><player.name> auctions<&cm> <&sq><context.args.get[1]><&sq>" }
+         else {
+         - narrate "<red>Invalid Syntax for <gold>/auction<red> command."
+         - narrate "<red>Usage<&co> <gold>/auction <green><&sq>message<&sq>"
+         - narrate "<red>Desc<&co> auctions the specified message - Note the quotes."
+         - queue clear
+         }

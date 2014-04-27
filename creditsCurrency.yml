@@ -243,8 +243,8 @@ inv_vendor_generic:
     # When a player left clicks on an item, give price information about it.
     on player left clicks in inventory:
     #- narrate "Slot type <context.slot_type>"
-    - if <context.inventory.id_holder> != n@109 queue clear
-    - if <context.inventory.id_holder> == n@109 {
+    - if <context.inventory.id_holder> != n@109 || <context.inventory.id_holder> != n@110 queue clear
+    - if <context.inventory.id_holder> == n@109 || <context.inventory.id_holder> == n@110 {
       - determine passively cancelled 
       - if <context.item.scriptname> == null define vendorItem <context.item.id>
       - if <context.item.scriptname> != null define vendorItem <context.item.scriptname>
@@ -258,8 +258,8 @@ inv_vendor_generic:
     # If the player is holding shift, attempt to buy or sell a stack of the item they
     # clicked on.
     on player right clicks in inventory:
-    - if <context.inventory.id_holder> != n@109 queue clear
-    - if <context.inventory.id_holder> == n@109 {
+    - if <context.inventory.id_holder> != n@109 || <context.inventory.id_holder> != n@110 queue clear
+    - if <context.inventory.id_holder> == n@109 || <context.inventory.id_holder> == n@110 {
       - determine passively cancelled 
       - if <context.item.material.formatted> == nothing queue clear
       - if <context.item.scriptname> == null define vendorItem <context.item.id>

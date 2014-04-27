@@ -60,7 +60,6 @@
      on enter proximity:
      - playsound location:<npc.location> sound:blaze_breath
      - execute as_server "npc sel <npc.id>"
-     - execute as_server "npc controllable -y"
    
 "BlazlingMountInteract":
     type: interact
@@ -70,9 +69,5 @@
         click trigger:
           script:
             - narrate "<yellow><npc.name>"
-            - if <npc.owner> != <player> {
-              - narrate "<red>You cannot mount another player<&sq>s mount!"
-              - execute as_server "npc sel <npc.id>"
-              - execute as_server "npc controllable -n" }
             
             

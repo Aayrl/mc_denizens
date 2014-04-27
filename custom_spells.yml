@@ -301,4 +301,59 @@
          - flag player "SPELL_GCD" duration:2
          }
          
-# TO DO : Does not harm enemy entities. Need to fix.
+"spell3":
+   type: item
+   material: 339
+   display name: "<yellow>Spell<&co> Blindness"
+   recipe:
+    - air|i@rune4|air
+    - i@words4|i@340|i@words4
+    - air|i@rune4|air
+   lore:
+   - <green>Blinds your target for 20 seconds.
+   - <red><&lb>5s Cooldown<&rb>
+   - <&9>Costs 4 saturation to use cast.
+   enchantments:
+   - durability:1
+   
+"spell2Effect":
+   type: world
+   events:
+     on player right clicks:
+        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Blindness" queue clear
+        - if <player.flag[SPELL_GCD]> queue clear
+        - if <player.food_level> <= 4 {
+          - narrate "<&9>You do not have enough saturation to cast that spell!"
+          - queue clear
+          }
+        - if "<flag.p:spell3 reuse || false>" == true {
+          - narrate "<&9>You must wait <flag.p:spell3 reuse.expiration> before you can use that item again."
+          } 
+        - if "<flag.p:spell3 reuse || false>" == false {
+         - narrate "<&9>You blind yourself!"
+         - cast blindness duration:20 power:5
+         - feed -4
+         - playeffect location:<player.location> effect:large_smoke qty:100
+         - flag player "spell3 reuse:true" duration:5
+         - flag player "SPELL_GCD" duration:2
+         }
+     on player right clicks entity:
+        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Blindness" queue clear
+        - if <player.flag[SPELL_GCD]> queue clear
+        - if <player.food_level> <= 4 {
+          - narrate "<&9>You do not have enough saturation to cast that spell!"
+          - queue clear
+          }
+        - if "<flag.p:spell3 reuse || false>" == true {
+          - narrate "<&9>You must wait <flag.p:spell3 reuse.expiration> before you can use that item again."
+          } 
+        - if "<flag.p:spell3 reuse || false>" == false {
+         - if <context.entity.is_player> {
+           - narrate targets:<context.entity> "<&9>You are blinded by <player.name>!" }
+         - narrate "<&9>You blind <context.entity.name>."
+         - cast blindness target:<context.entity> duration:20 power:5
+         - feed -4
+         - playeffect location:<context.entity.location> effect:large_smoke qty:100
+         - flag player "spell3 reuse:true" duration:5
+         - flag player "SPELL_GCD" duration:2
+         }

@@ -39,6 +39,10 @@
         
 "BlazlingMountScript":
    type: assignment
+   
+   interact scripts:
+   - 10 BlazlingMountInteract
+   
    actions:
      on assignment:
      - trigger name:click toggle:true
@@ -46,15 +50,15 @@
      - execute as_server "npc sel <npc.id>"
      - execute as_server "npc controllable"
      - execute as_server "npc speed 10"
+     
      on enter proximity:
      - playsound location:<npc.location> sound:blaze_breath
-   interact scripts:
-   - 10 BlazlingMountInteract
    
 "BlazlingMountInteract":
-   type:interact
-   steps:
-     1:
-       click trigger:
-         script:
-         - narrate "<yellow><npc.name>"
+    type: interact
+    
+    steps:
+      1:
+        click trigger:
+          script:
+            - narrate "<yellow><npc.name>"

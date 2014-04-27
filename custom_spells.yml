@@ -271,7 +271,7 @@
         - if "<flag.p:spell2 reuse || false>" == false {
          - narrate "<&9>You burn yourself for 4 damage!"
          - narrate "<&9>You feel your skin tingle as it ignites."
-         - heal -4
+         - hurt 4
          - feed -4
          - playeffect location:<player.location> effect:lava qty:50
          - flag player "spell2 reuse:true" duration:5
@@ -290,9 +290,11 @@
         - if "<flag.p:spell2 reuse || false>" == false {
          - narrate targets:<context.entity> "<&9>You are burned for 4 damage!"
          - narrate targets:<context.entity> "<&9>You feel your skin tingle as <player.name> ignites it."
-         - heal -4 target:<context.entity>
+         - hurt 4 target:<context.entity>
          - feed -4
          - playeffect location:<context.entity.location> effect:lava qty:50
          - flag player "spell2 reuse:true" duration:5
          - flag player "SPELL_GCD" duration:2
          }
+         
+# TO DO : Does not harm enemy entities. Need to fix.

@@ -12,17 +12,20 @@
         - flag player cmbt_txt_cd_dmg duration:0.5s
         - if <context.damager.is_player> narrate targets:<context.damager> "<&6>You hit <context.entity.name> for <context.damage.asint> damage!"
         }
+      - if <<context.entity>.flag[CombatText]> == "on" && <context.damager.is_player> {
+        - if <<context.entity>.flag[cmbt_txt_cd_hit]> queue clear
+        - flag <context.entity> cmbt_txt_cd_hit duration:0.5s
+        - narrate targets:<context.entity> "<red>You were hit by <context.damager.name> for <context.damage.asint> damage!"
+        }
     on player damaged by entity:
       - if <player.flag[CombatText]> == "on" {
         - if <player.flag[cmbt_txt_cd_hit]> queue clear
         - flag player cmbt_txt_cd_hit duration:0.5s
         - narrate targets:<player> "<red>You were hit by <context.damager.name> for <context.damage.asint> damage!"
         }
-    on player damaged by player:
-      - if <player.flag[CombatText]> == "on" {
-        - if <player.flag[cmbt_txt_cd_pvp]> queue clear
-        - flag player cmbt_txt_cd_pvp duration:0.5s
-        - narrate targets:<context.entity> "<red>You were hit by <context.damager.name> for <context.damage.asint> damage!"
+      - if <<context.damager>.flag[CombatText]> == "on" && <context.damager.is_player> {
+        - if <<context.damager>.flag[cmbt_txt_cd_hit]> queue clear
+        - flag <context.damager> cmbt_txt_cd_hit duration:0.5s
         - narrate targets:<context.damager> "<&6>You hit <context.entity.name> for <context.damage.asint> damage!"
         }
     on entity death:

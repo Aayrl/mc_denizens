@@ -43,7 +43,7 @@
        on cry command:
           - define targetName <p@<player.name>.target.name>
           - foreach <l@<player.location>.find.players.within[<15>].aslist> {
-            - if %targetName% != null narrate targets:%value% "<&9><player.name> cries on %targetName%<&sq> shoulder."
+            - if %targetName% != null narrate targets:%value% "<&9><player.name> cries on %targetName%<&sq>s shoulder."
               else narrate targets:%value% "<&9><player.name> cries." }
        on dance command:
           - define targetName <p@<player.name>.target.name>

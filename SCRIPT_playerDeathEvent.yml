@@ -6,11 +6,11 @@
   type: world
   events:
     on player death:
-    #- if <context.damager.is_player> {
+    - if <context.damager.is_player> {
       - define badgeAmt <math.as_int:<player.xp.level.asint>/5>
       - give <context.damager> i@pvp_badge qty:%badgeAmt%
       - narrate targets:<context.damager> "<aqua>You receive %badgeAmt% Badge(s) of Honor from slaying <player.name>."
-    #  }
+      }
     - narrate "<red>You have died!"
     - narrate "<red>You have lost all of your experience!"
     #- narrate "<red>All gear in your inventory have taken a 25% durability hit."

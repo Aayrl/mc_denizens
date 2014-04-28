@@ -7,7 +7,7 @@
   events:
     on player death:
     - if <context.damager.is_player> {
-      - define badgeAmt <math.as_int:<player.level.asint>/5>
+      - define badgeAmt <math.as_int:<player.xp.level.asint>/5>
       - give <context.damager> i@pvp_badge qty:%badgeAmt%
       - narrate targets:<context.damager> "<aqua>You receive %badgeAmt% Badge(s) of Honor from slaying <player.name>."
       }

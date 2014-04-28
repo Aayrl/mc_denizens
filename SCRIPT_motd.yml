@@ -31,7 +31,7 @@
     - announce "<yellow><player.name> has been knocked unconscious!"
     
     on command:
-    - if <player.name> != "Aayrl" && <player.name> != "Jennavb13" && <player.name> != "mtotho" && !<context.server> {
+    - if <player.name> != "Aayrl" && <player.name> != "Jennavb13" && <player.name> != "mtotho" && <player.name> != "lenois" && !<context.server> {
       - determine FULFILLED
       }
 

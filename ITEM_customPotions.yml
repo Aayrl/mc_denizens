@@ -1,0 +1,504 @@
+# -----------------------------------
+# Custom Potions
+# @author: Tyler J. Sawyer
+# @version: 1.0
+# Last Updated: 21:35 on April 28, 2014 (Monday)
+# -----------------------------------
+# Custom Potions - should be craftable in brewing stands too.
+#
+# Note: All potions share the same cooldown (potionReuse)
+#
+# -----------------------------------
+# Healing Potions
+# -----------------------------------
+
+"potion_healing_1":
+   type: item
+   material: 373:8197
+   display name: "<yellow>Minor Healing Potion"
+   lore:
+   - <green>Right Click<&co> Heals 2 damage.
+   - <red>Cooldown<&co> 30 seconds.
+   
+"potionHealingEffect1":
+   type: world
+   events:
+     on player right clicks:
+        - if <player.item_in_hand.display> != "<yellow>Minor Healing Potion" queue clear
+        - if "<flag.p:potionReuse || false>" == true {
+          - narrate "<&9>You must wait <flag.p:potionReuse.expiration> before you may consume another potion."
+          } 
+        - if "<flag.p:potionReuse || false>" == false {
+         - take i@potion_healing_1
+         - narrate "<&9>You drink a potion and restore some health."
+         - heal 2
+         - playeffect location:<player.location> effect:potion_break qty:15 data:5
+         - flag player "potionReuse:true" duration:30
+         }
+         
+"potion_healing_2":
+   type: item
+   material: 373:8197
+   display name: "<yellow>Lesser Healing Potion"
+   lore:
+   - <green>Right Click<&co> Heals 4 damage.
+   - <red>Cooldown<&co> 30 seconds.
+   
+"potionHealingEffect2":
+   type: world
+   events:
+     on player right clicks:
+        - if <player.item_in_hand.display> != "<yellow>Lesser Healing Potion" queue clear
+        - if "<flag.p:potionReuse || false>" == true {
+          - narrate "<&9>You must wait <flag.p:potionReuse.expiration> before you may consume another potion."
+          } 
+        - if "<flag.p:potionReuse || false>" == false {
+         - take i@potion_healing_2
+         - narrate "<&9>You drink a potion and restore some health."
+         - heal 4
+         - playeffect location:<player.location> effect:potion_break qty:15 data:5
+         - flag player "potionReuse:true" duration:30
+         }
+         
+"potion_healing_3":
+   type: item
+   material: 373:8197
+   display name: "<yellow>Healing Potion"
+   lore:
+   - <green>Right Click<&co> Heals 6 damage.
+   - <red>Cooldown<&co> 30 seconds.
+   
+"potionHealingEffect3":
+   type: world
+   events:
+     on player right clicks:
+        - if <player.item_in_hand.display> != "<yellow>Healing Potion" queue clear
+        - if "<flag.p:potionReuse || false>" == true {
+          - narrate "<&9>You must wait <flag.p:potionReuse.expiration> before you may consume another potion."
+          } 
+        - if "<flag.p:potionReuse || false>" == false {
+         - take i@potion_healing_3
+         - narrate "<&9>You drink a potion and restore some health."
+         - heal 6
+         - playeffect location:<player.location> effect:potion_break qty:15 data:5
+         - flag player "potionReuse:true" duration:30
+         }
+         
+"potion_healing_4":
+   type: item
+   material: 373:8197
+   display name: "<yellow>Greater Healing Potion"
+   lore:
+   - <green>Right Click<&co> Heals 8 damage.
+   - <red>Cooldown<&co> 30 seconds.
+   
+"potionHealingEffect4":
+   type: world
+   events:
+     on player right clicks:
+        - if <player.item_in_hand.display> != "<yellow>Greater Healing Potion" queue clear
+        - if "<flag.p:potionReuse || false>" == true {
+          - narrate "<&9>You must wait <flag.p:potionReuse.expiration> before you may consume another potion."
+          } 
+        - if "<flag.p:potionReuse || false>" == false {
+         - take i@potion_healing_4
+         - narrate "<&9>You drink a potion and restore some health."
+         - heal 8
+         - playeffect location:<player.location> effect:potion_break qty:15 data:5
+         - flag player "potionReuse:true" duration:30
+         }
+         
+"potion_healing_5":
+   type: item
+   material: 373:8197
+   display name: "<yellow>Superior Healing Potion"
+   lore:
+   - <green>Right Click<&co> Heals 10 damage.
+   - <red>Cooldown<&co> 30 seconds.
+   
+"potionHealingEffect5":
+   type: world
+   events:
+     on player right clicks:
+        - if <player.item_in_hand.display> != "<yellow>Superior Healing Potion" queue clear
+        - if "<flag.p:potionReuse || false>" == true {
+          - narrate "<&9>You must wait <flag.p:potionReuse.expiration> before you may consume another potion."
+          } 
+        - if "<flag.p:potionReuse || false>" == false {
+         - take i@potion_healing_5
+         - narrate "<&9>You drink a potion and restore some health."
+         - heal 10
+         - playeffect location:<player.location> effect:potion_break qty:15 data:5
+         - flag player "potionReuse:true" duration:30
+         }
+         
+"potion_healing_6":
+   type: item
+   material: 373:8197
+   display name: "<yellow>Major Healing Potion"
+   lore:
+   - <green>Right Click<&co> Heals 12 damage.
+   - <red>Cooldown<&co> 30 seconds.
+   
+"potionHealingEffect6":
+   type: world
+   events:
+     on player right clicks:
+        - if <player.item_in_hand.display> != "<yellow>Major Healing Potion" queue clear
+        - if "<flag.p:potionReuse || false>" == true {
+          - narrate "<&9>You must wait <flag.p:potionReuse.expiration> before you may consume another potion."
+          } 
+        - if "<flag.p:potionReuse || false>" == false {
+         - take i@potion_healing_6
+         - narrate "<&9>You drink a potion and restore some health."
+         - heal 12
+         - playeffect location:<player.location> effect:potion_break qty:15 data:5
+         - flag player "potionReuse:true" duration:30
+         }
+         
+"potion_healing_7":
+   type: item
+   material: 373:8197
+   display name: "<yellow>Magnificent Healing Potion"
+   lore:
+   - <green>Right Click<&co> Heals 14 damage.
+   - <red>Cooldown<&co> 30 seconds.
+   
+"potionHealingEffect7":
+   type: world
+   events:
+     on player right clicks:
+        - if <player.item_in_hand.display> != "<yellow>Magnificent Healing Potion" queue clear
+        - if "<flag.p:potionReuse || false>" == true {
+          - narrate "<&9>You must wait <flag.p:potionReuse.expiration> before you may consume another potion."
+          } 
+        - if "<flag.p:potionReuse || false>" == false {
+         - take i@potion_healing_7
+         - narrate "<&9>You drink a potion and restore some health."
+         - heal 14
+         - playeffect location:<player.location> effect:potion_break qty:15 data:5
+         - flag player "potionReuse:true" duration:30
+         }
+         
+"potion_healing_8":
+   type: item
+   material: 373:8197
+   display name: "<yellow>Exceptional Healing Potion"
+   lore:
+   - <green>Right Click<&co> Heals 16 damage.
+   - <red>Cooldown<&co> 30 seconds.
+   
+"potionHealingEffect8":
+   type: world
+   events:
+     on player right clicks:
+        - if <player.item_in_hand.display> != "<yellow>Exceptional Healing Potion" queue clear
+        - if "<flag.p:potionReuse || false>" == true {
+          - narrate "<&9>You must wait <flag.p:potionReuse.expiration> before you may consume another potion."
+          } 
+        - if "<flag.p:potionReuse || false>" == false {
+         - take i@potion_healing_8
+         - narrate "<&9>You drink a potion and restore some health."
+         - heal 16
+         - playeffect location:<player.location> effect:potion_break qty:15 data:5
+         - flag player "potionReuse:true" duration:30
+         }
+         
+"potion_healing_9":
+   type: item
+   material: 373:8197
+   display name: "<yellow>Superb Healing Potion"
+   lore:
+   - <green>Right Click<&co> Heals 18 damage.
+   - <red>Cooldown<&co> 30 seconds.
+   
+"potionHealingEffect9":
+   type: world
+   events:
+     on player right clicks:
+        - if <player.item_in_hand.display> != "<yellow>Superb Healing Potion" queue clear
+        - if "<flag.p:potionReuse || false>" == true {
+          - narrate "<&9>You must wait <flag.p:potionReuse.expiration> before you may consume another potion."
+          } 
+        - if "<flag.p:potionReuse || false>" == false {
+         - take i@potion_healing_9
+         - narrate "<&9>You drink a potion and restore some health."
+         - heal 18
+         - playeffect location:<player.location> effect:potion_break qty:15 data:5
+         - flag player "potionReuse:true" duration:30
+         }
+         
+"potion_healing_10":
+   type: item
+   material: 373:8197
+   display name: "<yellow>Complete Healing Potion"
+   lore:
+   - <green>Right Click<&co> Heals 20 damage.
+   - <red>Cooldown<&co> 30 seconds.
+   
+"potionHealingEffect10":
+   type: world
+   events:
+     on player right clicks:
+        - if <player.item_in_hand.display> != "<yellow>Complete Healing Potion" queue clear
+        - if "<flag.p:potionReuse || false>" == true {
+          - narrate "<&9>You must wait <flag.p:potionReuse.expiration> before you may consume another potion."
+          } 
+        - if "<flag.p:potionReuse || false>" == false {
+         - take i@potion_healing_10
+         - narrate "<&9>You drink a potion and restore some health."
+         - heal 20
+         - playeffect location:<player.location> effect:potion_break qty:15 data:5
+         - flag player "potionReuse:true" duration:30
+         }
+
+# -----------------------------------
+# Mana Potions
+# -----------------------------------
+
+"potion_saturation_1":
+   type: item
+   material: 373
+   display name: "<yellow>Minor Saturation Potion"
+   lore:
+   - <green>Right Click<&co> Restores 2 saturation.
+   - <red>Cooldown<&co> 30 seconds.
+   
+"potionSaturationEffect1":
+   type: world
+   events:
+     on player right clicks:
+        - if <player.item_in_hand.display> != "<yellow>Minor Saturation Potion" queue clear
+        - if "<flag.p:potionReuse || false>" == true {
+          - narrate "<&9>You must wait <flag.p:potionReuse.expiration> before you may consume another potion."
+          } 
+        - if "<flag.p:potionReuse || false>" == false {
+         - take i@potion_saturation_1
+         - narrate "<&9>You drink a potion and restore some saturation."
+         - feed 2
+         - playeffect location:<player.location> effect:potion_break qty:15 data:5
+         - flag player "potionReuse:true" duration:30
+         }
+         
+"potion_saturation_2":
+   type: item
+   material: 373
+   display name: "<yellow>Lesser Saturation Potion"
+   lore:
+   - <green>Right Click<&co> Restores 4 saturation.
+   - <red>Cooldown<&co> 30 seconds.
+   
+"potionSaturationEffect2":
+   type: world
+   events:
+     on player right clicks:
+        - if <player.item_in_hand.display> != "<yellow>Lesser Saturation Potion" queue clear
+        - if "<flag.p:potionReuse || false>" == true {
+          - narrate "<&9>You must wait <flag.p:potionReuse.expiration> before you may consume another potion."
+          } 
+        - if "<flag.p:potionReuse || false>" == false {
+         - take i@potion_saturation_2
+         - narrate "<&9>You drink a potion and restore some saturation."
+         - feed 4
+         - playeffect location:<player.location> effect:potion_break qty:15 data:5
+         - flag player "potionReuse:true" duration:30
+         }
+         
+"potion_saturation_3":
+   type: item
+   material: 373
+   display name: "<yellow>Saturation Potion"
+   lore:
+   - <green>Right Click<&co> Restores 6 saturation.
+   - <red>Cooldown<&co> 30 seconds.
+   
+"potionSaturationEffect3":
+   type: world
+   events:
+     on player right clicks:
+        - if <player.item_in_hand.display> != "<yellow>Saturation Potion" queue clear
+        - if "<flag.p:potionReuse || false>" == true {
+          - narrate "<&9>You must wait <flag.p:potionReuse.expiration> before you may consume another potion."
+          } 
+        - if "<flag.p:potionReuse || false>" == false {
+         - take i@potion_saturation_3
+         - narrate "<&9>You drink a potion and restore some saturation."
+         - feed 6
+         - playeffect location:<player.location> effect:potion_break qty:15 data:5
+         - flag player "potionReuse:true" duration:30
+         }
+         
+"potion_saturation_4":
+   type: item
+   material: 373
+   display name: "<yellow>Greater Saturation Potion"
+   lore:
+   - <green>Right Click<&co> Restores 8 saturation.
+   - <red>Cooldown<&co> 30 seconds.
+   
+"potionSaturationEffect4":
+   type: world
+   events:
+     on player right clicks:
+        - if <player.item_in_hand.display> != "<yellow>Greater Saturation Potion" queue clear
+        - if "<flag.p:potionReuse || false>" == true {
+          - narrate "<&9>You must wait <flag.p:potionReuse.expiration> before you may consume another potion."
+          } 
+        - if "<flag.p:potionReuse || false>" == false {
+         - take i@potion_saturation_4
+         - narrate "<&9>You drink a potion and restore some saturation."
+         - feed 8
+         - playeffect location:<player.location> effect:potion_break qty:15 data:5
+         - flag player "potionReuse:true" duration:30
+         }
+         
+"potion_saturation_5":
+   type: item
+   material: 373
+   display name: "<yellow>Superior Saturation Potion"
+   lore:
+   - <green>Right Click<&co> Restores 10 saturation.
+   - <red>Cooldown<&co> 30 seconds.
+   
+"potionSaturationEffect5":
+   type: world
+   events:
+     on player right clicks:
+        - if <player.item_in_hand.display> != "<yellow>Superior Saturation Potion" queue clear
+        - if "<flag.p:potionReuse || false>" == true {
+          - narrate "<&9>You must wait <flag.p:potionReuse.expiration> before you may consume another potion."
+          } 
+        - if "<flag.p:potionReuse || false>" == false {
+         - take i@potion_saturation_5
+         - narrate "<&9>You drink a potion and restore some saturation."
+         - feed 10
+         - playeffect location:<player.location> effect:potion_break qty:15 data:5
+         - flag player "potionReuse:true" duration:30
+         }
+         
+"potion_saturation_6":
+   type: item
+   material: 373
+   display name: "<yellow>Major Saturation Potion"
+   lore:
+   - <green>Right Click<&co> Restores 12 saturation.
+   - <red>Cooldown<&co> 30 seconds.
+   
+"potionSaturationEffect6":
+   type: world
+   events:
+     on player right clicks:
+        - if <player.item_in_hand.display> != "<yellow>Major Saturation Potion" queue clear
+        - if "<flag.p:potionReuse || false>" == true {
+          - narrate "<&9>You must wait <flag.p:potionReuse.expiration> before you may consume another potion."
+          } 
+        - if "<flag.p:potionReuse || false>" == false {
+         - take i@potion_saturation_6
+         - narrate "<&9>You drink a potion and restore some saturation."
+         - feed 12
+         - playeffect location:<player.location> effect:potion_break qty:15 data:5
+         - flag player "potionReuse:true" duration:30
+         }
+         
+"potion_saturation_7":
+   type: item
+   material: 373
+   display name: "<yellow>Magnificent Saturation Potion"
+   lore:
+   - <green>Right Click<&co> Restores 14 saturation.
+   - <red>Cooldown<&co> 30 seconds.
+   
+"potionSaturationEffect7":
+   type: world
+   events:
+     on player right clicks:
+        - if <player.item_in_hand.display> != "<yellow>Magnificent Saturation Potion" queue clear
+        - if "<flag.p:potionReuse || false>" == true {
+          - narrate "<&9>You must wait <flag.p:potionReuse.expiration> before you may consume another potion."
+          } 
+        - if "<flag.p:potionReuse || false>" == false {
+         - take i@potion_saturation_7
+         - narrate "<&9>You drink a potion and restore some saturation."
+         - feed 14
+         - playeffect location:<player.location> effect:potion_break qty:15 data:5
+         - flag player "potionReuse:true" duration:30
+         }
+         
+"potion_saturation_8":
+   type: item
+   material: 373
+   display name: "<yellow>Exceptional Saturation Potion"
+   lore:
+   - <green>Right Click<&co> Restores 16 saturation.
+   - <red>Cooldown<&co> 30 seconds.
+   
+"potionSaturationEffect8":
+   type: world
+   events:
+     on player right clicks:
+        - if <player.item_in_hand.display> != "<yellow>Exceptional Saturation Potion" queue clear
+        - if "<flag.p:potionReuse || false>" == true {
+          - narrate "<&9>You must wait <flag.p:potionReuse.expiration> before you may consume another potion."
+          } 
+        - if "<flag.p:potionReuse || false>" == false {
+         - take i@potion_saturation_8
+         - narrate "<&9>You drink a potion and restore some saturation."
+         - feed 16
+         - playeffect location:<player.location> effect:potion_break qty:15 data:5
+         - flag player "potionReuse:true" duration:30
+         }
+         
+"potion_saturation_9":
+   type: item
+   material: 373
+   display name: "<yellow>Superb Saturation Potion"
+   lore:
+   - <green>Right Click<&co> Restores 18 saturation.
+   - <red>Cooldown<&co> 30 seconds.
+   
+"potionSaturationEffect9":
+   type: world
+   events:
+     on player right clicks:
+        - if <player.item_in_hand.display> != "<yellow>Superb Saturation Potion" queue clear
+        - if "<flag.p:potionReuse || false>" == true {
+          - narrate "<&9>You must wait <flag.p:potionReuse.expiration> before you may consume another potion."
+          } 
+        - if "<flag.p:potionReuse || false>" == false {
+         - take i@potion_saturation_9
+         - narrate "<&9>You drink a potion and restore some saturation."
+         - feed 18
+         - playeffect location:<player.location> effect:potion_break qty:15 data:5
+         - flag player "potionReuse:true" duration:30
+         }
+         
+"potion_saturation_10":
+   type: item
+   material: 373
+   display name: "<yellow>Complete Saturation Potion"
+   lore:
+   - <green>Right Click<&co> Restores 20 saturation.
+   - <red>Cooldown<&co> 30 seconds.
+   
+"potionSaturationEffect10":
+   type: world
+   events:
+     on player right clicks:
+        - if <player.item_in_hand.display> != "<yellow>Complete Saturation Potion" queue clear
+        - if "<flag.p:potionReuse || false>" == true {
+          - narrate "<&9>You must wait <flag.p:potionReuse.expiration> before you may consume another potion."
+          } 
+        - if "<flag.p:potionReuse || false>" == false {
+         - take i@potion_saturation_10
+         - narrate "<&9>You drink a potion and restore some saturation."
+         - feed 20
+         - playeffect location:<player.location> effect:potion_break qty:15 data:5
+         - flag player "potionReuse:true" duration:30
+         }
+         
+# -----------------------------------
+# Buff Potions
+# -----------------------------------
+
+
+# PH

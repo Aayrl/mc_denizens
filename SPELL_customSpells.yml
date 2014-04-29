@@ -483,7 +483,7 @@
     - i@words11|i@340|i@words11
     - air|i@rune6|air
    lore:
-   - <green>Burns all nearby targets for 8 damage.
+   - <green>Burns all targets within 7 blocks for 8 damage.
    - <red>Cooldown<&co> 20 seconds.
    - <&9>Costs 8 saturation to use cast.
    enchantments:
@@ -500,19 +500,21 @@
           - queue clear
           }
         - if "<flag.p:spell6 reuse || false>" == true {
-          - narrate "<&9>You must wait <flag.p:spell5 reuse.expiration> before you can use that item again."
+          - narrate "<&9>You must wait <flag.p:spell6 reuse.expiration> before you can use that item again."
           } 
         - if "<flag.p:spell6 reuse || false>" == false {
          - narrate "<&9>You summon a firestorm!"
-         - foreach <l@<player.location>.find.entities.within[<15>].aslist> {
+         - foreach <l@<player.location>.find.entities.within[<7>].aslist> {
            - if %value% != <player> {
              - if <%value%.is_player> narrate targets:%value% "<&9><player.name> burns you for 8 damage."
              - narrate "<&9>Your firestorm burns <%value%.name> for 8 damage."
+             - playeffect location:<%value%.location> effect:mobspawner_flames qty:10
+             - playeffect location:<%value%.location> effect:lava qty:50 offset:0
              - hurt 8 target:%value%
              }
            }
          - feed -8
-         - playeffect location:<player.location> effect:slime qty:500 offset:0
-         - flag player "spell6 reuse:true" duration:5
+         - playeffect location:<player.location> effect:mobspawner_flames qty:10
+         - flag player "spell6 reuse:true" duration:20
          - flag player "SPELL_GCD" duration:2
          }

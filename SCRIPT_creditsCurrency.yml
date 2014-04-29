@@ -286,6 +286,12 @@ inv_vendor_generic:
         - flag <player> "CURRENCY_Credits:%newAmt%"
         - narrate "<yellow>You receive %creditAmt% credits for <context.item.material.formatted><yellow>." }
       }
+    on item moves from inventory to <n@109.inventory>:
+    - if <context.inventory.id_holder> == n@109 {
+      - narrate "<aqua>Origin Inventory<&co> <context.origin>"
+      - narrate "<aqua>Destination Inventory<&co> <context.destination>"
+      - narrate "<aqua>ITEM<&co> <context.item>"
+      }
   
 # Procedure for determining how much each item costs.  
 # Setup:

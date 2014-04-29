@@ -60,8 +60,10 @@
      on enter proximity:
      - playsound location:<npc.location> sound:wolf_growl
      
-     on move:
-     - playeffect location:<player.location> effect:fireworks_spark qty:5 offset:0.5
+     on move proximity:
+     - if <npc.flag[effect_CD]> queue clear
+     - playeffect location:<player.location> effect:fireworks_spark qty:15 offset:0.5
+     - flag npc "effect_CD" duration:1
    
 "wolfMountInteract":
     type: interact

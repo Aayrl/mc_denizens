@@ -265,6 +265,10 @@ inv_vendor_generic:
       - if <context.item.scriptname> != null define vendorItem <context.item.scriptname>
       - if <context.item.display_name> != null {
         - define creditAmt <proc[vendorDetermineCredits].context[%vendorItem%]>
+        - if %creditAmt% == 0 {
+          - narrate "<yellow>You may not sell <context.item.display_name> to a vendor."
+          - queue clear
+          }
         - take "i@<context.item>"
         - define currentAmt <player.flag[CURRENCY_Credits]>
         - define newAmt <math.as_int:%currentAmt%+%creditAmt%>
@@ -272,6 +276,10 @@ inv_vendor_generic:
         - narrate "<yellow>You receive %creditAmt% credits for <context.item.display_name>." }
       - if <context.item.display_name> == null {
         - define creditAmt <proc[vendorDetermineCredits].context[%vendorItem%]>
+        - if %creditAmt% == 0 {
+          - narrate "<yellow>You may not sell <context.item.material.formatted> to a vendor."
+          - queue clear
+          }
         - take "i@<context.item>"
         - define currentAmt <player.flag[CURRENCY_Credits]>
         - define newAmt <math.as_int:%currentAmt%+%creditAmt%>
@@ -666,6 +674,15 @@ inv_vendor_generic:
       else if %itemID% == "Runed_Enderplate_Leggings" determine 5000
       else if %itemID% == "Runed_Enderplate_Boots" determine 5000
       else if %itemID% == "Darkblade" determine 12500
+      else if %itemID% == "Fire_Puff" determine 5000
+      else if %itemID% == "Joeys_Incinerating_Charge" determine 20000
+      else if %itemID% == "Digmaster_5000" determine 5000
+      else if %itemID% == "Doom" determine 15000
+      else if %itemID% == "Blue_Harbinger" determine 15000
+      else if %itemID% == "Pain" determine 7500
+      else if %itemID% == "Anguish" determine 7500
+      else if %itemID% == "Redwood_Recurve_Bow" determine 7500
+      else if %itemID% == "Ashwood_Recurve_Bow" determine 7500
       else if %itemID% == "rune1" determine 5
       else if %itemID% == "rune2" determine 5
       else if %itemID% == "rune3" determine 5

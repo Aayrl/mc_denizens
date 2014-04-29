@@ -29,7 +29,7 @@
           - narrate "<&9>You must wait <flag.p:potionReuse.expiration> before you may consume another potion."
           } 
         - if "<flag.p:potionReuse || false>" == false {
-         - take i@potion_healing_1
+         - take potion_healing_1
          - narrate "<&9>You drink a potion and restore some health."
          - heal 2
          - playeffect location:<player.location> effect:potion_break qty:15 data:5
@@ -53,7 +53,7 @@
           - narrate "<&9>You must wait <flag.p:potionReuse.expiration> before you may consume another potion."
           } 
         - if "<flag.p:potionReuse || false>" == false {
-         - take i@potion_healing_2
+         - take potion_healing_2
          - narrate "<&9>You drink a potion and restore some health."
          - heal 4
          - playeffect location:<player.location> effect:potion_break qty:15 data:5
@@ -77,7 +77,7 @@
           - narrate "<&9>You must wait <flag.p:potionReuse.expiration> before you may consume another potion."
           } 
         - if "<flag.p:potionReuse || false>" == false {
-         - take i@potion_healing_3
+         - take potion_healing_3
          - narrate "<&9>You drink a potion and restore some health."
          - heal 6
          - playeffect location:<player.location> effect:potion_break qty:15 data:5
@@ -101,7 +101,7 @@
           - narrate "<&9>You must wait <flag.p:potionReuse.expiration> before you may consume another potion."
           } 
         - if "<flag.p:potionReuse || false>" == false {
-         - take i@potion_healing_4
+         - take potion_healing_4
          - narrate "<&9>You drink a potion and restore some health."
          - heal 8
          - playeffect location:<player.location> effect:potion_break qty:15 data:5
@@ -125,7 +125,7 @@
           - narrate "<&9>You must wait <flag.p:potionReuse.expiration> before you may consume another potion."
           } 
         - if "<flag.p:potionReuse || false>" == false {
-         - take i@potion_healing_5
+         - take potion_healing_5
          - narrate "<&9>You drink a potion and restore some health."
          - heal 10
          - playeffect location:<player.location> effect:potion_break qty:15 data:5
@@ -149,7 +149,7 @@
           - narrate "<&9>You must wait <flag.p:potionReuse.expiration> before you may consume another potion."
           } 
         - if "<flag.p:potionReuse || false>" == false {
-         - take i@potion_healing_6
+         - take potion_healing_6
          - narrate "<&9>You drink a potion and restore some health."
          - heal 12
          - playeffect location:<player.location> effect:potion_break qty:15 data:5
@@ -173,7 +173,7 @@
           - narrate "<&9>You must wait <flag.p:potionReuse.expiration> before you may consume another potion."
           } 
         - if "<flag.p:potionReuse || false>" == false {
-         - take i@potion_healing_7
+         - take potion_healing_7
          - narrate "<&9>You drink a potion and restore some health."
          - heal 14
          - playeffect location:<player.location> effect:potion_break qty:15 data:5
@@ -197,7 +197,7 @@
           - narrate "<&9>You must wait <flag.p:potionReuse.expiration> before you may consume another potion."
           } 
         - if "<flag.p:potionReuse || false>" == false {
-         - take i@potion_healing_8
+         - take potion_healing_8
          - narrate "<&9>You drink a potion and restore some health."
          - heal 16
          - playeffect location:<player.location> effect:potion_break qty:15 data:5
@@ -221,7 +221,7 @@
           - narrate "<&9>You must wait <flag.p:potionReuse.expiration> before you may consume another potion."
           } 
         - if "<flag.p:potionReuse || false>" == false {
-         - take i@potion_healing_9
+         - take potion_healing_9
          - narrate "<&9>You drink a potion and restore some health."
          - heal 18
          - playeffect location:<player.location> effect:potion_break qty:15 data:5
@@ -245,7 +245,7 @@
           - narrate "<&9>You must wait <flag.p:potionReuse.expiration> before you may consume another potion."
           } 
         - if "<flag.p:potionReuse || false>" == false {
-         - take i@potion_healing_10
+         - take potion_healing_10
          - narrate "<&9>You drink a potion and restore some health."
          - heal 20
          - playeffect location:<player.location> effect:potion_break qty:15 data:5
@@ -273,10 +273,10 @@
           - narrate "<&9>You must wait <flag.p:potionReuse.expiration> before you may consume another potion."
           } 
         - if "<flag.p:potionReuse || false>" == false {
-         - take i@potion_saturation_1
+         - take potion_saturation_1
          - narrate "<&9>You drink a potion and restore some saturation."
          - feed 2
-         - playeffect location:<player.location> effect:potion_break qty:15 data:5
+         - playeffect location:<player.location> effect:potion_break qty:15 data:6
          - flag player "potionReuse:true" duration:30
          }
          
@@ -297,10 +297,10 @@
           - narrate "<&9>You must wait <flag.p:potionReuse.expiration> before you may consume another potion."
           } 
         - if "<flag.p:potionReuse || false>" == false {
-         - take i@potion_saturation_2
+         - take potion_saturation_2
          - narrate "<&9>You drink a potion and restore some saturation."
          - feed 4
-         - playeffect location:<player.location> effect:potion_break qty:15 data:5
+         - playeffect location:<player.location> effect:potion_break qty:15 data:6
          - flag player "potionReuse:true" duration:30
          }
          
@@ -321,10 +321,10 @@
           - narrate "<&9>You must wait <flag.p:potionReuse.expiration> before you may consume another potion."
           } 
         - if "<flag.p:potionReuse || false>" == false {
-         - take i@potion_saturation_3
+         - take potion_saturation_3
          - narrate "<&9>You drink a potion and restore some saturation."
          - feed 6
-         - playeffect location:<player.location> effect:potion_break qty:15 data:5
+         - playeffect location:<player.location> effect:potion_break qty:15 data:6
          - flag player "potionReuse:true" duration:30
          }
          
@@ -345,10 +345,10 @@
           - narrate "<&9>You must wait <flag.p:potionReuse.expiration> before you may consume another potion."
           } 
         - if "<flag.p:potionReuse || false>" == false {
-         - take i@potion_saturation_4
+         - take potion_saturation_4
          - narrate "<&9>You drink a potion and restore some saturation."
          - feed 8
-         - playeffect location:<player.location> effect:potion_break qty:15 data:5
+         - playeffect location:<player.location> effect:potion_break qty:15 data:6
          - flag player "potionReuse:true" duration:30
          }
          
@@ -369,10 +369,10 @@
           - narrate "<&9>You must wait <flag.p:potionReuse.expiration> before you may consume another potion."
           } 
         - if "<flag.p:potionReuse || false>" == false {
-         - take i@potion_saturation_5
+         - take potion_saturation_5
          - narrate "<&9>You drink a potion and restore some saturation."
          - feed 10
-         - playeffect location:<player.location> effect:potion_break qty:15 data:5
+         - playeffect location:<player.location> effect:potion_break qty:15 data:6
          - flag player "potionReuse:true" duration:30
          }
          
@@ -393,10 +393,10 @@
           - narrate "<&9>You must wait <flag.p:potionReuse.expiration> before you may consume another potion."
           } 
         - if "<flag.p:potionReuse || false>" == false {
-         - take i@potion_saturation_6
+         - take potion_saturation_6
          - narrate "<&9>You drink a potion and restore some saturation."
          - feed 12
-         - playeffect location:<player.location> effect:potion_break qty:15 data:5
+         - playeffect location:<player.location> effect:potion_break qty:15 data:6
          - flag player "potionReuse:true" duration:30
          }
          
@@ -417,10 +417,10 @@
           - narrate "<&9>You must wait <flag.p:potionReuse.expiration> before you may consume another potion."
           } 
         - if "<flag.p:potionReuse || false>" == false {
-         - take i@potion_saturation_7
+         - take potion_saturation_7
          - narrate "<&9>You drink a potion and restore some saturation."
          - feed 14
-         - playeffect location:<player.location> effect:potion_break qty:15 data:5
+         - playeffect location:<player.location> effect:potion_break qty:15 data:6
          - flag player "potionReuse:true" duration:30
          }
          
@@ -441,10 +441,10 @@
           - narrate "<&9>You must wait <flag.p:potionReuse.expiration> before you may consume another potion."
           } 
         - if "<flag.p:potionReuse || false>" == false {
-         - take i@potion_saturation_8
+         - take potion_saturation_8
          - narrate "<&9>You drink a potion and restore some saturation."
          - feed 16
-         - playeffect location:<player.location> effect:potion_break qty:15 data:5
+         - playeffect location:<player.location> effect:potion_break qty:15 data:6
          - flag player "potionReuse:true" duration:30
          }
          
@@ -465,10 +465,10 @@
           - narrate "<&9>You must wait <flag.p:potionReuse.expiration> before you may consume another potion."
           } 
         - if "<flag.p:potionReuse || false>" == false {
-         - take i@potion_saturation_9
+         - take potion_saturation_9
          - narrate "<&9>You drink a potion and restore some saturation."
          - feed 18
-         - playeffect location:<player.location> effect:potion_break qty:15 data:5
+         - playeffect location:<player.location> effect:potion_break qty:15 data:6
          - flag player "potionReuse:true" duration:30
          }
          
@@ -489,10 +489,10 @@
           - narrate "<&9>You must wait <flag.p:potionReuse.expiration> before you may consume another potion."
           } 
         - if "<flag.p:potionReuse || false>" == false {
-         - take i@potion_saturation_10
+         - take potion_saturation_10
          - narrate "<&9>You drink a potion and restore some saturation."
          - feed 20
-         - playeffect location:<player.location> effect:potion_break qty:15 data:5
+         - playeffect location:<player.location> effect:potion_break qty:15 data:6
          - flag player "potionReuse:true" duration:30
          }
          

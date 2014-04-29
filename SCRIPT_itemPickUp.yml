@@ -11,14 +11,13 @@
   events:
     on player drops item:
     - if <player.flag[toggleLootMsg]> == "on" {
-      - if <context.item.qty> > 1 define %itemAmt% " x<context.item.qty>"
-      - narrate <context.item.qty>
+      - if <context.item.qty> > 1 define itemAmt " x<context.item.qty>" else define itemAmt ""
       - if <context.item.display_name> != null narrate "<&2>You drop <context.item.display_name><&2>%itemAmt%."
         else if <context.item.display_name> == null narrate "<&2>You drop <context.item.material.formatted><&2>%itemAmt%."
       }
     on player picks up item:
     - if <player.flag[toggleLootMsg]> == "on" {
-      - if <context.item.qty> > 1 define %itemAmt% " x<context.item.qty>"
+      - if <context.item.qty> > 1 define itemAmt " x<context.item.qty>" else define itemAmt ""
       - if <context.item.display_name> != null narrate "<&2>You loot <context.item.display_name><&2>%itemAmt%."
         else if <context.item.display_name> == null narrate "<&2>You loot <context.item.material.formatted><&2>%itemAmt%."
       }

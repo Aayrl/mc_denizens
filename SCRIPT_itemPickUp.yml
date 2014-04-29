@@ -32,10 +32,17 @@
       - if <player.flag[toggleLootMsg]> == "on" {
         - flag player "toggleLootMsg:off"
         - narrate "<&6>You will no longer see loot messages in chat."
+        - queue clear
         }
       - if <player.flag[toggleLootMsg]> == "off" {
         - flag player "toggleLootMsg:on"
         - narrate "<&6>You will now see loot messages in chat."
+        - queue clear
+        }
+      - if <player.flag[toggleLootMsg]> == null {
+        - flag player "toggleLootMsg:on"
+        - narrate "<&6>You will now see loot messages in chat."
+        - queue clear
         }
       }
 

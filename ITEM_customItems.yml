@@ -551,11 +551,13 @@
    events:
      on player right clicks:
         - if <player.item_in_hand.display> != "<green>Enderfish" queue clear
-        - take Enderfish
+        - if <player.flag[SPELL_GCD]> queue clear
+        - take Enderfish qty:1
         - narrate "<&9>You take a bite out of <green>Enderfish<&9>. Ahh<&cm> that was tasty!"
         - feed 5
         - playeffect location:<player.location> effect:iconcrack_350 qty:100 offset:0.25
         - playsound location:<player.location> sound:burp
+        - flag player "FOOD_GCD" duration:2
    
 "Endercookie":
    type: item
@@ -570,11 +572,13 @@
    events:
      on player right clicks:
         - if <player.item_in_hand.display> != "<green>Endercookie" queue clear
-        - take Endercookie
+        - if <player.flag[SPELL_GCD]> queue clear
+        - take Endercookie qty:1
         - narrate "<&9>You take a bite out of <green>Endercookie<&9>. Ahh<&cm> that was tasty!"
         - feed 1
         - playeffect location:<player.location> effect:iconcrack_357 qty:100 offset:0.25
         - playsound location:<player.location> sound:burp
+        - flag player "FOOD_GCD" duration:2
    
 "Enderplate_Rings":
    type: item

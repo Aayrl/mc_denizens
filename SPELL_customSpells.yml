@@ -211,7 +211,7 @@
           - queue clear
           }
         - if "<flag.p:spell1 reuse || false>" == true {
-          - narrate "<&9>You must wait <flag.p:spell1 reuse.expiration> before you can use that item again."
+          - narrate "<&9>You must wait <flag.p:spell1 reuse.expiration> before you can cast that spell."
           } 
         - if "<flag.p:spell1 reuse || false>" == false {
          - narrate "<&9>You heal 2 of your hitpoints."
@@ -230,7 +230,7 @@
           - queue clear
           }
         - if "<flag.p:spell1 reuse || false>" == true {
-          - narrate "<&9>You must wait <flag.p:spell1 reuse.expiration> before you can use that item again."
+          - narrate "<&9>You must wait <flag.p:spell1 reuse.expiration> before you can cast that spell."
           } 
         - if "<flag.p:spell1 reuse || false>" == false {
          - if <context.entity.is_player> {
@@ -270,7 +270,7 @@
           - queue clear
           }
         - if "<flag.p:spell2 reuse || false>" == true {
-          - narrate "<&9>You must wait <flag.p:spell2 reuse.expiration> before you can use that item again."
+          - narrate "<&9>You must wait <flag.p:spell2 reuse.expiration> before you can cast that spell."
           } 
         - if "<flag.p:spell2 reuse || false>" == false {
          - narrate "<&9>You burn yourself for 4 damage!"
@@ -289,7 +289,7 @@
           - queue clear
           }
         - if "<flag.p:spell2 reuse || false>" == true {
-          - narrate "<&9>You must wait <flag.p:spell2 reuse.expiration> before you can use that item again."
+          - narrate "<&9>You must wait <flag.p:spell2 reuse.expiration> before you can cast that spell."
           } 
         - if "<flag.p:spell2 reuse || false>" == false {
          - if <context.entity.is_player> {
@@ -329,7 +329,7 @@
           - queue clear
           }
         - if "<flag.p:spell3 reuse || false>" == true {
-          - narrate "<&9>You must wait <flag.p:spell3 reuse.expiration> before you can use that item again."
+          - narrate "<&9>You must wait <flag.p:spell3 reuse.expiration> before you can cast that spell."
           } 
         - if "<flag.p:spell3 reuse || false>" == false {
          - narrate "<&9>You blind yourself!"
@@ -347,7 +347,7 @@
           - queue clear
           }
         - if "<flag.p:spell3 reuse || false>" == true {
-          - narrate "<&9>You must wait <flag.p:spell3 reuse.expiration> before you can use that item again."
+          - narrate "<&9>You must wait <flag.p:spell3 reuse.expiration> before you can cast that spell."
           } 
         - if "<flag.p:spell3 reuse || false>" == false {
          - if <context.entity.is_player> {
@@ -386,7 +386,7 @@
           - queue clear
           }
         - if "<flag.p:spell4 reuse || false>" == true {
-          - narrate "<&9>You must wait <flag.p:spell4 reuse.expiration> before you can use that item again."
+          - narrate "<&9>You must wait <flag.p:spell4 reuse.expiration> before you can cast that spell."
           } 
         - if "<flag.p:spell4 reuse || false>" == false {
          - narrate "<&9>You snare yourself!"
@@ -404,7 +404,7 @@
           - queue clear
           }
         - if "<flag.p:spell4 reuse || false>" == true {
-          - narrate "<&9>You must wait <flag.p:spell4 reuse.expiration> before you can use that item again."
+          - narrate "<&9>You must wait <flag.p:spell4 reuse.expiration> before you can cast that spell."
           } 
         - if "<flag.p:spell4 reuse || false>" == false {
          - if <context.entity.is_player> {
@@ -443,7 +443,7 @@
           - queue clear
           }
         - if "<flag.p:spell5 reuse || false>" == true {
-          - narrate "<&9>You must wait <flag.p:spell5 reuse.expiration> before you can use that item again."
+          - narrate "<&9>You must wait <flag.p:spell5 reuse.expiration> before you can cast that spell."
           } 
         - if "<flag.p:spell5 reuse || false>" == false {
          - narrate "<&9>You root yourself to the ground!"
@@ -461,7 +461,7 @@
           - queue clear
           }
         - if "<flag.p:spell5 reuse || false>" == true {
-          - narrate "<&9>You must wait <flag.p:spell5 reuse.expiration> before you can use that item again."
+          - narrate "<&9>You must wait <flag.p:spell5 reuse.expiration> before you can cast that spell."
           } 
         - if "<flag.p:spell5 reuse || false>" == false {
          - if <context.entity.is_player> {
@@ -500,7 +500,7 @@
           - queue clear
           }
         - if "<flag.p:spell6 reuse || false>" == true {
-          - narrate "<&9>You must wait <flag.p:spell6 reuse.expiration> before you can use that item again."
+          - narrate "<&9>You must wait <flag.p:spell6 reuse.expiration> before you can cast that spell."
           } 
         - if "<flag.p:spell6 reuse || false>" == false {
          - narrate "<&9>You summon a firestorm!"
@@ -544,10 +544,10 @@
           - narrate "<&9>You do not have enough saturation to cast that spell!"
           - queue clear
           }
-        - if "<flag.p:spell6 reuse || false>" == true {
-          - narrate "<&9>You must wait <flag.p:spell7 reuse.expiration> before you can use that item again."
+        - if "<flag.p:spell7 reuse || false>" == true {
+          - narrate "<&9>You must wait <flag.p:spell7 reuse.expiration> before you can cast that spell."
           } 
-        - if "<flag.p:spell6 reuse || false>" == false {
+        - if "<flag.p:spell7 reuse || false>" == false {
          - narrate "<&9>You summon a fierce blizzard!"
          - foreach <l@<player.location>.find.entities.within[<7>].aslist> {
            - if %value% != <player> {
@@ -560,6 +560,51 @@
            }
          - feed -8
          - playeffect location:<player.location> effect:splash qty:500 offset:0.25
-         - flag player "spell6 reuse:true" duration:20
+         - flag player "spell7 reuse:true" duration:20
+         - flag player "SPELL_GCD" duration:2
+         }
+         
+"spell8":
+   type: item
+   material: 339
+   display name: "<yellow>Spell<&co> Typhoon"
+   recipe:
+    - air|i@rune9|air
+    - i@words11|i@340|i@words11
+    - air|i@rune9|air
+   lore:
+   - <green>Drowns all targets within 7 blocks for 8 damage.
+   - <red>Cooldown<&co> 20 seconds.
+   - <&9>Costs 8 saturation to use cast.
+   enchantments:
+   - durability:1
+   
+"spell8Effect":
+   type: world
+   events:
+     on player right clicks:
+        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Typhoon" queue clear
+        - if <player.flag[SPELL_GCD]> queue clear
+        - if <player.food_level> < 8 {
+          - narrate "<&9>You do not have enough saturation to cast that spell!"
+          - queue clear
+          }
+        - if "<flag.p:spell8 reuse || false>" == true {
+          - narrate "<&9>You must wait <flag.p:spell8 reuse.expiration> before you can cast that spell."
+          } 
+        - if "<flag.p:spell8 reuse || false>" == false {
+         - narrate "<&9>You summon a large Typhoon!"
+         - foreach <l@<player.location>.find.entities.within[<7>].aslist> {
+           - if %value% != <player> {
+             - if <%value%.is_player> narrate targets:%value% "<&9><player.name> drowns you for 8 damage."
+             - narrate "<&9>Your typhoon drowns <%value%.name> for 8 damage."
+             - playeffect location:<%value%.location> effect:DRIP_WATER qty:500 offset:0.25
+             - playeffect location:<%value%.location> effect:splash qty:500 offset:0.25
+             - hurt 8 target:%value%
+             }
+           }
+         - feed -8
+         - playeffect location:<player.location> effect:splash qty:500 offset:0.25
+         - flag player "spell8 reuse:true" duration:20
          - flag player "SPELL_GCD" duration:2
          }

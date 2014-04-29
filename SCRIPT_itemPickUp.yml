@@ -1,0 +1,18 @@
+# -----------------------------------
+# Item Pick Up Script
+# @author: Tyler J. Sawyer
+# @version: 1.0
+# Last Updated: 09:36 on April 29, 2014 (Tuesday)
+# -----------------------------------
+# Messages a player when they pick up an item, if enabled.
+
+"item_PickUpDrop_Listener":
+  type: world
+  events:
+    on player drops item:
+    - if <context.item.display_name> != null narrate "<&2>You drop <context.item.display_name>."
+      else if <context.item.display_name> == null narrate "<&2>You drop <context.item.material.formatted>."
+    on player picks up item:
+    - if <context.item.display_name> != null narrate "<&2>You loot <context.item.display_name>."
+      else if <context.item.display_name> == null narrate "<&2>You loot <context.item.material.formatted>."
+

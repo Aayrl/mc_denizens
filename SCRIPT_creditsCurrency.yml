@@ -247,9 +247,9 @@ inv_vendor_generic:
       - if <context.item.scriptname> == null define vendorItem <context.item.id>
       - if <context.item.scriptname> != null define vendorItem <context.item.scriptname>
       - if <context.item.display_name> != null {
-        - narrate "<yellow>That<&sq>ll be <proc[vendorDetermineCredits].context[%vendorItem%]> credits for <context.item.display_name>." }
+        - narrate "<yellow>That<&sq>ll be <proc[vendorDetermineCredits].context[%vendorItem%]> credits for <context.item.display_name><yellow>." }
       - if <context.item.display_name> == null {
-        - if <context.item.material.formatted> != nothing narrate "<yellow>That<&sq>ll be <proc[vendorDetermineCredits].context[%vendorItem%]> credits for <context.item.material.formatted>." }
+        - if <context.item.material.formatted> != nothing narrate "<yellow>That<&sq>ll be <proc[vendorDetermineCredits].context[%vendorItem%]> credits for <context.item.material.formatted><yellow>." }
       }
     # When a player right clicks on an item, attempt to buy or sell the item.
     # If the player has insufficient funds, do not allow them to buy an item.
@@ -286,10 +286,43 @@ inv_vendor_generic:
       }
     on player shift_right clicks in inventory:
     - if <context.inventory.id_holder> == n@109 || <context.inventory.id_holder> == n@110 {
-      - determine passively cancelled }
+      - determine passively cancelled 
+      - if <context.item.material.formatted> == nothing queue clear
+      - if <context.item.scriptname> == null define vendorItem <context.item.id>
+      - if <context.item.scriptname> != null define vendorItem <context.item.scriptname>
+      - if <context.item.display_name> != null {
+        - define creditAmt <math.as_int:<proc[vendorDetermineCredits].context[%vendorItem%]>*<context.item.qty>>
+        - if %creditAmt% == 0 {
+          - narrate "<yellow>You may not sell <context.item.display_name><yellow> to a vendor."
+          - queue clear
+          }
+        - take "i@<context.item>" qty:<context.item.qty>
+        - define currentAmt <player.flag[CURRENCY_Credits]>
+        - define newAmt <math.as_int:%currentAmt%+%creditAmt%>
+        - flag <player> "CURRENCY_Credits:%newAmt%"
+        - narrate "<yellow>You receive %creditAmt% credits for <context.item.qty> <context.item.display_name><yellow>." }
+      - if <context.item.display_name> == null {
+        - define creditAmt <math.as_int:<proc[vendorDetermineCredits].context[%vendorItem%]>*<context.item.qty>>
+        - if %creditAmt% == 0 {
+          - narrate "<yellow>You may not sell <context.item.material.formatted><yellow> to a vendor."
+          - queue clear
+          }
+        - take "i@<context.item>" qty:<context.item.qty>
+        - define currentAmt <player.flag[CURRENCY_Credits]>
+        - define newAmt <math.as_int:%currentAmt%+%creditAmt%>
+        - flag <player> "CURRENCY_Credits:%newAmt%"
+        - narrate "<yellow>You receive %creditAmt% credits for <context.item.qty> <context.item.material.formatted><yellow>." }
+      }
     on player shift_left clicks in inventory:
     - if <context.inventory.id_holder> == n@109 || <context.inventory.id_holder> == n@110 {
-      - determine passively cancelled }
+      - determine passively cancelled 
+      - if <context.item.scriptname> == null define vendorItem <context.item.id>
+      - if <context.item.scriptname> != null define vendorItem <context.item.scriptname>
+      - if <context.item.display_name> != null {
+        - narrate "<yellow>That<&sq>ll be <math.as_int:<proc[vendorDetermineCredits].context[%vendorItem%]>*<context.item.qty>> credits for <context.item.qty> <context.item.display_name><yellow>." }
+      - if <context.item.display_name> == null {
+        - if <context.item.material.formatted> != nothing narrate "<yellow>That<&sq>ll be <math.as_int:<proc[vendorDetermineCredits].context[%vendorItem%]>*<context.item.qty>> credits for <context.item.qty> <context.item.material.formatted><yellow>." }
+      }
   
 # Procedure for determining how much each item costs.  
 # Setup:

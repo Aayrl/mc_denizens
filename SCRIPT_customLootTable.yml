@@ -187,19 +187,22 @@
         }
  
     - if %quality% == Rare {
-        - random 6
+        - random 8
         - determine "Darkblade"
         - determine "Digmaster_5000"
         - determine "Runed_Enderplate_Helm"
         - determine "Runed_Enderplate_Chestpiece"
         - determine "Runed_Enderplate_Leggings"
         - determine "Runed_Enderplate_Boots"
+        - determine "Ender_Essence"
+        - determine "Ender_Temper"
         }
  
     - if %quality% == Epic {
-        - random 2
+        - random 3
         - determine "Rune_of_Healing"
         - determine "Journeyman_Boots"
+        - determine "EnderdragonOre"
         }
 
 "LootTable_Zombie":

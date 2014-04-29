@@ -546,6 +546,17 @@
    - <white>Uhm..how is this even a thing?
    - <green>Use<&co> Restore 5 Saturation points.
    
+"eat_enderFish":
+   type: world
+   events:
+     on player right clicks:
+        - if <player.item_in_hand.display> != "<green>Enderfish" queue clear
+        - take Enderfish
+        - narrate "<&9>You take a bite out of <green>Enderfish<&9>. Ahh<&cm> that was tasty!"
+        - feed 5
+        - playeffect location:<player.location> effect:iconcrack_350
+        - playsound location:<player.location> sound:burp
+   
 "Endercookie":
    type: item
    material: 357
@@ -553,6 +564,17 @@
    lore:
    - <white>Free cookies are never a bad thing.
    - <green>Use<&co> Restore 1 Saturation point.
+   
+"eat_enderCookie":
+   type: world
+   events:
+     on player right clicks:
+        - if <player.item_in_hand.display> != "<green>Endercookie" queue clear
+        - take Enderfish
+        - narrate "<&9>You take a bite out of <green>Endercookie<&9>. Ahh<&cm> that was tasty!"
+        - feed 1
+        - playeffect location:<player.location> effect:iconcrack_357
+        - playsound location:<player.location> sound:burp
    
 "Enderplate_Rings":
    type: item

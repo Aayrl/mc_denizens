@@ -286,6 +286,16 @@ inv_vendor_generic:
         - flag <player> "CURRENCY_Credits:%newAmt%"
         - narrate "<yellow>You receive %creditAmt% credits for <context.item.material.formatted><yellow>." }
       }
+    on player shift right clicks in inventory:
+    - if <context.inventory.id_holder> == n@109 || <context.inventory.id_holder> == n@110 {
+      - determine passively cancelled 
+      - narrate "<yellow>SHIFT RIGHT CLICK DETECTED. NOOB!"
+      }
+    on player shift left clicks in inventory:
+    - if <context.inventory.id_holder> == n@109 || <context.inventory.id_holder> == n@110 {
+      - determine passively cancelled 
+      - narrate "<yellow>SHIFT RIGHT CLICK DETECTED. NOOB!"
+      }
   
 # Procedure for determining how much each item costs.  
 # Setup:

@@ -977,7 +977,7 @@
    
 "Ender_Essence":
    type: item
-   material: 363:1
+   material: 263:1
    display name: "<&9>Ender Essence"
    lore:
    - <yellow>The sphere pulses with energy.
@@ -1861,14 +1861,15 @@
 # Bars
 "EnderdragonBar":
    type: item
-   material: 49
+   material: 265
    display name: "<&6>Enderdragon Bar"
    lore:
    - <yellow>An block of refined Enderdragon Ore.
    enchantments:
    - durability:1
-   furnace_recipe: i@EnderdragonOre 
-
+   - i@air|i@coal|i@air
+   - i@coal|i@EnderdragonOre|i@coal
+   - i@air|i@coal|i@air 
 
 "EnchantedEDORE":
    type: item

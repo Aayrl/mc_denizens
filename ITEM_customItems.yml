@@ -554,7 +554,7 @@
         - take Enderfish
         - narrate "<&9>You take a bite out of <green>Enderfish<&9>. Ahh<&cm> that was tasty!"
         - feed 5
-        - playeffect location:<player.location> effect:iconcrack_350
+        - playeffect location:<player.location> effect:iconcrack_350 qty:100 offset:0.25
         - playsound location:<player.location> sound:burp
    
 "Endercookie":
@@ -570,10 +570,10 @@
    events:
      on player right clicks:
         - if <player.item_in_hand.display> != "<green>Endercookie" queue clear
-        - take Enderfish
+        - take Endercookie
         - narrate "<&9>You take a bite out of <green>Endercookie<&9>. Ahh<&cm> that was tasty!"
         - feed 1
-        - playeffect location:<player.location> effect:iconcrack_357
+        - playeffect location:<player.location> effect:iconcrack_357 qty:100 offset:0.25
         - playsound location:<player.location> sound:burp
    
 "Enderplate_Rings":

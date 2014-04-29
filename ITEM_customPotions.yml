@@ -14,7 +14,7 @@
 
 "potion_healing_1":
    type: item
-   material: 373:8197
+   material: 374
    display name: "<yellow>Minor Healing Potion"
    lore:
    - <green>Right Click<&co> Heals 2 damage.
@@ -38,7 +38,7 @@
          
 "potion_healing_2":
    type: item
-   material: 373:8197
+   material: 374
    display name: "<yellow>Lesser Healing Potion"
    lore:
    - <green>Right Click<&co> Heals 4 damage.
@@ -62,7 +62,7 @@
          
 "potion_healing_3":
    type: item
-   material: 373:8197
+   material: 374
    display name: "<yellow>Healing Potion"
    lore:
    - <green>Right Click<&co> Heals 6 damage.
@@ -86,7 +86,7 @@
          
 "potion_healing_4":
    type: item
-   material: 373:8197
+   material: 374
    display name: "<yellow>Greater Healing Potion"
    lore:
    - <green>Right Click<&co> Heals 8 damage.
@@ -110,7 +110,7 @@
          
 "potion_healing_5":
    type: item
-   material: 373:8197
+   material: 374
    display name: "<yellow>Superior Healing Potion"
    lore:
    - <green>Right Click<&co> Heals 10 damage.
@@ -134,7 +134,7 @@
          
 "potion_healing_6":
    type: item
-   material: 373:8197
+   material: 374
    display name: "<yellow>Major Healing Potion"
    lore:
    - <green>Right Click<&co> Heals 12 damage.
@@ -158,7 +158,7 @@
          
 "potion_healing_7":
    type: item
-   material: 373:8197
+   material: 374
    display name: "<yellow>Magnificent Healing Potion"
    lore:
    - <green>Right Click<&co> Heals 14 damage.
@@ -182,7 +182,7 @@
          
 "potion_healing_8":
    type: item
-   material: 373:8197
+   material: 374
    display name: "<yellow>Exceptional Healing Potion"
    lore:
    - <green>Right Click<&co> Heals 16 damage.
@@ -206,7 +206,7 @@
          
 "potion_healing_9":
    type: item
-   material: 373:8197
+   material: 374
    display name: "<yellow>Superb Healing Potion"
    lore:
    - <green>Right Click<&co> Heals 18 damage.
@@ -230,7 +230,7 @@
          
 "potion_healing_10":
    type: item
-   material: 373:8197
+   material: 374
    display name: "<yellow>Complete Healing Potion"
    lore:
    - <green>Right Click<&co> Heals 20 damage.
@@ -258,7 +258,7 @@
 
 "potion_saturation_1":
    type: item
-   material: 373
+   material: 374
    display name: "<yellow>Minor Saturation Potion"
    lore:
    - <green>Right Click<&co> Restores 2 saturation.
@@ -282,7 +282,7 @@
          
 "potion_saturation_2":
    type: item
-   material: 373
+   material: 374
    display name: "<yellow>Lesser Saturation Potion"
    lore:
    - <green>Right Click<&co> Restores 4 saturation.
@@ -306,7 +306,7 @@
          
 "potion_saturation_3":
    type: item
-   material: 373
+   material: 374
    display name: "<yellow>Saturation Potion"
    lore:
    - <green>Right Click<&co> Restores 6 saturation.
@@ -330,7 +330,7 @@
          
 "potion_saturation_4":
    type: item
-   material: 373
+   material: 374
    display name: "<yellow>Greater Saturation Potion"
    lore:
    - <green>Right Click<&co> Restores 8 saturation.
@@ -354,7 +354,7 @@
          
 "potion_saturation_5":
    type: item
-   material: 373
+   material: 374
    display name: "<yellow>Superior Saturation Potion"
    lore:
    - <green>Right Click<&co> Restores 10 saturation.
@@ -378,7 +378,7 @@
          
 "potion_saturation_6":
    type: item
-   material: 373
+   material: 374
    display name: "<yellow>Major Saturation Potion"
    lore:
    - <green>Right Click<&co> Restores 12 saturation.
@@ -402,7 +402,7 @@
          
 "potion_saturation_7":
    type: item
-   material: 373
+   material: 374
    display name: "<yellow>Magnificent Saturation Potion"
    lore:
    - <green>Right Click<&co> Restores 14 saturation.
@@ -426,7 +426,7 @@
          
 "potion_saturation_8":
    type: item
-   material: 373
+   material: 374
    display name: "<yellow>Exceptional Saturation Potion"
    lore:
    - <green>Right Click<&co> Restores 16 saturation.
@@ -450,7 +450,7 @@
          
 "potion_saturation_9":
    type: item
-   material: 373
+   material: 374
    display name: "<yellow>Superb Saturation Potion"
    lore:
    - <green>Right Click<&co> Restores 18 saturation.
@@ -474,7 +474,7 @@
          
 "potion_saturation_10":
    type: item
-   material: 373
+   material: 374
    display name: "<yellow>Complete Saturation Potion"
    lore:
    - <green>Right Click<&co> Restores 20 saturation.

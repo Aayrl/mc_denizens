@@ -15,101 +15,101 @@
           - run "Drop_Credits" d:<context.damager>|<util.random.int[2].to[12]>
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
           }
-          else if <context.entity.name> == "Hate Fiend" {
+        - if <context.entity.name> == "Hate Fiend" {
           - drop "i@<proc:LootTable_HateKeep>" location:<context.damager.location>
           - run "Drop_Credits" d:<context.damager>|<util.random.int[25].to[50]>
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
           }
-          else if <context.entity.name> == "Hate Sprite" {
+        - if <context.entity.name> == "Hate Sprite" {
           - drop "i@<proc:LootTable_HateKeep>" location:<context.damager.location>
           - run "Drop_Credits" d:<context.damager>|<util.random.int[15].to[35]>
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
           }
-          else if <context.entity.name> == "Hate Golem" {
+        - if <context.entity.name> == "Hate Golem" {
           - drop "i@<proc:LootTable_HateKeep>" location:<context.damager.location>
           - run "Drop_Credits" d:<context.damager>|<util.random.int[45].to[75]>
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
           }
-          # Generic Mob Loot Tables
-          # For anything that isn't a custom NPC mob.
-          else if <context.entity.entity_type> == "Bat" {
+        # Generic Mob Loot Tables
+        # For anything that isn't a custom NPC mob.
+        - if <context.entity.entity_type> == "Bat" {
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
           }
-          else if <context.entity.entity_type> == "Blaze" {
+        - if <context.entity.entity_type> == "Blaze" {
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
           }
-          else if <context.entity.entity_type> == "Cave_Spider" {
+        - if <context.entity.entity_type> == "Cave_Spider" {
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
           }
-          else if <context.entity.entity_type> == "Chicken" {
+        - if <context.entity.entity_type> == "Chicken" {
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
           }
-          else if <context.entity.entity_type> == "Cow" {
+        - if <context.entity.entity_type> == "Cow" {
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
           }
-          else if <context.entity.entity_type> == "Creeper" {
+        - if <context.entity.entity_type> == "Creeper" {
           - drop "i@<proc:LootTable_Creeper>" location:<context.entity.location>
           - run "Drop_Credits" d:<context.damager>|<util.random.int[1].to[4]>
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
           }
-          else if <context.entity.entity_type> == "Enderman" {
+        - if <context.entity.entity_type> == "Enderman" {
           - drop "i@<proc:LootTable_Enderman>" location:<context.entity.location>
           - run "Drop_Credits" d:<context.damager>|<util.random.int[1].to[15]>
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
           }
-          else if <context.entity.entity_type> == "Ghast" {
+        - if <context.entity.entity_type> == "Ghast" {
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
           }
-          else if <context.entity.entity_type> == "Horse" {
+        - if <context.entity.entity_type> == "Horse" {
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
           }
-          else if <context.entity.entity_type> == "Magma_Cube" {
+        - if <context.entity.entity_type> == "Magma_Cube" {
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
           }
-          else if <context.entity.entity_type> == "Mushroom_Cow" {
+        - if <context.entity.entity_type> == "Mushroom_Cow" {
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
           }
-          else if <context.entity.entity_type> == "Ocelot" {
+        - if <context.entity.entity_type> == "Ocelot" {
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
           }
-          else if <context.entity.entity_type> == "Pig" {
+        - if <context.entity.entity_type> == "Pig" {
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
           }
-          else if <context.entity.entity_type> == "Pig_Zombie" {
+        - if <context.entity.entity_type> == "Pig_Zombie" {
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
           }
-          else if <context.entity.entity_type> == "Sheep" {
+        - if <context.entity.entity_type> == "Sheep" {
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
           }
-          else if <context.entity.entity_type> == "Silverfish" {
+        - if <context.entity.entity_type> == "Silverfish" {
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
           }
-          else if <context.entity.entity_type> == "Skeleton" {
+        - if <context.entity.entity_type> == "Skeleton" {
           - drop "i@<proc:LootTable_Skeleton>" location:<context.entity.location>
           - run "Drop_Credits" d:<context.damager>|<util.random.int[1].to[4]>
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
           }
-          else if <context.entity.entity_type> == "Slime" {
+        - if <context.entity.entity_type> == "Slime" {
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
           }
-          else if <context.entity.entity_type> == "Snowman" {
+        - if <context.entity.entity_type> == "Snowman" {
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
           }
-          else if <context.entity.entity_type> == "Spider" {
+        - if <context.entity.entity_type> == "Spider" {
           - drop "i@<proc:LootTable_Spider>" location:<context.entity.location>
           - run "Drop_Credits" d:<context.damager>|<util.random.int[1].to[4]>
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
           }
-          else if <context.entity.entity_type> == "Squid" {
+        - if <context.entity.entity_type> == "Squid" {
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
           }
-          else if <context.entity.entity_type> == "Witch" {
+        - if <context.entity.entity_type> == "Witch" {
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
           }
-          else if <context.entity.entity_type> == "Wolf" {
+        - if <context.entity.entity_type> == "Wolf" {
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
           }
-          else if <context.entity.entity_type> == "Zombie" {
+        - if <context.entity.entity_type> == "Zombie" {
           - drop "i@<proc:LootTable_Zombie>" location:<context.entity.location>
           - run "Drop_Credits" d:<context.damager>|<util.random.int[1].to[4]>
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>

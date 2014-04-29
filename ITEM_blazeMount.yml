@@ -16,7 +16,6 @@
    - <&9>Type <gold>/mountHelp<&9> for assistance using Mounts.
    enchantments:
    - durability:1
-   no_id: true
 
 "summonBlazeMount":
    type: world

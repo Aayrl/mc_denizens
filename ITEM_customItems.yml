@@ -37,33 +37,28 @@
    material: 402
    display name: "Pet Rock"
    lore:
-   - <white>NO NO NO!! NOT ON THE CARPET!!
-   no_id: true
+   - <white>NO NO NO NO! NOT ON THE CARPET!!
    
 "Pile_of_Dirt":
    type: item
    material: 3
    display name: "Pile of Dirt"
    lore:
-   - <white>Terribly exciting.
-   - <white>Throw some at your friends!
-   no_id: true
+   - <white>Terribly exciting<&cm> throw some at your friends!
    
 "Pile_of_Mud":
    type: item
    material: 337
    display name: "Pile of Mud"
    lore:
-   - <white>Don<&sq>t eat this.
-   no_id: true
+   - <yellow>Perhaps this can be baked into clay?
    
 "Torn_Sheet_of_Paper":
    type: item
    material: 339
    display name: "Torn Sheet of Paper"
    lore:
-   - <white>It<&sq>s a little beat up.
-   no_id: true
+   - <yellow>It<&sq>s a little beat up<&cm> but it should do the trick.
    
 "Dusty_Cobwebs":
    type: item
@@ -71,31 +66,27 @@
    display name: "Dusty Cobwebs"
    lore:
    - <yellow>You could probably fashion this into a trap.
-   no_id: true
    
 "Snapped_Twig":
    type: item
    material: 280
    display name: "Snapped Twig"
    lore:
-   - <white>A bent and twisted branch.
-   no_id: true
+   - <yellow>Toast a marshmellow on this.
    
 "Driftwood":
    type: item
    material: 280
    display name: "Driftwood"
    lore:
-   - <white>Just a hunk of wood. Wink.
-   no_id: true
+   - <yellow>You could make a nice<&cm> sturdy weapon hilt from this.
    
 "Piece_of_String":
    type: item
    material: 287
    display name: "Piece of String"
    lore:
-   - <white>Much nicer than your generic string item.
-   no_id: true
+   - <white>This is much nicer than your generic string item.
    
 "Chunk_of_Flint":
    type: item
@@ -103,15 +94,13 @@
    display name: "Chunk of Flint"
    lore:
    - <white>Useful for making fires.
-   no_id: true
    
 "Marshmellow":
    type: item
    material: 332
    display name: "Marshmellow"
    lore:
-   - <yellow>You may be able to toast this...
-   no_id: true
+   - <yellow>Throw at a friend!
    
 "Rusty_Longsword":
    type: item
@@ -119,7 +108,6 @@
    display name: "Rusty Longsword"
    lore:
    - <white>A rusty longsword.
-   no_id: true
    
 "Rusty_Shortsword":
    type: item
@@ -127,7 +115,6 @@
    display name: "Rusty Shortsword"
    lore:
    - <white>A rusty shortsword.
-   no_id: true
    
 "Rusty_Two_Handed_Sword":
    type: item
@@ -135,7 +122,6 @@
    display name: "Rusty Two-Handed Sword"
    lore:
    - <white>A rusty two-handed sword.
-   no_id: true
    
 "Rusty_Dagger":
    type: item
@@ -143,7 +129,6 @@
    display name: "Rusty Dagger"
    lore:
    - <white>A rusty dagger.
-   no_id: true
    
 "Rusty_Rapier":
    type: item
@@ -151,7 +136,6 @@
    display name: "Rusty Rapier"
    lore:
    - <white>A rusty rapier.
-   no_id: true
    
 "Rusty_Scimitar":
    type: item
@@ -159,7 +143,6 @@
    display name: "Rusty Scimitar"
    lore:
    - <white>A rusty scimitar.
-   no_id: true
    
 "Rusty_Warhammer":
    type: item
@@ -167,7 +150,6 @@
    display name: "Rusty Warhammer"
    lore:
    - <white>A rusty warhammer.
-   no_id: true
    
 "Rusty_Axe":
    type: item
@@ -175,7 +157,6 @@
    display name: "Rusty Axe"
    lore:
    - <white>A rusty axe.
-   no_id: true
 
 "Rusty_Battleaxe":
    type: item
@@ -183,7 +164,6 @@
    display name: "Rusty Battleaxe"
    lore:
    - <white>A rusty battleaxe.
-   no_id: true
    
 "Rusty_Great_Axe":
    type: item
@@ -191,7 +171,6 @@
    display name: "Rusty Great Axe"
    lore:
    - <white>A rusty great axe.
-   no_id: true
    
 "Rusty_Scythe":
    type: item
@@ -199,7 +178,6 @@
    display name: "Rusty Scythe"
    lore:
    - <white>A rusty scythe.
-   no_id: true
    
 # [ Plane of Fire Loot ]
 "Emberdust":
@@ -208,7 +186,6 @@
    display name: "Emberdust"
    lore:
    - <white>The remnants of a once powerful blaze.
-   no_id: true
    
 "Charred_Flesh":
    type: item
@@ -216,15 +193,13 @@
    display name: "Charred Flesh"
    lore:
    - <white>Some charred<&cm> rubbery flesh.
-   no_id: true
    
 "Blaze_Eye":
    type: item
    material: 332
    display name: "Blaze Eye"
    lore:
-   - <white><&sq>EYE SPY...<&sq>
-   no_id: true
+   - <white>Perhaps you can use it to see into the future?
    
 "Pumpkin_Soldier_Helmet":
    type: item
@@ -232,7 +207,6 @@
    display name: "Pumpkin Soldier Helmet"
    lore:
    - <white>Hah<&cm> not so tough now!
-   no_id: true
    
 "Wither_Parts":
    type: item
@@ -240,7 +214,6 @@
    display name: "Wither Parts"
    lore:
    - <white>Some charred bone fragments
-   no_id: true
    
 "Skeleton_Skull":
    type: item
@@ -248,7 +221,6 @@
    display name: "Skeleton Skull"
    lore:
    - <white>A skeletal skull
-   no_id: true
 
 # [ Plane of Ender Loot ]
 "Enderparts":
@@ -257,16 +229,13 @@
    display name: "Enderparts"
    lore:
    - <white>You probably don't want to know..
-   no_id: true
   
 "Enderdust":
    type: item
    material: 263
    display name: "Enderdust"
    lore:
-   - <white>Dust from the remains of
-   - <white>a once-formidable Enderman.
-   no_id: true
+   - <white>A formidible fuel source, most likely.
    
 "Endersoul":
    type: item
@@ -274,7 +243,6 @@
    display name: "Endersoul"
    lore:
    - <white>The Soul of an Enderman. How quaint.
-   no_id: true
    
 "Enderthread":
    type: item
@@ -282,7 +250,6 @@
    display name: "Enderthread"
    lore:
    - <white>Perhaps someone can make use of this...
-   no_id: true
    
 "Endermold":
    type: item
@@ -290,7 +257,6 @@
    display name: "Endermold"
    lore:
    - <white>Yuck.
-   no_id: true
 
 # ========================================================
 # Uncommon Tier Items - Green Tag
@@ -302,7 +268,6 @@
    display name: "<green>Tarnished Longsword"
    lore:
    - <white>A Tarnished longsword.
-   no_id: true
    
 "Tarnished_Shortsword":
    type: item
@@ -310,7 +275,6 @@
    display name: "<green>Tarnished Shortsword"
    lore:
    - <white>A Tarnished shortsword.
-   no_id: true
    
 "Tarnished_Two_Handed_Sword":
    type: item
@@ -318,7 +282,6 @@
    display name: "<green>Tarnished Two-Handed Sword"
    lore:
    - <white>A Tarnished two-handed sword.
-   no_id: true
    
 "Tarnished_Dagger":
    type: item
@@ -326,7 +289,6 @@
    display name: "<green>Tarnished Dagger"
    lore:
    - <white>A Tarnished dagger.
-   no_id: true
    
 "Tarnished_Rapier":
    type: item
@@ -334,7 +296,6 @@
    display name: "<green>Tarnished Rapier"
    lore:
    - <white>A Tarnished rapier.
-   no_id: true
    
 "Tarnished_Scimitar":
    type: item
@@ -342,7 +303,6 @@
    display name: "<green>Tarnished Scimitar"
    lore:
    - <white>A Tarnished scimitar.
-   no_id: true
    
 "Tarnished_Warhammer":
    type: item
@@ -350,7 +310,6 @@
    display name: "<green>Tarnished Warhammer"
    lore:
    - <white>A Tarnished warhammer.
-   no_id: true
    
 "Tarnished_Axe":
    type: item
@@ -358,7 +317,6 @@
    display name: "<green>Tarnished Axe"
    lore:
    - <white>A Tarnished axe.
-   no_id: true
 
 "Tarnished_Battleaxe":
    type: item
@@ -366,7 +324,6 @@
    display name: "<green>Tarnished Battleaxe"
    lore:
    - <white>A Tarnished battleaxe.
-   no_id: true
    
 "Tarnished_Great_Axe":
    type: item
@@ -374,7 +331,6 @@
    display name: "<green>Tarnished Great Axe"
    lore:
    - <white>A Tarnished great axe.
-   no_id: true
    
 "Tarnished_Scythe":
    type: item
@@ -382,88 +338,69 @@
    display name: "<green>Tarnished Scythe"
    lore:
    - <white>A Tarnished scythe.
-   no_id: true
    
 "Leather_Scraps":
    type: item
    material: 334
    display name: "<green>Leather Scraps"
    lore:
-   - <yellow>You may be able to fashion this
-   - <yellow>into some decent armor.
-   no_id: true
+   - <white>You may be able to fashion this into some decent armor.
    
 "Patchwork_Leather_Hat":
    type: item
    material: 298
    display name: "<green>Patchwork Leather Hat"
    lore:
-   - <white>A leather hat made 
-   - <white>from leather scraps and patches.
-   no_id: true
+   - <white>A leather hat made from leather scraps and patches.
    
 "Patchwork_Leather_Tunic":
    type: item
    material: 299
    display name: "<green>Patchwork Leather Tunic"
    lore:
-   - <white>A leather tunic made 
-   - <white>from leather scraps and patches.
-   no_id: true
+   - <white>A leather tunic made from leather scraps and patches.
    
 "Patchwork_Leather_Pants":
    type: item
    material: 300
    display name: "<green>Patchwork Leather Pants"
    lore:
-   - <white>A pair of leather pants made 
-   - <white>from leather scraps and patches.
-   no_id: true
+   - <white>A pair of leather pants made from leather scraps and patches.
    
 "Patchwork_Leather_Boots":
    type: item
    material: 301
    display name: "<green>Patchwork Leather Boots"
    lore:
-   - <white>A pair of leather boots made 
-   - <white>from leather scraps and patches.
-   no_id: true
+   - <white>A pair of leather boots made from leather scraps and patches.
    
 "Tattered_Leather_Hat":
    type: item
    material: 298
    display name: "<green>Tattered Leather Hat"
    lore:
-   - <white>A tattered leather hat made 
-   - <white>from leather scraps and patches.
-   no_id: true
+   - <white>A tattered leather hat made from leather scraps and patches.
    
 "Tattered_Leather_Tunic":
    type: item
    material: 299
    display name: "<green>Tattered Leather Tunic"
    lore:
-   - <white>A tattered leather tunic made 
-   - <white>from leather scraps and patches.
-   no_id: true
+   - <white>A tattered leather tunic made from leather scraps and patches.
    
 "Tattered_Leather_Pants":
    type: item
    material: 300
    display name: "<green>Tattered Leather Pants"
    lore:
-   - <white>A pair of tattered leather pants made 
-   - <white>from leather scraps and patches.
-   no_id: true
+   - <white>A pair of tattered leather pants made from leather scraps and patches.
    
 "Tattered_Leather_Boots":
    type: item
    material: 301
    display name: "<green>Tattered Leather Boots"
    lore:
-   - <white>A pair of tattered leather boots made 
-   - <white>from leather scraps and patches.
-   no_id: true
+   - <white>A pair of tattered leather boots made from leather scraps and patches.
 
 "Dented_Militia_Helm":
    type: item
@@ -471,7 +408,6 @@
    display name: "<green>Dented Militia Helm"
    lore:
    - <white>A dented guard helmet.
-   no_id: true
    
 # [Plane of Fire Loot]
 "Flame_Ingot":
@@ -479,26 +415,21 @@
    material: 405
    display name: "<green>Flame Ingot"
    lore:
-   - <yellow>A fine ingot forged in
-   - <yellow>pure flames.
-   no_id: true
+   - <white>Perhaps someone can make use of this...
    
 "Grinding_Stone":
    type: item
    material: 318
    display name: "<green>Grinding Stone"
    lore:
-   - <yellow>A well balanced grinding stone.
-   no_id: true
+   - <white>Perhaps someone can make use of this...
    
 "Blaze_Temper":
    type: item
    material: 377
    display name: "<green>Blaze Temper"
    lore:
-   - <yellow>Warm temper from a once
-   - <yellow>proud Blaze.
-   no_id: true
+   - <white>Perhaps someone can make use of this...
    
 "Polished_Steel_Sword":
    type: item
@@ -509,7 +440,6 @@
    enchantments:
    - damage_all:1
    - durability:1
-   no_id: true
    
 "Polished_Steel_Axe":
    type: item
@@ -520,7 +450,6 @@
    enchantments:
    - damage_all:1
    - durability:1
-   no_id: true
    
 "Polished_Steel_Scythe":
    type: item
@@ -531,7 +460,6 @@
    enchantments:
    - damage_all:1
    - durability:1
-   no_id: true
    
 "Butterblade":
    type: item
@@ -541,7 +469,6 @@
    - <white>A sword made of pure butter.
    enchantments:
    - damage_all:1
-   no_id: true
 
 # [Plane of Ender Loot]
 "Sword_of_Ender":
@@ -553,7 +480,6 @@
    enchantments:
    - damage_all:2
    - durability:3
-   no_id: true
    
 "Ender_Scythe":
    type: item
@@ -564,7 +490,6 @@
    enchantments:
    - damage_all:2
    - durability:3
-   no_id: true
    
 "Enderplate_Chestpiece":
    type: item
@@ -575,7 +500,6 @@
    enchantments:
    - durability:4
    - protection_environmental:3
-   no_id: true
    
 "Enderplate_Leggings":
    type: item
@@ -586,7 +510,6 @@
    enchantments:
    - durability:4
    - protection_projectile:3
-   no_id: true
    
 "Enderplate_Boots":
    type: item
@@ -597,7 +520,6 @@
    enchantments:
    - durability:3
    - protection_fall:3
-   no_id: true
    
 "Enderplate_Helm":
    type: item
@@ -608,7 +530,14 @@
    enchantments:
    - durability:3
    - oxygen:1
-   no_id: true
+   
+"Ender_Orb":
+   type: item
+   material: 368
+   display name: "<green>Ender Orb"
+   lore:
+   - <white>A teleportation device more potent than the traditional Ender Pearl.
+   - <green>Use<&co> Teleports you to the Plane of Ender. This item is consumed on use.
    
 "Enderfish":
    type: item
@@ -617,7 +546,6 @@
    lore:
    - <white>Uhm..how is this even a thing?
    - <green>Use<&co> Restore 5 Saturation points.
-   no_id: true
    
 "eat_enderFish":
    type: world
@@ -639,7 +567,6 @@
    lore:
    - <white>Free cookies are never a bad thing.
    - <green>Use<&co> Restore 1 Saturation point.
-   no_id: true
    
 "eat_enderCookie":
    type: world
@@ -659,16 +586,14 @@
    material: 265
    display name: "<green>Enderplate Rings"
    lore:
-   - <yellow>Perhaps these can be repurposed?
-   no_id: true
+   - <white>Perhaps these can be repurposed?
  
 "Enderplate_Block":
    type: item
    material: 265
    display name: "<green>Enderplate Block"
    lore:
-   - <yellow>Perhaps this can be repurposed?
-   no_id: true
+   - <white>Perhaps this can be repurposed?
    
 # [Plane of Ender - Hate Keep Loot]
 "Hatesteel_Chestpiece":
@@ -680,7 +605,6 @@
    enchantments:
    - durability:5
    - protection_environmental:4
-   no_id: true
    
 "Hatesteel_Leggings":
    type: item
@@ -691,7 +615,6 @@
    enchantments:
    - durability:5
    - protection_projectile:4
-   no_id: true
    
 "Hatesteel_Boots":
    type: item
@@ -702,7 +625,6 @@
    enchantments:
    - durability:4
    - protection_fall:4
-   no_id: true
    
 "Hatesteel_Helm":
    type: item
@@ -713,7 +635,6 @@
    enchantments:
    - durability:4
    - oxygen:1
-   no_id: true
    
 # [Plane of Earth Loot]
 "Fine_Steel_Plate_Helm":
@@ -724,7 +645,6 @@
    - <white>A finely crafted steel helmet.
    enchantments:
    - durability:3
-   no_id: true
    
 "Fine_Steel_Plate_Chestpiece":
    type: item
@@ -734,7 +654,6 @@
    - <white>A finely crafted steel chestpiece.
    enchantments:
    - durability:3
-   no_id: true
    
 "Fine_Steel_Plate_Leggings":
    type: item
@@ -744,7 +663,6 @@
    - <white>A finely crafted steel legplates.
    enchantments:
    - durability:3
-   no_id: true
    
 "Fine_Steel_Plate_Boots":
    type: item
@@ -754,7 +672,6 @@
    - <white>Some finely crafted plate boots..
    enchantments:
    - durability:3
-   no_id: true
    
 "Fine_Steel_Longsword":
    type: item
@@ -765,7 +682,6 @@
    enchantments:
    - durability:3
    - damage_all:2
-   no_id: true
    
 "Fine_Steel_Shortsword":
    type: item
@@ -776,7 +692,6 @@
    enchantments:
    - durability:3
    - damage_all:2
-   no_id: true
    
 "Fine_Steel_Two_Handed_Sword":
    type: item
@@ -787,7 +702,6 @@
    enchantments:
    - durability:2
    - damage_all:3
-   no_id: true
    
 "Fine_Steel_Rapier":
    type: item
@@ -798,7 +712,6 @@
    enchantments:
    - durability:3
    - damage_all:2
-   no_id: true
    
 "Fine_Steel_Hammer":
    type: item
@@ -809,7 +722,6 @@
    enchantments:
    - durability:3
    - damage_all:2
-   no_id: true
    
 "Fine_Steel_Battleaxe":
    type: item
@@ -820,7 +732,6 @@
    enchantments:
    - durability:3
    - damage_all:2
-   no_id: true
    
 "Fine_Steel_Greataxe":
    type: item
@@ -831,7 +742,6 @@
    enchantments:
    - durability:2
    - damage_all:3
-   no_id: true
    
 "Fine_Steel_Cleaver":
    type: item
@@ -842,7 +752,6 @@
    enchantments:
    - durability:3
    - damage_all:2
-   no_id: true
 
 # ========================================================
 # Rare Tier Items - Blue Tag
@@ -853,44 +762,36 @@
    material: 302
    display name: "<&9>Ringmail Coif"
    lore:
-   - <white>A ringmail tunic made 
-   - <white>from iron ringlets.
+   - <white>A ringmail tunic made from iron ringlets.
    enchantments:
    - durability:2
-   no_id: true
    
 "Ringmail_Tunic":
    type: item
    material: 303
    display name: "<&9>Ringmail Tunic"
    lore:
-   - <white>A ringmail tunic made 
-   - <white>from iron ringlets.
+   - <white>A ringmail tunic made from iron ringlets.
    enchantments:
    - durability:2
-   no_id: true
    
 "Ringmail_Leggings":
    type: item
    material: 304
    display name: "<&9>Ringmail Leggings"
    lore:
-   - <white>A pair of ringmail leggings made 
-   - <white>from iron ringlets.
+   - <white>A pair of ringmail leggings made from iron ringlets.
    enchantments:
    - durability:2
-   no_id: true
    
 "Ringmail_Boots":
    type: item
    material: 305
    display name: "<&9>Ringmail Boots"
    lore:
-   - <white>A pair of ringmail boots made 
-   - <white>from iron ringlets.
+   - <white>A pair of ringmail boots made from iron ringlets.
    enchantments:
    - durability:2
-   no_id: true
 
 # [Plane of Fire Loot]
 "Shattered_Flamemail_Helm":
@@ -898,45 +799,35 @@
    material: 302
    display name: "<&9>Shattered Flamemail Helm"
    lore:
-   - <yellow>An expert blacksmith may 
-   - <yellow>be able to repair this..
-   no_id: true
+   - <yellow>An expert blacksmith may be able to repair this..
    
 "Shattered_Flamemail_Chestpiece":
    type: item
    material: 303
    display name: "<&9>Shattered Flamemail Chestpiece"
    lore:
-   - <yellow>An expert blacksmith may 
-   - <yellow>be able to repair this..
-   no_id: true
+   - <yellow>An expert blacksmith may be able to repair this..
    
 "Shattered_Flamemail_Kilt":
    type: item
    material: 304
    display name: "<&9>Shattered Flamemail Kilt"
    lore:
-   - <yellow>An expert blacksmith may 
-   - <yellow>be able to repair this..
-   no_id: true
+   - <yellow>An expert blacksmith may be able to repair this..
    
 "Shattered_Flamemail_Boots":
    type: item
    material: 305
    display name: "<&9>Shattered Flamemail Boots"
    lore:
-   - <yellow>An expert blacksmith may 
-   - <yellow>be able to repair this..
-   no_id: true
+   - <yellow>An expert blacksmith may be able to repair this..
 
 "Wither_Essence":
    type: item
    material: 385
    display name: "<&9>Wither Essence"
    lore:
-   - <yellow>The sphere pulses with energy.
-   - <yellow>Perhaps an enchanter can inspect it?
-   no_id: true
+   - <yellow>The sphere pulses with energy.<&nl>Perhaps an enchanter can inspect it?
    
 # [Plane of Ender Loot]
 "Runed_Enderplate_Helm":
@@ -944,53 +835,28 @@
    material: 310
    display name: "<&9>Runed Enderplate Helm"
    lore:
-   - <yellow>An expert blacksmith may 
-   - <yellow>be able to repair this..
-   no_id: true
+   - <yellow>An expert blacksmith may be able to repair this..
    
 "Runed_Enderplate_Chestpiece":
    type: item
    material: 311
    display name: "<&9>Runed Enderplate Chestpiece"
    lore:
-   - <yellow>An expert blacksmith may 
-   - <yellow>be able to repair this..
-   no_id: true
+   - <yellow>An expert blacksmith may be able to repair this..
    
 "Runed_Enderplate_Leggings":
    type: item
    material: 312
    display name: "<&9>Runed Enderplate Leggings"
    lore:
-   - <yellow>An expert blacksmith may 
-   - <yellow>be able to repair this..
-   no_id: true
+   - <yellow>An expert blacksmith may be able to repair this..
    
 "Runed_Enderplate_Boots":
    type: item
    material: 313
    display name: "<&9>Runed Enderplate Boots"
    lore:
-   - <yellow>An expert blacksmith may 
-   - <yellow>be able to repair this..
-   no_id: true
-   
-"Ender_Essence":
-   type: item
-   material: 363:1
-   display name: "<&9>Ender Essence"
-   lore:
-   - <yellow>The sphere pulses with energy.
-   - <yellow>Perhaps an enchanter can inspect it?
-   no_id: true
-   
-"Ender_Temper":
-   type: item
-   material: 351
-   display name: "<&9>Ender Temper"
-   lore:
-   - <yellow>A powerful<&cm> dark fluid.
-   no_id: true
+   - <yellow>An expert blacksmith may be able to repair this..
    
 "Darkblade":
    type: item
@@ -1002,7 +868,6 @@
    enchantments:
    - damage_all:3
    - durability:5
-   no_id: true
    
 "Fire_Puff":
    type: item
@@ -1010,7 +875,6 @@
    display name: "<&9>Fire Puff"
    lore:
    - <green>Use<&co> Fire Resistance II <&lb>30 Min CD<&rb>
-   no_id: true
    
 "Joeys_Incinerating_Charge":
    type: item
@@ -1018,7 +882,6 @@
    display name: "<&9>Joeys Incinerating Charge"
    lore:
    - <green>Use<&co> BOOM!
-   no_id: true
    
 "Digmaster_5000":
    type: item
@@ -1026,7 +889,6 @@
    display name: "<&9>Digmaster 5000"
    lore:
    - <green>Use<&co> Dig! <&lb>2 Min CD<&rb>
-   no_id: true
    
 # Digmaster Effect
 "DigmasterPROC":
@@ -1101,7 +963,6 @@
    enchantments:
    - damage_all:4
    - durability:2
-   no_id: true
    
 "Blue_Harbinger":
    type: item
@@ -1112,7 +973,6 @@
    enchantments:
    - damage_undead:5
    - durability:3
-   no_id: true
       
 # [Overworld Loot]
 "Pain":
@@ -1124,7 +984,6 @@
    enchantments:
    - damage_all:5
    - durability:5
-   no_id: true
    
 "Anguish":
    type: item
@@ -1136,7 +995,6 @@
    enchantments:
    - damage_all:5
    - durability:5
-   no_id: true
    
 "Redwood_Recurve_Bow":
    type: item
@@ -1147,7 +1005,6 @@
    enchantments:
    - arrow_damage:2
    - durability:3
-   no_id: true
    
 "Ashwood_Recurve_Bow":
    type: item
@@ -1158,7 +1015,6 @@
    enchantments:
    - arrow_damage:2
    - durability:2
-   no_id: true
 
 # ========================================================
 # Epic Tier Items - Purple Tag
@@ -1170,11 +1026,9 @@
    display name: "<&5>Nightblade"
    lore:
    - <white>A weapon only rumored of existing.
-   - <white>Yet<&cm> here it is.
    enchantments:
    - damage_all:4
    - durability:3
-   no_id: true
    
 "Willsapper":
    type: item
@@ -1185,7 +1039,6 @@
    enchantments:
    - damage_all:4
    - durability:3
-   no_id: true
    
 # Willsapper Snare Effect
 "willsapSnare":
@@ -1209,7 +1062,6 @@
    - <green>Use<&co> <red>Levitate
    enchantments:
    - durability:3
-   no_id: true
    
 "Eyepatch_of_Plunder":
    type: item
@@ -1219,7 +1071,6 @@
    - <green>Use<&co> <red>Haste
    enchantments:
    - durability:3
-   no_id: true
 
 # Eyepatch of Plunder Effect
 "patchyPlunder":
@@ -1264,7 +1115,6 @@
    enchantments:
    - arrow_damage:5
    - durability:5
-   no_id: true
    
 "Flamecaller":
    type: item
@@ -1275,7 +1125,6 @@
    enchantments:
    - arrow_damage:3
    - arrow_fire:2
-   no_id: true
    
 "Rune_of_Healing":
    type: item
@@ -1283,7 +1132,6 @@
    display name: "<&5>Rune of Healing"
    lore:
    - <green>Use<&co> Heal <&lb>5 Min CD<&rb>
-   no_id: true
 
 # Healing Rune Effect
 "healyRune":
@@ -1309,7 +1157,6 @@
    enchantments:
    - protection_fall:5
    - durability:10
-   no_id: true
  
 # JBoots Effect
 "Bootstrutter Blessing":
@@ -1332,7 +1179,6 @@
    enchantments:
    - damage_all:7
    - durability:5
-   no_id: true
    
 "Bucket_of_Saturation":
    type: item
@@ -1342,7 +1188,6 @@
    - <green>Use<&co> Saturate
    enchantments:
    - durability:1
-   no_id: true
    
 "Shapeshifters_Rod":
    type: item
@@ -1352,7 +1197,6 @@
    - <green>Use<&co> Guise of the Hunter
    enchantments:
    - knockback:1
-   no_id: true
    
 # [Plane of Earth Loot]
 "Fabled_Journeyman_Boots":
@@ -1364,7 +1208,6 @@
    enchantments:
    - protection_fall:7
    - durability:10
-   no_id: true
 
 "Fabled Bootstrutter Blessing":
    type: world
@@ -1384,7 +1227,6 @@
    - <green>Effect<&co> <red>Block <&lb>55%<&rb>
    enchantments:
    - durability:5
-   no_id: true
    
 "SOEarthEffect":
    type: world
@@ -1410,7 +1252,6 @@
    enchantments:
    - knockback:2
    - damage_all:1
-   no_id: true
 
 "wandofHakkarEffect":
    type: world
@@ -1432,7 +1273,6 @@
    enchantments:
    - durability:5
    - damage_all:3
-   no_id: true
    
 "fangofHakkarEffect":
    type: world
@@ -1453,7 +1293,6 @@
    - <green>Effect<&co> <red>Block <&lb>45%<&rb>
    enchantments:
    - durability:5
-   no_id: true
    
 "hakkarShieldWallEffect":
    type: world
@@ -1477,7 +1316,6 @@
    enchantments:
    - durability:5
    - damage_all:3
-   no_id: true
 
 "moistTowelEffect":
    type: world
@@ -1502,7 +1340,6 @@
    enchantments:
    - durability:5
    - damage_all:5
-   no_id: true
    
 "hakkarWhipEffect":
    type: world
@@ -1523,7 +1360,6 @@
    - <green>Use<&co> Heal <&lb>Consumes an Emerald when Cast<&rb>
    enchantments:
    - durability:1
-   no_id: true
 
 # Pendant of the Sun effect
 "pendantSunEffect":
@@ -1554,7 +1390,6 @@
    - dig_speed:2
    - loot_bonus_blocks:2
    - silk_touch:1
-   no_id: true
 
 "Amulet_of_Hate":
    type: item
@@ -1564,7 +1399,6 @@
    - <green>Use<&co> Strength IV <&lb>Consumes an Emerald when Cast<&rb>
    enchantments:
    - durability:1
-   no_id: true
 
 "amuletHateEffect":
    type: world
@@ -1588,7 +1422,6 @@
    - <green>Effect<&co> <red>Block <&lb>60%<&rb>
    enchantments:
    - durability:5
-   no_id: true
    
 "faceofdeathEffect":
    type: world
@@ -1611,7 +1444,6 @@
    - <green>Use<&co> Warp <&lb>1 Min CD<&rb>
    enchantments:
    - durability:1
-   no_id: true
 
 "balthazarOrbEffect":
    type: world
@@ -1636,7 +1468,6 @@
    enchantments:
    - arrow_damage:4
    - arrow_fire:1
-   no_id: true
    
 "skyfallEffect":
    type: world
@@ -1660,7 +1491,6 @@
    enchantments:
    - durability:5
    - damage_all:5
-   no_id: true
    
 "deathLashEffect":
    type: world
@@ -1684,7 +1514,6 @@
    - <green>Use<&co> <red>Double Experience <&lb>Lasts One Hour<&rb>
    enchantments:
    - durability:1
-   no_id: true
    
 # XP Potion effects
 "xppotion_2x_effect":
@@ -1706,7 +1535,6 @@
    - <green>Use<&co> <red>Triple Experience <&lb>Lasts One Hour<&rb>
    enchantments:
    - durability:1
-   no_id: true
    
 # XP Potion effects
 "xppotion_3x_effect":
@@ -1728,7 +1556,6 @@
    - <green>Use<&co> <red>Quadruple Experience <&lb>Lasts One Hour<&rb>
    enchantments:
    - durability:1
-   no_id: true
    
 # XP Potion effects
 "xppotion_4x_effect":
@@ -1754,7 +1581,6 @@
    enchantments:
    - damage_all:7
    - durability:10
-   no_id: true
 
 # Singing Sword Effect
 "SwordSing":
@@ -1779,7 +1605,6 @@
    enchantments:
    - durability:3
    - damage_all:5
-   no_id: true
    
 "Cloak_of_Invisibility":
    type: item
@@ -1789,7 +1614,6 @@
    - <green>Use<&co> <red>Invisibility
    enchantments:
    - durability:1
-   no_id: true
    
 # Cloak of Invisibility Use effect
 "inviscloak":
@@ -1811,7 +1635,6 @@
    enchantments:
    - damage_all:6
    - durability:10
-   no_id: true
    
 "Immortalius":
    type: item
@@ -1823,7 +1646,6 @@
    - durability:15
    - protection_environmental:10
    - protection_fire:10
-   no_id: true
 
 # ---------------------------------------------------------------------------
 
@@ -1836,7 +1658,6 @@
    - <yellow>The Left Bindings of a once powerful god.
    enchantments:
    - durability:1
-   no_id: true
    
 "TF_BindingRight":
    type: item
@@ -1846,7 +1667,6 @@
    - <yellow>The Right Bindings of a once powerful god.
    enchantments:
    - durability:1
-   no_id: true
 
 # Essences
 "EnderdragonOre":
@@ -1857,7 +1677,6 @@
    - <yellow>An ore stronger than any seen by mortals.
    enchantments:
    - durability:1
-   no_id: true
 
 # Bars
 "EnchantedEDORE":
@@ -1868,7 +1687,6 @@
    - <yellow>An bar stronger than any seen by mortals.
    enchantments:
    - durability:1
-   no_id: true
 
 # Thunderfury Item
 "Thunderfury":
@@ -1880,7 +1698,6 @@
    enchantments:
    - damage_all:12
    - durability:10
-   no_id: true
 
 # Thunderfury Effects
 # Knock all enemies in a 15 block radius up in the air 15 blocks
@@ -1896,7 +1713,6 @@
    - <yellow>A very large petrified leaf.
    enchantments:
    - durability:1
-   no_id: true
    
 # Components of Rhokdelar
 "BlessedStave":
@@ -1908,7 +1724,6 @@
    enchantments:
    - durability:10
    - damage_all:1
-   no_id: true
    
 "BlessedSinew":
    type: item
@@ -1918,7 +1733,6 @@
    - <yellow>An Enchanted String from a once powerful Black Dragon.
    enchantments:
    - durability:10
-   no_id: true
    
 "DemonEssence1":
    type: item
@@ -1928,7 +1742,6 @@
    - <yellow>A strong demon essence.
    enchantments:
    - durability:1
-   no_id: true
    
 "DemonEssence2":
    type: item
@@ -1938,7 +1751,6 @@
    - <yellow>A powerful demon essence.
    enchantments:
    - durability:1
-   no_id: true
    
 "DemonEssence3":
    type: item
@@ -1948,7 +1760,6 @@
    - <yellow>A shimmering demon essence.
    enchantments:
    - durability:1
-   no_id: true
 
 "DemonEssence4":
    type: item
@@ -1958,7 +1769,6 @@
    - <yellow>A fiery demon essence.
    enchantments:
    - durability:1
-   no_id: true
    
 # Stave Portion
 "Lokdelar":
@@ -1970,7 +1780,6 @@
    enchantments:
    - durability:10
    - damage_all:10
-   no_id: true
 
 # Bow Portion
 "Rhokdelar":
@@ -1984,7 +1793,6 @@
    - arrow_damage:10
    - arrow_infinite:1
    - arrow_knockback:2
-   no_id: true
    
 # RhokDelar Effects
 "rhokdelar_regen":
@@ -2012,7 +1820,6 @@
    display name: "<red>Firework Wand"
    lore:
    - <green>Effect<&co> <red>Launch Firework
-   no_id: true
 
 # Bopping Stick 3.0 - Given out at the Wednesday Avatar of Hakkar Launch Event
 "BoppingStick3":
@@ -2023,7 +1830,6 @@
    - <green>Effect<&co> <red>Bop <&lb>Use on a Player<&rb>!
    enchantments:
    - knockback:10
-   no_id: true
 
 # Nothing fancy, just some sounds and special graphic effects.   
 "bopping3Effect":
@@ -2047,7 +1853,6 @@
    - <green>Effect<&co> <red>Flame Lick <&lb>Use on a Player!<&rb>
    enchantments:
    - durability:1
-   no_id: true
 
 # Magma Wand Effect - show a ton of lava where the player was hit.
 "magmaWandEffect":
@@ -2070,7 +1875,6 @@
    - <green>Use<&co> Far Out! <&lb>5 Min CD<&rb>
    enchantments:
    - durability:1
-   no_id: true
 
 "shroomEffect":
    type: world

@@ -1857,19 +1857,46 @@
    - <yellow>An ore stronger than any seen by mortals.
    enchantments:
    - durability:1
- 
 
 # Bars
+"EnderdragonBar":
+   type: item
+   material: 49
+   display name: "<&6>Enderdragon Bar"
+   lore:
+   - <yellow>An block of refined Enderdragon Ore.
+   enchantments:
+   - durability:1
+   furnace_recipe: i@EnderdragonOre 
+
+
 "EnchantedEDORE":
    type: item
    material: 405
-   display name: "<&6>Enchanted Bar of Enderdragon Ore"
+   display name: "<&6>Enchanted Enderdragon Bar"
    lore:
-   - <yellow>An bar stronger than any seen by mortals.
+   - <yellow>A bar stronger than any seen by mortals.
    enchantments:
    - durability:1
+   recipe:
+   - i@Ender_Essence|i@Ender_Essence|i@Ender_Essence
+   - i@Ender_Temper|i@Ender_Temper|i@Ender_Temper
+   - i@EnderdragonBar|i@EnderdragonBar|i@EnderdragonBar 
  
-
+# Quest Item -> Turns into Thunderfury after speaking to windseeker.
+"WindKissedBlade":
+   type: item
+   material: 276
+   display name: "<&6>Dormant Wind Kissed Blade"
+   lore:
+   - <yellow>A powerful blade of legends.
+   - durability:1
+   recipe:
+   - i@EnchantedEDORE|i@EnchantedEDORE|i@EnchantedEDORE
+   - i@TF_BindingLeft|i@EnchantedEDORE|i@TF_BindingRight
+   - i@EnchantedEDORE|i@EnchantedEDORE|i@EnchantedEDORE 
+ 
+ 
 # Thunderfury Item
 "Thunderfury":
    type: item

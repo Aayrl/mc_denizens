@@ -55,7 +55,7 @@
      - trigger name:proximity toggle:true
      - execute as_server "npc sel <npc.id>"
      - execute as_server "npc controllable"
-     - execute as_server "npc speed 1"
+     - execute as_server "npc speed 4"
      
      on enter proximity:
      - playsound location:<npc.location> sound:wolf_growl

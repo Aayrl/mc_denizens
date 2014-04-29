@@ -1897,6 +1897,7 @@
      - i@EnchantedEDORE|i@EnchantedEDORE|i@EnchantedEDORE 
    lore:
    - <yellow>A powerful blade of legends.
+   enchantments:
    - durability:1
  
 # Thunderfury Item

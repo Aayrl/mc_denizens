@@ -19,6 +19,7 @@
    lore:
    - <green>Right Click<&co> Heals 2 damage.
    - <red>Cooldown<&co> 30 seconds.
+   no_id: true
    
 "potionHealingEffect1":
    type: world
@@ -43,6 +44,7 @@
    lore:
    - <green>Right Click<&co> Heals 4 damage.
    - <red>Cooldown<&co> 30 seconds.
+   no_id: true
    
 "potionHealingEffect2":
    type: world
@@ -67,6 +69,7 @@
    lore:
    - <green>Right Click<&co> Heals 6 damage.
    - <red>Cooldown<&co> 30 seconds.
+   no_id: true
    
 "potionHealingEffect3":
    type: world
@@ -91,6 +94,7 @@
    lore:
    - <green>Right Click<&co> Heals 8 damage.
    - <red>Cooldown<&co> 30 seconds.
+   no_id: true
    
 "potionHealingEffect4":
    type: world
@@ -115,6 +119,7 @@
    lore:
    - <green>Right Click<&co> Heals 10 damage.
    - <red>Cooldown<&co> 30 seconds.
+   no_id: true
    
 "potionHealingEffect5":
    type: world
@@ -139,6 +144,7 @@
    lore:
    - <green>Right Click<&co> Heals 12 damage.
    - <red>Cooldown<&co> 30 seconds.
+   no_id: true
    
 "potionHealingEffect6":
    type: world
@@ -163,6 +169,7 @@
    lore:
    - <green>Right Click<&co> Heals 14 damage.
    - <red>Cooldown<&co> 30 seconds.
+   no_id: true
    
 "potionHealingEffect7":
    type: world
@@ -187,6 +194,7 @@
    lore:
    - <green>Right Click<&co> Heals 16 damage.
    - <red>Cooldown<&co> 30 seconds.
+   no_id: true
    
 "potionHealingEffect8":
    type: world
@@ -211,6 +219,7 @@
    lore:
    - <green>Right Click<&co> Heals 18 damage.
    - <red>Cooldown<&co> 30 seconds.
+   no_id: true
    
 "potionHealingEffect9":
    type: world
@@ -235,6 +244,7 @@
    lore:
    - <green>Right Click<&co> Heals 20 damage.
    - <red>Cooldown<&co> 30 seconds.
+   no_id: true
    
 "potionHealingEffect10":
    type: world
@@ -263,6 +273,7 @@
    lore:
    - <green>Right Click<&co> Restores 2 saturation.
    - <red>Cooldown<&co> 30 seconds.
+   no_id: true
    
 "potionSaturationEffect1":
    type: world
@@ -287,6 +298,7 @@
    lore:
    - <green>Right Click<&co> Restores 4 saturation.
    - <red>Cooldown<&co> 30 seconds.
+   no_id: true
    
 "potionSaturationEffect2":
    type: world
@@ -311,6 +323,7 @@
    lore:
    - <green>Right Click<&co> Restores 6 saturation.
    - <red>Cooldown<&co> 30 seconds.
+   no_id: true
    
 "potionSaturationEffect3":
    type: world
@@ -335,6 +348,7 @@
    lore:
    - <green>Right Click<&co> Restores 8 saturation.
    - <red>Cooldown<&co> 30 seconds.
+   no_id: true
    
 "potionSaturationEffect4":
    type: world
@@ -359,6 +373,7 @@
    lore:
    - <green>Right Click<&co> Restores 10 saturation.
    - <red>Cooldown<&co> 30 seconds.
+   no_id: true
    
 "potionSaturationEffect5":
    type: world
@@ -383,6 +398,7 @@
    lore:
    - <green>Right Click<&co> Restores 12 saturation.
    - <red>Cooldown<&co> 30 seconds.
+   no_id: true
    
 "potionSaturationEffect6":
    type: world
@@ -407,6 +423,7 @@
    lore:
    - <green>Right Click<&co> Restores 14 saturation.
    - <red>Cooldown<&co> 30 seconds.
+   no_id: true
    
 "potionSaturationEffect7":
    type: world
@@ -431,6 +448,7 @@
    lore:
    - <green>Right Click<&co> Restores 16 saturation.
    - <red>Cooldown<&co> 30 seconds.
+   no_id: true
    
 "potionSaturationEffect8":
    type: world
@@ -455,6 +473,7 @@
    lore:
    - <green>Right Click<&co> Restores 18 saturation.
    - <red>Cooldown<&co> 30 seconds.
+   no_id: true
    
 "potionSaturationEffect9":
    type: world
@@ -479,6 +498,7 @@
    lore:
    - <green>Right Click<&co> Restores 20 saturation.
    - <red>Cooldown<&co> 30 seconds.
+   no_id: true
    
 "potionSaturationEffect10":
    type: world

@@ -18,6 +18,7 @@
    display name: "Rune of Alteration"
    lore:
    - <yellow>Used to craft powerful spells.
+   no_id: true
 
 "rune2":
    type: item
@@ -25,6 +26,7 @@
    display name: "Rune of Abjuration"
    lore:
    - <yellow>Used to craft powerful spells.
+   no_id: true
    
 "rune3":
    type: item
@@ -32,6 +34,7 @@
    display name: "Rune of Conjuration"
    lore:
    - <yellow>Used to craft powerful spells.
+   no_id: true
    
 "rune4":
    type: item
@@ -39,6 +42,7 @@
    display name: "Rune of Divination"
    lore:
    - <yellow>Used to craft powerful spells.
+   no_id: true
    
 "rune5":
    type: item
@@ -46,6 +50,7 @@
    display name: "Rune of Evocation"
    lore:
    - <yellow>Used to craft powerful spells.
+   no_id: true
    
 "rune6":
    type: item
@@ -53,6 +58,7 @@
    display name: "Rune of Flame"
    lore:
    - <yellow>Used to craft powerful spells.
+   no_id: true
    
 "rune7":
    type: item
@@ -60,6 +66,7 @@
    display name: "Rune of Air"
    lore:
    - <yellow>Used to craft powerful spells.
+   no_id: true
    
 "rune8":
    type: item
@@ -67,6 +74,7 @@
    display name: "Rune of Earth"
    lore:
    - <yellow>Used to craft powerful spells.
+   no_id: true
    
 "rune9":
    type: item
@@ -74,6 +82,7 @@
    display name: "Rune of Water"
    lore:
    - <yellow>Used to craft powerful spells.
+   no_id: true
    
 "rune10":
    type: item
@@ -81,6 +90,7 @@
    display name: "Rune of Ice"
    lore:
    - <yellow>Used to craft powerful spells.
+   no_id: true
    
 "rune11":
    type: item
@@ -88,6 +98,7 @@
    display name: "Rune of Power"
    lore:
    - <yellow>Used to craft powerful spells.
+   no_id: true
    
 "rune12":
    type: item
@@ -95,6 +106,7 @@
    display name: "Rune of Concentration"
    lore:
    - <yellow>Used to craft powerful spells.
+   no_id: true
 
 "words1":
    type: item
@@ -102,6 +114,7 @@
    display name: "Words of Agony"
    lore:
    - <yellow>Used to craft powerful spells.
+   no_id: true
    
 "words2":
    type: item
@@ -109,6 +122,7 @@
    display name: "Words of Power"
    lore:
    - <yellow>Used to craft powerful spells.
+   no_id: true
    
 "words3":
    type: item
@@ -116,6 +130,7 @@
    display name: "Words of Destruction"
    lore:
    - <yellow>Used to craft powerful spells.
+   no_id: true
    
 "words4":
    type: item
@@ -123,6 +138,7 @@
    display name: "Words of Doom"
    lore:
    - <yellow>Used to craft powerful spells.
+   no_id: true
    
 "words5":
    type: item
@@ -130,6 +146,7 @@
    display name: "Words of Bidding"
    lore:
    - <yellow>Used to craft powerful spells.
+   no_id: true
    
 "words6":
    type: item
@@ -137,6 +154,7 @@
    display name: "Words of Divination"
    lore:
    - <yellow>Used to craft powerful spells.
+   no_id: true
    
 "words7":
    type: item
@@ -144,6 +162,7 @@
    display name: "Words of Enchantment"
    lore:
    - <yellow>Used to craft powerful spells.
+   no_id: true
    
 "words8":
    type: item
@@ -151,6 +170,7 @@
    display name: "Words of Endurance"
    lore:
    - <yellow>Used to craft powerful spells.
+   no_id: true
    
 "words9":
    type: item
@@ -158,6 +178,7 @@
    display name: "Words of Lust"
    lore:
    - <yellow>Used to craft powerful spells.
+   no_id: true
    
 "words10":
    type: item
@@ -165,6 +186,7 @@
    display name: "Words of Rage"
    lore:
    - <yellow>Used to craft powerful spells.
+   no_id: true
    
 "words11":
    type: item
@@ -172,6 +194,7 @@
    display name: "Words of Harming"
    lore:
    - <yellow>Used to craft powerful spells.
+   no_id: true
    
 "words12":
    type: item
@@ -179,6 +202,7 @@
    display name: "Words of Time"
    lore:
    - <yellow>Used to craft powerful spells.
+   no_id: true
    
    
 # -----------------------------------
@@ -199,6 +223,7 @@
    - <&9>Costs 2 saturation to use cast.
    enchantments:
    - durability:1
+   no_id: true
    
 "spell1Effect":
    type: world
@@ -258,6 +283,7 @@
    - <&9>Costs 4 saturation to use cast.
    enchantments:
    - durability:1
+   no_id: true
    
 "spell2Effect":
    type: world
@@ -317,6 +343,7 @@
    - <&9>Costs 4 saturation to use cast.
    enchantments:
    - durability:1
+   no_id: true
    
 "spell3Effect":
    type: world
@@ -374,6 +401,7 @@
    - <&9>Costs 4 saturation to use cast.
    enchantments:
    - durability:1
+   no_id: true
    
 "spell4Effect":
    type: world
@@ -431,6 +459,7 @@
    - <&9>Costs 6 saturation to use cast.
    enchantments:
    - durability:1
+   no_id: true
    
 "spell5Effect":
    type: world

@@ -977,7 +977,7 @@
    
 "Ender_Essence":
    type: item
-   material: 263:1
+   material: 263
    display name: "<&9>Ender Essence"
    lore:
    - <yellow>The sphere pulses with energy.
@@ -1863,40 +1863,41 @@
    type: item
    material: 265
    display name: "<&6>Enderdragon Bar"
+   recipe:
+     - i@air|i@coal|i@air
+     - i@coal|i@EnderdragonOre|i@coal
+     - i@air|i@coal|i@air 
    lore:
    - <yellow>An block of refined Enderdragon Ore.
    enchantments:
    - durability:1
-   - i@air|i@coal|i@air
-   - i@coal|i@EnderdragonOre|i@coal
-   - i@air|i@coal|i@air 
+   
 
 "EnchantedEDORE":
    type: item
    material: 405
    display name: "<&6>Enchanted Enderdragon Bar"
+   recipe:
+     - i@Ender_Essence|i@Ender_Essence|i@Ender_Essence
+     - i@Ender_Temper|i@Ender_Temper|i@Ender_Temper
+     - i@EnderdragonBar|i@EnderdragonBar|i@EnderdragonBar 
    lore:
    - <yellow>A bar stronger than any seen by mortals.
    enchantments:
    - durability:1
-   recipe:
-   - i@Ender_Essence|i@Ender_Essence|i@Ender_Essence
-   - i@Ender_Temper|i@Ender_Temper|i@Ender_Temper
-   - i@EnderdragonBar|i@EnderdragonBar|i@EnderdragonBar 
  
 # Quest Item -> Turns into Thunderfury after speaking to windseeker.
 "WindKissedBlade":
    type: item
    material: 276
    display name: "<&6>Dormant Wind Kissed Blade"
+   recipe:
+     - i@EnchantedEDORE|i@EnchantedEDORE|i@EnchantedEDORE
+     - i@TF_BindingLeft|i@EnchantedEDORE|i@TF_BindingRight
+     - i@EnchantedEDORE|i@EnchantedEDORE|i@EnchantedEDORE 
    lore:
    - <yellow>A powerful blade of legends.
    - durability:1
-   recipe:
-   - i@EnchantedEDORE|i@EnchantedEDORE|i@EnchantedEDORE
-   - i@TF_BindingLeft|i@EnchantedEDORE|i@TF_BindingRight
-   - i@EnchantedEDORE|i@EnchantedEDORE|i@EnchantedEDORE 
- 
  
 # Thunderfury Item
 "Thunderfury":

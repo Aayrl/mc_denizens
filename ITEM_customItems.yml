@@ -30,6 +30,7 @@
    display name: "Rock"
    lore:
    - <white>It<&sq>s just a rock<&cm> Jim.
+   no_id: true
 
 "PetRock":
    type: item

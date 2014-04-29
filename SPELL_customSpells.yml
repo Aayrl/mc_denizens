@@ -658,7 +658,7 @@
          - if <context.entity.is_player> {
            - narrate targets:<context.entity> "<&9><player.name> shrinks you!" }
          - narrate "<&9>You shrink <context.entity.name>!"
-         - age <e@<context.entity>> baby
+         - age <context.entity> baby
          - feed -4
          - playeffect location:<context.entity.location> effect:witch_magic qty:500 offset:0.25
          - flag player "spell9 reuse:true" duration:10

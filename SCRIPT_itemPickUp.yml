@@ -10,9 +10,32 @@
   type: world
   events:
     on player drops item:
-    - if <context.item.display_name> != null narrate "<&2>You drop <context.item.display_name>."
-      else if <context.item.display_name> == null narrate "<&2>You drop <context.item.material.formatted>."
+    - if <player.flag[toggleLootMsg]> == "on" {
+      - if <context.item.display_name> != null narrate "<&2>You drop <context.item.display_name><&2>."
+        else if <context.item.display_name> == null narrate "<&2>You drop <context.item.material.formatted><&2>."
+      }
     on player picks up item:
-    - if <context.item.display_name> != null narrate "<&2>You loot <context.item.display_name>."
-      else if <context.item.display_name> == null narrate "<&2>You loot <context.item.material.formatted>."
+    - if <player.flag[toggleLootMsg]> == "on" {
+      - if <context.item.display_name> != null narrate "<&2>You loot <context.item.display_name><&2>."
+        else if <context.item.display_name> == null narrate "<&2>You loot <context.item.material.formatted><&2>."
+      }
+    on lootmsg command:
+    - if <context.args.get[1]> == on {
+      - flag player "toggleLootMsg:<context.args.get[1]>"
+      - narrate "<&6>You will now see loot messages in chat."
+      }
+    - if <context.args.get[1]> == off {
+      - flag player "toggleLootMsg:<context.args.get[1]>"
+      - narrate "<&6>You will no longer see loot messages in chat."
+      }
+    - if <context.args.get[1]> == null {
+      - if <player.flag[toggleLootMsg]> == "on" {
+        - flag player "toggleLootMsg:off"
+        - narrate "<&6>You will no longer see loot messages in chat."
+        }
+      - if <player.flag[toggleLootMsg]> == "off" {
+        - flag player "toggleLootMsg:on"
+        - narrate "<&6>You will now see loot messages in chat."
+        }
+      }
 

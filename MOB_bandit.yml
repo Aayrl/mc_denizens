@@ -15,7 +15,7 @@ bandit:
 
     # Stats
     bandit_str: 2
-    bandit_xp: 5
+    bandit_xp: 10
     bandit_health: 50
     bandit_respawn_delay: 60
 

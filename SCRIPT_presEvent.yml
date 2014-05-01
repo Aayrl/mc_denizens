@@ -1,19 +1,19 @@
-"pres_event_commands":
-    type: world
-    events:
-       on event1 command:
-          - announce "<aqua><player.name> warped to the first event location!"
-          - teleport <player> "29,79,285,world"
-          - playeffect location:<player.location> effect:portal qty:1000
-       on event2 command:
-          - announce "<aqua><player.name> warped to the second event location!"
-          - teleport <player> "42,63,499,world"
-          - playeffect location:<player.location> effect:portal qty:1000
-       on event3 command:
-          - announce "<aqua><player.name> warped to the third event location!"
-          - teleport <player> "107,57,17,world_the_end"
-          - playeffect location:<player.location> effect:portal qty:1000
-       on event4 command:
-          - announce "<yellow><player.name> warped to the fourth event location!"
-          - teleport <player> "253,255,794,world"
-          - playeffect location:<player.location> effect:portal qty:1000
+#"pres_event_commands":
+#    type: world
+#    events:
+#       on event1 command:
+#          - announce "<aqua><player.name> warped to the first event location!"
+#          - teleport <player> "29,79,285,world"
+#          - playeffect location:<player.location> effect:portal qty:1000
+#       on event2 command:
+#          - announce "<aqua><player.name> warped to the second event location!"
+#          - teleport <player> "42,63,499,world"
+#          - playeffect location:<player.location> effect:portal qty:1000
+#       on event3 command:
+#          - announce "<aqua><player.name> warped to the third event location!"
+#          - teleport <player> "107,57,17,world_the_end"
+#          - playeffect location:<player.location> effect:portal qty:1000
+#       on event4 command:
+#          - announce "<yellow><player.name> warped to the fourth event location!"
+#          - teleport <player> "253,255,794,world"
+#          - playeffect location:<player.location> effect:portal qty:1000

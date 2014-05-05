@@ -6,5 +6,5 @@
            - narrate "<red>You need to hold an item in your hand in order to use it!"
            }
          - if <player.item_in_hand.display> != null {
-           - narrate "<&9>You use your <player.item_in_hand.display>!"
+           - narrate "<&9>You use your <player.item_in_hand.display><&9>!"
            }

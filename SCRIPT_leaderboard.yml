@@ -39,19 +39,12 @@
     on leaderboard command:
     - narrate "<aqua>--- Leaderboard Rankings ---"
     on stats command:
-    - run s@LEADERBOARD_CalculatePlayerScore d:<player>
-    - narrate "<aqua>--- Your Leaderboard Statistics ---"
-    - narrate "<aqua>Total Score<&co> <player.flag[LBOARD_SCORE_TOTAL]>"
-    - narrate "<aqua>Monster Kills<&co> <player.flag[LBOARD_M]>"
-    - narrate "<aqua>Boss Kills<&co> <player.flag[LBOARD_B]>"
-    - narrate "<aqua>Player Kills<&co> <player.flag[LBOARD_PVP]>"
-    - narrate "<aqua>Quest Completes<&co> <player.flag[LBOARD_Q]>"
-    - narrate "<aqua>Block Breaks<&co> <player.flag[LBOARD_BLOCK]>"
-    - narrate "<aqua>-----------------------------------"
+    - run s@LEADERBOARD_CalculatePlayerScore_Narrate d:<player>
+    - narrate "<yellow>Calculating your Leaderboard Stats..."
     
 # Leaderboard Calculate Player Score
 # Calculates a given player's score.
-"LEADERBOARD_CalculatePlayerScore":
+"LEADERBOARD_CalculatePlayerScore_Narrate":
   type: procedure
   definitions: playerObj
   script:
@@ -61,6 +54,14 @@
   - define questScore <math.as_int:<%playerObj%.flag[LBOARD_Q]>*25>
   - define blockScore <math.as_int:<%playerObj%.flag[LBOARD_B]>*1>
   - flag %playerObj% "LBOARD_SCORE_TOTAL:<math.as_int:%monsterScore%+%bossScore%+%playerKillScore%+%questScore%+%blockScore%>"
+  - narrate "<aqua>--- Your Leaderboard Statistics ---"
+  - narrate "<aqua>Total Score<&co> <player.flag[LBOARD_SCORE_TOTAL]>"
+  - narrate "<aqua>Monster Kills<&co> <player.flag[LBOARD_M]>"
+  - narrate "<aqua>Boss Kills<&co> <player.flag[LBOARD_B]>"
+  - narrate "<aqua>Player Kills<&co> <player.flag[LBOARD_PVP]>"
+  - narrate "<aqua>Quest Completes<&co> <player.flag[LBOARD_Q]>"
+  - narrate "<aqua>Block Breaks<&co> <player.flag[LBOARD_BLOCK]>"
+  - narrate "<aqua>--------------------------------"
     
 # Leaderboard PvP Event
 # Flag Players when other players are slain.

@@ -211,6 +211,10 @@ inv_vendor_generic:
       
       on exit proximity:
       - narrate "<white><npc.name> says<&cm> <&sq>Thanks<&cm> come again soon!<&sq>
+      
+      on damage:
+      - narrate "<white><npc.name> says<&cm> <&sq>Ouch!<&sq>
+      - narrate "<white><npc.name> says<&cm> <&sq>Guards<&cm> Guards! Strike down this fool!<&sq>
 
 'vendorGenericScript':
     type: interact

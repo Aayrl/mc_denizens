@@ -52,7 +52,7 @@
   - define bossScore <math.as_int:<%playerObj%.flag[LBOARD_B]>*100>
   - define playerKillScore <math.as_int:<%playerObj%.flag[LBOARD_PVP]>*10>
   - define questScore <math.as_int:<%playerObj%.flag[LBOARD_Q]>*25>
-  - define blockScore <math.as_int:<%playerObj%.flag[LBOARD_B]>*1>
+  - define blockScore <math.as_int:<%playerObj%.flag[LBOARD_BLOCK]>*1>
   - flag %playerObj% "LBOARD_SCORE_TOTAL:<math.as_int:%monsterScore%+%bossScore%+%playerKillScore%+%questScore%+%blockScore%>"
   - narrate "<aqua>--- Your Leaderboard Statistics ---"
   - narrate "<aqua>Total Score<&co> <player.flag[LBOARD_SCORE_TOTAL]>"

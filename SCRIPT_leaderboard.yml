@@ -60,7 +60,7 @@
         }
       }
     - foreach <server.list_players.aslist> {
-      - narrate "<aqua><&lb><gold> <%value%.flag[LBOARD_RANK]>. <aqua><&rb><%value%.name><&co> <green><%value%.flag[LBOARD_SCORE_TOTAL]>"
+      - narrate "<aqua><&lb><gold><%value%.flag[LBOARD_RANK].as_int>.<aqua><&rb> <%value%.name> -- <green><%value%.flag[LBOARD_SCORE_TOTAL]>"
       }
     on stats command:
     - narrate "<aqua>--- Your Leaderboard Statistics ---"

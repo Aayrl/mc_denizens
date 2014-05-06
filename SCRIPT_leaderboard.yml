@@ -71,7 +71,7 @@
       - define name <%value%.name>
       - define online ""
       - if <%value%.is_online> define online "<green>"
-      - if <%value%.is_op> define online "<dark_purple>"
+      - if <%value%.is_op> && <%value%.is_online> define online "<dark_purple>"
       - if %score% > 0 narrate "<aqua><&lb><gold>%rank%.<aqua><&rb> %online% %name% <aqua>-- <green>%score%"
       }
         
@@ -90,7 +90,7 @@
       }
     - if <context.args.get[1]> != null {
       - define playerQuery <context.args.get[1]>
-      - if <server.list_players.aslist> !contains <p@%playerQuery> {
+      - if <server.list_players.aslist> !contains <p@%playerQuery%> {
         - narrate "<red>%playerQuery% has not played on this server or does not exist."
         - queue clear
         }

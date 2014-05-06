@@ -60,7 +60,7 @@
             - flag %currentPlayer% LBOARD_RANK:++
             }
           - if %checkScore% < %score% {
-            - flag %value% LBOARD_RANK:--
+            - flag %value% LBOARD_RANK:++
             }
           }
         }

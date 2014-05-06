@@ -278,7 +278,7 @@ inv_vendor_generic:
         - narrate "<yellow>You receive %creditAmt% credits for <context.item.display_name><yellow>." }
       - if <context.item.display_name> == null {
         - define creditAmt <proc[vendorDetermineCredits].context[%vendorItem%]>
-        - take "i@<context.item>"
+        - take slot:<context.slot> qty:1
         - define currentAmt <player.flag[CURRENCY_Credits]>
         - define newAmt <math.as_int:%currentAmt%+%creditAmt%>
         - flag <player> "CURRENCY_Credits:%newAmt%"
@@ -307,7 +307,7 @@ inv_vendor_generic:
         - narrate "<yellow>You receive %creditAmt% credits for <context.item.qty> <context.item.display_name><yellow>." }
       - if <context.item.display_name> == null {
         - define creditAmt <math.as_int:<proc[vendorDetermineCredits].context[%vendorItem%]>*<context.item.qty>>
-        - take "i@<context.item>" qty:<context.item.qty>
+        - take slot:<context.slot> qty:<context.item.qty>
         - define currentAmt <player.flag[CURRENCY_Credits]>
         - define newAmt <math.as_int:%currentAmt%+%creditAmt%>
         - flag <player> "CURRENCY_Credits:%newAmt%"

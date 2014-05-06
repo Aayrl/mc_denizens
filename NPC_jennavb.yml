@@ -115,6 +115,7 @@
                     - flag player PoE_DiplomacyInThurgadin:0
                     - flag player QUEST_TOTAL_COMPLETED_CNT:++
                     - flag <player> LBOARD_Q:++
+                    - flag <player> LBOARD_SCORE_TOTAL:<math.as_int:<<player>.flag[LBOARD_SCORE_TOTAL]>+25>
                     - flag player PoE_DiplomacyInThurgadin_DONE:1
                     - take 'item:quartz_block' qty:25
                     - wait 1

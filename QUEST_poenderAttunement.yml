@@ -110,6 +110,7 @@
                     - flag player POE_GatheringSupplies:0
                     - flag player QUEST_TOTAL_COMPLETED_CNT:++
                     - flag <player> LBOARD_Q:++
+                    - flag <player> LBOARD_SCORE_TOTAL:<math.as_int:<<player>.flag[LBOARD_SCORE_TOTAL]>+25>
                     - flag player POEnderAttune_STEP1DONE:1
                     - take 'item:coal' qty:20
                     - wait 1
@@ -220,6 +221,7 @@ PoEnder_CoalDone:
                     - flag player POE_CraftingSupplies:0
                     - flag player QUEST_TOTAL_COMPLETED_CNT:++
                     - flag <player> LBOARD_Q:++
+                    - flag <player> LBOARD_SCORE_TOTAL:<math.as_int:<<player>.flag[LBOARD_SCORE_TOTAL]>+25>
                     - flag player POEnderAttune_STEP2DONE:1
                     - announce "<aqua><player.name> has completed step 2 of 5 of the <&5>Attunement to Enderland<aqua> questline!"
 
@@ -371,6 +373,7 @@ PoEnder_ArmorProg4:
                     - flag player POE_KillingForJustice:0
                     - flag player QUEST_TOTAL_COMPLETED_CNT:++
                     - flag <player> LBOARD_Q:++
+                    - flag <player> LBOARD_SCORE_TOTAL:<math.as_int:<<player>.flag[LBOARD_SCORE_TOTAL]>+25>
                     - flag player POEnderAttune_STEP3DONE:1
                     - announce "<aqua><player.name> has completed step 3 of 5 of the <&5>Attunement to Enderland<aqua> questline!"
 
@@ -525,6 +528,7 @@ PoEnder_CreeperKillDone:
                     - flag player POE_Diplomacy:0
                     - flag player QUEST_TOTAL_COMPLETED_CNT:++
                     - flag <player> LBOARD_Q:++
+                    - flag <player> LBOARD_SCORE_TOTAL:<math.as_int:<<player>.flag[LBOARD_SCORE_TOTAL]>+25>
                     - flag player POEnderAttune_STEP4DONE:1
                     - announce "<aqua><player.name> has completed step 4 of 5 of the <&5>Attunement to Enderland<aqua> questline!"
 
@@ -606,6 +610,7 @@ PoEnder_CreeperKillDone:
                     - flag player POE_AvatarOfHakkarDie:0
                     - flag player QUEST_TOTAL_COMPLETED_CNT:++
                     - flag <player> LBOARD_Q:++
+                    - flag <player> LBOARD_SCORE_TOTAL:<math.as_int:<<player>.flag[LBOARD_SCORE_TOTAL]>+25>
                     - flag player POEnderAttune_STEP5DONE:1
                     - announce "<aqua><player.name> has completed the final step of the <&4>Attunement to Enderland<aqua> questline!"
                     - announce "<aqua><player.name> is now attuned to the <&4>Plane of Ender<aqua>!"

@@ -39,11 +39,18 @@
     on leaderboard command:
     - narrate "<aqua>--- Leaderboard Rankings ---"
     on stats command:
-    - run s@LEADERBOARD_CalculatePlayerScore_Narrate d:<player>
-    - narrate "<yellow>Calculating your Leaderboard Stats..."
+    - narrate "<aqua>--- Your Leaderboard Statistics ---"
+    - narrate "<aqua>Total Score<&co> <player.flag[LBOARD_SCORE_TOTAL]>"
+    - narrate "<aqua>Monster Kills<&co> <player.flag[LBOARD_M]>"
+    - narrate "<aqua>Boss Kills<&co> <player.flag[LBOARD_B]>"
+    - narrate "<aqua>Player Kills<&co> <player.flag[LBOARD_PVP]>"
+    - narrate "<aqua>Quest Completes<&co> <player.flag[LBOARD_Q]>"
+    - narrate "<aqua>Block Breaks<&co> <player.flag[LBOARD_BLOCK]>"
+    - narrate "<aqua>--------------------------------"
     
 # Leaderboard Calculate Player Score
 # Calculates a given player's score.
+#- run s@LEADERBOARD_CalculatePlayerScore_Narrate d:<player>
 "LEADERBOARD_CalculatePlayerScore_Narrate":
   type: procedure
   definitions: playerObj
@@ -54,14 +61,7 @@
   - define questScore <math.as_int:<%playerObj%.flag[LBOARD_Q]>*25>
   - define blockScore <math.as_int:<%playerObj%.flag[LBOARD_BLOCK]>*1>
   - flag %playerObj% "LBOARD_SCORE_TOTAL:<math.as_int:%monsterScore%+%bossScore%+%playerKillScore%+%questScore%+%blockScore%>"
-  - narrate "<aqua>--- Your Leaderboard Statistics ---"
-  - narrate "<aqua>Total Score<&co> <player.flag[LBOARD_SCORE_TOTAL]>"
-  - narrate "<aqua>Monster Kills<&co> <player.flag[LBOARD_M]>"
-  - narrate "<aqua>Boss Kills<&co> <player.flag[LBOARD_B]>"
-  - narrate "<aqua>Player Kills<&co> <player.flag[LBOARD_PVP]>"
-  - narrate "<aqua>Quest Completes<&co> <player.flag[LBOARD_Q]>"
-  - narrate "<aqua>Block Breaks<&co> <player.flag[LBOARD_BLOCK]>"
-  - narrate "<aqua>--------------------------------"
+  
     
 # Leaderboard PvP Event
 # Flag Players when other players are slain.
@@ -72,10 +72,12 @@
     on player death:
     - if <context.damager.is_player> {
       - flag <context.damager> LBOARD_PVP:++
+      - flag <context.damager> LBOARD_SCORE_TOTAL:<math.as_int:<<context.damager>.flag[LBOARD_SCORE_TOTAL]>+10>
       }
     on entity death:
     - if !<entity.is_player> {
       - flag <context.damager> LBOARD_M:++
+      - flag <context.damager> LBOARD_SCORE_TOTAL:<math.as_int:<<context.damager>.flag[LBOARD_SCORE_TOTAL]>+5>
       }
 
 # Leaderboard Block Break Event
@@ -85,3 +87,4 @@
   events:
     on player breaks block:
     - flag <player> LBOARD_BLOCK:++
+    - flag <player> LBOARD_SCORE_TOTAL:++

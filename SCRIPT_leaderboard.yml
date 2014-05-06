@@ -22,6 +22,8 @@
     on player join:
     - if <player.flag[LBOARD_SCORE_TOTAL]> == "null" {
       - flag player "LBOARD_SCORE_TOTAL:0" }
+    - if <player.flag[LBOARD_RANK]> == "null" {
+      - flag player "LBOARD_RANK:0" }
     - if <player.flag[LBOARD_M]> == "null" {
       - flag player "LBOARD_M:0" }
     - if <player.flag[LBOARD_B]> == "null" {
@@ -42,16 +44,13 @@
   type: world
   events:
     on leaderboard command:
-    - flag server LEADERBOARD_RANKS:!
+    - narrate "<aqua>--- Leaderboard Rankings ---"
     - foreach <server.list_players.aslist> {
+      - if <player.flag[LBOARD_RANK]> == "null" flag %value% "LBOARD_RANK:0" 
       - if <%value%.flag[LBOARD_SCORE_TOTAL]> == "null" define score 0
       - if <%value%.flag[LBOARD_SCORE_TOTAL]> != "null" define score <%value%.flag[LBOARD_SCORE_TOTAL]>
-      - flag server LEADERBOARD_RANKS:->:"%value%,%score%"
+      - narrate "<&lp>1.<&rp>%value% <&co>%score%"
       }
-    - foreach <server.flag[LEADERBOARD_RANKS]> {
-      - narrate "%value%"
-      }
-    - narrate "<aqua>--- Leaderboard Rankings ---"
     on stats command:
     - narrate "<aqua>--- Your Leaderboard Statistics ---"
     - narrate "<aqua>Total Score<&co> <player.flag[LBOARD_SCORE_TOTAL]>"

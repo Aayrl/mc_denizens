@@ -271,7 +271,7 @@ inv_vendor_generic:
           - narrate "<yellow>You may not sell <context.item.display_name><yellow> to a vendor."
           - queue clear
           }
-        - take "i@<context.item>"
+        - take slot:<context.slot> qty:1
         - define currentAmt <player.flag[CURRENCY_Credits]>
         - define newAmt <math.as_int:%currentAmt%+%creditAmt%>
         - flag <player> "CURRENCY_Credits:%newAmt%"
@@ -300,7 +300,7 @@ inv_vendor_generic:
           - narrate "<yellow>You may not sell <context.item.display_name><yellow> to a vendor."
           - queue clear
           }
-        - take "i@<context.item>" qty:<context.item.qty>
+        - take slot:<context.slot> qty:<context.item.qty>
         - define currentAmt <player.flag[CURRENCY_Credits]>
         - define newAmt <math.as_int:%currentAmt%+%creditAmt%>
         - flag <player> "CURRENCY_Credits:%newAmt%"

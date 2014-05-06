@@ -33,6 +33,7 @@
                     - chat "10 Fish for fish."
                     - listen item type:fish item:fish qty:1 script:FishGetProgress 
                     - flag player FishCount:0
+                    - flag player FishForWill:1
                     - narrate '<yellow>You have accepted the task "Fish for Will".'
                     - zap 'step:Fish Quest IP'
 
@@ -48,6 +49,7 @@
             click trigger:
                 script:
                     - chat "FISHHHH!"
+                    - flag player FishForWill:0
                     - give 388 QTY:2
                     - give XP QTY:750
                     - narrate "<yellow>You received <aqua>Emerald<yellow>x2!"

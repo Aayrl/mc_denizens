@@ -33,6 +33,7 @@
                     - chat "Good Luck, <player.name>!"
                     - listen kill type:entity name:Zombie qty:1 script:ZombieKillProgress 
                     - flag player ZombieCount:0
+                    - flag player KillZombieQuest:1
                     - narrate '<yellow>You have accepted the task "Kill Zombies".'
                     - zap 'step:Zombie Quest IP'
 
@@ -48,6 +49,7 @@
             click trigger:
                 script:
                     - chat "Ugh. About time. Here, I have no use for these. You may have them."
+                    - flag player KillZombieQuest:0
                     - give 388 QTY:1
                     - give XP QTY:250
                     - narrate "<yellow>You received an <aqua>Emerald<yellow>!"

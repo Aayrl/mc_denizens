@@ -33,6 +33,7 @@
                     - chat "I'd appreciate it if you'd kill 10 Spiders for me."
                     - listen kill type:entity name:Spider qty:1 script:SpiderKillProgress 
                     - flag player SpiderCount:0
+                    - flag player KillSpidersQuest:1
                     - narrate '<yellow>You have accepted the task "Kill Spiders".'
                     - zap 'step:Spider Quest IP'
 
@@ -48,6 +49,7 @@
             click trigger:
                 script:
                     - chat "Thank you so much! Here, take this as a reward!"
+                    - flag player KillSpidersQuest:0
                     - give 388 QTY:1
                     - give XP QTY:250
                     - narrate "<yellow>You received an <aqua>Emerald<yellow>!"

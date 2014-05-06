@@ -99,6 +99,7 @@
                     - chat 'I would like you to craft me 25 Quartz Blocks. If you bring me these blocks<&cm> I shall send some of my guards to assist you.'
                     - listen item type:craft item:quartz_block qty:1 script:PoEnder_DipThurg_QuartzProg 
                     - flag player PoEnder_DipThurg_Quartz:0
+                    - flag player PoE_DiplomacyInThurgadin:1
                     - narrate '<yellow>You have accepted the task "POE<&co> Diplomacy in Thurgadin".'
                     - zap 'step:jennavb_craft_poender5'
         'jennavb_craft_poender5':
@@ -111,6 +112,7 @@
             click trigger:
                 script:
                     - chat "Hello again<&cm> <player.name>. I see you have crafted 25 Quartz Blocks like I asked. May I have them?"
+                    - flag player PoE_DiplomacyInThurgadin:0
                     - take 'item:quartz_block' qty:25
                     - wait 1
                     - chat "I have sent some guards to Lord Aayrl<&cm> <player.name>. Please send him my best wishes in his quest."

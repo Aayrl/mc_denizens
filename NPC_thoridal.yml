@@ -82,6 +82,7 @@
                     - chat 'I would like you to smelt 25 Gold Ingots. They are required for the blessing rituals. If you bring me these ingots<&cm> I shall enchant your army and their equipment.'
                     - listen item type:smelt item:gold_ingot qty:1 script:PoEnder_DipKeleth_GoldProg 
                     - flag player PoEnder_DipKeleth_Gold:0
+                    - flag player PoE_DiplomacyInKelethin:1
                     - narrate '<yellow>You have accepted the task "POE<&co> Diplomacy in Kelethin".'
                     - zap 'step:Thoridal_craft_poender5'
         'Thoridal_craft_poender5':
@@ -94,6 +95,7 @@
             click trigger:
                 script:
                     - chat "Ahh<&cm> <player.name>. I see you have 25 Gold Ingots. I will send these along to my enchanters."
+                    - flag player PoE_DiplomacyInKelethin:0
                     - take 'item:gold_ingot' qty:25
                     - wait 1
                     - chat "Go and speak with Lord Aayrl<&cm> <player.name>. Good luck on your quest<&cm> you will need it."

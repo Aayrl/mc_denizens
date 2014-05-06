@@ -1,0 +1,36 @@
+# -----------------------------------
+# Quest Log Command
+# @author: Tyler J. Sawyer
+# @version: 1.0
+# Last Updated: 10:37 on May 06, 2014 (Tuesday)
+# -----------------------------------
+# 
+# This command displays all active quests and their current progress statements.
+# You will need to update this as you add more quests to the server.
+#
+
+"questLogCommand":
+    type: world
+    events:
+       on questlog command:
+       - narrate "<aqua>---- Active Quests ----"
+       - if <player.flag[KillSkeletonsQuest]> == "1" narrate "<yellow>Kill Skeletons<&co> <player.flag[SkeletonCount].asint>/10 Skeletons slain."
+       - if <player.flag[KillSpidersQuest]> == "1" narrate "<yellow>Kill Spiders<&co> <player.flag[SpiderCount].asint>/10 Spiders slain."
+       - if <player.flag[KillZombieQuest]> == "1" narrate "<yellow>Kill Zombies<&co> <player.flag[ZombieCount].asint>/10 Zombies slain."
+       - if <player.flag[FishForWill]> == "1" narrate "<yellow>Fish for Will<&co> <player.flag[FishCount].asint>/10 Fish caught."
+       - if <player.flag[POE_GatheringSupplies]> == "1" narrate "<yellow>PoEnder<&co> Gathering Supplies<&co> <player.flag[PoEnder_Cobble].asint>/64 Cobblestone obtained."
+       - if <player.flag[POE_GatheringSupplies]> == "1" narrate "<yellow>PoEnder<&co> Gathering Supplies<&co> <player.flag[PoEnder_Coal].asint>/20 Coal obtained."
+       - if <player.flag[POE_CraftingSupplies]> == "1" narrate "<yellow>PoEnder<&co> Crafting Supplies<&co> <player.flag[PoEnder_IronSword].asint>/4 Iron Swords crafted."
+       - if <player.flag[POE_CraftingSupplies]> == "1" narrate "<yellow>PoEnder<&co> Crafting Supplies<&co> <player.flag[PoEnder_ArmorStep].asint>/4 Iron Armor Pieces crafted."
+       - if <player.flag[POE_KillingForJustice]> == "1" narrate "<yellow>PoEnder<&co> Killing for Justice<&co> <player.flag[PoEnder_SkeletonKill].asint>/10 Skeletons slain."
+       - if <player.flag[POE_KillingForJustice]> == "1" narrate "<yellow>PoEnder<&co> Killing for Justice<&co> <player.flag[PoEnder_ZombieKill].asint>/10 Zombies slain."
+       - if <player.flag[POE_KillingForJustice]> == "1" narrate "<yellow>PoEnder<&co> Killing for Justice<&co> <player.flag[PoEnder_SpiderKill].asint>/10 Spiders slain."
+       - if <player.flag[POE_KillingForJustice]> == "1" narrate "<yellow>PoEnder<&co> Killing for Justice<&co> <player.flag[PoEnder_CreeperKill].asint>/10 Creepers slain."
+       - if <player.flag[POE_Diplomacy]> == "1" narrate "<yellow>PoEnder<&co> Diplomacy<&co> Diplomacy in Thurgadin<&co> <player.flag[PoEnder_DiplomacyThurgadin].asint>/1."
+       - if <player.flag[POE_Diplomacy]> == "1" narrate "<yellow>PoEnder<&co> Diplomacy<&co> Diplomacy in Kelethin<&co> <player.flag[PoEnder_DiplomacyKelethin].asint>/1."
+       - if <player.flag[PoE_DiplomacyInThurgadin]> == "1" narrate "<yellow>PoEnder<&co> Diplomacy in Thurgadin<&co> <player.flag[PoEnder_DipThurg_Quartz].asint>/25 Quartz Blocks crafted."
+       - if <player.flag[PoE_DiplomacyInKelethin]> == "1" narrate "<yellow>PoEnder<&co> Diplomacy in Kelethin<&co> <player.flag[PoEnder_DipKeleth_Gold].asint>/25 Gold Bars smelted."
+       - if <player.flag[POE_AvatarOfHakkarDie]> == "1" narrate "<yellow>PoEnder<&co> Avatar of Hakkar Must Die!<&co> Avatar of Hakkar Slain <&co> <player.flag[PoEnder_AvatarHakkarKilled].asint>/1."
+       - narrate "<aqua>---- End of Quest Log ----"
+       
+

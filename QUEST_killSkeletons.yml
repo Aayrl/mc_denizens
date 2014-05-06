@@ -33,6 +33,7 @@
                     - chat "Go kill 10 Skeletons and speak with me when you are finished."
                     - listen kill type:entity name:Skeleton qty:1 script:SkeletonKillProgress 
                     - flag player SkeletonCount:0
+                    - flag player KillSkeletonsQuest:1
                     - narrate '<yellow>You have accepted the task "Kill Skeletons".'
                     - zap 'step:Skeleton Quest IP'
 
@@ -48,6 +49,7 @@
             click trigger:
                 script:
                     - chat "Thank you so much! Here, take this as a reward!"
+                    - flag player KillSkeletonsQuest:0
                     - give 388 QTY:1
                     - give XP QTY:250
                     - narrate "<yellow>You received an <aqua>Emerald<yellow>!"

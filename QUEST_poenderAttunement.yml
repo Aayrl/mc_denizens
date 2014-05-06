@@ -77,6 +77,7 @@
                     - chat 'Start by gathering 64 Cobblestone and deliver them to me.'
                     - listen block type:collect block:4 qty:1 script:PoEnder_CobbleProg 
                     - flag player PoEnder_Cobble:0
+                    - flag player POE_GatheringSupplies:1
                     - narrate '<yellow>You have accepted the task "POE<&co> Gathering Supplies".'
                     - zap 'step:poend_gather2'
         'poend_gather2':
@@ -106,6 +107,7 @@
             click trigger:
                 script:
                     - chat "Ah<&cm> I see you have returned<&cm> <player.name>. Do you have the 20 Coal? Let me see."
+                    - flag player POE_GatheringSupplies:0
                     - take 'item:coal' qty:20
                     - wait 1
                     - chat "Good Work<&cm> <player.name>. It seems you are ready for my next task. Are you ready to <&lb><red>craft<green><&rb> some items?"    
@@ -179,6 +181,7 @@ PoEnder_CoalDone:
                     - chat 'Start by crafting 4 Iron Swords. Bring me the swords when you are finished.'
                     - listen item type:craft item:iron_sword qty:1 script:PoEnder_IronSwordProg 
                     - flag player PoEnder_IronSword:0
+                    - flag player POE_CraftingSupplies:1
                     - narrate '<yellow>You have accepted the task "POE<&co> Crafting Supplies".'
                     - zap 'step:poend_craft2'
         'poend_craft2':
@@ -211,6 +214,7 @@ PoEnder_CoalDone:
                     - wait 1
                     - chat "I think you are ready<&cm> <player.name>. It is time for you to <&lb><red>train<green><&rb> your blade."    
                     - flag player "POEnderAttune:Step3"
+                    - flag player POE_CraftingSupplies:1
                     - announce "<aqua><player.name> has completed step 2 of 5 of the <&5>Attunement to Enderland<aqua> questline!"
 
 
@@ -294,6 +298,7 @@ PoEnder_ArmorProg4:
                     - chat 'Start by slaying 10 Skeletons. Speak with me when you are finished for the next task.'
                     - listen kill type:entity name:Skeleton qty:1 script:PoEnder_SkeletonKillProg 
                     - flag player PoEnder_SkeletonKill:0
+                    - flag player POE_KillingForJustice:1
                     - narrate '<yellow>You have accepted the task "POE<&co> Killing For Justice".'
                     - zap 'step:poend_kill2'
         'poend_kill2':
@@ -357,6 +362,7 @@ PoEnder_ArmorProg4:
                     - wait 1
                     - chat "Are you ready to speak to some of our allies<&cm> <player.name>? It is time for you to demonstrate your <&lb><red>diplomacy<green><&rb> skills."    
                     - flag player "POEnderAttune:Step4"
+                    - flag player POE_KillingForJustice:0
                     - announce "<aqua><player.name> has completed step 3 of 5 of the <&5>Attunement to Enderland<aqua> questline!"
 
 
@@ -480,6 +486,7 @@ PoEnder_CreeperKillDone:
                     - chat 'I eagerly await your return<&cm> <player.name>. Please meet any demands they set forth for you. We cannot fail!'
                     - flag player "PoEnder_DiplomacyThurgadin:0"
                     - flag player "PoEnder_DiplomacyKelethin:0"
+                    - flag player POE_Diplomacy:1
                     - narrate '<yellow>You have accepted the task "POE<&co> Diplomacy".'
                     - zap 'step:StartDiplomacyPOEnd4'
         'StartDiplomacyPOEnd4':
@@ -506,6 +513,7 @@ PoEnder_CreeperKillDone:
                     script: 
                     - chat 'This is terrific news<&cm> <player.name>! However<&cm> there is a more dangeous <&lb><red>foe<green><&rb> we need to deal with..'
                     - flag player "POEnderAttune:Step5"
+                    - flag player POE_Diplomacy:0
                     - announce "<aqua><player.name> has completed step 4 of 5 of the <&5>Attunement to Enderland<aqua> questline!"
 
 # STAGE 5 (FINAL) OF ATTUNEMENT : AVATAR OF HAKKAR
@@ -550,6 +558,7 @@ PoEnder_CreeperKillDone:
                     - wait 1
                     - chat 'Return with his head as proof of the deed.'
                     - flag player "PoEnder_AvatarHakkarKilled:0"
+                    - flag player POE_AvatarOfHakkarDie:1
                     - narrate '<yellow>You have accepted the task "POE<&co> Avatar of Hakkar Must Die!".'
                     - zap 'step:POEndKillAOHakkar4'
         'POEndKillAoHakkar4':
@@ -582,6 +591,7 @@ PoEnder_CreeperKillDone:
                     script: 
                     - chat 'You truly are a hero among men<&cm> <player.name> It is time for us to ender the <&4>Plane of Ender<green>!'
                     - flag player "POEnderAttune:ATTUNED"
+                    - flag player POE_AvatarOfHakkarDie:0
                     - announce "<aqua><player.name> has completed the final step of the <&4>Attunement to Enderland<aqua> questline!"
                     - announce "<aqua><player.name> is now attuned to the <&4>Plane of Ender<aqua>!"
                     - wait 1

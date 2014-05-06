@@ -29,7 +29,7 @@
     - if <player.flag[FishforWill_COMPLETED_CNT]> == "null" {
       - flag player "FishforWill_COMPLETED_CNT:0" }
     # Flags for people who have completed POEnder attunement
-    - if <player.flag[POEnderAttune]> == "ATTUNED" {
+    - if <player.flag[POEnderAttune]> == "ATTUNED" && <player.flag[QUEST_TOTAL_COMPLETED_CNT]> == "null" {
       - flag player "POEnderAttune_STEP5DONE:1"
       - flag player "POEnderAttune_STEP4DONE:1"
       - flag player PoE_DiplomacyInThurgadin_DONE:1
@@ -40,7 +40,7 @@
       - flag player "QUEST_TOTAL_COMPLETED_CNT:7"
       - flag <player> LBOARD_Q:7
       }
-    - if <player.flag[POEnderAttune]> == "Step5" {
+    - if <player.flag[POEnderAttune]> == "Step5" && <player.flag[QUEST_TOTAL_COMPLETED_CNT]> == "null" {
       - flag player "POEnderAttune_STEP4DONE:1"
       - flag player PoE_DiplomacyInThurgadin_DONE:1
       - flag player PoE_DiplomacyInKelethin_DONE:1
@@ -50,20 +50,20 @@
       - flag player "QUEST_TOTAL_COMPLETED_CNT:6"
       - flag <player> LBOARD_Q:6
       }
-    - if <player.flag[POEnderAttune]> == "Step4" {
+    - if <player.flag[POEnderAttune]> == "Step4" && <player.flag[QUEST_TOTAL_COMPLETED_CNT]> == "null" {
       - flag player "POEnderAttune_STEP3DONE:1"
       - flag player "POEnderAttune_STEP2DONE:1"
       - flag player "POEnderAttune_STEP1DONE:1" 
       - flag player "QUEST_TOTAL_COMPLETED_CNT:3"
       - flag <player> LBOARD_Q:3
       }
-    - if <player.flag[POEnderAttune]> == "Step3" {
+    - if <player.flag[POEnderAttune]> == "Step3" && <player.flag[QUEST_TOTAL_COMPLETED_CNT]> == "null" {
       - flag player "POEnderAttune_STEP2DONE:1"
       - flag player "POEnderAttune_STEP1DONE:1" 
       - flag player "QUEST_TOTAL_COMPLETED_CNT:2"
       - flag <player> LBOARD_Q:2
       }
-    - if <player.flag[POEnderAttune]> == "Step2" {
+    - if <player.flag[POEnderAttune]> == "Step2" && <player.flag[QUEST_TOTAL_COMPLETED_CNT]> == "null" {
       - flag player "POEnderAttune_STEP1DONE:1" 
       - flag player "QUEST_TOTAL_COMPLETED_CNT:1"
       - flag <player> LBOARD_Q:1

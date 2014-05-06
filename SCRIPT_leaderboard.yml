@@ -76,15 +76,35 @@
       }
         
     on stats command:
-    - narrate "<aqua>--- Your Leaderboard Statistics ---"
-    - narrate "<aqua>Total Score<&co> <player.flag[LBOARD_SCORE_TOTAL]>"
-    - narrate "<aqua>Monster Kills<&co> <player.flag[LBOARD_M]>"
-    - narrate "<aqua>Boss Kills<&co> <player.flag[LBOARD_B]>"
-    - narrate "<aqua>Player Kills<&co> <player.flag[LBOARD_PVP]>"
-    - narrate "<aqua>Quest Completes<&co> <player.flag[LBOARD_Q]>"
-    - narrate "<aqua>Block Breaks<&co> <player.flag[LBOARD_BLOCK]>"
-    - narrate "<aqua>Blocks Placed<&co> <player.flag[LBOARD_BUILD]>"
-    - narrate "<aqua>--------------------------------"
+    - if <context.args.get[1]> == null {
+      - narrate "<aqua>--- Your Leaderboard Statistics ---"
+      - narrate "<gold>Your Rank<&co> <player.flag[LBOARD_RANK]>"
+      - narrate "<aqua>Total Score<&co> <green><player.flag[LBOARD_SCORE_TOTAL]>"
+      - narrate "<aqua>Monster Kills<&co> <green><player.flag[LBOARD_M]>"
+      - narrate "<aqua>Boss Kills<&co> <green><player.flag[LBOARD_B]>"
+      - narrate "<aqua>Player Kills<&co> <green><player.flag[LBOARD_PVP]>"
+      - narrate "<aqua>Quest Completes<&co> <green><player.flag[LBOARD_Q]>"
+      - narrate "<aqua>Block Breaks<&co> <green><player.flag[LBOARD_BLOCK]>"
+      - narrate "<aqua>Blocks Placed<&co> <green><player.flag[LBOARD_BUILD]>"
+      - narrate "<aqua>--------------------------------"
+      }
+    - if <context.args.get[1]> != null {
+      - define playerQuery <context.args.get[1]>
+      - if <server.list_players.aslist> !contains %playerQuery% {
+        - narrate "<red>%playerQuery% has not played on this server or does not exist."
+        - queue clear
+        }
+      - narrate "<aqua>--- %playerQuery%<&sq>s Leaderboard Statistics ---"
+      - narrate "<gold>%playerQuery%<&sq>s Rank<&co> <<p@%playerQuery%>.flag[LBOARD_RANK]>"
+      - narrate "<aqua>Total Score<&co> <green><<p@%playerQuery%>.flag[LBOARD_SCORE_TOTAL]>"
+      - narrate "<aqua>Monster Kills<&co> <green><<p@%playerQuery%>.flag[LBOARD_M]>"
+      - narrate "<aqua>Boss Kills<&co> <green><<p@%playerQuery%>.flag[LBOARD_B]>"
+      - narrate "<aqua>Player Kills<&co> <green><<p@%playerQuery%>.flag[LBOARD_PVP]>"
+      - narrate "<aqua>Quest Completes<&co> <green><<p@%playerQuery%>.flag[LBOARD_Q]>"
+      - narrate "<aqua>Block Breaks<&co> <green><<p@%playerQuery%>.flag[LBOARD_BLOCK]>"
+      - narrate "<aqua>Blocks Placed<&co> <green><<p@%playerQuery%>.flag[LBOARD_BUILD]>"
+      - narrate "<aqua>--------------------------------"
+      }
     on statsupdate command:
     - narrate "<red>Updating your Leaderboard Score...Please Wait..."
     - run s@LEADERBOARD_CalculatePlayerScore_Narrate d:<player>

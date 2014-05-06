@@ -20,6 +20,8 @@
   type: world
   events:
     on player join:
+    - if <player.flag[LBOARD_SCORE_TOTAL]> == "null" {
+      - flag player "LBOARD_SCORE_TOTAL:0" }
     - if <player.flag[LBOARD_M]> == "null" {
       - flag player "LBOARD_M:0" }
     - if <player.flag[LBOARD_B]> == "null" {

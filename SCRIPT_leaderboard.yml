@@ -45,7 +45,6 @@
   events:
     on leaderboard command:
     - flag server LEADERBOARD_PLAYERS:!
-    - flag server LEADERBOARD_RANKED_PLAYERS:!
     - narrate "<aqua>--- Leaderboard Rankings ---"
     - foreach <server.list_players.aslist> {
       - define currentPlayer %value%
@@ -66,24 +65,16 @@
           }
         }
       }
-    - define repeatRank 0
-    - repeat {
-      - if <server.flag[LEADERBOARD_PLAYERS].aslist.size> == 0 repeat stop
-      - if <server.flag[LEADERBOARD_PLAYERS].aslist.size> > 0 {
-        - foreach <server.flag[LEADERBOARD_PLAYERS].aslist> {
-          - if <%value%.flag[LBOARD_RANK].as_int> == %repeatRank% {
-            - flag server LEADERBOARD_RANKED_PLAYERS:->:%value%
-            - define repeatRank <math.as_int:%repeatRank%+1>
-            }
-          }
-        }
-    - foreach <server.flag[LEADERBOARD_RANKED_PLAYERS].aslist> {
+    - foreach <server.flag[LEADERBOARD_PLAYERS].aslist> {
       - define rank <%value%.flag[LBOARD_RANK].as_int>
       - define score <%value%.flag[LBOARD_SCORE_TOTAL].as_int>
       - define name <%value%.name>
-      - if %score% > 0 narrate "<aqua><&lb><gold>%rank.<aqua><&rb> %name% -- <green>%score%"
+      - define online ""
+      - if <%value%.is_online> define online "<green>"
+      - if <%value%.is_op> define online "<dark_purple>"
+      - if %score% > 0 narrate "<aqua><&lb><gold>%rank.<aqua><&rb> %online%%name% <aqua>-- <green>%score%"
       }
-     
+        
     on stats command:
     - narrate "<aqua>--- Your Leaderboard Statistics ---"
     - narrate "<aqua>Total Score<&co> <player.flag[LBOARD_SCORE_TOTAL]>"

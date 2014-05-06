@@ -40,6 +40,9 @@
   type: world
   events:
     on leaderboard command:
+    - foreach <server.list_players> as player {
+      - narrate "Player: %player%"
+      }
     - narrate "<aqua>--- Leaderboard Rankings ---"
     on stats command:
     - narrate "<aqua>--- Your Leaderboard Statistics ---"

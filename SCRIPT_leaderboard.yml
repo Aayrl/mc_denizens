@@ -47,14 +47,15 @@
     - narrate "<aqua>--- Leaderboard Rankings ---"
     - foreach <server.list_players.aslist> {
       - define currentPlayer %value%
-      - if <server.flag[LEADERBOARD_PLAYERS].aslist> contains %currentPlayer% queue clear
-      - flag server LEADERBOARD_PLAYERS:->:%currentPlayer%
-      - flag %currentPlayer% "LBOARD_RANK:1"
-      - if <%currentPlayer%.flag[LBOARD_SCORE_TOTAL]> == "null" define score 0
-      - if <%currentPlayer%.flag[LBOARD_SCORE_TOTAL]> != "null" define score <%currentPlayer%.flag[LBOARD_SCORE_TOTAL]>
-      - foreach <server.list_players.aslist> {
-        - if <%value%.flag[LBOARD_SCORE_TOTAL]> > %score% {
-          - flag %currentPlayer% LBOARD_RANK:++
+      - if <server.flag[LEADERBOARD_PLAYERS].aslist> !contains %currentPlayer% {
+        - flag server LEADERBOARD_PLAYERS:->:%currentPlayer%
+        - flag %currentPlayer% "LBOARD_RANK:1"
+        - if <%currentPlayer%.flag[LBOARD_SCORE_TOTAL]> == "null" define score 0
+        - if <%currentPlayer%.flag[LBOARD_SCORE_TOTAL]> != "null" define score <%currentPlayer%.flag[LBOARD_SCORE_TOTAL]>
+        - foreach <server.list_players.aslist> {
+          - if <%value%.flag[LBOARD_SCORE_TOTAL]> > %score% {
+            - flag %currentPlayer% LBOARD_RANK:++
+            }
           }
         }
       }
@@ -71,6 +72,10 @@
     - narrate "<aqua>Block Breaks<&co> <player.flag[LBOARD_BLOCK]>"
     - narrate "<aqua>Blocks Placed<&co> <player.flag[LBOARD_BUILD]>"
     - narrate "<aqua>--------------------------------"
+    on statsupdate command:
+    - narrate "<red>Updating your Leaderboard Score...Please Wait..."
+    - run s@LEADERBOARD_CalculatePlayerScore_Narrate d:<player>
+    
     
 # Leaderboard Calculate Player Score
 # Calculates a given player's score.
@@ -86,6 +91,7 @@
   - define blockScore <%playerObj%.flag[LBOARD_BLOCK]>
   - define buildScore <%playerObj%.flag[LBOARD_BUILD]>
   - flag %playerObj% "LBOARD_SCORE_TOTAL:<math.as_int:%monsterScore%+%bossScore%+%playerKillScore%+%questScore%+%blockScore%+%buildScore%>"
+  - narrate targets:%playerObj% "<red>Your scores have been updated."
   
     
 # Leaderboard PvP Event
@@ -100,7 +106,7 @@
       - flag <context.damager> LBOARD_SCORE_TOTAL:<math.as_int:<<context.damager>.flag[LBOARD_SCORE_TOTAL]>+10>
       }
     on entity death:
-    - if !<entity.is_player> {
+    - if <context.damager.is_player> {
       - flag <context.damager> LBOARD_M:++
       - flag <context.damager> LBOARD_SCORE_TOTAL:<math.as_int:<<context.damager>.flag[LBOARD_SCORE_TOTAL]>+5>
       }

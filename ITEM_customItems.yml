@@ -1765,41 +1765,9 @@
          - narrate "<&9>Your sword begins to vibrate..."
          - cast increase_damage duration:20 power:2
          - cast fast_digging duration:20 power:2
-         - run s@SingingSwordGFX as:<player>
+         - playeffect location:<player.location> effect:note qty:15 data:1
          - narrate "<&9>The song ends."
-         }
-         
-"SingingSwordGFX":
-   type: task
-   script:
-   - playeffect location:<player.location> effect:note qty:15 data:1
-   - narrate targets:<player> "<&9>The song continues."
-   - wait 2.0
-   - playeffect location:<player.location> effect:note qty:15 data:1
-   - narrate targets:<player> "<&9>The song continues."
-   - wait 2.0
-   - playeffect location:<player.location> effect:note qty:15 data:1
-   - narrate targets:<player> "<&9>The song continues."
-   - wait 2.0
-   - playeffect location:<player.location> effect:note qty:15 data:1
-   - narrate targets:<player> "<&9>The song continues."
-   - wait 2.0
-   - playeffect location:<player.location> effect:note qty:15 data:1
-   - narrate targets:<player> "<&9>The song continues."
-   - wait 2.0
-   - playeffect location:<player.location> effect:note qty:15 data:1
-   - narrate targets:<player> "<&9>The song continues."
-   - wait 2.0
-   - playeffect location:<player.location> effect:note qty:15 data:1
-   - narrate targets:<player> "<&9>The song continues."
-   - wait 2.0
-   - playeffect location:<player.location> effect:note qty:15 data:1
-   - narrate targets:<player> "<&9>The song continues."
-   - wait 2.0
-   - playeffect location:<player.location> effect:note qty:15 data:1
-   - narrate targets:<player> "<&9>The song continues."
-   - wait 2.0
-   }   
+         }   
 
 # [Plane of Ender Loot]
 "Hammer_of_the_Gods":

@@ -9,7 +9,7 @@
 "TIER1_Flamemail_Helm":
    type: item
    material: 306
-   display name: "<&9>Flameforged Helm"
+   display name: "<&5>Flameforged Helm"
    recipe:
      - i@Blaze_Temper|i@Blaze_Temper|i@Blaze_Temper
      - i@Flame_Ingot|i@Shattered_Flamemail_Helm|i@Flame_Ingot
@@ -20,7 +20,7 @@
    - <yellow>the Plane of Fire.
    - <dark_purple>Tier 1 Armor Set Piece
    - <dark_purple>Set Bonus (4/4)<&co>
-   - <red>Rage of the Firelands
+   - <red><&co><&co><&co>Rage of the Firelands
    enchantments:
    - durability:4
    - protection_fire:6
@@ -29,7 +29,7 @@
 "TIER1_Flamemail_Chestpiece":
    type: item
    material: 307
-   display name: "<&9>Flameforged Chestpiece"
+   display name: "<&5>Flameforged Chestpiece"
    recipe:
      - i@Blaze_Temper|i@Blaze_Temper|i@Blaze_Temper
      - i@Flame_Ingot|i@Shattered_Flamemail_Chestpiece|i@Flame_Ingot
@@ -40,7 +40,7 @@
    - <yellow>the Plane of Fire.
    - <dark_purple>Tier 1 Armor Set Piece
    - <dark_purple>Set Bonus (4/4)<&co>
-   - <red>Rage of the Firelands
+   - <red><&co><&co><&co>Rage of the Firelands
    enchantments:
    - durability:6
    - protection_environmental:6
@@ -49,7 +49,7 @@
 "TIER1_Flamemail_Kilt":
    type: item
    material: 308
-   display name: "<&9>Flameforged Kilt"
+   display name: "<&5>Flameforged Kilt"
    recipe:
      - i@Blaze_Temper|i@Blaze_Temper|i@Blaze_Temper
      - i@Flame_Ingot|i@Shattered_Flamemail_Kilt|i@Flame_Ingot
@@ -60,7 +60,7 @@
    - <yellow>the Plane of Fire.
    - <dark_purple>Tier 1 Armor Set Piece
    - <dark_purple>Set Bonus (4/4)<&co>
-   - <red>Rage of the Firelands
+   - <red><&co><&co><&co>Rage of the Firelands
    enchantments:
    - durability:6
    - protection_projectile:6
@@ -68,7 +68,7 @@
 "TIER1_Flamemail_Boots":
    type: item
    material: 309
-   display name: "<&9>Flameforged Boots"
+   display name: "<&5>Flameforged Boots"
    recipe:
      - i@Blaze_Temper|i@Blaze_Temper|i@Blaze_Temper
      - i@Flame_Ingot|i@Shattered_Flamemail_Boots|i@Flame_Ingot
@@ -79,7 +79,7 @@
    - <yellow>the Plane of Fire.
    - <dark_purple>Tier 1 Armor Set Piece
    - <dark_purple>Set Bonus (4/4)<&co>
-   - <red>Rage of the Firelands
+   - <red><&co><&co><&co>Rage of the Firelands
    enchantments:
    - durability:6
    - protection_fall:6

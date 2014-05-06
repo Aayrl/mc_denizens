@@ -1,0 +1,85 @@
+# -----------------------------------
+# Tier 2 Armor Set
+# @author: Tyler J. Sawyer
+# @version: 1.0
+# Last Updated: 17:13 on May 06, 2014 (Tuesday)
+# -----------------------------------
+# Made from components from the Plane of Ender
+
+"TIER2_Enderplate_Helm":
+   type: item
+   material: 310
+   display name: "<&5>Dragonforged Helm"
+   recipe:
+     - i@Ender_Temper|i@Ender_Temper|i@Ender_Temper
+     - i@Enderplate_Block|i@Runed_Enderplate_Helm|i@Enderplate_Block
+     - i@air|i@Enderplate_Block|i@air
+   lore:
+   - <yellow>A legendary piece of armor
+   - <yellow>forged by the essence of
+   - <yellow>the Plane of Ender itself.
+   - <dark_purple>Tier @ Armor Set Piece
+   - <dark_purple>Set Bonus (4/4)<&co>
+   - <red><&co><&co><&co>Endersiphon
+   enchantments:
+   - durability:8
+   - protection_fire:8
+   - oxygen:5
+ 
+"TIER2_Enderplate_Chestpiece":
+   type: item
+   material: 311
+   display name: "<&5>Dragonforged Chestpiece"
+   recipe:
+     - i@Ender_Temper|i@Ender_Temper|i@Ender_Temper
+     - i@Enderplate_Block|i@Runed_Enderplate_Chestpiece|i@Enderplate_Block
+     - i@Enderplate_Block|i@Enderplate_Block|i@Enderplate_Block
+   lore:
+   - <yellow>A legendary piece of armor
+   - <yellow>forged by the essence of
+   - <yellow>the Plane of Ender itself.
+   - <dark_purple>Tier @ Armor Set Piece
+   - <dark_purple>Set Bonus (4/4)<&co>
+   - <red><&co><&co><&co>Endersiphon
+   enchantments:
+   - durability:8
+   - protection_environmental:8
+   - thorns:4
+ 
+"TIER2_Enderplate_Kilt":
+   type: item
+   material: 312
+   display name: "<&5>Dragonforged Kilt"
+   recipe:
+     - i@Ender_Temper|i@Ender_Temper|i@Ender_Temper
+     - i@Enderplate_Block|i@Runed_Enderplate_Leggings|i@Enderplate_Block
+     - i@Enderplate_Block|i@air|i@Enderplate_Block
+   lore:
+   - <yellow>A legendary piece of armor
+   - <yellow>forged by the essence of
+   - <yellow>the Plane of Ender itself.
+   - <dark_purple>Tier @ Armor Set Piece
+   - <dark_purple>Set Bonus (4/4)<&co>
+   - <red><&co><&co><&co>Endersiphon
+   enchantments:
+   - durability:8
+   - protection_projectile:8
+  
+"TIER2_Enderplate_Boots":
+   type: item
+   material: 313
+   display name: "<&5>Dragonforged Boots"
+   recipe:
+     - i@Ender_Temper|i@Ender_Temper|i@Ender_Temper
+     - i@Enderplate_Block|i@Runed_Enderplate_Boots|i@Enderplate_Block
+     - i@air|i@air|i@air
+   lore:
+   - <yellow>A legendary piece of armor
+   - <yellow>forged by the essence of
+   - <yellow>the Plane of Ender itself.
+   - <dark_purple>Tier @ Armor Set Piece
+   - <dark_purple>Set Bonus (4/4)<&co>
+   - <red><&co><&co><&co>Endersiphon
+   enchantments:
+   - durability:8
+   - protection_fall:8

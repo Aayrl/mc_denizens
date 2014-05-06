@@ -666,6 +666,10 @@
    type: item
    material: 265
    display name: "<green>Enderplate Block"
+   recipe:
+     - i@air|i@Enderplate_Rings|i@air
+     - i@Enderplate_Rings|i@air|i@Enderplate_Rings
+     - i@air|i@Enderplate_Rings|i@air
    lore:
    - <yellow>Perhaps this can be repurposed?
  

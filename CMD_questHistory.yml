@@ -10,7 +10,7 @@
 # total number of quests completed.
 #
 
-"questLogCommand":
+"questHistoryCommand":
     type: world
     events:
        on questhistory command:

@@ -28,3 +28,38 @@
       - flag player "KillZombiesQuest_COMPLETED_CNT:0" }
     - if <player.flag[FishforWill_COMPLETED_CNT]> == "null" {
       - flag player "FishforWill_COMPLETED_CNT:0" }
+    # Flags for people who have completed POEnder attunement
+    - if <player.flag[POEnderAttune]> == "ATTUNED" {
+      - flag player "POEnderAttune_STEP5DONE:1"
+      - flag player "POEnderAttune_STEP4DONE:1"
+      - flag player PoE_DiplomacyInThurgadin_DONE:1
+      - flag player PoE_DiplomacyInKelethin_DONE:1
+      - flag player "POEnderAttune_STEP3DONE:1"
+      - flag player "POEnderAttune_STEP2DONE:1"
+      - flag player "POEnderAttune_STEP1DONE:1" 
+      - flag player "QUEST_TOTAL_COMPLETED_CNT:7"
+      }
+    - if <player.flag[POEnderAttune]> == "Step5" {
+      - flag player "POEnderAttune_STEP4DONE:1"
+      - flag player PoE_DiplomacyInThurgadin_DONE:1
+      - flag player PoE_DiplomacyInKelethin_DONE:1
+      - flag player "POEnderAttune_STEP3DONE:1"
+      - flag player "POEnderAttune_STEP2DONE:1"
+      - flag player "POEnderAttune_STEP1DONE:1" 
+      - flag player "QUEST_TOTAL_COMPLETED_CNT:6"
+      }
+    - if <player.flag[POEnderAttune]> == "Step4" {
+      - flag player "POEnderAttune_STEP3DONE:1"
+      - flag player "POEnderAttune_STEP2DONE:1"
+      - flag player "POEnderAttune_STEP1DONE:1" 
+      - flag player "QUEST_TOTAL_COMPLETED_CNT:3"
+      }
+    - if <player.flag[POEnderAttune]> == "Step3" {
+      - flag player "POEnderAttune_STEP2DONE:1"
+      - flag player "POEnderAttune_STEP1DONE:1" 
+      - flag player "QUEST_TOTAL_COMPLETED_CNT:2"
+      }
+    - if <player.flag[POEnderAttune]> == "Step2" {
+      - flag player "POEnderAttune_STEP1DONE:1" 
+      - flag player "QUEST_TOTAL_COMPLETED_CNT:1"
+      }

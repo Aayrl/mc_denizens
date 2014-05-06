@@ -51,6 +51,7 @@
                     - chat "Thank you so much! Here, take this as a reward!"
                     - flag player KillSpidersQuest:0
                     - flag player QUEST_TOTAL_COMPLETED_CNT:++
+                    - flag <player> LBOARD_Q:++
                     - flag player KillSpidersQuest_COMPLETED_CNT:++
                     - give 388 QTY:1
                     - give XP QTY:250

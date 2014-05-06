@@ -114,6 +114,7 @@
                     - chat "Hello again<&cm> <player.name>. I see you have crafted 25 Quartz Blocks like I asked. May I have them?"
                     - flag player PoE_DiplomacyInThurgadin:0
                     - flag player QUEST_TOTAL_COMPLETED_CNT:++
+                    - flag <player> LBOARD_Q:++
                     - flag player PoE_DiplomacyInThurgadin_DONE:1
                     - take 'item:quartz_block' qty:25
                     - wait 1

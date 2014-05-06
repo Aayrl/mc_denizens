@@ -1,0 +1,86 @@
+# -----------------------------------
+# Leaderboard
+# @author: Tyler J. Sawyer
+# @version: 1.0
+# Last Updated: 14:04 on May 06, 2014 (Tuesday)
+# -----------------------------------
+# This script tracks players progress throughout the game
+# and generates a 'score' based on their progress.
+# 
+# Players earn a score in each of the following categories:
+# - 5 points per monster kill
+# - 100 points per boss kill
+# - 25 points per quest complete
+# - 10 points per pvp kill
+# - 1 point per block break
+
+# If the player has no scores, initialize all of them to 0.
+"initLBoardScores_PerPlayer":
+  type: world
+  events:
+    on player join:
+    - if <player.flag[LBOARD_M]> == "null" {
+      - flag player "LBOARD_M:0" }
+    - if <player.flag[LBOARD_B]> == "null" {
+      - flag player "LBOARD_B:0" }
+    - if <player.flag[LBOARD_Q]> == "null" {
+      - flag player "LBOARD_Q:0" }
+    - if <player.flag[LBOARD_PVP]> == "null" {
+      - flag player "LBOARD_PVP:0" }
+    - if <player.flag[LBOARD_BLOCK]> == "null" {
+      - flag player "LBOARD_BLOCK:0" }
+      
+# Leaderboard Commands
+# Check total leaderboard rankings
+# TO DO: Allow players to type /stats <player> to see other player stats.
+"LEADERBOARD_ServerRanks":
+  type: world
+  events:
+    on leaderboard command:
+    - narrate "<aqua>--- Leaderboard Rankings ---"
+    on stats command:
+    - run s@LEADERBOARD_CalculatePlayerScore d:<player>
+    - narrate "<aqua>--- Your Leaderboard Statistics ---"
+    - narrate "<aqua>Total Score<&co> <player.flag[LBOARD_SCORE_TOTAL]>"
+    - narrate "<aqua>Monster Kills<&co> <player.flag[LBOARD_M]>"
+    - narrate "<aqua>Boss Kills<&co> <player.flag[LBOARD_B]>"
+    - narrate "<aqua>Player Kills<&co> <player.flag[LBOARD_PVP]>"
+    - narrate "<aqua>Quest Completes<&co> <player.flag[LBOARD_Q]>"
+    - narrate "<aqua>Block Breaks<&co> <player.flag[LBOARD_BLOCK]>"
+    - narrate "<aqua>-----------------------------------"
+    
+# Leaderboard Calculate Player Score
+# Calculates a given player's score.
+"LEADERBOARD_CalculatePlayerScore":
+  type: procedure
+  definitions: playerObj
+  script:
+  - define monsterScore <math.as_int:<%playerObj%.flag[LBOARD_M]>*5>
+  - define bossScore <math.as_int:<%playerObj%.flag[LBOARD_B]>*100>
+  - define playerKillScore <math.as_int:<%playerObj%.flag[LBOARD_PVP]>*10>
+  - define questScore <math.as_int:<%playerObj%.flag[LBOARD_Q]>*25>
+  - define blockScore <math.as_int:<%playerObj%.flag[LBOARD_B]>*1>
+  - flag %playerObj% LBOARD_SCORE_TOTAL:<math.as_int:%monsterScore%+%bossScore%+%playerKillScore%+%questScore%+%blockScore%
+    
+# Leaderboard PvP Event
+# Flag Players when other players are slain.
+# Flag players when mobs are slain.
+"LEADERBOARD_KILLCREDIT":
+  type: world
+  events:
+    on player death:
+    - if <context.damager.is_player> {
+      - flag <context.damager> LBOARD_PVP:++
+      }
+    on entity death:
+    - if !<entity.is_player> {
+      - flag <context.damager> LBOARD_M:++
+      }
+
+# Leaderboard Block Break Event
+# Flag Players when they break a block.
+"LEADERBOARD_BLOCKCREDIT":
+  type: world
+  events:
+    on player breaks block:
+    - flag <player> LBOARD_BLOCK:++

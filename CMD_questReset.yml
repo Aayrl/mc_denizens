@@ -38,6 +38,7 @@
       - flag player "POEnderAttune_STEP2DONE:1"
       - flag player "POEnderAttune_STEP1DONE:1" 
       - flag player "QUEST_TOTAL_COMPLETED_CNT:7"
+      - flag <player> LBOARD_Q:7
       }
     - if <player.flag[POEnderAttune]> == "Step5" {
       - flag player "POEnderAttune_STEP4DONE:1"
@@ -47,19 +48,23 @@
       - flag player "POEnderAttune_STEP2DONE:1"
       - flag player "POEnderAttune_STEP1DONE:1" 
       - flag player "QUEST_TOTAL_COMPLETED_CNT:6"
+      - flag <player> LBOARD_Q:6
       }
     - if <player.flag[POEnderAttune]> == "Step4" {
       - flag player "POEnderAttune_STEP3DONE:1"
       - flag player "POEnderAttune_STEP2DONE:1"
       - flag player "POEnderAttune_STEP1DONE:1" 
       - flag player "QUEST_TOTAL_COMPLETED_CNT:3"
+      - flag <player> LBOARD_Q:3
       }
     - if <player.flag[POEnderAttune]> == "Step3" {
       - flag player "POEnderAttune_STEP2DONE:1"
       - flag player "POEnderAttune_STEP1DONE:1" 
       - flag player "QUEST_TOTAL_COMPLETED_CNT:2"
+      - flag <player> LBOARD_Q:2
       }
     - if <player.flag[POEnderAttune]> == "Step2" {
       - flag player "POEnderAttune_STEP1DONE:1" 
       - flag player "QUEST_TOTAL_COMPLETED_CNT:1"
+      - flag <player> LBOARD_Q:1
       }

@@ -32,34 +32,36 @@
             - narrate "<gold>/fw <green>help<yellow> - Customize options for Firework Rods."
             - narrate "<gold>/home<yellow> - Teleports you to your home location."
             - narrate "<gold>/homecd<yellow> - Displays cooldown timer for your home command."
+            - narrate "<gold>/leaderboard<yellow> - Displays player rankings for the server."
             - narrate "<gold>/level<yellow> - Displays information about your current level and XP."
-            - narrate "<gold>/loc<yellow> - Displays your current location coordinates."
             }
           # /commands 3
           - if <context.args.get[1]> == 3 {
             - narrate "<yellow>--- CSCrew Commands [3/5] ---"
+            - narrate "<gold>/loc<yellow> - Displays your current location coordinates."
             - narrate "<gold>/locationall<yellow> - Announces your current location coordinates to the server."
             - narrate "<gold>/lootmsg <green>on/off<yellow> - Toggles loot messages in chat."
             - narrate "<gold>/lore<yellow> - Displays lore information of the item in your hand."
             - narrate "<gold>/mountHelp<yellow> - Teaches you how to use mounts."
             - narrate "<gold>/questhistory<yellow> - Shows all completed quests and counts."
             - narrate "<gold>/questlog<yellow> - Shows all in-progress quests and statistics."
-            - narrate "<gold>/questreset<yellow> - Resets all in-progress quests."
             }
           # /commands 4
           - if <context.args.get[1]> == 4 {
             - narrate "<yellow>--- CSCrew Commands [4/5] ---"
+            - narrate "<gold>/questreset<yellow> - Resets all in-progress quests."
             - narrate "<gold>/roll<yellow> - Rolls a die and generates a number between 1 and 100." 
             - narrate "<gold>/sethome<yellow> - Sets your home location to your current location."
             - narrate "<gold>/shout <green><&sq>message<&sq><yellow> - Shouts a message to all players."
             - narrate "<gold>/spawn<yellow> - Teleports you to the current world<&sq>s spawn."
+            - narrate "<gold>/stats <white>PlayerName<yellow> - Shows stats about the specified player."
             - narrate "<gold>/suicide<yellow> - Kills your character."
-            - narrate "<gold>/togglexp <green>on/off<yellow> - Toggles Experience Messages in chat."
-            - narrate "<gold>/use<yellow> - If an item has a 'Use' tag, this activates its power."
             }
           # /commands 5
           - if <context.args.get[1]> == 5 {
             - narrate "<yellow>--- CSCrew Commands [5/5] ---"
+            - narrate "<gold>/togglexp <green>on/off<yellow> - Toggles Experience Messages in chat."
+            - narrate "<gold>/use<yellow> - If an item has a 'Use' tag, this activates its power."
             - narrate "<gold>/vendorhelp<yellow> - Teaches you how to use vendors."
             - narrate "<gold>/who<yellow> - Displays information about all online players."
             }

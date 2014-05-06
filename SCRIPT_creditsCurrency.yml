@@ -261,6 +261,14 @@ inv_vendor_generic:
       - if <context.item.material.formatted> == nothing queue clear
       - if <context.item.scriptname> == null define vendorItem <context.item.id>
       - if <context.item.scriptname> != null define vendorItem <context.item.scriptname>
+      - if <context.item.material.name> == "potion" {
+        - narrate "<yellow>You may not sell potions to a vendor."
+        - queue clear
+        }
+      - if <context.item.material.name> == "enchanted_book" {
+        - narrate "<yellow>You may not sell enchanted books to a vendor."
+        - queue clear
+        }
       - if <context.item.display_name> != null {
         - define creditAmt <proc[vendorDetermineCredits].context[%vendorItem%]>
         - if %creditAmt% == 0 && <context.item.display_name.contains[<&5>]> {
@@ -291,6 +299,14 @@ inv_vendor_generic:
       - if <context.item.material.formatted> == nothing queue clear
       - if <context.item.scriptname> == null define vendorItem <context.item.id>
       - if <context.item.scriptname> != null define vendorItem <context.item.scriptname>
+      - if <context.item.material.name> == "potion" {
+        - narrate "<yellow>You may not sell potions to a vendor."
+        - queue clear
+        }
+      - if <context.item.material.name> == "enchanted_book" {
+        - narrate "<yellow>You may not sell enchanted books to a vendor."
+        - queue clear
+        }
       - if <context.item.display_name> != null {
         - define creditAmt <math.as_int:<proc[vendorDetermineCredits].context[%vendorItem%]>*<context.item.qty>>
         - if %creditAmt% == 0 && <context.item.display_name.contains[<&5>]> {

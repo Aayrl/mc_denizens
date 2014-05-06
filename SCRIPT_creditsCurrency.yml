@@ -287,9 +287,9 @@ inv_vendor_generic:
           - narrate "<yellow>You may not sell <context.item.display_name><yellow> to a vendor."
           - queue clear
           }
-        - if <context.inventory.contains[<context.item.scriptname>]> == false {
+        - if <<player.inventory>.contains[<context.item.scriptname>]> == false {
           - narrate "<yellow>You may not sell <context.item.display_name><yellow> to a vendor."
-          - narrate "<yellow>This is an old item, and may not be sold for credits."
+          - narrate "<yellow>This item may be damaged, and cannot be sold for credits."
           - queue clear
         }
         - take "i@<context.item>"
@@ -338,9 +338,9 @@ inv_vendor_generic:
           - narrate "<yellow>You may not sell <context.item.display_name><yellow> to a vendor."
           - queue clear
           }
-        - if <context.inventory.contains[<context.item.scriptname>]> == false {
+        - if <<player.inventory>.contains[<context.item.scriptname>]> == false {
           - narrate "<yellow>You may not sell <context.item.display_name><yellow> to a vendor."
-          - narrate "<yellow>This is an old item, and may not be sold for credits."
+          - narrate "<yellow>This item may be damaged, and cannot be sold for credits."
           - queue clear
         }
         - take "i@<context.item>" qty:<context.item.qty>

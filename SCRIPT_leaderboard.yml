@@ -63,8 +63,8 @@
         }
       }
     - foreach <server.flag[LEADERBOARD_PLAYERS].aslist> {
-      - if <%currentPlayer%.flag[LBOARD_SCORE_TOTAL]> == "null" define score 0
-      - if <%currentPlayer%.flag[LBOARD_SCORE_TOTAL]> != "null" define score <%currentPlayer%.flag[LBOARD_SCORE_TOTAL].as_int>
+      - if <%value%.flag[LBOARD_SCORE_TOTAL]> == "null" define score 0
+      - if <%value%.flag[LBOARD_SCORE_TOTAL]> != "null" define score <%value%.flag[LBOARD_SCORE_TOTAL].as_int>
       - narrate "<aqua><&lb><gold><%value%.flag[LBOARD_RANK].as_int>.<aqua><&rb> <%value%.name> -- <green>%score%"
       }
     on stats command:

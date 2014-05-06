@@ -13,6 +13,7 @@
 # - 25 points per quest complete
 # - 10 points per pvp kill
 # - 1 point per block break
+# - 1 point per block place
 
 # If the player has no scores, initialize all of them to 0.
 "initLBoardScores_PerPlayer":
@@ -29,6 +30,8 @@
       - flag player "LBOARD_PVP:0" }
     - if <player.flag[LBOARD_BLOCK]> == "null" {
       - flag player "LBOARD_BLOCK:0" }
+    - if <player.flag[LBOARD_BUILD]> == "null" {
+      - flag player "LBOARD_BUILD:0" }
       
 # Leaderboard Commands
 # Check total leaderboard rankings
@@ -46,6 +49,7 @@
     - narrate "<aqua>Player Kills<&co> <player.flag[LBOARD_PVP]>"
     - narrate "<aqua>Quest Completes<&co> <player.flag[LBOARD_Q]>"
     - narrate "<aqua>Block Breaks<&co> <player.flag[LBOARD_BLOCK]>"
+    - narrate "<aqua>Blocks Placed<&co> <player.flag[LBOARD_BUILD]>"
     - narrate "<aqua>--------------------------------"
     
 # Leaderboard Calculate Player Score
@@ -59,8 +63,9 @@
   - define bossScore <math.as_int:<%playerObj%.flag[LBOARD_B]>*100>
   - define playerKillScore <math.as_int:<%playerObj%.flag[LBOARD_PVP]>*10>
   - define questScore <math.as_int:<%playerObj%.flag[LBOARD_Q]>*25>
-  - define blockScore <math.as_int:<%playerObj%.flag[LBOARD_BLOCK]>*1>
-  - flag %playerObj% "LBOARD_SCORE_TOTAL:<math.as_int:%monsterScore%+%bossScore%+%playerKillScore%+%questScore%+%blockScore%>"
+  - define blockScore <%playerObj%.flag[LBOARD_BLOCK]>
+  - define buildScore <%playerObj%.flag[LBOARD_BUILD]>
+  - flag %playerObj% "LBOARD_SCORE_TOTAL:<math.as_int:%monsterScore%+%bossScore%+%playerKillScore%+%questScore%+%blockScore%+%buildScore%>"
   
     
 # Leaderboard PvP Event
@@ -81,10 +86,14 @@
       }
 
 # Leaderboard Block Break Event
-# Flag Players when they break a block.
+# Flag Players when they break a block, 
+# or when they place a block.
 "LEADERBOARD_BLOCKCREDIT":
   type: world
   events:
     on player breaks block:
     - flag <player> LBOARD_BLOCK:++
+    - flag <player> LBOARD_SCORE_TOTAL:++
+    on player places block:
+    - flag <player> LBOARD_BUILD:++
     - flag <player> LBOARD_SCORE_TOTAL:++

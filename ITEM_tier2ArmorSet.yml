@@ -46,10 +46,10 @@
    - protection_environmental:8
    - thorns:4
  
-"TIER2_Enderplate_Kilt":
+"TIER2_Enderplate_Leggings":
    type: item
    material: 312
-   display name: "<&5>Dragonforged Kilt"
+   display name: "<&5>Dragonforged Leggings"
    recipe:
      - i@Ender_Temper|i@Ender_Temper|i@Ender_Temper
      - i@Enderplate_Block|i@Runed_Enderplate_Leggings|i@Enderplate_Block

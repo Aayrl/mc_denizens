@@ -262,7 +262,6 @@ inv_vendor_generic:
       - if <context.item.scriptname> == null define vendorItem <context.item.id>
       - if <context.item.scriptname> != null define vendorItem <context.item.scriptname>
       - if <context.item.display_name> != null {
-        - define item "<context.item>:<context.item.data>"
         - define creditAmt <proc[vendorDetermineCredits].context[%vendorItem%]>
         - if %creditAmt% == 0 && <context.item.display_name.contains[<&5>]> {
           - narrate "<yellow>You may not sell <context.item.display_name><yellow> to a vendor."
@@ -272,13 +271,13 @@ inv_vendor_generic:
           - narrate "<yellow>You may not sell <context.item.display_name><yellow> to a vendor."
           - queue clear
           }
-        - take "%item%"
+        - take "i@<context.item>"
         - define currentAmt <player.flag[CURRENCY_Credits]>
         - define newAmt <math.as_int:%currentAmt%+%creditAmt%>
         - flag <player> "CURRENCY_Credits:%newAmt%"
         - narrate "<yellow>You receive %creditAmt% credits for <context.item.display_name><yellow>." }
       - if <context.item.display_name> == null {
-        - define item "<context.item>:<context.item.data>"
+        - define item "<context.item.material.name>:<context.item.data>"
         - define creditAmt <proc[vendorDetermineCredits].context[%vendorItem%]>
         - take "%item%"
         - define currentAmt <player.flag[CURRENCY_Credits]>
@@ -302,14 +301,15 @@ inv_vendor_generic:
           - narrate "<yellow>You may not sell <context.item.display_name><yellow> to a vendor."
           - queue clear
           }
-        - take "i@<context.item>:<context.item.data>" qty:<context.item.qty>
+        - take "i@<context.item>" qty:<context.item.qty>
         - define currentAmt <player.flag[CURRENCY_Credits]>
         - define newAmt <math.as_int:%currentAmt%+%creditAmt%>
         - flag <player> "CURRENCY_Credits:%newAmt%"
         - narrate "<yellow>You receive %creditAmt% credits for <context.item.qty> <context.item.display_name><yellow>." }
       - if <context.item.display_name> == null {
+        - define item "<context.item.material.name>:<context.item.data>"
         - define creditAmt <math.as_int:<proc[vendorDetermineCredits].context[%vendorItem%]>*<context.item.qty>>
-        - take "i@<context.item>:<context.item.data>" qty:<context.item.qty>
+        - take %item% qty:<context.item.qty>
         - define currentAmt <player.flag[CURRENCY_Credits]>
         - define newAmt <math.as_int:%currentAmt%+%creditAmt%>
         - flag <player> "CURRENCY_Credits:%newAmt%"

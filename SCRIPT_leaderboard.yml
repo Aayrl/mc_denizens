@@ -59,7 +59,7 @@
           - if %checkScore% > %score% {
             - flag %currentPlayer% LBOARD_RANK:++
             }
-          - if%checkScore% < %score% {
+          - if %checkScore% < %score% {
             - flag %value% LBOARD_RANK:--
             }
           }

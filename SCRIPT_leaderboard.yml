@@ -42,8 +42,14 @@
   type: world
   events:
     on leaderboard command:
+    - flag server LEADERBOARD_RANKS:!
     - foreach <server.list_players.aslist> {
-      - narrate "Player<&co> %value%"
+      - if <%value%.flag[LBOARD_SCORE_TOTAL]> == "null" define score 0
+      - if <%value%.flag[LBOARD_SCORE_TOTAL]> != "null" define score <%value%.flag[LBOARD_SCORE_TOTAL]>
+      - flag server LEADERBOARD_RANKS:->:"%value%,%score%"
+      }
+    - foreach <server.flag[LEADERBOARD_RANKS]> {
+      - narrate "%value%"
       }
     - narrate "<aqua>--- Leaderboard Rankings ---"
     on stats command:

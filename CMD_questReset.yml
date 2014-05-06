@@ -12,3 +12,19 @@
        on questreset command:
        - narrate "<red>Resetting all of your current quests..."
        - narrate "<red>All of your quests have been reset."
+
+# Initial Quest Counts       
+"quest_cnt_init":
+  type: world
+  events:
+    on player join:
+    - if <player.flag[QUEST_TOTAL_COMPLETED_CNT]> == "null" {
+      - flag player "QUEST_TOTAL_COMPLETED_CNT:0" }
+    - if <player.flag[KillSkeletonsQuest_COMPLETED_CNT]> == "null" {
+      - flag player "KillSkeletonsQuest_COMPLETED_CNT:0" }
+    - if <player.flag[KillSpidersQuest_COMPLETED_CNT]> == "null" {
+      - flag player "KillSpidersQuest_COMPLETED_CNT:0" }
+    - if <player.flag[KillZombiesQuest_COMPLETED_CNT]> == "null" {
+      - flag player "KillZombiesQuest_COMPLETED_CNT:0" }
+    - if <player.flag[FishforWill_COMPLETED_CNT]> == "null" {
+      - flag player "FishforWill_COMPLETED_CNT:0" }

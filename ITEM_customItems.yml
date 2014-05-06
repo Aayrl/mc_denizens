@@ -1772,11 +1772,34 @@
 "SingingSwordGFX":
    type: procedure
    script:
-   - repeat 10 {
-     - playeffect location:<player.location> effect:note qty:15 data:1
-     - narrate targets:<player> "<&9>The song continues."
-     - wait 2.0
-     }   
+   - playeffect location:<player.location> effect:note qty:15 data:1
+   - narrate targets:<player> "<&9>The song continues."
+   - wait 2.0
+   - playeffect location:<player.location> effect:note qty:15 data:1
+   - narrate targets:<player> "<&9>The song continues."
+   - wait 2.0
+   - playeffect location:<player.location> effect:note qty:15 data:1
+   - narrate targets:<player> "<&9>The song continues."
+   - wait 2.0
+   - playeffect location:<player.location> effect:note qty:15 data:1
+   - narrate targets:<player> "<&9>The song continues."
+   - wait 2.0
+   - playeffect location:<player.location> effect:note qty:15 data:1
+   - narrate targets:<player> "<&9>The song continues."
+   - wait 2.0
+   - playeffect location:<player.location> effect:note qty:15 data:1
+   - narrate targets:<player> "<&9>The song continues."
+   - wait 2.0
+   - playeffect location:<player.location> effect:note qty:15 data:1
+   - narrate targets:<player> "<&9>The song continues."
+   - wait 2.0
+   - playeffect location:<player.location> effect:note qty:15 data:1
+   - narrate targets:<player> "<&9>The song continues."
+   - wait 2.0
+   - playeffect location:<player.location> effect:note qty:15 data:1
+   - narrate targets:<player> "<&9>The song continues."
+   - wait 2.0
+   }   
 
 # [Plane of Ender Loot]
 "Hammer_of_the_Gods":

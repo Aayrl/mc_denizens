@@ -287,7 +287,7 @@ inv_vendor_generic:
           - narrate "<yellow>You may not sell <context.item.display_name><yellow> to a vendor."
           - queue clear
           }
-        - if <context.inventory.contains[<context.item>]> == false {
+        - if <context.inventory.contains[%vendorItem%]> == false {
           - narrate "<yellow>You may not sell <context.item.display_name><yellow> to a vendor."
           - narrate "<yellow>This is an old item, and may not be sold for credits."
           - queue clear
@@ -338,7 +338,7 @@ inv_vendor_generic:
           - narrate "<yellow>You may not sell <context.item.display_name><yellow> to a vendor."
           - queue clear
           }
-        - if <context.inventory.contains[<context.item>]> == false {
+        - if <context.inventory.contains[%vendorItem%]> == false {
           - narrate "<yellow>You may not sell <context.item.display_name><yellow> to a vendor."
           - narrate "<yellow>This is an old item, and may not be sold for credits."
           - queue clear

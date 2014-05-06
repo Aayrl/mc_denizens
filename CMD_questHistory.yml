@@ -1,0 +1,30 @@
+# -----------------------------------
+# Quest Log Command
+# @author: Tyler J. Sawyer
+# @version: 1.0
+# Last Updated: 11:04 on May 06, 2014 (Tuesday)
+# -----------------------------------
+# 
+# This command displays all completed quests and the number
+# of times you have completed each quest, as well as a 
+# total number of quests completed.
+#
+
+"questLogCommand":
+    type: world
+    events:
+       on questhistory command:
+       - narrate "<aqua>---- Quest Completion History ----"
+       - narrate "<yellow>You have completed a total of <player.flag[QUEST_TOTAL_COMPLETED_CNT].asint> quests."
+       - if <player.flag[KillSkeletonsQuest_COMPLETED_CNT]> narrate "<yellow>Kill Skeletons<&co> Completed <player.flag[KillSkeletonsQuest_COMPLETED_CNT].asint> times."
+       - if <player.flag[KillSpidersQuest_COMPLETED_CNT]> narrate "<yellow>Kill Spiders<&co> Completed <player.flag[KillSpidersQuest_COMPLETED_CNT].asint> times."
+       - if <player.flag[KillZombiesQuest_COMPLETED_CNT]> narrate "<yellow>Kill Zombies<&co> Completed <player.flag[KillZombiesQuest_COMPLETED_CNT].asint> times."
+       - if <player.flag[FishForWill_COMPLETED_CNT]> narrate "<yellow>Fish for Will<&co> Completed <player.flag[FishForWill_COMPLETED_CNT].asint> times."
+       - if <player.flag[POEnderAttune_STEP1DONE]> narrate "<yellow>PoEnder<&co> Gathering Supplies<&co> Completed."
+       - if <player.flag[POEnderAttune_STEP2DONE]> narrate "<yellow>PoEnder<&co> Crafting Supplies<&co> Completed."
+       - if <player.flag[POEnderAttune_STEP3DONE]> narrate "<yellow>PoEnder<&co> Killing for Justice<&co> Completed."
+       - if <player.flag[POEnderAttune_STEP4DONE]> narrate "<yellow>PoEnder<&co> Diplomacy<&co> Completed."
+       - if <player.flag[PoE_DiplomacyInThurgadin_DONE]> narrate "<yellow>PoEnder<&co> Diplomacy in Thurgadin<&co> Completed."
+       - if <player.flag[PoE_DiplomacyInKelethin_DONE]> narrate "<yellow>PoEnder<&co> Diplomacy in Kelethin<&co> Completed."
+       - if <player.flag[POEnderAttune_STEP5DONE]> narrate "<yellow>PoEnder<&co> Avatar of Hakkar Must Die!<&co> Completed."
+       - narrate "<aqua>---- End of Quest Completion History ----"

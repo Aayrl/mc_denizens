@@ -96,6 +96,8 @@
                 script:
                     - chat "Ahh<&cm> <player.name>. I see you have 25 Gold Ingots. I will send these along to my enchanters."
                     - flag player PoE_DiplomacyInKelethin:0
+                    - flag player QUEST_TOTAL_COMPLETED_CNT:++
+                    - flag player PoE_DiplomacyInKelethin_DONE:1
                     - take 'item:gold_ingot' qty:25
                     - wait 1
                     - chat "Go and speak with Lord Aayrl<&cm> <player.name>. Good luck on your quest<&cm> you will need it."

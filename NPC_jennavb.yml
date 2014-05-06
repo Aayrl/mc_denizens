@@ -113,6 +113,8 @@
                 script:
                     - chat "Hello again<&cm> <player.name>. I see you have crafted 25 Quartz Blocks like I asked. May I have them?"
                     - flag player PoE_DiplomacyInThurgadin:0
+                    - flag player QUEST_TOTAL_COMPLETED_CNT:++
+                    - flag player PoE_DiplomacyInThurgadin_DONE:1
                     - take 'item:quartz_block' qty:25
                     - wait 1
                     - chat "I have sent some guards to Lord Aayrl<&cm> <player.name>. Please send him my best wishes in his quest."

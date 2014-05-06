@@ -108,6 +108,8 @@
                 script:
                     - chat "Ah<&cm> I see you have returned<&cm> <player.name>. Do you have the 20 Coal? Let me see."
                     - flag player POE_GatheringSupplies:0
+                    - flag player QUEST_TOTAL_COMPLETED_CNT:++
+                    - flag player POEnderAttune_STEP1DONE:1
                     - take 'item:coal' qty:20
                     - wait 1
                     - chat "Good Work<&cm> <player.name>. It seems you are ready for my next task. Are you ready to <&lb><red>craft<green><&rb> some items?"    
@@ -214,7 +216,9 @@ PoEnder_CoalDone:
                     - wait 1
                     - chat "I think you are ready<&cm> <player.name>. It is time for you to <&lb><red>train<green><&rb> your blade."    
                     - flag player "POEnderAttune:Step3"
-                    - flag player POE_CraftingSupplies:1
+                    - flag player POE_CraftingSupplies:0
+                    - flag player QUEST_TOTAL_COMPLETED_CNT:++
+                    - flag player POEnderAttune_STEP2DONE:1
                     - announce "<aqua><player.name> has completed step 2 of 5 of the <&5>Attunement to Enderland<aqua> questline!"
 
 
@@ -363,6 +367,8 @@ PoEnder_ArmorProg4:
                     - chat "Are you ready to speak to some of our allies<&cm> <player.name>? It is time for you to demonstrate your <&lb><red>diplomacy<green><&rb> skills."    
                     - flag player "POEnderAttune:Step4"
                     - flag player POE_KillingForJustice:0
+                    - flag player QUEST_TOTAL_COMPLETED_CNT:++
+                    - flag player POEnderAttune_STEP3DONE:1
                     - announce "<aqua><player.name> has completed step 3 of 5 of the <&5>Attunement to Enderland<aqua> questline!"
 
 
@@ -514,6 +520,8 @@ PoEnder_CreeperKillDone:
                     - chat 'This is terrific news<&cm> <player.name>! However<&cm> there is a more dangeous <&lb><red>foe<green><&rb> we need to deal with..'
                     - flag player "POEnderAttune:Step5"
                     - flag player POE_Diplomacy:0
+                    - flag player QUEST_TOTAL_COMPLETED_CNT:++
+                    - flag player POEnderAttune_STEP4DONE:1
                     - announce "<aqua><player.name> has completed step 4 of 5 of the <&5>Attunement to Enderland<aqua> questline!"
 
 # STAGE 5 (FINAL) OF ATTUNEMENT : AVATAR OF HAKKAR
@@ -592,6 +600,8 @@ PoEnder_CreeperKillDone:
                     - chat 'You truly are a hero among men<&cm> <player.name> It is time for us to ender the <&4>Plane of Ender<green>!'
                     - flag player "POEnderAttune:ATTUNED"
                     - flag player POE_AvatarOfHakkarDie:0
+                    - flag player QUEST_TOTAL_COMPLETED_CNT:++
+                    - flag player POEnderAttune_STEP5DONE:1
                     - announce "<aqua><player.name> has completed the final step of the <&4>Attunement to Enderland<aqua> questline!"
                     - announce "<aqua><player.name> is now attuned to the <&4>Plane of Ender<aqua>!"
                     - wait 1

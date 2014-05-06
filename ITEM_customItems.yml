@@ -1770,7 +1770,7 @@
          }
          
 "SingingSwordGFX":
-   type: procedure
+   type: task
    script:
    - playeffect location:<player.location> effect:note qty:15 data:1
    - narrate targets:<player> "<&9>The song continues."

@@ -279,6 +279,10 @@ inv_vendor_generic:
           - narrate "<yellow>You may not sell <context.item.display_name><yellow> to a vendor."
           - queue clear
           }
+        - if %creditAmt% == 0 && <context.item.display_name.contains[<yellow>]> {
+          - narrate "<yellow>You may not sell <context.item.display_name><yellow> to a vendor."
+          - queue clear
+          }
         - take "i@<context.item>"
         - define currentAmt <player.flag[CURRENCY_Credits]>
         - define newAmt <math.as_int:%currentAmt%+%creditAmt%>
@@ -314,6 +318,10 @@ inv_vendor_generic:
           - queue clear
           }
         - if %creditAmt% == 0 && <context.item.display_name.contains[<gold>]> {
+          - narrate "<yellow>You may not sell <context.item.display_name><yellow> to a vendor."
+          - queue clear
+          }
+        - if %creditAmt% == 0 && <context.item.display_name.contains[<yellow>]> {
           - narrate "<yellow>You may not sell <context.item.display_name><yellow> to a vendor."
           - queue clear
           }

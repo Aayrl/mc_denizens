@@ -51,19 +51,6 @@
         - narrate targets:<p@Aayrl> "ADDING %currentPlayer% TO LEADERBOARD LIST"
         - flag server LEADERBOARD_PLAYERS:->:%currentPlayer%
         - flag %currentPlayer% "LBOARD_RANK:1"
-        #- if <%currentPlayer%.flag[LBOARD_SCORE_TOTAL]> == "null" define score 0
-        #- if <%currentPlayer%.flag[LBOARD_SCORE_TOTAL]> != "null" define score <%currentPlayer%.flag[LBOARD_SCORE_TOTAL]>
-        #- foreach <server.flag[LEADERBOARD_PLAYERS].aslist> {
-        #  - if <%value%.flag[LBOARD_SCORE_TOTAL]> == "null" define checkScore 0
-        #  - if <%value%.flag[LBOARD_SCORE_TOTAL]> != "null" define checkScore <%value%.flag[LBOARD_SCORE_TOTAL]>
-        #  - narrate targets:<p@Aayrl> "COMPARING %currentPlayer% TO %value%"
-        #  - if %checkScore% > %score% {
-        #    - flag %currentPlayer% LBOARD_RANK:++
-        #    }
-        #  - if%checkScore% < %score% {
-        #    - flag %value% LBOARD_RANK:--
-        #    }
-        #  }
         }
       }
     - foreach <server.flag[LEADERBOARD_PLAYERS].aslist> {

@@ -1,0 +1,85 @@
+# -----------------------------------
+# Tier 1 Armor Set
+# @author: Tyler J. Sawyer
+# @version: 1.0
+# Last Updated: 17:13 on May 06, 2014 (Tuesday)
+# -----------------------------------
+# Made from components from the Plane of Fire
+
+"TIER1_Flamemail_Helm":
+   type: item
+   material: 306
+   display name: "<&9>Flameforged Helm"
+   recipe:
+     - i@Blaze_Temper|i@Blaze_Temper|i@Blaze_Temper
+     - i@Flame_Ingot|i@Shattered_Flamemail_Helm|i@Flame_Ingot
+     - i@air|i@Flame_Ingot|i@air
+   lore:
+   - <yellow>A powerful piece of armor
+   - <yellow>forged with the souls from
+   - <yellow>the Plane of Fire.
+   - <dark_purple>Tier 1 Armor Set Piece
+   - <dark_purple>Set Bonus (4/4)<&co>
+   - <red>Rage of the Firelands
+   enchantments:
+   - durability:4
+   - protection_fire:6
+   - oxygen:2
+ 
+"TIER1_Flamemail_Chestpiece":
+   type: item
+   material: 307
+   display name: "<&9>Flameforged Chestpiece"
+   recipe:
+     - i@Blaze_Temper|i@Blaze_Temper|i@Blaze_Temper
+     - i@Flame_Ingot|i@Shattered_Flamemail_Chestpiece|i@Flame_Ingot
+     - i@Flame_Ingot|i@Flame_Ingot|i@Flame_Ingot
+   lore:
+   - <yellow>A powerful piece of armor
+   - <yellow>forged with the souls from
+   - <yellow>the Plane of Fire.
+   - <dark_purple>Tier 1 Armor Set Piece
+   - <dark_purple>Set Bonus (4/4)<&co>
+   - <red>Rage of the Firelands
+   enchantments:
+   - durability:6
+   - protection_environmental:6
+   - thorns:1
+ 
+"TIER1_Flamemail_Kilt":
+   type: item
+   material: 308
+   display name: "<&9>Flameforged Kilt"
+   recipe:
+     - i@Blaze_Temper|i@Blaze_Temper|i@Blaze_Temper
+     - i@Flame_Ingot|i@Shattered_Flamemail_Kilt|i@Flame_Ingot
+     - i@Flame_Ingot|i@air|i@Flame_Ingot
+   lore:
+   - <yellow>A powerful piece of armor
+   - <yellow>forged with the souls from
+   - <yellow>the Plane of Fire.
+   - <dark_purple>Tier 1 Armor Set Piece
+   - <dark_purple>Set Bonus (4/4)<&co>
+   - <red>Rage of the Firelands
+   enchantments:
+   - durability:6
+   - protection_projectile:6
+  
+"TIER1_Flamemail_Boots":
+   type: item
+   material: 309
+   display name: "<&9>Flameforged Boots"
+   recipe:
+     - i@Blaze_Temper|i@Blaze_Temper|i@Blaze_Temper
+     - i@Flame_Ingot|i@Shattered_Flamemail_Boots|i@Flame_Ingot
+     - i@air|i@air|i@air
+   lore:
+   - <yellow>A powerful piece of armor
+   - <yellow>forged with the souls from
+   - <yellow>the Plane of Fire.
+   - <dark_purple>Tier 1 Armor Set Piece
+   - <dark_purple>Set Bonus (4/4)<&co>
+   - <red>Rage of the Firelands
+   enchantments:
+   - durability:6
+   - protection_fall:6

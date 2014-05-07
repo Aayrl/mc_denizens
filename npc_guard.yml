@@ -52,6 +52,7 @@ guard_gondor:
     - execute as_server "sentry equip 309"
 
     on spawn:
+    - trigger name:proximity toggle:true radius:15
     # Clear previous targets from hate list
     - execute as_server "npc sel <npc.id>"
     - execute as_server "sentry target clear"
@@ -89,8 +90,14 @@ guard_gondor:
       - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:victory message><&sq>" }
     
     on enter proximity:
-    - narrate "<yellow><npc.name><&co> PANCAKES YOU NEARBY."
-
+    - if <player.flag[FACTION_Gondor]> <= 5000 {
+      # If the player's faction is too low, guards auto-attack.
+      - attack
+      # Add player to the agro list if the guard does not enjoy their existance.
+      - if <npc.flag[AgroList].aslist> !contains <player> && <player.name> != <npc.name> flag npc AgroList:->:<player>
+      - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
+        - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:hate message><&sq>" }
+      }
 
 "GuardInteractScript":
    type: interact
@@ -99,23 +106,7 @@ guard_gondor:
        click trigger:
          script:
          - narrate "<yellow><npc.name><&co> <npc.health.percentage.as_int>%"
-       #    - if <player.flag[FACTION_Gondor]> <= 2500 {
-       #      # If the player's faction is too low, guards auto-attack.
-       #      - attack
-       #      # Add player to the agro list if the guard does not enjoy their existance.
-       #      - if <npc.flag[AgroList].aslist> !contains <player> && <player.name> != <npc.name> flag npc AgroList:->:<player>
-       #      - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
-       #        - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:hate message><&sq>" }
-       #      }
        damage trigger:
          script:
            # Add player to the agro list when they hit the guard.
            - if <npc.flag[AgroList].aslist> !contains <player> && <player.name> != <npc.name> flag npc AgroList:->:<player>
-           
-    #on enter proximity :
-    # If the player's faction is too low, guards auto-attack.
-    #- if <player.flag[FACTION_Gondor]> <= 2500 {
-    #  - attack
-    #  - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
-    #    - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:hate message><&sq>" }
-    #  }

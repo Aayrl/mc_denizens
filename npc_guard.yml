@@ -76,9 +76,13 @@ guard_gondor:
     - execute as_server "sentry target clear"
     # Faction Hit
     - foreach <npc.flag[AgroList].aslist> {
-      - if <%value%.flag[FACTION_Gondor]> >= 0 {
+      - if <%value%.flag[FACTION_Gondor]> >= 1 {
         - flag player:%value% "FACTION_Gondor:<math.as_int:<%value%.flag[FACTION_Gondor]>-<cons:factionHit>>"
         - narrate targets:%value% "<&9>Your faction standing with Gondor has gotten worse! (<%value%.flag[FACTION_Gondor]>)" }
+      }
+      - if <%value%.flag[FACTION_Gondor]> <= 0 {
+        - flag player:%value% "FACTION_Gondor:0"
+        - narrate targets:%value% "<&9>Your faction standing with Gondor could not possibly get any worse! (0)" }
       }
 
     on attack: 

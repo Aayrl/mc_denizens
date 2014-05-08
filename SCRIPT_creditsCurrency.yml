@@ -29,6 +29,9 @@
 # See the individual commands below for comments and details.
 # ========================================
 #
+# TO DO : Add A check for selling items to vendor.
+# If item is damaged, do not allow the player to sell it.
+# If item is enchanted, do not allow the player to sell it.
 
 "CreditsInitializer":
   type: world

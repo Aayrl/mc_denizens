@@ -18,6 +18,9 @@ bandit:
     bandit_xp: 10
     bandit_health: 50
     bandit_respawn_delay: 60
+    
+    factionhit: 5
+    faction_guard: 5
 
   actions:
     on assignment:
@@ -50,21 +53,31 @@ bandit:
     - execute as_server "npc sel <npc.id>"
     - execute as_server "sentry target clear"
     - execute as_server "sentry target add entity:player"
+    - flag npc AgroList:!
 
     on death:
     - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
       - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:death message><&sq>" }
     # XP amount
     - drop XP qty:<cons:bandit_xp> location:<npc.location>
-    # Random loot
-    # LOOT TABLE HERE PERHAPS?
-    #- define roll <util.random.int[1].to[100]>
-    #- if %roll% >= 90 {
-    #  - drop "" location:<npc.location> }
     # Reset npc effects and clear hate targets.
     - execute as_server "npc sel <npc.id>"
     - execute as_server "npc effect --play none"
     - execute as_server "sentry target clear"
+    # Faction Adjustments
+    - foreach <npc.flag[AgroList].aslist> {
+      - if <%value%.flag[FACTION_Bandit]> >= 1  {
+        - flag player:%value% "FACTION_Bandit:<math.as_int:<%value%.flag[FACTION_Bandit]>-<cons:factionhit>>"
+        - narrate targets:%value% "<&9>Your faction standing with Bandit has gotten worse! (<%value%.flag[FACTION_Bandit]>)"
+        - flag player:%value% "FACTION_Gondor:<math.as_int:<%value%.flag[FACTION_Gondor]>+<cons:faction_guard>>"
+        - narrate targets:%value% "<&9>Your faction standing with Gondor has gotten better! (<%value%.flag[FACTION_Gondor]>)" }
+      }
+      - if <%value%.flag[FACTION_Bandit]> <= 0 {
+        - flag player:%value% "FACTION_Bandit:0"
+        - narrate targets:%value% "<&9>Your faction standing with Bandit could not possibly get any worse! (0)"
+        - flag player:%value% "FACTION_Gondor:<math.as_int:<%value%.flag[FACTION_Gondor]>+<cons:faction_guard>>"
+        - narrate targets:%value% "<&9>Your faction standing with Gondor has gotten better! (<%value%.flag[FACTION_Gondor]>)" }
+      }
 
     on attack: 
     - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
@@ -73,3 +86,7 @@ bandit:
     on kill:
     - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
       - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:victory message><&sq>" }
+      
+    on enter proximity:
+    - attack
+    - if <npc.flag[AgroList].aslist> !contains <player> && <player.name> != <npc.name> flag npc AgroList:->:<player>

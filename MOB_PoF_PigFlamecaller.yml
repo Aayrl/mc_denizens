@@ -1,0 +1,68 @@
+# -----------------------------------
+# Plane of Fire : Pig Flamecaller Mob
+# @author: Tyler J. Sawyer
+# @version: 1.0
+# Last Updated: 18:19 on May 10, 2014 (Saturday)
+# -----------------------------------
+# REQUIREMENTS:
+#   Sentry      Denizens        Citizens2
+
+PigFlamecaller:
+  type: assignment
+
+  default constants:
+    attack message: <white><npc.name> glares angrily at you.
+    death message: <white><npc.name> collapses into a pile of ash.
+    victory message: <white><npc.name> squeals excitedly.
+
+    # Stats
+    PigFlamecaller_str: 2
+    PigFlamecaller_xp: 20
+    PigFlamecaller_health: 100
+    PigFlamecaller_respawn_delay: 60
+
+  actions:
+    on assignment:
+    - trigger name:damage toggle:true
+
+    # Setup PigFlamecaller Stats
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "npc type PIG_ZOMBIE"
+    - execute as_server "npc speed 1"
+    - execute as_server "npc lookclose"
+    - execute as_server "trait sentry"
+    - execute as_server "sentry health <cons:PigFlamecaller_health>"
+    - execute as_server "sentry spawn"
+    - execute as_server "sentry respawn <cons:PigFlamecaller_respawn_delay>"
+    - execute as_server "sentry speed 1"
+    - execute as_server "sentry strength <cons:PigFlamecaller_str>"
+    - execute as_server "sentry killdrops false"
+    - execute as_server "sentry healrate 1"
+    - execute as_server "sentry retaliate true"
+    - execute as_server "sentry targetable true"
+    - execute as_server "sentry target add entity:player"
+    - execute as_server "sentry equip REDSTONE_TORCH_ON"
+
+    on spawn:
+    # Clear previous targets from hate list
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "sentry target clear"
+    - execute as_server "sentry target add entity:player"
+
+    on death:
+    - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
+      - narrate targets:%value% "<cons:death message>" }
+    # XP amount
+    - drop XP qty:<cons:PigFlamecaller_xp> location:<npc.location>
+    # Reset npc effects and clear hate targets.
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "npc effect --play none"
+    - execute as_server "sentry target clear"
+
+    on attack: 
+    - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
+      - narrate targets:%value% "<cons:attack message>" }
+    
+    on kill:
+    - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
+      - narrate targets:%value% "<cons:victory message>" }

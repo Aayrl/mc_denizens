@@ -20,6 +20,7 @@
        - if <player.flag[KillSpidersQuest_COMPLETED_CNT]> != "null" narrate "<yellow>Kill Spiders<&co> Completed <player.flag[KillSpidersQuest_COMPLETED_CNT].asint> times."
        - if <player.flag[KillZombiesQuest_COMPLETED_CNT]> != "null" narrate "<yellow>Kill Zombies<&co> Completed <player.flag[KillZombiesQuest_COMPLETED_CNT].asint> times."
        - if <player.flag[FishForWill_COMPLETED_CNT]> != "null" narrate "<yellow>Fish for Will<&co> Completed <player.flag[FishForWill_COMPLETED_CNT].asint> times."
+       - if <player.flag[zpigs_SkylandsQuest_COMPLETED_CNT]> != "null" narrate "<yellow>Stop the Zombie Pigman Invasion<&co> Completed <player.flag[zpigs_SkylandsQuest_COMPLETED_CNT].asint> times."
        - if <player.flag[POEnderAttune_STEP1DONE]> != "null" narrate "<yellow>PoEnder<&co> Gathering Supplies<&co> Completed."
        - if <player.flag[POEnderAttune_STEP2DONE]> != "null" narrate "<yellow>PoEnder<&co> Crafting Supplies<&co> Completed."
        - if <player.flag[POEnderAttune_STEP3DONE]> != "null" narrate "<yellow>PoEnder<&co> Killing for Justice<&co> Completed."

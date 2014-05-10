@@ -11,6 +11,13 @@
     
     interact scripts:
     - 10 zpigs_SkylandsQuest
+    
+    actions:
+      on spawn:
+      - trigger name:proximity toggle:true radius:4
+      
+      on enter proximity:
+      - chat "Cheers <player.name>! Would you mind chatting with me for a moment?"
 
 # NPC Chatter Task
 'zpigs_SkylandsQuest':
@@ -19,11 +26,6 @@
     steps:
         # Handout Step - First Interaction
         'Skylands ZPig Quest Handout*':
-            Proximity Trigger:
-                entry radius: 5
-                entry:
-                    script:
-                    - chat "Hey there, adventurer! I sure could use some help.."
             Click Trigger:
                 script:
                 - chat "Greetings there<&cm> solider. We seem to be having some .. troubles .. with our recent discoveries in the Skylands."
@@ -41,7 +43,7 @@
                     - chat "Excellent. Take caution<&cm> as the Zombie Pigmen are very ferocious and tend to swarm in groups."
                     - wait 1
                     - chat "Slay 20 of these creatures and return to me when you have finished. I shall reward you for your time."
-                    - listen kill type:entity name:Pig_Zombie qty:1 script:SkeletonKillProgress 
+                    - listen kill type:entity name:Pig_Zombie qty:1 script:ZPig_Skylands_Progress 
                     - flag player ZombiePigSkyCount:0
                     - flag player zpigs_SkylandsQuest:1
                     - narrate '<yellow>You have accepted the task "Stop the Zombie Pigman Invasion".'
@@ -58,35 +60,35 @@
         'Skylands ZPig Quest Reward':
             click trigger:
                 script:
-                    - chat "Thank you so much! Here, take this as a reward!"
+                    - chat "Thank you for your assistance<&cm> <player.name>. Speak with me again if you want to clear more Zombie Pigmen out of the area."
                     - flag player zpigs_SkylandsQuest:0
                     - flag player QUEST_TOTAL_COMPLETED_CNT:++
                     - flag <player> LBOARD_Q:++
                     - flag <player> LBOARD_SCORE_TOTAL:<math.as_int:<<player>.flag[LBOARD_SCORE_TOTAL]>+25>
                     - flag player zpigs_SkylandsQuest_COMPLETED_CNT:++
-                    - give 388 QTY:1
-                    - give XP QTY:250
-                    - narrate "<yellow>You received an <aqua>Emerald<yellow>!"
-                    - narrate "<yellow>You've gained 250 experience!"
-                    - wait 1
-                    - chat "Speak with me again shortly if you wish to slay more Skeletons!"    
-                    - zap 'step:Skeleton Quest Handout'
+                    - give i@potion_healing_5 QTY:1
+                    - give i@potion_saturation_5 QTY:1
+                    - give XP QTY:500
+                    - narrate "<yellow>You received a <aqua>Superior Healing Potion<yellow>!"
+                    - narrate "<yellow>You received a <aqua>Superior Saturation Potion<yellow>!"
+                    - narrate "<yellow>You've gained 500 experience!" 
+                    - zap 'step:Skylands ZPig Quest Handout'
 
-SkeletonKillProgress:
+ZPig_Skylands_Progress:
     type: task
     script:
-    - flag player SkeletonCount:++
-    - narrate "<yellow>Skeletons Slain<&co> <player.flag[SkeletonCount].asint>/10"
-    - if <player.flag[SkeletonCount].asint> >= 10 run SkeletonKillDone
-      else run SkeletonKillContinue
+    - flag player ZombiePigSkyCount:++
+    - narrate "<yellow>Zombie Pigmen Slain<&co> <player.flag[ZombiePigSkyCount].asint>/20"
+    - if <player.flag[ZombiePigSkyCount].asint> >= 20 run ZPig_Skylands_Done
+      else run ZPig_Skylands_Continue
 
-SkeletonKillContinue:
+ZPig_Skylands_Continue:
     type: task
     script:
-    - listen kill type:entity name:Skeleton qty:1 script:SkeletonKillProgress
+    - listen kill type:entity name:Pig_Zombie qty:1 script:ZPig_Skylands_Progress
 
-SkeletonKillDone:
+ZPig_Skylands_Done:
     type: task
     script:
-    - narrate "<yellow>You have slain <player.flag[SkeletonCount].asint>/10 Skeletons! Return to <npc.name> for your reward!"
-    - zap 'step:Skeleton Quest Reward' script:zpigs_SkylandsQuest
+    - narrate "<yellow>You have slain <player.flag[ZombiePigSkyCount].asint>/20 Zombie Pigmen! Return to <npc.name> for your reward!"
+    - zap 'step:Skylands ZPig Quest Reward' script:zpigs_SkylandsQuest

@@ -18,6 +18,7 @@
        - if <player.flag[KillSpidersQuest]> == "1" narrate "<yellow>Kill Spiders<&co> <player.flag[SpiderCount].asint>/10 Spiders slain."
        - if <player.flag[KillZombieQuest]> == "1" narrate "<yellow>Kill Zombies<&co> <player.flag[ZombieCount].asint>/10 Zombies slain."
        - if <player.flag[FishForWill]> == "1" narrate "<yellow>Fish for Will<&co> <player.flag[FishCount].asint>/10 Fish caught."
+       - if <player.flag[zpigs_SkylandsQuest]> == "1" narrate "<yellow>Stop the Zombie Pigman Invasion<&co> <player.flag[ZombiePigSkyCount].asint>/20 Zombie Pigmen slain."
        - if <player.flag[POE_GatheringSupplies]> == "1" narrate "<yellow>PoEnder<&co> Gathering Supplies<&co> <player.flag[PoEnder_Cobble].asint>/64 Cobblestone obtained."
        - if <player.flag[POE_GatheringSupplies]> == "1" narrate "<yellow>PoEnder<&co> Gathering Supplies<&co> <player.flag[PoEnder_Coal].asint>/20 Coal obtained."
        - if <player.flag[POE_CraftingSupplies]> == "1" narrate "<yellow>PoEnder<&co> Crafting Supplies<&co> <player.flag[PoEnder_IronSword].asint>/4 Iron Swords crafted."

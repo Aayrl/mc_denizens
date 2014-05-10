@@ -28,6 +28,8 @@
       - flag player "KillZombiesQuest_COMPLETED_CNT:0" }
     - if <player.flag[FishforWill_COMPLETED_CNT]> == "null" {
       - flag player "FishforWill_COMPLETED_CNT:0" }
+    - if <player.flag[zpigs_SkylandsQuest_COMPLETED_CNT]> == "null" {
+      - flag player "zpigs_SkylandsQuest_COMPLETED_CNT:0" }
     # Flags for people who have completed POEnder attunement
     - if <player.flag[POEnderAttune]> == "ATTUNED" && <player.flag[QUEST_TOTAL_COMPLETED_CNT]> == "null" {
       - flag player "POEnderAttune_STEP5DONE:1"

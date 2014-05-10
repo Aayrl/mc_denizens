@@ -1,6 +1,7 @@
 # Custom Loot Table
 # Tyler J. Sawyer
-# 4-7-14
+# Version: 1.5
+# Last Updated: 19:02 on May 10, 2014 (Saturday)
 # Defines custom loot items for particular mobs when they are slain.
 
 "customLootTable":
@@ -11,21 +12,49 @@
         - if <context.entity.name> == "Bandit" {
           - run "Drop_Credits" d:<context.damager>|<util.random.int[2].to[12]>
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
+          - if <util.random.int[1].to[100]> >= 85 drop "i@<proc:LootTable_LowTierPotions>" location:<context.entity.location>
+          }
+          else if <context.entity.name> == "Pig Sentry" {
+          - drop "i@<proc:LootTable_POF_ZombiePigs>" location:<context.damager.location>
+          - run "Drop_Credits" d:<context.damager>|<util.random.int[20].to[30]>
+          - if <util.random.int[1].to[100]> >= 50 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
+          - if <util.random.int[1].to[100]> >= 85 drop "i@<proc:LootTable_MediumTierPotions>" location:<context.entity.location>
+          }
+          else if <context.entity.name> == "Pig Centurion" {
+          - drop "i@<proc:LootTable_POF_ZombiePigs>" location:<context.damager.location>
+          - run "Drop_Credits" d:<context.damager>|<util.random.int[20].to[30]>
+          - if <util.random.int[1].to[100]> >= 50 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
+          - if <util.random.int[1].to[100]> >= 85 drop "i@<proc:LootTable_MediumTierPotions>" location:<context.entity.location>
+          }
+          else if <context.entity.name> == "Pig Scout" {
+          - drop "i@<proc:LootTable_POF_ZombiePigs>" location:<context.damager.location>
+          - run "Drop_Credits" d:<context.damager>|<util.random.int[20].to[30]>
+          - if <util.random.int[1].to[100]> >= 50 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
+          - if <util.random.int[1].to[100]> >= 85 drop "i@<proc:LootTable_MediumTierPotions>" location:<context.entity.location>
+          }
+          else if <context.entity.name> == "Pig Flamecaller" {
+          - drop "i@<proc:LootTable_POF_ZombiePigs>" location:<context.damager.location>
+          - run "Drop_Credits" d:<context.damager>|<util.random.int[20].to[30]>
+          - if <util.random.int[1].to[100]> >= 50 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
+          - if <util.random.int[1].to[100]> >= 85 drop "i@<proc:LootTable_MediumTierPotions>" location:<context.entity.location>
           }
           else if <context.entity.name> == "Hate Fiend" {
           - drop "i@<proc:LootTable_HateKeep>" location:<context.damager.location>
           - run "Drop_Credits" d:<context.damager>|<util.random.int[25].to[50]>
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
+          - if <util.random.int[1].to[100]> >= 85 drop "i@<proc:LootTable_MediumTierPotions>" location:<context.entity.location>
           }
           else if <context.entity.name> == "Hate Sprite" {
           - drop "i@<proc:LootTable_HateKeep>" location:<context.damager.location>
           - run "Drop_Credits" d:<context.damager>|<util.random.int[15].to[35]>
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
+          - if <util.random.int[1].to[100]> >= 85 drop "i@<proc:LootTable_MediumTierPotions>" location:<context.entity.location>
           }
           else if <context.entity.name> == "Hate Golem" {
           - drop "i@<proc:LootTable_HateKeep>" location:<context.damager.location>
           - run "Drop_Credits" d:<context.damager>|<util.random.int[45].to[75]>
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
+          - if <util.random.int[1].to[100]> >= 85 drop "i@<proc:LootTable_MediumTierPotions>" location:<context.entity.location>
           }
           else if <context.entity.entity_type> == "Bat" {
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
@@ -46,11 +75,13 @@
           - drop "i@<proc:LootTable_Creeper>" location:<context.entity.location>
           - run "Drop_Credits" d:<context.damager>|<util.random.int[1].to[4]>
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
+          - if <util.random.int[1].to[100]> >= 85 drop "i@<proc:LootTable_LowTierPotions>" location:<context.entity.location>
           }
           else if <context.entity.entity_type> == "Enderman" {
           - drop "i@<proc:LootTable_Enderman>" location:<context.entity.location>
           - run "Drop_Credits" d:<context.damager>|<util.random.int[1].to[15]>
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
+          - if <util.random.int[1].to[100]> >= 85 drop "i@<proc:LootTable_MediumTierPotions>" location:<context.entity.location>
           }
           else if <context.entity.entity_type> == "Ghast" {
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
@@ -83,6 +114,7 @@
           - drop "i@<proc:LootTable_Skeleton>" location:<context.entity.location>
           - run "Drop_Credits" d:<context.damager>|<util.random.int[1].to[4]>
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
+          - if <util.random.int[1].to[100]> >= 85 drop "i@<proc:LootTable_LowTierPotions>" location:<context.entity.location>
           }
           else if <context.entity.entity_type> == "Slime" {
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
@@ -94,6 +126,7 @@
           - drop "i@<proc:LootTable_Spider>" location:<context.entity.location>
           - run "Drop_Credits" d:<context.damager>|<util.random.int[1].to[4]>
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
+          - if <util.random.int[1].to[100]> >= 85 drop "i@<proc:LootTable_LowTierPotions>" location:<context.entity.location>
           }
           else if <context.entity.entity_type> == "Squid" {
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
@@ -108,6 +141,7 @@
           - drop "i@<proc:LootTable_Zombie>" location:<context.entity.location>
           - run "Drop_Credits" d:<context.damager>|<util.random.int[1].to[4]>
           - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
+          - if <util.random.int[1].to[100]> >= 85 drop "i@<proc:LootTable_LowTierPotions>" location:<context.entity.location>
           }
         }
 
@@ -149,6 +183,41 @@
       - determine "words10"
       - determine "words11"
       - determine "words12"
+      
+"LootTable_LowTierPotions":
+    type: procedure
+    script:
+      - random 6
+      - determine "potion_healing_1"
+      - determine "potion_healing_2"
+      - determine "potion_healing_3"
+      - determine "potion_saturation_1"
+      - determine "potion_saturation_2"
+      - determine "potion_saturation_3"
+      
+"LootTable_MediumTierPotions":
+    type: procedure
+    script:
+      - random 6
+      - determine "potion_healing_4"
+      - determine "potion_healing_5"
+      - determine "potion_healing_6"
+      - determine "potion_saturation_4"
+      - determine "potion_saturation_5"
+      - determine "potion_saturation_6"
+      
+"LootTable_HighTierPotions":
+    type: procedure
+    script:
+      - random 8
+      - determine "potion_healing_7"
+      - determine "potion_healing_8"
+      - determine "potion_healing_9"
+      - determine "potion_healing_10"
+      - determine "potion_saturation_7"
+      - determine "potion_saturation_8"
+      - determine "potion_saturation_9"
+      - determine "potion_saturation_10"
         
 # Procedure based on an example from :
 # http://scripts.citizensnpcs.co/view/34aapf
@@ -532,4 +601,67 @@
         - random 2
         - determine "Hurricane"
         - determine "Bucket_of_Saturation"
+        }
+        
+"LootTable_POF_ZombiePigs":
+    type: procedure 
+
+    script:
+    - define roll <util.random.int[1].to[5000]>
+    - if %roll% >= 0 && %roll% < 4000 define quality "Common"
+      else if %roll% >= 4000 && %roll% < 4750 define quality "Uncommon"
+      else if %roll% >= 4750 && %roll% < 4970 define quality "Rare"
+      else if %roll% >= 4970 define quality "Epic"
+ 
+    - if %quality% == Common {
+      - random 12
+      - determine "Charred_Flesh"
+      - determine "Rusty_Longsword"
+      - determine "Rusty_Shortsword"
+      - determine "Rusty_Two_Handed_Sword"
+      - determine "Rusty_Dagger"
+      - determine "Rusty_Rapier"
+      - determine "Rusty_Scimitar"
+      - determine "Rusty_Warhammer"
+      - determine "Rusty_Axe"
+      - determine "Rusty_Battleaxe"
+      - determine "Rusty_Great_Axe"
+      - determine "Rusty_Scythe"
+      }
+ 
+    - if %quality% == Uncommon {
+        - random 18
+        - determine "Tarnished_Longsword"
+        - determine "Tarnished_Shortsword"
+        - determine "Tarnished_Two_Handed_Sword"
+        - determine "Tarnished_Dagger"
+        - determine "Tarnished_Rapier"
+        - determine "Tarnished_Scimitar"
+        - determine "Tarnished_Warhammer"
+        - determine "Tarnished_Axe"
+        - determine "Tarnished_Battleaxe"
+        - determine "Tarnished_Great_Axe"
+        - determine "Tarnished_Scythe"
+        - determine "Flame_Ingot"
+        - determine "Grinding_Stone"
+        - determine "Blaze_Temper"
+        - determine "Polished_Steel_Sword"
+        - determine "Polished_Steel_Axe"
+        - determine "Polished_Steel_Scythe"
+        - determine "Butterblade"
+        }
+ 
+    - if %quality% == Rare {
+        - random 4
+        - determine "Shattered_Flamemail_Helm"
+        - determine "Shattered_Flamemail_Chestpiece"
+        - determine "Shattered_Flamemail_Kilt"
+        - determine "Shattered_Flamemail_Boots"
+        }
+ 
+    - if %quality% == Epic {
+        - random 3
+        - determine "Nightblade"
+        - determine "Rune_of_Healing"
+        - determine "Flamecaller"
         }

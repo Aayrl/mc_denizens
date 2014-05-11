@@ -1,0 +1,93 @@
+// -----------------------------------
+// To-Do List
+// Last Updated: 00:46 on May 11, 2014 (Sunday)
+// -----------------------------------
+
+- Fix an issue preventing players from selling damaged items to vendors.
+
+- Fix an issue where Bandits are not rewarding Faction on death.
+
+- Fix an issue where Guards will not auto-assist each other.
+
+- Fix an issue where Guards will not auto-attack players for attacking other players.
+
+- Fix an issue with NPCs not dropping loot properly.
+
+- Implement Blacksmith Fritz and his Repairing ability.
+- Implement Blacksmith Fritz and his knowledge of blacksmithing items
+    - This includes Shattered Flamemail recipes, etc.
+    
+- Implement Grand Magi Anders
+    - This includes Anders' ability to teach players how to craft spells.
+    
+- Add more custom potions
+
+- Add more spells
+    - Buff Spells
+        - Strength
+        - Speed
+        - Resistance
+        - Absorption
+        - Regeneration
+    - Harming Spells
+        - Poison
+        - Fire DoT
+        - Wither DoT
+    - Group AE Spells
+        - Speed
+        - Strength
+        - Absorption
+    - Utility Spells
+        - AE Heal
+        - Teleport Spells
+        
+- Add 'Bound' spells:
+    - 'Bound' spells require:
+        - Original Spell Item
+        - Book
+        - 1x Ender Essence
+    - 'Bound' spells are exactly the same as the regular spell,
+    - but they do not cost any saturation to use, and have a flat
+    - 30 second cooldown timer. 
+    - 'Bound' spells DO NOT share timers with other 'Bound' spells.
+
+- Add more Skylands quests
+
+- Add more Plane of Fire Quests
+
+- Implement Plane of Ender Quest Chain Series
+
+- Add Vendor to Skylands
+- Add Vendor to Plane of Fire
+
+- Implement Sellers (Vendors that sell items)
+
+- Implement Leaderboard Reset & Reward capabilities
+
+- Revamp the Claims system
+
+- Fix the time of day and weather chat messages to be world-wide, not server-wide.
+
+- Update MOTD spam
+
+- Implement Rhok'delar Questline
+
+- Finish Thunderfury Questline
+
+- Implement Immortalius Questline
+
+BOSSES
+- Overworld
+    - Bandit Chief
+    - Ghost of Anguish
+    - Chilly
+    - Finglas
+- Plane of Fire
+    - Mikili
+    - Chief Jakali
+    - Redfist
+- Plane of Ender
+    - Lady Sinestra
+    - Golermagerus
+    - Darth Schnyder
+    - Lord Nefarious

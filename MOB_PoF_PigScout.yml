@@ -35,7 +35,7 @@ PigScout:
     - execute as_server "sentry health <cons:PigScout_health>"
     - execute as_server "sentry spawn"
     - execute as_server "sentry respawn <cons:PigScout_respawn_delay>"
-    - execute as_server "sentry speed 1"
+    - execute as_server "sentry speed 2"
     - execute as_server "sentry strength <cons:PigScout_str>"
     - execute as_server "sentry killdrops false"
     - execute as_server "sentry healrate 1"

@@ -614,19 +614,7 @@
       else if %roll% >= 4970 define quality "Epic"
  
     - if %quality% == Common {
-      - random 12
       - determine "Charred_Flesh"
-      - determine "Rusty_Longsword"
-      - determine "Rusty_Shortsword"
-      - determine "Rusty_Two_Handed_Sword"
-      - determine "Rusty_Dagger"
-      - determine "Rusty_Rapier"
-      - determine "Rusty_Scimitar"
-      - determine "Rusty_Warhammer"
-      - determine "Rusty_Axe"
-      - determine "Rusty_Battleaxe"
-      - determine "Rusty_Great_Axe"
-      - determine "Rusty_Scythe"
       }
  
     - if %quality% == Uncommon {

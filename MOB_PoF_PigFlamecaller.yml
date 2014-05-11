@@ -20,6 +20,7 @@ PigFlamecaller:
     PigFlamecaller_xp: 20
     PigFlamecaller_health: 100
     PigFlamecaller_respawn_delay: 60
+    PigFlamecaller_agroRange: 3
 
   actions:
     on assignment:
@@ -46,6 +47,7 @@ PigFlamecaller:
     on spawn:
     # Clear previous targets from hate list
     - execute as_server "npc sel <npc.id>"
+    - execute as_server "sentry range <cons:PigFlamecaller_agroRange>"
     - execute as_server "sentry target clear"
     - execute as_server "sentry target add entity:player"
 
@@ -54,6 +56,11 @@ PigFlamecaller:
       - narrate targets:%value% "<cons:death message>" }
     # XP amount
     - drop XP qty:<cons:PigFlamecaller_xp> location:<npc.location>
+    # Loot
+    - drop "i@<proc:LootTable_POF_ZombiePigs>" location:<npc.location>
+    - run "Drop_Credits" d:<context.damager>|<util.random.int[20].to[30]>
+    - if <util.random.int[1].to[100]> >= 50 drop "i@<proc:LootTable_SpellMat>" location:<npc.location>
+    - if <util.random.int[1].to[100]> >= 85 drop "i@<proc:LootTable_MediumTierPotions>" location:<npc.location>
     # Reset npc effects and clear hate targets.
     - execute as_server "npc sel <npc.id>"
     - execute as_server "npc effect --play none"

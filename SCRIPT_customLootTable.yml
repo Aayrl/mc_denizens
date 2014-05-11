@@ -15,28 +15,16 @@
           - if <util.random.int[1].to[100]> >= 85 drop "i@<proc:LootTable_LowTierPotions>" location:<context.entity.location>
           }
           else if <context.entity.name> == "Pig Sentry" {
-          - drop "i@<proc:LootTable_POF_ZombiePigs>" location:<context.damager.location>
-          - run "Drop_Credits" d:<context.damager>|<util.random.int[20].to[30]>
-          - if <util.random.int[1].to[100]> >= 50 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
-          - if <util.random.int[1].to[100]> >= 85 drop "i@<proc:LootTable_MediumTierPotions>" location:<context.entity.location>
+          - queue clear
           }
           else if <context.entity.name> == "Pig Centurion" {
-          - drop "i@<proc:LootTable_POF_ZombiePigs>" location:<context.damager.location>
-          - run "Drop_Credits" d:<context.damager>|<util.random.int[20].to[30]>
-          - if <util.random.int[1].to[100]> >= 50 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
-          - if <util.random.int[1].to[100]> >= 85 drop "i@<proc:LootTable_MediumTierPotions>" location:<context.entity.location>
+          - queue clear
           }
           else if <context.entity.name> == "Pig Scout" {
-          - drop "i@<proc:LootTable_POF_ZombiePigs>" location:<context.damager.location>
-          - run "Drop_Credits" d:<context.damager>|<util.random.int[20].to[30]>
-          - if <util.random.int[1].to[100]> >= 50 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
-          - if <util.random.int[1].to[100]> >= 85 drop "i@<proc:LootTable_MediumTierPotions>" location:<context.entity.location>
+          - queue clear
           }
           else if <context.entity.name> == "Pig Flamecaller" {
-          - drop "i@<proc:LootTable_POF_ZombiePigs>" location:<context.damager.location>
-          - run "Drop_Credits" d:<context.damager>|<util.random.int[20].to[30]>
-          - if <util.random.int[1].to[100]> >= 50 drop "i@<proc:LootTable_SpellMat>" location:<context.entity.location>
-          - if <util.random.int[1].to[100]> >= 85 drop "i@<proc:LootTable_MediumTierPotions>" location:<context.entity.location>
+          - queue clear
           }
           else if <context.entity.name> == "Hate Fiend" {
           - drop "i@<proc:LootTable_HateKeep>" location:<context.damager.location>

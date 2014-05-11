@@ -1,0 +1,39 @@
+# -----------------------------------
+# Blacksmith Fritz NPC
+# @author: Tyler J. Sawyer
+# @version: 1.0
+# Last Updated: 01:07 on May 11, 2014 (Sunday)
+# -----------------------------------
+
+"blacksmith_fritz":
+    type: assignment
+    
+    interact scripts:
+    - 1 nothing_Fritz
+    #- 10 shattered_flame_Fritz
+    #- 11 shattered_flame_Fritz_1
+    #- 12 shattered_flame_Fritz_2
+    #- 13 shattered_flame_Fritz_3
+    #- 14 shattered_flame_Fritz_4
+    #- 20 enderplate_Fritz
+    #- 21 enderplate_Fritz_1
+    #- 22 enderplate_Fritz_2
+    #- 23 enderplate_Fritz_3
+    #- 24 enderplate_Fritz_4
+    #- 90 legendaries_Fritz
+    #- 91 legendaries_Fritz_Thunderfury
+
+# Nothing : If the player does not right click on Fritz while holding a 
+# special item, default to this script.
+"nothing_Fritz":
+    type: interact
+    steps:
+        'noquests_fritz*':
+            click trigger:
+                script:
+                - chat 'Greetings<&cm> <player.name>. How may I be of <&lb><red>service<green><&rb> to you?'
+            chat trigger:
+                'continue_noquests_thoridal':
+                    trigger: 'What /service/?'
+                    script: 
+                    - chat 'I am an expert Blacksmith<&cm> <player.name>. Should you come across any intriguing blacksmithing items<&cm> bring them to me and I may be able to provide you with information on how to craft powerful items.'

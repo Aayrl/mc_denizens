@@ -618,18 +618,7 @@
       }
  
     - if %quality% == Uncommon {
-        - random 18
-        - determine "Tarnished_Longsword"
-        - determine "Tarnished_Shortsword"
-        - determine "Tarnished_Two_Handed_Sword"
-        - determine "Tarnished_Dagger"
-        - determine "Tarnished_Rapier"
-        - determine "Tarnished_Scimitar"
-        - determine "Tarnished_Warhammer"
-        - determine "Tarnished_Axe"
-        - determine "Tarnished_Battleaxe"
-        - determine "Tarnished_Great_Axe"
-        - determine "Tarnished_Scythe"
+        - random 7
         - determine "Flame_Ingot"
         - determine "Grinding_Stone"
         - determine "Blaze_Temper"

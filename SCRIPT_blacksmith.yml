@@ -1,0 +1,62 @@
+# ========================================
+# Blacksmith Script
+# Tyler J. Sawyer
+# Last Updated: 01:48 on May 11, 2014 (Sunday)
+# ========================================
+# 
+# Blacksmith Script
+# ----------------
+#
+# The Blacksmith Script allows administrators to assign NPCs the role of
+# blacksmith. NOTE: This is not the same as the citizens2 trait 'blacksmith'
+# 
+# To use: Place the desired item in your hand and right click on the NPC.
+# The NPC will then determine how many credits it will cost for you to repair
+# that item, and will the prompt you to confirm in chat that you wish to
+# repair the item. Upon confirmation, the script will deduct the desired
+# amount of credits from the player's wallet and repair the item in their
+# hand to full.
+#
+# http://scripts.citizensnpcs.co/view/b6fe1z
+# ========================================
+      
+"DurabilityCommand":
+  type: world
+  events:
+    # Durability Command
+    # Tell the player the current durability of the item
+    # in their hand.
+    on durability command:
+    - if <player.item_in_hand.repairable> narrate "<yellow><player.item_in_hand.display> Durability<&co> <player.item_in_hand.durability> / <player.item_in_hand.max_durability>."
+    - else narrate "<red>Your <player.item_in_hand.display> is not affected by durability!"
+      
+# ============================================================================================
+#
+
+# Blacksmith Assignment
+"blacksmith_custom":
+    type: assignment
+    
+    interact scripts:
+    - 10 blacksmith_customScript
+    
+    actions:
+      on spawn:
+      - trigger name:proximity toggle:true radius:4
+      
+      on enter proximity:
+      - narrate "<white><npc.name> says<&cm> <&sq>Hey there<&cm> <player.name>!<&sq>"
+      - narrate "<yellow>Type <gold>/smithhelp<yellow> for assistance using Blacksmiths."
+      
+      on exit proximity:
+      - narrate "<white><npc.name> says<&cm> <&sq>Thanks<&cm> come again soon!<&sq>"
+
+'blacksmith_customScript':
+    type: interact
+    
+    steps:
+      1:
+        click trigger:
+          script:
+            # Right Clicking on the blacksmith appraises the item in the player's hand.
+            - narrate "<white><npc.name> says<&cm> <&sq>PH_TEXT<&cm> <player.name>.<&sq>"

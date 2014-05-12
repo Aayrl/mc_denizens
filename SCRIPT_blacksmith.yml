@@ -53,7 +53,7 @@
     
     default constants:
         # Costs to repair one point of durability
-        repairdurability: 10
+        repairdurability: 5
         # Costs to repair each level of enchant
         repairenchant: 150
     
@@ -93,7 +93,7 @@
               else {
               - narrate "<white><npc.name> says<&cm> <&sq>That item cannot be repaired<&cm> <player.name>.<&sq>"
               }
-      repair:
+      repairStep:
         chat trigger:
           'repairMe':
             trigger: 'I would like you to /repair/ my item.'

@@ -300,6 +300,10 @@ inv_vendor_generic:
         - flag <player> "CURRENCY_Credits:%newAmt%"
         - narrate "<yellow>You receive %creditAmt% credits for <context.item.display_name><yellow>." }
       - if <context.item.display_name> == null {
+        - if <context.item.durability> != 0 {
+          - narrate "<yellow><context.item.material.formatted> could not be sold to a vendor because it is damaged."
+          - queue clear
+          }
         - define item "<context.item.material.name>:<context.item.data>"
         - define creditAmt <proc[vendorDetermineCredits].context[%vendorItem%]>
         - take "%item%"
@@ -351,6 +355,10 @@ inv_vendor_generic:
         - flag <player> "CURRENCY_Credits:%newAmt%"
         - narrate "<yellow>You receive %creditAmt% credits for <context.item.qty> <context.item.display_name><yellow>." }
       - if <context.item.display_name> == null {
+        - if <context.item.durability> != 0 {
+          - narrate "<yellow><context.item.material.formatted> could not be sold to a vendor because it is damaged."
+          - queue clear
+          }
         - define item "<context.item.material.name>:<context.item.data>"
         - define creditAmt <math.as_int:<proc[vendorDetermineCredits].context[%vendorItem%]>*<context.item.qty>>
         - take %item% qty:<context.item.qty>

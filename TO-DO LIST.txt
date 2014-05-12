@@ -76,6 +76,8 @@
 
 - Implement Immortalius Questline
 
+- YELL AT PLAYERS WHEN THEY JOIN IF THEY HAVE ANY ACTIVE QUESTS.
+
 BOSSES
 - Overworld
     - Bandit Chief
@@ -83,9 +85,9 @@ BOSSES
     - Chilly
     - Finglas
 - Plane of Fire
-    - Mikili
     - Chief Jakali
     - Redfist
+    - Fenin Ro
 - Plane of Ender
     - Lady Sinestra
     - Golermagerus

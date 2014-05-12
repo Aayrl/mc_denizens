@@ -237,15 +237,10 @@ inv_vendor_generic:
     on vendorhelp command:
     - narrate "<yellow>---- Vendor Help ----"
     - narrate "<yellow>Right Click on a vendor to open the Vendor Transaction Window."
-    - wait 1
     - narrate "<yellow><green>Left click<yellow> on an item in your inventory to see how much the vendor is willing to offer you for it."
-    - wait 1
     - narrate "<yellow><red>Right click<yellow> on an item in your inventory to sell your item to the vendor."
-    - wait 1
     - narrate "<yellow><green>Left click<yellow> on an item in the vendor<&sq>s inventory to see how much the item costs."
-    - wait 1
     - narrate "<yellow><red>Right click<yellow> on an item in the vendor<&sq>s inventory to buy the item."
-    - wait 1
     - narrate "<red>You may see ghost items in your inventory. Talk to the vendor again to reset your inventory view if this occurs."
     # When a player left clicks on an item, give price information about it.
     on player left clicks in inventory:

@@ -27,8 +27,21 @@
     # Tell the player the current durability of the item
     # in their hand.
     on durability command:
-    - if <player.item_in_hand.repairable> narrate "<yellow><player.item_in_hand.display> Durability<&co> <player.item_in_hand.durability> / <player.item_in_hand.max_durability>."
-    - else narrate "<red>Your <player.item_in_hand.display> is not affected by durability!"
+    - if <<player.item_in_hand>.repairable> == true {
+      - if <player.item_in_hand.display> == null {
+        - narrate "<yellow><player.item_in_hand.material.formatted> Durability<&co> <player.item_in_hand.durability> / <player.item_in_hand.max_durability>."
+        }
+      - if <player.item_in_hand.display> != null {
+        - narrate "<yellow><player.item_in_hand.display> Durability<&co> <player.item_in_hand.durability> / <player.item_in_hand.max_durability>."
+        }
+    - if <<player.item_in_hand>.repairable> == false {
+      - if <player.item_in_hand.display> == null {
+        - narrate "<red><player.item_in_hand.material.formatted> is not affected by durability!"
+        }
+      - if <player.item_in_hand.display> != null {
+        - narrate "<red>Your <player.item_in_hand.display> is not affected by durability!"
+        }
+      }
       
 # ============================================================================================
 #
@@ -45,17 +58,17 @@
       - trigger name:proximity toggle:true radius:4
       
       on enter proximity:
-      - narrate "<white><npc.name> says<&cm> <&sq>Hey there<&cm> <player.name>!<&sq>"
+      - narrate "<white><npc.name> says<&cm> <&sq>How are you<&cm> <player.name>? Need some equipment repaired?<&sq>"
       - narrate "<yellow>Type <gold>/smithhelp<yellow> for assistance using Blacksmiths."
       
       on exit proximity:
-      - narrate "<white><npc.name> says<&cm> <&sq>Thanks<&cm> come again soon!<&sq>"
+      - narrate "<white><npc.name> says<&cm> <&sq>Safe travels<&cm> <player.name>.<&sq>"
 
 'blacksmith_customScript':
     type: interact
     
     steps:
-      1:
+      default:
         click trigger:
           script:
             # Right Clicking on the blacksmith appraises the item in the player's hand.

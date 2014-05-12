@@ -10,17 +10,14 @@
     
     interact scripts:
     - 1 nothing_Fritz
-    #- 10 shattered_flame_Fritz
     - 11 shattered_flame_Fritz_1
-    #- 12 shattered_flame_Fritz_2
-    #- 13 shattered_flame_Fritz_3
-    #- 14 shattered_flame_Fritz_4
-    #- 20 enderplate_Fritz
+    - 12 shattered_flame_Fritz_2
+    - 13 shattered_flame_Fritz_3
+    - 14 shattered_flame_Fritz_4
     #- 21 enderplate_Fritz_1
     #- 22 enderplate_Fritz_2
     #- 23 enderplate_Fritz_3
     #- 24 enderplate_Fritz_4
-    #- 90 legendaries_Fritz
     #- 91 legendaries_Fritz_Thunderfury
 
 # Nothing : If the player does not right click on Fritz while holding a 
@@ -52,8 +49,70 @@
                 script:
                 - chat 'I notice you have a <&9>Shattered Flamemail Helm<green><&cm> <player.name>. I know of a <&lb><red>recipe<green><&rb> to craft a powerful helmet using the item you found there.'
             chat trigger:
-                'continue_noquests_thoridal':
+                'flamemail_1_recipe':
                     trigger: 'What is the /recipe/?'
                     script: 
-                    - chat 'PH_RECIPE_HELM_FLAMEMAIL'
+                    - chat 'Simply place the <&9>Shattered Flamemail Helm<green> in the center of a crafting table.'
+                    - chat 'You will need three Blaze Tempers on the top row of the crafting table<&cm> and three Flame Ingots on either side of the helmet and one below the helmet.'
+                    - chat 'This will form a Tier 1 armor piece<&cm> the <&5>Flameforged Helm<green>.'
+                    
+# Shattered Flamemail Chestpiece
+"shattered_flame_Fritz_2":
+    type: interact
+    requirements:
+      mode: ALL
+      list: 
+      - holding i@Shattered_Flamemail_Chestpiece
+    steps:
+       'flamemail_2_1*':
+            click trigger:
+                script:
+                - chat 'I notice you have a <&9>Shattered Flamemail Chestpiece<green><&cm> <player.name>. I know of a <&lb><red>recipe<green><&rb> to craft a powerful chestpiece using the item you found there.'
+            chat trigger:
+                'flamemail_2_recipe':
+                    trigger: 'What is the /recipe/?'
+                    script: 
+                    - chat 'Simply place the <&9>Shattered Flamemail Chestpiece<green> in the center of a crafting table.'
+                    - chat 'You will need three Blaze Tempers on the top row of the crafting table<&cm> and five Flame Ingots surrounding the rest of the chestpiece.'
+                    - chat 'This will form a Tier 1 armor piece<&cm> the <&5>Flameforged Chestpiece<green>.'
+                    
+# Shattered Flamemail Kilt
+"shattered_flame_Fritz_3":
+    type: interact
+    requirements:
+      mode: ALL
+      list: 
+      - holding i@Shattered_Flamemail_Kilt
+    steps:
+       'flamemail_3_1*':
+            click trigger:
+                script:
+                - chat 'I notice you have a <&9>Shattered Flamemail Kilt<green><&cm> <player.name>. I know of a <&lb><red>recipe<green><&rb> to craft a powerful kilt using the item you found there.'
+            chat trigger:
+                'flamemail_3_recipe':
+                    trigger: 'What is the /recipe/?'
+                    script: 
+                    - chat 'Simply place the <&9>Shattered Flamemail Kilt<green> in the center of a crafting table.'
+                    - chat 'You will need three Blaze Tempers on the top row of the crafting table<&cm> and four Flame Ingots surrounding the rest of the kilt except for the slot directly below the kilt itself.'
+                    - chat 'This will form a Tier 1 armor piece<&cm> the <&5>Flameforged Kilt<green>.'
+                    
+# Shattered Flamemail Boots
+"shattered_flame_Fritz_4":
+    type: interact
+    requirements:
+      mode: ALL
+      list: 
+      - holding i@Shattered_Flamemail_Boots
+    steps:
+       'flamemail_4_1*':
+            click trigger:
+                script:
+                - chat 'I notice you have a pair of <&9>Shattered Flamemail Boots<green><&cm> <player.name>. I know of a <&lb><red>recipe<green><&rb> to craft a powerful pair of boots using the item you found there.'
+            chat trigger:
+                'flamemail_4_recipe':
+                    trigger: 'What is the /recipe/?'
+                    script: 
+                    - chat 'Simply place the <&9>Shattered Flamemail Boots<green> in the center of a crafting table.'
+                    - chat 'You will need three Blaze Tempers on the top row of the crafting table<&cm> and two Flame Ingots to the left and to the right of the boots.'
+                    - chat 'This will form a Tier 1 armor piece<&cm> the <&5>Flameforged Boots<green>.'
 

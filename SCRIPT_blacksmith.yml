@@ -86,7 +86,11 @@
                 - queue clear
                 }
               - run determineRepairCost instantly
-              - narrate "<white><npc.name> says<&cm> <&sq>It will cost <gold><flag.p:REPAIR_repaircost.as_int> credits to repair that item<&cm> <player.name>.<&sq>"
+              - if <flag.p:REPAIR_repaircost.as_int> == 0 {
+                - narrate "<white><npc.name> says<&cm> <&sq>Hrm<&cm> did you accidentally equip your item? I cannot seem to find it<&cm> <player.name>.<&sq>"
+                - queue clear
+                }
+              - narrate "<white><npc.name> says<&cm> <&sq>It will cost <yellow><flag.p:REPAIR_repaircost.as_int><white> credits to repair that item<&cm> <player.name>.<&sq>"
               - narrate "<white><npc.name> says<&cm> <&sq>Do you wish to <&lb><red>repair<white><&rb> this item for <flag.p:REPAIR_repaircost.as_int> credits?<&sq>"
               - zap repairStep
               }

@@ -3,8 +3,6 @@
 // Last Updated: 00:46 on May 11, 2014 (Sunday)
 // -----------------------------------
 
-- Fix an issue preventing players from selling damaged items to vendors.
-
 - Fix an issue where Bandits are not rewarding Faction on death.
 
 - Fix an issue where Guards will not auto-assist each other.
@@ -13,9 +11,9 @@
 
 - Fix an issue with NPCs not dropping loot properly.
 
-- Implement Blacksmith Fritz and his Repairing ability.
 - Implement Blacksmith Fritz and his knowledge of blacksmithing items
-    - This includes Shattered Flamemail recipes, etc.
+    - Tier 2
+    - Legendary Items
     
 - Implement Grand Magi Anders
     - This includes Anders' ability to teach players how to craft spells.

@@ -86,8 +86,8 @@
                 - queue clear
                 }
               - run determineRepairCost instantly
-              - narrate "<white><npc.name> says<&cm> <&sq>It will cost <gold><flag.p:REPAIR_repaircost> credits to repair that item<&cm> <player.name>.<&sq>"
-              - narrate "<white><npc.name> says<&cm> <&sq>Do you wish to <&lb><red>repair<green><&rb> this item for <flag.p:REPAIR_repaircost> credits?<&sq>"
+              - narrate "<white><npc.name> says<&cm> <&sq>It will cost <gold><flag.p:REPAIR_repaircost.as_int> credits to repair that item<&cm> <player.name>.<&sq>"
+              - narrate "<white><npc.name> says<&cm> <&sq>Do you wish to <&lb><red>repair<white><&rb> this item for <flag.p:REPAIR_repaircost.as_int> credits?<&sq>"
               - zap repairStep
               }
               else {
@@ -99,9 +99,10 @@
             trigger: 'I would like you to /repair/ my item.'
             script:
               - if <player.flag[CURRENCY_Credits]> >= <flag.p:REPAIR_repaircost> {
+                - narrate "<white><npc.name> says<&cm> <&sq>Please wait while I repair your item...<&sq>"
                 - playsound <player.location> sound:anvil_use
-                - define creditAmt <flag.p:REPAIR_repaircost>
-                - define currentAmt <player.flag[CURRENCY_Credits]>
+                - define creditAmt <flag.p:REPAIR_repaircost.as_int>
+                - define currentAmt <player.flag[CURRENCY_Credits].as_int>
                 - define newAmt <math.as_int:%currentAmt%-%creditAmt%>
                 - flag <player> "CURRENCY_Credits:%newAmt%"
                 - adjust <player.item_in_hand> durability:0 save:repairitemtemp

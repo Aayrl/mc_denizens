@@ -89,8 +89,8 @@
         click trigger:
           script:
             # Right Clicking on the blacksmith appraises the item in the player's hand.
-            - if <<player.item_in_hand>.repairable> == true {
-              - if <<player.item_in_hand>.durability> == 0 {
+            - if <player.item_in_hand.repairable> == true {
+              - if <player.item_in_hand.durability> == 0 {
                 - narrate "<white><npc.name> says<&cm> <&sq>That item is already fully repaired<&cm> <player.name>.<&sq>"
                 - queue clear
                 }
@@ -135,16 +135,16 @@
     type: task
     script:
         # Check for enchantments and the state of durability used.
-        - if <<player.item_in_hand>.enchantments> != null {
+        - if <player.item_in_hand.enchantments> != null {
             - flag player REPAIR_enchantlvl:0
-            - foreach <<player.item_in_hand>.enchantments.levels> {
+            - foreach <player.item_in_hand.enchantments.levels> {
                 - flag player REPAIR_enchantlvl:++:%value%
               }
           }
           else {
               - flag player REPAIR_enchantlvl:0
           }
-        - flag player REPAIR_duralvl:<<player.item_in_hand>.durability>
+        - flag player REPAIR_duralvl:<player.item_in_hand.durability>
 
         # Calculates repair cost based on enchant level & durability.
         - flag player REPAIR_enchantcost:<flag.p:REPAIR_enchantlvl>

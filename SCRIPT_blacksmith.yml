@@ -30,17 +30,17 @@
     on durability command:
     - if <<player.item_in_hand>.repairable> == true {
       - if <player.item_in_hand.display> == null {
-        - narrate "<yellow><player.item_in_hand.material.formatted> Durability<&co> <math.as_int:<<player.item_in_hand.max_durability>-<player.item_in_hand.durability>>> / <player.item_in_hand.max_durability>."
+        - narrate "<yellow><player.item_in_hand.material.formatted><yellow> Durability<&co> <math.as_int:<<player.item_in_hand.max_durability>-<player.item_in_hand.durability>>> / <player.item_in_hand.max_durability>."
         }
       - if <player.item_in_hand.display> != null {
-        - narrate "<yellow><player.item_in_hand.display> Durability<&co> <math.as_int:<<player.item_in_hand.max_durability>-<player.item_in_hand.durability>>> / <player.item_in_hand.max_durability>."
+        - narrate "<yellow><player.item_in_hand.display><yellow> Durability<&co> <math.as_int:<<player.item_in_hand.max_durability>-<player.item_in_hand.durability>>> / <player.item_in_hand.max_durability>."
         }
     - if <<player.item_in_hand>.repairable> == false {
       - if <player.item_in_hand.display> == null {
-        - narrate "<red><player.item_in_hand.material.formatted> is not affected by durability!"
+        - narrate "<red><player.item_in_hand.material.formatted><red> is not affected by durability!"
         }
       - if <player.item_in_hand.display> != null {
-        - narrate "<red>Your <player.item_in_hand.display> is not affected by durability!"
+        - narrate "<red>Your <player.item_in_hand.display><red> is not affected by durability!"
         }
       }
     # Smithhelp Command

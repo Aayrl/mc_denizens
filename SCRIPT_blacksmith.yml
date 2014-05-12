@@ -43,6 +43,15 @@
         - narrate "<red>Your <player.item_in_hand.display> is not affected by durability!"
         }
       }
+    # Smithhelp Command
+    # Tell the player the current durability of the item
+    # in their hand.
+    on smithhelp command:
+    - narrate "<yellow>---- Blacksmith Help ----"
+    - narrate "<yellow><green>Step 1<yellow><&co> Place an item you wish to repair in your hand."
+    - narrate "<yellow><green>Step 2<yellow><&co> Right Click on the Smithy to appraise the repair cost for the item of interest."
+    - narrate "<yellow><green>Step 3<yellow><&co> The Smithy will tell you how many credits it will cost to repair the item."
+    - narrate "<yellow><green>Step 4<yellow><&co> To repair the item<&cm> simply respond to the Smithy by typing <red>repair<yellow> into chat."
       
 # ============================================================================================
 #

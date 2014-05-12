@@ -29,10 +29,10 @@
     on durability command:
     - if <<player.item_in_hand>.repairable> == true {
       - if <player.item_in_hand.display> == null {
-        - narrate "<yellow><player.item_in_hand.material.formatted> Durability<&co> <player.item_in_hand.durability> / <player.item_in_hand.max_durability>."
+        - narrate "<yellow><player.item_in_hand.material.formatted> Durability<&co> <math.as_int:<<player.item_in_hand.max_durability>-<player.item_in_hand.durability>>> / <player.item_in_hand.max_durability>."
         }
       - if <player.item_in_hand.display> != null {
-        - narrate "<yellow><player.item_in_hand.display> Durability<&co> <player.item_in_hand.durability> / <player.item_in_hand.max_durability>."
+        - narrate "<yellow><player.item_in_hand.display> Durability<&co> <math.as_int:<<player.item_in_hand.max_durability>-<player.item_in_hand.durability>>> / <player.item_in_hand.max_durability>."
         }
     - if <<player.item_in_hand>.repairable> == false {
       - if <player.item_in_hand.display> == null {

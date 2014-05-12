@@ -17,6 +17,7 @@
 # amount of credits from the player's wallet and repair the item in their
 # hand to full.
 #
+# Based on some script mechanics from: 
 # http://scripts.citizensnpcs.co/view/b6fe1z
 # ========================================
       
@@ -50,6 +51,12 @@
 "blacksmith_custom":
     type: assignment
     
+    default constants:
+        # Costs to repair one point of durability
+        repairdurability: 10
+        # Costs to repair each level of enchant
+        repairenchant: 150
+    
     interact scripts:
     - 10 blacksmith_customScript
     
@@ -63,6 +70,7 @@
       
       on exit proximity:
       - narrate "<white><npc.name> says<&cm> <&sq>Safe travels<&cm> <player.name>.<&sq>"
+      - zap 's@SmithCheck' step:default
 
 'blacksmith_customScript':
     type: interact
@@ -72,4 +80,64 @@
         click trigger:
           script:
             # Right Clicking on the blacksmith appraises the item in the player's hand.
-            - narrate "<white><npc.name> says<&cm> <&sq>PH_TEXT<&cm> <player.name>.<&sq>"
+            - if <<player.item_in_hand>.repairable> == true {
+              - if <<player.item_in_hand>.durability> == 0 {
+                - narrate "<white><npc.name> says<&cm> <&sq>That item is already fully repaired<&cm> <player.name>.<&sq>"
+                - queue clear
+                }
+              - run determineRepairCost instantly
+              - narrate "<white><npc.name> says<&cm> <&sq>It will cost <gold><flag.p:REPAIR_repaircost> credits to repair that item<&cm> <player.name>.<&sq>"
+              - narrate "<white><npc.name> says<&cm> <&sq>Do you wish to <&lb><red>repair<green><&rb> this item for <flag.p:REPAIR_repaircost> credits?<&sq>"
+              - zap repairStep
+              }
+              else {
+              - narrate "<white><npc.name> says<&cm> <&sq>That item cannot be repaired<&cm> <player.name>.<&sq>"
+              }
+      repair:
+        chat trigger:
+          'repairMe':
+            trigger: 'I would like you to /repair/ my item.'
+            script:
+              - if <player.flag[CURRENCY_Credits]> >= <flag.p:REPAIR_repaircost> {
+                - playsound <player.location> sound:anvil_use
+                - define creditAmt <flag.p:REPAIR_repaircost>
+                - define currentAmt <player.flag[CURRENCY_Credits]>
+                - define newAmt <math.as_int:%currentAmt%-%creditAmt%>
+                - flag <player> "CURRENCY_Credits:%newAmt%"
+                - adjust <player.item_in_hand> durability:0 save:repairitemtemp
+                - take iteminhand
+                - give <entry[repairitemtemp].result>
+                - narrate "<white><npc.name> says<&cm> <&sq>There<&cm> good as new<&cm> <player.name>!<&sq>"
+                - narrate "<yellow>You pay <npc.name> %creditAmt% credits to repair your item."
+                - narrate "<yellow>You now have <player.flag[CURRENCY_Credits]> credits."
+                - zap default
+                }
+                else {
+                - narrate "<white><npc.name> says<&cm> <&sq>Sorry <player.name><&cm> but you do not have enough credits to repair that item.<&sq>"
+                - zap default
+                }
+                
+"determineRepairCost":
+    type: task
+    script:
+        # Check for enchantments and the state of durability used.
+        - if <<player.item_in_hand>.enchantments> != null {
+            - flag player REPAIR_enchantlvl:0
+            - foreach <<player.item_in_hand>.enchantments.levels> {
+                - flag player REPAIR_enchantlvl:++:%value%
+              }
+          }
+          else {
+              - flag player REPAIR_enchantlvl:0
+          }
+        - flag player REPAIR_duralvl:<<player.item_in_hand>.durability>
+
+        # Calculates repair cost based on enchant level & durability.
+        - flag player REPAIR_enchantcost:<flag.p:REPAIR_enchantlvl>
+        - flag player REPAIR_enchantcost:**:<cons:repairenchant>
+
+        - flag player REPAIR_duracost:<flag.p:REPAIR_duralvl>
+        - flag player REPAIR_duracost:**:<cons:repairdurability>
+
+        - flag player REPAIR_repaircost:<flag.p:REPAIR_enchantcost>
+        - flag player REPAIR_repaircost:++:<flag.p:REPAIR_duracost>

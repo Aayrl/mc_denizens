@@ -2,10 +2,6 @@
 // To-Do List
 // Last Updated: 10:18 on May 13, 2014 (Tuesday)
 // -----------------------------------
-
-- Implement Blacksmith Fritz and his knowledge of blacksmithing items
-    - Tier 2
-    - Legendary Items
     
 - Implement Grand Magi Anders
     - This includes Anders' ability to teach players how to craft spells.

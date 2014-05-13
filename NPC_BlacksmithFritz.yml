@@ -14,11 +14,14 @@
     - 12 shattered_flame_Fritz_2
     - 13 shattered_flame_Fritz_3
     - 14 shattered_flame_Fritz_4
-    #- 21 enderplate_Fritz_1
-    #- 22 enderplate_Fritz_2
-    #- 23 enderplate_Fritz_3
-    #- 24 enderplate_Fritz_4
-    #- 91 legendaries_Fritz_Thunderfury
+    - 20 enderplate_Fritz_0
+    - 21 enderplate_Fritz_1
+    - 22 enderplate_Fritz_2
+    - 23 enderplate_Fritz_3
+    - 24 enderplate_Fritz_4
+    - 91 legendaries_Fritz_TF1
+    - 92 legendaries_Fritz_TF2
+    - 95 legendaries_Fritz_TFBlade
 
 # Nothing : If the player does not right click on Fritz while holding a 
 # special item, default to this script.
@@ -53,7 +56,7 @@
                     trigger: 'What is the /recipe/?'
                     script: 
                     - chat 'Simply place the <&9>Shattered Flamemail Helm<green> in the center of a crafting table.'
-                    - chat 'You will need three Blaze Tempers on the top row of the crafting table<&cm> and three Flame Ingots on either side of the helmet and one below the helmet.'
+                    - chat 'You will need three Blaze Tempers on the top row of the crafting table<&cm> and two Flame Ingots on either side of the helmet and one Flame Ingot below the helmet.'
                     - chat 'This will form a Tier 1 armor piece<&cm> the <&5>Flameforged Helm<green>.'
                     
 # Shattered Flamemail Chestpiece
@@ -116,3 +119,186 @@
                     - chat 'You will need three Blaze Tempers on the top row of the crafting table<&cm> and two Flame Ingots to the left and to the right of the boots.'
                     - chat 'This will form a Tier 1 armor piece<&cm> the <&5>Flameforged Boots<green>.'
 
+# Information about the Dragonforged Armor Set.
+# Turning Enderplate Ringlets into Enderplate Blocks
+"enderplate_Fritz_0":
+    type: interact
+    requirements:
+      mode: ALL
+      list: 
+      - holding i@Enderplate_Rings
+    steps:
+       'enderplate_0_1*':
+            click trigger:
+                script:
+                - chat 'Ahh<&cm> you have found some <green>Enderplate Rings<green><&cm> <player.name>. I know of a <&lb><red>recipe<green><&rb> to craft Enderplate Blocks from those.'
+            chat trigger:
+                'enderplate_0_recipe':
+                    trigger: 'What is the /recipe/?'
+                    script: 
+                    - chat 'Place an Enderplate Rings on alternating squares in a crafting table<&cm> as you would to build a compass. This will fashion a fine Enderplate Block.'
+
+# Runed Enderplate Helmet
+"enderplate_Fritz_1":
+    type: interact
+    requirements:
+      mode: ALL
+      list: 
+      - holding i@Runed_Enderplate_Helm
+    steps:
+       'enderplate_1_1*':
+            click trigger:
+                script:
+                - chat 'I notice you have a <&9>Runed Enderplate Helm<green><&cm> <player.name>. I know of a <&lb><red>recipe<green><&rb> to craft a powerful helmet using the item you found there.'
+            chat trigger:
+                'enderplate_1_recipe':
+                    trigger: 'What is the /recipe/?'
+                    script: 
+                    - chat 'Simply place the <&9>Runed Enderplate Helm<green> in the center of a crafting table.'
+                    - chat 'You will need three Ender Tempers on the top row of the crafting table<&cm> and two Enderplate Blocks on either side of the helmet and one Enderplate Block below the helmet.'
+                    - chat 'This will form a Tier 2 armor piece<&cm> the <&5>Dragonforged Helm<green>.'
+                    
+# Runed Enderplate Chestpiece
+"enderplate_Fritz_2":
+    type: interact
+    requirements:
+      mode: ALL
+      list: 
+      - holding i@Runed_Enderplate_Chestpiece
+    steps:
+       'enderplate_2_1*':
+            click trigger:
+                script:
+                - chat 'I notice you have a <&9>Runed Enderplate Chestpiece<green><&cm> <player.name>. I know of a <&lb><red>recipe<green><&rb> to craft a powerful chestpiece using the item you found there.'
+            chat trigger:
+                'enderplate_2_recipe':
+                    trigger: 'What is the /recipe/?'
+                    script: 
+                    - chat 'Simply place the <&9>Runed Enderplate Chestpiece<green> in the center of a crafting table.'
+                    - chat 'You will need three Ender Tempers on the top row of the crafting table<&cm> and five Enderplate Blocks surrounding the rest of the chestpiece.'
+                    - chat 'This will form a Tier 2 armor piece<&cm> the <&5>Dragonforged Chestpiece<green>.'
+                    
+# Runed Enderplate Leggings
+"enderplate_Fritz_3":
+    type: interact
+    requirements:
+      mode: ALL
+      list: 
+      - holding i@Runed_Enderplate_Leggings
+    steps:
+       'enderplate_3_1*':
+            click trigger:
+                script:
+                - chat 'I notice you have a pair of <&9>Runed Enderplate Leggings<green><&cm> <player.name>. I know of a <&lb><red>recipe<green><&rb> to craft a powerful pair of leggings using the item you found there.'
+            chat trigger:
+                'enderplate_3_recipe':
+                    trigger: 'What is the /recipe/?'
+                    script: 
+                    - chat 'Simply place the <&9>Runed Enderplate Leggings<green> in the center of a crafting table.'
+                    - chat 'You will need three Ender Tempers on the top row of the crafting table<&cm> and four Enderplate Blocks surrounding the rest of the leggings except for the slot directly below the leggings themself.'
+                    - chat 'This will form a Tier 2 armor piece<&cm> the <&5>Dragonforged Leggings<green>.'
+                    
+# Runed Enderplate Boots
+"enderplate_Fritz_4":
+    type: interact
+    requirements:
+      mode: ALL
+      list: 
+      - holding i@Runed_Enderplate_Boots
+    steps:
+       'enderplate_4_1*':
+            click trigger:
+                script:
+                - chat 'I notice you have a pair of <&9>Runed Enderplate Boots<green><&cm> <player.name>. I know of a <&lb><red>recipe<green><&rb> to craft a powerful pair of boots using the item you found there.'
+            chat trigger:
+                'enderplate_4_recipe':
+                    trigger: 'What is the /recipe/?'
+                    script: 
+                    - chat 'Simply place the <&9>Runed Enderplate Boots<green> in the center of a crafting table.'
+                    - chat 'You will need three Ender Tempers on the top row of the crafting table<&cm> and two Enderplate Blocks to the left and to the right of the boots.'
+                    - chat 'This will form a Tier 2 armor piece<&cm> the <&5>Dragonforged Boots<green>.'
+                    
+# Thunderfury Information
+# Ore
+"legendaries_Fritz_TF1":
+    type: interact
+    requirements:
+      mode: ALL
+      list: 
+      - holding i@EnderdragonOre
+    steps:
+       'TF_1_1*':
+            click trigger:
+                script:
+                - chat 'Wow<&cm> I have never seen that kind of ore before<&cm> <player.name>! You say it<&sq>s called <&6>Enderdragon Ore<green>? Perhaps we could refine it with a well known <&lb><red>recipe<green><&rb>?'
+            chat trigger:
+                'TF_1_Recipe':
+                    trigger: 'What well known /recipe/?'
+                    script: 
+                    - chat 'Try to place the <&6>Enderdragon Ore<green> in the center of a crafting table and place one coal above<&cm> below<&cm> to the left and to the right of the ore.'
+                    - chat 'If you manage to fashion a bar using this method<&cm> I would be interested in seeing it.'
+                    
+# Bar
+"legendaries_Fritz_TF2":
+    type: interact
+    requirements:
+      mode: ALL
+      list: 
+      - holding i@EnderdragonBar
+    steps:
+       'TF_2_1*':
+            click trigger:
+                script:
+                - chat 'Amazing <player.name>! You managed to craft an <&6>Enderdragon Bar<green>! The powerful enchanter Anders has informed me of an even more powerful enchanted bar you can fashion with the following <&lb><red>recipe<green><&rb>.'
+            chat trigger:
+                'TF_2_Recipe':
+                    trigger: 'How may I form an enchanted bar with the new /recipe/?'
+                    script: 
+                    - chat 'Anders tells me you need to do the following...'
+                    - chat 'Place three <&6>Enderdragon Bars<green> on the bottom row of a crafting table.'
+                    - chat 'Place three <&9>Ender Tempers<green> on the center row of the crafting table.'
+                    - chat 'Place three <&9>Ender Essences<green> on the top row of the crafting table.'
+                    - chat 'This should form a powerfully enchanted Enderdragon Bar. Speak with me once you have constructed one of these.'
+
+# Wind Kissed Blade
+"legendaries_Fritz_TFBlade":
+    type: interact
+    requirements:
+      mode: ALL
+      list: 
+      - holding i@EnchantedEDORE
+    steps:
+       'TF_3_1*':
+            click trigger:
+                script:
+                - chat 'I see you have made an <&6>Enchanted Enderdragon Bar<green>! Upon further conversation with Anders<&cm> I have learned of a legendary blade fashioned from these materials.'
+                - wait 1s
+                - chat 'The legendary blade is known as <&6>Thunderfury<&cm> Blessed Blade of the Windseeker<green>. Are interested in learning <&lb><red>more<green><&rb>?
+            chat trigger:
+                'TF_3_Recipe':
+                    trigger: 'Tell me /more/ please!'
+                    script: 
+                    - chat 'Well<&cm> you must first forge the dormant blade of Thunderfury. Only then will you be worthy of summoning the Windseeker to bless your sword.'
+                    - wait 1s
+                    - chat 'To form this dormant blade<&cm> combine the following in a crafting table...'
+                    - chat 'Place seven <&6>Enchanted Enderdragon Bars<green> on all slots except for the middle left and the middle right in the crafting table.'
+                    - chat 'Place the <&6>Left Bindings of the Windseeker<green> on the middle left slot of the crafting table.'
+                    - chat 'Place three <&6>Right Bindings of the Windseeker<green> on the middle right slot of the crafting table.'
+                    - chat 'This will form the dormant blade<&cm> though you will need to find the <&lb><red>bindings<green><&rb>...'
+                    - zap 'step:TF_3_2'
+        'TF_3_2':
+            click trigger:
+                script:
+                - chat 'This will form the dormant blade<&cm> though you will need to find the <&lb><red>Bindings<green><&rb>...'
+            chat trigger:
+                'TF_3_Recipe':
+                    trigger: 'Where can I find the /Bindings/ of the Windseeker?!'
+                    script: 
+                    - chat 'Well<&cm> rumor has it the powerful beings in the Plane of Ender may hold the Bindings of the Windseeker.'
+                    - wait 1s
+                    - chat 'If you are serious about forming this blade<&cm> <player.name><&cm> then I suggest you bring some friends with you to the Plane of Ender and see what the powerful beings there carry.'
+                    - wait 2s
+                    - chat 'If you manage to locate the bindings and form the dormant blade<&cm> you can probably <red>/use<green> the dormant blade to teleport you to the Windseeker himself.'
+                    - wait 1s
+                    - chat 'Good luck<&cm> <player.name>.'
+                    - zap 'step:TF_3_1'

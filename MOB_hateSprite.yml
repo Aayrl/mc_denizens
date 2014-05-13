@@ -50,10 +50,10 @@ hateSprite:
     # XP amount
     - drop XP qty:<cons:hateSprite_xp> location:<npc.location>
     # Random loot
-    # LOOT TABLE HERE PERHAPS?
-    #- define roll <util.random.int[1].to[100]>
-    #- if %roll% >= 90 {
-    #  - drop "" location:<npc.location> }
+    - drop "i@<proc:LootTable_HateKeep>" location:<npc.location>
+    - run "Drop_Credits" d:<context.damager>|<util.random.int[15].to[35]>
+    - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<npc.location>
+    - if <util.random.int[1].to[100]> >= 85 drop "i@<proc:LootTable_MediumTierPotions>" location:<npc.location>
     # Reset npc effects and clear hate targets.
     - execute as_server "npc sel <npc.id>"
     - execute as_server "npc effect --play none"

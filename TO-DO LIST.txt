@@ -9,8 +9,6 @@
 
 - Fix an issue where Guards will not auto-attack players for attacking other players.
 
-- Fix an issue with NPCs not dropping loot properly.
-
 - Implement Blacksmith Fritz and his knowledge of blacksmithing items
     - Tier 2
     - Legendary Items

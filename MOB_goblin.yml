@@ -14,9 +14,9 @@ goblin:
     attack message 1: <white>Ugly creature near my feet<&cm> me thinks you<&sq>ll be good to eat!
     attack message 2: <white>It puts the credits in the basket or it gets the mallet again! Eeheehee!
     attack message 3: <white>Filthy human<&cm> you must be punished!
-    death message: <white>Arrewerrr..
-    death message: <white>Eraagghhh!!
-    death message: <white>Mraaahhhrhrr..
+    death message 1: <white>Arrewerrr..
+    death message 2: <white>Eraagghhh!!
+    death message 3: <white>Mraaahhhrhrr..
     victory message: <white>Heeheeheeheee!
 
     # Stats
@@ -86,8 +86,7 @@ goblin:
         - narrate targets:%value% "<&9>Your faction standing with Goblin has gotten worse! (<%value%.flag[FACTION_Goblin]>)"
         - flag player:%value% "FACTION_Gondor:<math.as_int:<%value%.flag[FACTION_Gondor]>+<cons:faction_guard>>"
         - narrate targets:%value% "<&9>Your faction standing with Gondor has gotten better! (<%value%.flag[FACTION_Gondor]>)" }
-      }
-      - if <%value%.flag[FACTION_Goblin]> <= 0 {
+        else {
         - flag player:%value% "FACTION_Goblin:0"
         - narrate targets:%value% "<&9>Your faction standing with Goblin could not possibly get any worse! (0)"
         - flag player:%value% "FACTION_Gondor:<math.as_int:<%value%.flag[FACTION_Gondor]>+<cons:faction_guard>>"

@@ -1901,8 +1901,20 @@
      - i@EnchantedEDORE|i@EnchantedEDORE|i@EnchantedEDORE 
    lore:
    - <yellow>A powerful blade of legends.
+   - <green>Use<&co> Teleport<&co> Windseeker.
    enchantments:
    - durability:1
+   
+"windKissedBlade_TP":
+   type: world
+   events:
+     on use command:
+       - if <player.item_in_hand.display> == "<&6>Dormant Wind Kissed Blade" {
+         - narrate "<aqua>Your Wind Kissed Blade is dormant no longer as you are magically transported to the Windseeker himself!"
+         - teleport <player> "376,253,575,skylands"
+         - playeffect location:<player.location> effect:portal qty:1000
+         - narrate "<aqua>Perhaps you should speak to the Windseeker with the dormant blade in hand?"
+         }
  
 # Thunderfury Item
 "Thunderfury":
@@ -1912,8 +1924,8 @@
    lore:
    - <green>Effect<&co> <red>Thunderfury
    enchantments:
-   - damage_all:12
-   - durability:10
+   - damage_all:15
+   - durability:15
  
 
 # Thunderfury Effects

@@ -1934,10 +1934,29 @@
    - damage_all:15
    - durability:15
  
-
 # Thunderfury Effects
-# Knock all enemies in a 15 block radius up in the air 15 blocks
-# Strike Lightning down on all enemies within 15 blocks
+# Knock all enemies in a 15 block radius up in the air 10 blocks
+# Harms all these enemies for 10 damage.
+# Slows all of these enemies for 10 seconds.
+"Thunderfury_Effect_DMG":
+   type: world
+   events:
+     on entity damaged by player:
+       - if <util.random.int[1].to[100]> >= 95 {
+         - foreach <l@<player.location>.find.entities.within[<15>].aslist> {
+           - if %value% != <player> {
+             - if <%value%.is_player> narrate targets:%value% "<&9><player.name><&sq>s <&6>Thunderfury<&cm> Blessed Blade of the Windseeker<&9> thrashes you about for 10 damage."
+             - narrate "<&9>Your <&6>Thunderfury<&cm> Blessed Blade of the Windseeker<&9> thrashes <%value%.name> for 10 damage."
+             - teleport "<%value%.location.x.asint>,<m:<%value%.location.y.asint>+10>,<%value%.location.z.asint>,<%value%.location.world.name>"
+             - cast slow target:<%value%> duration:10 power:2
+             - playsound location:<%value%.location> sound:ambience_thunder
+             - playeffect location:<%value%.location> effect:large_smoke qty:500
+             - playeffect location:<%value%.location> effect:witch_magic qty:500
+             - hurt 10 target:%value%
+             }
+           }
+         - playeffect location:<player.location> effect:FIREWORKS_SPARK qty:500
+         }
    
 # ---------------------------------------------------------------------------
 # Used to start the Rhokdelar questline.

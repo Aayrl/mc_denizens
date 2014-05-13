@@ -619,3 +619,69 @@
         - determine "Rune_of_Healing"
         - determine "Flamecaller"
         }
+        
+"LootTable_Goblin":
+    type: procedure
+
+    script:
+    - define roll <util.random.int[1].to[5000]>
+    - if %roll% >= 0 && %roll% < 4000 define quality "Common"
+      else if %roll% >= 4000 && %roll% < 4750 define quality "Uncommon"
+      else if %roll% >= 4750 && %roll% < 4970 define quality "Rare"
+      else if %roll% >= 4970 define quality "Epic"
+ 
+    - if %quality% == Common {
+      - random 11
+      - determine "Rusty_Longsword"
+      - determine "Rusty_Shortsword"
+      - determine "Rusty_Two_Handed_Sword"
+      - determine "Rusty_Dagger"
+      - determine "Rusty_Rapier"
+      - determine "Rusty_Scimitar"
+      - determine "Rusty_Warhammer"
+      - determine "Rusty_Axe"
+      - determine "Rusty_Battleaxe"
+      - determine "Rusty_Great_Axe"
+      - determine "Rusty_Scythe"
+      }
+ 
+    - if %quality% == Uncommon {
+        - random 20
+        - determine "Tarnished_Longsword"
+        - determine "Tarnished_Shortsword"
+        - determine "Tarnished_Two_Handed_Sword"
+        - determine "Tarnished_Dagger"
+        - determine "Tarnished_Rapier"
+        - determine "Tarnished_Scimitar"
+        - determine "Tarnished_Warhammer"
+        - determine "Tarnished_Axe"
+        - determine "Tarnished_Battleaxe"
+        - determine "Tarnished_Great_Axe"
+        - determine "Tarnished_Scythe"
+        - determine "Leather_Scraps"
+        - determine "Patchwork_Leather_Hat"
+        - determine "Patchwork_Leather_Tunic"
+        - determine "Patchwork_Leather_Pants"
+        - determine "Patchwork_Leather_Boots"
+        - determine "Tattered_Leather_Hat"
+        - determine "Tattered_Leather_Tunic"
+        - determine "Tattered_Leather_Pants"
+        - determine "Tattered_Leather_Boots"
+        }
+ 
+    - if %quality% == Rare {
+        - random 6
+        - determine "Ringmail_Coif"
+        - determine "Ringmail_Tunic"
+        - determine "Ringmail_Leggings"
+        - determine "Ringmail_Boots"
+        - determine "Ashwood_Recurve_Bow"
+        - determine "Redwood_Recurve_Bow"
+        }
+ 
+    - if %quality% == Epic {
+        - random 3
+        - determine "Nightblade"
+        - determine "Willsapper"
+        - determine "Eyepatch_of_Plunder"
+        }

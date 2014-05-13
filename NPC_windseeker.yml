@@ -12,6 +12,7 @@
     interact scripts:
     - 10 NoSword_windseeker
     - 20 Sword_windseeker
+    - 30 HasSword_windseeker
     
     actions:
       on damage:
@@ -34,6 +35,27 @@
                     trigger: 'What is /the sword/?'
                     script: 
                     - chat 'Fool! Return to me when you have obtained the <&6>Dormant Wind Kissed Blade<green><&cm> <player.name>!'
+                    
+# HAS TFURY : If the player interacts but already has a Thunderfury.
+"HasSword_windseeker":
+    type: interact
+    requirements:
+      mode: ALL
+      list: 
+      - holding i@Thunderfury
+    steps:
+        'hasthesword_windseeker*':
+            click trigger:
+                script:
+                - chat 'Ahh<&cm> <player.name>! I honor your presence. Please<&cm> feel free to stay a while and <&lb><red>rest<green><&rb> if you wish.'
+                chat trigger:
+                'hassword_windseeker_rest':
+                    trigger: 'I wish to /rest/ for a moment.'
+                    script: 
+                    - chat 'Of course<&cm> Master <player.name>.'
+                    - heal 25 <player.name>
+                    - feed 25 <player.name>
+                    - narrate "<aqua>You feel fully healed and fully saturated."
 
 # HAS SWORD : Reward the player with thunderfury if they have the dormant blade in hand.
 "Sword_windseeker":

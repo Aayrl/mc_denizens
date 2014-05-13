@@ -1901,11 +1901,11 @@
      - i@EnchantedEDORE|i@EnchantedEDORE|i@EnchantedEDORE 
    lore:
    - <yellow>A powerful blade of legends.
-   - <green>Use<&co> Teleport<&co> Windseeker.
+   - <green>Use<&co> <red>Teleport<&co> Windseeker.
    enchantments:
    - durability:1
    
-"windKissedBlade_TP":
+"ThunderFury_Teleport":
    type: world
    events:
      on use command:
@@ -1915,6 +1915,11 @@
          - playeffect location:<player.location> effect:portal qty:1000
          - narrate "<aqua>Perhaps you should speak to the Windseeker with the dormant blade in hand?"
          }
+       - if <player.item_in_hand.display> == "<&6>Thunderfury<&cm> Blessed Blade of the Windseeker" {
+         - narrate "<aqua>You call upon the spirit of the Windseeker to whisk you away to the Skylands."
+         - teleport <player> "376,253,575,skylands"
+         - playeffect location:<player.location> effect:portal qty:1000
+         }
  
 # Thunderfury Item
 "Thunderfury":
@@ -1922,7 +1927,9 @@
    material: 276
    display name: "<&6>Thunderfury<&cm> Blessed Blade of the Windseeker"
    lore:
+   - <&5>The Legendary Blade of the Windseeker.
    - <green>Effect<&co> <red>Thunderfury
+   - <green>Use<&co> <red>Teleport<&co> Windseeker.
    enchantments:
    - damage_all:15
    - durability:15

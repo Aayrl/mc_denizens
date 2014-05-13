@@ -61,12 +61,14 @@ bandit:
     on death:
     - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
       - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:death message><&sq>" }
-    # XP amount
-    - drop XP qty:<cons:bandit_xp> location:<npc.location>
-    # Drop Loot
-    - run "Drop_Credits" d:<context.damager>|<util.random.int[2].to[12]>
-    - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<npc.location>
-    - if <util.random.int[1].to[100]> >= 85 drop "i@<proc:LootTable_LowTierPotions>" location:<npc.location>
+    - if <context.killer.is_player> {
+      # XP amount
+      - drop XP qty:<cons:bandit_xp> location:<npc.location>
+      # Drop Loot
+      - run "Drop_Credits" d:<context.damager>|<util.random.int[2].to[12]>
+      - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<npc.location>
+      - if <util.random.int[1].to[100]> >= 85 drop "i@<proc:LootTable_LowTierPotions>" location:<npc.location>
+      }
     # Reset npc effects and clear hate targets.
     - execute as_server "npc sel <npc.id>"
     - execute as_server "npc effect --play none"
@@ -78,8 +80,7 @@ bandit:
         - narrate targets:%value% "<&9>Your faction standing with Bandit has gotten worse! (<%value%.flag[FACTION_Bandit]>)"
         - flag player:%value% "FACTION_Gondor:<math.as_int:<%value%.flag[FACTION_Gondor]>+<cons:faction_guard>>"
         - narrate targets:%value% "<&9>Your faction standing with Gondor has gotten better! (<%value%.flag[FACTION_Gondor]>)" }
-      }
-      - if <%value%.flag[FACTION_Bandit]> <= 0 {
+        else {
         - flag player:%value% "FACTION_Bandit:0"
         - narrate targets:%value% "<&9>Your faction standing with Bandit could not possibly get any worse! (0)"
         - flag player:%value% "FACTION_Gondor:<math.as_int:<%value%.flag[FACTION_Gondor]>+<cons:faction_guard>>"

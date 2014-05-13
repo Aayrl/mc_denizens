@@ -1,5 +1,9 @@
-# Bandit assignment
-# Tyler J. Sawyer - 4/15/14
+# -----------------------------------
+# Bandit Assignment
+# @author: Tyler J. Sawyer
+# @version: 1.8
+# Last Updated: 14:16 on May 13, 2014 (Tuesday)
+# -----------------------------------
 # Loosely based on the Bandit Example...
 # Much improved using Sentry plugin
 # REQUIREMENTS:
@@ -44,7 +48,7 @@ bandit:
     - execute as_server "sentry healrate 1"
     - execute as_server "sentry retaliate true"
     - execute as_server "sentry targetable true"
-    - execute as_server "sentry target add entity:monster"
+    - execute as_server "sentry target add entity:player"
     - execute as_server "sentry equip 267"
     - execute as_server "sentry equip 298"
     - execute as_server "sentry equip 299"
@@ -62,12 +66,10 @@ bandit:
     - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
       - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:death message><&sq>"
       }
-    - if <npc.flag[AgroList].aslist> != null {
-      - drop XP qty:<cons:bandit_xp> location:<npc.location>
-      - run "Drop_Credits" d:<context.damager>|<util.random.int[2].to[12]>
-      - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<npc.location>
-      - if <util.random.int[1].to[100]> >= 85 drop "i@<proc:LootTable_LowTierPotions>" location:<npc.location>
-      }
+    - drop XP qty:<cons:bandit_xp> location:<npc.location>
+    - run "Drop_Credits" d:<context.damager>|<util.random.int[2].to[12]>
+    - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<npc.location>
+    - if <util.random.int[1].to[100]> >= 85 drop "i@<proc:LootTable_LowTierPotions>" location:<npc.location>
     # Reset npc effects and clear hate targets.
     - execute as_server "npc sel <npc.id>"
     - execute as_server "npc effect --play none"
@@ -109,11 +111,3 @@ bandit:
          script:
            # Add player to the agro list when they hit the npc.
            - if <npc.flag[AgroList].aslist> !contains <player> && <player.name> != <npc.name> flag npc AgroList:->:<player>
-           
-
-watat:
-  type: item
-  material: i@human_skull[skull_skin=T_G_H_O_E_D]
-  display name: <dark_red>wat
-  lore:
-  - wat

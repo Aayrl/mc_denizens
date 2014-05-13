@@ -1919,6 +1919,7 @@
    type: world
    events:
      on entity damaged by player:
+     - if <player.item_in_hand.display> == "<&6>Thunderfury<&cm> Blessed Blade of the Windseeker" {
        - if <util.random.int[1].to[100]> >= 95 {
          - foreach <l@<player.location>.find.entities.within[<5>].aslist> {
            - if %value% != <player> {
@@ -1934,6 +1935,7 @@
            }
          - playeffect location:<player.location> effect:FIREWORKS_SPARK qty:500
          }
+       }
    
 # ---------------------------------------------------------------------------
 # Used to start the Rhokdelar questline.

@@ -69,7 +69,7 @@ goblin:
       - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:death message 2><&sq>"
       - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:death message 3><&sq>"
       }
-    - if <context.killer.is_player> {
+    - if <context.damager.is_player> {
       - drop XP qty:<cons:goblin_xp> location:<npc.location>
       - drop "i@<proc:LootTable_Goblin>" location:<npc.location>
       - run "Drop_Credits" d:<context.damager>|<util.random.int[1].to[7]>

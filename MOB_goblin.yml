@@ -1,0 +1,121 @@
+# -----------------------------------
+# Goblin NPC
+# @author: Tyler J. Sawyer
+# @version: 1.0
+# Last Updated: 13:22 on May 13, 2014 (Tuesday)
+# -----------------------------------
+# REQUIREMENTS:
+#   Sentry      Denizens        Citizens2
+
+goblin:
+  type: assignment
+
+  default constants:
+    attack message 1: <white>Ugly creature near my feet<&cm> me thinks you<&sq>ll be good to eat!
+    attack message 2: <white>It puts the credits in the basket or it gets the mallet again! Eeheehee!
+    attack message 3: <white>Filthy human<&cm> you must be punished!
+    death message: <white>Arrewerrr..
+    death message: <white>Eraagghhh!!
+    death message: <white>Mraaahhhrhrr..
+    victory message: <white>Heeheeheeheee!
+
+    # Stats
+    goblin_str: 1
+    goblin_xp: 5
+    goblin_health: 30
+    goblin_respawn_delay: 30
+    
+    factionhit: 5
+    faction_guard: 5
+    
+  interact scripts:
+  - 10 goblinInteractScript
+
+  actions:
+    on assignment:
+    - trigger name:damage toggle:true
+
+    # Setup goblin Stats
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "npc type player"
+    - execute as_server "npc speed 1"
+    - execute as_server "npc lookclose"
+    - execute as_server "trait sentry"
+    - execute as_server "sentry health <cons:goblin_health>"
+    - execute as_server "sentry spawn"
+    - execute as_server "sentry respawn <cons:goblin_respawn_delay>"
+    - execute as_server "sentry speed 1"
+    - execute as_server "sentry strength <cons:goblin_str>"
+    - execute as_server "sentry killdrops false"
+    - execute as_server "sentry healrate 1"
+    - execute as_server "sentry retaliate true"
+    - execute as_server "sentry targetable true"
+    - execute as_server "sentry target add entity:monster"
+    - execute as_server "sentry target add entity:player"
+    - execute as_server "sentry equip 272"
+
+    on spawn:
+    # Clear previous targets from hate list
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "sentry target clear"
+    - execute as_server "sentry target add entity:player"
+    - execute as_server "sentry target add entity:monster"
+    - flag npc AgroList:!
+
+    on death:
+    - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
+      - random 3
+      - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:death message 1><&sq>"
+      - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:death message 2><&sq>"
+      - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:death message 3><&sq>" }
+    # XP amount
+    - drop XP qty:<cons:goblin_xp> location:<npc.location>
+    # Drop Loot
+    - run "Drop_Credits" d:<context.damager>|<util.random.int[1].to[7]>
+    - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<npc.location>
+    - if <util.random.int[1].to[100]> >= 85 drop "i@<proc:LootTable_LowTierPotions>" location:<npc.location>
+    # Reset npc effects and clear hate targets.
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "npc effect --play none"
+    - execute as_server "sentry target clear"
+    # Faction Adjustments
+    - foreach <npc.flag[AgroList].aslist> {
+      - if <%value%.flag[FACTION_Goblin]> >= 1  {
+        - flag player:%value% "FACTION_Goblin:<math.as_int:<%value%.flag[FACTION_Goblin]>-<cons:factionhit>>"
+        - narrate targets:%value% "<&9>Your faction standing with Goblin has gotten worse! (<%value%.flag[FACTION_Goblin]>)"
+        - flag player:%value% "FACTION_Gondor:<math.as_int:<%value%.flag[FACTION_Gondor]>+<cons:faction_guard>>"
+        - narrate targets:%value% "<&9>Your faction standing with Gondor has gotten better! (<%value%.flag[FACTION_Gondor]>)" }
+      }
+      - if <%value%.flag[FACTION_Goblin]> <= 0 {
+        - flag player:%value% "FACTION_Goblin:0"
+        - narrate targets:%value% "<&9>Your faction standing with Goblin could not possibly get any worse! (0)"
+        - flag player:%value% "FACTION_Gondor:<math.as_int:<%value%.flag[FACTION_Gondor]>+<cons:faction_guard>>"
+        - narrate targets:%value% "<&9>Your faction standing with Gondor has gotten better! (<%value%.flag[FACTION_Gondor]>)" }
+      }
+
+    on attack: 
+    - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
+      - random 3
+      - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:attack message 1><&sq>" 
+      - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:attack message 2><&sq>" 
+      - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:attack message 3><&sq>" }
+    
+    on kill:
+    - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
+      - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:victory message><&sq>" }
+      
+    on enter proximity:
+    - attack
+    - if <npc.flag[AgroList].aslist> !contains <player> && <player.name> != <npc.name> flag npc AgroList:->:<player>
+    
+"goblinInteractScript":
+   type: interact
+   steps:
+     1:
+       click trigger:
+         script:
+         - narrate "<yellow><npc.name><&co> <npc.health.percentage.as_int>%"
+       damage trigger:
+         script:
+           # Add player to the agro list when they hit the npc.
+           - if <npc.flag[AgroList].aslist> !contains <player> && <player.name> != <npc.name> flag npc AgroList:->:<player>

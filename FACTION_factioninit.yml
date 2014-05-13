@@ -36,4 +36,6 @@
       - flag player "FACTION_Bandit:1000" }
     - if <player.flag[FACTION_HateKeep]> == "null" {
       - flag player "FACTION_HateKeep:1000" }
+    - if <player.flag[FACTION_Goblin]> == "null" {
+      - flag player "FACTION_Goblin:1000" }
     # Misc. Factions

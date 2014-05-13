@@ -12,6 +12,14 @@
     interact scripts:
     - 10 NoSword_windseeker
     - 20 Sword_windseeker
+    
+    actions:
+      on damage:
+      - narrate "<red>Prince Thunderan shouts<&cm> <&sq>Fool! You cannot harm me!<&sq>"
+      - playsound location:<player.location> sound:ambience_thunder
+      - playsound location:<player.location> sound:ambience_thunder
+      - playsound location:<player.location> sound:ambience_thunder
+      - hurt 100000 <player>
 
 # NO SWORD : If the player interacts without the dormant blade in hand.
 "NoSword_windseeker":

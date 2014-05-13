@@ -273,7 +273,7 @@
                 script:
                 - chat 'I see you have made an <&6>Enchanted Enderdragon Bar<green>! Upon further conversation with Anders<&cm> I have learned of a legendary blade fashioned from these materials.'
                 - wait 1s
-                - chat 'The legendary blade is known as <&6>Thunderfury<&cm> Blessed Blade of the Windseeker<green>. Are interested in learning <&lb><red>more<green><&rb>?
+                - chat 'The legendary blade is known as <&6>Thunderfury<&cm> Blessed Blade of the Windseeker<green>. Are interested in learning <&lb><red>more<green><&rb>?'
             chat trigger:
                 'TF_6_Recipe':
                     trigger: 'Tell me /more/ please!'

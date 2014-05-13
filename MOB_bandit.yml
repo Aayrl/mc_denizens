@@ -21,6 +21,9 @@ bandit:
     
     factionhit: 5
     faction_guard: 5
+    
+  interact scripts:
+  - 10 BanditInteractScript
 
   actions:
     on assignment:
@@ -94,3 +97,15 @@ bandit:
     on enter proximity:
     - attack
     - if <npc.flag[AgroList].aslist> !contains <player> && <player.name> != <npc.name> flag npc AgroList:->:<player>
+    
+"BanditInteractScript":
+   type: interact
+   steps:
+     1:
+       click trigger:
+         script:
+         - narrate "<yellow><npc.name><&co> <npc.health.percentage.as_int>%"
+       damage trigger:
+         script:
+           # Add player to the agro list when they hit the npc.
+           - if <npc.flag[AgroList].aslist> !contains <player> && <player.name> != <npc.name> flag npc AgroList:->:<player>

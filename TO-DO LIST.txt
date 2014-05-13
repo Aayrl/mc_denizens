@@ -3,8 +3,6 @@
 // Last Updated: 10:18 on May 13, 2014 (Tuesday)
 // -----------------------------------
 
-- Fix an issue where Bandits are not rewarding Faction on death.
-
 - Fix an issue where Guards will not auto-assist each other.
 
 - Fix an issue where Guards will not auto-attack players for attacking other players.

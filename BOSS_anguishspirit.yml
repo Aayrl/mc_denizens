@@ -1,4 +1,11 @@
-# Ghost of Anguish Encounter
+# -----------------------------------
+# Ghost of Anguish Boss Encounter
+# @author: Tyler J. Sawyer
+# @version: 1.0
+# Last Updated: 17:51 on May 13, 2014 (Tuesday)
+# -----------------------------------
+# Designed to be defeated by one player.
+# One hour reset.
 
 soanguish:
   type: assignment
@@ -8,54 +15,232 @@ soanguish:
     fleeing message: You have lingered here too long...
     death message: Thank you ...
     victory message: Seriously.
+    respawn message: A terrifying scream is heard in the distance.
+    
+    # Special Event Messages
+    drainsoul_msg: Your soul shall suffer as mine has...
+    adds_msg: Rise my spirits<&cm> defend your territory...
 
+    # Boss Stats
+    # Health Pool
+    SoA_health: 1000
+    # Damage / Swing
+    SoA_str: 1
+    # Armor Value
+    SoA_AC: 1
+    # Agro Radius (in Blocks)
+    SoA_AGRO_RADIUS: 10
+    # Movement Speed (Blocks / Tick)
+    SoA_Movement_Speed: 2
+    # Spawnpoint
+    SoA_SpawnPoint: "-45,77,177,world"
+    # Respawn Timer in seconds (3600 = 1hr)
+    SoA_Respawn_Timer: 3600
+    # XP Amount he drops on death
+    SoA_XP_AMT: 300
+    
   actions:
     on assignment:
-    - trigger name:proximity 
-      toggle:true radius:4
+    - trigger name:proximity toggle:true "radius:<cons:SoA_AGRO_RADIUS>"
     - trigger name:damage toggle:true
-    - health toggle:true
-    - vulnerable
+
+    # Setup stats
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "npc type player"
+    - execute as_server "npc speed <cons:SoA_Movement_Speed>"
+    - execute as_server "npc lookclose"
+    - execute as_server "trait sentry"
+    - execute as_server "sentry health <cons:SoA_health>"
+    - execute as_server "sentry respawn <cons:SoA_Respawn_Timer>"
+    - execute as_server "sentry speed <cons:SoA_Movement_Speed>"
+    - execute as_server "sentry strength <cons:SoA_str>"
+    - execute as_server "sentry armor <cons:SoA_AC>"
+    - execute as_server "sentry range <cons:SoA_AGRO_RADIUS>"
 
     on spawn:
-    - flag npc in_pursuit:!
-    - trigger name:proximity 
-      toggle:true radius:4
-    - trigger name:damage toggle:true
-    - health 100 state:true
-    - vulnerable
-
-    on enter proximity:
-    - if <npc.flag[in_pursuit]> 
-      queue clear
-    - flag npc in_pursuit:true
-    - lookclose toggle:true
-    - narrate "<&D><npc.name> whispers, 
-      '<cons:approach message>'"
-
-    on exit proximity:
-    - if !<npc.flag[in_pursuit]> 
-      queue clear
-    - attack
-    - lookclose toggle:false
-    - narrate "<&D><npc.name> whispers, 
-      '<cons:fleeing message>'"
-
-    on damage:
-    - if !<npc.flag[in_pursuit]> 
-      queue clear
-    - attack
+    - announce "<red><cons:respawn message>"
+    # Warp to its spawn point on spawn.
+    - teleport <npc> "location:<cons:SoA_SpawnPoint>"
+    # Clear previous targets from hate list
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "sentry target clear"
+    - execute as_server "sentry target add entity:player"
+    # Clear boss flags
+    - flag npc BossPlayerList:!
+    - flag npc SoA_SoulDrain_CD:!
+    - flag npc SoA_SummonAdds_CD:!
 
     on death:
-    - narrate "<&D><npc.name> whispers, 
-      '<cons:death message>"
-    - drop XP qty:500
-      location:<npc.location>
-    - flag npc in_pursuit:!
+    - playsound location:<npc.location> sound:blaze_death
+    # XP amount
+    - drop XP qty:<cons:SoA_XP_AMT> location:<npc.location>
+    # Random Loot Item 1
+    - random 6
+    - drop "Pain" qty:1 location:<npc.location>
+    - drop "Anguish" qty:1 location:<npc.location>
+    - drop "Elder_Spirit_Helm" qty:1 location:<npc.location>
+    - drop "Elder_Spirit_Chest" qty:1 location:<npc.location>
+    - drop "Elder_Spirit_Legs" qty:1 location:<npc.location>
+    - drop "Elder_Spirit_Boots" qty:1 location:<npc.location>
+    # Random Loot Item 2
+    - random 6
+    - drop "Pain" qty:1 location:<npc.location>
+    - drop "Anguish" qty:1 location:<npc.location>
+    - drop "Elder_Spirit_Helm" qty:1 location:<npc.location>
+    - drop "Elder_Spirit_Chest" qty:1 location:<npc.location>
+    - drop "Elder_Spirit_Legs" qty:1 location:<npc.location>
+    - drop "Elder_Spirit_Boots" qty:1 location:<npc.location>
+    # Reset npc effects and clear hate targets.
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "npc effect --play none"
+    - execute as_server "sentry target clear"
+    # Announce to players the boss is dead.
+    - announce "<red><npc.name> yells, <cons:death message>"
+    - announce "<&5><npc.name> has been slain!"
+    - foreach <npc.flag[BossPlayerList].aslist> {
+      - flag player:%value% LBOARD_B:++
+      - flag player:%value% LBOARD_SCORE_TOTAL:<math.as_int:<<player>.flag[LBOARD_SCORE_TOTAL]>+100>
+      - flag player:%value% SoA_Engaged:!
+      - narrate targets:<%value%.name> "<aqua>You assisted in slaying <npc.name>."
+      }
 
-    on player death:
-    - narrate "<&D><npc.name> whispers, <cons:victory message>"
-    - flag npc in_pursuit:!   
+    on enter proximity:
+    - announce "<&D><npc.name> whispers<&cm> <&sq><cons:agro message><&sq>"
+    - playsound location:<npc.location> sound:blaze_breath
+    # Flag the player as 'engaged' with the boss for 30 seconds.
+    # If the player attacks the NPC, this refreshes.
+    # If the player gets summoned, this refreshes.
+    # If the player warps to spawn or home, this duration will fade out.
+    - flag player "SoA_Engaged:true" duration:30
 
-    on despawn:
-    - flag npc in_pursuit:!   
+    on exit proximity:
+    # summon player if they are still engaged by the boss.
+    - if "<flag.p:SoA_Engaged:true || false>" == true {
+      - announce "<&D><npc.name> whispers<&cm> <&sq>You will not evade me<&cm> <player.name>!<&sq>"
+      - narrate "<yellow>You have been summoned!"
+      - teleport <player> "location:<npc.location>"
+      - playsound location:<player.location> sound:portal_travel
+      - playeffect location:<player.location> effect:portal qty:1000
+      }
+    
+    on kill:
+    - announce "<&D><npc.name> whispers<&cm> <&sq><cons:victory message><&sq>"
+
+"AOHakkarScript":
+   type: interact
+   steps:
+     1:
+       click trigger:
+         script:
+         # Right Clicking on the boss tells you his % health.
+         - narrate "<yellow><npc.name><&co> <npc.health.percentage.as_int>%"
+       proximity trigger:
+         entry:
+           script:
+           # Add player to the boss list when they enter his proximity.
+           - if <npc.flag[BossPlayerList].aslist> !contains <player> && <player.name> != <npc.name> flag npc BossPlayerList:->:<player>
+       damage trigger:
+         script:
+           # When the boss is hit, re-flag the player as engaged with the boss.
+           - flag player "SoA_Engaged:true" duration:30
+           - playsound location:<npc.location> sound:blaze_breath
+           - playeffect location:<npc.location> effect:FIREWORKS_SPARK qty:50
+           # Here are the boss special events that fire off throughout the fight.
+           - ^if <npc.health.percentage.as_int> <= 98 {
+             - random 2
+             - run "SoA_SummonAdds_Ability"
+             - run "SoA_LifeDrain_Ability"
+             }
+           
+"SoA_SummonAdds_Ability":
+   type: task
+   # This summons a witch add every 30 seconds.
+   script:
+     - if <npc.flag[SoA_SummonAdds_CD]> == null {
+       - flag npc "SoA_SummonAdds_CD:true" duration:30
+       - playsound location:<npc.location> sound:blaze_breath
+       - announce "<&D><npc.name> whispers<&cm> <&sq><cons:adds_msg><&sq>"
+       - execute as_server "summon Witch <player.location.x.asint> <player.location.y.asint> <player.location.z.asint>"
+       }
+       
+"SoA_LifeDrain_Ability":
+   type: task
+   # This ability hits the player for 10 and heals the boss for 10.
+   script:
+     - if <npc.flag[SoA_LifeDrain_CD]> == null {
+       - flag npc "SoA_LifeDrain_CD:true" duration:20
+       - playsound location:<npc.location> sound:blaze_breath
+       - announce "<&D><npc.name> whispers<&cm> <&sq><cons:drainsoul_msg><&sq>"
+       - foreach <npc.flag[BossPlayerList].aslist> {
+         - narrate targets:<%value%.name> "<&9>You feel your life drain away. You have taken 10 points of damage."
+         - hurt 10 %value%
+         - heal 10 <npc>
+         - playeffect location:<%value%.location> effect:potion_break qty:5 data:8
+         }
+       }
+       
+# Loot Items
+"Pain":
+   type: item
+   material: 276
+   display name: "<&9>Pain"
+   lore:
+   - <white>The Left Hand of Anguish
+   enchantments:
+   - damage_all:5
+   - durability:5
+ 
+"Anguish":
+   type: item
+   material: 276
+   display name: "<&9>Anguish"
+   lore:
+   - <white>The Right Hand of Anguish
+   - <green>Effect<&co> <red>Pain and Anguish
+   enchantments:
+   - damage_all:5
+   - durability:5
+   
+"Elder_Spirit_Helm":
+   type: item
+   material: 298
+   display name: "<&9>Elder Spiritist Helmet"
+   lore:
+   - <white>A Spiritual Helmet.
+   color: c@<white>
+   enchantments:
+   - durability:5
+   - oxygen:2
+   
+"Elder_Spirit_Chest":
+   type: item
+   material: 298
+   display name: "<&5>Elder Spiritist Chestpiece"
+   lore:
+   - <white>A Spiritual Chestpiece.
+   color: c@<white>
+   enchantments:
+   - durability:5
+   - protection_environmental:5
+   
+"Elder_Spirit_Legs":
+   type: item
+   material: 298
+   display name: "<&5>Elder Spiritist Leggings"
+   lore:
+   - <white>A Spiritual Pair of Leggings.
+   color: c@<white>
+   enchantments:
+   - durability:5
+   - protection_projectile:5
+   
+"Elder_Spirit_Boots":
+   type: item
+   material: 298
+   display name: "<&9>Elder Spiritist Boots"
+   lore:
+   - <white>A Spiritual Pair of Boots.
+   color: c@<white>
+   enchantments:
+   - durability:5
+   - protection_fall:5

@@ -1119,29 +1119,6 @@
  
       
 # [Overworld Loot]
-"Pain":
-   type: item
-   material: 276
-   display name: "<&9>Pain"
-   lore:
-   - <white>The Left Hand of Anguish
-   enchantments:
-   - damage_all:5
-   - durability:5
- 
-   
-"Anguish":
-   type: item
-   material: 276
-   display name: "<&9>Anguish"
-   lore:
-   - <white>The Right Hand of Anguish
-   - <green>Effect<&co> <red>Pain and Anguish
-   enchantments:
-   - damage_all:5
-   - durability:5
- 
-   
 "Redwood_Recurve_Bow":
    type: item
    material: 261

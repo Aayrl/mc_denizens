@@ -1,0 +1,91 @@
+# -----------------------------------
+# Windseeker Interact Script
+# @author: Tyler J. Sawyer
+# @version: 1.0
+# Last Updated: 16:21 on May 13, 2014 (Tuesday)
+# -----------------------------------
+
+# Task Assignment
+"windseeker":
+    type: assignment
+    
+    interact scripts:
+    - 10 NoSword_windseeker
+    - 20 Sword_windseeker
+
+# NO SWORD : If the player interacts without the dormant blade in hand.
+"NoSword_windseeker":
+    type: interact
+    steps:
+        'nonesword_windseeker*':
+            click trigger:
+                script:
+                - chat 'Begone<&cm> <player.name>! You are not worthy as you are not holding <&lb><red>the sword<green><&rb>!'
+            chat trigger:
+                'continue_nonesword_windseeker':
+                    trigger: 'What is /the sword/?'
+                    script: 
+                    - chat 'Fool! Return to me when you have obtained the <&6>Dormant Wind Kissed Blade<green><&cm> <player.name>!'
+
+# HAS SWORD : Reward the player with thunderfury if they have the dormant blade in hand.
+"Sword_windseeker":
+    type: interact
+    requirements:
+      mode: ALL
+      list: 
+      - holding i@WindKissedBlade
+    steps:
+        'Windseeker_1*':
+            click trigger:
+                script:
+                - chat 'I have been watching your progress<&cm> <player.name>. I am impressed by your crafting abilities. Tell me<&cm> do you come seeking true <&lb><red>power<green><&rb>?'
+            chat trigger:
+                'continue_Windseeker1':
+                    trigger: 'I am in search of /power/ from the Windseeker.'
+                    script: 
+                    - chat 'Luckily for you<&cm> <player.name><&cm> I am that which you are seeking - the last of the Windseekers. Do you have the <&lb><red>blade<green><&rb>?'
+                    - zap 'step:Windseeker_2'
+        'Windseeker_2':
+            click trigger:
+                script:
+                - chat 'Luckily for you<&cm> <player.name><&cm> I am that which you are seeking - the last of the Windseekers. Do you have the <&lb><red>blade<green><&rb>?'
+            chat trigger:
+                'continue_Windseeker2':
+                    trigger: 'I have the /blade/.'
+                    script:
+                    - chat 'Good. Place the blade in your hand and allow me to <&lb><red>bless the sword<green><&rb>.'
+                    - zap 'step:Windseeker_3'
+        'Windseeker_3':
+            click trigger:
+                script:
+                - chat 'Good. Place the blade in your hand and allow me to <&lb><red>bless the sword<green><&rb>.'
+            chat trigger:
+                'continue_Windseeker3':
+                    trigger: 'I am ready for you to /bless the sword/.'
+                    script:
+                    - if <player.item_in_hand.display> == "<&6>Dormant Wind Kissed Blade" {
+                      - take iteminhand
+                      - narrate "<aqua>The Windseeker takes the sword from your hand and places it on a pillar beside him."
+                      - wait 2s
+                      - narrate "<aqua>The sword begins to shake violently as it is struck by several bolts of lightning..."
+                      - playsound location:<player.location> sound:ambience_thunder
+                      - wait 1s
+                      - playsound location:<player.location> sound:ambience_thunder
+                      - wait 1s
+                      - playsound location:<player.location> sound:ambience_thunder
+                      - wait 1s
+                      - narrate "<aqua>The Windseeker<&sq>s eyes go white as the sword bursts with energy..."
+                      - playsound location:<player.location> sound:portal_travel
+                      - wait 3s
+                      - narrate "<aqua>The blade begins to levitate and slides into your hand."
+                      - playsound location:<player.location> sound:level_up
+                      - give i@Thunderfury
+                      - wait 2s
+                      - narrate "<red>Prince Thunderan shouts<&cm> <&sq>Mortals! It is with great honor that I hereby declare <player.name> protector of the Windseekers.<&sq>"
+                      - wait 2s
+                      - narrate "<red>Prince Thunderan shouts<&cm> <&sq>Let us congratulate <player.name> for their extraordinary accomplishments<&cm> as they have just obtained <&6>Thunderfury<&cm> Blessed Blade of the Windseeker<red>!<&sq>"
+                      }
+                      else {
+                      - narrate "<red>It appears you do not have the <&6>Dormant Wind Kissed Blade<red> in your hand. Place it in your hand and try again."
+                      }
+                    - zap 'step:Windseeker_1'

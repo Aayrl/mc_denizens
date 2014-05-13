@@ -39,6 +39,9 @@ soanguish:
     # XP Amount he drops on death
     SoA_XP_AMT: 300
     
+  interact scripts:
+  - 10 GhostAnguishScript
+    
   actions:
     on assignment:
     - trigger name:proximity toggle:true "radius:<cons:SoA_AGRO_RADIUS>"
@@ -126,7 +129,7 @@ soanguish:
     on kill:
     - announce "<&D><npc.name> whispers<&cm> <&sq><cons:victory message><&sq>"
 
-"AOHakkarScript":
+"GhostAnguishScript":
    type: interact
    steps:
      1:
@@ -203,44 +206,40 @@ soanguish:
    
 "Elder_Spirit_Helm":
    type: item
-   material: 298
+   material: 306
    display name: "<&9>Elder Spiritist Helmet"
    lore:
    - <white>A Spiritual Helmet.
-   color: c@<white>
    enchantments:
    - durability:5
    - oxygen:2
    
 "Elder_Spirit_Chest":
    type: item
-   material: 298
+   material: 307
    display name: "<&5>Elder Spiritist Chestpiece"
    lore:
    - <white>A Spiritual Chestpiece.
-   color: c@<white>
    enchantments:
    - durability:5
    - protection_environmental:5
    
 "Elder_Spirit_Legs":
    type: item
-   material: 298
+   material: 308
    display name: "<&5>Elder Spiritist Leggings"
    lore:
    - <white>A Spiritual Pair of Leggings.
-   color: c@<white>
    enchantments:
    - durability:5
    - protection_projectile:5
    
 "Elder_Spirit_Boots":
    type: item
-   material: 298
+   material: 309
    display name: "<&9>Elder Spiritist Boots"
    lore:
    - <white>A Spiritual Pair of Boots.
-   color: c@<white>
    enchantments:
    - durability:5
    - protection_fall:5

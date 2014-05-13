@@ -52,12 +52,13 @@ guard_kelethin:
     - execute as_server "sentry equip 301"
 
     on spawn:
+    - trigger name:proximity toggle:true radius:15
     # Clear previous targets from hate list
     - execute as_server "npc sel <npc.id>"
     - execute as_server "sentry target clear"
     - execute as_server "sentry target add entity:monster"
-    - execute as_server "sentry target add entity:PvP"
-    - execute as_server "sentry target add entity:PvNPC"
+    - execute as_server "sentry target add event:PvP"
+    - execute as_server "sentry target add event:PvNPC"
     - flag npc AgroList:!
 
     on death:
@@ -78,6 +79,9 @@ guard_kelethin:
       - if <%value%.flag[FACTION_Kelethin]> >= 0 {
         - flag player:%value% "FACTION_Kelethin:<math.as_int:<%value%.flag[FACTION_Kelethin]>-<cons:factionHit>>"
         - narrate targets:%value% "<&9>Your faction standing with Kelethin has gotten worse! (<%value%.flag[FACTION_Kelethin]>)" }
+        else {
+        - flag player:%value% "FACTION_Kelethin:0"
+        - narrate targets:%value% "<&9>Your faction standing with Kelethin could not possibly get any worse! (0)" }
       }
 
     on attack: 
@@ -88,6 +92,15 @@ guard_kelethin:
     - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
       - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:victory message><&sq>" }
 
+    on enter proximity:
+    # If the player's faction is too low, guards auto-attack.
+    - if <player.flag[FACTION_Kelethin]> <= 1000 {
+      - attack
+      - if <npc.flag[AgroList].aslist> !contains <player> && <player.name> != <npc.name> flag npc AgroList:->:<player>
+      - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
+        - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:hate message><&sq>" }
+      }
+      
 "KGuardInteractScript":
    type: interact
    steps:

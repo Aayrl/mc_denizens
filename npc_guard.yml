@@ -57,8 +57,8 @@ guard_gondor:
     - execute as_server "npc sel <npc.id>"
     - execute as_server "sentry target clear"
     - execute as_server "sentry target add entity:monster"
-    - execute as_server "sentry target add entity:PvP"
-    - execute as_server "sentry target add entity:PvNPC"
+    - execute as_server "sentry target add event:PvP"
+    - execute as_server "sentry target add event:PvNPC"
     - flag npc AgroList:!
 
     on death:
@@ -79,8 +79,7 @@ guard_gondor:
       - if <%value%.flag[FACTION_Gondor]> >= 1 {
         - flag player:%value% "FACTION_Gondor:<math.as_int:<%value%.flag[FACTION_Gondor]>-<cons:factionHit>>"
         - narrate targets:%value% "<&9>Your faction standing with Gondor has gotten worse! (<%value%.flag[FACTION_Gondor]>)" }
-      }
-      - if <%value%.flag[FACTION_Gondor]> <= 0 {
+        else {
         - flag player:%value% "FACTION_Gondor:0"
         - narrate targets:%value% "<&9>Your faction standing with Gondor could not possibly get any worse! (0)" }
       }

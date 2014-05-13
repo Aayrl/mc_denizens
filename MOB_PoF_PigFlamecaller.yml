@@ -58,7 +58,6 @@ PigFlamecaller:
     - drop XP qty:<cons:PigFlamecaller_xp> location:<npc.location>
     # Loot
     - drop "i@<proc:LootTable_POF_ZombiePigs>" location:<npc.location>
-    - run "Drop_Credits" d:<context.damager>|<util.random.int[20].to[30]>
     - if <util.random.int[1].to[100]> >= 50 drop "i@<proc:LootTable_SpellMat>" location:<npc.location>
     - if <util.random.int[1].to[100]> >= 85 drop "i@<proc:LootTable_MediumTierPotions>" location:<npc.location>
     # Reset npc effects and clear hate targets.

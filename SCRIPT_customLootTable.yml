@@ -10,27 +10,39 @@
     on entity death:
       - if <context.damager.is_player> {
         - if <context.entity.name> == "Bandit" {
+          - run "Drop_Credits" d:<context.damager>|<util.random.int[2].to[12]>
+          - queue clear
+          }
+          else if <context.entity.name> == "Goblin" {
+          - run "Drop_Credits" d:<context.damager>|<util.random.int[1].to[7]>
           - queue clear
           }
           else if <context.entity.name> == "Pig Sentry" {
+          - run "Drop_Credits" d:<context.damager>|<util.random.int[20].to[30]>
           - queue clear
           }
           else if <context.entity.name> == "Pig Centurion" {
+          - run "Drop_Credits" d:<context.damager>|<util.random.int[20].to[30]>
           - queue clear
           }
           else if <context.entity.name> == "Pig Scout" {
+          - run "Drop_Credits" d:<context.damager>|<util.random.int[20].to[30]>
           - queue clear
           }
           else if <context.entity.name> == "Pig Flamecaller" {
+          - run "Drop_Credits" d:<context.damager>|<util.random.int[20].to[30]>
           - queue clear
           }
           else if <context.entity.name> == "Hate Fiend" {
+          - run "Drop_Credits" d:<context.damager>|<util.random.int[25].to[50]>
           - queue clear
           }
           else if <context.entity.name> == "Hate Sprite" {
+          - run "Drop_Credits" d:<context.damager>|<util.random.int[15].to[35]>
           - queue clear
           }
           else if <context.entity.name> == "Hate Golem" {
+          - run "Drop_Credits" d:<context.damager>|<util.random.int[45].to[75]>
           - queue clear
           }
           else if <context.entity.entity_type> == "Bat" {

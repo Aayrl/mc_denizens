@@ -71,7 +71,6 @@ goblin:
       }
     - drop XP qty:<cons:goblin_xp> location:<npc.location>
     - drop "i@<proc:LootTable_Goblin>" location:<npc.location>
-    - run "Drop_Credits" d:<context.damager>|<util.random.int[1].to[7]>
     - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<npc.location>
     - if <util.random.int[1].to[100]> >= 85 drop "i@<proc:LootTable_LowTierPotions>" location:<npc.location>
     # Reset npc effects and clear hate targets.

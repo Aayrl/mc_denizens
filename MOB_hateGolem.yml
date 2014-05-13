@@ -51,7 +51,6 @@ hateGolem:
     - drop XP qty:<cons:hateGolem_xp> location:<npc.location>
     # Random loot
     - drop "i@<proc:LootTable_HateKeep>" location:<npc.location>
-    - run "Drop_Credits" d:<context.damager>|<util.random.int[45].to[75]>
     - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<npc.location>
     - if <util.random.int[1].to[100]> >= 85 drop "i@<proc:LootTable_MediumTierPotions>" location:<npc.location>
     # Reset npc effects and clear hate targets.

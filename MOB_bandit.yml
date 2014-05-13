@@ -67,7 +67,6 @@ bandit:
       - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:death message><&sq>"
       }
     - drop XP qty:<cons:bandit_xp> location:<npc.location>
-    - run "Drop_Credits" d:<context.damager>|<util.random.int[2].to[12]>
     - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<npc.location>
     - if <util.random.int[1].to[100]> >= 85 drop "i@<proc:LootTable_LowTierPotions>" location:<npc.location>
     # Reset npc effects and clear hate targets.

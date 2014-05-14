@@ -32,7 +32,7 @@ chilly_npcboss:
     # Movement Speed (Blocks / Tick)
     Chilly_Movement_Speed: 1
     # Spawnpoint
-    Chilly_SpawnPoint: "-6282,117,-1028,world"
+    Chilly_SpawnPoint: "-6283,117,-1028,world"
     # Respawn Timer in seconds (3600 = 1hr)
     Chilly_Respawn_Timer: 3600
     # XP Amount he drops on death
@@ -151,9 +151,10 @@ chilly_npcboss:
            - playeffect location:<npc.location> effect:snow_shovel qty:500 offset:0.25
            # Here are the boss special events that fire off throughout the fight.
            - ^if <npc.health.percentage.as_int> <= 98 {
-             - random 2
+             - random 3
              - run "Chilly_Freeze_Ability"
              - run "Chilly_IceShard_Ability"
+             - run "Chilly_DS_Ability"
              }
            
 "Chilly_Freeze_Ability":
@@ -166,7 +167,19 @@ chilly_npcboss:
        - playeffect location:<player.location> effect:snowball_poof qty:1000 offset:0
        - announce "<red><npc.name> yells<&cm> <&sq><cons:freeze_msg><&sq>"
        - narrate targets:<player> "<&9><npc.name><&sq>s freezes you to the ground!"
-       - cast slow target:<player> duration:10 power:10
+       - cast slow target:<player> duration:20 power:10
+       }
+       
+"Chilly_DS_Ability":
+   type: task
+   # This ability harms a player each time they hit Chilly.
+   script:
+     - if <npc.flag[Chilly_DS_CD]> == null {
+       - flag npc "Chilly_DS_CD:true" duration:1
+       - playsound location:<npc.location> sound:snow_step volume:10000 pitch:-50
+       - playeffect location:<player.location> effect:snowball_poof qty:1000 offset:0
+       - narrate targets:<player> "<&9><npc.name> is protected by an icy shield<&cm> harming you for 1 damage!"
+       - hurt 1 <player>
        }
        
 "Chilly_IceShard_Ability":

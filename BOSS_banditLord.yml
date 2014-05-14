@@ -19,6 +19,10 @@ banditLord_NPC:
     # Special Event Messages
     bloodthirst_msg: Yaarrgghh!!!
     rend_msg: Not so fast!
+    
+    # Faction
+    factionhit: 250
+    faction_guard: 250
 
     # Boss Stats
     # Health Pool
@@ -108,6 +112,16 @@ banditLord_NPC:
       - flag player:%value% LBOARD_SCORE_TOTAL:<math.as_int:<<player>.flag[LBOARD_SCORE_TOTAL]>+100>
       - flag player:%value% BanditLord_Engaged:!
       - narrate targets:<%value%.name> "<aqua>You assisted in slaying <npc.name>."
+      - if <%value%.flag[FACTION_Bandit]> >= 250 {
+        - flag player:%value% "FACTION_Bandit:<math.as_int:<%value%.flag[FACTION_Bandit]>-<cons:factionhit>>"
+        - narrate targets:%value% "<&9>Your faction standing with Bandit has gotten worse! (<%value%.flag[FACTION_Bandit]>)"
+        - flag player:%value% "FACTION_Gondor:<math.as_int:<%value%.flag[FACTION_Gondor]>+<cons:faction_guard>>"
+        - narrate targets:%value% "<&9>Your faction standing with Gondor has gotten better! (<%value%.flag[FACTION_Gondor]>)" }
+        else {
+        - flag player:%value% "FACTION_Bandit:0"
+        - narrate targets:%value% "<&9>Your faction standing with Bandit could not possibly get any worse! (0)"
+        - flag player:%value% "FACTION_Gondor:<math.as_int:<%value%.flag[FACTION_Gondor]>+<cons:faction_guard>>"
+        - narrate targets:%value% "<&9>Your faction standing with Gondor has gotten better! (<%value%.flag[FACTION_Gondor]>)" }
       }
 
     on enter proximity:

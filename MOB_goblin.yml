@@ -20,9 +20,9 @@ goblin:
     victory message: <white>Heeheeheeheee!
 
     # Stats
-    goblin_str: 1
-    goblin_xp: 5
-    goblin_health: 30
+    goblin_str: 2
+    goblin_xp: 10
+    goblin_health: 40
     goblin_respawn_delay: 30
     
     factionhit: 5

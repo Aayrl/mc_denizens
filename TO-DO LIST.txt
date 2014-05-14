@@ -1,6 +1,6 @@
 // -----------------------------------
 // To-Do List
-// Last Updated: 10:18 on May 13, 2014 (Tuesday)
+// Last Updated: 18:17 on May 14, 2014 (Wednesday)
 // -----------------------------------
     
 - Implement Grand Magi Anders
@@ -66,9 +66,6 @@
 - YELL AT PLAYERS WHEN THEY JOIN IF THEY HAVE ANY ACTIVE QUESTS.
 
 BOSSES
-- Overworld
-    - Chilly
-    - Finglas
 - Plane of Fire
     - Chief Jakali
     - Redfist

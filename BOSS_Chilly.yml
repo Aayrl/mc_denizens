@@ -1,0 +1,268 @@
+# -----------------------------------
+# Chilly Encounter
+# @author: Tyler J. Sawyer
+# @version: 1.0
+# Last Updated: 17:30 on May 14, 2014 (Wednesday)
+# -----------------------------------
+# Designed to be defeated by one player.
+# One hour reset.
+
+chilly_npcboss:
+  type: assignment
+
+  default constants:
+    agro message: I don<&sq>t have a skull. Or bones. 
+    death message: Oh<&cm> look at that. I<&sq>ve been impaled!
+    victory message: Put me in summer and I<&sq>ll be a ... HAPPY SNOWMAN! 
+    respawn message: Conceal..don<&sq>t feel..let it.. GO!
+    
+    # Special Event Messages
+    freeze_msg: You hesitated.
+    iceshard_msg: Ooohhh<&cm> I love it! It<&sq>s so cute! It<&sq>s like a little baby unicorn!
+
+    # Boss Stats
+    # Health Pool
+    Chilly_health: 1000
+    # Damage / Swing
+    Chilly_str: 2
+    # Armor Value
+    Chilly_AC: 1
+    # Agro Radius (in Blocks)
+    Chilly_AGRO_RADIUS: 10
+    # Movement Speed (Blocks / Tick)
+    Chilly_Movement_Speed: 1
+    # Spawnpoint
+    Chilly_SpawnPoint: "-6282,117,-1028,world"
+    # Respawn Timer in seconds (3600 = 1hr)
+    Chilly_Respawn_Timer: 3600
+    # XP Amount he drops on death
+    Chilly_XP_AMT: 300
+    
+  interact scripts:
+  - 10 ChillyScript
+    
+  actions:
+    on assignment:
+    - trigger name:proximity toggle:true "radius:<cons:Chilly_AGRO_RADIUS>"
+    - trigger name:damage toggle:true
+
+    # Setup stats
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "npc type Snowman"
+    - execute as_server "npc speed <cons:Chilly_Movement_Speed>"
+    - execute as_server "npc lookclose"
+    - execute as_server "trait sentry"
+    - execute as_server "sentry health <cons:Chilly_health>"
+    - execute as_server "sentry respawn <cons:Chilly_Respawn_Timer>"
+    - execute as_server "sentry speed <cons:Chilly_Movement_Speed>"
+    - execute as_server "sentry strength <cons:Chilly_str>"
+    - execute as_server "sentry armor <cons:Chilly_AC>"
+    - execute as_server "sentry range <cons:Chilly_AGRO_RADIUS>"
+
+    on spawn:
+    - announce "<red><npc.name> yells<&cm> <&sq><cons:respawn message><&sq>"
+    # Warp to its spawn point on spawn.
+    - teleport <npc> "location:<cons:Chilly_SpawnPoint>"
+    # Clear previous targets from hate list
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "sentry target clear"
+    - execute as_server "sentry target add entity:player"
+    # Clear boss flags
+    - flag npc BossPlayerList:!
+    - flag npc Chilly_Freeze_CD:!
+    - flag npc Chilly_IceShard_CD:!
+
+    on death:
+    # XP amount
+    - drop XP qty:<cons:Chilly_XP_AMT> location:<npc.location>
+    # SNOWBALLS!
+    - drop "Massive_Snowball" qty:2 location:<npc.location>
+    # Random Loot Item 1
+    - random 6
+    - drop "Vyledorinajirnak" qty:1 location:<npc.location>
+    - drop "Doljonijiarnimorinar" qty:1 location:<npc.location>
+    - drop "Kodiak_Plate_Helm" qty:1 location:<npc.location>
+    - drop "Kodiak_Plate_Chest" qty:1 location:<npc.location>
+    - drop "Kodiak_Plate_Legs" qty:1 location:<npc.location>
+    - drop "Kodiak_Plate_Boots" qty:1 location:<npc.location>
+    # Random Loot Item 2
+    - random 6
+    - drop "Vyledorinajirnak" qty:1 location:<npc.location>
+    - drop "Doljonijiarnimorinar" qty:1 location:<npc.location>
+    - drop "Kodiak_Plate_Helm" qty:1 location:<npc.location>
+    - drop "Kodiak_Plate_Chest" qty:1 location:<npc.location>
+    - drop "Kodiak_Plate_Legs" qty:1 location:<npc.location>
+    - drop "Kodiak_Plate_Boots" qty:1 location:<npc.location>
+    # Reset npc effects and clear hate targets.
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "npc effect --play none"
+    - execute as_server "sentry target clear"
+    # Announce to players the boss is dead.
+    - announce "<red><npc.name> yells, <&sq><cons:death message><&sq>"
+    - announce "<&5><npc.name> has been slain!"
+    - foreach <npc.flag[BossPlayerList].aslist> {
+      - flag player:%value% LBOARD_B:++
+      - flag player:%value% LBOARD_SCORE_TOTAL:<math.as_int:<<player>.flag[LBOARD_SCORE_TOTAL]>+100>
+      - flag player:%value% Chilly_Engaged:!
+      - narrate targets:<%value%.name> "<aqua>You assisted in slaying <npc.name>."
+      }
+
+    on enter proximity:
+    - announce "<red><npc.name> yells<&cm> <&sq><cons:agro message><&sq>"
+    - playsound location:<npc.location> sound:snow_step volume:10000 pitch:-50
+    # Flag the player as 'engaged' with the boss for 30 seconds.
+    # If the player attacks the NPC, this refreshes.
+    # If the player gets summoned, this refreshes.
+    # If the player warps to spawn or home, this duration will fade out.
+    - flag player "Chilly_Engaged:true" duration:30
+
+    on exit proximity:
+    # summon player if they are still engaged by the boss.
+    - if "<flag.p:Chilly_Engaged:true || false>" == true {
+      - announce "<red><npc.name> yells<&cm> <&sq>You will not evade me<&cm> <player.name>!<&sq>"
+      - narrate "<yellow>You have been summoned!"
+      - teleport <player> "location:<npc.location>"
+      - playsound location:<player.location> sound:portal_travel
+      - playeffect location:<player.location> effect:portal qty:1000
+      }
+    
+    on kill:
+    - announce "<red><npc.name> yells<&cm> <&sq><cons:victory message><&sq>"
+
+"ChillyScript":
+   type: interact
+   steps:
+     1:
+       click trigger:
+         script:
+         # Right Clicking on the boss tells you his % health.
+         - narrate "<yellow><npc.name><&co> <npc.health.percentage.as_int>%"
+       proximity trigger:
+         entry:
+           script:
+           # Add player to the boss list when they enter his proximity.
+           - if <npc.flag[BossPlayerList].aslist> !contains <player> && <player.name> != <npc.name> flag npc BossPlayerList:->:<player>
+       damage trigger:
+         script:
+           # When the boss is hit, re-flag the player as engaged with the boss.
+           - flag player "Chilly_Engaged:true" duration:30
+           - playsound location:<npc.location> sound:snow_step volume:10000 pitch:-50
+           - playeffect location:<npc.location> effect:snowball_poof qty:1000 offset:0
+           - playeffect location:<npc.location> effect:snow_shovel qty:500 offset:0.25
+           # Here are the boss special events that fire off throughout the fight.
+           - ^if <npc.health.percentage.as_int> <= 98 {
+             - random 2
+             - run "Chilly_Freeze_Ability"
+             - run "Chilly_IceShard_Ability"
+             }
+           
+"Chilly_Freeze_Ability":
+   type: task
+   # This ability roots all players.
+   script:
+     - if <npc.flag[Chilly_Freeze_CD]> == null {
+       - flag npc "Chilly_Freeze_CD:true" duration:20
+       - playsound location:<npc.location> sound:snow_step volume:10000 pitch:-50
+       - playeffect location:<player.location> effect:snowball_poof qty:1000 offset:0
+       - announce "<red><npc.name> yells<&cm> <&sq><cons:freeze_msg><&sq>"
+       - narrate targets:<player> "<&9><npc.name><&sq>s freezes you to the ground!"
+       - cast slow target:<player> duration:10 power:10
+       }
+       
+"Chilly_IceShard_Ability":
+   type: task
+   # This ability hits all players for 5 damage and heals the boss for 5 damage.
+   script:
+     - if <npc.flag[Chilly_IceShard_CD]> == null {
+       - flag npc "Chilly_IceShard_CD:true" duration:30
+       - playsound location:<npc.location> sound:snow_step volume:10000 pitch:-50
+       - playeffect location:<npc.location> effect:snow_shovel qty:2500 offset:3
+       - announce "<red><npc.name> yells<&cm> <&sq><cons:iceshard_msg><&sq>"
+       - foreach <npc.flag[BossPlayerList].aslist> {
+         - narrate targets:<%value%.name> "<&9><npc.name><&sq>s Ice Shards freeze you for 15 points of damage."
+         - hurt 15 %value%
+         }
+       }
+       
+# Loot Items
+"Massive_Snowball":
+   type: item
+   material: 332
+   display name: "<&9>Massive Snowball"
+   lore:
+   - <green>Hold me and type /use
+   enchantments:
+   - durability:1
+   
+"Massive_Snowball_UseEffect":
+   type: world
+   events:
+     on use command:
+       - if <player.item_in_hand.lore> == "<green>Hold me and type /use" {
+         - announce "<&9><player.name> hurls a Massive Snowball!"
+         - playsound location:<npc.location> sound:snow_step volume:10000 pitch:-50
+         - playeffect location:<npc.location> effect:snow_shovel qty:2500 offset:3
+         - take "Massive_Snowball" qty:1
+         - give 332 qty:16
+         }
+
+"Vyledorinajirnak":
+   type: item
+   material: 276
+   display name: "<&5>Vyledorinajirnak the Sea<&sq>s Justice"
+   lore:
+   - <white>It<&sq>s no Doljonijiarnimorinar<&cm>
+   - <white>but it will do nicely.
+   enchantments:
+   - damage_all:4
+   - durability:4
+ 
+"Doljonijiarnimorinar":
+   type: item
+   material: 258
+   display name: "<&5>Doljonijiarnimorinar"
+   lore:
+   - <white>How is that pronounced<&cm> Joey?
+   enchantments:
+   - damage_all:6
+   - durability:6
+   
+"Kodiak_Plate_Helm":
+   type: item
+   material: 306
+   display name: "<&9>Kodiak Plate Helmet"
+   lore:
+   - <white>A finely crafted Helmet.
+   enchantments:
+   - durability:4
+   - oxygen:1
+   
+"Kodiak_Plate_Chest":
+   type: item
+   material: 307
+   display name: "<&5>Kodiak Plate Chestpiece"
+   lore:
+   - <white>A finely crafted Chestpiece.
+   enchantments:
+   - durability:6
+   - protection_environmental:6
+   
+"Kodiak_Plate_Legs":
+   type: item
+   material: 308
+   display name: "<&9>Kodiak Plate Leggings"
+   lore:
+   - <white>A finely crafted Pair of Leggings.
+   enchantments:
+   - durability:4
+   - protection_projectile:4
+   
+"Kodiak_Plate_Boots":
+   type: item
+   material: 309
+   display name: "<&9>Kodiak Plate Boots"
+   lore:
+   - <white>A finely crafted Pair of Boots.
+   enchantments:
+   - durability:4
+   - protection_fall:3

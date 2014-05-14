@@ -1957,8 +1957,8 @@
    lore:
    - <yellow>A large<&cm> sturdy and enchanted stave.
    enchantments:
-   - durability:10
-   - damage_all:1
+   - durability:8
+   - damage_all:7
  
    
 "BlessedSinew":
@@ -2010,17 +2010,36 @@
    enchantments:
    - durability:1
  
+
+"UntamedStave":
+   type: item
+   material: 280
+   display name: "<&5>Untamed Stave of the Ancients"
+   recipe:
+     - i@air|i@BlessedSinew|i@air
+     - i@DemonEssence1|i@BlessedStave|i@DemonEssence3
+     - i@DemonEssence2|i@air|i@DemonEssence4 
+   lore:
+   - <yellow>A large<&cm> sturdy and enchanted stave.
+   - <yellow>Imbued with the essence of nature itself.
+   enchantments:
+   - durability:9
+   - damage_all:9
    
 # Stave Portion
 "Lokdelar":
    type: item
    material: 280
    display name: "<&6>Lok<&sq>Delar<&cm> Stave of the Ancient Keepers"
+   recipe:
+     - i@air|i@air|i@air
+     - i@air|i@Rhokdelar|i@air
+     - i@air|i@air|i@air 
    lore:
    - <green>Use<&co> <red>Call of Lightning
    enchantments:
-   - durability:10
-   - damage_all:10
+   - durability:15
+   - damage_all:15
  
 
 # Bow Portion
@@ -2028,13 +2047,17 @@
    type: item
    material: bow
    display name: "<&6>Rhok<&sq>Delar<&cm> Longbow of the Ancient Keepers"
+   recipe:
+     - i@air|i@air|i@air
+     - i@air|i@Lokdelar|i@air
+     - i@air|i@air|i@air 
    lore:
    - <green>Use<&co> <red>Regenerate <green>Effect<&co> <red>Storm of Arrows
    enchantments:
-   - durability:10
-   - arrow_damage:10
+   - durability:15
+   - arrow_damage:15
    - arrow_infinite:1
-   - arrow_knockback:2
+   - arrow_knockback:4
  
    
 # RhokDelar Effects

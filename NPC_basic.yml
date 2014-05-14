@@ -1,0 +1,111 @@
+# -----------------------------------
+# Basic Interact Script
+# @author: Tyler J. Sawyer
+# @version: 1.0
+# Last Updated: 10:25 on May 14, 2014 (Wednesday)
+# -----------------------------------
+# This NPC will be responsible for handling the
+# Rhok'delar questline.
+
+# Task Assignment
+"basic_theNPC":
+    type: assignment
+    
+    interact scripts:
+    - 10 NoLeafInteract
+    - 20 StartLeafInteract
+    - 90 HasBowInteract
+
+# NO LEAF : The player doesn't have a leaf, and doesn't have the bow.
+"NoLeafInteract":
+    type: interact
+    steps:
+        'noleaf*':
+            click trigger:
+                script:
+                - chat 'Hail<&cm> <player.name>. Should you come across any <&lb><red>ancient<green><&rb> tree life<&cm> I would be most interested in seeing it.'
+            chat trigger:
+                'continueNoLeaf':
+                    trigger: 'What /ancient/ tree life?'
+                    script: 
+                    - chat 'It is rumored that an ancient ent still wanders the lands<&cm> striving to assist with cleansing the world of all corruption.'
+                    - chat 'If you were to find evidence of this ent in the form of an <&5>Ancient Petrified Leaf<green><&cm> perhaps we could help this being<&cm> <player.name>.'
+                    
+# HAS BOW : If the player interacts while holding Rhok'delar.
+"HasBowInteract":
+    type: interact
+    requirements:
+      mode: ALL
+      list: 
+      - holding i@Rhokdelar
+    steps:
+        'hasbow_rhokdelar*':
+            click trigger:
+                script:
+                - chat 'Welcome back<&cm> <player.name>. You are always welcome to <&lb><red>rest<green><&rb> here.'
+                chat trigger:
+                'hasbow_rhokdelar_rest':
+                    trigger: 'I wish to /rest/ for a moment.'
+                    script: 
+                    - chat 'Certainly<&cm> <player.name>.'
+                    - heal 25 <player.name>
+                    - feed 25 <player.name>
+                    - narrate "<aqua>You feel fully healed and fully saturated."
+
+# HAS LEAF : First Stage of the RhokDelar questline if the player has the leaf.
+"StartLeafInteract":
+    type: interact
+    requirements:
+      mode: ALL
+      list: 
+      - holding i@AncientLeaf
+    steps:
+        'Rhokdelar_1*':
+            click trigger:
+                script:
+                - chat 'Greetings <player.name>. I sense you are in the posession of an <&lb><red>ancient leaf<green><&rb>.'
+            chat trigger:
+                'continue_Rhokdelar1':
+                    trigger: 'I am holding this /ancient leaf/ you speak of.'
+                    script: 
+                    - chat 'I see that<&cm> <player.name>. Then the rumors are true<&cm> and we must assist the ent before it is too late.'
+                    - wait 2s
+                    - chat 'Tell me<&cm> Are you willing to help us stop the invasion of powerful <&lb><red>demons<green><&rb> in this world?'
+                    - zap 'step:Rhokdelar_2'
+        'Rhokdelar_2':
+            click trigger:
+                script:
+                - chat 'Tell me<&cm> Are you willing to help us stop the invasion of powerful <&lb><red>demons<green><&rb> in this world?'
+            chat trigger:
+                'continue_Rhokdelar2':
+                    trigger: 'I am willing to defeat the /demons/.'
+                    script:
+                    - chat 'First<&cm> allow me to imbue that leaf with nature<&sq> blessing. Place the leaf in your hand and <&lb><red>hand it<green><&rb> to me.'
+                    - zap 'step:Rhokdelar_3'
+        'Rhokdelar_3':
+            click trigger:
+                script:
+                - chat 'First<&cm> allow me to imbue that leaf with nature<&sq> blessing. Place the leaf in your hand and <&lb><red>give<green><&rb> it to me.'
+            chat trigger:
+                'continue_Rhokdelar3':
+                    trigger: 'Here<&cm> I<&sq>ll /give/ you the leaf.'
+                    script:
+                    - if <player.item_in_hand.display> == "<&5>Ancient Petrified Leaf" {
+                      - take iteminhand
+                      - narrate "<aqua><npc.name> takes the leaf and places it on the ground."
+                      - wait 2s
+                      - narrate "<aqua><npc.name> mutters some words and the leaf magically transforms into a powerful stave."
+                      - playsound location:<player.location> sound:ambience_thunder
+                      - wait 1s
+                      - playsound location:<player.location> sound:ambience_thunder
+                      - wait 1s
+                      - playsound location:<player.location> sound:ambience_thunder
+                      - wait 1s
+                      - give i@BlessedStave
+                      - chat 'Now we must begin the <&lb><red>hunt<green><&rb><&cm> <player.name>.'
+                      - zap 'step:Rhokdelar_1'
+                      }
+                      else {
+                      - narrate "<red>It appears you do not have the <&5>Ancient Petrified Leaf<red> in your hand. Place it in your hand and try again."
+                      - zap 'step:Rhokdelar_1'
+                      }

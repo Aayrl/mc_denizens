@@ -69,7 +69,7 @@ soanguish:
     - execute as_server "sentry target add entity:player"
     # Clear boss flags
     - flag npc BossPlayerList:!
-    - flag npc SoA_SoulDrain_CD:!
+    - flag npc SoA_LifeDrain_CD:!
     - flag npc SoA_SummonAdds_CD:!
 
     on death:

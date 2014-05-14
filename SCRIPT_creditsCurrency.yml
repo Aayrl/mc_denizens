@@ -308,7 +308,7 @@ inv_vendor_generic:
           - define item "<context.item.material.name>:<context.item.data>"
           }
           else {
-          - define item <context.item.material.name>
+          - define item <context.item>
           }
         - define creditAmt <proc[vendorDetermineCredits].context[%vendorItem%]>
         - take "%item%"
@@ -368,7 +368,7 @@ inv_vendor_generic:
           - define item "<context.item.material.name>:<context.item.data>"
           }
           else {
-          - define item <context.item.material.name>
+          - define item <context.item>
           }
         - define creditAmt <math.as_int:<proc[vendorDetermineCredits].context[%vendorItem%]>*<context.item.qty>>
         - take %item% qty:<context.item.qty>

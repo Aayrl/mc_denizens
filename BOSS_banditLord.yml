@@ -58,6 +58,11 @@ banditLord_NPC:
     - execute as_server "sentry strength <cons:BanditLord_str>"
     - execute as_server "sentry armor <cons:BanditLord_AC>"
     - execute as_server "sentry range <cons:BanditLord_AGRO_RADIUS>"
+    - execute as_server "sentry equip 267"
+    - execute as_server "sentry equip 306"
+    - execute as_server "sentry equip 307"
+    - execute as_server "sentry equip 308"
+    - execute as_server "sentry equip 309"
 
     on spawn:
     - announce "<red><npc.name> yells<&cm> <&sq><cons:respawn message><&sq>"

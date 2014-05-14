@@ -32,7 +32,7 @@ banditLord_NPC:
     # Movement Speed (Blocks / Tick)
     BanditLord_Movement_Speed: 1
     # Spawnpoint
-    BanditLord_SpawnPoint: "-45,77,177,world"
+    BanditLord_SpawnPoint: "131,77,235,world"
     # Respawn Timer in seconds (3600 = 1hr)
     BanditLord_Respawn_Timer: 3600
     # XP Amount he drops on death

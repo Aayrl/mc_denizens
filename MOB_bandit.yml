@@ -13,8 +13,17 @@ bandit:
   type: assignment
 
   default constants:
-    attack message: <white>Hey<&cm> you have some nice stuff there!
-    death message: <white>Aarrghh!
+    attack message 1: <white>Hey<&cm> you have some nice stuff there!
+    attack message 2: <white>Oh look<&cm> our loot decided to find us for a change.
+    attack message 3: <white>Care to hand over your armor<&cm> fool?
+    attack message 4: <white>It<&sq>s about time we got some REAL action over here!
+    death message 1: <white>Aarrghh!
+    death message 2: <white>Light...must..go towards the light..
+    death message 3: <white>Seeya in 60 seconds!
+    death message 4: <white>NOT AGAIN!
+    death message 5: <white>Arh..hrm..mmmh..ph..
+    death message 6: <white>Gondor will one day fall by our might!
+    death message 7: <white>Cut down one Bandit..two more shall take its place!
     victory message: <white>Finally<&cm> some phat loots!
 
     # Stats
@@ -64,7 +73,14 @@ bandit:
 
     on death:
     - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
-      - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:death message><&sq>"
+      - random 7
+      - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:death message 1><&sq>"
+      - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:death message 2><&sq>"
+      - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:death message 3><&sq>"
+      - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:death message 4><&sq>"
+      - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:death message 5><&sq>"
+      - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:death message 6><&sq>"
+      - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:death message 7><&sq>"
       }
     - drop XP qty:<cons:bandit_xp> location:<npc.location>
     - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<npc.location>
@@ -89,7 +105,11 @@ bandit:
 
     on attack: 
     - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
-      - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:attack message><&sq>" }
+      - random 4
+      - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:attack message 1><&sq>" 
+      - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:attack message 2><&sq>" 
+      - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:attack message 3><&sq>" 
+      - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:attack message 4><&sq>" }
     
     on kill:
     - foreach <l@<npc.location>.find.players.within[<15>].aslist> {

@@ -211,7 +211,7 @@ chilly_npcboss:
    type: world
    events:
      on use command:
-       - if <player.item_in_hand.lore> == "<green>Hold me and type /use" {
+       - if <player.item_in_hand.display> == "<&9>Massive Snowball" {
          - announce "<&9><player.name> hurls a Massive Snowball!"
          - playsound location:<npc.location> sound:snow_step volume:10000 pitch:-50
          - playeffect location:<npc.location> effect:snow_shovel qty:2500 offset:3

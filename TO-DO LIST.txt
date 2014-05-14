@@ -58,7 +58,8 @@
 
 - Implement Rhok'delar Questline
 
-- Finish Thunderfury Questline
+- Add Thunderfury Binding Drops to Bosses in POEnder.
+- Add Thunderfury Component Drops to Mobs in POEnder.
 
 - Implement Immortalius Questline
 
@@ -67,7 +68,6 @@
 BOSSES
 - Overworld
     - Bandit Chief
-    - Ghost of Anguish
     - Chilly
     - Finglas
 - Plane of Fire

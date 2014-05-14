@@ -60,7 +60,7 @@ banditLord_NPC:
     - execute as_server "sentry range <cons:BanditLord_AGRO_RADIUS>"
 
     on spawn:
-    - announce "<red><cons:respawn message>"
+    - announce "<red><npc.name> yells<&cm> <cons:respawn message>"
     # Warp to its spawn point on spawn.
     - teleport <npc> "location:<cons:BanditLord_SpawnPoint>"
     # Clear previous targets from hate list

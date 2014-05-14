@@ -67,7 +67,6 @@
 
 BOSSES
 - Overworld
-    - Bandit Chief
     - Chilly
     - Finglas
 - Plane of Fire

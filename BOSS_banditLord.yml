@@ -1,42 +1,244 @@
-# Bandit Lord Encounter
-# Tyler J. Sawyer - 3/20/14
-# A slightly tougher Bandit encounter..
-# A bit more health and a bit rougher.
+# -----------------------------------
+# Bandit Lord Boss Encounter
+# @author: Tyler J. Sawyer
+# @version: 1.0
+# Last Updated: 20:14 on May 13, 2014 (Tuesday)
+# -----------------------------------
+# Designed to be defeated by one player.
+# One hour reset.
 
-banditlord:
+banditLord_NPC:
   type: assignment
 
   default constants:
-    approach message: Beg for your life!
-    fleeing message: Time to die!
-    death message: Aaarrgghhh!
+    agro message: Aha! I<&sq>ve been waiting for a REAL challenge!
+    death message: Fool! My death will not go unnoticed!
+    victory message: Bah! You are weak!
+    respawn message: We shall take over Gondor by force! None shall stand in our way!
+    
+    # Special Event Messages
+    bloodthirst_msg: Yaarrgghh!!!
+    rend_msg: Not so fast!
 
+    # Boss Stats
+    # Health Pool
+    BanditLord_health: 1000
+    # Damage / Swing
+    BanditLord_str: 2
+    # Armor Value
+    BanditLord_AC: 1
+    # Agro Radius (in Blocks)
+    BanditLord_AGRO_RADIUS: 10
+    # Movement Speed (Blocks / Tick)
+    BanditLord_Movement_Speed: 1
+    # Spawnpoint
+    BanditLord_SpawnPoint: "-45,77,177,world"
+    # Respawn Timer in seconds (3600 = 1hr)
+    BanditLord_Respawn_Timer: 3600
+    # XP Amount he drops on death
+    BanditLord_XP_AMT: 300
+    
+  interact scripts:
+  - 10 BanditLordScript
+    
   actions:
     on assignment:
-    - trigger name:proximity 
-      toggle:true radius:4
+    - trigger name:proximity toggle:true "radius:<cons:BanditLord_AGRO_RADIUS>"
     - trigger name:damage toggle:true
-    - health toggle:true
-    - vulnerable
 
-    on enter proximity:
-    - if <npc.flag[in_pursuit]> 
-      queue clear
-    - flag npc in_pursuit:true
-    - lookclose toggle:true
-    - narrate "<npc.name> says, <cons:approach message>"
+    # Setup stats
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "npc type player"
+    - execute as_server "npc speed <cons:BanditLord_Movement_Speed>"
+    - execute as_server "npc lookclose"
+    - execute as_server "trait sentry"
+    - execute as_server "sentry health <cons:BanditLord_health>"
+    - execute as_server "sentry respawn <cons:BanditLord_Respawn_Timer>"
+    - execute as_server "sentry speed <cons:BanditLord_Movement_Speed>"
+    - execute as_server "sentry strength <cons:BanditLord_str>"
+    - execute as_server "sentry armor <cons:BanditLord_AC>"
+    - execute as_server "sentry range <cons:BanditLord_AGRO_RADIUS>"
 
-    on exit proximity:
-    - if !<npc.flag[in_pursuit]> 
-      queue clear
-    - attack
-    - lookclose toggle:false
-    - narrate "<red><npc.name> yells, <cons:fleeing message>"
+    on spawn:
+    - announce "<red><cons:respawn message>"
+    # Warp to its spawn point on spawn.
+    - teleport <npc> "location:<cons:BanditLord_SpawnPoint>"
+    # Clear previous targets from hate list
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "sentry target clear"
+    - execute as_server "sentry target add entity:player"
+    # Clear boss flags
+    - flag npc BossPlayerList:!
+    - flag npc BanditLord_Rend_CD:!
+    - flag npc BanditLord_Bloodthirst_CD:!
 
     on death:
-    - chat "<npc.name> says, <cons:death message>"
-    - drop XP qty:250 location:<npc.location>
-    - flag npc in_pursuit:false
+    # XP amount
+    - drop XP qty:<cons:BanditLord_XP_AMT> location:<npc.location>
+    # Random Loot Item 1
+    - random 6
+    - drop "Titanium_Reinforced_Compound_Bow" qty:1 location:<npc.location>
+    - drop "Bad_Mojo" qty:1 location:<npc.location>
+    - drop "Cobalt_Helm" qty:1 location:<npc.location>
+    - drop "Cobalt_Chest" qty:1 location:<npc.location>
+    - drop "Cobalt_Legs" qty:1 location:<npc.location>
+    - drop "Cobalt_Boots" qty:1 location:<npc.location>
+    # Random Loot Item 2
+    - random 6
+    - drop "Titanium_Reinforced_Compound_Bow" qty:1 location:<npc.location>
+    - drop "Bad_Mojo" qty:1 location:<npc.location>
+    - drop "Cobalt_Helm" qty:1 location:<npc.location>
+    - drop "Cobalt_Chest" qty:1 location:<npc.location>
+    - drop "Cobalt_Legs" qty:1 location:<npc.location>
+    - drop "Cobalt_Boots" qty:1 location:<npc.location>
+    # Reset npc effects and clear hate targets.
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "npc effect --play none"
+    - execute as_server "sentry target clear"
+    # Announce to players the boss is dead.
+    - announce "<red><npc.name> yells, <cons:death message>"
+    - announce "<&5><npc.name> has been slain!"
+    - foreach <npc.flag[BossPlayerList].aslist> {
+      - flag player:%value% LBOARD_B:++
+      - flag player:%value% LBOARD_SCORE_TOTAL:<math.as_int:<<player>.flag[LBOARD_SCORE_TOTAL]>+100>
+      - flag player:%value% BanditLord_Engaged:!
+      - narrate targets:<%value%.name> "<aqua>You assisted in slaying <npc.name>."
+      }
 
-    on despawn:
-    - flag npc in_pursuit:false
+    on enter proximity:
+    - announce "<red><npc.name> yells<&cm> <&sq><cons:agro message><&sq>"
+    - playsound location:<npc.location> sound:hurt_flesh
+    # Flag the player as 'engaged' with the boss for 30 seconds.
+    # If the player attacks the NPC, this refreshes.
+    # If the player gets summoned, this refreshes.
+    # If the player warps to spawn or home, this duration will fade out.
+    - flag player "BanditLord_Engaged:true" duration:30
+
+    on exit proximity:
+    # summon player if they are still engaged by the boss.
+    - if "<flag.p:BanditLord_Engaged:true || false>" == true {
+      - announce "<red><npc.name> yells<&cm> <&sq>You will not evade me<&cm> <player.name>!<&sq>"
+      - narrate "<yellow>You have been summoned!"
+      - teleport <player> "location:<npc.location>"
+      - playsound location:<player.location> sound:portal_travel
+      - playeffect location:<player.location> effect:portal qty:1000
+      }
+    
+    on kill:
+    - announce "<red><npc.name> yells<&cm> <&sq><cons:victory message><&sq>"
+
+"BanditLordScript":
+   type: interact
+   steps:
+     1:
+       click trigger:
+         script:
+         # Right Clicking on the boss tells you his % health.
+         - narrate "<yellow><npc.name><&co> <npc.health.percentage.as_int>%"
+       proximity trigger:
+         entry:
+           script:
+           # Add player to the boss list when they enter his proximity.
+           - if <npc.flag[BossPlayerList].aslist> !contains <player> && <player.name> != <npc.name> flag npc BossPlayerList:->:<player>
+       damage trigger:
+         script:
+           # When the boss is hit, re-flag the player as engaged with the boss.
+           - flag player "BanditLord_Engaged:true" duration:30
+           - playsound location:<npc.location> sound:hurt_flesh
+           - playeffect location:<npc.location> effect:RED_DUST qty:10
+           # Here are the boss special events that fire off throughout the fight.
+           - ^if <npc.health.percentage.as_int> <= 98 {
+             - random 2
+             - run "BanditLord_Rend_Ability"
+             - run "BanditLord_Bloodthirst_Ability"
+             }
+           
+"BanditLord_Rend_Ability":
+   type: task
+   # This slows the player and harms them for 5 damage, once every 20 seconds.
+   script:
+     - if <npc.flag[BanditLord_Rend_CD]> == null {
+       - flag npc "BanditLord_Rend_CD:true" duration:20
+       - playsound location:<npc.location> sound:hurt_flesh
+       - announce "<red><npc.name> yells<&cm> <&sq><cons:rend_msg><&sq>"
+       - narrate targets:<player> "<&9><npc.name><&sq>s Rend hits you for 5 points of damage."
+       - hurt 5 <player>
+       - cast slow target:<player> duration:10 power:2
+       }
+       
+"BanditLord_Bloodthirst_Ability":
+   type: task
+   # This ability hits all players for 5 damage and heals the boss for 5 damage.
+   script:
+     - if <npc.flag[BanditLord_Bloodthirst_CD]> == null {
+       - flag npc "BanditLord_Bloodthirst_CD:true" duration:30
+       - playsound location:<npc.location> sound:hurt_flesh
+       - announce "<red><npc.name> yells<&cm> <&sq><cons:bloodthirst_msg><&sq>"
+       - foreach <npc.flag[BossPlayerList].aslist> {
+         - narrate targets:<%value%.name> "<&9><npc.name><&sq>s Bloodthirst hits you for 5 points of damage."
+         - hurt 5 %value%
+         - heal 5 <npc>
+         - playeffect location:<%value%.location> effect:RED_DUST qty:100
+         }
+       }
+       
+# Loot Items
+"Titanium_Reinforced_Compound_Bow":
+   type: item
+   material: 261
+   display name: "<&5>Titanium Reinforced Compound Bow"
+   lore:
+   - <white>A powerful compound bow.
+   enchantments:
+   - arrow_damage:5
+ 
+"Bad_Mojo":
+   type: item
+   material: 276
+   display name: "<&9>Bad Mojo"
+   lore:
+   - <white>Something tells me this sword
+   - <white>brings bad luck...
+   enchantments:
+   - damage_all:4
+   - durability:4
+   
+"Cobalt_Helm":
+   type: item
+   material: 306
+   display name: "<&9>Cobalt Helmet"
+   lore:
+   - <white>A finely crafted Helmet.
+   enchantments:
+   - durability:3
+   - oxygen:1
+   
+"Cobalt_Chest":
+   type: item
+   material: 307
+   display name: "<&9>Cobalt Chestpiece"
+   lore:
+   - <white>A finely crafted Chestpiece.
+   enchantments:
+   - durability:3
+   - protection_environmental:3
+   
+"Cobalt_Legs":
+   type: item
+   material: 308
+   display name: "<&9>Cobalt Leggings"
+   lore:
+   - <white>A finely crafted Pair of Leggings.
+   enchantments:
+   - durability:3
+   - protection_projectile:3
+   
+"Cobalt_Boots":
+   type: item
+   material: 309
+   display name: "<&9>Cobalt Boots"
+   lore:
+   - <white>A finely crafted Pair of Boots.
+   enchantments:
+   - durability:3
+   - protection_fall:3

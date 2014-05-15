@@ -174,28 +174,28 @@ goblinKing_NPC:
            
 "GoblinKing_Gore_Ability":
    type: task
-   # This slows the player and harms them for 7 damage, once every 20 seconds.
+   # This slows the player and harms them for 5 damage, once every 20 seconds.
    script:
      - if <npc.flag[GoblinKing_Gore_CD]> == null {
        - flag npc "GoblinKing_Gore_CD:true" duration:20
        - playsound location:<npc.location> sound:zombie_hurt
        - announce "<red><npc.name> yells<&cm> <&sq><cons:gore_msg><&sq>"
-       - narrate targets:<player> "<&9><npc.name><&sq>s Gore hits you for 7 points of damage."
+       - narrate targets:<player> "<&9><npc.name><&sq>s Gore hits you for 5 points of damage."
        - playeffect location:<player.location> effect:RED_DUST qty:100
-       - hurt 7 <player>
+       - hurt 5 <player>
        - cast slow target:<player> duration:10 power:2
        }
        
 "GoblinKing_Backstab_Ability":
    type: task
-   # This ability hits a player for 12 damage, once every 30 seconds.
+   # This ability hits a player for 10 damage, once every 30 seconds.
    script:
      - if <npc.flag[GoblinKing_Backstab_CD]> == null {
        - flag npc "GoblinKing_Backstab_CD:true" duration:30
        - playsound location:<npc.location> sound:zombie_hurt
        - announce "<red><npc.name> yells<&cm> <&sq><cons:backstab_msg><&sq>"
-       - narrate targets:<player> "<&9><npc.name><&sq>s Backstabs you for 12 points of damage!"
-       - hurt 12 <player>
+       - narrate targets:<player> "<&9><npc.name><&sq>s Backstabs you for 10 points of damage!"
+       - hurt 10 <player>
        - playeffect location:<player.location> effect:RED_DUST qty:1000
        }
        

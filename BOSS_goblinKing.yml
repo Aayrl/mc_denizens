@@ -1,0 +1,272 @@
+# -----------------------------------
+# Goblin King Boss Encounter
+# @author: Tyler J. Sawyer
+# @version: 1.0
+# Last Updated: 19:44 on May 14, 2014 (Wednesday)
+# -----------------------------------
+# Designed to be defeated by one player.
+# One hour reset.
+
+goblinKing_NPC:
+  type: assignment
+
+  default constants:
+    agro message: Ugly human<&cm> you dare defile my lair with your presence! Now you must die!
+    death message: NO! Bad human! You no take candle!
+    victory message: Ooohh<&cm> shiny!
+    respawn message: Goblins crush! Goblins steal! Goblins need your blood to spill!
+    
+    # Special Event Messages
+    backstab_msg: We stab human in back! Hahaha! Makes human weak!
+    gore_msg: You weren<&sq>t using that blood anyway<&cm> were you?
+    
+    # Faction
+    factionhit: 250
+    faction_guard: 250
+
+    # Boss Stats
+    # Health Pool
+    GoblinKing_health: 1250
+    # Damage / Swing
+    GoblinKing_str: 3
+    # Armor Value
+    GoblinKing_AC: 1
+    # Agro Radius (in Blocks)
+    GoblinKing_AGRO_RADIUS: 10
+    # Movement Speed (Blocks / Tick)
+    GoblinKing_Movement_Speed: 1
+    # Spawnpoint
+    GoblinKing_SpawnPoint: "-1805,66,89,world"
+    # Respawn Timer in seconds (3600 = 1hr)
+    GoblinKing_Respawn_Timer: 3600
+    # XP Amount he drops on death
+    GoblinKing_XP_AMT: 300
+    
+  interact scripts:
+  - 10 GoblinKingScript
+    
+  actions:
+    on assignment:
+    - trigger name:proximity toggle:true "radius:<cons:GoblinKing_AGRO_RADIUS>"
+    - trigger name:damage toggle:true
+
+    # Setup stats
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "npc type player"
+    - execute as_server "npc speed <cons:GoblinKing_Movement_Speed>"
+    - execute as_server "npc lookclose"
+    - execute as_server "trait sentry"
+    - execute as_server "sentry health <cons:GoblinKing_health>"
+    - execute as_server "sentry respawn <cons:GoblinKing_Respawn_Timer>"
+    - execute as_server "sentry speed <cons:GoblinKing_Movement_Speed>"
+    - execute as_server "sentry strength <cons:GoblinKing_str>"
+    - execute as_server "sentry armor <cons:GoblinKing_AC>"
+    - execute as_server "sentry range <cons:GoblinKing_AGRO_RADIUS>"
+    - execute as_server "sentry equip 267"
+    - execute as_server "sentry equip 306"
+    - execute as_server "sentry equip 307"
+    - execute as_server "sentry equip 308"
+    - execute as_server "sentry equip 309"
+
+    on spawn:
+    - announce "<red><npc.name> yells<&cm> <&sq><cons:respawn message><&sq>"
+    # Warp to its spawn point on spawn.
+    - teleport <npc> "location:<cons:GoblinKing_SpawnPoint>"
+    # Clear previous targets from hate list
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "sentry target clear"
+    - execute as_server "sentry target add entity:player"
+    # Clear boss flags
+    - flag npc BossPlayerList:!
+    - flag npc GoblinKing_Gore_CD:!
+    - flag npc GoblinKing_Backstab_CD:!
+
+    on death:
+    # XP amount
+    - drop XP qty:<cons:GoblinKing_XP_AMT> location:<npc.location>
+    # Random Loot Item 1
+    - random 6
+    - drop "Hearthstone" qty:1 location:<npc.location>
+    - drop "Blackened_Iron_Bastard_Sword" qty:1 location:<npc.location>
+    - drop "Blackened_Iron_Helm" qty:1 location:<npc.location>
+    - drop "Blackened_Iron_Chest" qty:1 location:<npc.location>
+    - drop "Blackened_Iron_Legs" qty:1 location:<npc.location>
+    - drop "Blackened_Iron_Boots" qty:1 location:<npc.location>
+    # Random Loot Item 2
+    - random 6
+    - drop "Hearthstone" qty:1 location:<npc.location>
+    - drop "Blackened_Iron_Bastard_Sword" qty:1 location:<npc.location>
+    - drop "Blackened_Iron_Helm" qty:1 location:<npc.location>
+    - drop "Blackened_Iron_Chest" qty:1 location:<npc.location>
+    - drop "Blackened_Iron_Legs" qty:1 location:<npc.location>
+    - drop "Blackened_Iron_Boots" qty:1 location:<npc.location>
+    # Reset npc effects and clear hate targets.
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "npc effect --play none"
+    - execute as_server "sentry target clear"
+    # Announce to players the boss is dead.
+    - announce "<red><npc.name> yells, <&sq><cons:death message><&sq>"
+    - announce "<&5><npc.name> has been slain!"
+    - foreach <npc.flag[BossPlayerList].aslist> {
+      - flag player:%value% LBOARD_B:++
+      - flag player:%value% LBOARD_SCORE_TOTAL:<math.as_int:<<player>.flag[LBOARD_SCORE_TOTAL]>+100>
+      - flag player:%value% GoblinKing_Engaged:!
+      - narrate targets:<%value%.name> "<aqua>You assisted in slaying <npc.name>."
+      - if <%value%.flag[FACTION_Goblin]> >= 250 {
+        - flag player:%value% "FACTION_Goblin:<math.as_int:<%value%.flag[FACTION_Goblin]>-<cons:factionhit>>"
+        - narrate targets:%value% "<&9>Your faction standing with Goblin has gotten worse! (<%value%.flag[FACTION_Goblin]>)"
+        - flag player:%value% "FACTION_Kelethin:<math.as_int:<%value%.flag[FACTION_Kelethin]>+<cons:faction_guard>>"
+        - narrate targets:%value% "<&9>Your faction standing with Kelethin has gotten better! (<%value%.flag[FACTION_Kelethin]>)" }
+        else {
+        - flag player:%value% "FACTION_Goblin:0"
+        - narrate targets:%value% "<&9>Your faction standing with Goblin could not possibly get any worse! (0)"
+        - flag player:%value% "FACTION_Kelethin:<math.as_int:<%value%.flag[FACTION_Kelethin]>+<cons:faction_guard>>"
+        - narrate targets:%value% "<&9>Your faction standing with Kelethin has gotten better! (<%value%.flag[FACTION_Kelethin]>)" }
+      }
+
+    on enter proximity:
+    - announce "<red><npc.name> yells<&cm> <&sq><cons:agro message><&sq>"
+    - playsound location:<npc.location> sound:zombie_hurt
+    # Flag the player as 'engaged' with the boss for 30 seconds.
+    # If the player attacks the NPC, this refreshes.
+    # If the player gets summoned, this refreshes.
+    # If the player warps to spawn or home, this duration will fade out.
+    - flag player "GoblinKing_Engaged:true" duration:30
+
+    on exit proximity:
+    # summon player if they are still engaged by the boss.
+    - if "<flag.p:GoblinKing_Engaged:true || false>" == true {
+      - announce "<red><npc.name> yells<&cm> <&sq>You will not evade me<&cm> <player.name>!<&sq>"
+      - narrate "<yellow>You have been summoned!"
+      - teleport <player> "location:<npc.location>"
+      - playsound location:<player.location> sound:portal_travel
+      - playeffect location:<player.location> effect:portal qty:1000
+      }
+    
+    on kill:
+    - announce "<red><npc.name> yells<&cm> <&sq><cons:victory message><&sq>"
+
+"GoblinKingScript":
+   type: interact
+   steps:
+     1:
+       click trigger:
+         script:
+         # Right Clicking on the boss tells you his % health.
+         - narrate "<yellow><npc.name><&co> <npc.health.percentage.as_int>%"
+       proximity trigger:
+         entry:
+           script:
+           # Add player to the boss list when they enter his proximity.
+           - if <npc.flag[BossPlayerList].aslist> !contains <player> && <player.name> != <npc.name> flag npc BossPlayerList:->:<player>
+       damage trigger:
+         script:
+           # When the boss is hit, re-flag the player as engaged with the boss.
+           - flag player "GoblinKing_Engaged:true" duration:30
+           - playsound location:<npc.location> sound:zombie_hurt
+           - playeffect location:<npc.location> effect:RED_DUST qty:10
+           # Here are the boss special events that fire off throughout the fight.
+           - ^if <npc.health.percentage.as_int> <= 98 {
+             - random 2
+             - run "GoblinKing_Gore_Ability"
+             - run "GoblinKing_Backstab_Ability"
+             }
+           
+"GoblinKing_Gore_Ability":
+   type: task
+   # This slows the player and harms them for 10 damage, once every 30 seconds.
+   script:
+     - if <npc.flag[GoblinKing_Gore_CD]> == null {
+       - flag npc "GoblinKing_Gore_CD:true" duration:30
+       - playsound location:<npc.location> sound:zombie_hurt
+       - announce "<red><npc.name> yells<&cm> <&sq><cons:gore_msg><&sq>"
+       - narrate targets:<player> "<&9><npc.name><&sq>s Gore hits you for 10 points of damage."
+       - playeffect location:<player.location> effect:RED_DUST qty:100
+       - hurt 10 <player>
+       - cast slow target:<player> duration:10 power:2
+       }
+       
+"GoblinKing_Backstab_Ability":
+   type: task
+   # This ability hits a player for 15 damage, once every 20 seconds.
+   script:
+     - if <npc.flag[GoblinKing_Backstab_CD]> == null {
+       - flag npc "GoblinKing_Backstab_CD:true" duration:20
+       - playsound location:<npc.location> sound:zombie_hurt
+       - announce "<red><npc.name> yells<&cm> <&sq><cons:backstab_msg><&sq>"
+       - narrate targets:<player> "<&9><npc.name><&sq>s Backstabs you for 15 points of damage!"
+       - hurt 15 <player>
+       - playeffect location:<player.location> effect:RED_DUST qty:1000
+       }
+       
+# Loot Items
+"Hearthstone":
+   type: item
+   material: 261
+   display name: "<&5>Hearthstone"
+   lore:
+   - <green>Use<&co> Returns you to your home location
+   - <red>NO COOLDOWN.
+   enchantments:
+   - durability:1
+   
+"Hearthstone_USE_EFFECT":
+   type: world
+   events:
+     on use command:
+       - if <player.item_in_hand.display> == "<&5>Hearthstone" {
+         - narrate "<yellow>Teleporting you to your last set home location."
+         - announce "<yellow><player.name> used their <&5>Hearthstone<yellow> to teleport to their home location!"
+         - teleport <player> <player.flag[respawnpoint]>
+         - playeffect location:<player.location> effect:portal qty:1000
+         }
+ 
+"Blackened_Iron_Bastard_Sword":
+   type: item
+   material: 276
+   display name: "<&5>Blackened Iron Bastard Sword"
+   lore:
+   - <white>Overpowered and overglorified.
+   enchantments:
+   - damage_all:6
+   - durability:2
+   
+"Blackened_Iron_Helm":
+   type: item
+   material: 306
+   display name: "<&9>Blackened Iron Coif"
+   lore:
+   - <white>A darkened helmet.
+   enchantments:
+   - durability:4
+   - oxygen:1
+   
+"Blackened_Iron_Chest":
+   type: item
+   material: 307
+   display name: "<&9>Blackened Iron Chestplate"
+   lore:
+   - <white>A darkened chestpiece.
+   enchantments:
+   - durability:4
+   - protection_environmental:4
+   
+"Blackened_Iron_Legs":
+   type: item
+   material: 308
+   display name: "<&9>Blackened Iron Greaves"
+   lore:
+   - <white>A darkened pair of greaves.
+   enchantments:
+   - durability:4
+   - protection_projectile:4
+   
+"Blackened_Iron_Boots":
+   type: item
+   material: 309
+   display name: "<&9>Blackened Iron Boots"
+   lore:
+   - <white>A darkened pair of boots.
+   enchantments:
+   - durability:4
+   - protection_fall:4

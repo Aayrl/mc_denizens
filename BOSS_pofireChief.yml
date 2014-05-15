@@ -1,0 +1,296 @@
+# -----------------------------------
+# Plane of Fire Chief Boss Encounter
+# @author: Tyler J. Sawyer
+# @version: 1.0
+# Last Updated: 18:09 on May 15, 2014 (Thursday)
+# -----------------------------------
+# Designed to be defeated by one player.
+# One hour reset.
+
+PigChief_Boss:
+  type: assignment
+
+  default constants:
+    agro message: Invaders! Watch and learn<&cm> useless swines!
+    death message: The Pigmen are unstoppable! This is not the end of us!
+    victory message: Another head for our pikes! Excellent!
+    respawn message: Kill all humans!
+    
+    # Special Event Messages
+    impale_msg: A swift strike in the chest usually stops most humans!
+    gore_msg: Pay attention<&cm> servants. This is how you slow your enemy!
+    adds_msg: Skeletal forces<&cm> I call upon you to smite our enemy!
+
+    # Boss Stats
+    # Health Pool
+    pigChief_health: 2000
+    # Damage / Swing
+    pigChief_str: 3
+    # Armor Value
+    pigChief_AC: 2
+    # Agro Radius (in Blocks)
+    pigChief_AGRO_RADIUS: 10
+    # Movement Speed (Blocks / Tick)
+    pigChief_Movement_Speed: 1
+    # Spawnpoint
+    pigChief_SpawnPoint: "20,81,51,world_nether"
+    # Respawn Timer in seconds (3600 = 1hr)
+    pigChief_Respawn_Timer: 7200
+    # XP Amount he drops on death
+    pigChief_XP_AMT: 750
+    
+  interact scripts:
+  - 10 pigChiefScript
+    
+  actions:
+    on assignment:
+    - trigger name:proximity toggle:true "radius:<cons:pigChief_AGRO_RADIUS>"
+    - trigger name:damage toggle:true
+
+    # Setup stats
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "npc type PIG_ZOMBIE"
+    - execute as_server "npc speed <cons:pigChief_Movement_Speed>"
+    - execute as_server "npc lookclose"
+    - execute as_server "trait sentry"
+    - execute as_server "sentry health <cons:pigChief_health>"
+    - execute as_server "sentry respawn <cons:pigChief_Respawn_Timer>"
+    - execute as_server "sentry speed <cons:pigChief_Movement_Speed>"
+    - execute as_server "sentry strength <cons:pigChief_str>"
+    - execute as_server "sentry armor <cons:pigChief_AC>"
+    - execute as_server "sentry range <cons:pigChief_AGRO_RADIUS>"
+
+    on spawn:
+    - announce "<red><npc.name> yells<&cm> <&sq><cons:respawn message><&sq>"
+    # Warp to its spawn point on spawn.
+    - teleport <npc> "location:<cons:pigChief_SpawnPoint>"
+    # Clear previous targets from hate list
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "sentry target clear"
+    - execute as_server "sentry target add entity:player"
+    # Clear boss flags
+    - flag npc BossPlayerList:!
+    - flag npc pigChief_Gore_CD:!
+    - flag npc pigChief_Impale_CD:!
+    - flag npc pigChief_Adds_CD:!
+
+    on death:
+    # XP amount
+    - drop XP qty:<cons:pigChief_XP_AMT> location:<npc.location>
+    # Random Loot Item 1
+    - random 6
+    - drop "Pickmaster_2000" qty:1 location:<npc.location>
+    - drop "Fiery_War_Axe" qty:1 location:<npc.location>
+    - drop "Nightslayer_Helm" qty:1 location:<npc.location>
+    - drop "Nightslayer_Chest" qty:1 location:<npc.location>
+    - drop "Nightslayer_Legs" qty:1 location:<npc.location>
+    - drop "Nightslayer_Boots" qty:1 location:<npc.location>
+    # Random Loot Item 2
+    - random 6
+    - drop "Pickmaster_2000" qty:1 location:<npc.location>
+    - drop "Fiery_War_Axe" qty:1 location:<npc.location>
+    - drop "Nightslayer_Helm" qty:1 location:<npc.location>
+    - drop "Nightslayer_Chest" qty:1 location:<npc.location>
+    - drop "Nightslayer_Legs" qty:1 location:<npc.location>
+    - drop "Nightslayer_Boots" qty:1 location:<npc.location>
+    # Reset npc effects and clear hate targets.
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "npc effect --play none"
+    - execute as_server "sentry target clear"
+    # Announce to players the boss is dead.
+    - announce "<red><npc.name> yells, <&sq><cons:death message><&sq>"
+    - announce "<&5><npc.name> has been slain!"
+    - foreach <npc.flag[BossPlayerList].aslist> {
+      - flag player:%value% LBOARD_B:++
+      - flag player:%value% LBOARD_SCORE_TOTAL:<math.as_int:<<player>.flag[LBOARD_SCORE_TOTAL]>+100>
+      - flag player:%value% pigChief_Engaged:!
+      - narrate targets:<%value%.name> "<aqua>You assisted in slaying <npc.name>."
+      }
+
+    on enter proximity:
+    - announce "<red><npc.name> yells<&cm> <&sq><cons:agro message><&sq>"
+    - playsound location:<npc.location> sound:ZOMBIE_PIG_ANGRY
+    # Flag the player as 'engaged' with the boss for 30 seconds.
+    # If the player attacks the NPC, this refreshes.
+    # If the player gets summoned, this refreshes.
+    # If the player warps to spawn or home, this duration will fade out.
+    - flag player "pigChief_Engaged:true" duration:30
+
+    on exit proximity:
+    # summon player if they are still engaged by the boss.
+    - if "<flag.p:pigChief_Engaged:true || false>" == true {
+      - announce "<red><npc.name> yells<&cm> <&sq>You will not evade me<&cm> <player.name>!<&sq>"
+      - narrate "<yellow>You have been summoned!"
+      - teleport <player> "location:<npc.location>"
+      - playsound location:<player.location> sound:portal_travel
+      - playeffect location:<player.location> effect:portal qty:1000
+      }
+    
+    on kill:
+    - announce "<red><npc.name> yells<&cm> <&sq><cons:victory message><&sq>"
+
+"pigChiefScript":
+   type: interact
+   steps:
+     1:
+       click trigger:
+         script:
+         # Right Clicking on the boss tells you his % health.
+         - narrate "<yellow><npc.name><&co> <npc.health.percentage.as_int>%"
+       proximity trigger:
+         entry:
+           script:
+           # Add player to the boss list when they enter his proximity.
+           - if <npc.flag[BossPlayerList].aslist> !contains <player> && <player.name> != <npc.name> flag npc BossPlayerList:->:<player>
+       damage trigger:
+         script:
+           # When the boss is hit, re-flag the player as engaged with the boss.
+           - flag player "pigChief_Engaged:true" duration:30
+           - playsound location:<npc.location> sound:ZOMBIE_PIG_HURT 
+           - playeffect location:<npc.location> effect:RED_DUST qty:50
+           # Here are the boss special events that fire off throughout the fight.
+           - ^if <npc.health.percentage.as_int> <= 98 {
+             - random 3
+             - run "pigChief_Gore_Ability"
+             - run "pigChief_Adds_Ability"
+             }
+           - ^if <npc.health.percentage.as_int> <= 90 {
+             - run "pigChief_Impale_Ability"
+             }
+           
+"pigChief_Gore_Ability":
+   type: task
+   # This slows the player and harms them for 5 damage, once every 20 seconds.
+   script:
+     - if <npc.flag[pigChief_Gore_CD]> == null {
+       - flag npc "pigChief_Gore_CD:true" duration:20
+       - playsound location:<npc.location> sound:ZOMBIE_PIG_ANGRY
+       - announce "<red><npc.name> yells<&cm> <&sq><cons:gore_msg><&sq>"
+       - narrate targets:<player> "<&9><npc.name><&sq>s Gore hits you for 5 points of damage."
+       - playeffect location:<player.location> effect:RED_DUST qty:100
+       - hurt 5 <player>
+       - cast slow target:<player> duration:10 power:2
+       }
+       
+"pigChief_Adds_Ability":
+   type: task
+   # This ability spawns two skeleton adds on the boss.
+   script:
+     - if <npc.flag[pigChief_Gore_CD]> == null {
+       - flag npc "pigChief_Adds_CD:true" duration:30
+       - playsound location:<npc.location> sound:WITHER_IDLE
+       - announce "<red><npc.name> yells<&cm> <&sq><cons:adds_msg><&sq>"
+       - spawn Skeleton location:<npc.location> target:<player>
+       - spawn Skeleton location:<npc.location> target:<player>
+       }
+       
+"pigChief_Impale_Ability":
+   type: task
+   # This ability hits a player for 10-20 damage, once every 45 seconds.
+   script:
+     - if <npc.flag[pigChief_Impale_CD]> == null {
+       - define thrashDmg <proc:pigChief_ImpaleDMG>
+       - flag npc "pigChief_Impale_CD:true" duration:45
+       - playsound location:<npc.location> sound:ZOMBIE_PIG_ANGRY
+       - announce "<red><npc.name> yells<&cm> <&sq><cons:impale_msg><&sq>"
+       - narrate targets:<player> "<&9><npc.name><&sq>s Impales you for %thrashDmg% points of damage!"
+       - hurt %thrashDmg% <player>
+       - playeffect location:<player.location> effect:RED_DUST qty:1000
+       }
+       
+"pigChief_ImpaleDMG":
+    type: procedure
+    script:
+      - random 11
+      - determine 10
+      - determine 11
+      - determine 12
+      - determine 13
+      - determine 14
+      - determine 15
+      - determine 16
+      - determine 17
+      - determine 18
+      - determine 19
+      - determine 20
+       
+# Loot Items
+"Pickmaster_2000":
+   type: item
+   material: 278
+   display name: "<&5>The Pickmaster 2000"
+   lore:
+   - <white>How I mine for fish?
+   enchantments:
+   - dig_speed:2
+   - durability:2
+   - loot_bonus_blocks:2
+   - water_worker:2
+   - silk_touch:1
+ 
+"Fiery_War_Axe":
+   type: item
+   material: 279
+   display name: "<&5>Fiery War Axe"
+   lore:
+   - <white>All right<&cm> Let<&sq>s do it!
+   - <green>Effect<&co> <red>Explosive Fireball <&lb>5%<&rb>
+   enchantments:
+   - damage_all:7
+   - durability:7
+   - fire_aspect:1
+   - knockback:1
+   
+"fireWarAxeEffect":
+   type: world
+   events:
+     on entity damaged by player:
+       - if <player.item_in_hand.display> == "<&5>Fiery War Axe" {
+         - playeffect location:<context.entity.location> effect:lava qty:50
+         - if <util.random.int[1].to[100]> >= 95 {
+           - if <player.flag[fieryAxeProc]> queue clear
+           - flag player fieryAxeProc duration:5s
+           - narrate targets:<player> "<&9>Your <&5>Fiery War Axe<&9> launches a powerful fireball!"
+           - explode power:2 location:<context.entity.location>
+           }
+         }
+   
+"Nightslayer_Helm":
+   type: item
+   material: 306
+   display name: "<&5>Nightslayer Cover"
+   lore:
+   - <white>A light hood.
+   enchantments:
+   - durability:7
+   - oxygen:2
+   
+"Nightslayer_Chest":
+   type: item
+   material: 307
+   display name: "<&5>Nightslayer Chestpiece"
+   lore:
+   - <white>A light chestpiece.
+   enchantments:
+   - durability:7
+   - protection_environmental:7
+   
+"Nightslayer_Legs":
+   type: item
+   material: 308
+   display name: "<&5>Nightslayer Pants"
+   lore:
+   - <white>A light pair of pants.
+   enchantments:
+   - durability:7
+   - protection_projectile:7
+   
+"Nightslayer_Boots":
+   type: item
+   material: 309
+   display name: "<&5>Nightslayer Boots"
+   lore:
+   - <white>A light pair of boots.
+   enchantments:
+   - durability:7
+   - protection_fall:7

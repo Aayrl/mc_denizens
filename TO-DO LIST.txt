@@ -67,8 +67,6 @@
 
 BOSSES
 - Plane of Fire
-    - Chief Jakali
-    - Redfist
     - Fenin Ro
 - Plane of Ender
     - Lady Sinestra

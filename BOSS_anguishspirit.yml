@@ -162,7 +162,7 @@ soanguish:
        - flag npc "SoA_SummonAdds_CD:true" duration:30
        - playsound location:<npc.location> sound:blaze_breath
        - announce "<&D><npc.name> whispers<&cm> <&sq><cons:adds_msg><&sq>"
-       - execute as_server "summon Witch <player.location.x.asint> <player.location.y.asint> <player.location.z.asint>"
+       - spawn Witch location:<npc.location> target:<player>
        }
        
 "SoA_LifeDrain_Ability":

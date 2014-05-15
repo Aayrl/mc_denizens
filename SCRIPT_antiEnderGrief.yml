@@ -24,3 +24,17 @@
           - determine cancelled
           }
         }
+    on player empties bucket:
+      - if <player.location.world.name> == "world_the_end" {
+        - if <player.name> != "Aayrl" && <player.name> != "lenois" {
+          - narrate "<&9>Magical forces prevent you from emptying your bucket here."
+          - determine cancelled
+          }
+        }
+    on player fills bucket:
+      - if <player.location.world.name> == "world_the_end" {
+        - if <player.name> != "Aayrl" && <player.name> != "lenois" {
+          - narrate "<&9>Magical forces prevent you from emptying your bucket here."
+          - determine cancelled
+          }
+        }

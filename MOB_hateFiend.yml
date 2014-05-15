@@ -49,6 +49,16 @@ hateFiend:
       - narrate targets:%value% "<cons:death message>" }
     # XP amount
     - drop XP qty:<cons:hateFiend_xp> location:<npc.location>
+    # Plane of Ender Crafting Material Drop 75% of the time
+    - if <util.random.int[1].to[100]> >= 25 {
+      - random 4
+      - drop "i@Ender_Essence" location:<npc.location>
+      - drop "i@Ender_Temper" location:<npc.location>
+      - drop "i@Enderplate_Rings" location:<npc.location>
+      - drop "i@Enderplate_Block" location:<npc.location>
+      }
+    # Chance to drop Enderdragon Ore : 2%
+    - if <util.random.int[1].to[100]> >= 98 drop "i@EnderdragonOre" location:<npc.location>
     # Random loot
     - drop "i@<proc:LootTable_HateKeep>" location:<npc.location>
     - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<npc.location>

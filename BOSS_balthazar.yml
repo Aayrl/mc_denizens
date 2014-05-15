@@ -105,8 +105,10 @@ balthazar:
     - drop "Orb_of_Balthazar" qty:1 location:<npc.location>
     - drop "Skyfall" qty:1 location:<npc.location>
     - drop "Death_Lash" qty:1 location:<npc.location>
-    # Drop the Ancient Petrified Leaf 2% of the time.
-    - if <util.random.int[1].to[100]> >= 98 drop "AncientLeaf" qty:1 location:<npc.location>
+    # Drop the Ancient Petrified Leaf 25% of the time.
+    - if <util.random.int[1].to[100]> >= 75 drop "AncientLeaf" qty:1 location:<npc.location>
+    # Drop an Enderdragon Ore 100% of the time.
+    - drop "i@EnderdragonOre" location:<npc.location>
     # Reset npc effects and clear hate targets.
     - execute as_server "npc sel <npc.id>"
     - execute as_server "npc effect --play none"

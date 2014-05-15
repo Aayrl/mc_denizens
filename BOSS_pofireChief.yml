@@ -246,7 +246,7 @@ PigChief_Boss:
    events:
      on entity damaged by player:
        - if <player.item_in_hand.display> == "<&5>Fiery War Axe" {
-         - playeffect location:<context.entity.location> effect:lava qty:50
+         - playeffect location:<context.entity.location> effect:lava qty:10
          - if <util.random.int[1].to[100]> >= 95 {
            - if <player.flag[fieryAxeProc]> queue clear
            - flag player fieryAxeProc duration:5s

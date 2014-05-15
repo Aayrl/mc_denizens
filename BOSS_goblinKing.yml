@@ -202,7 +202,7 @@ goblinKing_NPC:
 # Loot Items
 "Hearthstone":
    type: item
-   material: 261
+   material: 264
    display name: "<&5>Hearthstone"
    lore:
    - <green>Use<&co> Returns you to your home location

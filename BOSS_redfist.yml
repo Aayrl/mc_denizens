@@ -1,0 +1,271 @@
+# -----------------------------------
+# Redfist Boss Encounter
+# @author: Tyler J. Sawyer
+# @version: 1.0
+# Last Updated: 19:44 on May 14, 2014 (Wednesday)
+# -----------------------------------
+# Designed to be defeated by one player.
+# One hour reset.
+
+redfistPig_NPC:
+  type: assignment
+
+  default constants:
+    agro message: I<&sq>ve always wanted my own pet human!
+    death message: Is this the end of Zombie Redfist?
+    victory message: I think I broke it...
+    respawn message: Come on out and play...
+    
+    # Special Event Messages
+    thrash_msg: Slash slash slash slash!
+    gore_msg: Ooh<&cm> that will leave a mark.
+    maim_msg: Humans are so squishy.
+
+    # Boss Stats
+    # Health Pool
+    redfist_health: 1500
+    # Damage / Swing
+    redfist_str: 3
+    # Armor Value
+    redfist_AC: 1
+    # Agro Radius (in Blocks)
+    redfist_AGRO_RADIUS: 10
+    # Movement Speed (Blocks / Tick)
+    redfist_Movement_Speed: 1
+    # Spawnpoint
+    redfist_SpawnPoint: "17,62,-21,world_nether"
+    # Respawn Timer in seconds (3600 = 1hr)
+    redfist_Respawn_Timer: 7200
+    # XP Amount he drops on death
+    redfist_XP_AMT: 500
+    
+  interact scripts:
+  - 10 redfistScript
+    
+  actions:
+    on assignment:
+    - trigger name:proximity toggle:true "radius:<cons:redfist_AGRO_RADIUS>"
+    - trigger name:damage toggle:true
+
+    # Setup stats
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "npc type PIG_ZOMBIE"
+    - execute as_server "npc speed <cons:redfist_Movement_Speed>"
+    - execute as_server "npc lookclose"
+    - execute as_server "trait sentry"
+    - execute as_server "sentry health <cons:redfist_health>"
+    - execute as_server "sentry respawn <cons:redfist_Respawn_Timer>"
+    - execute as_server "sentry speed <cons:redfist_Movement_Speed>"
+    - execute as_server "sentry strength <cons:redfist_str>"
+    - execute as_server "sentry armor <cons:redfist_AC>"
+    - execute as_server "sentry range <cons:redfist_AGRO_RADIUS>"
+
+    on spawn:
+    - announce "<red><npc.name> yells<&cm> <&sq><cons:respawn message><&sq>"
+    # Warp to its spawn point on spawn.
+    - teleport <npc> "location:<cons:redfist_SpawnPoint>"
+    # Clear previous targets from hate list
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "sentry target clear"
+    - execute as_server "sentry target add entity:player"
+    # Clear boss flags
+    - flag npc BossPlayerList:!
+    - flag npc redfist_Gore_CD:!
+    - flag npc redfist_Thrash_CD:!
+    - flag npc redfist_Maim_CD:!
+
+    on death:
+    # XP amount
+    - drop XP qty:<cons:redfist_XP_AMT> location:<npc.location>
+    # Random Loot Item 1
+    - random 6
+    - drop "Helm_Water_Breathing" qty:1 location:<npc.location>
+    - drop "Peril" qty:1 location:<npc.location>
+    - drop "Might_Helm" qty:1 location:<npc.location>
+    - drop "Might_Chest" qty:1 location:<npc.location>
+    - drop "Might_Legs" qty:1 location:<npc.location>
+    - drop "Might_Boots" qty:1 location:<npc.location>
+    # Random Loot Item 2
+    - random 6
+    - drop "Helm_Water_Breathing" qty:1 location:<npc.location>
+    - drop "Peril" qty:1 location:<npc.location>
+    - drop "Might_Helm" qty:1 location:<npc.location>
+    - drop "Might_Chest" qty:1 location:<npc.location>
+    - drop "Might_Legs" qty:1 location:<npc.location>
+    - drop "Might_Boots" qty:1 location:<npc.location>
+    # Reset npc effects and clear hate targets.
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "npc effect --play none"
+    - execute as_server "sentry target clear"
+    # Announce to players the boss is dead.
+    - announce "<red><npc.name> yells, <&sq><cons:death message><&sq>"
+    - announce "<&5><npc.name> has been slain!"
+    - foreach <npc.flag[BossPlayerList].aslist> {
+      - flag player:%value% LBOARD_B:++
+      - flag player:%value% LBOARD_SCORE_TOTAL:<math.as_int:<<player>.flag[LBOARD_SCORE_TOTAL]>+100>
+      - flag player:%value% redfist_Engaged:!
+      - narrate targets:<%value%.name> "<aqua>You assisted in slaying <npc.name>."
+      }
+
+    on enter proximity:
+    - announce "<red><npc.name> yells<&cm> <&sq><cons:agro message><&sq>"
+    - playsound location:<npc.location> sound:ZOMBIE_PIG_ANGRY
+    # Flag the player as 'engaged' with the boss for 30 seconds.
+    # If the player attacks the NPC, this refreshes.
+    # If the player gets summoned, this refreshes.
+    # If the player warps to spawn or home, this duration will fade out.
+    - flag player "redfist_Engaged:true" duration:30
+
+    on exit proximity:
+    # summon player if they are still engaged by the boss.
+    - if "<flag.p:redfist_Engaged:true || false>" == true {
+      - announce "<red><npc.name> yells<&cm> <&sq>You will not evade me<&cm> <player.name>!<&sq>"
+      - narrate "<yellow>You have been summoned!"
+      - teleport <player> "location:<npc.location>"
+      - playsound location:<player.location> sound:portal_travel
+      - playeffect location:<player.location> effect:portal qty:1000
+      }
+    
+    on kill:
+    - announce "<red><npc.name> yells<&cm> <&sq><cons:victory message><&sq>"
+
+"redfistScript":
+   type: interact
+   steps:
+     1:
+       click trigger:
+         script:
+         # Right Clicking on the boss tells you his % health.
+         - narrate "<yellow><npc.name><&co> <npc.health.percentage.as_int>%"
+       proximity trigger:
+         entry:
+           script:
+           # Add player to the boss list when they enter his proximity.
+           - if <npc.flag[BossPlayerList].aslist> !contains <player> && <player.name> != <npc.name> flag npc BossPlayerList:->:<player>
+       damage trigger:
+         script:
+           # When the boss is hit, re-flag the player as engaged with the boss.
+           - flag player "redfist_Engaged:true" duration:30
+           - playsound location:<npc.location> sound:ZOMBIE_PIG_HURT 
+           - playeffect location:<npc.location> effect:RED_DUST qty:50
+           # Here are the boss special events that fire off throughout the fight.
+           - ^if <npc.health.percentage.as_int> <= 98 {
+             - random 3
+             - run "redfist_Gore_Ability"
+             - run "redfist_Maim_Ability"
+             }
+           - ^if <npc.health.percentage.as_int> <= 90 {
+             - run "redfist_Thrash_Ability"
+             }
+           
+"redfist_Gore_Ability":
+   type: task
+   # This slows the player and harms them for 5 damage, once every 20 seconds.
+   script:
+     - if <npc.flag[redfist_Gore_CD]> == null {
+       - flag npc "redfist_Gore_CD:true" duration:20
+       - playsound location:<npc.location> sound:ZOMBIE_PIG_ANGRY
+       - announce "<red><npc.name> yells<&cm> <&sq><cons:gore_msg><&sq>"
+       - narrate targets:<player> "<&9><npc.name><&sq>s Gore hits you for 5 points of damage."
+       - playeffect location:<player.location> effect:RED_DUST qty:100
+       - hurt 5 <player>
+       - cast slow target:<player> duration:10 power:2
+       }
+       
+"redfist_Maim_Ability":
+   type: task
+   # This harms the player for 12 damage, once every 30 seconds.
+   script:
+     - if <npc.flag[redfist_Gore_CD]> == null {
+       - flag npc "redfist_Maim_CD:true" duration:30
+       - playsound location:<npc.location> sound:ZOMBIE_PIG_ANGRY
+       - announce "<red><npc.name> yells<&cm> <&sq><cons:maim_msg><&sq>"
+       - narrate targets:<player> "<&9><npc.name><&sq>s Maim hits you for 12 points of damage."
+       - playeffect location:<player.location> effect:RED_DUST qty:100
+       - hurt 12 <player>
+       }
+       
+"redfist_Thrash_Ability":
+   type: task
+   # This ability hits a player for 5-25 damage, once every 45 seconds.
+   script:
+     - if <npc.flag[redfist_Thrash_CD]> == null {
+       - define thrashDmg <proc:redfist_thrashDMG>
+       - flag npc "redfist_Thrash_CD:true" duration:45
+       - playsound location:<npc.location> sound:ZOMBIE_PIG_ANGRY
+       - announce "<red><npc.name> yells<&cm> <&sq><cons:thrash_msg><&sq>"
+       - narrate targets:<player> "<&9><npc.name><&sq>s Thrash Frenzy hits you for %thrashDmg% points of damage!"
+       - hurt %thrashDmg% <player>
+       - playeffect location:<player.location> effect:RED_DUST qty:1000
+       }
+       
+"redfist_thrashDMG":
+    type: procedure
+    script:
+      - random 5
+      - determine 5
+      - determine 10
+      - determine 15
+      - determine 20
+      - determine 25
+       
+# Loot Items
+"Helm_Water_Breathing":
+   type: item
+   material: 306
+   display name: "<&5>Helm of Enduring Breath"
+   lore:
+   - <white>You should be able to 
+   - <white>live underwater now.
+   enchantments:
+   - oxygen:10
+ 
+"Peril":
+   type: item
+   material: 276
+   display name: "<&5>Peril"
+   lore:
+   - <white>Run?
+   enchantments:
+   - damage_all:6
+   - durability:5
+   
+"Might_Helm":
+   type: item
+   material: 306
+   display name: "<&5>Helm of Might"
+   lore:
+   - <white>A mighty helmet.
+   enchantments:
+   - durability:6
+   - oxygen:2
+   
+"Might_Chest":
+   type: item
+   material: 307
+   display name: "<&5>Breastplate of Might"
+   lore:
+   - <white>A mighty chestpiece.
+   enchantments:
+   - durability:6
+   - protection_environmental:6
+   
+"Might_Legs":
+   type: item
+   material: 308
+   display name: "<&5>Greaves of Might"
+   lore:
+   - <white>A mighty pair of greaves.
+   enchantments:
+   - durability:6
+   - protection_projectile:6
+   
+"Might_Boots":
+   type: item
+   material: 309
+   display name: "<&5>Boots of Might"
+   lore:
+   - <white>A mighty pair of boots.
+   enchantments:
+   - durability:6
+   - protection_fall:6

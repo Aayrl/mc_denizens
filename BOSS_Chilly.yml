@@ -149,12 +149,13 @@ chilly_npcboss:
            - playsound location:<npc.location> sound:snow_step volume:10000 pitch:-50
            - playeffect location:<npc.location> effect:snowball_poof qty:1000 offset:0
            - playeffect location:<npc.location> effect:snow_shovel qty:500 offset:0.25
+           # Boss Damage Shield
+           - run "Chilly_DS_Ability"
            # Here are the boss special events that fire off throughout the fight.
            - ^if <npc.health.percentage.as_int> <= 98 {
-             - random 3
-             - run "Chilly_Freeze_Ability"
+             - random 2
              - run "Chilly_IceShard_Ability"
-             - run "Chilly_DS_Ability"
+             - run "Chilly_Freeze_Ability"
              }
            
 "Chilly_Freeze_Ability":

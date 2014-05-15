@@ -26,6 +26,8 @@
     - Utility Spells
         - AE Heal
         - Teleport Spells
+        - Summon Spells
+            - Holding Summon Spell, type /summon [playername]
         
 - Add 'Bound' spells:
     - 'Bound' spells require:

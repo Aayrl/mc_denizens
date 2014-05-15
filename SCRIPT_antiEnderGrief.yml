@@ -1,0 +1,26 @@
+# -----------------------------------
+# Anti Ender Grief Script
+# @author: Tyler J. Sawyer
+# @version: 1.0
+# Last Updated: 21:35 on May 14, 2014 (Wednesday)
+# -----------------------------------
+# This script will prevent anyone who is not Aayrl
+# from placing or breaking blocks in the Plane of Ender.
+
+"AntiEnderGrief":
+  type: world
+  events:
+    on player places block:
+      - if <player.location.world.name> == "world_the_end" {
+        - if <player.name> != "lenois" {
+          - narrate "<&9>Magical forces prevent you from building here."
+          - determine cancelled
+          }
+        }
+    on player breaks block:
+      - if <player.location.world.name> == "world_the_end" {
+        - if <player.name> != "lenois" {
+          - narrate "<&9>Magical forces prevent you from breaking blocks here."
+          - determine cancelled
+          }
+        }

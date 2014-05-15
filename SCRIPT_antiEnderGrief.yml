@@ -12,14 +12,14 @@
   events:
     on player places block:
       - if <player.location.world.name> == "world_the_end" {
-        - if <player.name> != "lenois" {
+        - if <player.name> != "Aayrl" && <player.name> != "lenois" {
           - narrate "<&9>Magical forces prevent you from building here."
           - determine cancelled
           }
         }
     on player breaks block:
       - if <player.location.world.name> == "world_the_end" {
-        - if <player.name> != "lenois" {
+        - if <player.name> != "Aayrl" && <player.name> != "lenois" {
           - narrate "<&9>Magical forces prevent you from breaking blocks here."
           - determine cancelled
           }

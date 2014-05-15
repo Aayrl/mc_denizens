@@ -82,13 +82,13 @@ goblin:
       - if <%value%.flag[FACTION_Goblin]> >= 1  {
         - flag player:%value% "FACTION_Goblin:<math.as_int:<%value%.flag[FACTION_Goblin]>-<cons:factionhit>>"
         - narrate targets:%value% "<&9>Your faction standing with Goblin has gotten worse! (<%value%.flag[FACTION_Goblin]>)"
-        - flag player:%value% "FACTION_Gondor:<math.as_int:<%value%.flag[FACTION_Gondor]>+<cons:faction_guard>>"
-        - narrate targets:%value% "<&9>Your faction standing with Gondor has gotten better! (<%value%.flag[FACTION_Gondor]>)" }
+        - flag player:%value% "FACTION_Kelethin:<math.as_int:<%value%.flag[FACTION_Kelethin]>+<cons:faction_guard>>"
+        - narrate targets:%value% "<&9>Your faction standing with Kelethin has gotten better! (<%value%.flag[FACTION_Kelethin]>)" }
         else {
         - flag player:%value% "FACTION_Goblin:0"
         - narrate targets:%value% "<&9>Your faction standing with Goblin could not possibly get any worse! (0)"
-        - flag player:%value% "FACTION_Gondor:<math.as_int:<%value%.flag[FACTION_Gondor]>+<cons:faction_guard>>"
-        - narrate targets:%value% "<&9>Your faction standing with Gondor has gotten better! (<%value%.flag[FACTION_Gondor]>)" }
+        - flag player:%value% "FACTION_Kelethin:<math.as_int:<%value%.flag[FACTION_Kelethin]>+<cons:faction_guard>>"
+        - narrate targets:%value% "<&9>Your faction standing with Kelethin has gotten better! (<%value%.flag[FACTION_Kelethin]>)" }
       }
 
     on attack: 

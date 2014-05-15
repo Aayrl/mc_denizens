@@ -217,7 +217,7 @@ chilly_npcboss:
          - playsound location:<player.location> sound:snow_step volume:10000 pitch:-50
          - playeffect location:<player.location> effect:snow_shovel qty:2500 offset:3
          - give 332 qty:16
-         - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
+         - foreach <l@<player.location>.find.players.within[<30>].aslist> {
            - narrate targets:%value% "<&9>You receive 16 snowballs from <player.name><&sq>s Massive Snowball fallout."
            - playsound location:<%value%.location> sound:snow_step volume:10000 pitch:-50
            - playeffect location:<%value%.location> effect:snow_shovel qty:2500 offset:3

@@ -1,6 +1,10 @@
+# -----------------------------------
+# Lady Sinestra Boss Script
+# @author: Tyler J. Sawyer
+# @version: 1.3
+# Last Updated: 13:17 on May 16, 2014 (Friday)
+# -----------------------------------
 # Lady Sinestra is a boss encounter in the Plane of Ender.
-# Tyler J. Sawyer
-# 4/24/14
 #
 # Respawn Timer : 86400 seconds - 24 hours
 #
@@ -23,46 +27,47 @@
 # Phase 3 : 49% -> 25%
 # ABILITY: Lava Geyser : Burns a random target for 10 seconds.
 #                        "Bounces" the target in the air [30s Cooldown]
-# ABILITY: Fear : Turns all targets away from the boss every second for 5 seconds. [45s Cooldown]
+# ABILITY: Fear : Turns all targets away from the boss for 5 seconds. 
+#               : Also blinds and roots the player. [45s Cooldown]
 #
 # Phase 4 : 24% -> 5%
 # ABILITY: Call of the Nest : Teleport all players to the nest (spawn point) and root for 10 sec. [20s Cooldown]
+# -----------------------------------
 
 ladysinestra:
   type: assignment
 
   default constants:
-    # Agro Message : Message to display when a player engages the boss.
-    agro message: <red>Bow before me<&cm> mortals! You are no match for my power!
-    # Death Message : Message displayed when the boss is slain.
-    death message: <red>NOOOOOO!!!
-    # Victory Message : Message when a player is killed by the boss.
-    victory message: <red>Ahahaha! My power only grows with your failure!
-    # Respawn Message : Message that goes to the server when the mob repops in 12 hours.
-    respawn message: <red>Come<&cm> mortals. Test your might against sinestraazar!
+    agro message: I must protect these eggs at all costs!
+    death message: My Lord! I have failed you!
+    victory message: None should challenge the Dragonkin!
+    respawn message: Quickly my servants<&cm> there are mortals afoot! Protect the eggs!
+    
     # Special Event Messages
-    deathtouch_msg: <red>Fall before the hand of Rhexthar!
-    enrage_msg: <red>Such anger .. such .. HATRED ..
-    flametouch_msg: <red>Fire<&cm> always a delightful end.
-    meteor_msg: <red>Fe Fi Fo Fireball!
+    ignite_msg: Let us see how impervious to flame these mortals are!
+    lavadredge_msg: How does it feel to be bathed in molten lava?
+    adds_msg: Servants! To my side<&cm> strike our foes!
+    lavageyser_msg: A touch of liquid fire should take care of you!
+    fear_msg: Flee! Flee and never return!
+    callofnest_msg: Get over here and face the wrath of Sinestra!
 
-    # sinestraazar : Statistics
-    # sinestraazar Health Pool
-    sinestra_health: 5000
-    # sinestraazar Damage / Swing
-    sinestra_str: 4
-    # sinestraazar Armor Value
+    # Sinestra : Statistics
+    # Sinestra Health Pool
+    sinestra_health: 7500
+    # Sinestra Damage / Swing
+    sinestra_str: 3
+    # Sinestra Armor Value
     sinestra_AC: 1
-    # sinestraazar Agro Radius (in Blocks)
+    # Sinestra Agro Radius (in Blocks)
     sinestra_AGRO_RADIUS: 15
-    # sinestraazar Movement Speed (Blocks / Tick)
+    # Sinestra Movement Speed (Blocks / Tick)
     sinestra_Movement_Speed: 2
-    # sinestraazar's Spawnpoint
+    # Sinestra's Spawnpoint
     sinestra_SpawnPoint: "34,46,-97,world_the_end"
-    # sinestraazar Respawn Timer in seconds (43200 = 12 hrs)
+    # Sinestra Respawn Timer in seconds (43200 = 12 hrs)
     sinestra_Respawn_Timer: 86400
-    # sinestraazar XP Amount he drops on death
-    sinestra_XP_AMT: 5000
+    # Sinestra XP Amount dropped on death
+    sinestra_XP_AMT: 7500
 
   interact scripts:
   - 10 sinestraScript
@@ -72,7 +77,7 @@ ladysinestra:
     - trigger name:proximity toggle:true "radius:<cons:sinestra_AGRO_RADIUS>"
     - trigger name:damage toggle:true
 
-    # Setup sinestraazar stats.
+    # Setup Sinestra stats.
     - execute as_server "npc sel <npc.id>"
     - execute as_server "npc type MAGMA_CUBE"
     - execute as_server "npc speed <cons:sinestra_Movement_Speed>"
@@ -86,9 +91,8 @@ ladysinestra:
     - execute as_server "sentry range <cons:sinestra_AGRO_RADIUS>"
 
     on spawn:
-    # Shout about how great it is.
     - announce "<red><npc.name> yells<&cm> <&sq><cons:respawn message><&sq>"
-    # Warp sinestraazar to its spawn point on spawn.
+    # Warp boss to its spawnpoint
     - teleport <npc> "location:<cons:sinestra_SpawnPoint>"
     # Clear previous targets from hate list
     - execute as_server "npc sel <npc.id>"
@@ -96,20 +100,28 @@ ladysinestra:
     - execute as_server "sentry target add entity:player"
     # Clear boss flags
     - flag npc BossPlayerList:!
-    - flag npc sinestra_flametouch_CD:!
-    - flag npc sinestra_meteor_CD:!
-    - flag npc sinestra_deathtouch_CD:!
-    - flag npc sinestra_enrage:!
+    - flag npc sinestra_ignite_CD:!
+    - flag npc sinestra_lavadredge_CD:!
+    - flag npc sinestra_adds_CD:!
+    - flag npc sinestra_lavageyser_CD:!
+    - flag npc sinestra_fear_CD:!
+    - flag npc sinestra_callofnest_CD:!
 
     on death:
     # XP amount
     - drop XP qty:<cons:sinestra_XP_AMT> location:<npc.location>
+    # Drop the left bindings 100% of the time.
+    - drop "TF_BindingLeft" qty:1 location:<npc.location>
+    # Drop an enderdragon ore 100% of the time.
+    - drop "EnderdragonOre" qty:1 location:<npc.location>
+    # Drop the special drake egg 10% of the time.
+    #- drop "sinestraEggItem" qty:1 location:<npc.location>
     # Random Loot Item 1
     #- random 6
     #- drop "Hate Harvester" qty:1 location:<npc.location>
     #- drop "Amulet of Hate" qty:1 location:<npc.location>
     #- drop "Face of Death" qty:1 location:<npc.location>
-    #- drop "Orb of sinestraazar" qty:1 location:<npc.location>
+    #- drop "Orb of Sinestra" qty:1 location:<npc.location>
     #- drop "Skyfall" qty:1 location:<npc.location>
     #- drop "Death Lash" qty:1 location:<npc.location>
     # Random Loot Item 2
@@ -117,7 +129,7 @@ ladysinestra:
     #- drop "Hate Harvester" qty:1 location:<npc.location>
     #- drop "Amulet of Hate" qty:1 location:<npc.location>
     #- drop "Face of Death" qty:1 location:<npc.location>
-    #- drop "Orb of sinestraazar" qty:1 location:<npc.location>
+    #- drop "Orb of Sinestra" qty:1 location:<npc.location>
     #- drop "Skyfall" qty:1 location:<npc.location>
     #- drop "Death Lash" qty:1 location:<npc.location>
     # Reset npc effects and clear hate targets.
@@ -128,13 +140,17 @@ ladysinestra:
     - announce "<red><npc.name> yells, <&sq><cons:death message><&sq>"
     - announce "<&5><npc.name> has been slain!"
     - foreach <npc.flag[BossPlayerList].aslist> {
+      - adjust <player> "show_boss_bar:"
       - flag player:%value% sinestra_Engaged:!
       - flag player:%value% "ENDER_sinestraKills:++"
+      - flag player:%value% LBOARD_B:++
+      - flag player:%value% LBOARD_SCORE_TOTAL:<math.as_int:<<player>.flag[LBOARD_SCORE_TOTAL]>+100>
+      - narrate targets:<%value%.name> "<aqua>You assisted in slaying <npc.name>."
       }
 
     on enter proximity:
     - announce "<red><npc.name> yells<&cm> <&sq><cons:agro message><&sq>"
-    - playsound location:<npc.location> sound:enderman_scream
+    - playsound location:<npc.location> sound:blaze_breath pitch:-50
     # Flag the player as 'engaged' with the boss for 30 seconds.
     # If the player attacks the NPC, this refreshes.
     # If the player gets summoned, this refreshes.
@@ -170,70 +186,134 @@ ladysinestra:
        damage trigger:
          script:
            # When the boss is hit, re-flag the player as engaged with the boss.
-           # We also add some flavor sound and effect. WOOOO.
            - flag player "sinestra_Engaged:true" duration:30
-           - playsound location:<npc.location> sound:enderman_scream
-           - playeffect location:<npc.location> effect:portal qty:100
+           - playsound location:<npc.location> sound:donkey_hit pitch:-10
+           - playeffect location:<npc.location> effect:lava qty:15
+           - playeffect location:<npc.location> effect:mobspawner_flames qty:1
+           # Adjust BossBar Health
+           - adjust <player> "show_boss_bar:<m.as_int:<npc.health.percentage.as_int>*2>|Lady Sinestra - <npc.health.percentage.as_int>"
            # Here are the boss special events that fire off throughout the fight.
            - ^if <npc.health.percentage.as_int> <= 98 {
-             - run "sinestra_flametouch"
+             - random 2
+             - run "sinestra_ignite"
+             - run "sinestra_lavadredge"
              }
            - ^if <npc.health.percentage.as_int> <= 74 {
-             - run "sinestra_meteor"
+             - run "sinestra_adds"
              }
            - ^if <npc.health.percentage.as_int> <= 49 {
              - random 2
-             - run "sinestra_enrage"
-             - run "sinestra_deathtouch"
+             - run "sinestra_lavageyser"
+             - run "sinestra_fear"
+             }
+           - ^if <npc.health.percentage.as_int> <= 74 {
+             - run "sinestra_callofnest"
              }
 
-"sinestra_flametouch":
+"sinestra_ignite":
    type: task
    # This sets a player on fire for 10 seconds every 30 seconds.
    script:
-     - if <npc.flag[sinestra_flametouch_CD]> == null {
-       - flag npc "sinestra_flametouch_CD:true" duration:30
-       - announce "<red><npc.name> yells<&cm> <&sq><cons:flametouch_msg><&sq>"
-       - narrate "<yellow>You are set ablaze by <npc.name>!"
+     - if <npc.flag[sinestra_ignite_CD]> == null {
+       - flag npc "sinestra_ignite_CD:true" duration:30
+       - announce "<red><npc.name> yells<&cm> <&sq><cons:ignite_msg><&sq>"
+       - narrate "<&9>You are set ablaze by <npc.name>!"
        - burn <player> duration:10s
        - playsound explode location:<player.location>
        - playeffect location:<player.location> effect:lava qty:100
        }
        
-"sinestra_meteor":
+"sinestra_lavadredge":
    type: task
-   # This ability drops a meteor on a random player every 45 seconds.
-   # Meteor hits for 5 damage and sets target on fire for 10 seconds.
+   # This ability harms a random player for 20 health.
    script:
-     - if <npc.flag[sinestra_meteor_CD]> == null {
-       - flag npc "sinestra_meteor_CD:true" duration:45
-       - announce "<red><npc.name> yells<&cm> <&sq><cons:meteor_msg><&sq>"
-       - narrate "<yellow>You are hit by a large meteor!"
-       - push fireball origin:<player.location.x.asint>,<m:<player.location.y.asint>+15>,<player.location.z.asint>,<player.location.world> destination:<player.location> speed:2 duration:10s
-       - playsound ghast_charge location:<player.location>
-       - playeffect location:<player.location> effect:lava qty:100
-       }
-
-"sinestra_deathtouch":
-   type: task
-   # This ability sacrifices a player.
-   # The player is rooted, blinded, and poisoned for 10 seconds.
-   script:
-     - if <npc.flag[sinestra_deathtouch_CD]> == null {
-       - flag npc "sinestra_deathtouch_CD:true" duration:180
-       - announce "<red><npc.name> yells<&cm> <&sq><cons:deathtouch_msg><&sq>"
-       - narrate "<yellow><npc.name> casts DEATH TOUCH on you!"
-       - cast harm duration:10s power:3
-       - playsound enderman_stare location:<player.location>
-       - playeffect location:<player.location> effect:ENDER_SIGNAL qty:50
+     - if <npc.flag[sinestra_lavadredge_CD]> == null {
+       - flag npc "sinestra_lavadredge_CD:true" duration:30
+       - announce "<red><npc.name> yells<&cm> <&sq><cons:lavadredge_msg><&sq>"
+       - narrate "<&9><npc.name><&sq>s Lava Dredge hits you for 20 damage."
+       - hurt 20 <player>
+       - playeffect location:<player.location> effect:mobspawner_flames qty:50
        }
        
-"sinestra_enrage":
+"sinestra_lavageyser":
    type: task
-   # This ability sacrifices a player.
-   # The player is rooted, blinded, and poisoned for 10 seconds.
+   # This ability bounces a player in the air, harming them for a total 
+   # of 20 damage. The player is also set on fire.
    script:
-     - if <npc.flag[sinestra_enrage]> == null {
-       - flag npc "sinestra_enrage:true"
-       - announce "<red><npc.name> yells<&cm> <&sq><cons:enrage_msg><&sq>"
+     - if <npc.flag[sinestra_lavageyser_CD]> == null {
+       - flag npc "sinestra_lavageyser_CD:true" duration:30
+       - announce "<red><npc.name> yells<&cm> <&sq><cons:lavageyser_msg><&sq>"
+       - narrate "<&9><npc.name> summons a Lava Geyser<&cm> tossing you wildly into the air!"
+       - narrate "<&9>You are set ablaze by <npc.name>!"
+       - burn <player> duration:10s
+       - teleport "<player.location.x>,<m:<player.location.y>+2.0>,<player.location.z>,world_the_end"
+       - hurt 4 <player>
+       - playeffect location:<player.location> effect:mobspawner_flames qty:25
+       - playeffect location:<player.location> effect:lava qty:100
+       - narrate "<&9><npc.name><&sq>s Lava Geyser burns you for 4 damage."
+       - teleport "<player.location.x>,<m:<player.location.y>+2.0>,<player.location.z>,world_the_end"
+       - hurt 4 <player>
+       - playeffect location:<player.location> effect:mobspawner_flames qty:25
+       - playeffect location:<player.location> effect:lava qty:100
+       - narrate "<&9><npc.name><&sq>s Lava Geyser burns you for 4 damage."
+       - teleport "<player.location.x>,<m:<player.location.y>+2.0>,<player.location.z>,world_the_end"
+       - hurt 4 <player>
+       - playeffect location:<player.location> effect:mobspawner_flames qty:25
+       - playeffect location:<player.location> effect:lava qty:100
+       - narrate "<&9><npc.name><&sq>s Lava Geyser burns you for 4 damage."
+       - teleport "<player.location.x>,<m:<player.location.y>+2.0>,<player.location.z>,world_the_end"
+       - hurt 4 <player>
+       - playeffect location:<player.location> effect:mobspawner_flames qty:25
+       - playeffect location:<player.location> effect:lava qty:100
+       - narrate "<&9><npc.name><&sq>s Lava Geyser burns you for 4 damage."
+       - teleport "<player.location.x>,<m:<player.location.y>+2.0>,<player.location.z>,world_the_end"
+       - hurt 4 <player>
+       - playeffect location:<player.location> effect:mobspawner_flames qty:25
+       - playeffect location:<player.location> effect:lava qty:100
+       - narrate "<&9><npc.name><&sq>s Lava Geyser burns you for 4 damage."
        }
+
+"sinestra_fear":
+   type: task
+   # This ability 'fears' all players, rooting them and blinding them for 5 sec.
+   script:
+     - if <npc.flag[sinestra_fear_CD]> == null {
+       - flag npc "sinestra_fear_CD:true" duration:45
+       - announce "<red><npc.name> yells<&cm> <&sq><cons:fear_msg><&sq>"
+       - foreach <npc.location.find.players.within[30].aslist> {
+         - narrate targets:%value% "<&9>You flee in terror!"
+         - cast slow target:%value% duration:5 power:10
+         - cast blindness target:%value% duration:5s power:50
+         - playeffect location:<%value%.location> effect:portal qty:1000
+         }
+       }
+       
+"sinestra_callofnest":
+   type: task
+   # This ability summons all players to the boss' spawn point,
+   # rooting them for 10 seconds.
+   script:
+     - if <npc.flag[sinestra_callofnest_CD]> == null {
+       - flag npc "sinestra_callofnest_CD:true" duration:20
+       - announce "<red><npc.name> yells<&cm> <&sq><cons:callofnest_msg><&sq>"
+       - foreach <npc.location.find.players.within[30].aslist> {
+         - teleport %value% "location:<cons:sinestra_SpawnPoint>"
+         - narrate targets:%value% "<&9>You are summoned to <npc.name><&sq>s nest!"
+         - cast slow target:%value% duration:10 power:10
+         - playeffect location:<%value%.location> effect:portal qty:1000
+         }
+       }
+      
+# -----------------------------------
+# ADDS SCRIPT
+"sinestra_adds":
+   type: task
+   # This ability summons four adds, one in each corner of the room.
+   script:
+     - if <npc.flag[sinestra_adds_CD]> == null {
+       - flag npc "sinestra_adds_CD:true" duration:60
+       - announce "<red><npc.name> yells<&cm> <&sq><cons:adds_msg><&sq>"
+       }
+
+# -----------------------------------
+# Loot Items

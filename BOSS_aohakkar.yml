@@ -117,8 +117,6 @@ aohakkar:
     - flag npc AOH_Grace_Period_CD:!
 
     on death:
-    # XP amount
-    - drop XP qty:<cons:aoh_XP_AMT> location:<npc.location>
     # Random Loot Item 1
     - random 6
     - drop "Wand_of_Hakkar" qty:1 location:<npc.location>
@@ -143,6 +141,7 @@ aohakkar:
     - announce "<red><npc.name> yells, <cons:death message>"
     - announce "<&5><npc.name> has been slain!"
     - foreach <npc.flag[BossPlayerList].aslist> {
+      - execute as_server "xp <cons:aoh_XP_AMT> <%value%.name>"
       - adjust %value% "show_boss_bar:"
       - flag player:%value% LBOARD_B:++
       - flag player:%value% LBOARD_SCORE_TOTAL:<math.as_int:<<player>.flag[LBOARD_SCORE_TOTAL]>+100>

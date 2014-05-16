@@ -73,8 +73,6 @@ chilly_npcboss:
     - flag npc Chilly_IceShard_CD:!
 
     on death:
-    # XP amount
-    - drop XP qty:<cons:Chilly_XP_AMT> location:<npc.location>
     # SNOWBALLS!
     - drop "Massive_Snowball" qty:2 location:<npc.location>
     # Random Loot Item 1
@@ -101,6 +99,7 @@ chilly_npcboss:
     - announce "<red><npc.name> yells, <&sq><cons:death message><&sq>"
     - announce "<&5><npc.name> has been slain!"
     - foreach <npc.flag[BossPlayerList].aslist> {
+      - execute as_server "xp <cons:Chilly_XP_AMT> <%value%.name>"
       - adjust %value% "show_boss_bar:"
       - flag player:%value% LBOARD_B:++
       - flag player:%value% LBOARD_SCORE_TOTAL:<math.as_int:<<player>.flag[LBOARD_SCORE_TOTAL]>+100>

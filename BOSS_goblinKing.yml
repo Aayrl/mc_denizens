@@ -82,8 +82,6 @@ goblinKing_NPC:
     - flag npc GoblinKing_Backstab_CD:!
 
     on death:
-    # XP amount
-    - drop XP qty:<cons:GoblinKing_XP_AMT> location:<npc.location>
     # Random Loot Item 1
     - random 6
     - drop "Hearthstone" qty:1 location:<npc.location>
@@ -108,6 +106,7 @@ goblinKing_NPC:
     - announce "<red><npc.name> yells, <&sq><cons:death message><&sq>"
     - announce "<&5><npc.name> has been slain!"
     - foreach <npc.flag[BossPlayerList].aslist> {
+      - execute as_server "xp <cons:GoblinKing_XP_AMT> <%value%.name>"
       - adjust %value% "show_boss_bar:"
       - flag player:%value% LBOARD_B:++
       - flag player:%value% LBOARD_SCORE_TOTAL:<math.as_int:<<player>.flag[LBOARD_SCORE_TOTAL]>+100>

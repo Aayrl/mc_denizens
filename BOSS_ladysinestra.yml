@@ -61,7 +61,7 @@ ladysinestra:
     # Sinestra Agro Radius (in Blocks)
     sinestra_AGRO_RADIUS: 15
     # Sinestra Movement Speed (Blocks / Tick)
-    sinestra_Movement_Speed: 3
+    sinestra_Movement_Speed: 1.5
     # Sinestra's Spawnpoint
     sinestra_SpawnPoint: "34,46,-97,world_the_end"
     # Sinestra Respawn Timer in seconds (43200 = 12 hrs)
@@ -214,7 +214,7 @@ ladysinestra:
              - run "sinestra_lavageyser"
              - run "sinestra_fear"
              }
-           - ^if <npc.health.percentage.as_int> <= 74 {
+           - ^if <npc.health.percentage.as_int> <= 24 {
              - run "sinestra_callofnest"
              }
 
@@ -304,6 +304,7 @@ ladysinestra:
      - if <npc.flag[sinestra_callofnest_CD]> == null {
        - flag npc "sinestra_callofnest_CD:true" duration:20
        - announce "<red><npc.name> yells<&cm> <&sq><cons:callofnest_msg><&sq>"
+       - teleport <npc> "location:<cons:sinestra_SpawnPoint>"
        - foreach <npc.location.find.players.within[30].aslist> {
          - teleport %value% "location:<cons:sinestra_SpawnPoint>"
          - narrate targets:%value% "<&9>You are summoned to <npc.name><&sq>s nest!"
@@ -345,7 +346,7 @@ SinestraSpawn:
 
     # Stats
     SSpawn_str: 2
-    SSpawn_health: 250
+    SSpawn_health: 150
     SSpawn_agroRange: 30
     
   interact scripts:
@@ -358,13 +359,13 @@ SinestraSpawn:
     # Setup SSpawn Stats
     - execute as_server "npc sel <npc.id>"
     - execute as_server "npc type MAGMA_CUBE"
-    - execute as_server "npc speed 2"
+    - execute as_server "npc speed 1.5"
     - execute as_server "npc lookclose"
     - execute as_server "trait sentry"
     - execute as_server "sentry health <cons:SSpawn_health>"
     - execute as_server "sentry spawn"
     - execute as_server "sentry respawn -1"
-    - execute as_server "sentry speed 2"
+    - execute as_server "sentry speed 1.5"
     - execute as_server "sentry strength <cons:SSpawn_str>"
     - execute as_server "sentry killdrops false"
     - execute as_server "sentry healrate 1"
@@ -381,17 +382,17 @@ SinestraSpawn:
     - attack <npc> "target:<npc.location.find.players.within[30].get[1]>"
 
     on death:
-    - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
+    - foreach <l@<npc.location>.find.players.within[<30>].aslist> {
       - narrate targets:%value% "<cons:death message>" }
     - execute as_server "npc sel <npc.id>"
     - execute as_server "npc remove"
 
     on attack: 
-    - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
+    - foreach <l@<npc.location>.find.players.within[<30>].aslist> {
       - narrate targets:%value% "<cons:attack message>" }
     
     on kill:
-    - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
+    - foreach <l@<npc.location>.find.players.within[<30>].aslist> {
       - narrate targets:%value% "<cons:victory message>" }
        
 "sinestraspawn_interact":

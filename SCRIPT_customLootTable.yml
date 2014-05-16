@@ -13,6 +13,9 @@
           - run "Drop_Credits" d:<context.damager>|<util.random.int[2].to[12]>
           - queue clear
           }
+          else if <context.entity.name> == "Sinestra Spawn" {
+          - queue clear
+          }
           else if <context.entity.name> == "Goblin" {
           - run "Drop_Credits" d:<context.damager>|<util.random.int[1].to[7]>
           - queue clear

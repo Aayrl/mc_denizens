@@ -1,0 +1,24 @@
+# -----------------------------------
+# Custom Titles
+# @author: Tyler J. Sawyer
+# @version: 1.0
+# Last Updated: 17:38 on May 16, 2014 (Friday)
+# -----------------------------------
+# This allows players to set their titles, visible by other players in-game
+# and via the online players window.
+
+"playerTitleHandler":
+  type: world
+
+  events:
+    on player join:
+    # Check to see if the player has any new titles.
+    # either from the addition of a title via an event 
+    # or if they haven't logged in since the title addition.
+    #- if <player.flag[titleCount]> == "null" {
+    #  - flag player "titleCount:0" }
+    # OP Title Flag - Flag OP players.
+    - if <player.is_op> {
+      - adjust <player> "display_name:<&5>* OP *<white><player.name.display>"
+      - adjust <player> "player_list_name:<&5>* OP *<white><player.name.list>"
+      }

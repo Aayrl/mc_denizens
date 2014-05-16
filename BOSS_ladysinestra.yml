@@ -50,6 +50,12 @@ ladysinestra:
     lavageyser_msg: A touch of liquid fire should take care of you!
     fear_msg: Flee! Flee and never return!
     callofnest_msg: Get over here and face the wrath of Sinestra!
+    
+    # Adds SpawnPoints
+    addspawnpoint1: "27,48,-80,world_the_end"
+    addspawnpoint2: "41,48,-80,world_the_end"
+    addspawnpoint3: "41,48,-100,world_the_end"
+    addspawnpoint4: "27,48,-100,world_the_end"
 
     # Sinestra : Statistics
     # Sinestra Health Pool
@@ -106,6 +112,11 @@ ladysinestra:
     - flag npc sinestra_lavageyser_CD:!
     - flag npc sinestra_fear_CD:!
     - flag npc sinestra_callofnest_CD:!
+    # Flag the spawn points for adds
+    - flag npc add_sp1:<cons:addspawnpoint1>
+    - flag npc add_sp2:<cons:addspawnpoint2>
+    - flag npc add_sp3:<cons:addspawnpoint3>
+    - flag npc add_sp4:<cons:addspawnpoint4>
 
     on death:
     # XP amount
@@ -321,7 +332,102 @@ ladysinestra:
      - if <npc.flag[sinestra_adds_CD]> == null {
        - flag npc "sinestra_adds_CD:true" duration:60
        - announce "<red><npc.name> yells<&cm> <&sq><cons:adds_msg><&sq>"
+       # Build the Adds
+       - execute as_server "npc create "Sinestra Spawn" --at <npc.flag[add_sp1]>"
+       - execute as_server "npc owner <npc.name>"
+       - execute as_server 'npc assign --set "SinestraSpawn"'
+       - execute as_server "npc create "Sinestra Spawn" --at <npc.flag[add_sp2]>"
+       - execute as_server "npc owner <npc.name>"
+       - execute as_server 'npc assign --set "SinestraSpawn"'
+       - execute as_server "npc create "Sinestra Spawn" --at <npc.flag[add_sp3]>"
+       - execute as_server "npc owner <npc.name>"
+       - execute as_server 'npc assign --set "SinestraSpawn"'
+       - execute as_server "npc create "Sinestra Spawn" --at <npc.flag[add_sp4]>"
+       - execute as_server "npc owner <npc.name>"
+       - execute as_server 'npc assign --set "SinestraSpawn"'
        }
 
+SinestraSpawn:
+  type: assignment
+
+  default constants:
+    attack message: A squishy <npc.name> moves in to attack!
+    death message: <npc.name> explodes into a pile of molten mush.
+    victory message: <npc.name> bounces up and down.
+
+    # Stats
+    SSpawn_str: 2
+    SSpawn_health: 250
+    SSpawn_agroRange: 30
+    
+  interact scripts:
+  - 10 sinestraspawn_interact
+
+  actions:
+    on assignment:
+    - trigger name:damage toggle:true
+
+    # Setup SSpawn Stats
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "npc type MAGMA_CUBE"
+    - execute as_server "npc speed 2"
+    - execute as_server "npc lookclose"
+    - execute as_server "trait sentry"
+    - execute as_server "sentry health <cons:SSpawn_health>"
+    - execute as_server "sentry spawn"
+    - execute as_server "sentry respawn -1"
+    - execute as_server "sentry speed 2"
+    - execute as_server "sentry strength <cons:SSpawn_str>"
+    - execute as_server "sentry killdrops false"
+    - execute as_server "sentry healrate 1"
+    - execute as_server "sentry retaliate true"
+    - execute as_server "sentry targetable true"
+    - execute as_server "sentry target add entity:player"
+
+    on spawn:
+    # Clear previous targets from hate list
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "sentry range <cons:SSpawn_agroRange>"
+    - execute as_server "sentry target clear"
+    - execute as_server "sentry target add entity:player"
+    - attack <npc> "target:<npc.location.find.players.within[30].get[1]>"
+
+    on death:
+    - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
+      - narrate targets:%value% "<cons:death message>" }
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "npc remove"
+
+    on attack: 
+    - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
+      - narrate targets:%value% "<cons:attack message>" }
+    
+    on kill:
+    - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
+      - narrate targets:%value% "<cons:victory message>" }
+       
+"sinestraspawn_interact":
+   type: interact
+   steps:
+     1:
+       click trigger:
+         script:
+         # Right Clicking on the mob tells you its % health.
+         - narrate "<yellow><npc.name><&co> <npc.health.percentage.as_int>%"
+       proximity trigger:
+         entry:
+           script:
+           # Add player to the boss list when they enter his proximity.
+           - if <npc.flag[BossPlayerList].aslist> !contains <player> && <player.name> != <npc.name> flag npc BossPlayerList:->:<player>
+           # Attack a random player.
+           - attack <npc> "target:<npc.location.find.players.within[30].get[1]>"
+       damage trigger:
+         script:
+           # When the boss is hit, re-flag the player as engaged with the boss.
+           - flag player "sinestra_Engaged:true" duration:30
+           - playsound location:<npc.location> sound:donkey_hit pitch:-10
+           - playeffect location:<npc.location> effect:lava qty:15
+           - playeffect location:<npc.location> effect:mobspawner_flames qty:1
+       
 # -----------------------------------
 # Loot Items

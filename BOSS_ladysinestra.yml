@@ -191,7 +191,7 @@ ladysinestra:
            - playeffect location:<npc.location> effect:lava qty:15
            - playeffect location:<npc.location> effect:mobspawner_flames qty:1
            # Adjust BossBar Health
-           - adjust <player> "show_boss_bar:<m.as_int:<npc.health.percentage.as_int>*2>|Lady Sinestra - <npc.health.percentage.as_int>"
+           - adjust <player> "show_boss_bar:<m.as_int:<npc.health.percentage.as_int>*2>|<npc.name> - <npc.health.percentage.as_int>"
            # Here are the boss special events that fire off throughout the fight.
            - ^if <npc.health.percentage.as_int> <= 98 {
              - random 2

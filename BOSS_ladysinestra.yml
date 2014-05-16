@@ -440,38 +440,38 @@ SinestraSpawn:
          - if <util.random.int[1].to[100]> >= 95 {
            - if <player.flag[geyserProc]> queue clear
            - flag player geyserProc duration:5s
-           - narrate targets:<player> "<&5>The Lava Geyser<&9> erupts beneath your target!"
-           - narrate targets:<context.entity> "<&9><player.name><&sq>s <&5>The Lava Geyser<&9> summons a Lava Geyser<&cm> tossing you wildly into the air!"
-           - teleport "<<context.entity>.location.x>,<m:<<context.entity>.location.y>+2.0>,<<context.entity>.location.z>,<<context.entity>.location.world.name>"
+           - narrate player:<context.damager> "<&5>The Lava Geyser<&9> erupts beneath your target!"
+           - narrate player:<context.entity> "<&9><player.name><&sq>s <&5>The Lava Geyser<&9> summons a Lava Geyser<&cm> tossing you wildly into the air!"
+           - teleport <context.entity> "<<context.entity>.location.x>,<m:<<context.entity>.location.y>+2.0>,<<context.entity>.location.z>,<<context.entity>.location.world.name>"
            - hurt 4 <context.entity>
            - playeffect location:<context.entity.location> effect:mobspawner_flames qty:25
            - playeffect location:<context.entity.location> effect:lava qty:100
-           - narrate targets:<player> "<&9>Your Lava Geyser burns <context.entity.name> for 4 damage."
-           - narrate targets:<context.entity> "<&9><player.name><&sq>s Lava Geyser burns you for 4 damage."
-           - teleport "<<context.entity>.location.x>,<m:<<context.entity>.location.y>+2.0>,<<context.entity>.location.z>,<<context.entity>.location.world.name>"
+           - narrate player:<context.damager> "<&9>Your Lava Geyser burns <context.entity.name> for 4 damage."
+           - narrate player:<context.entity> "<&9><player.name><&sq>s Lava Geyser burns you for 4 damage."
+           - teleport <context.entity> "<<context.entity>.location.x>,<m:<<context.entity>.location.y>+2.0>,<<context.entity>.location.z>,<<context.entity>.location.world.name>"
            - hurt 4 <context.entity>
            - playeffect location:<context.entity.location> effect:mobspawner_flames qty:25
            - playeffect location:<context.entity.location> effect:lava qty:100
-           - narrate targets:<player> "<&9>Your Lava Geyser burns <context.entity.name> for 4 damage."
-           - narrate targets:<context.entity> "<&9><player.name><&sq>s Lava Geyser burns you for 4 damage."
-           - teleport "<<context.entity>.location.x>,<m:<<context.entity>.location.y>+2.0>,<<context.entity>.location.z>,<<context.entity>.location.world.name>"
+           - narrate player:<context.damager> "<&9>Your Lava Geyser burns <context.entity.name> for 4 damage."
+           - narrate player:<context.entity> "<&9><player.name><&sq>s Lava Geyser burns you for 4 damage."
+           - teleport <context.entity> "<<context.entity>.location.x>,<m:<<context.entity>.location.y>+2.0>,<<context.entity>.location.z>,<<context.entity>.location.world.name>"
            - hurt 4 <context.entity>
            - playeffect location:<context.entity.location> effect:mobspawner_flames qty:25
            - playeffect location:<context.entity.location> effect:lava qty:100
-           - narrate targets:<player> "<&9>Your Lava Geyser burns <context.entity.name> for 4 damage."
-           - narrate targets:<context.entity> "<&9><player.name><&sq>s Lava Geyser burns you for 4 damage."
-           - teleport "<<context.entity>.location.x>,<m:<<context.entity>.location.y>+2.0>,<<context.entity>.location.z>,<<context.entity>.location.world.name>"
+           - narrate player:<context.damager> "<&9>Your Lava Geyser burns <context.entity.name> for 4 damage."
+           - narrate player:<context.entity> "<&9><player.name><&sq>s Lava Geyser burns you for 4 damage."
+           - teleport <context.entity> "<<context.entity>.location.x>,<m:<<context.entity>.location.y>+2.0>,<<context.entity>.location.z>,<<context.entity>.location.world.name>"
            - hurt 4 <context.entity>
            - playeffect location:<context.entity.location> effect:mobspawner_flames qty:25
            - playeffect location:<context.entity.location> effect:lava qty:100
-           - narrate targets:<player> "<&9>Your Lava Geyser burns <context.entity.name> for 4 damage."
-           - narrate targets:<context.entity> "<&9><player.name><&sq>s Lava Geyser burns you for 4 damage."
-           - teleport "<<context.entity>.location.x>,<m:<<context.entity>.location.y>+2.0>,<<context.entity>.location.z>,<<context.entity>.location.world.name>"
+           - narrate player:<context.damager> "<&9>Your Lava Geyser burns <context.entity.name> for 4 damage."
+           - narrate player:<context.entity> "<&9><player.name><&sq>s Lava Geyser burns you for 4 damage."
+           - teleport <context.entity> "<<context.entity>.location.x>,<m:<<context.entity>.location.y>+2.0>,<<context.entity>.location.z>,<<context.entity>.location.world.name>"
            - hurt 4 <context.entity>
            - playeffect location:<context.entity.location> effect:mobspawner_flames qty:25
            - playeffect location:<context.entity.location> effect:lava qty:100
-           - narrate targets:<player> "<&9>Your Lava Geyser burns <context.entity.name> for 4 damage."
-           - narrate targets:<context.entity> "<&9><player.name><&sq>s Lava Geyser burns you for 4 damage."
+           - narrate player:<context.damager> "<&9>Your Lava Geyser burns <context.entity.name> for 4 damage."
+           - narrate player:<context.entity> "<&9><player.name><&sq>s Lava Geyser burns you for 4 damage."
            }
          }
 
@@ -480,16 +480,16 @@ SinestraSpawn:
    material: 370
    display name: "<&5>Pendant of Invisibility"
    lore:
-   - <green>Use<&co> Invisibility <&lb>Consumes an Emerald when Cast<&rb>
+   - <green>Use<&co> Invisibility 
+   - <green><&lb>Consumes an Emerald when Cast<&rb>
    enchantments:
    - durability:1
- 
 
 "invisPendantEffect":
    type: world
    events:
      on use command:
-       - if <player.item_in_hand.lore> == "<green>Use<&co> Strength IV <&lb>Consumes an Emerald when Cast<&rb>" {
+       - if <player.item_in_hand.display> == "<&5>Pendant of Invisibility" {
          if <p@<player.name>.inventory<inventory.contains[emerald]]>> {
            - narrate "<&9>You consume an Emerald and become invisible!"
            - take 'item:emerald' qty:1
@@ -501,13 +501,12 @@ SinestraSpawn:
 
 "Skullflame_Shield":
    type: item
-   material: 151
+   material: 281
    display name: "<&5>Skullflame Shield"
    lore:
    - <green>Effect<&co> <red>Fiery Block <&lb>75%<&rb>
    enchantments:
    - durability:8
- 
    
 "skullflameShieldEffect":
    type: world
@@ -519,7 +518,7 @@ SinestraSpawn:
            - flag player player_attackBlocked duration:0.5s
            - narrate "<&9>Your <&5>Skullflame Shield<&9> blocks an incoming attack!"
            - narrate "<&9>Your <&5>Skullflame Shield<&9> ignites your foe!"
-           - burn <context.entity> duration:3s
+           - burn <context.damager> duration:3s
            - determine CANCELLED
            }
          }

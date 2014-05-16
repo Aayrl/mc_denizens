@@ -101,6 +101,7 @@ chilly_npcboss:
     - announce "<red><npc.name> yells, <&sq><cons:death message><&sq>"
     - announce "<&5><npc.name> has been slain!"
     - foreach <npc.flag[BossPlayerList].aslist> {
+      - adjust %value% "show_boss_bar:"
       - flag player:%value% LBOARD_B:++
       - flag player:%value% LBOARD_SCORE_TOTAL:<math.as_int:<<player>.flag[LBOARD_SCORE_TOTAL]>+100>
       - flag player:%value% Chilly_Engaged:!
@@ -115,6 +116,8 @@ chilly_npcboss:
     # If the player gets summoned, this refreshes.
     # If the player warps to spawn or home, this duration will fade out.
     - flag player "Chilly_Engaged:true" duration:30
+    # Adjust BossBar Health
+    - adjust <player> "show_boss_bar:<m.as_int:<npc.health.percentage.as_int>*2>|<npc.name> - <npc.health.percentage.as_int>%"
 
     on exit proximity:
     # summon player if they are still engaged by the boss.
@@ -125,6 +128,7 @@ chilly_npcboss:
       - playsound location:<player.location> sound:portal_travel
       - playeffect location:<player.location> effect:portal qty:1000
       }
+    - adjust <player> "show_boss_bar:"
     
     on kill:
     - announce "<red><npc.name> yells<&cm> <&sq><cons:victory message><&sq>"
@@ -149,6 +153,13 @@ chilly_npcboss:
            - playsound location:<npc.location> sound:snow_step volume:10000 pitch:-50
            - playeffect location:<npc.location> effect:snowball_poof qty:1000 offset:0
            - playeffect location:<npc.location> effect:snow_shovel qty:500 offset:0.25
+           # Adjust BossBar Health
+           - if <npc.health.percentage.as_int> == null {
+             - adjust <player> "show_boss_bar:"
+             }
+             else {
+             - adjust <player> "show_boss_bar:<m.as_int:<npc.health.percentage.as_int>*2>|<npc.name> - <npc.health.percentage.as_int>%"
+             }
            # Boss Damage Shield
            - run "Chilly_DS_Ability"
            # Here are the boss special events that fire off throughout the fight.

@@ -156,6 +156,8 @@ ladysinestra:
     # If the player gets summoned, this refreshes.
     # If the player warps to spawn or home, this duration will fade out.
     - flag player "sinestra_Engaged:true" duration:30
+    # Adjust BossBar Health
+    - adjust <player> "show_boss_bar:<m.as_int:<npc.health.percentage.as_int>*2>|<npc.name> - <npc.health.percentage.as_int>%"
 
     on exit proximity:
     # summon player if they are still engaged by the boss.
@@ -166,6 +168,7 @@ ladysinestra:
       - playsound location:<player.location> sound:portal_travel
       - playeffect location:<player.location> effect:portal qty:1000
       }
+    - adjust <player> "show_boss_bar:"
     
     on kill:
     - announce "<red><npc.name> yells<&cm> <&sq><cons:victory message><&sq>"
@@ -191,7 +194,12 @@ ladysinestra:
            - playeffect location:<npc.location> effect:lava qty:15
            - playeffect location:<npc.location> effect:mobspawner_flames qty:1
            # Adjust BossBar Health
-           - adjust <player> "show_boss_bar:<m.as_int:<npc.health.percentage.as_int>*2>|<npc.name> - <npc.health.percentage.as_int>"
+           - if <npc.health.percentage.as_int> == null {
+             - adjust <player> "show_boss_bar:"
+             }
+             else {
+             - adjust <player> "show_boss_bar:<m.as_int:<npc.health.percentage.as_int>*2>|<npc.name> - <npc.health.percentage.as_int>%"
+             }
            # Here are the boss special events that fire off throughout the fight.
            - ^if <npc.health.percentage.as_int> <= 98 {
              - random 2

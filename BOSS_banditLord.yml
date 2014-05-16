@@ -108,6 +108,7 @@ banditLord_NPC:
     - announce "<red><npc.name> yells, <&sq><cons:death message><&sq>"
     - announce "<&5><npc.name> has been slain!"
     - foreach <npc.flag[BossPlayerList].aslist> {
+      - adjust %value% "show_boss_bar:"
       - flag player:%value% LBOARD_B:++
       - flag player:%value% LBOARD_SCORE_TOTAL:<math.as_int:<<player>.flag[LBOARD_SCORE_TOTAL]>+100>
       - flag player:%value% BanditLord_Engaged:!
@@ -132,6 +133,8 @@ banditLord_NPC:
     # If the player gets summoned, this refreshes.
     # If the player warps to spawn or home, this duration will fade out.
     - flag player "BanditLord_Engaged:true" duration:30
+    # Adjust BossBar Health
+    - adjust <player> "show_boss_bar:<m.as_int:<npc.health.percentage.as_int>*2>|<npc.name> - <npc.health.percentage.as_int>%"
 
     on exit proximity:
     # summon player if they are still engaged by the boss.
@@ -142,6 +145,7 @@ banditLord_NPC:
       - playsound location:<player.location> sound:portal_travel
       - playeffect location:<player.location> effect:portal qty:1000
       }
+    - adjust <player> "show_boss_bar:"
     
     on kill:
     - announce "<red><npc.name> yells<&cm> <&sq><cons:victory message><&sq>"
@@ -165,6 +169,13 @@ banditLord_NPC:
            - flag player "BanditLord_Engaged:true" duration:30
            - playsound location:<npc.location> sound:hurt_flesh
            - playeffect location:<npc.location> effect:RED_DUST qty:10
+           # Adjust BossBar Health
+           - if <npc.health.percentage.as_int> == null {
+             - adjust <player> "show_boss_bar:"
+             }
+             else {
+             - adjust <player> "show_boss_bar:<m.as_int:<npc.health.percentage.as_int>*2>|<npc.name> - <npc.health.percentage.as_int>%"
+             }
            # Here are the boss special events that fire off throughout the fight.
            - ^if <npc.health.percentage.as_int> <= 98 {
              - random 2

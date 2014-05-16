@@ -50,12 +50,6 @@ ladysinestra:
     lavageyser_msg: A touch of liquid fire should take care of you!
     fear_msg: Flee! Flee and never return!
     callofnest_msg: Get over here and face the wrath of Sinestra!
-    
-    # Adds SpawnPoints
-    addspawnpoint1: "27,48,-80,world_the_end"
-    addspawnpoint2: "41,48,-80,world_the_end"
-    addspawnpoint3: "41,48,-100,world_the_end"
-    addspawnpoint4: "27,48,-100,world_the_end"
 
     # Sinestra : Statistics
     # Sinestra Health Pool
@@ -67,7 +61,7 @@ ladysinestra:
     # Sinestra Agro Radius (in Blocks)
     sinestra_AGRO_RADIUS: 15
     # Sinestra Movement Speed (Blocks / Tick)
-    sinestra_Movement_Speed: 2
+    sinestra_Movement_Speed: 3
     # Sinestra's Spawnpoint
     sinestra_SpawnPoint: "34,46,-97,world_the_end"
     # Sinestra Respawn Timer in seconds (43200 = 12 hrs)
@@ -112,11 +106,6 @@ ladysinestra:
     - flag npc sinestra_lavageyser_CD:!
     - flag npc sinestra_fear_CD:!
     - flag npc sinestra_callofnest_CD:!
-    # Flag the spawn points for adds
-    - flag npc add_sp1:<cons:addspawnpoint1>
-    - flag npc add_sp2:<cons:addspawnpoint2>
-    - flag npc add_sp3:<cons:addspawnpoint3>
-    - flag npc add_sp4:<cons:addspawnpoint4>
 
     on death:
     # XP amount
@@ -332,17 +321,17 @@ ladysinestra:
      - if <npc.flag[sinestra_adds_CD]> == null {
        - flag npc "sinestra_adds_CD:true" duration:60
        - announce "<red><npc.name> yells<&cm> <&sq><cons:adds_msg><&sq>"
-       - execute as_server "npc create "Sinestra Spawn" --at <npc.flag[add_sp1]>"
-       - execute as_server "npc owner <npc.name>"
+       - execute as_server 'npc create "Sinestra Spawn" --at "27,48,-80,world_the_end"'
+       - execute as_server 'npc owner "Lady Sinestra"'
        - execute as_server 'npc assign --set "SinestraSpawn"'
-       - execute as_server "npc create "Sinestra Spawn" --at <npc.flag[add_sp2]>"
-       - execute as_server "npc owner <npc.name>"
+       - execute as_server 'npc create "Sinestra Spawn" --at "41,48,-80,world_the_end"'
+       - execute as_server 'npc owner "Lady Sinestra"'
        - execute as_server 'npc assign --set "SinestraSpawn"'
-       - execute as_server "npc create "Sinestra Spawn" --at <npc.flag[add_sp3]>"
-       - execute as_server "npc owner <npc.name>"
+       - execute as_server 'npc create "Sinestra Spawn" --at "41,48,-100,world_the_end"'
+       - execute as_server 'npc owner "Lady Sinestra"'
        - execute as_server 'npc assign --set "SinestraSpawn"'
-       - execute as_server "npc create "Sinestra Spawn" --at <npc.flag[add_sp4]>"
-       - execute as_server "npc owner <npc.name>"
+       - execute as_server 'npc create "Sinestra Spawn" --at "27,48,-100,world_the_end"'
+       - execute as_server 'npc owner "Lady Sinestra"'
        - execute as_server 'npc assign --set "SinestraSpawn"'
        }
 

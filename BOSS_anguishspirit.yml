@@ -152,7 +152,7 @@ soanguish:
            - playsound location:<npc.location> sound:blaze_breath
            - playeffect location:<npc.location> effect:FIREWORKS_SPARK qty:50
            # Adjust BossBar Health
-           - if <m.as_int:<npc.health.percentage.as_int>*2> < 2 {
+           - if <npc.health.percentage.as_int> < 1 {
              - adjust <player> "show_boss_bar:"
              }
              else {

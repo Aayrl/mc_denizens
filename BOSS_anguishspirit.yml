@@ -116,7 +116,7 @@ soanguish:
     # If the player warps to spawn or home, this duration will fade out.
     - flag player "SoA_Engaged:true" duration:30
     # Adjust BossBar Health
-    - adjust <player> "show_boss_bar:<m.as_int:<npc.health.percentage.as_int>*2>|<npc.name> - <npc.health.percentage.as_int>"
+    - adjust <player> "show_boss_bar:<m.as_int:<npc.health.percentage.as_int>*2>|<npc.name> - <npc.health.percentage.as_int>%"
 
     on exit proximity:
     # summon player if they are still engaged by the boss.
@@ -127,6 +127,7 @@ soanguish:
       - playsound location:<player.location> sound:portal_travel
       - playeffect location:<player.location> effect:portal qty:1000
       }
+    - adjust <player> "show_boss_bar:"
     
     on kill:
     - announce "<&D><npc.name> whispers<&cm> <&sq><cons:victory message><&sq>"
@@ -151,7 +152,7 @@ soanguish:
            - playsound location:<npc.location> sound:blaze_breath
            - playeffect location:<npc.location> effect:FIREWORKS_SPARK qty:50
            # Adjust BossBar Health
-           - adjust <player> "show_boss_bar:<m.as_int:<npc.health.percentage.as_int>*2>|<npc.name> - <npc.health.percentage.as_int>"
+           - adjust <player> "show_boss_bar:<m.as_int:<npc.health.percentage.as_int>*2>|<npc.name> - <npc.health.percentage.as_int>%"
            # Here are the boss special events that fire off throughout the fight.
            - ^if <npc.health.percentage.as_int> <= 98 {
              - random 2

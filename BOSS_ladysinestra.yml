@@ -332,7 +332,6 @@ ladysinestra:
      - if <npc.flag[sinestra_adds_CD]> == null {
        - flag npc "sinestra_adds_CD:true" duration:60
        - announce "<red><npc.name> yells<&cm> <&sq><cons:adds_msg><&sq>"
-       # Build the Adds
        - execute as_server "npc create "Sinestra Spawn" --at <npc.flag[add_sp1]>"
        - execute as_server "npc owner <npc.name>"
        - execute as_server 'npc assign --set "SinestraSpawn"'

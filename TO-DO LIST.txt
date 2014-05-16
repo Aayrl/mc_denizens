@@ -71,7 +71,6 @@ BOSSES
 - Plane of Fire
     - Fenin Ro
 - Plane of Ender
-    - Lady Sinestra
     - Golermagerus
     - Darth Schnyder
     - Lord Nefarious

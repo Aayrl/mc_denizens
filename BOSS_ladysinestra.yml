@@ -117,21 +117,21 @@ ladysinestra:
     # Drop the special drake egg 10% of the time.
     #- drop "sinestraEggItem" qty:1 location:<npc.location>
     # Random Loot Item 1
-    #- random 6
-    #- drop "Hate Harvester" qty:1 location:<npc.location>
-    #- drop "Amulet of Hate" qty:1 location:<npc.location>
-    #- drop "Face of Death" qty:1 location:<npc.location>
-    #- drop "Orb of Sinestra" qty:1 location:<npc.location>
-    #- drop "Skyfall" qty:1 location:<npc.location>
-    #- drop "Death Lash" qty:1 location:<npc.location>
+    - random 6
+    - drop "The_Lava_Geyser" qty:1 location:<npc.location>
+    - drop "Pendant_of_Invisibility" qty:1 location:<npc.location>
+    - drop "Skullflame_Shield" qty:1 location:<npc.location>
+    - drop "Avenger_Chest" qty:1 location:<npc.location>
+    - drop "Avenger_Legs" qty:1 location:<npc.location>
+    - drop "Avenger_Boots" qty:1 location:<npc.location>
     # Random Loot Item 2
-    #- random 6
-    #- drop "Hate Harvester" qty:1 location:<npc.location>
-    #- drop "Amulet of Hate" qty:1 location:<npc.location>
-    #- drop "Face of Death" qty:1 location:<npc.location>
-    #- drop "Orb of Sinestra" qty:1 location:<npc.location>
-    #- drop "Skyfall" qty:1 location:<npc.location>
-    #- drop "Death Lash" qty:1 location:<npc.location>
+    - random 6
+    - drop "The_Lava_Geyser" qty:1 location:<npc.location>
+    - drop "Pendant_of_Invisibility" qty:1 location:<npc.location>
+    - drop "Skullflame_Shield" qty:1 location:<npc.location>
+    - drop "Avenger_Chest" qty:1 location:<npc.location>
+    - drop "Avenger_Legs" qty:1 location:<npc.location>
+    - drop "Avenger_Boots" qty:1 location:<npc.location>
     # Reset npc effects and clear hate targets.
     - execute as_server "npc sel <npc.id>"
     - execute as_server "npc effect --play none"
@@ -420,3 +420,140 @@ SinestraSpawn:
        
 # -----------------------------------
 # Loot Items
+
+"The_Lava_Geyser":
+   type: item
+   material: 369
+   display name: "<&5>The Lava Geyser"
+   lore:
+   - <green>Effect<&co> <red>Lava Geyser <&lb>5%<&rb>
+   enchantments:
+   - durability:7
+   - damage_all:9
+   - fire_aspect:1
+   
+"lavageyserEffect":
+   type: world
+   events:
+     on entity damaged by player:
+       - if <player.item_in_hand.display> == "<&5>The Lava Geyser" {
+         - if <util.random.int[1].to[100]> >= 95 {
+           - if <player.flag[geyserProc]> queue clear
+           - flag player geyserProc duration:5s
+           - narrate targets:<player> "<&5>The Lava Geyser<&9> erupts beneath your target!"
+           - narrate targets:<context.entity> "<&9><player.name><&sq>s <&5>The Lava Geyser<&9> summons a Lava Geyser<&cm> tossing you wildly into the air!"
+           - teleport "<<context.entity>.location.x>,<m:<<context.entity>.location.y>+2.0>,<<context.entity>.location.z>,<<context.entity>.location.world.name>"
+           - hurt 4 <context.entity>
+           - playeffect location:<context.entity.location> effect:mobspawner_flames qty:25
+           - playeffect location:<context.entity.location> effect:lava qty:100
+           - narrate targets:<player> "<&9>Your Lava Geyser burns <context.entity.name> for 4 damage."
+           - narrate targets:<context.entity> "<&9><player.name><&sq>s Lava Geyser burns you for 4 damage."
+           - teleport "<<context.entity>.location.x>,<m:<<context.entity>.location.y>+2.0>,<<context.entity>.location.z>,<<context.entity>.location.world.name>"
+           - hurt 4 <context.entity>
+           - playeffect location:<context.entity.location> effect:mobspawner_flames qty:25
+           - playeffect location:<context.entity.location> effect:lava qty:100
+           - narrate targets:<player> "<&9>Your Lava Geyser burns <context.entity.name> for 4 damage."
+           - narrate targets:<context.entity> "<&9><player.name><&sq>s Lava Geyser burns you for 4 damage."
+           - teleport "<<context.entity>.location.x>,<m:<<context.entity>.location.y>+2.0>,<<context.entity>.location.z>,<<context.entity>.location.world.name>"
+           - hurt 4 <context.entity>
+           - playeffect location:<context.entity.location> effect:mobspawner_flames qty:25
+           - playeffect location:<context.entity.location> effect:lava qty:100
+           - narrate targets:<player> "<&9>Your Lava Geyser burns <context.entity.name> for 4 damage."
+           - narrate targets:<context.entity> "<&9><player.name><&sq>s Lava Geyser burns you for 4 damage."
+           - teleport "<<context.entity>.location.x>,<m:<<context.entity>.location.y>+2.0>,<<context.entity>.location.z>,<<context.entity>.location.world.name>"
+           - hurt 4 <context.entity>
+           - playeffect location:<context.entity.location> effect:mobspawner_flames qty:25
+           - playeffect location:<context.entity.location> effect:lava qty:100
+           - narrate targets:<player> "<&9>Your Lava Geyser burns <context.entity.name> for 4 damage."
+           - narrate targets:<context.entity> "<&9><player.name><&sq>s Lava Geyser burns you for 4 damage."
+           - teleport "<<context.entity>.location.x>,<m:<<context.entity>.location.y>+2.0>,<<context.entity>.location.z>,<<context.entity>.location.world.name>"
+           - hurt 4 <context.entity>
+           - playeffect location:<context.entity.location> effect:mobspawner_flames qty:25
+           - playeffect location:<context.entity.location> effect:lava qty:100
+           - narrate targets:<player> "<&9>Your Lava Geyser burns <context.entity.name> for 4 damage."
+           - narrate targets:<context.entity> "<&9><player.name><&sq>s Lava Geyser burns you for 4 damage."
+           }
+         }
+
+"Pendant_of_Invisibility":
+   type: item
+   material: 370
+   display name: "<&5>Pendant of Invisibility"
+   lore:
+   - <green>Use<&co> Invisibility <&lb>Consumes an Emerald when Cast<&rb>
+   enchantments:
+   - durability:1
+ 
+
+"invisPendantEffect":
+   type: world
+   events:
+     on use command:
+       - if <player.item_in_hand.lore> == "<green>Use<&co> Strength IV <&lb>Consumes an Emerald when Cast<&rb>" {
+         if <p@<player.name>.inventory<inventory.contains[emerald]]>> {
+           - narrate "<&9>You consume an Emerald and become invisible!"
+           - take 'item:emerald' qty:1
+           - cast INVISIBILITY duration:300 power:1
+           - playeffect location:<player.location> effect:potion_break qty:15 data:8 }
+         else {
+           - narrate "<red>This item requires an Emerald to use." }
+         }
+
+"Skullflame_Shield":
+   type: item
+   material: 151
+   display name: "<&5>Skullflame Shield"
+   lore:
+   - <green>Effect<&co> <red>Fiery Block <&lb>75%<&rb>
+   enchantments:
+   - durability:8
+ 
+   
+"skullflameShieldEffect":
+   type: world
+   events:
+     on player damaged by entity:
+       - if <player.item_in_hand.display> == "<&5>Skullflame Shield" {
+         - if <util.random.int[1].to[100]> >= 25 {
+           - if <player.flag[player_attackBlocked]> queue clear
+           - flag player player_attackBlocked duration:0.5s
+           - narrate "<&9>Your <&5>Skullflame Shield<&9> blocks an incoming attack!"
+           - narrate "<&9>Your <&5>Skullflame Shield<&9> ignites your foe!"
+           - burn <context.entity> duration:3s
+           - determine CANCELLED
+           }
+         }
+
+"Avenger_Chest":
+   type: item
+   material: 311
+   display name: "<&5>Avenger<&sq>s Breastplate"
+   lore:
+   - <white>An ancient breastplate worn by
+   - <white>a prestigious group of paladins.
+   enchantments:
+   - durability:20
+   - protection_environmental:10
+   - thorns:5
+         
+"Avenger_Legs":
+   type: item
+   material: 312
+   display name: "<&5>Avenger<&sq>s Greaves"
+   lore:
+   - <white>An ancient pair of greaves worn by
+   - <white>a prestigious group of paladins.
+   enchantments:
+   - durability:10
+   - protection_fire:10
+         
+"Avenger_Boots":
+   type: item
+   material: 313
+   display name: "<&5>Avenger<&sq>s Boots"
+   lore:
+   - <white>An ancient pair of boots worn by
+   - <white>a prestigious group of paladins.
+   enchantments:
+   - durability:10
+   - protection_fall:15

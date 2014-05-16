@@ -19,6 +19,6 @@
     #  - flag player "titleCount:0" }
     # OP Title Flag - Flag OP players.
     - if <player.is_op> {
-      - adjust <player> "display_name:<&5>*<&4><player.name><&5>*<&F>"
-      - adjust <player> "player_list_name:<&5>*<&4><player.name><&5>*<&F>"
+      - adjust <player> "display_name:<&4><player.name><&F>"
+      - adjust <player> "player_list_name:<&4><player.name><&F>"
       }

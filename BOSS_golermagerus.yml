@@ -87,7 +87,7 @@ golermagerus:
     # Armor Value
     Golermagerus_AC: 1
     # Agro Radius (in Blocks)
-    Golermagerus_AGRO_RADIUS: 10
+    Golermagerus_AGRO_RADIUS: 30
     # Movement Speed (Blocks / Tick)
     Golermagerus_Movement_Speed: 0
     # Spawnpoint

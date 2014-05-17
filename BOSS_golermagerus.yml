@@ -477,6 +477,13 @@ golermagerus:
        - flag npc Golermagerus_HarmPhase_Amt:++
        }
        
+"GolermagerusPlayerDied":
+  type: world
+  events:
+    on player death:
+    - flag <player> Golermagerus_Color:!
+    - flag <player> Golermagerus_Bomb:!
+       
 # -----------------------------------
 # Loot Items
 "Artemis":

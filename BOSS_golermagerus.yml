@@ -1,0 +1,368 @@
+# -----------------------------------
+# Golermagerus Boss Encounter
+# @author: Tyler J. Sawyer
+# @version: 1.0
+# Last Updated: 18:01 on May 16, 2014 (Friday)
+# -----------------------------------
+#
+# Phase 1 : 100% - 50%
+# If any player is within 3 blocks of the boss, that player
+# is instantly killed. This is a pure ranged damage fight
+# (spells, bows, etc.)
+#
+# Color Blast - 10 second cooldown
+# - Afflict players with random color flags
+# - It will narrate in their chat what color they are.
+# - [GREEN] - Players must run to the Green Glass.
+# - [RED] - Players must run to the Red Glass.
+# - - These flags last for 10 seconds.
+# - - - The flags are removed early if the player enters
+# - - -   the red or green glass area, depending on their flag.
+# - - - - If they enter the correct area, they will damgae
+# - - - -   the boss for 100 damage.
+# - - - - If they enter the wrong area, they will instantly die and
+# - - - -   heal the boss for 1000 HP.
+# - - - - After 10 seconds, if the Players flags are still active,
+# - - - -   the player will instantly die, and the boss will heal 
+# - - - -   1000 HP for each player killed.
+# 
+# psuedo code of the mechanic:
+# on enter notable
+# if player.flag[golermag_green] == true { 
+# - teleport player center room 
+# - flag player [golermag_green]:!
+# - hurt 1000 <npc> }
+#
+# THE BOMB:
+# Every 10 seconds, flag a player as the bomb.
+# They will receive a weakness II debuff as well to notify them of their bomb thing.
+# They will also get a special little loud ass sound and red text.
+# They have 10 seconds before the bomb 'detonates'.
+# For all players within 5 blocks of the bomb, they will instantly die.
+# If the player with the bomb reaches the PURPLE glass before the 10 second
+# flag is up, the boss will take 150 damage, and the player's bomb flag
+# will be removed (and they will take no damage).
+#
+# Phase 2: 49% - 0%
+# Burn Phase
+# Unlike other bosses, this boss stops doing Color Blasts (but continues
+# to perform bombs on random players)
+# 
+# "Burn Phase Effect"
+# On boss damaged, multiply the damage amount by 4. (4x damage)
+#
+# "Burn Phase Harming Effect"
+# Every 15 seconds, increment a boss flag by 1.
+# Then, take this flag and multiply it by a static damage
+# amount (starting at 2 health).
+# - Every 15 seconds, this damage increases by 2.
+# - After 1 minute, the boss hurts everyone for 8 damage.
+# - After 2 minutes, the boss hurts everyone for 16 damage.
+# etc etc.
+#
+
+golermagerus:
+  type: assignment
+
+  default constants:
+    agro message: Puny Humans! You die now!
+    death message: My arms..legs..tired..so..sleepy...
+    victory message: Break your bones! Hahaha!
+    respawn message: HNYGH..Must..escape..kill..KILL!
+    
+    # Special Event Messages
+    colorburst_msg: Now YOU feel pain!
+    bomb_msg: Puny human go BOOM!
+    burnPhaseMsg: ARGH! It burns!!
+    burnPhaseHarm: So much ENERGY!
+    
+    # Special Warp Points
+    Golermagerus_warpPoint: "-94.97847,57,-38.01033,world_the_end"
+
+    # Boss Stats
+    # Health Pool
+    Golermagerus_health: 25000
+    # Damage / Swing
+    Golermagerus_str: 2
+    # Armor Value
+    Golermagerus_AC: 1
+    # Agro Radius (in Blocks)
+    Golermagerus_AGRO_RADIUS: 10
+    # Movement Speed (Blocks / Tick)
+    Golermagerus_Movement_Speed: 0
+    # Spawnpoint
+    Golermagerus_SpawnPoint: "-105.55,57,-38,world_the_end"
+    # Respawn Timer in seconds (3600 = 1hr)
+    Golermagerus_Respawn_Timer: 86400
+    # XP Amount he drops on death
+    Golermagerus_XP_AMT: 7500
+    
+  interact scripts:
+  - 10 GolermagerusScript
+    
+  actions:
+    on assignment:
+    - trigger name:proximity toggle:true "radius:<cons:Golermagerus_AGRO_RADIUS>"
+    - trigger name:damage toggle:true
+
+    # Setup stats
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "npc type GIANT"
+    - execute as_server "npc speed <cons:Golermagerus_Movement_Speed>"
+    - execute as_server "npc lookclose"
+    - execute as_server "trait sentry"
+    - execute as_server "sentry health <cons:Golermagerus_health>"
+    - execute as_server "sentry respawn <cons:Golermagerus_Respawn_Timer>"
+    - execute as_server "sentry speed <cons:Golermagerus_Movement_Speed>"
+    - execute as_server "sentry strength <cons:Golermagerus_str>"
+    - execute as_server "sentry armor <cons:Golermagerus_AC>"
+    - execute as_server "sentry range <cons:Golermagerus_AGRO_RADIUS>"
+
+    on spawn:
+    - announce "<red><npc.name> yells<&cm> <&sq><cons:respawn message><&sq>"
+    # Warp to its spawn point on spawn.
+    - teleport <npc> "location:<cons:Golermagerus_SpawnPoint>"
+    # Clear previous targets from hate list
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "sentry target clear"
+    - execute as_server "sentry target add entity:player"
+    # Clear boss flags
+    - flag npc BossPlayerList:!
+    - flag npc Golermagerus_Colorburst_CD:!
+    - flag npc Golermagerus_Bomb_CD:!
+    - flag npc Golermagerus_Harm_CD:!
+    - flag npc Golermagerus_BurnPhase_Active:!
+    - flag npc Golermagerus_HarmPhase_Amt:!
+
+    on death:
+    # Drop the right bindings 100% of the time.
+    - drop "TF_BindingRight" qty:1 location:<npc.location>
+    # Drop an enderdragon ore 100% of the time.
+    - drop "EnderdragonOre" qty:1 location:<npc.location>
+    # Random Loot Item 1
+    - random 6
+    - drop "Artemis" qty:1 location:<npc.location>
+    - drop "Mithaniel" qty:1 location:<npc.location>
+    - drop "Golem_Helm" qty:1 location:<npc.location>
+    - drop "Golem_Chest" qty:1 location:<npc.location>
+    - drop "Golem_Legs" qty:1 location:<npc.location>
+    - drop "Golem_Boots" qty:1 location:<npc.location>
+    # Random Loot Item 2
+    - random 6
+    - drop "Artemis" qty:1 location:<npc.location>
+    - drop "Mithaniel" qty:1 location:<npc.location>
+    - drop "Golem_Helm" qty:1 location:<npc.location>
+    - drop "Golem_Chest" qty:1 location:<npc.location>
+    - drop "Golem_Legs" qty:1 location:<npc.location>
+    - drop "Golem_Boots" qty:1 location:<npc.location>
+    # Reset npc effects and clear hate targets.
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "npc effect --play none"
+    - execute as_server "sentry target clear"
+    # Announce to players the boss is dead.
+    - announce "<red><npc.name> yells, <&sq><cons:death message><&sq>"
+    - announce "<&5><npc.name> has been slain!"
+    - foreach <npc.flag[BossPlayerList].aslist> {
+      - execute as_server "xp <cons:Golermagerus_XP_AMT> <%value%.name>"
+      - adjust %value% "show_boss_bar:"
+      - flag player:%value% LBOARD_B:++
+      - flag player:%value% LBOARD_SCORE_TOTAL:<math.as_int:<<player>.flag[LBOARD_SCORE_TOTAL]>+100>
+      - flag player:%value% Golermagerus_Engaged:!
+      - flag player:%value% "ENDER_golermagerusKills:++"
+      - narrate targets:<%value%.name> "<aqua>You assisted in slaying <npc.name>."
+      }
+
+    on enter proximity:
+    - announce "<red><npc.name> yells<&cm> <&sq><cons:agro message><&sq>"
+    - playsound location:<npc.location> sound:zombie_idle pitch:0.7
+    # Flag the player as 'engaged' with the boss for 30 seconds.
+    # If the player attacks the NPC, this refreshes.
+    # If the player gets summoned, this refreshes.
+    # If the player warps to spawn or home, this duration will fade out.
+    - flag player "Golermagerus_Engaged:true" duration:30
+    # Adjust BossBar Health
+    - adjust <player> "show_boss_bar:<m.as_int:<npc.health.percentage.as_int>*2>|<npc.name> - <npc.health.percentage.as_int>%"
+
+    on exit proximity:
+    # summon player if they are still engaged by the boss.
+    - if "<flag.p:Golermagerus_Engaged:true || false>" == true {
+      - announce "<red><npc.name> yells<&cm> <&sq>You will not evade me<&cm> <player.name>!<&sq>"
+      - narrate "<yellow>You have been summoned!"
+      - teleport <player> "location:<npc.location>"
+      - playsound location:<player.location> sound:portal_travel
+      - playeffect location:<player.location> effect:portal qty:1000
+      }
+    - adjust <player> "show_boss_bar:"
+    
+    on kill:
+    - announce "<red><npc.name> yells<&cm> <&sq><cons:victory message><&sq>"
+
+"GolermagerusScript":
+   type: interact
+   steps:
+     1:
+       click trigger:
+         script:
+         # Right Clicking on the boss tells you his % health.
+         - narrate "<yellow><npc.name><&co> <npc.health.percentage.as_int>%"
+       proximity trigger:
+         entry:
+           script:
+           # Add player to the boss list when they enter his proximity.
+           - if <npc.flag[BossPlayerList].aslist> !contains <player> && <player.name> != <npc.name> flag npc BossPlayerList:->:<player>
+       damage trigger:
+         script:
+           # When the boss is hit, re-flag the player as engaged with the boss.
+           - flag player "Golermagerus_Engaged:true" duration:30
+           - playsound location:<npc.location> sound:zombie_hurt pitch:0.7
+           - playeffect location:<npc.location> effect:RED_DUST qty:10
+           # Adjust BossBar Health
+           - if <npc.health.percentage.as_int> == null {
+             - adjust <player> "show_boss_bar:"
+             }
+             else {
+             - adjust <player> "show_boss_bar:<m.as_int:<npc.health.percentage.as_int>*2>|<npc.name> - <npc.health.percentage.as_int>%"
+             }
+           # Kill anyone within meele range.
+           - run "Golermagerus_kill_meele"
+           # Here are the boss special events that fire off throughout the fight.
+           # Note - These two only fire off between 98% and 50% health.
+           # Then, the boss swaps to phase 2 abilities.
+           - ^if <npc.health.percentage.as_int> <= 98 && <npc.health.percentage.as_int> >= 50 {
+             - random 2
+             - run "Golermagerus_ColorBurst_Ability"
+             - run "Golermagerus_DaBomb_Ability"
+             }
+   
+# -----------------------------------
+# Abilities
+# -----------------------------------   
+"Golermagerus_kill_meele":
+   type: task
+   # This ability kills anyone in meele range of the boss.
+   script:
+     - foreach <<npc.location>.find.players.within[6].aslist> {
+       - narrate targets:%value% "<red>Golermagerus stomps you to death!"
+       - playsound location:<npc.location> sound:hurt_flesh
+       - playeffect location:<%value%.location> effect:RED_DUST qty:1000
+       - hurt 10000 %value%
+       }
+
+"Golermagerus_ColorBurst_Ability":
+   type: task
+   # This ability changes a player flag every 10 seconds. See the
+   # initial script comments at the top of this file for details.
+   script:
+     - if <npc.flag[Golermagerus_Colorburst_CD]> == null {
+       - flag npc "Golermagerus_Colorburst_CD:true" duration:10
+       - playsound location:<npc.location> sound:zombie_idle pitch:0.7
+       - announce "<red><npc.name> yells<&cm> <&sq><cons:colorburst_msg><&sq>"
+       - foreach <<npc.location>.find.players.within[40].aslist> {
+         - if <%value%.flag[Golermagerus_Color]> == "red" {
+           - narrate targets:%value% "<&9>You have failed to remove your color assignment!"
+           - announce "<red><%value%.name> failed to remove their color assignment and healed the boss for 1000 HP!"
+           - playsound location:<%value%.location> sound:hurt_flesh
+           - playeffect location:<%value%.location> effect:RED_DUST qty:1000
+           - hurt 10000 %value%
+           - heal 1000 <npc>
+           - flag %value% Golermagerus_Color:!
+           }
+         - if <%value%.flag[Golermagerus_Color]> == "green" {
+           - narrate targets:%value% "<&9>You have failed to remove your color assignment!"
+           - announce "<red><%value%.name> failed to remove their color assignment and healed the boss for 1000 HP!"
+           - playsound location:<%value%.location> sound:hurt_flesh
+           - playeffect location:<%value%.location> effect:RED_DUST qty:1000
+           - hurt 10000 %value%
+           - heal 1000 <npc>
+           - flag %value% Golermagerus_Color:!
+           }
+         - random 2
+         - flag %value% "Golermagerus_Color:green"
+         - flag %value% "Golermagerus_Color:red"
+         - if <%value%.flag[Golermagerus_Color]> == "red" {
+           - firework <%value%.location> power:0 primary:red flicker trail type:ball_large
+           - narrate targets:%value% "<&9><npc.name> has colored you <red>Red<&9>!" }
+         - if <%value%.flag[Golermagerus_Color]> == "green" {
+           - firework <%value%.location> power:0 primary:green flicker trail type:ball_large
+           - narrate targets:%value% "<&9><npc.name> has colored you <green>Green<&9>!" }
+       }
+       
+"Golermagerus_DaBomb_Ability":
+   type: task
+   # This ability flags a player as the 'bomb', once every 5 seconds.
+   # See the initial script comments at the top of this file for details.
+   script:
+     - if <npc.flag[Golermagerus_Bomb_CD]> == null {
+       - flag npc "Golermagerus_Bomb_CD:true" duration:10
+       - playsound location:<player.location> sound:CREEPER_HISS
+       - announce "<red><npc.name> yells<&cm> <&sq><cons:bomb_msg><&sq>"
+       - narrate "<red>YOU ARE THE BOMB!"
+       - flag player "Golermagerus_Bomb:YES"
+       }
+       
+# -----------------------------------
+# Loot Items
+"Artemis":
+   type: item
+   material: 261
+   display name: "<&5>Artemis"
+   lore:
+   - <white>Deadly. Like<&cm> really deadly.
+   enchantments:
+   - arrow_damage:10
+   - durability:10
+ 
+"Mithaniel":
+   type: item
+   material: 276
+   display name: "<&5>Mithaniel"
+   lore:
+   - <white>This blade is made of reforged Mithril
+   - <white>and blessed by the Wood Elves.
+   enchantments:
+   - damage_all:10
+   - durability:10
+   
+"Golem_Helm":
+   type: item
+   material: 310
+   display name: "<&5>Golem Helmet"
+   lore:
+   - <white>A helmet forged by the spare
+   - <white>parts of a titanium golem.
+   enchantments:
+   - durability:12
+   - oxygen:5
+   
+"Golem_Chest":
+   type: item
+   material: 311
+   display name: "<&5>Golem Breastplate"
+   lore:
+   - <white>A breastplate forged by the spare
+   - <white>parts of a titanium golem.
+   enchantments:
+   - durability:12
+   - protection_environmental:12
+         
+"Golem_Legs":
+   type: item
+   material: 312
+   display name: "<&5>Golem Greaves"
+   lore:
+   - <white>A pair of greaves forged by the spare
+   - <white>parts of a titanium golem.
+   enchantments:
+   - durability:12
+   - protection_fire:12
+         
+"Golem_Boots":
+   type: item
+   material: 313
+   display name: "<&5>Golem Boots"
+   lore:
+   - <white>A pair of boots forged by the spare
+   - <white>parts of a titanium golem.
+   enchantments:
+   - durability:12
+   - protection_fall:10

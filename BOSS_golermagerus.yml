@@ -133,6 +133,7 @@ golermagerus:
     - flag npc Golermagerus_HarmPhase_Amt:!
     - flag npc Golermagerus_Grace_CD:!
     - flag npc Golermagerus_BombGrace_CD:!
+    - flag npc Golermagerus_HarmGrace_CD:!
 
     on death:
     # Drop the right bindings 100% of the time.
@@ -278,20 +279,20 @@ golermagerus:
            - announce "<red><%value%.name> failed to remove their color assignment and healed the boss for 1000 HP!"
            - playsound location:<%value%.location> sound:hurt_flesh
            - playeffect location:<%value%.location> effect:RED_DUST qty:1000
-           - hurt 10000 %value%
-           - heal 1000 <npc>
            - flag %value% Golermagerus_Color:!
            - flag %value% Golermagerus_Bomb:!
+           - hurt 10000 %value%
+           - heal 1000 <npc>
            }
          - if <%value%.flag[Golermagerus_Color]> == "green" {
            - narrate targets:%value% "<aqua>You have failed to remove your color assignment!"
            - announce "<red><%value%.name> failed to remove their color assignment and healed the boss for 1000 HP!"
            - playsound location:<%value%.location> sound:hurt_flesh
            - playeffect location:<%value%.location> effect:RED_DUST qty:1000
-           - hurt 10000 %value%
-           - heal 1000 <npc>
            - flag %value% Golermagerus_Color:!
            - flag %value% Golermagerus_Bomb:!
+           - hurt 10000 %value%
+           - heal 1000 <npc>
            }
          - random 2
          - flag %value% "Golermagerus_Color:green" duration:300
@@ -401,6 +402,8 @@ golermagerus:
            - define badPlayer %value%
            - narrate targets:%badPlayer% "<aqua>You have failed to remove your bomb!"
            - announce "<red><%badPlayer%.name> failed to remove their bomb!"
+           - flag %badPlayer% Golermagerus_Bomb:!
+           - flag %badPlayer% Golermagerus_Color:!
            - foreach <<%badPlayer%.location>.find.players.within[40].aslist> {
              - narrate targets:%value% "<aqua><%badPlayer%.name><&sq>s bomb detonated and killed you!"
              - playsound location:<%value%.location> sound:hurt_flesh
@@ -408,13 +411,11 @@ golermagerus:
              - playeffect location:<%value%.location> effect:RED_DUST qty:1000
              - playeffect location:<%value%.location> effect:explode qty:500
              - playeffect location:<%value%.location> effect:huge_explosion qty:1
-             - hurt 10000 %value%
-             - heal 10000 <npc>
              - flag %value% Golermagerus_Color:!
              - flag %value% Golermagerus_Bomb:!
+             - hurt 10000 %value%
+             - heal 10000 <npc>
              }
-           - flag %badPlayer% Golermagerus_Bomb:!
-           - flag %badPlayer% Golermagerus_Color:!
            }
          }
        - playsound location:<player.location> sound:CREEPER_HISS
@@ -484,6 +485,8 @@ golermagerus:
    # script documentation at the top of this file for details.
    script:
      - teleport <npc> "location:<cons:Golermagerus_SpawnPoint>"
+     - if <npc.flag[Golermagerus_HarmGrace_CD]> != null queue clear
+     - if <npc.flag[Golermagerus_HarmGrace_CD]> == null flag npc "Golermagerus_HarmGrace_CD:true" duration:4
      - if <npc.flag[Golermagerus_Harm_CD]> == null {
        - flag npc "Golermagerus_Harm_CD:true" duration:15
        - announce "<red><npc.name> yells<&cm> <&sq><cons:burnPhaseHarm><&sq>"
@@ -513,6 +516,7 @@ golermagerus:
    enchantments:
    - arrow_damage:10
    - durability:10
+   - arrow_infinite:1
  
 "Mithaniel":
    type: item

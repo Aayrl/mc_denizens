@@ -456,7 +456,7 @@ golermagerus:
        - flag npc "Golermagerus_HarmPhase_Amt:1"
        - announce "<red><npc.name> yells<&cm> <&sq><cons:burnPhaseMsg><&sq>"
        - playsound location:<npc.location> sound:zombie_idle pitch:0.7
-     }
+       }
      
 "Golermagerus_Phase2_HarmCompounder":
    type: task

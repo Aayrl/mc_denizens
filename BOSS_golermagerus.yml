@@ -35,12 +35,11 @@
 #
 # THE BOMB:
 # Every 10 seconds, flag a player as the bomb.
-# They will receive a weakness II debuff as well to notify them of their bomb thing.
-# They will also get a special little loud ass sound and red text.
+# They will a notification telling them of their bomb thing.
 # They have 10 seconds before the bomb 'detonates'.
-# For all players within 5 blocks of the bomb, they will instantly die.
+# For all players within 40 blocks of the bomb, they will instantly die.
 # If the player with the bomb reaches the PURPLE glass before the 10 second
-# flag is up, the boss will take 150 damage, and the player's bomb flag
+# flag is up, the boss will take 200 damage, and the player's bomb flag
 # will be removed (and they will take no damage).
 #
 # Phase 2: 49% - 0%
@@ -371,18 +370,6 @@ golermagerus:
          - flag <player> Golermagerus_Color:!
          }
        
-"Golermagerus_PurplePlatform_Event":
-   type: world
-   events:
-     on walked over GOLERMAG_PURPLE_1:
-       - narrate "<aqua>GOLERMAG_PURPLE_1"
-     on walked over GOLERMAG_PURPLE_2:
-       - narrate "<aqua>GOLERMAG_PURPLE_2"
-     on walked over GOLERMAG_PURPLE_3:
-       - narrate "<aqua>GOLERMAG_PURPLE_3"
-     on walked over GOLERMAG_PURPLE_4:
-       - narrate "<aqua>GOLERMAG_PURPLE_4"
-       
 "Golermagerus_DaBomb_Ability":
    type: task
    # This ability flags a player as the 'bomb', once every 5 seconds.
@@ -390,11 +377,66 @@ golermagerus:
    script:
      - if <npc.flag[Golermagerus_Bomb_CD]> == null {
        - flag npc "Golermagerus_Bomb_CD:true" duration:10
+       - foreach <<npc.location>.find.players.within[40].aslist> {
+         - if <%value%.flag[Golermagerus_Bomb]> == "YES" {
+           - define badPlayer %value%
+           - narrate targets:%badPlayer% "<aqua>You have failed to remove your bomb!"
+           - announce "<red><%badPlayer%.name> failed to remove their bomb!"
+           - foreach <<%badPlayer%.location>.find.players.within[40].aslist> {
+             - narrate targets:%value% "<aqua><%badPlayer%.name><&sq>s bomb detonated and killed you!"
+             - playsound location:<%value%.location> sound:hurt_flesh
+             - playeffect location:<%value%.location> effect:RED_DUST qty:1000
+             - hurt 10000 %value%
+             - heal 10000 <npc>
+             }
+           - flag %badPlayer% Golermagerus_Color:!
+           }
+         }
        - playsound location:<player.location> sound:CREEPER_HISS
        - announce "<red><npc.name> yells<&cm> <&sq><cons:bomb_msg><&sq>"
        - narrate "<aqua>YOU ARE THE BOMB!"
        - flag player "Golermagerus_Bomb:YES" duration:300
        }
+       
+"Golermagerus_PurplePlatform_Event":
+   type: world
+   events:
+     on walked over GOLERMAG_PURPLE_1:
+       - if <player.flag[Golermagerus_Bomb]> == "YES" {
+         - narrate targets:player "<aqua>You have successfully removed your bomb!"
+         - announce "<aqua><player.name> removed their bomb and harmed Golermagerus for 200 damage!"
+         - playsound location:<<n@Golermagerus>.location> sound:zombie_hurt pitch:0.7
+         - playeffect location:<<n@Golermagerus>.location> effect:RED_DUST qty:1000
+         - hurt 200 <n@Golermagerus>
+         - flag <player> Golermagerus_Bomb:!
+         }
+     on walked over GOLERMAG_PURPLE_2:
+       - if <player.flag[Golermagerus_Bomb]> == "YES" {
+         - narrate targets:player "<aqua>You have successfully removed your bomb!"
+         - announce "<aqua><player.name> removed their bomb and harmed Golermagerus for 200 damage!"
+         - playsound location:<<n@Golermagerus>.location> sound:zombie_hurt pitch:0.7
+         - playeffect location:<<n@Golermagerus>.location> effect:RED_DUST qty:1000
+         - hurt 200 <n@Golermagerus>
+         - flag <player> Golermagerus_Bomb:!
+         }
+     on walked over GOLERMAG_PURPLE_3:
+       - if <player.flag[Golermagerus_Bomb]> == "YES" {
+         - narrate targets:player "<aqua>You have successfully removed your bomb!"
+         - announce "<aqua><player.name> removed their bomb and harmed Golermagerus for 200 damage!"
+         - playsound location:<<n@Golermagerus>.location> sound:zombie_hurt pitch:0.7
+         - playeffect location:<<n@Golermagerus>.location> effect:RED_DUST qty:1000
+         - hurt 200 <n@Golermagerus>
+         - flag <player> Golermagerus_Bomb:!
+         }
+     on walked over GOLERMAG_PURPLE_4:
+       - if <player.flag[Golermagerus_Bomb]> == "YES" {
+         - narrate targets:player "<aqua>You have successfully removed your bomb!"
+         - announce "<aqua><player.name> removed their bomb and harmed Golermagerus for 200 damage!"
+         - playsound location:<<n@Golermagerus>.location> sound:zombie_hurt pitch:0.7
+         - playeffect location:<<n@Golermagerus>.location> effect:RED_DUST qty:1000
+         - hurt 200 <n@Golermagerus>
+         - flag <player> Golermagerus_Bomb:!
+         }
        
 # -----------------------------------
 # Loot Items

@@ -487,7 +487,7 @@ golermagerus:
      - if <npc.flag[Golermagerus_Harm_CD]> == null {
        - flag npc "Golermagerus_Harm_CD:true" duration:15
        - announce "<red><npc.name> yells<&cm> <&sq><cons:burnPhaseHarm><&sq>"
-       - define %dmgAmt% <math.as_int:<npc.flag[Golermagerus_HarmPhase_Amt]>*2>
+       - define dmgAmt <math.as_int:<npc.flag[Golermagerus_HarmPhase_Amt]>*2>
        - foreach <<npc.location>.find.players.within[40].aslist> {
          - narrate targets:%value% "<&9><npc.name><&sq>s Surge of Energy hits your for %dmgAmt% damage."
          - hurt %dmgAmt% %value%

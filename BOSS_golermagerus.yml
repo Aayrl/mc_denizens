@@ -296,12 +296,13 @@ golermagerus:
          - flag %value% "Golermagerus_Color:green" duration:300
          - flag %value% "Golermagerus_Color:red" duration:300
          - flag %value% "Golermagerus_Ability_GCD:ON" duration:2
+         - playsound location:<player.location> sound:ORB_PICKUP pitch:0
          - if <%value%.flag[Golermagerus_Color]> == "red" {
            - firework <%value%.location> power:0 primary:red flicker trail type:ball_large
-           - narrate targets:%value% "<aqua><npc.name> has colored you <red>Red<aqua>!" }
+           - narrate targets:%value% "<&3><npc.name> has colored you <red>Red<&3>!" }
          - if <%value%.flag[Golermagerus_Color]> == "green" {
            - firework <%value%.location> power:0 primary:green flicker trail type:ball_large
-           - narrate targets:%value% "<aqua><npc.name> has colored you <green>Green<aqua>!" }
+           - narrate targets:%value% "<&3><npc.name> has colored you <green>Green<&3>!" }
        }
        
 "Golermagerus_GreenPlatform_Event":
@@ -414,8 +415,9 @@ golermagerus:
            }
          }
        - playsound location:<player.location> sound:CREEPER_HISS
+       - playsound location:<player.location> sound:WITHER_SPAWN
        - announce "<red><npc.name> yells<&cm> <&sq><cons:bomb_msg><&sq>"
-       - narrate "<&D>* * * YOU ARE THE BOMB! * * *"
+       - narrate "<&3>* * * YOU ARE THE BOMB! * * *"
        - flag player "Golermagerus_Bomb:YES" duration:300
        - flag %value% "Golermagerus_Ability_GCD:ON" duration:2
        }

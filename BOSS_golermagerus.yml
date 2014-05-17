@@ -240,7 +240,7 @@ golermagerus:
              - run "Golermagerus_ColorBurst_Ability"
              - run "Golermagerus_DaBomb_Ability"
              }
-           - ^if <npc.health.percentage.as_int> <= 49 {
+           - ^if <npc.health.percentage.as_int> <= 49 && <npc.health.percentage.as_int> >= 3 {
              - run "Golermagerus_Phase2_HarmCompounder"
              - define bonusDmg <math.as_int:<context.damage>*3>
              - narrate "<&9>Your attack did an additional %bonusDmg% damage to Golermagerus."

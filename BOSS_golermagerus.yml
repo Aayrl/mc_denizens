@@ -280,6 +280,7 @@ golermagerus:
            - hurt 10000 %value%
            - heal 1000 <npc>
            - flag %value% Golermagerus_Color:!
+           - flag %value% Golermagerus_Bomb:!
            }
          - if <%value%.flag[Golermagerus_Color]> == "green" {
            - narrate targets:%value% "<aqua>You have failed to remove your color assignment!"
@@ -289,6 +290,7 @@ golermagerus:
            - hurt 10000 %value%
            - heal 1000 <npc>
            - flag %value% Golermagerus_Color:!
+           - flag %value% Golermagerus_Bomb:!
            }
          - random 2
          - flag %value% "Golermagerus_Color:green" duration:300
@@ -404,8 +406,11 @@ golermagerus:
              - playeffect location:<%value%.location> effect:huge_explosion qty:1
              - hurt 10000 %value%
              - heal 10000 <npc>
+             - flag %value% Golermagerus_Color:!
+             - flag %value% Golermagerus_Bomb:!
              }
            - flag %badPlayer% Golermagerus_Bomb:!
+           - flag %badPlayer% Golermagerus_Color:!
            }
          }
        - playsound location:<player.location> sound:CREEPER_HISS

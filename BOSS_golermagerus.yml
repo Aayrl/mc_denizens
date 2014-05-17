@@ -295,25 +295,81 @@ golermagerus:
    type: world
    events:
      on walked over GOLERMAG_GREEN_1:
-       - narrate "<aqua>GOLERMAG_GREEN_1"
+       - if <player.flag[Golermagerus_Color]> == "green" {
+         - narrate targets:player "<aqua>You have successfully cleared your color assignment!"
+         - announce "<red><player.name> removed their color assignment and harmed Golermagerus for 100 damage!"
+         - playsound location:<<n@Golermagerus>.location> sound:zombie_hurt pitch:0.7
+         - playeffect location:<<n@Golermagerus>.location> effect:RED_DUST qty:1000
+         - hurt 100 <n@Golermagerus>
+         - flag <player> Golermagerus_Color:!
+         }
      on walked over GOLERMAG_GREEN_2:
-       - narrate "<aqua>GOLERMAG_GREEN_2"
+       - if <player.flag[Golermagerus_Color]> == "green" {
+         - narrate targets:player "<aqua>You have successfully cleared your color assignment!"
+         - announce "<red><player.name> removed their color assignment and harmed Golermagerus for 100 damage!"
+         - playsound location:<<n@Golermagerus>.location> sound:zombie_hurt pitch:0.7
+         - playeffect location:<<n@Golermagerus>.location> effect:RED_DUST qty:1000
+         - hurt 100 <n@Golermagerus>
+         - flag <player> Golermagerus_Color:!
+         }
      on walked over GOLERMAG_GREEN_3:
-       - narrate "<aqua>GOLERMAG_GREEN_3"
+       - if <player.flag[Golermagerus_Color]> == "green" {
+         - narrate targets:player "<aqua>You have successfully cleared your color assignment!"
+         - announce "<red><player.name> removed their color assignment and harmed Golermagerus for 100 damage!"
+         - playsound location:<<n@Golermagerus>.location> sound:zombie_hurt pitch:0.7
+         - playeffect location:<<n@Golermagerus>.location> effect:RED_DUST qty:1000
+         - hurt 100 <n@Golermagerus>
+         - flag <player> Golermagerus_Color:!
+         }
      on walked over GOLERMAG_GREEN_4:
-       - narrate "<aqua>GOLERMAG_GREEN_4"
+       - if <player.flag[Golermagerus_Color]> == "green" {
+         - narrate targets:player "<aqua>You have successfully cleared your color assignment!"
+         - announce "<red><player.name> removed their color assignment and harmed Golermagerus for 100 damage!"
+         - playsound location:<<n@Golermagerus>.location> sound:zombie_hurt pitch:0.7
+         - playeffect location:<<n@Golermagerus>.location> effect:RED_DUST qty:1000
+         - hurt 100 <n@Golermagerus>
+         - flag <player> Golermagerus_Color:!
+         }
        
 "Golermagerus_RedPlatform_Event":
    type: world
    events:
      on walked over GOLERMAG_RED_1:
-       - narrate "<aqua>GOLERMAG_RED_1"
+       - if <player.flag[Golermagerus_Color]> == "red" {
+         - narrate targets:player "<aqua>You have successfully cleared your color assignment!"
+         - announce "<red><player.name> removed their color assignment and harmed Golermagerus for 100 damage!"
+         - playsound location:<<n@Golermagerus>.location> sound:zombie_hurt pitch:0.7
+         - playeffect location:<<n@Golermagerus>.location> effect:RED_DUST qty:1000
+         - hurt 100 <n@Golermagerus>
+         - flag <player> Golermagerus_Color:!
+         }
      on walked over GOLERMAG_RED_2:
-       - narrate "<aqua>GOLERMAG_RED_2"
+       - if <player.flag[Golermagerus_Color]> == "red" {
+         - narrate targets:player "<aqua>You have successfully cleared your color assignment!"
+         - announce "<red><player.name> removed their color assignment and harmed Golermagerus for 100 damage!"
+         - playsound location:<<n@Golermagerus>.location> sound:zombie_hurt pitch:0.7
+         - playeffect location:<<n@Golermagerus>.location> effect:RED_DUST qty:1000
+         - hurt 100 <n@Golermagerus>
+         - flag <player> Golermagerus_Color:!
+         }
      on walked over GOLERMAG_RED_3:
-       - narrate "<aqua>GOLERMAG_RED_3"
+       - if <player.flag[Golermagerus_Color]> == "red" {
+         - narrate targets:player "<aqua>You have successfully cleared your color assignment!"
+         - announce "<red><player.name> removed their color assignment and harmed Golermagerus for 100 damage!"
+         - playsound location:<<n@Golermagerus>.location> sound:zombie_hurt pitch:0.7
+         - playeffect location:<<n@Golermagerus>.location> effect:RED_DUST qty:1000
+         - hurt 100 <n@Golermagerus>
+         - flag <player> Golermagerus_Color:!
+         }
      on walked over GOLERMAG_RED_4:
-       - narrate "<aqua>GOLERMAG_RED_4"
+       - if <player.flag[Golermagerus_Color]> == "red" {
+         - narrate targets:player "<aqua>You have successfully cleared your color assignment!"
+         - announce "<red><player.name> removed their color assignment and harmed Golermagerus for 100 damage!"
+         - playsound location:<<n@Golermagerus>.location> sound:zombie_hurt pitch:0.7
+         - playeffect location:<<n@Golermagerus>.location> effect:RED_DUST qty:1000
+         - hurt 100 <n@Golermagerus>
+         - flag <player> Golermagerus_Color:!
+         }
        
 "Golermagerus_PurplePlatform_Event":
    type: world

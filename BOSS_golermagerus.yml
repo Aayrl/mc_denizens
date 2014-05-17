@@ -228,7 +228,6 @@ golermagerus:
            # Kill anyone within meele range.
            - run "Golermagerus_kill_meele"
            - run "Golermagerus_initiate_Phase2"
-           - narrate "<&5>Damage<&co> <context.damage>"
            # Here are the boss special events that fire off throughout the fight.
            # Note - These two only fire off between 98% and 50% health.
            # Then, the boss swaps to phase 2 abilities.
@@ -239,6 +238,9 @@ golermagerus:
              }
            - ^if <npc.health.percentage.as_int> <= 49 {
              - run "Golermagerus_Phase2_HarmCompounder"
+             - define bonusDmg <math.as_int:<context.damage>*3>
+             - narrate "<&9>Your attack did an additional %bonusDmg% damage to Golermagerus."
+             - hurt %bonusDmg% <n@Golermagerus>
              }
    
 # -----------------------------------

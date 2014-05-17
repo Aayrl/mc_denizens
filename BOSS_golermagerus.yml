@@ -125,7 +125,6 @@ golermagerus:
     # Clear previous targets from hate list
     - execute as_server "npc sel <npc.id>"
     - execute as_server "sentry target clear"
-    - execute as_server "sentry target add entity:player"
     # Clear boss flags
     - flag npc BossPlayerList:!
     - flag npc Golermagerus_Colorburst_CD:!
@@ -188,7 +187,7 @@ golermagerus:
     - if "<flag.p:Golermagerus_Engaged:true || false>" == true {
       - announce "<red><npc.name> yells<&cm> <&sq>You will not evade me<&cm> <player.name>!<&sq>"
       - narrate "<yellow>You have been summoned!"
-      - teleport <player> "location:<npc.location>"
+      - teleport <player> "location:<cons:Golermagerus_warpPoint>"
       - playsound location:<player.location> sound:portal_travel
       - playeffect location:<player.location> effect:portal qty:1000
       }
@@ -212,6 +211,8 @@ golermagerus:
            - if <npc.flag[BossPlayerList].aslist> !contains <player> && <player.name> != <npc.name> flag npc BossPlayerList:->:<player>
        damage trigger:
          script:
+           # Teleport the boss to its initial position (prevent knocking the boss around)
+           - teleport <npc> "location:<cons:Golermagerus_SpawnPoint>"
            # When the boss is hit, re-flag the player as engaged with the boss.
            - flag player "Golermagerus_Engaged:true" duration:30
            - playsound location:<npc.location> sound:zombie_hurt pitch:0.7
@@ -259,7 +260,7 @@ golermagerus:
        - announce "<red><npc.name> yells<&cm> <&sq><cons:colorburst_msg><&sq>"
        - foreach <<npc.location>.find.players.within[40].aslist> {
          - if <%value%.flag[Golermagerus_Color]> == "red" {
-           - narrate targets:%value% "<&9>You have failed to remove your color assignment!"
+           - narrate targets:%value% "<aqua>You have failed to remove your color assignment!"
            - announce "<red><%value%.name> failed to remove their color assignment and healed the boss for 1000 HP!"
            - playsound location:<%value%.location> sound:hurt_flesh
            - playeffect location:<%value%.location> effect:RED_DUST qty:1000
@@ -268,7 +269,7 @@ golermagerus:
            - flag %value% Golermagerus_Color:!
            }
          - if <%value%.flag[Golermagerus_Color]> == "green" {
-           - narrate targets:%value% "<&9>You have failed to remove your color assignment!"
+           - narrate targets:%value% "<aqua>You have failed to remove your color assignment!"
            - announce "<red><%value%.name> failed to remove their color assignment and healed the boss for 1000 HP!"
            - playsound location:<%value%.location> sound:hurt_flesh
            - playeffect location:<%value%.location> effect:RED_DUST qty:1000
@@ -281,10 +282,10 @@ golermagerus:
          - flag %value% "Golermagerus_Color:red"
          - if <%value%.flag[Golermagerus_Color]> == "red" {
            - firework <%value%.location> power:0 primary:red flicker trail type:ball_large
-           - narrate targets:%value% "<&9><npc.name> has colored you <red>Red<&9>!" }
+           - narrate targets:%value% "<aqua><npc.name> has colored you <red>Red<aqua>!" }
          - if <%value%.flag[Golermagerus_Color]> == "green" {
            - firework <%value%.location> power:0 primary:green flicker trail type:ball_large
-           - narrate targets:%value% "<&9><npc.name> has colored you <green>Green<&9>!" }
+           - narrate targets:%value% "<aqua><npc.name> has colored you <green>Green<aqua>!" }
        }
        
 "Golermagerus_DaBomb_Ability":
@@ -296,7 +297,7 @@ golermagerus:
        - flag npc "Golermagerus_Bomb_CD:true" duration:10
        - playsound location:<player.location> sound:CREEPER_HISS
        - announce "<red><npc.name> yells<&cm> <&sq><cons:bomb_msg><&sq>"
-       - narrate "<red>YOU ARE THE BOMB!"
+       - narrate "<aqua>YOU ARE THE BOMB!"
        - flag player "Golermagerus_Bomb:YES"
        }
        

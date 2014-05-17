@@ -419,11 +419,11 @@ golermagerus:
          }
        - playsound location:<player.location> sound:CREEPER_HISS
        - playsound location:<player.location> sound:WITHER_SPAWN
-       - firework <%value%.location> power:0 primary:purple flicker trail type:ball_large
+       - firework <player.location> power:0 primary:purple flicker trail type:ball_large
        - announce "<red><npc.name> yells<&cm> <&sq><cons:bomb_msg><&sq>"
        - narrate "<&D>* * * YOU ARE THE BOMB! * * *"
        - flag player "Golermagerus_Bomb:YES" duration:300
-       - flag %value% "Golermagerus_Ability_GCD:ON" duration:2
+       - flag player "Golermagerus_Ability_GCD:ON" duration:2
        }
        
 "Golermagerus_PurplePlatform_Event":

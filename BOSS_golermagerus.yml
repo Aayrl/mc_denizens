@@ -132,6 +132,7 @@ golermagerus:
     - flag npc Golermagerus_BurnPhase_Active:!
     - flag npc Golermagerus_HarmPhase_Amt:!
     - flag npc Golermagerus_Grace_CD:!
+    - flag npc Golermagerus_BombGrace_CD:!
 
     on death:
     # Drop the right bindings 100% of the time.
@@ -299,10 +300,10 @@ golermagerus:
          - playsound location:<player.location> sound:ORB_PICKUP pitch:0
          - if <%value%.flag[Golermagerus_Color]> == "red" {
            - firework <%value%.location> power:0 primary:red flicker trail type:ball_large
-           - narrate targets:%value% "<&3><npc.name> has colored you <red>Red<&3>!" }
+           - narrate targets:%value% "<&D><npc.name> has colored you <red>Red<&D>!" }
          - if <%value%.flag[Golermagerus_Color]> == "green" {
            - firework <%value%.location> power:0 primary:green flicker trail type:ball_large
-           - narrate targets:%value% "<&3><npc.name> has colored you <green>Green<&3>!" }
+           - narrate targets:%value% "<&D><npc.name> has colored you <green>Green<&D>!" }
        }
        
 "Golermagerus_GreenPlatform_Event":
@@ -387,11 +388,13 @@ golermagerus:
        
 "Golermagerus_DaBomb_Ability":
    type: task
-   # This ability flags a player as the 'bomb', once every 5 seconds.
+   # This ability flags a player as the 'bomb', once every 10 seconds.
    # See the initial script comments at the top of this file for details.
    script:
      - if <npc.flag[Golermagerus_Bomb_CD]> == null {
        - flag npc "Golermagerus_Bomb_CD:true" duration:10
+       - if <npc.flag[Golermagerus_BombGrace_CD]> != null queue clear
+       - if <npc.flag[Golermagerus_BombGrace_CD]> == null flag npc "Golermagerus_BombGrace_CD:true" duration:4
        - foreach <<npc.location>.find.players.within[40].aslist> {
          - if <%value%.flag[Golermagerus_Ability_GCD]> == "ON" queue clear
          - if <%value%.flag[Golermagerus_Bomb]> == "YES" {
@@ -418,7 +421,7 @@ golermagerus:
        - playsound location:<player.location> sound:WITHER_SPAWN
        - firework <%value%.location> power:0 primary:purple flicker trail type:ball_large
        - announce "<red><npc.name> yells<&cm> <&sq><cons:bomb_msg><&sq>"
-       - narrate "<&3>* * * YOU ARE THE BOMB! * * *"
+       - narrate "<&D>* * * YOU ARE THE BOMB! * * *"
        - flag player "Golermagerus_Bomb:YES" duration:300
        - flag %value% "Golermagerus_Ability_GCD:ON" duration:2
        }

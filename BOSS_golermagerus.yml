@@ -131,6 +131,7 @@ golermagerus:
     - flag npc Golermagerus_Harm_CD:!
     - flag npc Golermagerus_BurnPhase_Active:!
     - flag npc Golermagerus_HarmPhase_Amt:!
+    - flag npc Golermagerus_Grace_CD:!
 
     on death:
     # Drop the right bindings 100% of the time.
@@ -231,6 +232,8 @@ golermagerus:
            # Here are the boss special events that fire off throughout the fight.
            # Note - These two only fire off between 98% and 50% health.
            # Then, the boss swaps to phase 2 abilities.
+           - if <npc.flag[Golermagerus_Grace_CD]> != null queue clear
+           - if <npc.flag[Golermagerus_Grace_CD]> == null flag npc "Golermagerus_Grace_CD:true" duration:1
            - ^if <npc.health.percentage.as_int> <= 99 && <npc.health.percentage.as_int> >= 50 {
              - random 2
              - run "Golermagerus_ColorBurst_Ability"

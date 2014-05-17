@@ -72,7 +72,7 @@ golermagerus:
     # Special Event Messages
     colorburst_msg: Now YOU feel pain!
     bomb_msg: Puny human go BOOM!
-    burnPhaseMsg: ARGH! It burns!!
+    burnPhaseMsg: NYRRAGHH! Enough of this petty nonsense!
     burnPhaseHarm: So much ENERGY!
     
     # Special Warp Points
@@ -227,6 +227,8 @@ golermagerus:
              }
            # Kill anyone within meele range.
            - run "Golermagerus_kill_meele"
+           - run "Golermagerus_initiate_Phase2"
+           - narrate "<&5>Damage<&co> <context.damage>"
            # Here are the boss special events that fire off throughout the fight.
            # Note - These two only fire off between 98% and 50% health.
            # Then, the boss swaps to phase 2 abilities.
@@ -234,6 +236,9 @@ golermagerus:
              - random 2
              - run "Golermagerus_ColorBurst_Ability"
              - run "Golermagerus_DaBomb_Ability"
+             }
+           - ^if <npc.health.percentage.as_int> <= 49 {
+             - run "Golermagerus_Phase2_HarmCompounder"
              }
    
 # -----------------------------------
@@ -440,6 +445,35 @@ golermagerus:
          - hurt 200 <n@Golermagerus>
          - flag <player> Golermagerus_Bomb:!
          }
+       
+"Golermagerus_initiate_Phase2":
+   type: task
+   # This ability starts phase 2.
+   script:
+     - teleport <npc> "location:<cons:Golermagerus_SpawnPoint>"
+     - ^if <npc.health.percentage.as_int> <= 49 && <npc.flag[Golermagerus_BurnPhase_Active]> == null {
+       - flag <npc> "Golermagerus_BurnPhase_Active:YES"
+       - flag npc "Golermagerus_HarmPhase_Amt:1"
+       - announce "<red><npc.name> yells<&cm> <&sq><cons:burnPhaseMsg><&sq>"
+       - playsound location:<npc.location> sound:zombie_idle pitch:0.7
+     }
+     
+"Golermagerus_Phase2_HarmCompounder":
+   type: task
+   # This ability does more damage over time. See the initial
+   # script documentation at the top of this file for details.
+   script:
+     - teleport <npc> "location:<cons:Golermagerus_SpawnPoint>"
+     - if <npc.flag[Golermagerus_Harm_CD]> == null {
+       - flag npc "Golermagerus_Harm_CD:true" duration:15
+       - announce "<red><npc.name> yells<&cm> <&sq><cons:burnPhaseHarm><&sq>"
+       - define %dmgAmt% <math.as_int:<npc.flag[Golermagerus_HarmPhase_Amt]>*2>
+       - foreach <<npc.location>.find.players.within[40].aslist> {
+         - narrate targets:%value% "<&9><npc.name><&sq>s Surge of Energy hits your for %dmgAmt% damage."
+         - hurt %dmgAmt% %value%
+         }
+       - flag npc Golermagerus_HarmPhase_Amt:++
+       }
        
 # -----------------------------------
 # Loot Items

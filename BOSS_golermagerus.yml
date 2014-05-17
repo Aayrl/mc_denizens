@@ -213,6 +213,8 @@ golermagerus:
          script:
            # Teleport the boss to its initial position (prevent knocking the boss around)
            - teleport <npc> "location:<cons:Golermagerus_SpawnPoint>"
+           # Ensure player is flagged as fighting the boss.
+           - if <npc.flag[BossPlayerList].aslist> !contains <player> && <player.name> != <npc.name> flag npc BossPlayerList:->:<player>
            # When the boss is hit, re-flag the player as engaged with the boss.
            - flag player "Golermagerus_Engaged:true" duration:30
            - playsound location:<npc.location> sound:zombie_hurt pitch:0.7
@@ -229,7 +231,7 @@ golermagerus:
            # Here are the boss special events that fire off throughout the fight.
            # Note - These two only fire off between 98% and 50% health.
            # Then, the boss swaps to phase 2 abilities.
-           - ^if <npc.health.percentage.as_int> <= 98 && <npc.health.percentage.as_int> >= 50 {
+           - ^if <npc.health.percentage.as_int> <= 99 && <npc.health.percentage.as_int> >= 50 {
              - random 2
              - run "Golermagerus_ColorBurst_Ability"
              - run "Golermagerus_DaBomb_Ability"
@@ -242,6 +244,7 @@ golermagerus:
    type: task
    # This ability kills anyone in meele range of the boss.
    script:
+     - teleport <npc> "location:<cons:Golermagerus_SpawnPoint>"
      - foreach <<npc.location>.find.players.within[6].aslist> {
        - narrate targets:%value% "<red>Golermagerus stomps you to death!"
        - playsound location:<npc.location> sound:hurt_flesh
@@ -278,8 +281,8 @@ golermagerus:
            - flag %value% Golermagerus_Color:!
            }
          - random 2
-         - flag %value% "Golermagerus_Color:green"
-         - flag %value% "Golermagerus_Color:red"
+         - flag %value% "Golermagerus_Color:green" duration:300
+         - flag %value% "Golermagerus_Color:red" duration:300
          - if <%value%.flag[Golermagerus_Color]> == "red" {
            - firework <%value%.location> power:0 primary:red flicker trail type:ball_large
            - narrate targets:%value% "<aqua><npc.name> has colored you <red>Red<aqua>!" }
@@ -287,6 +290,42 @@ golermagerus:
            - firework <%value%.location> power:0 primary:green flicker trail type:ball_large
            - narrate targets:%value% "<aqua><npc.name> has colored you <green>Green<aqua>!" }
        }
+       
+"Golermagerus_GreenPlatform_Event":
+   type: world
+   events:
+     on walked over GOLERMAG_GREEN_1:
+       - narrate "<aqua>GOLERMAG_GREEN_1"
+     on walked over GOLERMAG_GREEN_2:
+       - narrate "<aqua>GOLERMAG_GREEN_2"
+     on walked over GOLERMAG_GREEN_3:
+       - narrate "<aqua>GOLERMAG_GREEN_3"
+     on walked over GOLERMAG_GREEN_4:
+       - narrate "<aqua>GOLERMAG_GREEN_4"
+       
+"Golermagerus_RedPlatform_Event":
+   type: world
+   events:
+     on walked over GOLERMAG_RED_1:
+       - narrate "<aqua>GOLERMAG_RED_1"
+     on walked over GOLERMAG_RED_2:
+       - narrate "<aqua>GOLERMAG_RED_2"
+     on walked over GOLERMAG_RED_3:
+       - narrate "<aqua>GOLERMAG_RED_3"
+     on walked over GOLERMAG_RED_4:
+       - narrate "<aqua>GOLERMAG_RED_4"
+       
+"Golermagerus_PurplePlatform_Event":
+   type: world
+   events:
+     on walked over GOLERMAG_PURPLE_1:
+       - narrate "<aqua>GOLERMAG_PURPLE_1"
+     on walked over GOLERMAG_PURPLE_2:
+       - narrate "<aqua>GOLERMAG_PURPLE_2"
+     on walked over GOLERMAG_PURPLE_3:
+       - narrate "<aqua>GOLERMAG_PURPLE_3"
+     on walked over GOLERMAG_PURPLE_4:
+       - narrate "<aqua>GOLERMAG_PURPLE_4"
        
 "Golermagerus_DaBomb_Ability":
    type: task
@@ -298,7 +337,7 @@ golermagerus:
        - playsound location:<player.location> sound:CREEPER_HISS
        - announce "<red><npc.name> yells<&cm> <&sq><cons:bomb_msg><&sq>"
        - narrate "<aqua>YOU ARE THE BOMB!"
-       - flag player "Golermagerus_Bomb:YES"
+       - flag player "Golermagerus_Bomb:YES" duration:300
        }
        
 # -----------------------------------

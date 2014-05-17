@@ -385,7 +385,10 @@ golermagerus:
            - foreach <<%badPlayer%.location>.find.players.within[40].aslist> {
              - narrate targets:%value% "<aqua><%badPlayer%.name><&sq>s bomb detonated and killed you!"
              - playsound location:<%value%.location> sound:hurt_flesh
+             - playsound location:<%value%.location> sound:explode
              - playeffect location:<%value%.location> effect:RED_DUST qty:1000
+             - playeffect location:<%value%.location> effect:explode qty:500
+             - playeffect location:<%value%.location> effect:huge_explosion qty:1
              - hurt 10000 %value%
              - heal 10000 <npc>
              }

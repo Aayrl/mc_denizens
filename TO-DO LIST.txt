@@ -2,8 +2,6 @@
 // To-Do List
 // Last Updated: 18:17 on May 14, 2014 (Wednesday)
 // -----------------------------------
-    
-- prevent players from earning badges of honor from killing themselves via bow.
 
 - prevent players from hurting each other while fighting a boss.
     

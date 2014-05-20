@@ -16,6 +16,10 @@
           else if <context.entity.name> == "Sinestra Spawn" {
           - queue clear
           }
+          else if <context.entity.name> == "Hill Giant" {
+          - run "Drop_Credits" d:<context.damager>|<util.random.int[750].to[1000]>
+          - queue clear
+          }
           else if <context.entity.name> == "Goblin" {
           - run "Drop_Credits" d:<context.damager>|<util.random.int[1].to[7]>
           - queue clear

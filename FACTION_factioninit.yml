@@ -21,21 +21,34 @@
   events:
     on player join:
     # Faction Check - If player has no factions, set them to their defaults.
-    # 'Good' factions - main cities
+    # City Factions
     - if <player.flag[FACTION_Gondor]> == "null" {
       - flag player "FACTION_Gondor:10000" }
     - if <player.flag[FACTION_Kelethin]> == "null" {
       - flag player "FACTION_Kelethin:5000" }
     - if <player.flag[FACTION_Thurgadin]> == "null" {
       - flag player "FACTION_Thurgadin:5000" }
-    # Neutral Factions
-    - if <player.flag[FACTION_BlackDragons]> == "null" {
-      - flag player "FACTION_BlackDragons:0" }
-    # Hostile Factions
+    # Mob Factions
     - if <player.flag[FACTION_Bandit]> == "null" {
       - flag player "FACTION_Bandit:1000" }
-    - if <player.flag[FACTION_HateKeep]> == "null" {
-      - flag player "FACTION_HateKeep:1000" }
     - if <player.flag[FACTION_Goblin]> == "null" {
       - flag player "FACTION_Goblin:1000" }
+    # PoEnder Factions
+    - if <player.flag[FACTION_BlackDragons]> == "null" {
+      - flag player "FACTION_BlackDragons:0" }
+    - if <player.flag[FACTION_HateKeep]> == "null" {
+      - flag player "FACTION_HateKeep:1000" }
+    - if <player.flag[FACTION_Endermen]> == "null" {
+      - flag player "FACTION_Endermen:1000" }
+    # PoEarth Factions
+    - if <player.flag[FACTION_HillGiant]> == "null" {
+      - flag player "FACTION_HillGiant:1000" }
+    - if <player.flag[FACTION_Klaknak]> == "null" {
+      - flag player "FACTION_Klaknak:1000" }
+    - if <player.flag[FACTION_Stormcaller]> == "null" {
+      - flag player "FACTION_Stormcaller:1000" }
+    - if <player.flag[FACTION_ChampionsOfTunare]> == "null" {
+      - flag player "FACTION_ChampionsOfTunare:0" }
+    - if <player.flag[FACTION_HolyHand]> == "null" {
+      - flag player "FACTION_HolyHand:5000" }
     # Misc. Factions

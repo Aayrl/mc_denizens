@@ -25,6 +25,10 @@ hillGiant:
     hillGiant_health: 1000
     hillGiant_respawn_delay: 300
     
+    factionhit: 5
+    faction_holy: 1
+    faction_champ: 1
+    
   interact scripts:
   - 10 hillGiantInteractScript
 
@@ -70,6 +74,23 @@ hillGiant:
     - execute as_server "npc sel <npc.id>"
     - execute as_server "npc effect --play none"
     - execute as_server "sentry target clear"
+    # Faction Adjustments
+    - foreach <npc.flag[AgroList].aslist> {
+      - if <%value%.flag[FACTION_HillGiant]> >= 5  {
+        - flag player:%value% "FACTION_HillGiant:<math.as_int:<%value%.flag[FACTION_HillGiant]>-<cons:factionhit>>"
+        - narrate targets:%value% "<&9>Your faction standing with Hill Giant has gotten worse! (<%value%.flag[FACTION_HillGiant]>)"
+        - flag player:%value% "FACTION_ChampionsOfTunare:<math.as_int:<%value%.flag[FACTION_ChampionsOfTunare]>+<cons:faction_champ>>"
+        - narrate targets:%value% "<&9>Your faction standing with Champions of Tunare has gotten better! (<%value%.flag[FACTION_ChampionsOfTunare]>)"
+        - flag player:%value% "FACTION_HolyHand:<math.as_int:<%value%.flag[FACTION_HolyHand]>+<cons:faction_holy>>"
+        - narrate targets:%value% "<&9>Your faction standing with The Holy Hand has gotten better! (<%value%.flag[FACTION_HolyHand]>)" }
+        else {
+        - flag player:%value% "FACTION_HillGiant:0"
+        - narrate targets:%value% "<&9>Your faction standing with Hill Giant could not possibly get any worse! (0)"
+        - flag player:%value% "FACTION_ChampionsOfTunare:<math.as_int:<%value%.flag[FACTION_ChampionsOfTunare]>+<cons:faction_champ>>"
+        - narrate targets:%value% "<&9>Your faction standing with Champions of Tunare has gotten better! (<%value%.flag[FACTION_ChampionsOfTunare]>)"
+        - flag player:%value% "FACTION_HolyHand:<math.as_int:<%value%.flag[FACTION_HolyHand]>+<cons:faction_holy>>"
+        - narrate targets:%value% "<&9>Your faction standing with The Holy Hand has gotten better! (<%value%.flag[FACTION_HolyHand]>)" }
+      }
 
     on attack: 
     - foreach <l@<npc.location>.find.players.within[<15>].aslist> {

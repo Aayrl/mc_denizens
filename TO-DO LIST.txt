@@ -69,6 +69,23 @@
 
 - YELL AT PLAYERS WHEN THEY JOIN IF THEY HAVE ANY ACTIVE QUESTS.
 
+POEARTH
+- Tier 3 Armor Set from Champions of Tunare Faction
+    - 2500 faction = boots
+    - 5000 faction = hat
+    - 7500 faction = legs
+    - 10000 faction = chest
+- Tier 4 Armor Set from Champions of Tunare Faction
+    - Upgraded via Tier 3 Piece and drop from bosses in POEarth.
+    - Also requires a couple reagents from boss mobs
+        - Armor Scraps
+                - 2x for Helm
+                - 1x for Boots
+                - 3x for Legs
+                - 4x for Chest
+        - Armor Pieces
+            - Desicrated xxxx
+
 BOSSES
 - Plane of Fire
     - Fenin Ro

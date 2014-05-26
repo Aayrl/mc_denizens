@@ -928,7 +928,7 @@
    lore:
    - <green>Provides your target with regeneration
    - <green>of health for 1 minute.
-   - <red>Cooldown<&co> 5 seconds.
+   - <red>Cooldown<&co> 30 seconds.
    - <&9>Costs 8 saturation to use cast.
    enchantments:
    - durability:1
@@ -943,7 +943,7 @@
           - narrate "<&9>You do not have enough saturation to cast that spell!"
           - queue clear
           }
-        - if "<flag.p:spell15 reuse || false>" == true {
+        - if "<flag.p:spell16 reuse || false>" == true {
           - narrate "<&9>You must wait <flag.p:spell16 reuse.expiration> before you can cast that spell."
           - queue clear
           } 
@@ -953,7 +953,7 @@
            - cast REGENERATION target:<player> duration:60 power:0
            - feed -8
            - playeffect location:<player.location> effect:fireworks_spark qty:250 offset:0.5
-           - flag player "spell16 reuse:true" duration:5
+           - flag player "spell16 reuse:true" duration:30
            - flag player "SPELL_GCD" duration:2
            } 
         - if <player.target.name> != "null" { 
@@ -964,6 +964,6 @@
            - cast REGENERATION target:<player.target> duration:60 power:0
            - feed -8
            - playeffect location:<player.target.location> effect:fireworks_spark qty:250 offset:0.5
-           - flag player "spell16 reuse:true" duration:5
+           - flag player "spell16 reuse:true" duration:30
            - flag player "SPELL_GCD" duration:2
            }

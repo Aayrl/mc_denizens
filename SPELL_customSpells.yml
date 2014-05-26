@@ -188,7 +188,7 @@
 "spell1":
    type: item
    material: 339
-   display name: "<yellow>Spell<&co> Light Heal"
+   display name: "<yellow>Spell<&co> Light Heal <green>*"
    recipe:
     - air|i@rune1|air
     - i@words8|i@340|i@words8
@@ -204,7 +204,7 @@
    type: world
    events:
      on player right clicks:
-        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Light Heal" queue clear
+        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Light Heal <green>*" queue clear
         - if <player.flag[SPELL_GCD]> queue clear
         - if <player.food_level> < 2 {
           - narrate "<&9>You do not have enough saturation to cast that spell!"
@@ -238,7 +238,7 @@
 "spell2":
    type: item
    material: 339
-   display name: "<yellow>Spell<&co> Burst of Flame"
+   display name: "<yellow>Spell<&co> Burst of Flame <red>*"
    recipe:
     - air|i@rune5|air
     - i@words1|i@340|i@words1
@@ -254,7 +254,7 @@
    type: world
    events:
      on player right clicks:
-        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Burst of Flame" queue clear
+        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Burst of Flame <red>*" queue clear
         - if <player.flag[SPELL_GCD]> queue clear
         - if <player.food_level> < 4 {
           - narrate "<&9>You do not have enough saturation to cast that spell!"
@@ -283,7 +283,7 @@
 "spell3":
    type: item
    material: 339
-   display name: "<yellow>Spell<&co> Blindness"
+   display name: "<yellow>Spell<&co> Blindness <red>*"
    recipe:
     - air|i@rune4|air
     - i@words4|i@340|i@words4
@@ -299,7 +299,7 @@
    type: world
    events:
      on player right clicks:
-        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Blindness" queue clear
+        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Blindness <red>*" queue clear
         - if <player.flag[SPELL_GCD]> queue clear
         - if <player.food_level> < 4 {
           - narrate "<&9>You do not have enough saturation to cast that spell!"
@@ -327,7 +327,7 @@
 "spell4":
    type: item
    material: 339
-   display name: "<yellow>Spell<&co> Ensnare"
+   display name: "<yellow>Spell<&co> Ensnare <red>*"
    recipe:
     - air|i@rune3|air
     - i@words5|i@340|i@words5
@@ -343,7 +343,7 @@
    type: world
    events:
      on player right clicks:
-        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Ensnare" queue clear
+        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Ensnare <red>*" queue clear
         - if <player.flag[SPELL_GCD]> queue clear
         - if <player.food_level> < 4 {
           - narrate "<&9>You do not have enough saturation to cast that spell!"
@@ -371,7 +371,7 @@
 "spell5":
    type: item
    material: 339
-   display name: "<yellow>Spell<&co> Tangling Roots"
+   display name: "<yellow>Spell<&co> Tangling Roots <red>*"
    recipe:
     - air|i@rune8|air
     - i@words5|i@340|i@words5
@@ -387,7 +387,7 @@
    type: world
    events:
      on player right clicks:
-        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Tangling Roots" queue clear
+        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Tangling Roots <red>*" queue clear
         - if <player.flag[SPELL_GCD]> queue clear
         - if <player.food_level> < 6 {
           - narrate "<&9>You do not have enough saturation to cast that spell!"
@@ -415,7 +415,7 @@
 "spell6":
    type: item
    material: 339
-   display name: "<yellow>Spell<&co> Firestorm"
+   display name: "<yellow>Spell<&co> Firestorm <&4>*"
    recipe:
     - air|i@rune6|air
     - i@words11|i@340|i@words11
@@ -431,7 +431,7 @@
    type: world
    events:
      on player right clicks:
-        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Firestorm" queue clear
+        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Firestorm <&4>*" queue clear
         - if <player.flag[SPELL_GCD]> queue clear
         - if <player.food_level> < 8 {
           - narrate "<&9>You do not have enough saturation to cast that spell!"
@@ -461,7 +461,7 @@
 "spell7":
    type: item
    material: 339
-   display name: "<yellow>Spell<&co> Blizzard"
+   display name: "<yellow>Spell<&co> Blizzard <&4>*"
    recipe:
     - air|i@rune10|air
     - i@words11|i@340|i@words11
@@ -477,7 +477,7 @@
    type: world
    events:
      on player right clicks:
-        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Blizzard" queue clear
+        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Blizzard <&4>*" queue clear
         - if <player.flag[SPELL_GCD]> queue clear
         - if <player.food_level> < 8 {
           - narrate "<&9>You do not have enough saturation to cast that spell!"
@@ -507,7 +507,7 @@
 "spell8":
    type: item
    material: 339
-   display name: "<yellow>Spell<&co> Typhoon"
+   display name: "<yellow>Spell<&co> Typhoon <&4>*"
    recipe:
     - air|i@rune9|air
     - i@words11|i@340|i@words11
@@ -523,7 +523,7 @@
    type: world
    events:
      on player right clicks:
-        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Typhoon" queue clear
+        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Typhoon <&4>*" queue clear
         - if <player.flag[SPELL_GCD]> queue clear
         - if <player.food_level> < 8 {
           - narrate "<&9>You do not have enough saturation to cast that spell!"
@@ -553,7 +553,7 @@
 "spell9":
    type: item
    material: 339
-   display name: "<yellow>Spell<&co> Shrink"
+   display name: "<yellow>Spell<&co> Shrink <red>*"
    recipe:
     - air|i@rune4|air
     - i@words7|i@340|i@words7
@@ -570,7 +570,7 @@
    type: world
    events:
      on player right clicks:
-        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Shrink" queue clear
+        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Shrink <red>*" queue clear
         - if <player.flag[SPELL_GCD]> queue clear
         - if <player.food_level> < 4 {
           - narrate "<&9>You do not have enough saturation to cast that spell!"
@@ -599,7 +599,7 @@
 "spell10":
    type: item
    material: 339
-   display name: "<yellow>Spell<&co> Whirlwind"
+   display name: "<yellow>Spell<&co> Whirlwind <red>*"
    recipe:
     - air|i@rune7|air
     - i@words11|i@340|i@words11
@@ -615,7 +615,7 @@
    type: world
    events:
      on player right clicks:
-        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Whirlwind" queue clear
+        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Whirlwind <red>*" queue clear
         - if <player.flag[SPELL_GCD]> queue clear
         - if <player.food_level> < 6 {
           - narrate "<&9>You do not have enough saturation to cast that spell!"
@@ -644,7 +644,7 @@
 "spell11":
    type: item
    material: 339
-   display name: "<yellow>Spell<&co> Might I"
+   display name: "<yellow>Spell<&co> Might I <&9>*"
    recipe:
     - air|i@rune11|air
     - i@words2|i@340|i@words2
@@ -661,7 +661,7 @@
    type: world
    events:
      on player right clicks:
-        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Might I" queue clear
+        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Might I <&9>*" queue clear
         - if <player.flag[SPELL_GCD]> queue clear
         - if <player.food_level> < 8 {
           - narrate "<&9>You do not have enough saturation to cast that spell!"
@@ -694,7 +694,7 @@
 "spell12":
    type: item
    material: 339
-   display name: "<yellow>Spell<&co> Spirit of Wolf"
+   display name: "<yellow>Spell<&co> Spirit of Wolf <&9>*"
    recipe:
     - air|i@rune2|air
     - i@words9|i@340|i@words9
@@ -711,7 +711,7 @@
    type: world
    events:
      on player right clicks:
-        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Spirit of Wolf" queue clear
+        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Spirit of Wolf <&9>*" queue clear
         - if <player.flag[SPELL_GCD]> queue clear
         - if <player.food_level> < 8 {
           - narrate "<&9>You do not have enough saturation to cast that spell!"
@@ -744,7 +744,7 @@
 "spell13":
    type: item
    material: 339
-   display name: "<yellow>Spell<&co> Resistance"
+   display name: "<yellow>Spell<&co> Resistance <&9>*"
    recipe:
     - air|i@rune8|air
     - i@words8|i@340|i@words8
@@ -761,7 +761,7 @@
    type: world
    events:
      on player right clicks:
-        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Resistance" queue clear
+        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Resistance <&9>*" queue clear
         - if <player.flag[SPELL_GCD]> queue clear
         - if <player.food_level> < 8 {
           - narrate "<&9>You do not have enough saturation to cast that spell!"
@@ -794,7 +794,7 @@
 "spell14":
    type: item
    material: 339
-   display name: "<yellow>Spell<&co> Rune of Valor I"
+   display name: "<yellow>Spell<&co> Rune of Valor I <&9>*"
    recipe:
     - air|i@rune12|air
     - i@words7|i@340|i@words7
@@ -811,7 +811,7 @@
    type: world
    events:
      on player right clicks:
-        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Rune of Valor I" queue clear
+        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Rune of Valor I <&9>*" queue clear
         - if <player.flag[SPELL_GCD]> queue clear
         - if <player.food_level> < 8 {
           - narrate "<&9>You do not have enough saturation to cast that spell!"
@@ -844,7 +844,7 @@
 "spell15":
    type: item
    material: 339
-   display name: "<yellow>Spell<&co> Temperance I"
+   display name: "<yellow>Spell<&co> Temperance I <&9>*" 
    recipe:
     - air|i@rune2|air
     - i@words8|i@340|i@words8
@@ -861,7 +861,7 @@
    type: world
    events:
      on player right clicks:
-        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Temperance I" queue clear
+        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Temperance I <&9>*" queue clear
         - if <player.flag[SPELL_GCD]> queue clear
         - if <player.food_level> < 8 {
           - narrate "<&9>You do not have enough saturation to cast that spell!"

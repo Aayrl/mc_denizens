@@ -595,3 +595,47 @@
           - flag player "spell9 reuse:true" duration:10
           - flag player "SPELL_GCD" duration:2
           }
+          
+"spell10":
+   type: item
+   material: 339
+   display name: "<yellow>Spell<&co> Whirlwind"
+   recipe:
+    - air|i@rune7|air
+    - i@words11|i@340|i@words11
+    - air|i@rune7|air
+   lore:
+   - <green>Knocks your target 10 blocks into the air.
+   - <red>Cooldown<&co> 20 seconds.
+   - <&9>Costs 6 saturation to use cast.
+   enchantments:
+   - durability:1
+   
+"spell10Effect":
+   type: world
+   events:
+     on player right clicks:
+        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Whirlwind" queue clear
+        - if <player.flag[SPELL_GCD]> queue clear
+        - if <player.food_level> < 6 {
+          - narrate "<&9>You do not have enough saturation to cast that spell!"
+          - queue clear
+          }
+        - if "<flag.p:spell10 reuse || false>" == true {
+          - narrate "<&9>You must wait <flag.p:spell10 reuse.expiration> before you can cast that spell."
+          - queue clear
+          } 
+        - if <player.target.name> == "null" { 
+          - narrate "<red>You must select a target for that spell!"
+          - queue clear
+          } 
+        - if <player.target.name> != "null" { 
+          - if <player.target.is_player> {
+            - narrate targets:<player.target> "<&9><player.name> blasts you into the air with a powerful Whirlwind!" }
+          - narrate "<&9>You blast <player.target.name> into the air with a powerful Whirlwind!"
+          - feed -6
+          - playeffect location:<player.target.location> effect:large_smoke qty:100
+          - teleport <player.target> "<<player.target>.location.x>,<m:<<player.target>.location.y>+10.0>,<<player.target>.location.z>,<<player.target>.location.world.name>"
+          - flag player "spell10 reuse:true" duration:20
+          - flag player "SPELL_GCD" duration:2
+          }

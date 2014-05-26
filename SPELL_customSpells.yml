@@ -262,37 +262,23 @@
           }
         - if "<flag.p:spell2 reuse || false>" == true {
           - narrate "<&9>You must wait <flag.p:spell2 reuse.expiration> before you can cast that spell."
-          } 
-        - if "<flag.p:spell2 reuse || false>" == false {
-         - narrate "<&9>You burn yourself for 4 damage!"
-         - narrate "<&9>You feel your skin tingle as it ignites."
-         - hurt 4
-         - feed -4
-         - playeffect location:<player.location> effect:lava qty:50
-         - flag player "spell2 reuse:true" duration:5
-         - flag player "SPELL_GCD" duration:2
-         }
-     on player right clicks entity:
-        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Burst of Flame" queue clear
-        - if <player.flag[SPELL_GCD]> queue clear
-        - if <player.food_level> < 4 {
-          - narrate "<&9>You do not have enough saturation to cast that spell!"
           - queue clear
-          }
-        - if "<flag.p:spell2 reuse || false>" == true {
-          - narrate "<&9>You must wait <flag.p:spell2 reuse.expiration> before you can cast that spell."
           } 
-        - if "<flag.p:spell2 reuse || false>" == false {
-         - if <context.entity.is_player> {
-           - narrate targets:<context.entity> "<&9>You are burned for 4 damage!"
-           - narrate targets:<context.entity> "<&9>You feel your skin tingle as <player.name> ignites it." }
-         - narrate "<&9>You burn <context.entity.name> for 4 damage."
-         - hurt 4 target:<context.entity>
-         - feed -4
-         - playeffect location:<context.entity.location> effect:lava qty:50
-         - flag player "spell2 reuse:true" duration:5
-         - flag player "SPELL_GCD" duration:2
-         }
+        - if <player.target.name> == "null" { 
+          - narrate "<red>You must select a target for that spell!"
+          - queue clear
+          } 
+        - if <player.target.name> != "null" { 
+          - if <player.target.is_player> {
+            - narrate targets:<player.target> "<&9>You are burned for 4 damage!"
+            - narrate targets:<player.target> "<&9>You feel your skin tingle as <player.name> ignites it." }
+          - narrate "<&9>You burn <player.target.name> for 4 damage."
+          - hurt 4 target:<player.target>
+          - feed -4
+          - playeffect location:<player.target.location> effect:lava qty:50
+          - flag player "spell2 reuse:true" duration:5
+          - flag player "SPELL_GCD" duration:2
+          }
          
 "spell3":
    type: item
@@ -341,12 +327,12 @@
           - narrate "<&9>You must wait <flag.p:spell3 reuse.expiration> before you can cast that spell."
           } 
         - if "<flag.p:spell3 reuse || false>" == false {
-         - if <context.entity.is_player> {
-           - narrate targets:<context.entity> "<&9>You are blinded by <player.name>!" }
-         - narrate "<&9>You blind <context.entity.name>."
-         - cast blindness target:<context.entity> duration:20 power:5
+         - if <player.target.is_player> {
+           - narrate targets:<player.target> "<&9>You are blinded by <player.name>!" }
+         - narrate "<&9>You blind <player.target.name>."
+         - cast blindness target:<player.target> duration:20 power:5
          - feed -4
-         - playeffect location:<context.entity.location> effect:large_smoke qty:100
+         - playeffect location:<player.target.location> effect:large_smoke qty:100
          - flag player "spell3 reuse:true" duration:5
          - flag player "SPELL_GCD" duration:2
          }
@@ -398,12 +384,12 @@
           - narrate "<&9>You must wait <flag.p:spell4 reuse.expiration> before you can cast that spell."
           } 
         - if "<flag.p:spell4 reuse || false>" == false {
-         - if <context.entity.is_player> {
-           - narrate targets:<context.entity> "<&9>You are snared by <player.name>!" }
-         - narrate "<&9>You snare <context.entity.name>."
-         - cast slow target:<context.entity> duration:20 power:2
+         - if <player.target.is_player> {
+           - narrate targets:<player.target> "<&9>You are snared by <player.name>!" }
+         - narrate "<&9>You snare <player.target.name>."
+         - cast slow target:<player.target> duration:20 power:2
          - feed -4
-         - playeffect location:<context.entity.location> effect:slime qty:500 offset:0
+         - playeffect location:<player.target.location> effect:slime qty:500 offset:0
          - flag player "spell4 reuse:true" duration:5
          - flag player "SPELL_GCD" duration:2
          }
@@ -455,12 +441,12 @@
           - narrate "<&9>You must wait <flag.p:spell5 reuse.expiration> before you can cast that spell."
           } 
         - if "<flag.p:spell5 reuse || false>" == false {
-         - if <context.entity.is_player> {
-           - narrate targets:<context.entity> "<&9>You are rooted to the ground by <player.name>!" }
-         - narrate "<&9>You root <context.entity.name> to the ground."
-         - cast slow target:<context.entity> duration:20 power:10
+         - if <player.target.is_player> {
+           - narrate targets:<player.target> "<&9>You are rooted to the ground by <player.name>!" }
+         - narrate "<&9>You root <player.target.name> to the ground."
+         - cast slow target:<player.target> duration:20 power:10
          - feed -6
-         - playeffect location:<context.entity.location> effect:slime qty:500 offset:0
+         - playeffect location:<player.target.location> effect:slime qty:500 offset:0
          - flag player "spell5 reuse:true" duration:5
          - flag player "SPELL_GCD" duration:2
          }
@@ -646,12 +632,12 @@
           - narrate "<&9>You must wait <flag.p:spell9 reuse.expiration> before you can cast that spell."
           } 
         - if "<flag.p:spell9 reuse || false>" == false {
-         - if <context.entity.is_player> {
-           - narrate targets:<context.entity> "<&9><player.name> shrinks you!" }
-         - narrate "<&9>You shrink <context.entity.name>!"
-         - age <context.entity> baby
+         - if <player.target.is_player> {
+           - narrate targets:<player.target> "<&9><player.name> shrinks you!" }
+         - narrate "<&9>You shrink <player.target.name>!"
+         - age <player.target> baby
          - feed -4
-         - playeffect location:<context.entity.location> effect:witch_magic qty:500 offset:0.25
+         - playeffect location:<player.target.location> effect:witch_magic qty:500 offset:0.25
          - flag player "spell9 reuse:true" duration:10
          - flag player "SPELL_GCD" duration:2
          }

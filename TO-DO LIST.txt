@@ -85,6 +85,16 @@ POEARTH
                 - 4x for Chest
         - Armor Pieces
             - Desicrated xxxx
+            
+BAG VENDOR
+    - Similar to Blacksmith, Right click, gives a series of options for bags.
+    - Pricing:
+        - 9 slot : 10,000 credits
+        - 18 slot : 100,000 credits
+        - 27 slot : 250,000 credits
+        - 36 slot : 500,000 credits
+        - 45 slot : 1,000,000 credits
+        - 54 slot : 2,500,000 credits
 
 BOSSES
 - Plane of Fire

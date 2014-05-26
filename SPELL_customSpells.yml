@@ -635,6 +635,7 @@
           - narrate "<&9>You blast <player.target.name> into the air with a powerful Whirlwind!"
           - feed -6
           - playeffect location:<player.target.location> effect:large_smoke qty:100
+          - hurt 5 target:<player.target>
           - teleport <player.target> "<<player.target>.location.x>,<m:<<player.target>.location.y>+10.0>,<<player.target>.location.z>,<<player.target>.location.world.name>"
           - flag player "spell10 reuse:true" duration:20
           - flag player "SPELL_GCD" duration:2

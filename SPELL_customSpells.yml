@@ -212,37 +212,28 @@
           }
         - if "<flag.p:spell1 reuse || false>" == true {
           - narrate "<&9>You must wait <flag.p:spell1 reuse.expiration> before you can cast that spell."
-          } 
-        - if "<flag.p:spell1 reuse || false>" == false {
-         - narrate "<&9>You heal 2 of your hitpoints."
-         - narrate "<&9>You feel better."
-         - heal 2
-         - feed -2
-         - playeffect location:<player.location> effect:potion_break qty:15 data:5
-         - flag player "spell1 reuse:true" duration:10
-         - flag player "SPELL_GCD" duration:2
-         }
-     on player right clicks entity:
-        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Light Heal" queue clear
-        - if <player.flag[SPELL_GCD]> queue clear
-        - if <player.food_level> < 2 {
-          - narrate "<&9>You do not have enough saturation to cast that spell!"
           - queue clear
           }
-        - if "<flag.p:spell1 reuse || false>" == true {
-          - narrate "<&9>You must wait <flag.p:spell1 reuse.expiration> before you can cast that spell."
-          } 
-        - if "<flag.p:spell1 reuse || false>" == false {
-         - if <context.entity.is_player> {
-           - narrate targets:<context.entity> "<&9><player.name> heals you for 2 hitpoints."
-           - narrate targets:<context.entity> "<&9>You feel better." }
-         - narrate "<&9>You heal <context.entity.name> for 2 hitpoints."
-         - heal 2 target:<context.entity>
-         - feed -2
-         - playeffect location:<context.entity.location> effect:potion_break qty:15 data:5
-         - flag player "spell1 reuse:true" duration:10
-         - flag player "SPELL_GCD" duration:2
-         }
+        - if <p@<player.name>.target.name> == "null" { 
+           - narrate "<&9>You heal 2 of your hitpoints."
+           - narrate "<&9>You feel better."
+           - heal 2
+           - feed -2
+           - playeffect location:<player.location> effect:potion_break qty:15 data:5
+           - flag player "spell1 reuse:true" duration:10
+           - flag player "SPELL_GCD" duration:2
+           } 
+           else {
+           - if <<p@<player.name>.target>.is_player> {
+             - narrate targets:<<p@<player.name>.target> "<&9><player.name> heals you for 2 hitpoints."
+             - narrate targets:<<p@<player.name>.target> "<&9>You feel better." }
+           - narrate "<&9>You heal <<p@<player.name>.target.name> for 2 hitpoints."
+           - heal 2 target:<<p@<player.name>.target>
+           - feed -2
+           - playeffect location:<<p@<player.name>.target.location> effect:potion_break qty:15 data:5
+           - flag player "spell1 reuse:true" duration:10
+           - flag player "SPELL_GCD" duration:2
+           }
          
 "spell2":
    type: item

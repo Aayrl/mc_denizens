@@ -840,3 +840,103 @@
            - flag player "spell14 reuse:true" duration:5
            - flag player "SPELL_GCD" duration:2
            }
+           
+"spell15":
+   type: item
+   material: 339
+   display name: "<yellow>Spell<&co> Temperance I"
+   recipe:
+    - air|i@rune2|air
+    - i@words8|i@340|i@words8
+    - air|i@rune2|air
+   lore:
+   - <green>Provides your target with 4 hearts
+   - <green>of health for 5 minutes.
+   - <red>Cooldown<&co> 5 seconds.
+   - <&9>Costs 8 saturation to use cast.
+   enchantments:
+   - durability:1
+   
+"spell15Effect":
+   type: world
+   events:
+     on player right clicks:
+        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Temperance I" queue clear
+        - if <player.flag[SPELL_GCD]> queue clear
+        - if <player.food_level> < 8 {
+          - narrate "<&9>You do not have enough saturation to cast that spell!"
+          - queue clear
+          }
+        - if "<flag.p:spell15 reuse || false>" == true {
+          - narrate "<&9>You must wait <flag.p:spell15 reuse.expiration> before you can cast that spell."
+          - queue clear
+          } 
+        - if <player.target.name> == "null" { 
+           - narrate "<&9>Your health increases."
+           - cast HEALTH_BOOST target:<player> duration:300 power:1
+           - feed -8
+           - playeffect location:<player.location> effect:fireworks_spark qty:250 offset:0.5
+           - flag player "spell15 reuse:true" duration:5
+           - flag player "SPELL_GCD" duration:2
+           } 
+        - if <player.target.name> != "null" { 
+           - if <player.target.is_player> {
+             - narrate targets:<player.target> "<&9><player.name> casts Temperance I on you."
+             - narrate targets:<player.target> "<&9>Your health increases." }
+           - narrate "<&9>You cast Temperance I on <player.target.name>."
+           - cast HEALTH_BOOST target:<player.target> duration:300 power:1
+           - feed -8
+           - playeffect location:<player.target.location> effect:fireworks_spark qty:250 offset:0.5
+           - flag player "spell15 reuse:true" duration:5
+           - flag player "SPELL_GCD" duration:2
+           }
+           
+"spell16":
+   type: item
+   material: 339
+   display name: "<yellow>Spell<&co> Regenerate"
+   recipe:
+    - air|i@rune11|air
+    - i@words8|i@340|i@words8
+    - air|i@rune11|air
+   lore:
+   - <green>Provides your target with regeneration
+   - <green>of health for 1 minute.
+   - <red>Cooldown<&co> 5 seconds.
+   - <&9>Costs 8 saturation to use cast.
+   enchantments:
+   - durability:1
+   
+"spell16Effect":
+   type: world
+   events:
+     on player right clicks:
+        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Regenerate" queue clear
+        - if <player.flag[SPELL_GCD]> queue clear
+        - if <player.food_level> < 8 {
+          - narrate "<&9>You do not have enough saturation to cast that spell!"
+          - queue clear
+          }
+        - if "<flag.p:spell15 reuse || false>" == true {
+          - narrate "<&9>You must wait <flag.p:spell16 reuse.expiration> before you can cast that spell."
+          - queue clear
+          } 
+        - if <player.target.name> == "null" { 
+           - narrate "<&9>Your health increases."
+           - cast REGENERATION target:<player> duration:300 power:1
+           - feed -8
+           - playeffect location:<player.location> effect:fireworks_spark qty:250 offset:0.5
+           - flag player "spell16 reuse:true" duration:5
+           - flag player "SPELL_GCD" duration:2
+           } 
+        - if <player.target.name> != "null" { 
+           - if <player.target.is_player> {
+             - narrate targets:<player.target> "<&9><player.name> casts Temperance I on you."
+             - narrate targets:<player.target> "<&9>Your health increases." }
+           - narrate "<&9>You cast Temperance I on <player.target.name>."
+           - cast REGENERATION target:<player.target> duration:300 power:1
+           - feed -8
+           - playeffect location:<player.target.location> effect:fireworks_spark qty:250 offset:0.5
+           - flag player "spell16 reuse:true" duration:5
+           - flag player "SPELL_GCD" duration:2
+           }

@@ -225,8 +225,10 @@
            } 
         - if <player.target.name> != "null" { 
            - if <player.target.is_player> {
+             - narrate targets:<player.target> "<&9><player.name> casts <green>Light Heal<&9> on you."
              - narrate targets:<player.target> "<&9><player.name> heals you for 2 hitpoints."
              - narrate targets:<player.target> "<&9>You feel better." }
+           - narrate "<&9>You cast <green>Light Heal<&9> on <player.target.name>."
            - narrate "<&9>You heal <player.target.name> for 2 hitpoints."
            - heal 2 target:<player.target>
            - feed -2
@@ -270,8 +272,10 @@
           } 
         - if <player.target.name> != "null" { 
           - if <player.target.is_player> {
+            - narrate targets:<player.target> "<&9><player.name> casts <red>Burst of Flame<&9> on you."
             - narrate targets:<player.target> "<&9>You are burned for 4 damage!"
             - narrate targets:<player.target> "<&9>You feel your skin tingle as <player.name> ignites it." }
+          - narrate "<&9>You cast <red>Burst of Flame<&9> on <player.target.name>."
           - narrate "<&9>You burn <player.target.name> for 4 damage."
           - hurt 4 target:<player.target>
           - feed -4
@@ -315,7 +319,9 @@
           } 
         - if <player.target.name> != "null" { 
           - if <player.target.is_player> {
+            - narrate targets:<player.target> "<&9><player.name> casts <red>Blindness<&9> on you."
             - narrate targets:<player.target> "<&9>You are blinded by <player.name>!" }
+          - narrate "<&9>You cast <red>Blindness<&9> on <player.target.name>."
           - narrate "<&9>You blind <player.target.name>."
           - cast blindness target:<player.target> duration:20 power:5
           - feed -4
@@ -359,7 +365,9 @@
           } 
         - if <player.target.name> != "null" { 
           - if <player.target.is_player> {
+            - narrate targets:<player.target> "<&9><player.name> casts <red>Ensnare<&9> on you."
             - narrate targets:<player.target> "<&9>You are snared by <player.name>!" }
+          - narrate "<&9>You cast <red>Ensnare<&9> on <player.target.name>."
           - narrate "<&9>You snare <player.target.name>."
           - cast slow target:<player.target> duration:20 power:2
           - feed -4
@@ -403,7 +411,9 @@
           } 
         - if <player.target.name> != "null" { 
           - if <player.target.is_player> {
+            - narrate targets:<player.target> "<&9><player.name> casts <red>Tangling Roots<&9> on you."
             - narrate targets:<player.target> "<&9>You are rooted to the ground by <player.name>!" }
+          - narrate "<&9>You cast <red>Tangling Roots<&9> on <player.target.name>."
           - narrate "<&9>You root <player.target.name> to the ground."
           - cast slow target:<player.target> duration:20 power:10
           - feed -6
@@ -442,9 +452,11 @@
           - queue clear
           } 
         - if "<flag.p:spell6 reuse || false>" == false {
+         - narrate "<&9>You cast <red>Firestorm<&9>."
          - narrate "<&9>You summon a firestorm!"
          - foreach <l@<player.location>.find.entities.within[<7>].aslist> {
            - if %value% != <player> {
+             - if <%value%.is_player> narrate targets:%value% "<&9><player.name> casts <red>Firestorm<&9> on you."
              - if <%value%.is_player> narrate targets:%value% "<&9><player.name> burns you for 8 damage."
              - narrate "<&9>Your firestorm burns <%value%.name> for 8 damage."
              - playeffect location:<%value%.location> effect:mobspawner_flames qty:10
@@ -488,9 +500,11 @@
           - queue clear
           } 
         - if "<flag.p:spell7 reuse || false>" == false {
+         - narrate "<&9>You cast <red>Blizzard<&9>."
          - narrate "<&9>You summon a fierce blizzard!"
          - foreach <l@<player.location>.find.entities.within[<7>].aslist> {
            - if %value% != <player> {
+             - if <%value%.is_player> narrate targets:%value% "<&9><player.name> casts <red>Blizzard<&9> on you."
              - if <%value%.is_player> narrate targets:%value% "<&9><player.name> freezes you for 8 damage."
              - narrate "<&9>Your blizzard freezes <%value%.name> for 8 damage."
              - playeffect location:<%value%.location> effect:fireworks_spark qty:750 offset:0.5
@@ -534,9 +548,11 @@
           - queue clear
           } 
         - if "<flag.p:spell8 reuse || false>" == false {
+         - narrate "<&9>You cast <red>Typhoon<&9>."
          - narrate "<&9>You summon a large Typhoon!"
          - foreach <l@<player.location>.find.entities.within[<7>].aslist> {
            - if %value% != <player> {
+             - if <%value%.is_player> narrate targets:%value% "<&9><player.name> casts <red>Typhoon<&9> on you."
              - if <%value%.is_player> narrate targets:%value% "<&9><player.name> drowns you for 8 damage."
              - narrate "<&9>Your typhoon drowns <%value%.name> for 8 damage."
              - playeffect location:<%value%.location> effect:DRIP_WATER qty:500 offset:0.25
@@ -586,7 +602,9 @@
           } 
         - if <player.target.name> != "null" { 
           - if <player.target.is_player> {
+            - narrate targets:<player.target> "<&9><player.name> casts <red>Shrink<&9> on you."
             - narrate targets:<player.target> "<&9><player.name> shrinks you!" }
+          - narrate "<&9>You cast <red>Shrink<&9> on <player.target.name>."
           - narrate "<&9>You shrink <player.target.name>!"
           - age <player.target> baby
           - cast weakness target:<player.target> duration:10 power:0
@@ -631,7 +649,9 @@
           } 
         - if <player.target.name> != "null" { 
           - if <player.target.is_player> {
+            - narrate targets:<player.target> "<&9><player.name> casts <red>Whirlwind<&9> on you."
             - narrate targets:<player.target> "<&9><player.name> blasts you into the air with a powerful Whirlwind!" }
+          - narrate "<&9>You cast <red>Whirlwind<&9> on <player.target.name>."
           - narrate "<&9>You blast <player.target.name> into the air with a powerful Whirlwind!"
           - feed -6
           - playeffect location:<player.target.location> effect:large_smoke qty:100
@@ -672,6 +692,7 @@
           - queue clear
           } 
         - if <player.target.name> == "null" { 
+           - narrate "<&9>You cast <green>Might I<&9>."
            - narrate "<&9>Your arms burst with strength!"
            - cast INCREASE_DAMAGE target:<player> duration:300 power:0
            - feed -8
@@ -681,9 +702,9 @@
            } 
         - if <player.target.name> != "null" { 
            - if <player.target.is_player> {
-             - narrate targets:<player.target> "<&9><player.name> casts Might I on you."
+             - narrate targets:<player.target> "<&9><player.name> casts <green>Might I<&9> on you."
              - narrate targets:<player.target> "<&9>You arms burst with strength!" }
-           - narrate "<&9>You cast Might I on <player.target.name>."
+           - narrate "<&9>You cast <green>Might I<&9> on <player.target.name>."
            - cast INCREASE_DAMAGE target:<player.target> duration:300 power:0
            - feed -8
            - playeffect location:<player.target.location> effect:fireworks_spark qty:250 offset:0.5
@@ -722,6 +743,7 @@
           - queue clear
           } 
         - if <player.target.name> == "null" { 
+           - narrate "<&9>You cast <green>Spirit of Wolf<&9>."
            - narrate "<&9>You feel as quick as a wolf!"
            - cast SPEED target:<player> duration:300 power:0
            - feed -8
@@ -731,9 +753,9 @@
            } 
         - if <player.target.name> != "null" { 
            - if <player.target.is_player> {
-             - narrate targets:<player.target> "<&9><player.name> casts Spirit of Wolf on you."
+             - narrate targets:<player.target> "<&9><player.name> casts <green>Spirit of Wolf<&9> on you."
              - narrate targets:<player.target> "<&9>You feel as quick as a wolf!" }
-           - narrate "<&9>You cast Spirit of Wolf on <player.target.name>."
+           - narrate "<&9>You cast <green>Spirit of Wolf<&9> on <player.target.name>."
            - cast SPEED target:<player.target> duration:300 power:0
            - feed -8
            - playeffect location:<player.target.location> effect:fireworks_spark qty:250 offset:0.5
@@ -772,6 +794,7 @@
           - queue clear
           } 
         - if <player.target.name> == "null" { 
+           - narrate "<&9>You cast <green>Resistance<&9>."
            - narrate "<&9>You feel your resistances improve!"
            - cast DAMAGE_RESISTANCE target:<player> duration:300 power:0
            - feed -8
@@ -781,9 +804,9 @@
            } 
         - if <player.target.name> != "null" { 
            - if <player.target.is_player> {
-             - narrate targets:<player.target> "<&9><player.name> casts Resistance on you."
+             - narrate targets:<player.target> "<&9><player.name> casts <green>Resistance<&9> on you."
              - narrate targets:<player.target> "<&9>You feel your resistances improve!" }
-           - narrate "<&9>You cast Resistance on <player.target.name>."
+           - narrate "<&9>You cast <green>Resistance<&9> on <player.target.name>."
            - cast DAMAGE_RESISTANCE target:<player.target> duration:300 power:0
            - feed -8
            - playeffect location:<player.target.location> effect:fireworks_spark qty:250 offset:0.5
@@ -822,6 +845,7 @@
           - queue clear
           } 
         - if <player.target.name> == "null" { 
+           - narrate "<&9>You cast <green>Rune of Valor I<&9>."
            - narrate "<&9>You feel a mystical shield form around you."
            - cast ABSORPTION target:<player> duration:300 power:1
            - feed -8
@@ -831,9 +855,9 @@
            } 
         - if <player.target.name> != "null" { 
            - if <player.target.is_player> {
-             - narrate targets:<player.target> "<&9><player.name> casts Rune of Valor I on you."
+             - narrate targets:<player.target> "<&9><player.name> casts <green>Rune of Valor I<&9> on you."
              - narrate targets:<player.target> "<&9>You feel a mystical shield form around you." }
-           - narrate "<&9>You cast Rune of Valor I on <player.target.name>."
+           - narrate "<&9>You cast <green>Rune of Valor I<&9> on <player.target.name>."
            - cast ABSORPTION target:<player.target> duration:300 power:1
            - feed -8
            - playeffect location:<player.target.location> effect:fireworks_spark qty:250 offset:0.5
@@ -872,6 +896,7 @@
           - queue clear
           } 
         - if <player.target.name> == "null" { 
+           - narrate "<&9>You cast <green>Temperance I<&9>."
            - narrate "<&9>Your health increases."
            - cast HEALTH_BOOST target:<player> duration:300 power:1
            - feed -8
@@ -881,9 +906,9 @@
            } 
         - if <player.target.name> != "null" { 
            - if <player.target.is_player> {
-             - narrate targets:<player.target> "<&9><player.name> casts Temperance I on you."
+             - narrate targets:<player.target> "<&9><player.name> casts <green>Temperance I<&9> on you."
              - narrate targets:<player.target> "<&9>Your health increases." }
-           - narrate "<&9>You cast Temperance I on <player.target.name>."
+           - narrate "<&9>You cast <green>Temperance I<&9> on <player.target.name>."
            - cast HEALTH_BOOST target:<player.target> duration:300 power:1
            - feed -8
            - playeffect location:<player.target.location> effect:fireworks_spark qty:250 offset:0.5
@@ -922,6 +947,7 @@
           - queue clear
           } 
         - if <player.target.name> == "null" { 
+           - narrate "<&9>You cast <green>Regenerate<&9>."
            - narrate "<&9>You feel your health begin to regenerate."
            - cast REGENERATION target:<player> duration:60 power:0
            - feed -8
@@ -931,9 +957,9 @@
            } 
         - if <player.target.name> != "null" { 
            - if <player.target.is_player> {
-             - narrate targets:<player.target> "<&9><player.name> casts Regenerate on you."
+             - narrate targets:<player.target> "<&9><player.name> casts <green>Regenerate<&9> on you."
              - narrate targets:<player.target> "<&9>You feel your health begin to regenerate." }
-           - narrate "<&9>You cast Regenerate on <player.target.name>."
+           - narrate "<&9>You cast <green>Regenerate<&9> on <player.target.name>."
            - cast REGENERATION target:<player.target> duration:60 power:0
            - feed -8
            - playeffect location:<player.target.location> effect:fireworks_spark qty:250 offset:0.5

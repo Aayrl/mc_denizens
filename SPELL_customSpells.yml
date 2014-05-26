@@ -790,3 +790,53 @@
            - flag player "spell13 reuse:true" duration:5
            - flag player "SPELL_GCD" duration:2
            }
+           
+"spell14":
+   type: item
+   material: 339
+   display name: "<yellow>Spell<&co> Rune of Valor I"
+   recipe:
+    - air|i@rune12|air
+    - i@words7|i@340|i@words7
+    - air|i@rune12|air
+   lore:
+   - <green>Provides your target with 4 hearts
+   - <green>of damage absorption for 5 minutes.
+   - <red>Cooldown<&co> 5 seconds.
+   - <&9>Costs 8 saturation to use cast.
+   enchantments:
+   - durability:1
+   
+"spell14Effect":
+   type: world
+   events:
+     on player right clicks:
+        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Rune of Valor I" queue clear
+        - if <player.flag[SPELL_GCD]> queue clear
+        - if <player.food_level> < 8 {
+          - narrate "<&9>You do not have enough saturation to cast that spell!"
+          - queue clear
+          }
+        - if "<flag.p:spell14 reuse || false>" == true {
+          - narrate "<&9>You must wait <flag.p:spell14 reuse.expiration> before you can cast that spell."
+          - queue clear
+          } 
+        - if <player.target.name> == "null" { 
+           - narrate "<&9>You feel a mystical shield form around you."
+           - cast ABSORPTION target:<player> duration:300 power:1
+           - feed -8
+           - playeffect location:<player.location> effect:fireworks_spark qty:250 offset:0.5
+           - flag player "spell14 reuse:true" duration:5
+           - flag player "SPELL_GCD" duration:2
+           } 
+        - if <player.target.name> != "null" { 
+           - if <player.target.is_player> {
+             - narrate targets:<player.target> "<&9><player.name> casts Rune of Valor I on you."
+             - narrate targets:<player.target> "<&9>You feel a mystical shield form around you." }
+           - narrate "<&9>You cast Rune of Valor I on <player.target.name>."
+           - cast ABSORPTION target:<player.target> duration:300 power:1
+           - feed -8
+           - playeffect location:<player.target.location> effect:fireworks_spark qty:250 offset:0.5
+           - flag player "spell14 reuse:true" duration:5
+           - flag player "SPELL_GCD" duration:2
+           }

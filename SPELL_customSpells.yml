@@ -223,7 +223,7 @@
            - flag player "spell1 reuse:true" duration:10
            - flag player "SPELL_GCD" duration:2
            } 
-           else {
+        - if <p@<player.name>.target.name> != "null" { 
            - if <<p@<player.name>.target>.is_player> {
              - narrate targets:<<p@<player.name>.target> "<&9><player.name> heals you for 2 hitpoints."
              - narrate targets:<<p@<player.name>.target> "<&9>You feel better." }

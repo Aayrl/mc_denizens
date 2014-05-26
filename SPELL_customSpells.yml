@@ -923,7 +923,7 @@
           } 
         - if <player.target.name> == "null" { 
            - narrate "<&9>Your health increases."
-           - cast REGENERATION target:<player> duration:300 power:1
+           - cast REGENERATION target:<player> duration:60 power:0
            - feed -8
            - playeffect location:<player.location> effect:fireworks_spark qty:250 offset:0.5
            - flag player "spell16 reuse:true" duration:5
@@ -934,7 +934,7 @@
              - narrate targets:<player.target> "<&9><player.name> casts Temperance I on you."
              - narrate targets:<player.target> "<&9>Your health increases." }
            - narrate "<&9>You cast Temperance I on <player.target.name>."
-           - cast REGENERATION target:<player.target> duration:300 power:1
+           - cast REGENERATION target:<player.target> duration:60 power:0
            - feed -8
            - playeffect location:<player.target.location> effect:fireworks_spark qty:250 offset:0.5
            - flag player "spell16 reuse:true" duration:5

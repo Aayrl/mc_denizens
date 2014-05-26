@@ -922,7 +922,7 @@
           - queue clear
           } 
         - if <player.target.name> == "null" { 
-           - narrate "<&9>Your health increases."
+           - narrate "<&9>You feel your health begin to regenerate."
            - cast REGENERATION target:<player> duration:60 power:0
            - feed -8
            - playeffect location:<player.location> effect:fireworks_spark qty:250 offset:0.5
@@ -931,9 +931,9 @@
            } 
         - if <player.target.name> != "null" { 
            - if <player.target.is_player> {
-             - narrate targets:<player.target> "<&9><player.name> casts Temperance I on you."
-             - narrate targets:<player.target> "<&9>Your health increases." }
-           - narrate "<&9>You cast Temperance I on <player.target.name>."
+             - narrate targets:<player.target> "<&9><player.name> casts Regenerate on you."
+             - narrate targets:<player.target> "<&9>You feel your health begin to regenerate." }
+           - narrate "<&9>You cast Regenerate on <player.target.name>."
            - cast REGENERATION target:<player.target> duration:60 power:0
            - feed -8
            - playeffect location:<player.target.location> effect:fireworks_spark qty:250 offset:0.5

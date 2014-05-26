@@ -224,13 +224,13 @@
            - flag player "SPELL_GCD" duration:2
            } 
         - if <player.target.name> != "null" { 
-           - if <<player.target>.is_player> {
-             - narrate targets:<<player.target> "<&9><player.name> heals you for 2 hitpoints."
-             - narrate targets:<<player.target> "<&9>You feel better." }
-           - narrate "<&9>You heal <<player.target.name> for 2 hitpoints."
-           - heal 2 target:<<player.target>
+           - if <player.target.is_player> {
+             - narrate targets:<player.target> "<&9><player.name> heals you for 2 hitpoints."
+             - narrate targets:<player.target> "<&9>You feel better." }
+           - narrate "<&9>You heal <player.target.name> for 2 hitpoints."
+           - heal 2 target:<player.target>
            - feed -2
-           - playeffect location:<<player.target.location> effect:potion_break qty:15 data:5
+           - playeffect location:<player.target.location> effect:potion_break qty:15 data:5
            - flag player "spell1 reuse:true" duration:10
            - flag player "SPELL_GCD" duration:2
            }

@@ -676,7 +676,7 @@
            - cast INCREASE_DAMAGE target:<player> duration:300 power:0
            - feed -8
            - playeffect location:<player.location> effect:fireworks_spark qty:250 offset:0.5
-           - flag player "spell1 reuse:true" duration:5
+           - flag player "spell11 reuse:true" duration:5
            - flag player "SPELL_GCD" duration:2
            } 
         - if <player.target.name> != "null" { 
@@ -687,6 +687,56 @@
            - cast INCREASE_DAMAGE target:<player.target> duration:300 power:0
            - feed -8
            - playeffect location:<player.target.location> effect:fireworks_spark qty:250 offset:0.5
-           - flag player "spell1 reuse:true" duration:5
+           - flag player "spell11 reuse:true" duration:5
+           - flag player "SPELL_GCD" duration:2
+           }
+           
+"spell12":
+   type: item
+   material: 339
+   display name: "<yellow>Spell<&co> Spirit of Wolf"
+   recipe:
+    - air|i@rune2|air
+    - i@words9|i@340|i@words9
+    - air|i@rune2|air
+   lore:
+   - <green>Provides your target with
+   - <green>a movement speed boost for 5 minutes.
+   - <red>Cooldown<&co> 5 seconds.
+   - <&9>Costs 8 saturation to use cast.
+   enchantments:
+   - durability:1
+   
+"spell12Effect":
+   type: world
+   events:
+     on player right clicks:
+        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Spirit of Wolf" queue clear
+        - if <player.flag[SPELL_GCD]> queue clear
+        - if <player.food_level> < 8 {
+          - narrate "<&9>You do not have enough saturation to cast that spell!"
+          - queue clear
+          }
+        - if "<flag.p:spell12 reuse || false>" == true {
+          - narrate "<&9>You must wait <flag.p:spell12 reuse.expiration> before you can cast that spell."
+          - queue clear
+          } 
+        - if <player.target.name> == "null" { 
+           - narrate "<&9>You feel as quick as a wolf!"
+           - cast SPEED target:<player> duration:300 power:0
+           - feed -8
+           - playeffect location:<player.location> effect:fireworks_spark qty:250 offset:0.5
+           - flag player "spell12 reuse:true" duration:5
+           - flag player "SPELL_GCD" duration:2
+           } 
+        - if <player.target.name> != "null" { 
+           - if <player.target.is_player> {
+             - narrate targets:<player.target> "<&9><player.name> casts Spirit of Wolf on you."
+             - narrate targets:<player.target> "<&9>You feel as quick as a wolf!" }
+           - narrate "<&9>You cast Spirit of Wolf on <player.target.name>."
+           - cast SPEED target:<player.target> duration:300 power:0
+           - feed -8
+           - playeffect location:<player.target.location> effect:fireworks_spark qty:250 offset:0.5
+           - flag player "spell12 reuse:true" duration:5
            - flag player "SPELL_GCD" duration:2
            }

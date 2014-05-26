@@ -894,7 +894,7 @@
 "spell16":
    type: item
    material: 339
-   display name: "<yellow>Spell<&co> Regenerate"
+   display name: "<yellow>Spell<&co> Regenerate <&9>¦"
    recipe:
     - air|i@rune11|air
     - i@words8|i@340|i@words8
@@ -911,7 +911,7 @@
    type: world
    events:
      on player right clicks:
-        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Regenerate" queue clear
+        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Regenerate <&9>¦" queue clear
         - if <player.flag[SPELL_GCD]> queue clear
         - if <player.food_level> < 8 {
           - narrate "<&9>You do not have enough saturation to cast that spell!"

@@ -214,7 +214,7 @@
           - narrate "<&9>You must wait <flag.p:spell1 reuse.expiration> before you can cast that spell."
           - queue clear
           }
-        - if <p@<player.name>.target.name> == "null" { 
+        - if <player.target.name> == "null" { 
            - narrate "<&9>You heal 2 of your hitpoints."
            - narrate "<&9>You feel better."
            - heal 2
@@ -223,14 +223,14 @@
            - flag player "spell1 reuse:true" duration:10
            - flag player "SPELL_GCD" duration:2
            } 
-        - if <p@<player.name>.target.name> != "null" { 
-           - if <<p@<player.name>.target>.is_player> {
-             - narrate targets:<<p@<player.name>.target> "<&9><player.name> heals you for 2 hitpoints."
-             - narrate targets:<<p@<player.name>.target> "<&9>You feel better." }
-           - narrate "<&9>You heal <<p@<player.name>.target.name> for 2 hitpoints."
-           - heal 2 target:<<p@<player.name>.target>
+        - if <player.target.name> != "null" { 
+           - if <<player.target>.is_player> {
+             - narrate targets:<<player.target> "<&9><player.name> heals you for 2 hitpoints."
+             - narrate targets:<<player.target> "<&9>You feel better." }
+           - narrate "<&9>You heal <<player.target.name> for 2 hitpoints."
+           - heal 2 target:<<player.target>
            - feed -2
-           - playeffect location:<<p@<player.name>.target.location> effect:potion_break qty:15 data:5
+           - playeffect location:<<player.target.location> effect:potion_break qty:15 data:5
            - flag player "spell1 reuse:true" duration:10
            - flag player "SPELL_GCD" duration:2
            }

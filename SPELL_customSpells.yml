@@ -215,6 +215,7 @@
           - queue clear
           }
         - if <player.target.name> == "null" { 
+           - narrate "<&9>You cast <green>Light Heal<&9>."
            - narrate "<&9>You heal 2 of your hitpoints."
            - narrate "<&9>You feel better."
            - heal 2

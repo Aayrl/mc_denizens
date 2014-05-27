@@ -1,12 +1,21 @@
 # -----------------------------------
 # Custom Minecraft 'Spells'
 # Author: Tyler J. Sawyer
-# Version: 1.1
-# Last Updated: 13:34 on April 25, 2014 (Friday)
+# Version: 1.3
+# Last Updated: 20:16 on May 26, 2014 (Monday)
 # -----------------------------------
 # Custom 'spells' that users can create using custom items.
 # Requires certain custom 'rune' items that are also generated in
 # this script and dropped randomly throughout the world.
+#
+# TAGS:
+# Bright Red * : Targeted damage / affliction
+# Dark Red * : AE Damage / affliction
+# Green * : Heal
+# Dark Blue * : Targeted Buff
+# Purple * : AE Buff / Heal / Spell
+# Light Blue * : Utility Spell (Teleport, summon, etc.)
+# Yellow * : Self Spell.
 
 # -----------------------------------
 # SPELL CRAFTING MATERIALS

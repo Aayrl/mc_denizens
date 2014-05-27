@@ -1,6 +1,6 @@
 // -----------------------------------
 // To-Do List
-// Last Updated: 18:17 on May 14, 2014 (Wednesday)
+// Last Updated: 20:40 on May 26, 2014 (Monday)
 // -----------------------------------
 
 - prevent players from hurting each other while fighting a boss.
@@ -42,6 +42,7 @@
 
 - Add Vendor to Skylands
 - Add Vendor to Plane of Fire
+- Add Vendor to Plane of Earth
 
 - Implement Sellers (Vendors that sell items)
 
@@ -54,9 +55,6 @@
 - Update MOTD spam
 
 - Implement Rhok'delar Questline
-
-- Add Thunderfury Binding Drops to Bosses in POEnder.
-- Add Thunderfury Component Drops to Mobs in POEnder.
 
 - Implement Immortalius Questline
 

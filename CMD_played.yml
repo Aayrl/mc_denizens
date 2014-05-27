@@ -15,10 +15,18 @@
          - narrate "<green>IP Address<&co> <player.ip>"
          - narrate "<green>First Login<&co> <player.first_played.time>"
          - narrate "<green>Last Login<&co> <player.last_played.time>"
+         - narrate "<green>Total Time Played<&co> <proc:getTotalTimePlayedNow>"
          - narrate "<green>Time Played This Session<&co> <proc:getTimePlayedNow>"
          
 "getTimePlayedNow":
     type: procedure
     script:
-      - define secondsThisSession <math.as_int:<server.current_time_millis>-<player.flag[loginTime]>>
+      - define secondsThisSession <math.as_int:<math.as_int:<server.current_time_millis>-<player.flag[loginTime]>>/1000>
       - determine "<green>%secondsThisSession% seconds."
+      
+"getTotalTimePlayedNow":
+    type: procedure
+    script:
+      - define secondsThisSession <math.as_int:<math.as_int:<server.current_time_millis>-<player.flag[loginTime]>>/1000>
+      - define totalTimePlayedNow <math.as_int:<player.flag[playTime]>+%secondsThisSession%>
+      - determine "<green>%totalTimePlayedNow% seconds."

@@ -6,18 +6,20 @@
 # -----------------------------------
 # Displays Information to the player when they join the server, as well as 
 # shout random information to the server every few minutes in-game.
+# NOTE : <proc:getTimePlayedNow> is located in CMD_played.yml.
 
 "MOTD-Join":
   type: world
   events:
     on player join:
+    - if <player.flag[playTime]> == "null" flag player "playTime:0"
+    - flag player "loginTime:<server.current_time_millis>"
     - narrate "<green><&lb><&d>MOTD<green><&rb> Welcome to CS Crew Minecraft!"
     - narrate "<green><&lb><&d>MOTD<green><&rb> <red>NEW<green> CSCrew custom chat commands! Type /commands <&lb>Page<&rb> to discover fun commands!"
-    - narrate "<green>Last Login<&co> <player.last_played.time>"
-    - flag player "loginTime:<server.current_time_millis>"
     - determine "<&B><player.name> has connected to the server!"
 
     on player quit:
+    - flag player "playTime:++:<proc:getTimePlayedNow>"
     - determine "<&B><player.name> has disconnected from the server!"
     
     on player first login:

@@ -11,12 +11,6 @@
 - Add more custom potions
 
 - Add more spells
-    - Buff Spells
-        - Strength
-        - Speed
-        - Resistance
-        - Absorption
-        - Regeneration
     - Harming Spells
         - Poison
         - Fire DoT
@@ -26,7 +20,6 @@
         - Strength
         - Absorption
     - Utility Spells
-        - AE Heal
         - Teleport Spells
         - Summon Spells
             - Holding Summon Spell, type /summon [playername]

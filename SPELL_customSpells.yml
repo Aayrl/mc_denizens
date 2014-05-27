@@ -195,7 +195,7 @@
     - air|i@rune1|air
    lore:
    - <green>Heals your target for 1 heart.
-   - <red>Cooldown<&co> 10 seconds.
+   - <red>Cooldown<&co> 3 seconds.
    - <&9>Costs 2 saturation to use cast.
    enchantments:
    - durability:1
@@ -217,24 +217,24 @@
         - if <player.target.name> == "null" { 
            - narrate "<&9>You cast <green>Light Heal<&9>."
            - narrate "<&9>You heal 2 of your hitpoints."
-           - narrate "<&9>You feel better."
+           - narrate "<&9>You feel a little better."
            - heal 2
            - feed -2
            - playeffect location:<player.location> effect:potion_break qty:15 data:5
-           - flag player "spell1 reuse:true" duration:10
+           - flag player "spell1 reuse:true" duration:3
            - flag player "SPELL_GCD" duration:2
            } 
         - if <player.target.name> != "null" { 
            - if <player.target.is_player> {
              - narrate targets:<player.target> "<&9><player.name> casts <green>Light Heal<&9> on you."
              - narrate targets:<player.target> "<&9><player.name> heals you for 2 hitpoints."
-             - narrate targets:<player.target> "<&9>You feel better." }
+             - narrate targets:<player.target> "<&9>You feel a little better." }
            - narrate "<&9>You cast <green>Light Heal<&9> on <player.target.name>."
            - narrate "<&9>You heal <player.target.name> for 2 hitpoints."
            - heal 2 target:<player.target>
            - feed -2
            - playeffect location:<player.target.location> effect:potion_break qty:15 data:5
-           - flag player "spell1 reuse:true" duration:10
+           - flag player "spell1 reuse:true" duration:3
            - flag player "SPELL_GCD" duration:2
            }
          
@@ -967,3 +967,206 @@
            - flag player "spell16 reuse:true" duration:30
            - flag player "SPELL_GCD" duration:2
            }
+           
+"spell17":
+   type: item
+   material: 339
+   display name: "<yellow>Spell<&co> Heal <green>*"
+   recipe:
+    - air|i@rune1|air
+    - i@words9|i@340|i@words9
+    - air|i@rune1|air
+   lore:
+   - <green>Heals your target for 3 hearts.
+   - <red>Cooldown<&co> 3 seconds.
+   - <&9>Costs 5 saturation to use cast.
+   enchantments:
+   - durability:1
+   
+"spell17Effect":
+   type: world
+   events:
+     on player right clicks:
+        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Heal <green>*" queue clear
+        - if <player.flag[SPELL_GCD]> queue clear
+        - if <player.food_level> < 5 {
+          - narrate "<&9>You do not have enough saturation to cast that spell!"
+          - queue clear
+          }
+        - if "<flag.p:spell17 reuse || false>" == true {
+          - narrate "<&9>You must wait <flag.p:spell17 reuse.expiration> before you can cast that spell."
+          - queue clear
+          }
+        - if <player.target.name> == "null" { 
+           - narrate "<&9>You cast <green>Heal<&9>."
+           - narrate "<&9>You heal 6 of your hitpoints."
+           - narrate "<&9>You feel better."
+           - heal 6
+           - feed -5
+           - playeffect location:<player.location> effect:potion_break qty:15 data:5
+           - flag player "spell17 reuse:true" duration:3
+           - flag player "SPELL_GCD" duration:2
+           } 
+        - if <player.target.name> != "null" { 
+           - if <player.target.is_player> {
+             - narrate targets:<player.target> "<&9><player.name> casts <green>Heal<&9> on you."
+             - narrate targets:<player.target> "<&9><player.name> heals you for 6 hitpoints."
+             - narrate targets:<player.target> "<&9>You feel better." }
+           - narrate "<&9>You cast <green>Heal<&9> on <player.target.name>."
+           - narrate "<&9>You heal <player.target.name> for 6 hitpoints."
+           - heal 6 target:<player.target>
+           - feed -5
+           - playeffect location:<player.target.location> effect:potion_break qty:15 data:5
+           - flag player "spell17 reuse:true" duration:3
+           - flag player "SPELL_GCD" duration:2
+           }
+           
+"spell18":
+   type: item
+   material: 339
+   display name: "<yellow>Spell<&co> Greater Heal <green>*"
+   recipe:
+    - air|i@rune1|air
+    - i@words12|i@340|i@words12
+    - air|i@rune1|air
+   lore:
+   - <green>Heals your target for 6 hearts.
+   - <red>Cooldown<&co> 3 seconds.
+   - <&9>Costs 8 saturation to use cast.
+   enchantments:
+   - durability:1
+   
+"spell18Effect":
+   type: world
+   events:
+     on player right clicks:
+        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Greater Heal <green>*" queue clear
+        - if <player.flag[SPELL_GCD]> queue clear
+        - if <player.food_level> < 8 {
+          - narrate "<&9>You do not have enough saturation to cast that spell!"
+          - queue clear
+          }
+        - if "<flag.p:spell18 reuse || false>" == true {
+          - narrate "<&9>You must wait <flag.p:spell18 reuse.expiration> before you can cast that spell."
+          - queue clear
+          }
+        - if <player.target.name> == "null" { 
+           - narrate "<&9>You cast <green>Greater Heal<&9>."
+           - narrate "<&9>You heal 12 of your hitpoints."
+           - narrate "<&9>You feel much better."
+           - heal 12
+           - feed -8
+           - playeffect location:<player.location> effect:potion_break qty:15 data:5
+           - flag player "spell18 reuse:true" duration:3
+           - flag player "SPELL_GCD" duration:2
+           } 
+        - if <player.target.name> != "null" { 
+           - if <player.target.is_player> {
+             - narrate targets:<player.target> "<&9><player.name> casts <green>Greater Heal<&9> on you."
+             - narrate targets:<player.target> "<&9><player.name> heals you for 12 hitpoints."
+             - narrate targets:<player.target> "<&9>You feel much better." }
+           - narrate "<&9>You cast <green>Greater Heal<&9> on <player.target.name>."
+           - narrate "<&9>You heal <player.target.name> for 12 hitpoints."
+           - heal 12 target:<player.target>
+           - feed -8
+           - playeffect location:<player.target.location> effect:potion_break qty:15 data:5
+           - flag player "spell18 reuse:true" duration:3
+           - flag player "SPELL_GCD" duration:2
+           }
+           
+"spell19":
+   type: item
+   material: 339
+   display name: "<yellow>Spell<&co> Complete Heal <green>*"
+   recipe:
+    - air|i@rune1|air
+    - i@words2|i@340|i@words2
+    - air|i@rune1|air
+   lore:
+   - <green>Heals your target for 15 hearts.
+   - <red>Cooldown<&co> 3 seconds.
+   - <&9>Costs 15 saturation to use cast.
+   enchantments:
+   - durability:1
+   
+"spell19Effect":
+   type: world
+   events:
+     on player right clicks:
+        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Complete Heal <green>*" queue clear
+        - if <player.flag[SPELL_GCD]> queue clear
+        - if <player.food_level> < 15 {
+          - narrate "<&9>You do not have enough saturation to cast that spell!"
+          - queue clear
+          }
+        - if "<flag.p:spell19 reuse || false>" == true {
+          - narrate "<&9>You must wait <flag.p:spell19 reuse.expiration> before you can cast that spell."
+          - queue clear
+          }
+        - if <player.target.name> == "null" { 
+           - narrate "<&9>You cast <green>Complete Heal<&9>."
+           - narrate "<&9>You heal 30 of your hitpoints."
+           - narrate "<&9>You feel completely healed."
+           - heal 30
+           - feed -15
+           - playeffect location:<player.location> effect:potion_break qty:15 data:5
+           - flag player "spell19 reuse:true" duration:3
+           - flag player "SPELL_GCD" duration:2
+           } 
+        - if <player.target.name> != "null" { 
+           - if <player.target.is_player> {
+             - narrate targets:<player.target> "<&9><player.name> casts <green>Complete Heal<&9> on you."
+             - narrate targets:<player.target> "<&9><player.name> heals you for 30 hitpoints."
+             - narrate targets:<player.target> "<&9>You feel completely healed." }
+           - narrate "<&9>You cast <green>Complete Heal<&9> on <player.target.name>."
+           - narrate "<&9>You heal <player.target.name> for 30 hitpoints."
+           - heal 30 target:<player.target>
+           - feed -15
+           - playeffect location:<player.target.location> effect:potion_break qty:15 data:5
+           - flag player "spell19 reuse:true" duration:3
+           - flag player "SPELL_GCD" duration:2
+           }
+           
+"spell20":
+   type: item
+   material: 339
+   display name: "<yellow>Spell<&co> Wave of Light <&5>*"
+   recipe:
+    - air|i@rune6|air
+    - i@words11|i@340|i@words11
+    - air|i@rune6|air
+   lore:
+   - <green>Heals all players within 10 blocks
+   - <green>for 5 hearts.
+   - <red>Cooldown<&co> 20 seconds.
+   - <&9>Costs 10 saturation to use cast.
+   enchantments:
+   - durability:1
+   
+"spell20Effect":
+   type: world
+   events:
+     on player right clicks:
+        - if <player.item_in_hand.display> != "<yellow>Spell<&co> Wave of Light <&5>*" queue clear
+        - if <player.flag[SPELL_GCD]> queue clear
+        - if <player.food_level> < 10 {
+          - narrate "<&9>You do not have enough saturation to cast that spell!"
+          - queue clear
+          }
+        - if "<flag.p:spell20 reuse || false>" == true {
+          - narrate "<&9>You must wait <flag.p:spell20 reuse.expiration> before you can cast that spell."
+          - queue clear
+          } 
+        - if "<flag.p:spell20 reuse || false>" == false {
+         - narrate "<&9>You cast <green>Wave of Light<&9>."
+         - foreach <l@<player.location>.find.players.within[<10>].aslist> {
+           - if <%value%.is_player> narrate targets:%value% "<&9><player.name> casts <green>Wave of Light<&9> on you."
+           - if <%value%.is_player> narrate targets:%value% "<&9><player.name> heals you for 10 hitpoints."
+           - narrate "<&9>Your <green>Wave of Light<&9> heals <%value%.name> for 10 hitpoints."
+           - playeffect location:<%value%.location> effect:potion_break qty:15 data:5
+           - heal 10 target:%value%
+           }
+         - feed -10
+         - flag player "spell20 reuse:true" duration:20
+         - flag player "SPELL_GCD" duration:2
+         }

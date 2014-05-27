@@ -6,7 +6,7 @@
 # -----------------------------------
 # Displays Information to the player when they join the server, as well as 
 # shout random information to the server every few minutes in-game.
-# NOTE : <proc:getTimePlayedNow> is located in CMD_played.yml.
+# NOTE : <proc:getTimePlayedNowSeconds> is located in CMD_played.yml.
 
 "MOTD-Join":
   type: world
@@ -19,7 +19,7 @@
     - determine "<&B><player.name> has connected to the server!"
 
     on player quit:
-    - flag player "playTime:++:<proc:getTimePlayedNow>"
+    - flag player playTime:++:<proc:getTimePlayedNowSeconds>
     - determine "<&B><player.name> has disconnected from the server!"
     
     on player first login:

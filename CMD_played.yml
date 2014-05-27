@@ -22,11 +22,11 @@
     type: procedure
     script:
       - define thisSessionSec <math.as_int:<math.as_int:<server.current_time_millis>-<player.flag[loginTime]>>/1000>
-      - define timeDays <math.as_int:%thisSessionSec%/86400>
+      - define timeDays <math.round_down:%thisSessionSec%/86400>
       - define thisSessionSec <math.as_int:%thisSessionSec%-<math.as_int:%timeDays%*86400>>
-      - define timeHours <math.as_int:%thisSessionSec%/3600>
+      - define timeHours <math.round_down:%thisSessionSec%/3600>
       - define thisSessionSec <math.as_int:%thisSessionSec%-<math.as_int:%timeHours%*3600>>
-      - define timeMinutes <math.as_int:%thisSessionSec%/60>
+      - define timeMinutes <math.round_down:%thisSessionSec%/60>
       - define thisSessionSec <math.as_int:%thisSessionSec%-<math.as_int:%timeMinutes%*60>>
       - determine "<green>%timeDays%d %timeHours%h %timeMinutes%m %thisSessionSec%s"
       
@@ -41,10 +41,10 @@
     script:
       - define secondsThisSession <math.as_int:<math.as_int:<server.current_time_millis>-<player.flag[loginTime]>>/1000>
       - define totalSecPlayedNow <math.as_int:<player.flag[playTime]>+%secondsThisSession%>
-      - define timeDays <math.as_int:%totalSecPlayedNow%/86400>
+      - define timeDays <math.round_down:%totalSecPlayedNow%/86400>
       - define totalSecPlayedNow <math.as_int:%totalSecPlayedNow%-<math.as_int:%timeDays%*86400>>
-      - define timeHours <math.as_int:%totalSecPlayedNow%/3600>
+      - define timeHours <math.round_down:%totalSecPlayedNow%/3600>
       - define totalSecPlayedNow <math.as_int:%totalSecPlayedNow%-<math.as_int:%timeHours%*3600>>
-      - define timeMinutes <math.as_int:%totalSecPlayedNow%/60>
+      - define timeMinutes <math.round_down:%totalSecPlayedNow%/60>
       - define totalSecPlayedNow <math.as_int:%totalSecPlayedNow%-<math.as_int:%timeMinutes%*60>>
       - determine "<green>%timeDays%d %timeHours%h %timeMinutes%m %totalSecPlayedNow%s"

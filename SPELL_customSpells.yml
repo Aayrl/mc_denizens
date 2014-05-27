@@ -1132,9 +1132,9 @@
    material: 339
    display name: "<yellow>Spell<&co> Wave of Light <&5>*"
    recipe:
-    - air|i@rune6|air
-    - i@words11|i@340|i@words11
-    - air|i@rune6|air
+    - air|i@rune1|air
+    - i@words5|i@340|i@words5
+    - air|i@rune1|air
    lore:
    - <green>Heals all players within 10 blocks
    - <green>for 5 hearts.

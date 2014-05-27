@@ -83,3 +83,20 @@
    enchantments:
    - durability:8
    - protection_fall:8
+
+# Tier 2 Armor Set Bonus Effect
+"TIER2_ARMORSETBONUS_EFFECT":
+   type: world
+   events:
+     on player damaged by entity:
+       - if <player.equipment.helmet.display> == "<&5>Dragonforged Helm" 
+         && <player.equipment.chestplate.display> == "<&5>Dragonforged Chestpiece" 
+         && <player.equipment.leggings.display> == "<&5>Dragonforged Leggings" 
+         && <player.equipment.boots.display> == "<&5>Dragonforged Boots" {
+         - if <player.flag[player_tier2armorproc]> queue clear
+         - flag player player_tier2armorproc duration:0.5s
+         - narrate "<&9>Your <&5>Dragonforged Armor Set<&9> siphons 1 health from <context.damager.name>."
+         - hurt 1 target:<context.damager>
+         - heal 1
+         - playeffect location:<context.damager.location> effect:ENDER_SIGNAL qty:20
+         }

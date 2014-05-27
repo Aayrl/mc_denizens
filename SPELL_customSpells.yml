@@ -681,7 +681,7 @@
     - air|i@rune11|air
    lore:
    - <green>Provides your target with
-   - <green>a strength boost for 5 minutes.
+   - <green>a strength boost for 10 minutes.
    - <red>Cooldown<&co> 5 seconds.
    - <&9>Costs 8 saturation to use cast.
    enchantments:
@@ -704,7 +704,7 @@
         - if <player.target.name> == "null" { 
            - narrate "<&9>You cast <green>Might I<&9>."
            - narrate "<&9>Your arms burst with strength!"
-           - cast INCREASE_DAMAGE target:<player> duration:300 power:0
+           - cast INCREASE_DAMAGE target:<player> duration:600 power:0
            - feed -8
            - playeffect location:<player.location> effect:fireworks_spark qty:250 offset:0.5
            - flag player "spell11 reuse:true" duration:5
@@ -715,7 +715,7 @@
              - narrate targets:<player.target> "<&9><player.name> casts <green>Might I<&9> on you."
              - narrate targets:<player.target> "<&9>You arms burst with strength!" }
            - narrate "<&9>You cast <green>Might I<&9> on <player.target.name>."
-           - cast INCREASE_DAMAGE target:<player.target> duration:300 power:0
+           - cast INCREASE_DAMAGE target:<player.target> duration:600 power:0
            - feed -8
            - playeffect location:<player.target.location> effect:fireworks_spark qty:250 offset:0.5
            - flag player "spell11 reuse:true" duration:5
@@ -732,7 +732,7 @@
     - air|i@rune2|air
    lore:
    - <green>Provides your target with
-   - <green>a movement speed boost for 5 minutes.
+   - <green>a movement speed boost for 10 minutes.
    - <red>Cooldown<&co> 5 seconds.
    - <&9>Costs 8 saturation to use cast.
    enchantments:
@@ -755,7 +755,7 @@
         - if <player.target.name> == "null" { 
            - narrate "<&9>You cast <green>Spirit of Wolf<&9>."
            - narrate "<&9>You feel as quick as a wolf!"
-           - cast SPEED target:<player> duration:300 power:0
+           - cast SPEED target:<player> duration:600 power:0
            - feed -8
            - playeffect location:<player.location> effect:fireworks_spark qty:250 offset:0.5
            - flag player "spell12 reuse:true" duration:5
@@ -766,7 +766,7 @@
              - narrate targets:<player.target> "<&9><player.name> casts <green>Spirit of Wolf<&9> on you."
              - narrate targets:<player.target> "<&9>You feel as quick as a wolf!" }
            - narrate "<&9>You cast <green>Spirit of Wolf<&9> on <player.target.name>."
-           - cast SPEED target:<player.target> duration:300 power:0
+           - cast SPEED target:<player.target> duration:600 power:0
            - feed -8
            - playeffect location:<player.target.location> effect:fireworks_spark qty:250 offset:0.5
            - flag player "spell12 reuse:true" duration:5
@@ -783,7 +783,7 @@
     - air|i@rune8|air
    lore:
    - <green>Provides your target with
-   - <green>boosted resistances for 5 minutes.
+   - <green>boosted resistances for 10 minutes.
    - <red>Cooldown<&co> 5 seconds.
    - <&9>Costs 8 saturation to use cast.
    enchantments:
@@ -806,7 +806,7 @@
         - if <player.target.name> == "null" { 
            - narrate "<&9>You cast <green>Resistance<&9>."
            - narrate "<&9>You feel your resistances improve!"
-           - cast DAMAGE_RESISTANCE target:<player> duration:300 power:0
+           - cast DAMAGE_RESISTANCE target:<player> duration:600 power:0
            - feed -8
            - playeffect location:<player.location> effect:fireworks_spark qty:250 offset:0.5
            - flag player "spell13 reuse:true" duration:5
@@ -817,7 +817,7 @@
              - narrate targets:<player.target> "<&9><player.name> casts <green>Resistance<&9> on you."
              - narrate targets:<player.target> "<&9>You feel your resistances improve!" }
            - narrate "<&9>You cast <green>Resistance<&9> on <player.target.name>."
-           - cast DAMAGE_RESISTANCE target:<player.target> duration:300 power:0
+           - cast DAMAGE_RESISTANCE target:<player.target> duration:600 power:0
            - feed -8
            - playeffect location:<player.target.location> effect:fireworks_spark qty:250 offset:0.5
            - flag player "spell13 reuse:true" duration:5
@@ -834,7 +834,7 @@
     - air|i@rune12|air
    lore:
    - <green>Provides your target with 4 hearts
-   - <green>of damage absorption for 5 minutes.
+   - <green>of damage absorption for 10 minutes.
    - <red>Cooldown<&co> 5 seconds.
    - <&9>Costs 8 saturation to use cast.
    enchantments:
@@ -857,7 +857,7 @@
         - if <player.target.name> == "null" { 
            - narrate "<&9>You cast <green>Rune of Valor I<&9>."
            - narrate "<&9>You feel a mystical shield form around you."
-           - cast ABSORPTION target:<player> duration:300 power:1
+           - cast ABSORPTION target:<player> duration:600 power:1
            - feed -8
            - playeffect location:<player.location> effect:fireworks_spark qty:250 offset:0.5
            - flag player "spell14 reuse:true" duration:5
@@ -868,7 +868,7 @@
              - narrate targets:<player.target> "<&9><player.name> casts <green>Rune of Valor I<&9> on you."
              - narrate targets:<player.target> "<&9>You feel a mystical shield form around you." }
            - narrate "<&9>You cast <green>Rune of Valor I<&9> on <player.target.name>."
-           - cast ABSORPTION target:<player.target> duration:300 power:1
+           - cast ABSORPTION target:<player.target> duration:600 power:1
            - feed -8
            - playeffect location:<player.target.location> effect:fireworks_spark qty:250 offset:0.5
            - flag player "spell14 reuse:true" duration:5
@@ -885,7 +885,7 @@
     - air|i@rune2|air
    lore:
    - <green>Provides your target with 4 hearts
-   - <green>of health for 5 minutes.
+   - <green>of health for 10 minutes.
    - <red>Cooldown<&co> 5 seconds.
    - <&9>Costs 8 saturation to use cast.
    enchantments:
@@ -908,7 +908,7 @@
         - if <player.target.name> == "null" { 
            - narrate "<&9>You cast <green>Temperance I<&9>."
            - narrate "<&9>Your health increases."
-           - cast HEALTH_BOOST target:<player> duration:300 power:1
+           - cast HEALTH_BOOST target:<player> duration:600 power:1
            - feed -8
            - playeffect location:<player.location> effect:fireworks_spark qty:250 offset:0.5
            - flag player "spell15 reuse:true" duration:5
@@ -919,7 +919,7 @@
              - narrate targets:<player.target> "<&9><player.name> casts <green>Temperance I<&9> on you."
              - narrate targets:<player.target> "<&9>Your health increases." }
            - narrate "<&9>You cast <green>Temperance I<&9> on <player.target.name>."
-           - cast HEALTH_BOOST target:<player.target> duration:300 power:1
+           - cast HEALTH_BOOST target:<player.target> duration:600 power:1
            - feed -8
            - playeffect location:<player.target.location> effect:fireworks_spark qty:250 offset:0.5
            - flag player "spell15 reuse:true" duration:5

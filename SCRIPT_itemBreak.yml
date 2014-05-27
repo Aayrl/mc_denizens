@@ -1,0 +1,14 @@
+# -----------------------------------
+# Item Break Script
+# @author: Tyler J. Sawyer
+# @version: 1.0
+# Last Updated: 12:16 on May 27, 2014 (Tuesday)
+# -----------------------------------
+# Tell a player when they break an item.
+
+"ItemBreakEvent":
+  type: world
+  events:
+    on player breaks item:
+    - if <context.item.display> == null narrate "<red>Your <context.item.material.formatted><red> broke!"
+    - if <context.item.display> != null narrate "<red>You broke your <context.item.display><red>!"

@@ -1,6 +1,12 @@
-# Tyler J. Sawyer
-# This removes all levels from players when they die.
-# This also damages all their items by 25%.
+# -----------------------------------
+# Player Death Event Script
+# @author: Tyler J. Sawyer
+# @version: 2.0
+# Last Updated: 12:25 on May 27, 2014 (Tuesday)
+# -----------------------------------
+# Remove all levels from players when they die.
+# Respawn players at their home location (if one is set)
+# TO DO : Damage all items by 25% on death. (Unsure)
 
 "onPlayerDeathEvent":
   type: world
@@ -14,10 +20,11 @@
     - narrate "<red>You have lost all of your experience!"
     #- narrate "<red>All gear in your inventory have taken a 25% durability hit."
     - execute as_server "xp -50000L <player.name>"
-    #on player respawns:
-    #- narrate "<yellow>You have respawned at your last saved home location."
-    #- teleport <player> <player.flag[respawnpoint]>
-    #- playeffect location:<player.location> effect:portal qty:1000
+    on player respawns:
+    - if <player.flag[respawnpoint]> {
+      - narrate "<yellow>You have respawned at your last saved home location."
+      - determine <player.flag[respawnpoint]>
+      }
     #on testinv command:
     #- narrate "<&5>Running testinv command.."
     #- foreach <p@<player.name>.inventory<inventory.list_contents>.as_list> {

@@ -83,3 +83,19 @@
    enchantments:
    - durability:6
    - protection_fall:6
+
+# Tier 1 Armor Set Bonus Effect
+"TIER1_ARMORSETBONUS_EFFECT":
+   type: world
+   events:
+     on player damaged by entity:
+       - if <player.equipment.helmet.display> == "<&5>Flameforged Helm" 
+         && <player.equipment.chestplate.display> == "<&5>Flameforged Chestpiece" 
+         && <player.equipment.leggings.display> == "<&5>Flameforged Kilt" 
+         && <player.equipment.boots.display> == "<&5>Flameforged Boots" {
+         - if <player.flag[player_tier1armorproc]> queue clear
+         - flag player player_tier1armorproc duration:0.5s
+         - narrate "<&9>Your <&5>Flameforged Armor Set<&9> harms <context.damager.name> for 2 damage!"
+         - hurt 4 target:<context.damager>
+         - playeffect location:<context.damager.location> effect:lava qty:20
+         }

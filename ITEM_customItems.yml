@@ -1878,7 +1878,7 @@
          - narrate "<aqua>Perhaps you should speak to the Windseeker with the dormant blade in hand?"
          }
        - if <player.item_in_hand.display> == "<&6>Thunderfury<&cm> Blessed Blade of the Windseeker" {
-         - announce "<aqua><player.name> teleports to the Skylands using their <&6>Thunderfury<&cm> Blessed Blade of the Windseeker<aqua>."
+         - announce "<yellow><player.name> teleported to the Skylands using their <&6>Thunderfury<&cm> Blessed Blade of the Windseeker<yellow>."
          - narrate "<aqua>You call upon the spirit of the Windseeker to whisk you away to the Skylands."
          - teleport <player> "376,253,575,skylands"
          - playeffect location:<player.location> effect:portal qty:1000

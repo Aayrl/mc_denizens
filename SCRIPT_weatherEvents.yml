@@ -1,13 +1,49 @@
-# Weather Events
-# Tyler J. Sawyer
-# Random announcements for various weather events.
+# -----------------------------------
+# Weather Events Script
+# @author: Tyler J. Sawyer
+# @version: 2.0
+# Last Updated: 11:50 on May 27, 2014 (Tuesday)
+# -----------------------------------
+# Notifies players of weather events and time changes 
+# in particular worlds.
 
 "weatherEvents":
   type: world
-
   events:
-    on weather rains:
-    - announce "<yellow>It begins to rain."
+    on weather rains in w@world:
+      - foreach <server.list_online_players.aslist> {
+        - if <%value%.location.world.name> == "world" {
+          - narrate targets:%value% "<yellow>It begins to rain."
+          }
+        }
+    on weather clears in w@world:
+      - foreach <server.list_online_players.aslist> {
+        - if <%value%.location.world.name> == "world" {
+          - narrate targets:%value% "<yellow>The rain dissipates."
+          }
+        }
     
-    on weather clears:
-    - announce "<yellow>The rain dissipates."
+    on 5:00 in w@world:
+      - foreach <server.list_online_players.aslist> {
+        - if <%value%.location.world.name> == "world" {
+          - narrate targets:%value% "<yellow>The sun rises on the eastern horizon."
+          }
+        }
+    on 11:00 in w@world:
+      - foreach <server.list_online_players.aslist> {
+        - if <%value%.location.world.name> == "world" {
+          - narrate targets:%value% "<yellow>It is now high noon."
+          }
+        }
+    on 18:00 in w@world:
+      - foreach <server.list_online_players.aslist> {
+        - if <%value%.location.world.name> == "world" {
+          - narrate targets:%value% "<yellow>The sun sets on the western horizon."
+          }
+        }
+    on 0:00 in w@world:
+      - foreach <server.list_online_players.aslist> {
+        - if <%value%.location.world.name> == "world" {
+          - narrate targets:%value% "<yellow>It is now midnight."
+          }
+        }

@@ -1,34 +1,24 @@
-# Message of the day
-# Simple usage of the "on player join" event.
-# Symbols:
-# <&co> : 
-# newline <&nl>
-# <&cm> ,
-# <&ss> §
-# <&sq> '
-# <&dq> "
-# <&lb> [
-# <&rb> ]
-# <&cl> {
-# <&cr> }
-# <&auml> ä
-# <&auml> Ä
-# <&ouml> ö
-# <&Ouml> Ö
-# <&uuml> ü
-# <&Uuml> Ü
+# -----------------------------------
+# Message of the Day Script
+# @author: Tyler J. Sawyer
+# @version: 2.0
+# Last Updated: 11:42 on May 27, 2014 (Tuesday)
+# -----------------------------------
+# Displays Information to the player when they join the server, as well as 
+# shout random information to the server every few minutes in-game.
 
-"MOTD":
+"MOTD-Join":
   type: world
-
   events:
     on player join:
     - narrate "<green><&lb><&d>MOTD<green><&rb> Welcome to CS Crew Minecraft!"
     - narrate "<green><&lb><&d>MOTD<green><&rb> <red>NEW<green> CSCrew custom chat commands! Type /commands <&lb>Page<&rb> to discover fun commands!"
     - announce "<yellow><player.name> has gained consciousness!"
+    - determine FULFILLED
 
     on player quit:
     - announce "<yellow><player.name> has been knocked unconscious!"
+    - determine FULFILLED
     
     on command:
     - if <player.name> != "Aayrl" && <player.name> != "Jennavb13" && <player.name> != "mtotho" && <player.name> != "lenois" && !<context.server> {
@@ -37,43 +27,21 @@
 
 "MOTD-Announce":
   type: world
-  
   events:
-    on 5:00 in w@world:
-      - announce "<yellow>The sun rises on the eastern horizon."
-    on 11:00 in w@world:
-      - announce "<yellow>It is now high noon."
-    on 18:00 in w@world:
-      - announce "<yellow>The sun sets on the western horizon."
-    on 0:00 in w@world:
-      - announce "<yellow>It is now midnight."
     on 7:00 in w@world:
-      - random 8
-      - announce "<green><&lb><&d>SERVER<green><&rb> <red>NEW<green> CSCrew custom chat commands! Type /commands <&lb>Page<&rb> to discover fun commands!"
-      - announce "<green><&lb><&d>SERVER<green><&rb> Need a quick way back to spawn? Try using the <gold>/spawn<green> command!"
-      - announce "<green><&lb><&d>SERVER<green><&rb> Enable CombatText with the <gold>/combattext on/off/hitsmode<green> command!"
-      - announce "<green><&lb><&d>SERVER<green><&rb> Point your mouse at an enemy and type <gold>/con<green> to see how difficult it is to defeat!"
-      - announce "<green><&lb><&d>SERVER<green><&rb> You can use <gold>/sethome<green> to set a home point and return to it once every 30 minutes with the <gold>/home<green> command."
-      - announce "<green><&lb><&d>SERVER<green><&rb> Claim your daily reward using the <gold>/claim<green> command! Diamonds await you!"
-      - announce "<green><&lb><&d>SERVER<green><&rb> Speak with Lord Aayrl about attunement to the Plane of Ender.. epic battles await you!"
-      - announce "<green><&lb><&d>SERVER<green><&rb> All mobs now have a chance to drop exciting new loot! Go kill some mobs!"
+      - announce "<green><&lb><&d>SERVER<green><&rb> <proc:MOTD_Chat_Content>"
     on 14:00 in w@world:
-      - random 8
-      - announce "<green><&lb><&d>SERVER<green><&rb> <red>NEW<green> CSCrew custom chat commands! Type /commands <&lb>Page<&rb> to discover fun commands!"
-      - announce "<green><&lb><&d>SERVER<green><&rb> Need a quick way back to spawn? Try using the <gold>/spawn<green> command!"
-      - announce "<green><&lb><&d>SERVER<green><&rb> Enable CombatText with the <gold>/combattext on/off/hitsmode<green> command!"
-      - announce "<green><&lb><&d>SERVER<green><&rb> Point your mouse at an enemy and type <gold>/con<green> to see how difficult it is to defeat!"
-      - announce "<green><&lb><&d>SERVER<green><&rb> You can use <gold>/sethome<green> to set a home point and return to it once every 30 minutes with the <gold>/home<green> command."
-      - announce "<green><&lb><&d>SERVER<green><&rb> Claim your daily reward using the <gold>/claim<green> command! Diamonds await you!"
-      - announce "<green><&lb><&d>SERVER<green><&rb> Speak with Lord Aayrl about attunement to the Plane of Ender.. epic battles await you!"
-      - announce "<green><&lb><&d>SERVER<green><&rb> All mobs now have a chance to drop exciting new loot! Go kill some mobs!"
+      - announce "<green><&lb><&d>SERVER<green><&rb> <proc:MOTD_Chat_Content>"
     on 21:00 in w@world:
-      - random 8
-      - announce "<green><&lb><&d>SERVER<green><&rb> <red>NEW<green> CSCrew custom chat commands! Type /commands <&lb>Page<&rb> to discover fun commands!"
-      - announce "<green><&lb><&d>SERVER<green><&rb> Need a quick way back to spawn? Try using the <gold>/spawn<green> command!"
-      - announce "<green><&lb><&d>SERVER<green><&rb> Enable CombatText with the <gold>/combattext on/off/hitsmode<green> command!"
-      - announce "<green><&lb><&d>SERVER<green><&rb> Point your mouse at an enemy and type <gold>/con<green> to see how difficult it is to defeat!"
-      - announce "<green><&lb><&d>SERVER<green><&rb> You can use <gold>/sethome<green> to set a home point and return to it once every 30 minutes with the <gold>/home<green> command."
-      - announce "<green><&lb><&d>SERVER<green><&rb> Claim your daily reward using the <gold>/claim<green> command! Diamonds await you!"
-      - announce "<green><&lb><&d>SERVER<green><&rb> Speak with Lord Aayrl about attunement to the Plane of Ender.. epic battles await you!"
-      - announce "<green><&lb><&d>SERVER<green><&rb> All mobs now have a chance to drop exciting new loot! Go kill some mobs!"
+      - announce "<green><&lb><&d>SERVER<green><&rb> <proc:MOTD_Chat_Content>"
+      
+"MOTD_Chat_Content":
+    type: procedure
+    script:
+      - random 6
+      - determine "<&lb><red>TIP<green><&rb> Type <gold>/commands <green><&lb><white>Page<green><&rb> to learn about our custom commands!"
+      - determine "<&lb><red>TIP<green><&rb> Need a quick way back to spawn? Try using the <gold>/spawn<green> command!"
+      - determine "<&lb><red>TIP<green><&rb> Enable CombatText with the <gold>/combattext on/off/hitsmode<green> command!"
+      - determine "<&lb><red>TIP<green><&rb> You can use <gold>/sethome<green> to set a home point and return to it once every 30 minutes with the <gold>/home<green> command."
+      - determine "<&lb><red>TIP<green><&rb> Claim your daily reward using the <gold>/claim<green> command!"
+      - determine "Trouble is stirring in the Plane of Earth...perhaps you should prepare by defeating powerful creatures in the Plane of Ender?"

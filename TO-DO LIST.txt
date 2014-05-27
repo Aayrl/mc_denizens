@@ -50,10 +50,6 @@
 
 - Revamp the Claims system
 
-- Fix the time of day and weather chat messages to be world-wide, not server-wide.
-
-- Update MOTD spam
-
 - Implement Rhok'delar Questline
 
 - Implement Immortalius Questline
@@ -93,3 +89,40 @@ BOSSES
 - Plane of Ender
     - Darth Schnyder
     - Lord Nefarious
+- Plane of Earth
+    - Prince Klaknak
+    - Stormcaller
+    - Granite (Hill Giant)
+    - Rotfiend
+    - Dark Knight
+    - Defend the Graveyard Event
+        - Number of mobs you can kill before you die.
+        - Cannot /spawn or /home (or be summoned / teleported out)
+        - Each time a mob dies, increment counter.
+        - On start, flag player as GYARDEVENT
+        - On death, remove flag.
+        - talk to groundskeeper to start/end event.
+        - If you have died, talk to groundskeeper for reward.
+        - Count will be set to 0 after reward has been claimed and you can start event again.
+        - Rewards:
+            - 0 - 10 : 1 'green' loot.
+            - 11 - 25 : 2 'green' loot.
+            - 26 - 50 : 1 'blue' loot.
+            - 51 - 75 : 2 'blue' loot.
+            - 76 - 100 : 1 'purple' loot.
+            - 101 - 250 : 2 'purple' loot.
+            - 250 + : 3 'purple' loot, crafting item for tier 4.
+        - Credit Rewards:
+            - 20 credits for every mob kill.
+        - High Score List:
+            - list the top 5 scores.
+            - NPC flag position 1,2,3,4,5.
+            - If flag[player_gyScore] > npc.flag[position1]: la de da.
+            - On Highscores command:
+                - GRAVEYARD EVENT HIGH SCORES
+                - 1. 10204 --- PLAYER
+                - 2. 405 --- PLAYER
+                - 3. 401 --- PLAYER
+                - 4. 126 --- PLAYER
+                - 5. 2 --- PLAYER
+    - Tunare

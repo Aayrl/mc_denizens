@@ -25,6 +25,11 @@
       - narrate "<yellow>You have respawned at your last saved home location."
       - determine <player.flag[respawnpoint]>
       }
+    on player respawns at bed:
+    - if <player.flag[respawnpoint]> {
+      - narrate "<yellow>You have respawned at your last saved home location."
+      - determine <player.flag[respawnpoint]>
+      }
     #on testinv command:
     #- narrate "<&5>Running testinv command.."
     #- foreach <p@<player.name>.inventory<inventory.list_contents>.as_list> {

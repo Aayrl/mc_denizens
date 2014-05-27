@@ -13,12 +13,16 @@
     on player join:
     - narrate "<green><&lb><&d>MOTD<green><&rb> Welcome to CS Crew Minecraft!"
     - narrate "<green><&lb><&d>MOTD<green><&rb> <red>NEW<green> CSCrew custom chat commands! Type /commands <&lb>Page<&rb> to discover fun commands!"
-    - announce "<yellow><player.name> has gained consciousness!"
-    - determine FULFILLED
+    - determine "<&B><player.name> has connected to the server!"
 
     on player quit:
-    - announce "<yellow><player.name> has been knocked unconscious!"
-    - determine FULFILLED
+    - determine "<&B><player.name> has disconnected from the server!"
+    
+    on player first login:
+    - determine "<&B>Welcome to our server<&cm> <player.name>!"
+    
+    on player kicked:
+    - determine "<&B><player.name> was kicked from the server!"
     
     on command:
     - if <player.name> != "Aayrl" && <player.name> != "Jennavb13" && <player.name> != "mtotho" && <player.name> != "lenois" && !<context.server> {

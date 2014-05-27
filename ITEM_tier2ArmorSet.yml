@@ -96,6 +96,7 @@
          - if <player.flag[player_tier2armorproc]> queue clear
          - flag player player_tier2armorproc duration:0.5s
          - narrate "<&9>Your <&5>Dragonforged Armor Set<&9> siphons 1 health from <context.damager.name>."
+         - if <context.damager.is_player> narrate targets:<context.damager> "<&9><player.name><&sq>s <&5>Dragonforged Armor Set<&9> leeches 1 hitpoint from you!"
          - hurt 1 target:<context.damager>
          - heal 1
          - playeffect location:<context.damager.location> effect:ENDER_SIGNAL qty:20

@@ -64,7 +64,7 @@ aohakkar:
     # Avatar of Hakkar Movement Speed (Blocks / Tick)
     aoh_Movement_Speed: 2
     # Avatar of Hakkar's Spawnpoint
-    aoh_SpawnPoint: "23,69,536,world"
+    aoh_SpawnPoint: "22.5,31,516.4,world"
     # Avatar of Hakkar Respawn Timer in seconds (43200 = 12 hrs)
     aoh_Respawn_Timer: 43200
     # Avatar of Hakkar XP Amount he drops on death
@@ -215,13 +215,13 @@ aohakkar:
            
 "AOH_Knockback_Ability":
    type: task
-   # This knocks the player up in the air 6 blocks every 30 seconds.
+   # This knocks the player up in the air 8 blocks every 30 seconds.
    script:
      - if <npc.flag[AOH_Knockback_CD]> == null {
        - flag npc "AOH_Knockback_CD:true" duration:30
        - announce "<red><npc.name> yells<&cm> <&sq><cons:knockback_msg><&sq>"
        - narrate "<yellow>You are knocked backwards into the air!"
-       - teleport "<player.location.x.asint>,<m:<player.location.y.asint>+6>,<player.location.z.asint>,world"
+       - teleport "<player.location.x>,<m:<player.location.y>+8>,<player.location.z>,<player.location.world.name>"
        }
        
 "AOH_Poison_AE_Ability":
@@ -249,7 +249,7 @@ aohakkar:
        - flag npc "AOH_Sacrifice_CD:true" duration:30
        - announce "<red><npc.name> yells<&cm> <&sq><cons:sacrifice_msg><&sq>"
        - narrate "<yellow>You are magically bound to the Altar of Hakkar!"
-       - teleport "22,72,530,world"
+       - teleport "location:<cons:aoh_SpawnPoint>"
        - cast poison duration:10s
        - cast blindness duration:10s power:50
        - cast slow duration:10s power:25

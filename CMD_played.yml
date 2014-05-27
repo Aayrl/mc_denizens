@@ -1,0 +1,24 @@
+# -----------------------------------
+# Played Command
+# @author: Tyler J. Sawyer
+# @version: 1.0
+# Last Updated: 12:42 on May 27, 2014 (Tuesday)
+# -----------------------------------
+# Tells a player when they first were seen on the server,
+# When they were last seen,
+# and how long they have been playing this current session.
+
+"playtimeCommand":
+    type: world
+    events:
+       on played command:
+         - narrate "<green>IP Address<&co> <player.ip>"
+         - narrate "<green>First Login<&co> <player.first_played.time>"
+         - narrate "<green>Last Login<&co> <player.last_played.time>"
+         - narrate "<green>Time Played This Session<&co> <proc:getTimePlayedNow>"
+         
+"getTimePlayedNow":
+    type: procedure
+    script:
+      - define secondsThisSession <math.as_int:<server.current_time_millis>-<player.flag[loginTime]>>
+      - determine "<green>%secondsThisSession% seconds."

@@ -1,14 +1,12 @@
 // -----------------------------------
 // To-Do List
-// Last Updated: 20:40 on May 26, 2014 (Monday)
+// Last Updated: 14:46 on May 27, 2014 (Tuesday)
 // -----------------------------------
 
 - prevent players from hurting each other while fighting a boss.
     
 - Implement Grand Magi Anders
     - This includes Anders' ability to teach players how to craft spells.
-    
-- Add more custom potions
 
 - Add more spells
     - Harming Spells
@@ -21,8 +19,29 @@
         - Absorption
     - Utility Spells
         - Teleport Spells
+            - Teleport: Gondor
+            - Teleport: Thurgadin
+            - Teleport: Kelethin
+            - Teleport: Plane of Ender
+            - Teleport: Plane of Earth
+            - Teleport: Plane of Fire
+            - Teleport: Skylands
+            - Succor: Gondor
+            - Succor: Thurgadin
+            - Succor: Kelethin
+            - Succor: Plane of Ender
+            - Succor: Plane of Earth
+            - Succor: Plane of Fire
+            - Succor: Skylands
         - Summon Spells
-            - Holding Summon Spell, type /summon [playername]
+            - Holding Summon Spell, type /summon [playername] ??
+            - NEEDS WORK.
+            
+- Add Rank 2, Rank 3 spells
+    - Rank 2 = Rank 1 spell + Ender Essence
+    - Rank 3 = Rank 2 spell + Essence of Earth
+    - Rank 2 and Rank 3 spells simply increase the effectiveness of
+      their rank 1 spells by 2x and 3x respectively.
         
 - Add 'Bound' spells:
     - 'Bound' spells require:
@@ -88,13 +107,66 @@ BOSSES
     - Fenin Ro
 - Plane of Ender
     - Darth Schnyder
+        - Meele Phase
+            - Punches people in the face. Yay.
+            - 8-12 damage per swing (randomize me)
+            - Force Choke
+                - Tosses player in the air and causes them 15 damage.
+            - Force Smash
+                - Teleports players to one of four random corners of the room.
+        - Fireball Phase
+            - Teleports to front top wall
+            - Throws fireballs
+            - Players must attack via Range weapon or spells
+        - Jail ability
+            - Every 10 seconds, a random person is placed in Jail.
+            - Other players must hit a button below the prison door to
+            - release their fellow member.
+            - If this is not done, the entire raid can end up in the jail,
+            - with no means of escape.
     - Lord Nefarious
 - Plane of Earth
     - Prince Klaknak
+        - 10000 Hitpoints
+        - Summons (regular) Spider Adds
+        - Web sling - creates a web block where the player is standing.
+            - Decays when the next web sling fires off. 10s CD
+        - The Wall - Teleports a player to the web in the wall. Poisoned.
+            - Lasts 10 seconds. Nothing you can do but slowly fall through the web.
     - Stormcaller
+        - Hits players with Lightning
+        - On damage, teleports to a random grass island.
+        - 5 minute enrage (flag NPC on damage if the flag isn't already active.)
     - Granite (Hill Giant)
     - Rotfiend
-    - Dark Knight
+        - 25000 Hitpoints
+        - Every time the boss takes damage, summon a zombie.
+    - Skeletal King
+        - Spawns at Chess Board
+        - Wither Skeleton riding Skeleton Horse
+        - drops skeleton horse mount
+        - On encounter start, each player is assigned a 'color'
+            - Dark / Light
+            - Player may only step on the associated color board
+            - If player steps on the wrong color, they take 10 damage.
+            - If player steps outside the board, they are killed instantly.
+        - Summons 4 random skeleton adds every 30 sec:
+            - Skeletal Archer
+                - 250 HP, Bow, not mounted
+            - Skeletal Pawn
+                - 100 HP, Stone Sword, not mounted.
+            - Skeletal Knight
+                - 400 HP, Diamond Sword, Mounted on Skeleton Horse
+    - Mad Scientist
+        - Throws random splash potions
+        - Summons various adds
+        - Makes 'clones' of players - exact duplicates
+            - Same name
+            - 500 HP
+            - Same armor / weapon as player at time of clone.
+        - Experiment Chamber
+            - Places random player in experiment chamber
+            - Inflict player with random debuff.
     - Defend the Graveyard Event
         - Number of mobs you can kill before you die.
         - Cannot /spawn or /home (or be summoned / teleported out)

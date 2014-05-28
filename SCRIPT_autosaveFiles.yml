@@ -1,0 +1,19 @@
+# -----------------------------------
+# AutoSave Script
+# @author: Tyler J. Sawyer
+# @version: 1.0
+# Last Updated: 13:03 on May 28, 2014 (Wednesday)
+# -----------------------------------
+#
+# Autosaves Denizen and Citizen files periodically
+# every 10 minutes or so.
+#
+"AutoSaveScript_DenizenCitizen":
+  type: world
+  events:
+    on 0:00 in w@world:
+      - execute as_server "denizen save"
+      - execute as_server "citizens save"
+    on 12:00 in w@world:
+      - execute as_server "denizen save"
+      - execute as_server "citizens save"

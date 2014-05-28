@@ -15,9 +15,11 @@
       - announce "<green><&lb><&d>SERVER<green><&rb> Autosaving Server Data..."
       - execute as_server "denizen save"
       - execute as_server "citizens save"
+      - execute as_server "save-all"
       - announce "<green><&lb><&d>SERVER<green><&rb> Done!"
     on 12:00 in w@world:
       - announce "<green><&lb><&d>SERVER<green><&rb> Autosaving Server Data..."
       - execute as_server "denizen save"
       - execute as_server "citizens save"
+      - execute as_server "save-all"
       - announce "<green><&lb><&d>SERVER<green><&rb> Done!"

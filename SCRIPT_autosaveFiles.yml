@@ -12,8 +12,12 @@
   type: world
   events:
     on 0:00 in w@world:
+      - announce "<green><&lb><&d>SERVER<green><&rb> Autosaving..."
       - execute as_server "denizen save"
       - execute as_server "citizens save"
+      - announce "<green><&lb><&d>SERVER<green><&rb> Done!"
     on 12:00 in w@world:
+      - announce "<green><&lb><&d>SERVER<green><&rb> Autosaving..."
       - execute as_server "denizen save"
       - execute as_server "citizens save"
+      - announce "<green><&lb><&d>SERVER<green><&rb> Done!"

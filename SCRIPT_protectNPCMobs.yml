@@ -1,0 +1,21 @@
+# -----------------------------------
+# Protect NPC Mobs Script
+# @author: Tyler J. Sawyer
+# @version: 1.0
+# Last Updated: 11:38 on May 29, 2014 (Thursday)
+# -----------------------------------
+# This script removes entities (hostile mobs) that are
+# within 15 blocks of a 'hostile' NPC to prevent mobs from
+# killing or getting too close to NPC hostile mobs.
+# It's mob-ception.
+#
+# This task is called on the on-attack message for most mob NPCs.
+#
+
+"SaveTheHostileNPCs":
+   type: task
+   definitions: npcEntity
+   script:
+   - foreach <%npcEntity%.location.find.entities.within[15]> {  
+     - if <%value%.is_mob> remove %value%  
+     }

@@ -1,0 +1,60 @@
+# -----------------------------------
+# Stormtower Warps
+# @author: Tyler J. Sawyer
+# @version: 1.0
+# Last Updated: 15:31 on May 29, 2014 (Thursday)
+# -----------------------------------
+# Warp Points for the pads in the Stormtower, Plane of Earth.
+
+"Stormtower_Warps":
+   type: world
+   events:
+     on walked over POEARTH_STORMTOWER_1:
+     - teleport <player> "location:850.5,51,-875.5,poearth"
+     - narrate "<aqua>You are magically teleported!"
+     - playsound location:<player.location> sound:portal_travel
+     - playeffect location:<player.location> effect:portal qty:1000
+     on walked over POEARTH_STORMTOWER_2:
+     - teleport <player> "location:850.5,51,-875.5,poearth"
+     - narrate "<aqua>You are magically teleported!"
+     - playsound location:<player.location> sound:portal_travel
+     - playeffect location:<player.location> effect:portal qty:1000
+     
+     on walked over POEARTH_STORMTOWER_3:
+     - teleport <player> "location:850.5,41,-880.5,poearth"
+     - narrate "<aqua>You are magically teleported!"
+     - playsound location:<player.location> sound:portal_travel
+     - playeffect location:<player.location> effect:portal qty:1000
+     
+     on walked over POEARTH_STORMTOWER_4:
+     - teleport <player> "location:850.5,78,-874.5,poearth"
+     - narrate "<aqua>You are magically teleported!"
+     - playsound location:<player.location> sound:portal_travel
+     - playeffect location:<player.location> effect:portal qty:1000
+     
+     on walked over POEARTH_STORMTOWER_5:
+     - teleport <player> "location:850.5,63,-889.5,poearth"
+     - narrate "<aqua>You are magically teleported!"
+     - playsound location:<player.location> sound:portal_travel
+     - playeffect location:<player.location> effect:portal qty:1000
+     
+     on walked over POEARTH_STORMTOWER_6:
+     - teleport <player> "location:850.5,210,-887.5,poearth"
+     - narrate "<aqua>You are magically teleported!"
+     - playsound location:<player.location> sound:portal_travel
+     - playeffect location:<player.location> effect:portal qty:1000
+     on walked over POEARTH_STORMTOWER_7:
+     - teleport <player> "location:850.5,210,-887.5,poearth"
+     - narrate "<aqua>You are magically teleported!"
+     - playsound location:<player.location> sound:portal_travel
+     - playeffect location:<player.location> effect:portal qty:1000
+     on walked over POEARTH_STORMTOWER_8:
+     - teleport <player> "location:850.5,210,-887.5,poearth"
+     - narrate "<aqua>You are magically teleported!"
+     - playsound location:<player.location> sound:portal_travel
+     - playeffect location:<player.location> effect:portal qty:1000
+     on walked over POEARTH_STORMTOWER_9:
+     - teleport <player> "location:850.5,210,-887.5,poearth"
+     - narrate "<aqua>You are magically teleported!"
+     - playsound location:<player.location> sound:portal_travel
+     - playeffect location:<player.location> effect:portal qty:1000

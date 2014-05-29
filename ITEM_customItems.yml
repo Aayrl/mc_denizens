@@ -1559,6 +1559,8 @@
    display name: "<&5>Orb of Sunlight"
    lore:
    - <yellow>The orb is bursting with solar energy!
+   enchantments:
+   - durability:1
    
 "Storm_Diamond":
    type: item
@@ -1567,6 +1569,8 @@
    lore:
    - <yellow>An aura of smoke is seen 
    - <yellow>inside the diamond.
+   enchantments:
+   - durability:1
          
 # [Avatar of Hakkar Loot]
 # ---------------------------------------------------------------------------

@@ -1,0 +1,77 @@
+# -----------------------------------
+# Skeletal Bishop Mob
+# @author: Tyler J. Sawyer
+# @version: 1.0
+# Last Updated: 10:35 on May 29, 2014 (Thursday)
+# -----------------------------------
+# REQUIREMENTS:
+#   Sentry      Denizens        Citizens2
+
+SkeletonBishop:
+  type: assignment
+
+  default constants:
+    attack message: <white><npc.name><&sq>s eyes glow green as you approach.
+    death message: <white><npc.name> cackles maniacally as it implodes into a pile of bones.
+    victory message: <white><npc.name> walks off into the distance.
+
+    # Stats
+    SkeletonBishop_str: 8
+    SkeletonBishop_xp: 75
+    SkeletonBishop_health: 700
+    SkeletonBishop_respawn_delay: 150
+    SkeletonBishop_agroRange: 5
+
+  actions:
+    on assignment:
+    - trigger name:damage toggle:true
+
+    # Setup SkeletonBishop Stats
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "npc type PLAYER"
+    - execute as_server "npc speed 1"
+    - execute as_server "npc lookclose"
+    - execute as_server "trait sentry"
+    - execute as_server "sentry health <cons:SkeletonBishop_health>"
+    - execute as_server "sentry spawn"
+    - execute as_server "sentry respawn <cons:SkeletonBishop_respawn_delay>"
+    - execute as_server "sentry speed 1"
+    - execute as_server "sentry strength <cons:SkeletonBishop_str>"
+    - execute as_server "sentry killdrops false"
+    - execute as_server "sentry healrate 1"
+    - execute as_server "sentry retaliate true"
+    - execute as_server "sentry targetable true"
+    - execute as_server "sentry target add entity:player"
+    - execute as_server "sentry equip 76"
+    - execute as_server "sentry equip 307"
+    - execute as_server "sentry equip 308"
+    - execute as_server "sentry equip 309"
+
+    on spawn:
+    # Clear previous targets from hate list
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "sentry range <cons:SkeletonBishop_agroRange>"
+    - execute as_server "sentry target clear"
+    - execute as_server "sentry target add entity:player"
+
+    on death:
+    - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
+      - narrate targets:%value% "<cons:death message>" }
+    # XP amount
+    - drop XP qty:<cons:SkeletonBishop_xp> location:<npc.location>
+    # Loot
+    #- drop "i@<proc:LootTable_POF_ZombiePigs>" location:<npc.location>
+    - drop "i@<proc:LootTable_SpellMat>" location:<npc.location>
+    - drop "i@<proc:LootTable_HighTierPotions>" location:<npc.location>
+    # Reset npc effects and clear hate targets.
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "npc effect --play none"
+    - execute as_server "sentry target clear"
+
+    on attack: 
+    - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
+      - narrate targets:%value% "<cons:attack message>" }
+    
+    on kill:
+    - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
+      - narrate targets:%value% "<cons:victory message>" }

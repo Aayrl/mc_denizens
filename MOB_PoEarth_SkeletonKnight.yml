@@ -1,0 +1,77 @@
+# -----------------------------------
+# Skeletal Knight Mob
+# @author: Tyler J. Sawyer
+# @version: 1.0
+# Last Updated: 10:35 on May 29, 2014 (Thursday)
+# -----------------------------------
+# REQUIREMENTS:
+#   Sentry      Denizens        Citizens2
+
+SkeletonKnight:
+  type: assignment
+
+  default constants:
+    attack message: <white><npc.name><&sq>s steed charges at you!
+    death message: <white><npc.name> cackles maniacally as it implodes into a pile of bones.
+    victory message: <white><npc.name> impales its victim!
+
+    # Stats
+    SkeletonKnight_str: 10
+    SkeletonKnight_xp: 100
+    SkeletonKnight_health: 900
+    SkeletonKnight_respawn_delay: 150
+    SkeletonKnight_agroRange: 5
+
+  actions:
+    on assignment:
+    - trigger name:damage toggle:true
+
+    # Setup SkeletonKnight Stats
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "npc type PLAYER"
+    - execute as_server "npc speed 1"
+    - execute as_server "npc lookclose"
+    - execute as_server "trait sentry"
+    - execute as_server "sentry health <cons:SkeletonKnight_health>"
+    - execute as_server "sentry spawn"
+    - execute as_server "sentry respawn <cons:SkeletonKnight_respawn_delay>"
+    - execute as_server "sentry speed 1"
+    - execute as_server "sentry strength <cons:SkeletonKnight_str>"
+    - execute as_server "sentry killdrops false"
+    - execute as_server "sentry healrate 1"
+    - execute as_server "sentry retaliate true"
+    - execute as_server "sentry targetable true"
+    - execute as_server "sentry target add entity:player"
+    - execute as_server "sentry equip 267"
+    - execute as_server "sentry equip 307"
+    - execute as_server "sentry equip 308"
+    - execute as_server "sentry equip 309"
+
+    on spawn:
+    # Clear previous targets from hate list
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "sentry range <cons:SkeletonKnight_agroRange>"
+    - execute as_server "sentry target clear"
+    - execute as_server "sentry target add entity:player"
+
+    on death:
+    - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
+      - narrate targets:%value% "<cons:death message>" }
+    # XP amount
+    - drop XP qty:<cons:SkeletonKnight_xp> location:<npc.location>
+    # Loot
+    #- drop "i@<proc:LootTable_POF_ZombiePigs>" location:<npc.location>
+    - drop "i@<proc:LootTable_SpellMat>" location:<npc.location>
+    - drop "i@<proc:LootTable_HighTierPotions>" location:<npc.location>
+    # Reset npc effects and clear hate targets.
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "npc effect --play none"
+    - execute as_server "sentry target clear"
+
+    on attack: 
+    - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
+      - narrate targets:%value% "<cons:attack message>" }
+    
+    on kill:
+    - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
+      - narrate targets:%value% "<cons:victory message>" }

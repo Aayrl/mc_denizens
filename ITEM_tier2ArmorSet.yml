@@ -94,7 +94,7 @@
          && <player.equipment.leggings.display> == "<&5>Dragonforged Leggings" 
          && <player.equipment.boots.display> == "<&5>Dragonforged Boots" {
          - if <player.flag[player_tier2armorproc]> queue clear
-         - flag player player_tier2armorproc duration:0.5s
+         - flag player player_tier2armorproc duration:4s
          - narrate "<&9>Your <&5>Dragonforged Armor Set<&9> siphons 1 health from <context.damager.name>."
          - if <context.damager.is_player> narrate targets:<context.damager> "<&9><player.name><&sq>s <&5>Dragonforged Armor Set<&9> leeches 1 hitpoint from you!"
          - hurt 1 target:<context.damager>

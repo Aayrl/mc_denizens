@@ -1555,7 +1555,7 @@
    
 "Orb_of_Sunlight":
    type: item
-   material: 175
+   material: 378
    display name: "<&5>Orb of Sunlight"
    lore:
    - <yellow>The orb is bursting with solar energy!

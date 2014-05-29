@@ -244,7 +244,8 @@ inv_vendor_generic:
     - narrate "<red>You may see ghost items in your inventory. Talk to the vendor again to reset your inventory view if this occurs."
     # When a player left clicks on an item, give price information about it.
     on player left clicks in inventory:
-    - if <context.inventory.id_holder> == n@109 || <context.inventory.id_holder> == n@110 {
+    - if <context.inventory.id_holder> == n@109 || <context.inventory.id_holder> == n@110
+      || <context.inventory.id_holder> == n@224 || <context.inventory.id_holder> == n@460 {
       - determine passively cancelled 
       - if <context.item.scriptname> == null define vendorItem <context.item.id>
       - if <context.item.scriptname> != null define vendorItem <context.item.scriptname>
@@ -258,7 +259,8 @@ inv_vendor_generic:
     # If the player is holding shift, attempt to buy or sell a stack of the item they
     # clicked on.
     on player right clicks in inventory:
-    - if <context.inventory.id_holder> == n@109 || <context.inventory.id_holder> == n@110 {
+    - if <context.inventory.id_holder> == n@109 || <context.inventory.id_holder> == n@110
+      || <context.inventory.id_holder> == n@224 || <context.inventory.id_holder> == n@460 {
       - determine passively cancelled 
       - if <context.item.material.formatted> == nothing queue clear
       - if <context.item.scriptname> == null define vendorItem <context.item.id>
@@ -318,7 +320,8 @@ inv_vendor_generic:
         - narrate "<yellow>You receive %creditAmt% credits for <context.item.material.formatted><yellow>." }
       }
     on player shift_right clicks in inventory:
-    - if <context.inventory.id_holder> == n@109 || <context.inventory.id_holder> == n@110 {
+    - if <context.inventory.id_holder> == n@109 || <context.inventory.id_holder> == n@110
+      || <context.inventory.id_holder> == n@224 || <context.inventory.id_holder> == n@460 {
       - determine passively cancelled 
       - if <context.item.material.formatted> == nothing queue clear
       - if <context.item.scriptname> == null define vendorItem <context.item.id>
@@ -378,7 +381,8 @@ inv_vendor_generic:
         - narrate "<yellow>You receive %creditAmt% credits for <context.item.qty> <context.item.material.formatted><yellow>." }
       }
     on player shift_left clicks in inventory:
-    - if <context.inventory.id_holder> == n@109 || <context.inventory.id_holder> == n@110 {
+    - if <context.inventory.id_holder> == n@109 || <context.inventory.id_holder> == n@110
+      || <context.inventory.id_holder> == n@224 || <context.inventory.id_holder> == n@460 {
       - determine passively cancelled 
       - if <context.item.scriptname> == null define vendorItem <context.item.id>
       - if <context.item.scriptname> != null define vendorItem <context.item.scriptname>

@@ -59,9 +59,7 @@
 
 - Implement Plane of Ender Quest Chain Series
 
-- Add Vendor to Skylands
 - Add Vendor to Plane of Fire
-- Add Vendor to Plane of Earth
 
 - Implement Sellers (Vendors that sell items)
 

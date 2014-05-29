@@ -1212,7 +1212,7 @@
 "Hand_of_Woe":
    type: item
    material: 279
-   display name: "<&9>Hand_of_Woe"
+   display name: "<&9>Hand of Woe"
    lore:
    - <white>Lovely.
    enchantments:

@@ -2115,10 +2115,11 @@
      - if <player.item_in_hand.display> == "<&6>Thunderfury<&cm> Blessed Blade of the Windseeker" {
        - if <util.random.int[1].to[100]> >= 95 {
          - foreach <l@<player.location>.find.entities.within[<5>].aslist> {
-           - if %value% != <player> && <%value%.is_npc> != "true" {
+           - if %value% != <player> && <%value%.entity_type> != "ARROW" && <%value%.entity_type> != "BOAT" && <%value%.entity_type> != "DROPPED_ITEM"
+             && <%value%.entity_type> != "EXPERIENCE_ORB" && <%value%.entity_type> != "ITEM_FRAME" && <%value%.entity_type> != "PAINTING" {
              - if <%value%.is_player> narrate targets:%value% "<&9><player.name><&sq>s <&6>Thunderfury<&cm> Blessed Blade of the Windseeker<&9> thrashes you about for 10 damage."
              - narrate "<&9>Your <&6>Thunderfury<&cm> Blessed Blade of the Windseeker<&9> thrashes <%value%.name> for 10 damage."
-             - teleport %value% "<%value%.location.x.asint>,<m:<%value%.location.y.asint>+10>,<%value%.location.z.asint>,<%value%.location.world.name>"
+             - if <%value%.is_npc> != "true" teleport %value% "<%value%.location.x.asint>,<m:<%value%.location.y.asint>+10>,<%value%.location.z.asint>,<%value%.location.world.name>"
              - cast slow target:<%value%> duration:10 power:2
              - playsound location:<%value%.location> sound:ambience_thunder
              - playeffect location:<%value%.location> effect:large_smoke qty:500

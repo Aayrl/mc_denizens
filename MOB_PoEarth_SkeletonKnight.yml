@@ -21,6 +21,12 @@ SkeletonKnight:
     SkeletonKnight_health: 900
     SkeletonKnight_respawn_delay: 150
     SkeletonKnight_agroRange: 5
+    
+    faction_holy: 1
+    faction_champ: 1
+    
+  interact scripts:
+  - 10 SkeletonKnightInteractScript
 
   actions:
     on assignment:
@@ -53,6 +59,7 @@ SkeletonKnight:
     - execute as_server "sentry range <cons:SkeletonKnight_agroRange>"
     - execute as_server "sentry target clear"
     - execute as_server "sentry target add entity:player"
+    - flag npc AgroList:!
 
     on death:
     - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
@@ -67,6 +74,13 @@ SkeletonKnight:
     - execute as_server "npc sel <npc.id>"
     - execute as_server "npc effect --play none"
     - execute as_server "sentry target clear"
+    # Faction Adjustments
+    - foreach <npc.flag[AgroList].aslist> {
+      - flag player:%value% "FACTION_ChampionsOfTunare:<math.as_int:<%value%.flag[FACTION_ChampionsOfTunare]>+<cons:faction_champ>>"
+      - narrate targets:%value% "<&9>Your faction standing with Champions of Tunare has gotten better! (<%value%.flag[FACTION_ChampionsOfTunare]>)"
+      - flag player:%value% "FACTION_HolyHand:<math.as_int:<%value%.flag[FACTION_HolyHand]>+<cons:faction_holy>>"
+      - narrate targets:%value% "<&9>Your faction standing with The Holy Hand has gotten better! (<%value%.flag[FACTION_HolyHand]>)" }
+      }
 
     on attack: 
     - run "SaveTheHostileNPCs" d:<npc>
@@ -76,3 +90,21 @@ SkeletonKnight:
     on kill:
     - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
       - narrate targets:%value% "<cons:victory message>" }
+      
+    on enter proximity:
+    - attack
+    - if <npc.flag[AgroList].aslist> !contains <player> && <player.name> != <npc.name> flag npc AgroList:->:<player>
+    
+"SkeletonKnightInteractScript":
+   type: interact
+   steps:
+     1:
+       click trigger:
+         script:
+         - narrate "<yellow><npc.name><&co> <npc.health.percentage.as_int>%"
+       damage trigger:
+         script:
+           # Add player to the agro list when they hit the npc.
+           - if <npc.flag[AgroList].aslist> !contains <player> && <player.name> != <npc.name> flag npc AgroList:->:<player>
+           - playsound location:<npc.location> sound:skeleton_hurt
+           - playeffect location:<npc.location> effect:explode qty:5

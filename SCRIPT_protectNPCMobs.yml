@@ -17,5 +17,9 @@
    definitions: npcEntity
    script:
    - foreach <%npcEntity%.location.find.entities.within[15]> {  
-     - if <%value%.is_mob> remove %value%  
+     - if <%value%.entity_type> == "SKELETON" remove %value%
+       else if <%value%.entity_type> == "ZOMBIE" remove %value% 
+       else if <%value%.entity_type> == "SPIDER" remove %value% 
+       else if <%value%.entity_type> == "WITCH" remove %value% 
+       else queue clear
      }

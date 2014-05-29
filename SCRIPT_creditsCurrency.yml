@@ -317,9 +317,9 @@ inv_vendor_generic:
         - define currentAmt <player.flag[CURRENCY_Credits]>
         - define newAmt <math.as_int:%currentAmt%+%creditAmt%>
         - flag <player> "CURRENCY_Credits:%newAmt%"
-        - narrate "<yellow>You receive %creditAmt% credits for <context.item.material.formatted><yellow>."
-        - playeffect location:<npc.location> effect:instant_spell qty:15 data:1 offset:0.1
-        - playsound location:<player.location> sound:orb_pickup pitch:0.85 }
+        - playeffect location:<player.location> effect:instant_spell qty:15 data:1 offset:0.1
+        - playsound location:<player.location> sound:orb_pickup pitch:0.85
+        - narrate "<yellow>You receive %creditAmt% credits for <context.item.material.formatted><yellow>." }
       }
     on player shift_right clicks in inventory:
     - if <context.inventory.id_holder> == n@109 || <context.inventory.id_holder> == n@110
@@ -380,9 +380,9 @@ inv_vendor_generic:
         - define currentAmt <player.flag[CURRENCY_Credits]>
         - define newAmt <math.as_int:%currentAmt%+%creditAmt%>
         - flag <player> "CURRENCY_Credits:%newAmt%"
-        - narrate "<yellow>You receive %creditAmt% credits for <context.item.qty> <context.item.material.formatted><yellow>."
-        - playeffect location:<npc.location> effect:instant_spell qty:15 data:1 offset:0.1
-        - playsound location:<player.location> sound:orb_pickup pitch:0.85 }
+        - playeffect location:<player.location> effect:instant_spell qty:15 data:1 offset:0.1
+        - playsound location:<player.location> sound:orb_pickup pitch:0.85
+        - narrate "<yellow>You receive %creditAmt% credits for <context.item.qty> <context.item.material.formatted><yellow>." }
       }
     on player shift_left clicks in inventory:
     - if <context.inventory.id_holder> == n@109 || <context.inventory.id_holder> == n@110

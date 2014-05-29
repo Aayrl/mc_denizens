@@ -42,7 +42,7 @@ SkeletonBishop:
     - execute as_server "sentry retaliate true"
     - execute as_server "sentry targetable true"
     - execute as_server "sentry target add entity:player"
-    - execute as_server "sentry equip 76"
+    - execute as_server "sentry equip 261"
     - execute as_server "sentry equip 307"
     - execute as_server "sentry equip 308"
     - execute as_server "sentry equip 309"

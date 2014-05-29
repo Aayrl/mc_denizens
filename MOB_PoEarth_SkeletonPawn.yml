@@ -28,7 +28,7 @@ SkeletonPawn:
 
     # Setup SkeletonPawn Stats
     - execute as_server "npc sel <npc.id>"
-    - execute as_server "npc type SKELETON"
+    - execute as_server "npc type PLAYER"
     - execute as_server "npc speed 1"
     - execute as_server "npc lookclose"
     - execute as_server "trait sentry"
@@ -43,6 +43,10 @@ SkeletonPawn:
     - execute as_server "sentry targetable true"
     - execute as_server "sentry target add entity:player"
     - execute as_server "sentry equip 267"
+    - execute as_server "sentry equip 307"
+    - execute as_server "sentry equip 308"
+    - execute as_server "sentry equip 309"
+    - execute as_server "sentry equip 397"
 
     on spawn:
     # Clear previous targets from hate list

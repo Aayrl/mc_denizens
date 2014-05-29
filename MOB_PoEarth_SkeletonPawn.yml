@@ -60,7 +60,7 @@ SkeletonPawn:
     # XP amount
     - drop XP qty:<cons:SkeletonPawn_xp> location:<npc.location>
     # Loot
-    #- drop "i@<proc:LootTable_POF_ZombiePigs>" location:<npc.location>
+    - drop "i@<proc:LootTable_PoEarth_RaidMob>" location:<npc.location>
     - drop "i@<proc:LootTable_SpellMat>" location:<npc.location>
     - drop "i@<proc:LootTable_HighTierPotions>" location:<npc.location>
     # Reset npc effects and clear hate targets.
@@ -69,6 +69,7 @@ SkeletonPawn:
     - execute as_server "sentry target clear"
 
     on attack: 
+    - run "SaveTheHostileNPCs" d:<npc>
     - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
       - narrate targets:%value% "<cons:attack message>" }
     

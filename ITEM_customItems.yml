@@ -276,6 +276,48 @@
    lore:
    - <white>Yuck.
  
+# Plane of Earth Junk
+"Chunk_of_Pottery":
+   type: item
+   material: 77
+   display name: "Chunk of Pottery"
+   lore:
+   - <white>Why am I even collecting these?
+   
+"Sheet_of_Slate":
+   type: item
+   material: 70
+   display name: "Sheet of Slate"
+   lore:
+   - <white>Would look good on my roof.
+   
+"Baby_Cactus":
+   type: item
+   material: 81
+   display name: "Baby Cactus"
+   lore:
+   - <white>Quite pointy<&cm> thanks.
+   
+"Block_of_Sponge":
+   type: item
+   material: 19
+   display name: "Block of Sponge"
+   lore:
+   - <white>What a unique building block.
+   
+"Human_Remains":
+   type: item
+   material: 352
+   display name: "Human Remains"
+   lore:
+   - <white>How encouraging.
+   
+"Bits_of_Lead":
+   type: item
+   material: 361
+   display name: "Bits of Lead"
+   lore:
+   - <white>I bet these taste delicious.
 
 # ========================================================
 # Uncommon Tier Items - Green Tag
@@ -831,7 +873,27 @@
    enchantments:
    - durability:3
    - damage_all:2
+   
+"Steel_Ingot":
+   type: item
+   material: 265
+   display name: "<green>Steel Ingot"
+   lore:
+   - <yellow>Now this may be useful.
+   
+"Smooth_Loam":
+   type: item
+   material: 289
+   display name: "<green>Smooth Loam"
+   lore:
+   - <yellow>Used for binding powerful metals.
  
+"Fine_Leather_Padding":
+   type: item
+   material: 334
+   display name: "<green>Fine Leather Padding"
+   lore:
+   - <yellow>This would be great for armor pieces.
 
 # ========================================================
 # Rare Tier Items - Blue Tag
@@ -1124,8 +1186,103 @@
    enchantments:
    - arrow_damage:2
    - durability:2
+   
+# Plane of Earth Loot
+"The_Masters_Plan":
+   type: item
+   material: 276
+   display name: "<&9>The Master<&sq>s Plan"
+   lore:
+   - <white>Guessing it didn<&sq>t work so well.
+   enchantments:
+   - damage_all:6
+   - durability:6
+   
+"Hangover":
+   type: item
+   material: 276
+   display name: "<&9>Hangover"
+   lore:
+   - <white>Is that before or after you<&sq>re
+   - <white>beaten with this thing?
+   enchantments:
+   - damage_all:6
+   - durability:6
+   
+"Hand_of_Woe":
+   type: item
+   material: 279
+   display name: "<&9>Hand_of_Woe"
+   lore:
+   - <white>Lovely.
+   enchantments:
+   - damage_all:7
+   - durability:6
+   
+"Jolt":
+   type: item
+   material: 261
+   display name: "<&9>Jolt"
+   lore:
+   - <white>That<&sq>s the recoil speaking.
+   enchantments:
+   - arrow_damage:5
+   - durability:5
+   
+"Earthen_Helm":
+   type: item
+   material: 310
+   display name: "<&9>Earthen Helm"
+   lore:
+   - <yellow>An expert blacksmith may 
+   - <yellow>be able to repair this..
+   enchantments:
+   - durability:1
+   
+"Earthen_Chestpiece":
+   type: item
+   material: 311
+   display name: "<&9>Earthen Breastplate"
+   lore:
+   - <yellow>An expert blacksmith may 
+   - <yellow>be able to repair this..
+   enchantments:
+   - durability:1
+   
+"Earthen_Leggings":
+   type: item
+   material: 312
+   display name: "<&9>Earthen Greaves"
+   lore:
+   - <yellow>An expert blacksmith may 
+   - <yellow>be able to repair this..
+   enchantments:
+   - durability:1
+   
+"Earthen_Boots":
+   type: item
+   material: 313
+   display name: "<&9>Earthen Enderplate Boots"
+   lore:
+   - <yellow>An expert blacksmith may 
+   - <yellow>be able to repair this..
+   enchantments:
+   - durability:1
  
-
+"Essence_of_Earth":
+   type: item
+   material: 388
+   display name: "<&9>Essence of Earth"
+   lore:
+   - <yellow>The orb is surrounded by pure energy.
+ 
+"Earthen_Temper":
+   type: item
+   material: 341
+   display name: "<&9>Earthen Temper"
+   lore:
+   - <yellow>Used to forge powerful armor.
+ 
 # ========================================================
 # Epic Tier Items - Purple Tag
 
@@ -1365,6 +1522,52 @@
            }
          }
 
+"Midnight":
+   type: item
+   material: 276
+   display name: "<&5>Midnight"
+   lore:
+   - <white>Swifter than nightfall itself<&cm>
+   - <white>the blade carries quite a kick.
+   enchantments:
+   - damage_all:8
+   - durability:8
+   
+"Dread":
+   type: item
+   material: 279
+   display name: "<&5>Dread"
+   lore:
+   - <white>This hammer weighs a ton!
+   enchantments:
+   - damage_all:10
+   - durability:8
+   
+"Silent_Night":
+   type: item
+   material: 261
+   display name: "<&9>Silent Night"
+   lore:
+   - <white>A magnificent compound bow.
+   enchantments:
+   - arrow_damage:7
+   - durability:8
+   
+"Orb_of_Sunlight":
+   type: item
+   material: 175
+   display name: "<&5>Orb of Sunlight"
+   lore:
+   - <yellow>The orb is bursting with solar energy!
+   
+"Storm_Diamond":
+   type: item
+   material: 264
+   display name: "<&5>Storm Diamond"
+   lore:
+   - <yellow>An aura of smoke is seen 
+   - <yellow>inside the diamond.
+         
 # [Avatar of Hakkar Loot]
 # ---------------------------------------------------------------------------
 "Wand_of_Hakkar":
@@ -2062,6 +2265,66 @@
          }
 # ---------------------------------------------------------------------------
 
+# ========================================================
+# GEMS
+
+"GEM_Pearl":
+   type: item
+   material: 370
+   display name: "<green>Pearl"
+   lore:
+   - <white>Someone may be interested in purchasing this.
+   
+"GEM_Amber":
+   type: item
+   material: 378
+   display name: "<green>Amber"
+   lore:
+   - <white>Someone may be interested in purchasing this.
+   
+"GEM_Pyrite":
+   type: item
+   material: 371
+   display name: "<green>Pyrite"
+   lore:
+   - <white>Someone may be interested in purchasing this.
+   
+"GEM_Shattered_Emerald":
+   type: item
+   material: 388
+   display name: "<green>Shattered Emerald"
+   lore:
+   - <white>Someone may be interested in purchasing this.
+   
+"GEM_Quartz":
+   type: item
+   material: 406
+   display name: "<green>Quartz"
+   lore:
+   - <white>Someone may be interested in purchasing this.
+   
+"GEM_Blue_Diamond":
+   type: item
+   material: 264
+   display name: "<green>Blue Diamond"
+   lore:
+   - <white>Someone may be interested in purchasing this.
+   
+"GEM_Rough_Diamond":
+   type: item
+   material: 264
+   display name: "<green>Rough Diamond"
+   lore:
+   - <white>Someone may be interested in purchasing this.
+   
+"GEM_Cracked_Diamond":
+   type: item
+   material: 264
+   display name: "<green>Cracked Diamond"
+   lore:
+   - <white>Someone may be interested in purchasing this.
+   
+# ========================================================
 
 # ========================================================
 # God / Event Tier Items - Red Tag

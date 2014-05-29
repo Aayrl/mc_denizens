@@ -20,6 +20,18 @@
           - run "Drop_Credits" d:<context.damager>|<util.random.int[750].to[1000]>
           - queue clear
           }
+          else if <context.entity.name> == "Skeletal Pawn" {
+          - run "Drop_Credits" d:<context.damager>|<util.random.int[150].to[200]>
+          - queue clear
+          }
+          else if <context.entity.name> == "Skeletal Bishop" {
+          - run "Drop_Credits" d:<context.damager>|<util.random.int[250].to[300]>
+          - queue clear
+          }
+          else if <context.entity.name> == "Skeletal Knight" {
+          - run "Drop_Credits" d:<context.damager>|<util.random.int[450].to[600]>
+          - queue clear
+          }
           else if <context.entity.name> == "Goblin" {
           - run "Drop_Credits" d:<context.damager>|<util.random.int[1].to[7]>
           - queue clear
@@ -703,4 +715,120 @@
         - determine "Nightblade"
         - determine "Willsapper"
         - determine "Eyepatch_of_Plunder"
+        }
+        
+"LootTable_PoEarth_Basic":
+    type: procedure 
+
+    script:
+    - define roll <util.random.int[1].to[5000]>
+    - if %roll% >= 0 && %roll% < 4000 define quality "Common"
+      else if %roll% >= 4000 && %roll% < 4750 define quality "Uncommon"
+      else if %roll% >= 4750 && %roll% < 4970 define quality "Rare"
+      else if %roll% >= 4970 define quality "Epic"
+ 
+    - if %quality% == Common {
+      - random 6
+      - determine "Chunk_of_Pottery"
+      - determine "Sheet_of_Slate"
+      - determine "Baby_Cactus"
+      - determine "Block_of_Sponge"
+      - determine "Human_Remains"
+      - determine "Bits_of_Lead"
+      }
+ 
+    - if %quality% == Uncommon {
+        - random 15
+        - determine "Fine_Steel_Longsword"
+        - determine "Fine_Steel_Shortsword"
+        - determine "Fine_Steel_Two_Handed_Sword"
+        - determine "Fine_Steel_Rapier"
+        - determine "Fine_Steel_Hammer"
+        - determine "Fine_Steel_Battleaxe"
+        - determine "Fine_Steel_Greataxe"
+        - determine "Fine_Steel_Cleaver"
+        - determine "Fine_Steel_Plate_Helm"
+        - determine "Fine_Steel_Plate_Chestpiece"
+        - determine "Fine_Steel_Plate_Leggings"
+        - determine "Fine_Steel_Plate_Boots"
+        - determine "Steel_Ingot"
+        - determine "Smooth_Loam"
+        - determine "Fine_Leather_Padding"
+        }
+ 
+    - if %quality% == Rare {
+        - random 4
+        - determine "The_Masters_Plan"
+        - determine "Hangover"
+        - determine "Hand_of_Woe"
+        - determine "Jolt"
+        }
+ 
+    - if %quality% == Epic {
+        - random 5
+        - determine "Fabled_Journeyman_Boots"
+        - determine "Shield_of_Earth"
+        - determine "Midnight"
+        - determine "Dread"
+        - determine "Silent_Night"
+        }
+        
+"LootTable_PoEarth_RaidMob":
+    type: procedure 
+
+    script:
+    - define roll <util.random.int[1].to[5000]>
+    - if %roll% >= 0 && %roll% < 4000 define quality "Common"
+      else if %roll% >= 4000 && %roll% < 4750 define quality "Uncommon"
+      else if %roll% >= 4750 && %roll% < 4970 define quality "Rare"
+      else if %roll% >= 4970 define quality "Epic"
+ 
+    - if %quality% == Common {
+      - random 6
+      - determine "Chunk_of_Pottery"
+      - determine "Sheet_of_Slate"
+      - determine "Baby_Cactus"
+      - determine "Block_of_Sponge"
+      - determine "Human_Remains"
+      - determine "Bits_of_Lead"
+      }
+ 
+    - if %quality% == Uncommon {
+        - random 11
+        - determine "GEM_Pearl"
+        - determine "GEM_Amber"
+        - determine "GEM_Pyrite"
+        - determine "GEM_Shattered_Emerald"
+        - determine "GEM_Quartz"
+        - determine "GEM_Blue_Diamond"
+        - determine "GEM_Rough_Diamond"
+        - determine "GEM_Cracked_Diamond"
+        - determine "Steel_Ingot"
+        - determine "Smooth_Loam"
+        - determine "Fine_Leather_Padding"
+        }
+ 
+    - if %quality% == Rare {
+        - random 10
+        - determine "The_Masters_Plan"
+        - determine "Hangover"
+        - determine "Hand_of_Woe"
+        - determine "Jolt"
+        - determine "Essence_of_Earth"
+        - determine "Earthen_Temper"
+        - determine "Earthen_Helm"
+        - determine "Earthen_Chestpiece"
+        - determine "Earthen_Leggings"
+        - determine "Earthen_Boots"
+        }
+ 
+    - if %quality% == Epic {
+        - random 7
+        - determine "Fabled_Journeyman_Boots"
+        - determine "Shield_of_Earth"
+        - determine "Midnight"
+        - determine "Dread"
+        - determine "Silent_Night"
+        - determine "Storm_Diamond"
+        - determine "Orb_of_Sunlight"
         }

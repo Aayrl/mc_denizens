@@ -68,6 +68,7 @@ hillGiant:
       - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:death message 3><&sq>"
       }
     - drop XP qty:<cons:hillGiant_xp> location:<npc.location>
+    - drop "i@<proc:LootTable_PoEarth_RaidMob>" location:<npc.location>
     - drop "i@<proc:LootTable_SpellMat>" location:<npc.location>
     - drop "i@<proc:LootTable_HighTierPotions>" location:<npc.location>
     # Reset npc effects and clear hate targets.

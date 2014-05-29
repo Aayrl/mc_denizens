@@ -2277,56 +2277,64 @@
    material: 370
    display name: "<green>Pearl"
    lore:
-   - <white>Someone may be interested in purchasing this.
+   - <white>Someone may be interested
+   - <white>in purchasing this.
    
 "GEM_Amber":
    type: item
    material: 378
    display name: "<green>Amber"
    lore:
-   - <white>Someone may be interested in purchasing this.
+   - <white>Someone may be interested
+   - <white>in purchasing this.
    
 "GEM_Pyrite":
    type: item
    material: 371
    display name: "<green>Pyrite"
    lore:
-   - <white>Someone may be interested in purchasing this.
+   - <white>Someone may be interested
+   - <white>in purchasing this.
    
 "GEM_Shattered_Emerald":
    type: item
    material: 388
    display name: "<green>Shattered Emerald"
    lore:
-   - <white>Someone may be interested in purchasing this.
+   - <white>Someone may be interested
+   - <white>in purchasing this.
    
 "GEM_Quartz":
    type: item
    material: 406
    display name: "<green>Quartz"
    lore:
-   - <white>Someone may be interested in purchasing this.
+   - <white>Someone may be interested
+   - <white>in purchasing this.
    
 "GEM_Blue_Diamond":
    type: item
    material: 264
    display name: "<green>Blue Diamond"
    lore:
-   - <white>Someone may be interested in purchasing this.
+   - <white>Someone may be interested
+   - <white>in purchasing this.
    
 "GEM_Rough_Diamond":
    type: item
    material: 264
    display name: "<green>Rough Diamond"
    lore:
-   - <white>Someone may be interested in purchasing this.
+   - <white>Someone may be interested
+   - <white>in purchasing this.
    
 "GEM_Cracked_Diamond":
    type: item
    material: 264
    display name: "<green>Cracked Diamond"
    lore:
-   - <white>Someone may be interested in purchasing this.
+   - <white>Someone may be interested
+   - <white>in purchasing this.
    
 # ========================================================
 

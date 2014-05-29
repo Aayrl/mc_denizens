@@ -46,7 +46,6 @@ SkeletonPawn:
     - execute as_server "sentry equip 307"
     - execute as_server "sentry equip 308"
     - execute as_server "sentry equip 309"
-    - execute as_server "sentry equip 397"
 
     on spawn:
     # Clear previous targets from hate list

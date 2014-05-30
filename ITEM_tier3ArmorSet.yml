@@ -15,8 +15,7 @@
      - i@Earthen_Armor_Chunk|i@Earthen_Helm|i@Earthen_Armor_Chunk
      - i@air|i@Earthen_Armor_Chunk|i@air
    lore:
-   - <green>Equip<&co> +2 Hearts
-   - <green>Equip<&co> Nightvision
+   - <green>Equip<&co> +1 Hearts
    - <yellow>A powerful piece of armor
    - <yellow>forged from aspects of
    - <yellow>the Plane of Earth.
@@ -24,8 +23,8 @@
    - <dark_purple>Set Bonus (4/4)<&co>
    - <red><&co><&co><&co>Block <&lb>50%<&rb>
    enchantments:
-   - durability:15
-   - protection_fire:15
+   - durability:10
+   - protection_fire:10
  
 "TIER3_Earthen_Chestpiece":
    type: item
@@ -36,8 +35,7 @@
      - i@Earthen_Armor_Chunk|i@Earthen_Chestpiece|i@Earthen_Armor_Chunk
      - i@Earthen_Armor_Chunk|i@Earthen_Armor_Chunk|i@Earthen_Armor_Chunk
    lore:
-   - <green>Equip<&co> +4 Hearts
-   - <green>Equip<&co> Nature<&sq>s Gift
+   - <green>Equip<&co> +2 Hearts
    - <yellow>A powerful piece of armor
    - <yellow>forged from aspects of
    - <yellow>the Plane of Earth.
@@ -45,8 +43,8 @@
    - <dark_purple>Set Bonus (4/4)<&co>
    - <red><&co><&co><&co>Block <&lb>50%<&rb>
    enchantments:
-   - durability:15
-   - protection_environmental:15
+   - durability:10
+   - protection_environmental:10
  
 "TIER3_Earthen_Leggings":
    type: item
@@ -57,7 +55,7 @@
      - i@Earthen_Armor_Chunk|i@Earthen_Leggings|i@Earthen_Armor_Chunk
      - i@Earthen_Armor_Chunk|i@air|i@Earthen_Armor_Chunk
    lore:
-   - <green>Equip<&co> +4 Hearts
+   - <green>Equip<&co> +2 Hearts
    - <yellow>A powerful piece of armor
    - <yellow>forged from aspects of
    - <yellow>the Plane of Earth.
@@ -65,8 +63,8 @@
    - <dark_purple>Set Bonus (4/4)<&co>
    - <red><&co><&co><&co>Block <&lb>50%<&rb>
    enchantments:
-   - durability:15
-   - protection_projectile:15
+   - durability:10
+   - protection_projectile:10
   
 "TIER3_Earthen_Boots":
    type: item
@@ -77,8 +75,7 @@
      - i@Earthen_Armor_Chunk|i@Earthen_Boots|i@Earthen_Armor_Chunk
      - i@air|i@air|i@air
    lore:
-   - <green>Equip<&co> +2 Hearts
-   - <green>Equip<&co> Spirit Walk
+   - <green>Equip<&co> +1 Hearts
    - <yellow>A powerful piece of armor
    - <yellow>forged from aspects of
    - <yellow>the Plane of Earth.
@@ -86,43 +83,8 @@
    - <dark_purple>Set Bonus (4/4)<&co>
    - <red><&co><&co><&co>Block <&lb>50%<&rb>
    enchantments:
-   - durability:15
-   - protection_fall:15
-
-# Nature's Gift effect
-"TIER3_CHESTPIECE_EFFECT":
-   type: world
-   events:
-     on player damaged by entity:
-       - if <player.equipment.chestplate.display> == "<&5>Naturefused Chestpiece" {
-         - if <player.flag[player_TIER3chestproc]> queue clear
-         - flag player player_TIER3chestproc duration:4s
-         - narrate "<&9>Your <&5>Naturefused Chestpiece<&9> protects you with a magical shield!"
-         - cast ABSORPTION target:<player> duration:10 power:0
-         - playeffect location:<player.location> effect:fireworks_spark qty:250 offset:0.5
-         }
-         
-# Nightvision Effect
-"TIER3_HELMET_EFFECT":
-   type: world
-   events:
-     on player opens inventory:
-       - if <player.equipment.helmet.display> == "<&5>Naturefused Helm" {
-         - cast NIGHT_VISION target:<player> duration:100000 power:0
-         }
-         
-# Spirit Walk Effect
-"TIER3_BOOTS_EFFECT":
-   type: world
-   events:
-     on player damaged by entity:
-       - if <player.equipment.boots.display> == "<&5>Naturefused Boots" {
-         - if <player.flag[player_TIER3feetproc]> queue clear
-         - flag player player_TIER3feetproc duration:4s
-         - narrate "<&9>Your <&5>Naturefused Boots<&9> give you a burst of speed!"
-         - cast SPEED target:<player> duration:5 power:2
-         - playeffect location:<player.location> effect:fireworks_spark qty:250 offset:0.5
-         }
+   - durability:10
+   - protection_fall:10
          
 # Tier 3 Armor Health Bonus Effect
 "TIER3_HEALTH_EFFECT":
@@ -143,10 +105,10 @@
    - define naturechest 0
    - define naturelegs 0
    - define natureboots 0
-   - if <%playerEntity%.equipment.helmet.display> == "<&5>Naturefused Helm" define naturehelm 4
-   - if <%playerEntity%.equipment.chestplate.display> == "<&5>Naturefused Chestpiece" define naturechest 8
-   - if <%playerEntity%.equipment.leggings.display> == "<&5>Naturefused Leggings" define naturelegs 8
-   - if <%playerEntity%.equipment.boots.display> == "<&5>Naturefused Boots" define natureboots 4
+   - if <%playerEntity%.equipment.helmet.display> == "<&5>Naturefused Helm" define naturehelm 2
+   - if <%playerEntity%.equipment.chestplate.display> == "<&5>Naturefused Chestpiece" define naturechest 4
+   - if <%playerEntity%.equipment.leggings.display> == "<&5>Naturefused Leggings" define naturelegs 4
+   - if <%playerEntity%.equipment.boots.display> == "<&5>Naturefused Boots" define natureboots 2
    - define natureHPBoost <math.as_int:%natureboots%+%naturelegs%+%naturechest%+%naturehelm%+0>
    - define totalHP <math.as_int:%natureHPBoost%+20>
    - health <%playerEntity%> %totalHP%

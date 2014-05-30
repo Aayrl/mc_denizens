@@ -60,6 +60,8 @@ Stormguard:
     - execute as_server "sentry target clear"
     - execute as_server "sentry target add entity:player"
     - flag npc AgroList:!
+    - playsound location:<npc.location> sound:blaze_breath pitch:1.4
+    - playeffect location:<npc.location> effect:iconcrack_265 qty:500 data:0.5
 
     on death:
     - playsound location:<npc.location> sound:irongolem_death pitch:1.2
@@ -85,6 +87,7 @@ Stormguard:
       }
 
     on attack: 
+    - playsound location:<npc.location> sound:blaze_breath pitch:1.4
     - run "SaveTheHostileNPCs" d:<npc>
     - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
       - narrate targets:%value% "<cons:attack message>" }

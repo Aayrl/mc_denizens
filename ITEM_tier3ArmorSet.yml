@@ -143,10 +143,10 @@
    - define naturechest 0
    - define naturelegs 0
    - define natureboots 0
-   - if <%playerEntity%.equipment.helmet.display> == "<&5>Naturefused Helm" define naturehelm 2
-   - if <%playerEntity%.equipment.chestplate.display> == "<&5>Naturefused Chestpiece" define naturechest 4
-   - if <%playerEntity%.equipment.leggings.display> == "<&5>Naturefused Leggings" define naturelegs 4
-   - if <%playerEntity%.equipment.boots.display> == "<&5>Naturefused Boots" define natureboots 2
+   - if <%playerEntity%.equipment.helmet.display> == "<&5>Naturefused Helm" define naturehelm 4
+   - if <%playerEntity%.equipment.chestplate.display> == "<&5>Naturefused Chestpiece" define naturechest 8
+   - if <%playerEntity%.equipment.leggings.display> == "<&5>Naturefused Leggings" define naturelegs 8
+   - if <%playerEntity%.equipment.boots.display> == "<&5>Naturefused Boots" define natureboots 4
    - define natureHPBoost <math.as_int:%natureboots%+%naturelegs%+%naturechest%+%naturehelm%+0>
    - define totalHP <math.as_int:%natureHPBoost%+20>
    - health <%playerEntity%> %totalHP%

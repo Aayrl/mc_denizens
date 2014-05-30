@@ -91,11 +91,21 @@
    type: world
    events:
      on player join:
-       - run "TIER3_HEALTH_SCRIPT" d:<player>
-     on player opens inventory:
-       - run "TIER3_HEALTH_SCRIPT" d:<player>
+       - if <player.equipment.helmet.display> == "<&5>Naturefused Helm" 
+         || <player.equipment.chestplate.display> == "<&5>Naturefused Chestpiece" 
+         || <player.equipment.leggings.display> == "<&5>Naturefused Leggings" 
+         || <player.equipment.boots.display> == "<&5>Naturefused Boots" {
+         - run "TIER3_HEALTH_SCRIPT" d:<player> }
+         else {
+         - health <player> 20 }
      on player changes world:
-       - run "TIER3_HEALTH_SCRIPT" d:<player>
+       - if <player.equipment.helmet.display> == "<&5>Naturefused Helm" 
+         || <player.equipment.chestplate.display> == "<&5>Naturefused Chestpiece" 
+         || <player.equipment.leggings.display> == "<&5>Naturefused Leggings" 
+         || <player.equipment.boots.display> == "<&5>Naturefused Boots" {
+         - run "TIER3_HEALTH_SCRIPT" d:<player> }
+         else {
+         - health <player> 20 }
        
 "TIER3_HEALTH_SCRIPT":
    type: task

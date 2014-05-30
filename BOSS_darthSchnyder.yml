@@ -351,7 +351,7 @@ darthSchnyder:
    material: 369
    display name: "<&5>Potato Masher"
    lore:
-   - <green>Use<&co> <red>Launch Harmless Explosive
+   - <green>Use<&co> <red>Launch Explosive
    - <red>Cooldown<&co> 2 seconds.
    - <white>Otherwise known as a 
    - <white>grenade launcher.
@@ -371,6 +371,12 @@ darthSchnyder:
        - playsound location:%cursorLoc% sound:explode
        - playeffect location:%cursorLoc% effect:explode qty:200 data:0.2
        - playeffect location:%cursorLoc% effect:lava qty:25
+       - if <player.target.name> != "null" { 
+          - if <player.target.is_player> {
+            - narrate targets:<player.target> "<&9>You are hit by a grenade from <player.name><&sq>s <&5>Potato Masher<&9>!"
+            - narrate targets:<player.target> "<&9>You are burned for 5 damage!" }
+          - narrate "<&9>Your <&5>Potato Masher<&9><&sq>s grenade hits <player.target.name> for 5 damage."
+          - hurt 5 <player.target>
        
 "Negative_Nancy":
    type: item

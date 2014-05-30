@@ -15,7 +15,7 @@
      - i@Earthen_Armor_Chunk|i@Earthen_Helm|i@Earthen_Armor_Chunk
      - i@air|i@Earthen_Armor_Chunk|i@air
    lore:
-   - <green>Equip<&co> +1 Hearts
+   - <green>Equip<&co> +1 Heart
    - <yellow>A powerful piece of armor
    - <yellow>forged from aspects of
    - <yellow>the Plane of Earth.
@@ -75,7 +75,7 @@
      - i@Earthen_Armor_Chunk|i@Earthen_Boots|i@Earthen_Armor_Chunk
      - i@air|i@air|i@air
    lore:
-   - <green>Equip<&co> +1 Hearts
+   - <green>Equip<&co> +1 Heart
    - <yellow>A powerful piece of armor
    - <yellow>forged from aspects of
    - <yellow>the Plane of Earth.

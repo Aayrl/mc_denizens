@@ -1,0 +1,112 @@
+# -----------------------------------
+# Stormguard Mob
+# @author: Tyler J. Sawyer
+# @version: 1.0
+# Last Updated: 12:13 on May 30, 2014 (Friday)
+# -----------------------------------
+# REQUIREMENTS:
+#   Sentry      Denizens        Citizens2
+
+Stormguard:
+  type: assignment
+
+  default constants:
+    attack message: <white><npc.name><&sq> begins chanting in an unknown tongue.
+    death message: <white><npc.name> shatters into a thousand pieces!
+    victory message: <white><npc.name> returns to a dormant state.
+    # Stats
+    Stormguard_str: 8
+    Stormguard_xp: 75
+    Stormguard_health: 1000
+    Stormguard_respawn_delay: 300
+    Stormguard_agroRange: 5
+    
+    faction_holy: 1
+    faction_champ: 1
+    
+  interact scripts:
+  - 10 StormguardInteractScript
+
+  actions:
+    on assignment:
+    - trigger name:damage toggle:true
+
+    # Setup Stormguard Stats
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "npc type PLAYER"
+    - execute as_server "npc speed 1"
+    - execute as_server "npc lookclose"
+    - execute as_server "trait sentry"
+    - execute as_server "sentry health <cons:Stormguard_health>"
+    - execute as_server "sentry spawn"
+    - execute as_server "sentry respawn <cons:Stormguard_respawn_delay>"
+    - execute as_server "sentry speed 1"
+    - execute as_server "sentry strength <cons:Stormguard_str>"
+    - execute as_server "sentry killdrops false"
+    - execute as_server "sentry healrate 1"
+    - execute as_server "sentry retaliate true"
+    - execute as_server "sentry targetable true"
+    - execute as_server "sentry target add entity:player"
+    - execute as_server "sentry equip 267"
+    - execute as_server "sentry equip 306"
+    - execute as_server "sentry equip 307"
+    - execute as_server "sentry equip 308"
+    - execute as_server "sentry equip 309"
+
+    on spawn:
+    # Clear previous targets from hate list
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "sentry range <cons:Stormguard_agroRange>"
+    - execute as_server "sentry target clear"
+    - execute as_server "sentry target add entity:player"
+    - flag npc AgroList:!
+
+    on death:
+    - playsound location:<npc.location> sound:irongolem_death pitch:1.2
+    - playeffect location:<player.location> effect:iconcrack_265 qty:500 data:0.5
+    - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
+      - narrate targets:%value% "<cons:death message>" }
+    # XP amount
+    - drop XP qty:<cons:Stormguard_xp> location:<npc.location>
+    # Loot
+    - drop "i@<proc:LootTable_PoEarth_RaidMob>" location:<npc.location>
+    - drop "i@<proc:LootTable_SpellMat>" location:<npc.location>
+    - if <util.random.int[1].to[100]> >= 85 drop "i@<proc:LootTable_HighTierPotions>" location:<npc.location>
+    # Reset npc effects and clear hate targets.
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "npc effect --play none"
+    - execute as_server "sentry target clear"
+    # Faction Adjustments
+    - foreach <npc.flag[AgroList].aslist> {
+      - flag player:%value% "FACTION_ChampionsOfTunare:<math.as_int:<%value%.flag[FACTION_ChampionsOfTunare]>+<cons:faction_champ>>"
+      - narrate targets:%value% "<&9>Your faction standing with Champions of Tunare has gotten better! (<%value%.flag[FACTION_ChampionsOfTunare]>)"
+      - flag player:%value% "FACTION_HolyHand:<math.as_int:<%value%.flag[FACTION_HolyHand]>+<cons:faction_holy>>"
+      - narrate targets:%value% "<&9>Your faction standing with The Holy Hand has gotten better! (<%value%.flag[FACTION_HolyHand]>)" }
+      }
+
+    on attack: 
+    - run "SaveTheHostileNPCs" d:<npc>
+    - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
+      - narrate targets:%value% "<cons:attack message>" }
+    
+    on kill:
+    - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
+      - narrate targets:%value% "<cons:victory message>" }
+      
+    on enter proximity:
+    - attack
+    - if <npc.flag[AgroList].aslist> !contains <player> && <player.name> != <npc.name> flag npc AgroList:->:<player>
+    
+"StormguardInteractScript":
+   type: interact
+   steps:
+     1:
+       click trigger:
+         script:
+         - narrate "<yellow><npc.name><&co> <npc.health.percentage.as_int>%"
+       damage trigger:
+         script:
+           # Add player to the agro list when they hit the npc.
+           - if <npc.flag[AgroList].aslist> !contains <player> && <player.name> != <npc.name> flag npc AgroList:->:<player>
+           - playsound location:<npc.location> sound:irongolem_hit pitch:1.2
+           - playeffect location:<player.location> effect:iconcrack_265 qty:250 data:0.1

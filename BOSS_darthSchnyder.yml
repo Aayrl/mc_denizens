@@ -19,7 +19,7 @@ darthSchnyder:
     # Respawn Message : Message that goes to the server when the mob repops in 12 hours.
     respawn message: Alright<&cm> who the hell broke my underwater base? I want answers<&cm> people.
     # Flee Message : When players are out of his proximity.
-    flee message: That<&sq>s right<&cm> run away <player.name>! Hahaha!
+    flee message: That<&sq>s right<&cm> run away! Hahaha!
     # Special Event Messages
     meleephase_msg: I always enjoy a good brawl.
     rangephase_msg: Boring. How about some hot potato?
@@ -216,7 +216,7 @@ darthSchnyder:
    # This is when Schnyder is in his range phase.
    script:
      - execute as_server "npc sel <npc.id>"
-     - execute as_server "sentry equip 50"
+     - execute as_server "sentry equip 76"
      - teleport <npc> "location:-99.5,134,109.5,world_the_end"
      - announce "<red><npc.name> yells<&cm> <&sq><cons:rangephase_msg><&sq>"
      - announce "<yellow><npc.name> warps away and pulls out his lightsaber!"

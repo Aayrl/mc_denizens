@@ -1998,6 +1998,19 @@
    - damage_all:6
    - durability:10
  
+# ---------------------------------------------------------------------------
+# Immortalius Materials and such
+ 
+"Immortalius_Mold":
+   type: item
+   material: 311
+   display name: "<&6>Immortalius Mold"
+   lore:
+   - <yellow>What an exquisite mold!
+   - <yellow>Blacksmith Fritz will want
+   - <yellow>to see this for sure!
+   enchantments:
+   - durability:1
    
 "Immortalius":
    type: item

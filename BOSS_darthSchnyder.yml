@@ -87,23 +87,23 @@ darthSchnyder:
     on death:
     - playsound location:<npc.location> sound:villager_death pitch:0
     # Random Loot Item 1
-    #- random 6
-    #- drop "Hate_Harvester" qty:1 location:<npc.location>
-    #- drop "Amulet_of_Hate" qty:1 location:<npc.location>
-    #- drop "Face_of_Death" qty:1 location:<npc.location>
-    #- drop "Orb_of_darthSchnyder" qty:1 location:<npc.location>
-    #- drop "Skyfall" qty:1 location:<npc.location>
-    #- drop "Death_Lash" qty:1 location:<npc.location>
+    - random 6
+    - drop "Darth_Thunder" qty:1 location:<npc.location>
+    - drop "Pride_of_Alderaan" qty:1 location:<npc.location>
+    - drop "Potato_Masher" qty:1 location:<npc.location>
+    - drop "Negative_Nancy" qty:1 location:<npc.location>
+    - drop "Darth_Titan_Chest" qty:1 location:<npc.location>
+    - drop "Darth_Titan_Legs" qty:1 location:<npc.location>
     # Random Loot Item 2
-    #- random 6
-    #- drop "Hate_Harvester" qty:1 location:<npc.location>
-    #- drop "Amulet_of_Hate" qty:1 location:<npc.location>
-    #- drop "Face_of_Death" qty:1 location:<npc.location>
-    #- drop "Orb_of_darthSchnyder" qty:1 location:<npc.location>
-    #- drop "Skyfall" qty:1 location:<npc.location>
-    #- drop "Death_Lash" qty:1 location:<npc.location>
+    - random 6
+    - drop "Darth_Thunder" qty:1 location:<npc.location>
+    - drop "Pride_of_Alderaan" qty:1 location:<npc.location>
+    - drop "Potato_Masher" qty:1 location:<npc.location>
+    - drop "Negative_Nancy" qty:1 location:<npc.location>
+    - drop "Darth_Titan_Chest" qty:1 location:<npc.location>
+    - drop "Darth_Titan_Legs" qty:1 location:<npc.location>
     # Drop the Immortalius armor piece 25% of the time.
-    #- if <util.random.int[1].to[100]> >= 75 drop "AncientLeaf" qty:1 location:<npc.location>
+    - if <util.random.int[1].to[100]> >= 75 drop "Immortalius_Mold" qty:1 location:<npc.location>
     # Drop an Enderdragon Ore 100% of the time.
     - drop "i@EnderdragonOre" location:<npc.location>
     # Reset npc effects and clear hate targets.
@@ -319,3 +319,86 @@ darthSchnyder:
      - narrate "<aqua>You are magically teleported to Darth Schnyder<&sq>s throne!"
      - playsound location:<player.location> sound:portal_travel
      - playeffect location:<player.location> effect:portal qty:1000
+     
+# -----------------------------------
+# Loot Items
+"Darth_Thunder":
+   type: item
+   material: 261
+   display name: "<&5>Darth Thunder"
+   lore:
+   - <white>It<&sq>s no lightsaber<&cm>
+   - <white>but it sure glows like one.
+   enchantments:
+   - arrow_damage:10
+   - durability:10
+   - arrow_infinite:1
+ 
+"Pride_of_Alderaan":
+   type: item
+   material: 276
+   display name: "<&5>Pride of Alderaan"
+   lore:
+   - <white>Blacksmiths do not appreciate
+   - <white>it when you blow up their
+   - <white>home planet.
+   enchantments:
+   - damage_all:11
+   - durability:10
+   
+"Potato_Masher":
+   type: item
+   material: 369
+   display name: "<&5>Potato Masher"
+   lore:
+   - <green>Use<&co> <red>Launch Explosive
+   - <red><&lb>5 Second CD<&rb>
+   - <white>Otherwise known as a 
+   - <white>grenade launcher.
+   enchantments:
+   - durability:1
+   
+"PotatoMasherLauncher":
+   type: world
+   events:
+     on player right clicks with i@Potato_Masher:
+       - if <player.flag[potatomasher]> queue clear
+       - flag player potatomasher duration:2s
+       - narrate "<&9>You launch a powerful grenade!"
+       - define cursorLoc <player.location.cursor_on[20]>
+       - push snowball origin:"location:<player.location.x>,<m:<player.location.y>+3>,<player.location.z>,<player.location.world.name>" destination:%cursorLoc% duration:5s
+       - explode power:0 location:%cursorLoc%
+       - playsound location:%cursorLoc% sound:explode
+       - playeffect location:%cursorLoc% effect:explode qty:200 data:0.2
+       - playeffect location:%cursorLoc% effect:lava qty:25
+       
+"Negative_Nancy":
+   type: item
+   material: 276
+   display name: "<&5>Negative Nancy"
+   lore:
+   - <white>Stop being such a...
+   - <white>nevermind.
+   enchantments:
+   - damage_all:11
+   - durability:10
+   
+"Darth_Titan_Chest":
+   type: item
+   material: 311
+   display name: "<&5>Darth Titan<&sq>s Chestplate"
+   lore:
+   - <white>Titan is going to be upset.
+   enchantments:
+   - durability:9
+   - protection_environmental:9
+         
+"Darth_Titan_Legs":
+   type: item
+   material: 312
+   display name: "<&5>Darth Titan<&sq>s Greaves"
+   lore:
+   - <white>Yep<&cm> really upset.
+   enchantments:
+   - durability:9
+   - protection_fire:9

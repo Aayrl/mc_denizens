@@ -1,0 +1,316 @@
+# -----------------------------------
+# Darth Schnyder Boss - PoEnder
+# @author: Tyler J. Sawyer
+# @version: 1.0
+# Last Updated: 16:35 on May 30, 2014 (Friday)
+# -----------------------------------
+# Darth Schnyder is a boss in the Plane of Ender.
+
+darthSchnyder:
+  type: assignment
+
+  default constants:
+    # Agro Message : Message to display when a player engages the boss.
+    agro message: You filthy casuals. Do you even know who I am? Do you even know what kind of power I possess?
+    # Death Message : Message displayed when the boss is slain.
+    death message: Ah<&cm> okay fine. I<&sq>ll go torment people elsewhere. Scrubs.
+    # Victory Message : Message when a player is killed by the boss.
+    victory message: Dude<&cm> I<&sq>m not even trying. You<&sq>re terribad.
+    # Respawn Message : Message that goes to the server when the mob repops in 12 hours.
+    respawn message: Alright<&cm> who the hell broke my underwater base? I want answers<&cm> people.
+    # Special Event Messages
+    meleephase_msg: I always enjoy a good brawl.
+    rangephase_msg: Boring. How about some hot potato?
+    forcechoke_msg: I saw Vader do this in the movie once.
+    forcesmash_msg: Okay<&cm> little bit of breathing room.
+    jail_msg: Get back in your cage<&cm> scrub!
+    disorient_msg: You look like you had a few too many<&cm> buddy.
+
+    # darthSchnyder : Statistics
+    # darthSchnyder Health Pool
+    dschnyde_health: 10000
+    # darthSchnyder Damage / Swing
+    dschnyde_str: 4
+    # darthSchnyder Armor Value
+    dschnyde_AC: 1
+    # darthSchnyder Agro Radius (in Blocks)
+    dschnyde_AGRO_RADIUS: 5
+    # darthSchnyder Movement Speed (Blocks / Tick)
+    dschnyde_Movement_Speed: 1
+    # darthSchnyder's Spawnpoint
+    dschnyde_SpawnPoint: "-99.5,128,119.5,world_the_end"
+    # darthSchnyder Respawn Timer in seconds (43200 = 12 hrs)
+    dschnyde_Respawn_Timer: 86400
+    # darthSchnyder XP Amount he drops on death
+    dschnyde_XP_AMT: 5000
+
+  interact scripts:
+  - 10 dschnydeakkarScript
+
+  actions:
+    on assignment:
+    - trigger name:proximity toggle:true "radius:<cons:dschnyde_AGRO_RADIUS>"
+    - trigger name:damage toggle:true
+
+    # Setup darthSchnyder stats.
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "npc type PLAYER"
+    - execute as_server "npc speed <cons:dschnyde_Movement_Speed>"
+    - execute as_server "npc lookclose"
+    - execute as_server "trait sentry"
+    - execute as_server "sentry health <cons:dschnyde_health>"
+    - execute as_server "sentry respawn <cons:dschnyde_Respawn_Timer>"
+    - execute as_server "sentry speed <cons:dschnyde_Movement_Speed>"
+    - execute as_server "sentry strength <cons:dschnyde_str>"
+    - execute as_server "sentry armor <cons:dschnyde_AC>"
+    - execute as_server "sentry range <cons:dschnyde_AGRO_RADIUS>"
+
+    on spawn:
+    - announce "<red><npc.name> yells<&cm> <&sq><cons:respawn message><&sq>"
+    # Warp darthSchnyder to its spawn point on spawn.
+    - teleport <npc> "location:<cons:dschnyde_SpawnPoint>"
+    # Clear previous targets from hate list
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "sentry target clear"
+    - execute as_server "sentry target add entity:player"
+    # Clear boss flags
+    - flag npc BossPlayerList:!
+    - flag npc dschnyde_phaseswap_CD:!
+    - flag npc dschnyde_forcechoke_CD:!
+    - flag npc dschnyde_forcesmash_CD:!
+    - flag npc dschnyde_jail_CD:!
+    - flag npc dschnyde_disorient_CD:!
+
+    on death:
+    - playsound location:<npc.location> sound:villager_death pitch:0
+    # Random Loot Item 1
+    #- random 6
+    #- drop "Hate_Harvester" qty:1 location:<npc.location>
+    #- drop "Amulet_of_Hate" qty:1 location:<npc.location>
+    #- drop "Face_of_Death" qty:1 location:<npc.location>
+    #- drop "Orb_of_darthSchnyder" qty:1 location:<npc.location>
+    #- drop "Skyfall" qty:1 location:<npc.location>
+    #- drop "Death_Lash" qty:1 location:<npc.location>
+    # Random Loot Item 2
+    #- random 6
+    #- drop "Hate_Harvester" qty:1 location:<npc.location>
+    #- drop "Amulet_of_Hate" qty:1 location:<npc.location>
+    #- drop "Face_of_Death" qty:1 location:<npc.location>
+    #- drop "Orb_of_darthSchnyder" qty:1 location:<npc.location>
+    #- drop "Skyfall" qty:1 location:<npc.location>
+    #- drop "Death_Lash" qty:1 location:<npc.location>
+    # Drop the Immortalius armor piece 25% of the time.
+    #- if <util.random.int[1].to[100]> >= 75 drop "AncientLeaf" qty:1 location:<npc.location>
+    # Drop an Enderdragon Ore 100% of the time.
+    - drop "i@EnderdragonOre" location:<npc.location>
+    # Reset npc effects and clear hate targets.
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "npc effect --play none"
+    - execute as_server "sentry target clear"
+    # Announce to players the boss is dead.
+    - announce "<red><npc.name> yells, <&sq><cons:death message><&sq>"
+    - announce "<&5><npc.name> has been slain!"
+    - foreach <npc.flag[BossPlayerList].aslist> {
+      - execute as_server "xp <cons:dschnyde_XP_AMT> <%value%.name>"
+      - adjust %value% "show_boss_bar:"
+      - flag player:%value% LBOARD_B:++
+      - flag player:%value% LBOARD_SCORE_TOTAL:<math.as_int:<<player>.flag[LBOARD_SCORE_TOTAL]>+100>
+      - narrate targets:<%value%.name> "<aqua>You assisted in slaying <npc.name>."
+      - flag player:%value% darthSchnyder_Engaged:!
+      - flag player:%value% "ENDER_darthSchnyderKills:++"
+      }
+
+    on enter proximity:
+    - announce "<red><npc.name> yells<&cm> <&sq><cons:agro message><&sq>"
+    - playsound location:<npc.location> sound:villager_haggle pitch:0.85
+    # Flag the player as 'engaged' with the boss for 30 seconds.
+    # If the player attacks the NPC, this refreshes.
+    # If the player gets summoned, this refreshes.
+    # If the player warps to spawn or home, this duration will fade out.
+    - flag player "darthSchnyder_Engaged:true" duration:30
+    # Adjust BossBar Health
+    - adjust <player> "show_boss_bar:<m.as_int:<npc.health.percentage.as_int>*2>|<npc.name> - <npc.health.percentage.as_int>%"
+
+    on exit proximity:
+    - adjust <player> "show_boss_bar:"
+    
+    on kill:
+    - playsound location:<npc.location> sound:villager_haggle pitch:0.85
+    - announce "<red><npc.name> yells<&cm> <&sq><cons:victory message><&sq>"
+
+"dschnydeakkarScript":
+   type: interact
+   steps:
+     1:
+       click trigger:
+         script:
+         # Right Clicking on the boss tells you his % health.
+         - narrate "<yellow><npc.name><&co> <npc.health.percentage.as_int>%"
+       proximity trigger:
+         entry:
+           script:
+           # Add player to the boss list when they enter his proximity.
+           - if <npc.flag[BossPlayerList].aslist> !contains <player> && <player.name> != <npc.name> flag npc BossPlayerList:->:<player>
+       damage trigger:
+         script:
+           # When the boss is hit, re-flag the player as engaged with the boss.
+           # We also add some flavor sound and effect. WOOOO.
+           - flag player "darthSchnyder_Engaged:true" duration:30
+           - random 3
+           - playsound location:<npc.location> sound:villager_idle pitch:0.5
+           - playsound location:<npc.location> sound:villager_no pitch:0.75
+           - playsound location:<npc.location> sound:villager_hit pitch:0.5
+           - playeffect location:<npc.location> effect:red_dust qty:250 data:0.0001
+           # Adjust BossBar Health
+           - if <npc.health.percentage.as_int> == null {
+             - adjust <player> "show_boss_bar:"
+             }
+             else {
+             - adjust <player> "show_boss_bar:<m.as_int:<npc.health.percentage.as_int>*2>|<npc.name> - <npc.health.percentage.as_int>%"
+             }
+           # Here are the boss special events that fire off throughout the fight.
+           - ^if <npc.health.percentage.as_int> <= 98 {
+             - run "dschnyde_phaseswap"
+             }
+           - ^if <npc.health.percentage.as_int> <= 90 {
+             - random 2
+             - run "dschnyde_forcechoke"
+             - run "dschnyde_forcesmash"
+             }
+           - ^if <npc.health.percentage.as_int> <= 74 {
+             - random 2
+             - run "dschnyde_jail"
+             - run "dschnyde_disorient"
+             }
+
+"dschnyde_phaseswap":
+   type: task
+   # This toggles the boss between his melee and range attack stance.
+   script:
+     - if <npc.flag[dschnyde_phaseswap_CD]> == null {
+       - flag npc "dschnyde_phaseswap_CD:true" duration:30
+       - random 2
+       - run "dschnyde_melee"
+       - run "dschnyde_range"
+       }
+       
+"dschnyde_melee":
+   type: task
+   # This is when Schnyder is in his melee phase.
+   script:
+     - execute as_server "npc sel <npc.id>"
+     - execute as_server "sentry equip 267"
+     - teleport <npc> "location:-99.5,128,119.5,world_the_end"
+     - announce "<red><npc.name> yells<&cm> <&sq><cons:meleephase_msg><&sq>"
+     - narrate "<yellow><npc.name> draws his sword and begins to attack!"
+     - playsound location:<npc.location> sound:blaze_hit pitch:0.75
+     - playeffect location:<npc.location> effect:witch_magic qty:100 data:1
+     
+"dschnyde_range":
+   type: task
+   # This is when Schnyder is in his range phase.
+   script:
+     - execute as_server "npc sel <npc.id>"
+     - execute as_server "sentry equip 369"
+     - teleport <npc> "location:-99.5,134,109.5,world_the_end"
+     - announce "<red><npc.name> yells<&cm> <&sq><cons:rangephase_msg><&sq>"
+     - narrate "<yellow><npc.name> warps away and pulls out his lightsaber!"
+     - playsound location:<npc.location> sound:blaze_hit pitch:0.75
+     - playeffect location:<npc.location> effect:witch_magic qty:100 data:1
+       
+"dschnyde_forcechoke":
+   type: task
+   # This ability harms a random player for 15 damage, once every 15 seconds.
+   script:
+     - if <npc.flag[dschnyde_forcechoke_CD]> == null {
+       - flag npc "dschnyde_forcechoke_CD:true" duration:15
+       - announce "<red><npc.name> yells<&cm> <&sq><cons:forcechoke_msg><&sq>"
+       - narrate "<yellow>You are choked by the force!"
+       - hurt 15 <player>
+       - playsound location:<player.location> sound:wither_hurt pitch:0.5
+       - playeffect location:<player.location> effect:red_dust qty:750 data:0.0001
+       - repeat 6 {
+         - teleport <player> "location:<player.location.x>,<m:<player.location.y>+0.25>,<player.location.z>,<player.location.world.name>"
+         }
+       }
+       
+"dschnyde_forcesmash":
+   type: task
+   # This ability knocks all players into a random corner of the room
+   # and deals 5 damage.
+   script:
+     - if <npc.flag[dschnyde_forcesmash_CD]> == null {
+       - flag npc "dschnyde_forcesmash_CD:true" duration:30
+       - announce "<red><npc.name> yells<&cm> <&sq><cons:forcesmash_msg><&sq>"
+       - foreach <<npc.location>.find.players.within[20].aslist> {
+         - random 4
+         - teleport %value% "location:-94.5,128,120.5"
+         - teleport %value% "location:-94.5,128,110.5"
+         - teleport %value% "location:-104.5,128,120.5"
+         - teleport %value% "location:-104.5,128,110.5"
+         - narrate targets:%value% "<&9><npc.name> knocks you backwards<&cm> harming you for 5 damage!"
+         - playsound location:<%value%.location> sound:hurt_flesh
+         - playeffect location:<%value%.location> effect:RED_DUST qty:1000
+         - hurt 5 %value%
+         }
+       - playsound location:<npc.location> sound:wither_death pitch:0.5
+       - playeffect location:<npc.location> effect:large_smoke qty:1000 data:0.4
+       }
+       
+"dschnyde_jail":
+   type: task
+   # This ability places a random player in jail, once every 10 seconds.
+   script:
+     - if <npc.flag[dschnyde_jail_CD]> == null {
+       - flag npc "dschnyde_jail_CD:true" duration:10
+       - announce "<red><npc.name> yells<&cm> <&sq><cons:jail_msg><&sq>"
+       - teleport <player> "location:-99.5,133,117"
+       - narrate "<yellow>You are imprisoned!"
+       - playeffect location:<player.location> effect:cloud qty:250 data:0.3
+       - repeat 5 {
+         - playsound location:<player.location> sound:sheep_idle
+         - playsound location:<player.location> sound:sheep_shear pitch:0.5
+         }
+       }
+       
+"dschnyde_disorient":
+   type: task
+   # This ability knocks all players into a random corner of the room
+   # and deals 5 damage.
+   script:
+     - if <npc.flag[dschnyde_disorient_CD]> == null {
+       - flag npc "dschnyde_disorient_CD:true" duration:20
+       - announce "<red><npc.name> yells<&cm> <&sq><cons:disorient_msg><&sq>"
+       - foreach <<npc.location>.find.players.within[20].aslist> {
+         - narrate targets:%value% "<yellow>You don<&sq>t feel too good..."
+         - cast CONFUSION targets:%value% duration:10 power:3
+         }
+       
+"DarthSchnyder_Warps":
+   type: world
+   events:
+     on walked over DARTH_SCHNYDER_1:
+     - if <player.flag[DARTHSCHNYDER_WARP]> == "null" {
+       - narrate "<red>You are not attuned to the Darth Schnyder Portal. Perhaps try reaching the top?" }
+       else {
+       - teleport <player> "location:-99.5,128,110.5,world_the_end"
+       - narrate "<aqua>You are magically teleported to Darth Schnyder<&sq>s throne!"
+       - playsound location:<player.location> sound:portal_travel
+       - playeffect location:<player.location> effect:portal qty:1000 }
+     on walked over DARTH_SCHNYDER_2:
+     - if <player.flag[DARTHSCHNYDER_WARP]> == "null" {
+       - narrate "<red>You are not attuned to the Darth Schnyder Portal. Perhaps try reaching the top?" }
+       else {
+       - teleport <player> "location:-99.5,128,110.5,world_the_end"
+       - narrate "<aqua>You are magically teleported to Darth Schnyder<&sq>s throne!"
+       - playsound location:<player.location> sound:portal_travel
+       - playeffect location:<player.location> effect:portal qty:1000 }
+     
+     on walked over DARTH_SCHNYDER_3:
+     - if <player.flag[DARTHSCHNYDER_WARP]> == "null" {
+       - flag player "DARTHSCHNYDER_WARP:YES"
+       - narrate "<aqua>You feel yourself attune to the Darth Schnyder portal..." }
+     - teleport <player> "location:-99.5,128,110.5,world_the_end"
+     - narrate "<aqua>You are magically teleported to Darth Schnyder<&sq>s throne!"
+     - playsound location:<player.location> sound:portal_travel
+     - playeffect location:<player.location> effect:portal qty:1000

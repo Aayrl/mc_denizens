@@ -1,0 +1,159 @@
+# -----------------------------------
+# Tier 3 Armor Set
+# @author: Tyler J. Sawyer
+# @version: 1.0
+# Last Updated: 15:05 on May 30, 2014 (Friday)
+# -----------------------------------
+# Made from components from the Plane of Earth
+
+"TIER3_Earthen_Helm":
+   type: item
+   material: 310
+   display name: "<&5>Naturefused Helm"
+   recipe:
+     - i@Earthen_Temper|i@Essence_of_Earth|i@Earthen_Temper
+     - i@Earthen_Armor_Chunk|i@Earthen_Helm|i@Earthen_Armor_Chunk
+     - i@air|i@Earthen_Armor_Chunk|i@air
+   lore:
+   - <green>Equip<&co> +2 Hearts
+   - <green>Equip<&co> Nightvision
+   - <yellow>A powerful piece of armor
+   - <yellow>forged from aspects of
+   - <yellow>the Plane of Earth.
+   - <dark_purple>Tier 3 Armor Set Piece
+   - <dark_purple>Set Bonus (4/4)<&co>
+   - <red><&co><&co><&co>Block <&lb>50%<&rb>
+   enchantments:
+   - durability:15
+   - protection_fire:15
+ 
+"TIER3_Earthen_Chestpiece":
+   type: item
+   material: 311
+   display name: "<&5>Naturefused Chestpiece"
+   recipe:
+     - i@Earthen_Temper|i@Essence_of_Earth|i@Earthen_Temper
+     - i@Earthen_Armor_Chunk|i@Earthen_Chestpiece|i@Earthen_Armor_Chunk
+     - i@Earthen_Armor_Chunk|i@Earthen_Armor_Chunk|i@Earthen_Armor_Chunk
+   lore:
+   - <green>Equip<&co> +4 Hearts
+   - <green>Equip<&co> Nature<&sq>s Gift
+   - <yellow>A powerful piece of armor
+   - <yellow>forged from aspects of
+   - <yellow>the Plane of Earth.
+   - <dark_purple>Tier 3 Armor Set Piece
+   - <dark_purple>Set Bonus (4/4)<&co>
+   - <red><&co><&co><&co>Block <&lb>50%<&rb>
+   enchantments:
+   - durability:15
+   - protection_environmental:15
+ 
+"TIER3_Earthen_Leggings":
+   type: item
+   material: 312
+   display name: "<&5>Naturefused Leggings"
+   recipe:
+     - i@Earthen_Temper|i@Essence_of_Earth|i@Earthen_Temper
+     - i@Earthen_Armor_Chunk|i@Earthen_Leggings|i@Earthen_Armor_Chunk
+     - i@Earthen_Armor_Chunk|i@air|i@Earthen_Armor_Chunk
+   lore:
+   - <green>Equip<&co> +4 Hearts
+   - <yellow>A powerful piece of armor
+   - <yellow>forged from aspects of
+   - <yellow>the Plane of Earth.
+   - <dark_purple>Tier 3 Armor Set Piece
+   - <dark_purple>Set Bonus (4/4)<&co>
+   - <red><&co><&co><&co>Block <&lb>50%<&rb>
+   enchantments:
+   - durability:15
+   - protection_projectile:15
+  
+"TIER3_Earthen_Boots":
+   type: item
+   material: 313
+   display name: "<&5>Naturefused Boots"
+   recipe:
+     - i@Earthen_Temper|i@Essence_of_Earth|i@Earthen_Temper
+     - i@Earthen_Armor_Chunk|i@Earthen_Boots|i@Earthen_Armor_Chunk
+     - i@air|i@air|i@air
+   lore:
+   - <green>Equip<&co> +2 Hearts
+   - <green>Equip<&co> Spirit Walk
+   - <yellow>A powerful piece of armor
+   - <yellow>forged from aspects of
+   - <yellow>the Plane of Earth.
+   - <dark_purple>Tier 3 Armor Set Piece
+   - <dark_purple>Set Bonus (4/4)<&co>
+   - <red><&co><&co><&co>Block <&lb>50%<&rb>
+   enchantments:
+   - durability:15
+   - protection_fall:15
+
+# Nature's Gift effect
+"TIER3_CHESTPIECE_EFFECT":
+   type: world
+   events:
+     on player damaged by entity:
+       - if <player.equipment.chestplate.display> == "<&5>Naturefused Chestpiece" {
+         - if <player.flag[player_TIER3chestproc]> queue clear
+         - flag player player_TIER3chestproc duration:4s
+         - narrate "<&9>Your <&5>Naturefused Chestpiece<&9> protects you with a magical shield!"
+         - cast ABSORPTION target:<player> duration:10 power:0
+         - playeffect location:<player.location> effect:fireworks_spark qty:250 offset:0.5
+         }
+         
+# Nightvision Effect
+"TIER3_HELMET_EFFECT":
+   type: world
+   events:
+     on player opens inventory:
+       - if <player.equipment.helmet.display> == "<&5>Naturefused Helm" {
+         - cast NIGHT_VISION target:<player> duration:100000 power:0
+         }
+         
+# Spirit Walk Effect
+"TIER3_BOOTS_EFFECT":
+   type: world
+   events:
+     on player damaged by entity:
+       - if <player.equipment.boots.display> == "<&5>Naturefused Boots" {
+         - if <player.flag[player_TIER3feetproc]> queue clear
+         - flag player player_TIER3feetproc duration:4s
+         - narrate "<&9>Your <&5>Naturefused Boots<&9> give you a burst of speed!"
+         - cast SPEED target:<player> duration:5 power:2
+         - playeffect location:<player.location> effect:fireworks_spark qty:250 offset:0.5
+         }
+         
+# Tier 3 Armor Health Bonus Effect
+"TIER3_HEALTH_EFFECT":
+   type: world
+   events:
+     on player opens inventory:
+       - define naturehelm 0
+       - define naturechest 0
+       - define naturelegs 0
+       - define natureboots 0
+       - if <player.equipment.helmet.display> == "<&5>Naturefused Helm" define naturehelm 2
+       - if <player.equipment.chestplate.display> == "<&5>Naturefused Chestpiece" define naturechest 4
+       - if <player.equipment.leggings.display> == "<&5>Naturefused Leggings" define naturelegs 4
+       - if <player.equipment.boots.display> == "<&5>Naturefused Boots" define natureboots 2
+       - define natureHPBoost <math.as_int:%natureboots%+%naturelegs%+%naturechest%+%naturehelm%+0>
+       - define totalHP <math.as_int:%natureHPBoost%+20>
+       - if %natureHPBoost% > 0 && <player.health.max> != %totalHP% health <player> %totalHP%
+   
+# Tier 3 Armor Set Bonus Effect
+"TIER3_ARMORSETBONUS_EFFECT":
+   type: world
+   events:
+     on player damaged by entity:
+       - if <player.equipment.helmet.display> == "<&5>Naturefused Helm" 
+         && <player.equipment.chestplate.display> == "<&5>Naturefused Chestpiece" 
+         && <player.equipment.leggings.display> == "<&5>Naturefused Leggings" 
+         && <player.equipment.boots.display> == "<&5>Naturefused Boots" {
+         - if <util.random.int[1].to[100]> >= 50 {
+           - if <player.flag[player_TIER3armorproc]> queue clear
+           - flag player player_TIER3armorproc duration:4s
+           - narrate "<&9>Your <&5>Naturefused Armor<&9> blocks an incoming attack!"
+           - determine CANCELLED
+           }
+         }

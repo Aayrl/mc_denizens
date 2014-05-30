@@ -1282,6 +1282,19 @@
    display name: "<&9>Earthen Temper"
    lore:
    - <yellow>Used to forge powerful armor.
+   
+"Earthen_Armor_Chunk":
+   type: item
+   material: 307
+   display name: "<&9>Earthen Armor Chunk"
+   recipe:
+     - i@Fine_Leather_Padding|i@Fine_Leather_Padding|i@Fine_Leather_Padding
+     - i@Steel_Ingot|i@Steel_Ingot|i@Steel_Ingot
+     - i@Smooth_Loam|i@Smooth_Loam|i@Smooth_Loam
+   lore:
+   - <yellow>Used to forge powerful armor.
+   enchantments:
+   - durability:1
  
 # ========================================================
 # Epic Tier Items - Purple Tag

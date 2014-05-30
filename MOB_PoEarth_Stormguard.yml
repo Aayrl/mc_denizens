@@ -11,7 +11,7 @@ Stormguard:
   type: assignment
 
   default constants:
-    attack message: <white><npc.name><&sq> begins chanting in an unknown tongue.
+    attack message: <white><npc.name> begins chanting in an unknown tongue.
     death message: <white><npc.name> shatters into a thousand pieces!
     victory message: <white><npc.name> returns to a dormant state.
     # Stats

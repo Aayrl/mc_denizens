@@ -366,7 +366,7 @@ darthSchnyder:
        - flag player potatomasher duration:2s
        - narrate "<&9>You launch a powerful grenade!"
        - define cursorLoc <player.location.cursor_on[20]>
-       - push snowball origin:"location:<player.location.x>,<m:<player.location.y>+3>,<player.location.z>,<player.location.world.name>" destination:%cursorLoc% duration:5s
+       - push snowball origin:"location:<player.location.x>,<m:<player.location.y>+6>,<player.location.z>,<player.location.world.name>" destination:%cursorLoc% duration:5s
        - explode power:0 location:%cursorLoc%
        - playsound location:%cursorLoc% sound:explode
        - playeffect location:%cursorLoc% effect:explode qty:200 data:0.2

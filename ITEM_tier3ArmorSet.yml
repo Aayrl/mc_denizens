@@ -128,18 +128,28 @@
 "TIER3_HEALTH_EFFECT":
    type: world
    events:
+     on player join:
+       - run "TIER3_HEALTH_SCRIPT" d:<player>
      on player opens inventory:
-       - define naturehelm 0
-       - define naturechest 0
-       - define naturelegs 0
-       - define natureboots 0
-       - if <player.equipment.helmet.display> == "<&5>Naturefused Helm" define naturehelm 2
-       - if <player.equipment.chestplate.display> == "<&5>Naturefused Chestpiece" define naturechest 4
-       - if <player.equipment.leggings.display> == "<&5>Naturefused Leggings" define naturelegs 4
-       - if <player.equipment.boots.display> == "<&5>Naturefused Boots" define natureboots 2
-       - define natureHPBoost <math.as_int:%natureboots%+%naturelegs%+%naturechest%+%naturehelm%+0>
-       - define totalHP <math.as_int:%natureHPBoost%+20>
-       - if %natureHPBoost% > 0 && <player.health.max> != %totalHP% health <player> %totalHP%
+       - run "TIER3_HEALTH_SCRIPT" d:<player>
+     on player changes world:
+       - run "TIER3_HEALTH_SCRIPT" d:<player>
+       
+"TIER3_HEALTH_SCRIPT":
+   type: task
+   definitions: playerEntity
+   script:
+   - define naturehelm 0
+   - define naturechest 0
+   - define naturelegs 0
+   - define natureboots 0
+   - if <%playerEntity%.equipment.helmet.display> == "<&5>Naturefused Helm" define naturehelm 2
+   - if <%playerEntity%.equipment.chestplate.display> == "<&5>Naturefused Chestpiece" define naturechest 4
+   - if <%playerEntity%.equipment.leggings.display> == "<&5>Naturefused Leggings" define naturelegs 4
+   - if <%playerEntity%.equipment.boots.display> == "<&5>Naturefused Boots" define natureboots 2
+   - define natureHPBoost <math.as_int:%natureboots%+%naturelegs%+%naturechest%+%naturehelm%+0>
+   - define totalHP <math.as_int:%natureHPBoost%+20>
+   - health <%playerEntity%> %totalHP%
    
 # Tier 3 Armor Set Bonus Effect
 "TIER3_ARMORSETBONUS_EFFECT":

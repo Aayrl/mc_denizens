@@ -537,7 +537,7 @@ golermagerus:
    - <white>A helmet forged by the spare
    - <white>parts of a titanium golem.
    enchantments:
-   - durability:12
+   - durability:10
    - oxygen:5
    
 "Golem_Chest":
@@ -548,8 +548,8 @@ golermagerus:
    - <white>A breastplate forged by the spare
    - <white>parts of a titanium golem.
    enchantments:
-   - durability:12
-   - protection_environmental:12
+   - durability:10
+   - protection_environmental:10
          
 "Golem_Legs":
    type: item
@@ -559,8 +559,8 @@ golermagerus:
    - <white>A pair of greaves forged by the spare
    - <white>parts of a titanium golem.
    enchantments:
-   - durability:12
-   - protection_fire:12
+   - durability:10
+   - protection_fire:10
          
 "Golem_Boots":
    type: item
@@ -570,5 +570,5 @@ golermagerus:
    - <white>A pair of boots forged by the spare
    - <white>parts of a titanium golem.
    enchantments:
-   - durability:12
+   - durability:10
    - protection_fall:10

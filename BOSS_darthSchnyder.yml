@@ -351,8 +351,8 @@ darthSchnyder:
    material: 369
    display name: "<&5>Potato Masher"
    lore:
-   - <green>Use<&co> <red>Launch Explosive
-   - <red><&lb>5 Second CD<&rb>
+   - <green>Use<&co> <red>Launch Harmless Explosive
+   - <red>Cooldown<&co> 2 seconds.
    - <white>Otherwise known as a 
    - <white>grenade launcher.
    enchantments:

@@ -75,6 +75,7 @@ darthSchnyder:
     - execute as_server "npc sel <npc.id>"
     - execute as_server "sentry target clear"
     - execute as_server "sentry target add entity:player"
+    - execute as_server "sentry equip 267"
     # Clear boss flags
     - flag npc BossPlayerList:!
     - flag npc dschnyde_phaseswap_CD:!

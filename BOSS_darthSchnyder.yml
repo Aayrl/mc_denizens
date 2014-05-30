@@ -36,7 +36,7 @@ darthSchnyder:
     # darthSchnyder Agro Radius (in Blocks)
     dschnyde_AGRO_RADIUS: 15
     # darthSchnyder Movement Speed (Blocks / Tick)
-    dschnyde_Movement_Speed: 1
+    dschnyde_Movement_Speed: 2
     # darthSchnyder's Spawnpoint
     dschnyde_SpawnPoint: "-99.5,128,119.5,world_the_end"
     # darthSchnyder Respawn Timer in seconds (43200 = 12 hrs)
@@ -203,7 +203,7 @@ darthSchnyder:
      - execute as_server "sentry equip 267"
      - teleport <npc> "location:-99.5,128,119.5,world_the_end"
      - announce "<red><npc.name> yells<&cm> <&sq><cons:meleephase_msg><&sq>"
-     - narrate "<yellow><npc.name> draws his sword and begins to attack!"
+     - announce "<yellow><npc.name> draws his sword and begins to attack!"
      - playsound location:<npc.location> sound:blaze_hit pitch:0.75
      - playeffect location:<npc.location> effect:witch_magic qty:100 data:1
      
@@ -215,7 +215,7 @@ darthSchnyder:
      - execute as_server "sentry equip 50"
      - teleport <npc> "location:-99.5,134,109.5,world_the_end"
      - announce "<red><npc.name> yells<&cm> <&sq><cons:rangephase_msg><&sq>"
-     - narrate "<yellow><npc.name> warps away and pulls out his lightsaber!"
+     - announce "<yellow><npc.name> warps away and pulls out his lightsaber!"
      - playsound location:<npc.location> sound:blaze_hit pitch:0.75
      - playeffect location:<npc.location> effect:witch_magic qty:100 data:1
        

@@ -34,7 +34,7 @@ darthSchnyder:
     # darthSchnyder Armor Value
     dschnyde_AC: 1
     # darthSchnyder Agro Radius (in Blocks)
-    dschnyde_AGRO_RADIUS: 5
+    dschnyde_AGRO_RADIUS: 15
     # darthSchnyder Movement Speed (Blocks / Tick)
     dschnyde_Movement_Speed: 1
     # darthSchnyder's Spawnpoint
@@ -211,7 +211,7 @@ darthSchnyder:
    # This is when Schnyder is in his range phase.
    script:
      - execute as_server "npc sel <npc.id>"
-     - execute as_server "sentry equip 369"
+     - execute as_server "sentry equip 50"
      - teleport <npc> "location:-99.5,134,109.5,world_the_end"
      - announce "<red><npc.name> yells<&cm> <&sq><cons:rangephase_msg><&sq>"
      - narrate "<yellow><npc.name> warps away and pulls out his lightsaber!"
@@ -225,7 +225,7 @@ darthSchnyder:
      - if <npc.flag[dschnyde_forcechoke_CD]> == null {
        - flag npc "dschnyde_forcechoke_CD:true" duration:15
        - announce "<red><npc.name> yells<&cm> <&sq><cons:forcechoke_msg><&sq>"
-       - narrate "<yellow>You are choked by the force!"
+       - narrate "<&9>You are choked by the force<&cm> suffering 15 damage!"
        - hurt 15 <player>
        - playsound location:<player.location> sound:wither_hurt pitch:0.5
        - playeffect location:<player.location> effect:red_dust qty:750 data:0.0001
@@ -244,10 +244,10 @@ darthSchnyder:
        - announce "<red><npc.name> yells<&cm> <&sq><cons:forcesmash_msg><&sq>"
        - foreach <<npc.location>.find.players.within[20].aslist> {
          - random 4
-         - teleport %value% "location:-94.5,128,120.5"
-         - teleport %value% "location:-94.5,128,110.5"
-         - teleport %value% "location:-104.5,128,120.5"
-         - teleport %value% "location:-104.5,128,110.5"
+         - teleport %value% "location:-94.5,128,120.5,world_the_end"
+         - teleport %value% "location:-94.5,128,110.5,world_the_end"
+         - teleport %value% "location:-104.5,128,120.5,world_the_end"
+         - teleport %value% "location:-104.5,128,110.5,world_the_end"
          - narrate targets:%value% "<&9><npc.name> knocks you backwards<&cm> harming you for 5 damage!"
          - playsound location:<%value%.location> sound:hurt_flesh
          - playeffect location:<%value%.location> effect:RED_DUST qty:1000
@@ -264,8 +264,8 @@ darthSchnyder:
      - if <npc.flag[dschnyde_jail_CD]> == null {
        - flag npc "dschnyde_jail_CD:true" duration:10
        - announce "<red><npc.name> yells<&cm> <&sq><cons:jail_msg><&sq>"
-       - teleport <player> "location:-99.5,133,117"
-       - narrate "<yellow>You are imprisoned!"
+       - teleport <player> "location:-99.5,133,117,world_the_end"
+       - narrate "<red>You are imprisoned!"
        - playeffect location:<player.location> effect:cloud qty:250 data:0.3
        - repeat 5 {
          - playsound location:<player.location> sound:sheep_idle
@@ -282,7 +282,7 @@ darthSchnyder:
        - flag npc "dschnyde_disorient_CD:true" duration:20
        - announce "<red><npc.name> yells<&cm> <&sq><cons:disorient_msg><&sq>"
        - foreach <<npc.location>.find.players.within[20].aslist> {
-         - narrate targets:%value% "<yellow>You don<&sq>t feel too good..."
+         - narrate targets:%value% "<&9>You don<&sq>t feel too good..."
          - cast CONFUSION targets:%value% duration:10 power:3
          }
        

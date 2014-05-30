@@ -18,6 +18,8 @@ darthSchnyder:
     victory message: Dude<&cm> I<&sq>m not even trying. You<&sq>re terribad.
     # Respawn Message : Message that goes to the server when the mob repops in 12 hours.
     respawn message: Alright<&cm> who the hell broke my underwater base? I want answers<&cm> people.
+    # Flee Message : When players are out of his proximity.
+    flee message: That<&sq>s right<&cm> run away <player.name>! Hahaha!
     # Special Event Messages
     meleephase_msg: I always enjoy a good brawl.
     rangephase_msg: Boring. How about some hot potato?
@@ -134,6 +136,7 @@ darthSchnyder:
 
     on exit proximity:
     - adjust <player> "show_boss_bar:"
+    - announce "<red><npc.name> yells<&cm> <&sq><cons:flee message><&sq>"
     
     on kill:
     - playsound location:<npc.location> sound:villager_haggle pitch:0.85

@@ -1,0 +1,49 @@
+# -----------------------------------
+# Lobby Script
+# @author: Tyler J. Sawyer
+# @version: 1.0
+# Last Updated: 01:31 on May 31, 2014 (Saturday)
+# -----------------------------------
+# This script will prevent anyone who is not Aayrl
+# from placing or breaking blocks in the Lobby.
+# This script also prevents players from
+# leaving the 'notable cuboid' of the Lobby (other than via Teleport).
+
+"LobbyScript":
+  type: world
+  events:
+    on player places block:
+      - if <player.location.world.name> == "Lobby" {
+        - if <player.name> != "Aayrl" && <player.name> != "lenois" {
+          - narrate "<&9>Magical forces prevent you from building here."
+          - determine cancelled
+          }
+        }
+    on player breaks block:
+      - if <player.location.world.name> == "Lobby" {
+        - if <player.name> != "Aayrl" && <player.name> != "lenois" {
+          - narrate "<&9>Magical forces prevent you from breaking blocks here."
+          - determine cancelled
+          }
+        }
+    on player empties bucket:
+      - if <player.location.world.name> == "Lobby" {
+        - if <player.name> != "Aayrl" && <player.name> != "lenois" {
+          - narrate "<&9>Magical forces prevent you from emptying your bucket here."
+          - determine cancelled
+          }
+        }
+    on player fills bucket:
+      - if <player.location.world.name> == "Lobby" {
+        - if <player.name> != "Aayrl" && <player.name> != "lenois" {
+          - narrate "<&9>Magical forces prevent you from filling your bucket here."
+          - determine cancelled
+          }
+        }
+    on block burns:
+      - if <context.location.world.name> == "Lobby" determine cancelled
+    on block ignites:
+      - if <context.location.world.name> == "Lobby" determine cancelled
+    on player exits <cu@<l@-52.5,58,54.7,Lobby>|<l@52.5,200,-54.7,Lobby>>:
+      - narrate "<red>Magical forces prevent you from exiting the boundaries of the Lobby."
+      - teleport <player> "location:0,69,42.5,Lobby"

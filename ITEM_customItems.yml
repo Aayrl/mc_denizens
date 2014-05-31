@@ -2450,7 +2450,27 @@
          - flag player "magicshroom reuse:true" duration:300
          }
    
-
+# Redbull item - Given to random players for fun.
+"Redbull":
+   type: item
+   material: 377
+   display name: "<red><&k>X<&r><red>Redbull<&k>X<&r>"
+   lore:
+   - <green>Right Click<&co> Gives you Wings!
+   - <white>This is going to be
+   - <white>a blast!
+   enchantments:
+   - durability:1
+ 
+"RedbullUse":
+   type: world
+   events:
+     on player right clicks with i@Redbull:
+       - if <player.flag[RedbullUseCD]> queue clear
+       - flag player RedbullUseCD duration:0.5s
+       - explode location:<player.location> power:0.1
+       - take i@Redbull
+   
 #  type: world
 #  events:
 #    on entity damaged by player:

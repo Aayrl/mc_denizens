@@ -85,27 +85,28 @@ darthSchnyder:
     - flag npc dschnyde_disorient_CD:!
 
     on death:
+    - teleport <npc> "location:<cons:dschnyde_SpawnPoint>"
     - playsound location:<npc.location> sound:villager_death pitch:0
     # Random Loot Item 1
     - random 6
-    - drop "Darth_Thunder" qty:1 location:<npc.location>
-    - drop "Pride_of_Alderaan" qty:1 location:<npc.location>
-    - drop "Potato_Masher" qty:1 location:<npc.location>
-    - drop "Negative_Nancy" qty:1 location:<npc.location>
-    - drop "Darth_Titan_Chest" qty:1 location:<npc.location>
-    - drop "Darth_Titan_Legs" qty:1 location:<npc.location>
+    - drop "Darth_Thunder" qty:1 "location:<cons:dschnyde_SpawnPoint>"
+    - drop "Pride_of_Alderaan" qty:1 "location:<cons:dschnyde_SpawnPoint>"
+    - drop "Potato_Masher" qty:1 "location:<cons:dschnyde_SpawnPoint>"
+    - drop "Negative_Nancy" qty:1 "location:<cons:dschnyde_SpawnPoint>"
+    - drop "Darth_Titan_Chest" qty:1 "location:<cons:dschnyde_SpawnPoint>"
+    - drop "Darth_Titan_Legs" qty:1 "location:<cons:dschnyde_SpawnPoint>"
     # Random Loot Item 2
     - random 6
-    - drop "Darth_Thunder" qty:1 location:<npc.location>
-    - drop "Pride_of_Alderaan" qty:1 location:<npc.location>
-    - drop "Potato_Masher" qty:1 location:<npc.location>
-    - drop "Negative_Nancy" qty:1 location:<npc.location>
-    - drop "Darth_Titan_Chest" qty:1 location:<npc.location>
-    - drop "Darth_Titan_Legs" qty:1 location:<npc.location>
+    - drop "Darth_Thunder" qty:1 "location:<cons:dschnyde_SpawnPoint>"
+    - drop "Pride_of_Alderaan" qty:1 "location:<cons:dschnyde_SpawnPoint>"
+    - drop "Potato_Masher" qty:1 "location:<cons:dschnyde_SpawnPoint>"
+    - drop "Negative_Nancy" qty:1 "location:<cons:dschnyde_SpawnPoint>"
+    - drop "Darth_Titan_Chest" qty:1 "location:<cons:dschnyde_SpawnPoint>"
+    - drop "Darth_Titan_Legs" qty:1 "location:<cons:dschnyde_SpawnPoint>"
     # Drop the Immortalius armor piece 25% of the time.
-    - if <util.random.int[1].to[100]> >= 75 drop "Immortalius_Mold" qty:1 location:<npc.location>
+    - if <util.random.int[1].to[100]> >= 75 drop "Immortalius_Mold" qty:1 "location:<cons:dschnyde_SpawnPoint>"
     # Drop an Enderdragon Ore 100% of the time.
-    - drop "i@EnderdragonOre" location:<npc.location>
+    - drop "i@EnderdragonOre" "location:<cons:dschnyde_SpawnPoint>"
     # Reset npc effects and clear hate targets.
     - execute as_server "npc sel <npc.id>"
     - execute as_server "npc effect --play none"
@@ -137,6 +138,7 @@ darthSchnyder:
 
     on exit proximity:
     - adjust <player> "show_boss_bar:"
+    - teleport <npc> "location:<cons:dschnyde_SpawnPoint>"
     - announce "<red><npc.name> yells<&cm> <&sq><cons:flee message><&sq>"
     
     on kill:
@@ -207,7 +209,7 @@ darthSchnyder:
      - execute as_server "sentry equip 267"
      - teleport <npc> "location:-99.5,128,119.5,world_the_end"
      - announce "<red><npc.name> yells<&cm> <&sq><cons:meleephase_msg><&sq>"
-     - announce "<yellow><npc.name> draws his sword and begins to attack!"
+     - announce "<aqua><npc.name> draws his sword and begins to attack!"
      - playsound location:<npc.location> sound:blaze_hit pitch:0.75
      - playeffect location:<npc.location> effect:witch_magic qty:100 data:1
      
@@ -219,7 +221,7 @@ darthSchnyder:
      - execute as_server "sentry equip 76"
      - teleport <npc> "location:-99.5,134,109.5,world_the_end"
      - announce "<red><npc.name> yells<&cm> <&sq><cons:rangephase_msg><&sq>"
-     - announce "<yellow><npc.name> warps away and pulls out his lightsaber!"
+     - announce "<aqua><npc.name> warps away and pulls out his lightsaber!"
      - playsound location:<npc.location> sound:blaze_hit pitch:0.75
      - playeffect location:<npc.location> effect:witch_magic qty:100 data:1
        
@@ -270,7 +272,7 @@ darthSchnyder:
        - flag npc "dschnyde_jail_CD:true" duration:10
        - announce "<red><npc.name> yells<&cm> <&sq><cons:jail_msg><&sq>"
        - teleport <player> "location:-99.5,133,117,world_the_end"
-       - narrate "<red>You are imprisoned!"
+       - announce "<aqua><player.name> has become imprisoned!"
        - playeffect location:<player.location> effect:cloud qty:250 data:0.3
        - repeat 5 {
          - playsound location:<player.location> sound:sheep_idle

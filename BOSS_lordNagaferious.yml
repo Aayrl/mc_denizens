@@ -1,30 +1,37 @@
-# -----------------------------------
+# ============================================================================================
 # BOSS - Lord Nagaferious
 # @author: Tyler J. Sawyer
 # @version: 1.0
-# Last Updated: 20:44 on May 30, 2014 (Friday)
-# -----------------------------------
+# Last Updated: 11:19 on June 02, 2014 (Monday)
+# ============================================================================================
 # This is going to be the most intricate boss script to date.
 # 
 # NOTES:
 # Teleport Location for Nagaferious encounter:
 # /teleport 10000 151 10000 world_the_end
 #
+# ============================================================================================
+#
 # Encounter Details
 # 3 Phase fight.
-# 
+#
+# ============================================================================================
+#
 # Phase 1 : 100% - 90%
+# ====================
 # Boss flies in circles around the room in dragon form.
 # Adds from each of the four corridors will charge the main room.
 # Adds consist of zombie mobs (regular zombies) with full diamond armor.
 # The boss will spawn 4 adds (one in each corridor) every 5 seconds.
 # Once 200 adds are slain, the boss will land and initiate phase 2.
+#
 # Abilities:
+# ====================
 #   Summon Adds:
 #       5s CD
 #       Summon one zombie add with diamond armor in each corridor of the room.
 #   Meteor:
-#       10s CD
+#       2s CD
 #       Boss fires a meteor at a random player (Fireball, similar to Balthazar).
 #   Pylon Ignite:
 #       10s CD
@@ -34,3 +41,87 @@
 #       by the time the next Pylon Ingite fires off, the raid will take
 #       25 damage each (Hurt 25). 
 #   
+# ============================================================================================
+#
+# Phase 2 : 89% - 40%
+# ====================
+# Boss lands (still in dragon form). Boss has no primary melee attack, but has lots 
+# of exciting ranged attacks. The dragon has a fire breath (fontal cone), and a tail
+# swipe (reverse frontal cone). Boss also shoots fireballs at players. Boss also
+# 'digests' players, as well as activate the pylons in this phase. 
+# Boss also does AE fire burn (kinda like the fire breath, but hits the whole room).
+# This flags players as having "Burning Skin", requiring them to walk on the 
+# glass reverse of the yellow glass (opposite side of pylons).
+#
+# Abilities:
+# ====================
+#   Dragon Breath:
+#       20s CD
+#       Frontal AE Fire damage (Hits for 25 damage). Burns targets for 10 seconds.
+#       Grab all blocks in front of Boss' direction of view and apply this ability.
+#   Tail Swipe:
+#       0s CD
+#       Grab all blocks behidn the boss' direction of view and apply this ability.
+#       Hits player for 15 damage (harm).
+#   Dragon Fire:
+#       2s CD
+#       Targets a random player and shoots a fireball at them, as well as harming
+#       them for 5 damage.
+#   Digest:
+#       30s CD
+#       A random player is 'digested' and teleported to the 'stomach' room of the
+#       dragon. Players then find an NPC called 'Weak Spot'. Players must hit
+#       this NPC 5 times (NPC heals every time it is hit, so it cannot be killed)
+#       Upon hitting the NPC 5 times, the player will be flagged as hitting it 5 
+#       times and successfully teleport 'out' of the dragon's stomach, and 
+#       arrives directly under the boss.
+#   Pylon Ignite:
+#       10s CD
+#       Boss activates one of the four pylons. Players have 10s to deactivate
+#       the pylon by stepping on the yellow squares found in front of them.
+#       This will remove a flag from the NPC. If the flag is still active
+#       by the time the next Pylon Ingite fires off, the raid will take
+#       25 damage each (Hurt 25). 
+#   Flamewave:
+#       60s CD
+#       Boss ignites all players flagged as having agro on him (including those
+#       in the stomach at the moment) and harms them for 5 damage. These players
+#       are then flagged as being on the boss' "Flamewave" list. These players must
+#       run to the opposite side of the Pylon to remove their "Burning Skin" affect.
+#       Otherwise, these players will take 5 damage every second from the boss 
+#       as part of his on-damage protocol. Players can avoid harming the raid if 
+#       everyone stops attacking until all the debuffs are cleared from every player.
+#
+# ============================================================================================
+#
+# Phase 3 : 39% - 0%
+# ====================
+# In this phase, the boss INHERITS ALL OF ITS ABILITIES FROM PHASE 2, in addition
+# to the new abilities outlined below. The boss now has the ability to resurrect
+# his zombie adds (50 at once) every 45 seconds. The boss will also randomly empower 
+# one player in the raid, while making the rest weakened. This suggests the empowered 
+# player should run over to the boss and begin attacking, since they will
+# have a superior strength buff, while the rest of the raid should focus on add control
+# and supporting the empowered player, since they will be weakened and not deal as much
+# damage. Empower fires off every 45 seconds and then buff lasts for 20 seconds.
+#
+# Abilities:
+# ====================
+#   ALL ABILITIES FROM PHASE 2 AND:
+#   Call of the Grave:
+#       45s CD
+#       Boss revives 50 zombie adds from phase one (aka summons 50 adds) at his feet.
+#       Players must then either kite or defeat these adds before more are summoned.
+#   Empower:
+#       45s CD
+#       Boss 'empowers' one target of the raid group (You there, show me what you got!)
+#       This player is flagged with a Strength V buff that lasts for 20 seconds, while
+#       everyone else in the raid is flaggedd with a Weakness I buff that lasts for 20
+#       seconds. The idea is the empowered player handles the boss while the weakened
+#       players handle adds and/or support roles for the player attacking the boss.
+#
+# ============================================================================================
+#
+# The Script(s)
+#
+# ============================================================================================

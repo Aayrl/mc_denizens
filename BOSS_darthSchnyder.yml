@@ -47,7 +47,7 @@ darthSchnyder:
     dschnyde_XP_AMT: 5000
 
   interact scripts:
-  - 10 dschnydeakkarScript
+  - 10 dschnyderScript
 
   actions:
     on assignment:
@@ -145,7 +145,7 @@ darthSchnyder:
     - playsound location:<npc.location> sound:villager_haggle pitch:0.85
     - announce "<red><npc.name> yells<&cm> <&sq><cons:victory message><&sq>"
 
-"dschnydeakkarScript":
+"dschnyderScript":
    type: interact
    steps:
      1:
@@ -161,7 +161,6 @@ darthSchnyder:
        damage trigger:
          script:
            # When the boss is hit, re-flag the player as engaged with the boss.
-           # We also add some flavor sound and effect. WOOOO.
            - flag player "darthSchnyder_Engaged:true" duration:30
            - random 3
            - playsound location:<npc.location> sound:villager_idle pitch:0.5
@@ -282,8 +281,7 @@ darthSchnyder:
        
 "dschnyde_disorient":
    type: task
-   # This ability knocks all players into a random corner of the room
-   # and deals 5 damage.
+   # This ability gives all players a confusion debuff for random mayhem.
    script:
      - if <npc.flag[dschnyde_disorient_CD]> == null {
        - flag npc "dschnyde_disorient_CD:true" duration:20

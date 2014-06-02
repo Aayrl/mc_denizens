@@ -9,3 +9,28 @@
 # NOTES:
 # Teleport Location for Nagaferious encounter:
 # /teleport 10000 151 10000 world_the_end
+#
+# Encounter Details
+# 3 Phase fight.
+# 
+# Phase 1 : 100% - 90%
+# Boss flies in circles around the room in dragon form.
+# Adds from each of the four corridors will charge the main room.
+# Adds consist of zombie mobs (regular zombies) with full diamond armor.
+# The boss will spawn 4 adds (one in each corridor) every 5 seconds.
+# Once 200 adds are slain, the boss will land and initiate phase 2.
+# Abilities:
+#   Summon Adds:
+#       5s CD
+#       Summon one zombie add with diamond armor in each corridor of the room.
+#   Meteor:
+#       10s CD
+#       Boss fires a meteor at a random player (Fireball, similar to Balthazar).
+#   Pylon Ignite:
+#       10s CD
+#       Boss activates one of the four pylons. Players have 10s to deactivate
+#       the pylon by stepping on the yellow squares found in front of them.
+#       This will remove a flag from the NPC. If the flag is still active
+#       by the time the next Pylon Ingite fires off, the raid will take
+#       25 damage each (Hurt 25). 
+#   

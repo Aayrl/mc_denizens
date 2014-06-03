@@ -1,0 +1,30 @@
+# -----------------------------------
+# Creative World Script
+# @author: Tyler J. Sawyer
+# @version: 1.0
+# Last Updated: 11:22 on June 03, 2014 (Tuesday)
+# -----------------------------------
+# Handling for the Creative world.
+# Set player gamemode on entry, and removes on exit
+# as well as removing their inventory on exit.
+#
+# Concept:
+# If player changes world to w@creative, flag them for
+# being able to change gamemode, and then change them to creative.
+# Remove the flag after the change is done.
+# If the player leaves w@creative, add this flag, change their gamemode to 0,
+# remove this flag, and then remove all items in their inventory.
+
+"TheCreativeScript":
+  type: world
+  events:
+    on player changes gamemode:
+      - if <player.name> != "Aayrl" && <player.name> != "Jennavb13" && <player.name> != "mtotho" && <player.name> != "lenois"
+        && <player.location.world.name> != "Creative" {
+        - narrate "<red>You may not change your gamemode."
+        - determine cancelled
+        }
+    on player changes world to w@Creative:
+      - narrate "Entering Creative World"
+    on player changes world:
+      - if <context.origin_world.name> == "Creative" narrate "Creative World Origin"

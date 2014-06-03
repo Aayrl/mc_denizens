@@ -8,8 +8,7 @@
   type: world
   events:
     on player changes gamemode:
-      - if <player.name> != "Aayrl" && <player.name> != "Jennavb13" && <player.name> != "mtotho" && <player.name> != "lenois"
-        && <player.location.world.name> != "Creative" {
+      - if <player.name> != "Aayrl" && <player.name> != "Jennavb13" && <player.name> != "mtotho" && <player.name> != "lenois" {
         - narrate "<red>You may not change your gamemode."
         - determine cancelled
         }

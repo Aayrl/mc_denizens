@@ -2016,12 +2016,16 @@
    type: item
    material: 311
    display name: "<&6>Immortalius"
+   recipe:
+     - i@EnchantedEDORE|i@EnchantedEDORE|i@EnchantedEDORE
+     - i@EnchantedEDORE|i@Immortalius_Mold|i@EnchantedEDORE
+     - i@EnchantedEDORE|i@EnchantedEDORE|i@EnchantedEDORE 
    lore:
    - <green>Effect<&co> <red>Protective Ward
    enchantments:
-   - durability:15
-   - protection_environmental:10
-   - protection_fire:10
+   - durability:20
+   - protection_environmental:12
+   - protection_fire:12
  
 
 # ---------------------------------------------------------------------------

@@ -2021,7 +2021,11 @@
      - i@EnchantedEDORE|i@Immortalius_Mold|i@EnchantedEDORE
      - i@EnchantedEDORE|i@EnchantedEDORE|i@EnchantedEDORE 
    lore:
+   - <green>Equip<&co> +5 Hearts
    - <green>Effect<&co> <red>Protective Ward
+   - <purple>The legendary chestplate of a
+   - <purple>powerful Sith overlord. You can 
+   - <purple>feel its power pulsate through you.
    enchantments:
    - durability:20
    - protection_environmental:12

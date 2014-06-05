@@ -42,7 +42,7 @@
         - determine cancelled
         }
     on player breaks m@BEDROCK:
-      - if <player.name> != "Jennavb13" && <player.name> != "Jennavb13" && <player.name> != "mtotho" && <player.name> != "lenois" 
+      - if <player.name> != "Aayrl" && <player.name> != "Jennavb13" && <player.name> != "mtotho" && <player.name> != "lenois" 
         && <player.location.world.name> == "Creative" {
         - narrate "<red>You are not allowed to break Bedrock here."
         - determine cancelled

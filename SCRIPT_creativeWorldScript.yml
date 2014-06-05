@@ -19,7 +19,7 @@
   type: world
   events:
     on player changes gamemode to CREATIVE:
-      - if <player.name> != "Jennavb13" && <player.name> != "Jennavb13" && <player.name> != "mtotho" && <player.name> != "lenois" 
+      - if <player.name> != "Aayrl" && <player.name> != "Jennavb13" && <player.name> != "mtotho" && <player.name> != "lenois" 
         && <player.location.world.name> != "Creative" {
         - narrate "<red>You may not change your gamemode to Creative in this world."
         - determine cancelled
@@ -36,27 +36,26 @@
         - inventory swap d:<player.inventory> o:<in@EmptyPlayerInventoryObj>
         }
     on player places i@BEDROCK:
-      - if <player.name> != "Jennavb13" && <player.name> != "Jennavb13" && <player.name> != "mtotho" && <player.name> != "lenois" 
+      - if <player.name> != "Aayrl" && <player.name> != "Jennavb13" && <player.name> != "mtotho" && <player.name> != "lenois" 
         && <player.location.world.name> == "Creative" {
-        - narrate "<red>You are not allowed to place Bedrock."
+        - narrate "<red>You are not allowed to place Bedrock here."
         - determine cancelled
         }
     on player breaks BEDROCK:
       - if <player.name> != "Jennavb13" && <player.name> != "Jennavb13" && <player.name> != "mtotho" && <player.name> != "lenois" 
         && <player.location.world.name> == "Creative" {
-        - narrate "<red>You are not allowed to break Bedrock."
+        - narrate "<red>You are not allowed to break Bedrock here."
         - determine cancelled
         }
     on player places i@TNT:
-      - if <player.name> != "Jennavb13" && <player.name> != "Jennavb13" && <player.name> != "mtotho" && <player.name> != "lenois" 
+      - if <player.name> != "Aayrl" && <player.name> != "Jennavb13" && <player.name> != "mtotho" && <player.name> != "lenois" 
         && <player.location.world.name> == "Creative" {
-        - narrate "<red>You are not allowed to place TNT."
+        - narrate "<red>You are not allowed to place TNT here."
         - determine cancelled
         }
     on player places i@ENDER_CHEST:
-      - if <player.name> != "Jennavb13" && <player.name> != "Jennavb13" && <player.name> != "mtotho" && <player.name> != "lenois" 
-        && <player.location.world.name> == "Creative" {
-        - narrate "<red>You are not allowed to place Ender Chests."
+      - if <player.location.world.name> == "Creative" {
+        - narrate "<red>You are not allowed to place Ender Chests here."
         - determine cancelled
         }
         

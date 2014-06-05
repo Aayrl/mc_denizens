@@ -18,7 +18,7 @@
 "TheCreativeScript":
   type: world
   events:
-    on player changes gamemode to 1:
+    on player changes gamemode to CREATIVE:
       - if <player.name> != "Jennavb13" && <player.name> != "mtotho" && <player.name> != "lenois" 
         && <context.player.location.world> != "Creative" {
         - narrate "<red>You may not change your gamemode to Creative in this world."

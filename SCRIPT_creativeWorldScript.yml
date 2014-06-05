@@ -25,11 +25,13 @@
         - determine cancelled
         }
     on player changes world to w@Creative:
+      - announce "<yellow><player.name> has entered the Creative World!"
       - narrate "<gold>Welcome to the Creative World!"
       - narrate "<gold>Let your imagination run wild without the threat of Monsters<&cm> Animals<&cm> or PvP!"
       - narrate "<red>WARNING<&co> You will lose all experience and the contents of your inventory will be DELETED when you leave this world!"
     on player changes world:
       - if <context.origin_world.name> == "Creative" {
+        - announce "<yellow><player.name> has left the Creative World!"
         - narrate "<red>WARNING<&co> You are exiting the creative world. Your level has been set to 0 and your inventory contents have been removed!"
         - inventory swap d:<player.inventory> o:<in@EmptyPlayerInventoryObj>
         - execute as_server "xp -500000000L <player.name>"

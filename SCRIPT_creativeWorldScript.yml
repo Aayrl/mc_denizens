@@ -25,6 +25,7 @@
         - determine cancelled
         }
     on player changes world to w@Creative:
-      - narrate "Entering Creative World"
+      - narrate "Welcome to the Creative World!"
     on player changes world:
-      - if <context.origin_world.name> == "Creative" narrate "Creative World Origin"
+      - if <context.origin_world.name> == "Creative" {
+        - narrate "<red>WARNING<&co> You are exiting the creative world. Your inventory contents have been removed!"

@@ -30,6 +30,10 @@
         - announce "<aqua>Fuck you<&cm> <player.name><&cm> for reaching level <context.level>. You have no life. Grats on level <context.level> though."
         }
     on player changes xp:
+      - if <player.location.world.name> == "Creative" {
+        - narrate "<red>You cannot gain experience in the Creative world."
+        - determine cancelled
+        }
       - if "<flag.p:xppotion_double:true || false>" == true {
         - experience give <context.amount>
         - if <player.flag[toggleXpText]> == "on" {

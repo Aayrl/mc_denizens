@@ -41,7 +41,7 @@
         - narrate "<red>You are not allowed to place Bedrock here."
         - determine cancelled
         }
-    on player breaks BEDROCK:
+    on player breaks m@BEDROCK:
       - if <player.name> != "Jennavb13" && <player.name> != "Jennavb13" && <player.name> != "mtotho" && <player.name> != "lenois" 
         && <player.location.world.name> == "Creative" {
         - narrate "<red>You are not allowed to break Bedrock here."

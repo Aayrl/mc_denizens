@@ -38,25 +38,25 @@
         }
     on player places i@BEDROCK:
       - if <player.name> != "Jennavb13" && <player.name> != "Jennavb13" && <player.name> != "mtotho" && <player.name> != "lenois" 
-        && <player.location.world.name> != "Creative" {
+        && <player.location.world.name> == "Creative" {
         - narrate "<red>You are not allowed to place Bedrock."
         - determine cancelled
         }
     on player breaks BEDROCK:
       - if <player.name> != "Jennavb13" && <player.name> != "Jennavb13" && <player.name> != "mtotho" && <player.name> != "lenois" 
-        && <player.location.world.name> != "Creative" {
+        && <player.location.world.name> == "Creative" {
         - narrate "<red>You are not allowed to break Bedrock."
         - determine cancelled
         }
     on player places i@TNT:
       - if <player.name> != "Jennavb13" && <player.name> != "Jennavb13" && <player.name> != "mtotho" && <player.name> != "lenois" 
-        && <player.location.world.name> != "Creative" {
+        && <player.location.world.name> == "Creative" {
         - narrate "<red>You are not allowed to place TNT."
         - determine cancelled
         }
     on player places i@ENDER_CHEST:
       - if <player.name> != "Jennavb13" && <player.name> != "Jennavb13" && <player.name> != "mtotho" && <player.name> != "lenois" 
-        && <player.location.world.name> != "Creative" {
+        && <player.location.world.name> == "Creative" {
         - narrate "<red>You are not allowed to place Ender Chests."
         - determine cancelled
         }

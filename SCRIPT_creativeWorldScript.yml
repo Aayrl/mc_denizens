@@ -19,7 +19,7 @@
   type: world
   events:
     on player changes gamemode to CREATIVE:
-      - if <player.name> != "Jennavb13" && <player.name> != "mtotho" && <player.name> != "lenois" 
+      - if <player.name> != "Jennavb13" && <player.name> != "Jennavb13" && <player.name> != "mtotho" && <player.name> != "lenois" 
         && <player.location.world.name> != "Creative" {
         - narrate "<red>You may not change your gamemode to Creative in this world."
         - determine cancelled
@@ -27,8 +27,43 @@
     on player changes world to w@Creative:
       - narrate "<gold>Welcome to the Creative World!"
       - narrate "<gold>Let your imagination run wild without the threat of Monsters<&cm> Animals<&cm> or PvP!"
-      - narrate "<red>WARNING<&co> The contents of your inventory will be DELETED when you leave this world!"
+      - narrate "<red>WARNING<&co> You will lose all experience and the contents of your inventory will be DELETED when you leave this world!"
     on player changes world:
       - if <context.origin_world.name> == "Creative" {
-        - narrate "<red>WARNING<&co> You are exiting the creative world. Your inventory contents have been removed!"
+        - narrate "<red>WARNING<&co> You are exiting the creative world. Your level has been set to 0 and your inventory contents have been removed!"
+        - inventory swap d:<player.inventory> o:<in@EmptyPlayerInventoryObj>
+        - execute as_server "xp -500000000L <player.name>"
         }
+    on player places i@BEDROCK:
+      - if <player.name> != "Jennavb13" && <player.name> != "Jennavb13" && <player.name> != "mtotho" && <player.name> != "lenois" 
+        && <player.location.world.name> != "Creative" {
+        - narrate "<red>You are not allowed to place Bedrock."
+        - determine cancelled
+        }
+    on player breaks BEDROCK:
+      - if <player.name> != "Jennavb13" && <player.name> != "Jennavb13" && <player.name> != "mtotho" && <player.name> != "lenois" 
+        && <player.location.world.name> != "Creative" {
+        - narrate "<red>You are not allowed to break Bedrock."
+        - determine cancelled
+        }
+    on player places i@TNT:
+      - if <player.name> != "Jennavb13" && <player.name> != "Jennavb13" && <player.name> != "mtotho" && <player.name> != "lenois" 
+        && <player.location.world.name> != "Creative" {
+        - narrate "<red>You are not allowed to place TNT."
+        - determine cancelled
+        }
+    on player places i@ENDER_CHEST:
+      - if <player.name> != "Jennavb13" && <player.name> != "Jennavb13" && <player.name> != "mtotho" && <player.name> != "lenois" 
+        && <player.location.world.name> != "Creative" {
+        - narrate "<red>You are not allowed to place Ender Chests."
+        - determine cancelled
+        }
+        
+"EmptyPlayerInventoryObj":
+  type: inventory
+  inventory: PLAYER
+  size: 27
+  slots:
+    - "[] [] [] [] [] [] [] [] []"
+    - "[] [] [] [] [] [] [] [] []"
+    - "[] [] [] [] [] [] [] [] []" 

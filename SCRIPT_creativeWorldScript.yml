@@ -19,13 +19,15 @@
   type: world
   events:
     on player changes gamemode:
-      - if <player.name> != "Aayrl" && <player.name> != "Jennavb13" && <player.name> != "mtotho" && <player.name> != "lenois"
-        && <player.location.world.name> != "Creative" {
+      - if <player.name> != "Aayrl" && <player.name> != "Jennavb13" && <player.name> != "mtotho" && <player.name> != "lenois" {
         - narrate "<red>You may not change your gamemode."
         - determine cancelled
         }
     on player changes world to w@Creative:
-      - narrate "Welcome to the Creative World!"
+      - narrate "<gold>Welcome to the Creative World!"
+      - narrate "<gold>Let your imagination run wild without the threat of Monsters<&cm> Animals<&cm> or PvP!"
+      - narrate "<red>WARNING<&co> The contents of your inventory will be DELETED when you leave this world!"
     on player changes world:
       - if <context.origin_world.name> == "Creative" {
         - narrate "<red>WARNING<&co> You are exiting the creative world. Your inventory contents have been removed!"
+        }

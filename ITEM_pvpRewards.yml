@@ -16,3 +16,24 @@
    - <yellow>Used for purchasing PvP Rewards.
    enchantments:
    - durability:1
+   
+"pvp_tier1_sword":
+   type: item
+   material: 276
+   display name: "<&5>Champion<&sq>s Sword"
+   lore:
+   - <dark_purple>PvP Reward
+   enchantments:
+   - damage_all:8
+   - durability:8
+   
+"pvp_tier1_bow":
+   type: item
+   material: 261
+   display name: "<&5>Champion<&sq>s Longbow"
+   lore:
+   - <dark_purple>PvP Reward
+   enchantments:
+   - arrow_damage:8
+   - durability:8
+   - arrow_infinite:1

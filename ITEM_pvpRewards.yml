@@ -37,3 +37,84 @@
    - arrow_damage:8
    - durability:8
    - arrow_infinite:1
+
+"pvp_tier1_Helm":
+   type: item
+   material: 310
+   display name: "<&5>Champion<&sq>s Helm"
+   lore:
+   - <yellow>A piece of armor worn
+   - <yellow>by the most seasoned
+   - <yellow>war veterans.
+   - <dark_purple>PvP Reward
+   - <dark_purple>PVP Tier 1 Armor Set Piece
+   - <dark_purple>Set Bonus (4/4)<&co>
+   - <red><&co><&co><&co>Lash of Justice
+   enchantments:
+   - durability:8
+   - protection_fire:8
+ 
+"pvp_tier1_Chestpiece":
+   type: item
+   material: 311
+   display name: "<&5>Champion<&sq>s Chestpiece"
+   lore:
+   - <yellow>A piece of armor worn
+   - <yellow>by the most seasoned
+   - <yellow>war veterans.
+   - <dark_purple>PvP Reward
+   - <dark_purple>PVP Tier 1 Armor Set Piece
+   - <dark_purple>Set Bonus (4/4)<&co>
+   - <red><&co><&co><&co>Lash of Justice
+   enchantments:
+   - durability:8
+   - protection_environmental:8
+ 
+"pvp_tier1_Leggings":
+   type: item
+   material: 312
+   display name: "<&5>Champion<&sq>s Leggings"
+   lore:
+   - <yellow>A piece of armor worn
+   - <yellow>by the most seasoned
+   - <yellow>war veterans.
+   - <dark_purple>PvP Reward
+   - <dark_purple>PVP Tier 1 Armor Set Piece
+   - <dark_purple>Set Bonus (4/4)<&co>
+   - <red><&co><&co><&co>Lash of Justice
+   enchantments:
+   - durability:8
+   - protection_projectile:8
+  
+"pvp_tier1_Boots":
+   type: item
+   material: 313
+   display name: "<&5>Champion<&sq>s Boots"
+   lore:
+   - <yellow>A piece of armor worn
+   - <yellow>by the most seasoned
+   - <yellow>war veterans.
+   - <dark_purple>PvP Reward
+   - <dark_purple>PVP Tier 1 Armor Set Piece
+   - <dark_purple>Set Bonus (4/4)<&co>
+   - <red><&co><&co><&co>Lash of Justice
+   enchantments:
+   - durability:8
+   - protection_fall:8
+
+# PVP Armor Set Bonus for Tier 1
+"TIER1_PVPSETBONUS_EFFECT":
+   type: world
+   events:
+     on player damaged by entity:
+       - if <player.equipment.helmet.display> == "<&5>Champion<&sq>s Helm" 
+         && <player.equipment.chestplate.display> == "<&5>Champion<&sq>s Chestpiece" 
+         && <player.equipment.leggings.display> == "<&5>Champion<&sq>s Leggings" 
+         && <player.equipment.boots.display> == "<&5>Champion<&sq>s Boots" {
+         - if <player.flag[player_tier2pvpproc]> queue clear
+         - flag player player_tier2pvpproc duration:3s
+         - narrate "<&9>Your <&5>Champion<&sq>s Armor Set<&9> harms <context.damager.name> for 2 damage."
+         - if <context.damager.is_player> narrate targets:<context.damager> "<&9><player.name><&sq>s <&5>Champion<&sq>s Armor Set<&9> pierces you for 2 damage!"
+         - hurt 2 target:<context.damager>
+         - playeffect location:<context.damager.location> effect:RED_DUST qty:20
+         }

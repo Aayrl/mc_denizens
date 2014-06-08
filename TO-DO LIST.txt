@@ -69,8 +69,6 @@
 
 - Implement Rhok'delar Questline
 
-- Implement Immortalius Questline
-
 - YELL AT PLAYERS WHEN THEY JOIN IF THEY HAVE ANY ACTIVE QUESTS.
 
 POEARTH

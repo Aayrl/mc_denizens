@@ -64,6 +64,13 @@
 - Implement Sellers (Vendors that sell items)
 
 - Implement Leaderboard Reset & Reward capabilities
+    - Reward top 3 players each week
+        - #1 -> 5 Diamonds, Badge of Supremacy x3, 10000 credits
+        - #2 -> 4 Diamonds, Badge of Supremacy x2, 7500 credits
+        - #3 -> 3 Diamonds, Badge of Supremacy x1, 5000 credits
+    - Badge of Supremacy used to purchase unique rewards
+    - Rewards will range from useful armor items, etc. to 'fun' items.
+    - Armor will be on-par with Plane of Ender loot.
 
 - Revamp the Claims system
 

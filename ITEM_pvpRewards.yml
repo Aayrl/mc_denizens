@@ -113,7 +113,7 @@
          && <player.equipment.boots.display> == "<&5>Champion<&sq>s Boots" {
          - if <player.flag[player_tier2pvpproc]> queue clear
          - flag player player_tier2pvpproc duration:3s
-         - narrate "<&9>Your <&5>Champion<&sq>s Armor Set<&9> harms <context.damager.name> for 2 damage."
+         - narrate "<&9>Your <&5>Champion<&sq>s Armor Set<&9> pierces <context.damager.name> for 2 damage."
          - if <context.damager.is_player> narrate targets:<context.damager> "<&9><player.name><&sq>s <&5>Champion<&sq>s Armor Set<&9> pierces you for 2 damage!"
          - hurt 2 target:<context.damager>
          - playeffect location:<context.damager.location> effect:RED_DUST qty:20

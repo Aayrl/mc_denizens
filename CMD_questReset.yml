@@ -9,6 +9,7 @@
 # Logic for the Quest Reset command:
 # Check all player quest flags, reset to null (!)
 # Check all player listeners, remove listeners.
+####
 "quest_reset_cmd":
     type: world
     events:

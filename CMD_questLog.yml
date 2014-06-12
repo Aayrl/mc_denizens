@@ -7,7 +7,6 @@
 # 
 # This command displays all active quests and their current progress statements.
 # You will need to update this as you add more quests to the server.
-#
 
 "questLogCommand":
     type: world

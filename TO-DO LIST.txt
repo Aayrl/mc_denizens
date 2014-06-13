@@ -1,12 +1,13 @@
 // -----------------------------------
 // To-Do List
-// Last Updated: 14:46 on May 27, 2014 (Tuesday)
+// Last Updated: 08:17 on June 13, 2014 (Friday)
 // -----------------------------------
 
 - prevent players from hurting each other while fighting a boss.
     
 - Implement Grand Magi Anders
     - This includes Anders' ability to teach players how to craft spells.
+	- Add Recipes to Anders NPC.
 
 - Add more spells
     - Harming Spells

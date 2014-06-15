@@ -37,6 +37,52 @@
         - Summon Spells
             - Holding Summon Spell, type /summon [playername] ??
             - NEEDS WORK.
+			
+- Implement SKILLS system.
+	- On each event, 1/5*PLAYER_SKILL_LEVEL chance to reach the next level.
+	- All player skills start at 1/100.
+	- All player skills max out at 100.
+	- Skills & Effects:
+		-
+		- COMBAT
+		- Meele : Increase damage dealt when physically hitting mobs
+		- Archery : Increases arrow damage dealt
+		- Defense : Decrease damage taken when damaged
+		- Block : Increase chance to block with shield
+		-
+		- SPELLS
+		- Spellcasting : Decrease Global Cooldown of spells
+		- Alteration : Increase effectiveness of healing spells
+		- Abjuration : Increase duration of beneficial spells
+		- Conjuration : Increase quantity of conjured items / damage of conjured spells
+		- Divination : Increase duration of beneficial spells
+		- Evocation : Increase damage dealt by harmful spells
+		- Meditate : Decrease saturation use by spells.
+		-
+		- CRAFTING
+		- Cooking : Chance to double-produce cooked foods.
+		- Smelting : Chance to double-produce smelted ingots
+		- Crafting : Chance to double-produce crafted items
+		- Alchemy : Chance to double-produce potions
+		- Blacksmithing : Chance to cost no levels to repair/rename items
+		- Enchanting : Chance to cost no levels to enchant items
+		-
+		- BLOCK INTERACTION
+		- Farming : Double yield of harvested items.
+		- Construction : Chance to not use items when placed.
+			- This only affects raw materials, such as stone, wood.
+			- Prevent players from 'duping' diamonds, etc.
+		- Mining : Chance to double-produce mined items
+		- 
+		- MOVEMENT
+		- Stealth : Grants players invisibility when sneaking (at 100)
+		- Sprint : Grants players Speed Buff when sprinting
+			- Speed I at 25
+			- Speed II at 50
+			- Speed III at 75
+			- Speed IV at 100
+		- Safe Fall : Decrease damage taken when falling
+		- Swimming : Increase swim speed
             
 - Add Rank 2, Rank 3 spells
     - Rank 2 = Rank 1 spell + Ender Essence

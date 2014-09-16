@@ -1,7 +1,34 @@
 // -----------------------------------
 // To-Do List
-// Last Updated: 08:17 on June 13, 2014 (Friday)
+// Last Updated: 17:23 on September 16, 2014 (Tuesday)
 // -----------------------------------
+
+// ---------------------------------
+// CS CREW PROJECT NIGHT WORK
+// ---------------------------------
+
+- New Zone - Plane of Magnificence
+	- On-par with Plane of Ender loot
+	- Large, closed off zone - similar to Plane of Earth
+	
+- Factions:
+	- Red Paw : start at 2500 : the 'NPC' faction
+	- Clan MurkLok : start at 0 : a possible friendly faction.
+	- Tribunal Tribe : Start at 0 : a possible friendly faction.
+	- Maleficticious : Start at 5000 : Hostile faction
+		- Provides bonus gear if you can get this to 20000.
+	- P32 : Start at 0 : Hidden faction. Bonus gear at 10000.
+	
+- New Tier Set :
+	- Tier 2.5 - on par with Tier 2, extra bonuses
+	- "Mysticfused"
+	
+- Patch Notes & Server Map hosted on CS Crew website
+	- Part of Projects section of website.
+
+// ---------------------------------
+// END CS CREW PROJECT NIGHT WORK
+// ---------------------------------
 
 - prevent players from hurting each other while fighting a boss.
     

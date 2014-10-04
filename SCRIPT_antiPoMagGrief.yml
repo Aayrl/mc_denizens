@@ -1,0 +1,40 @@
+# -----------------------------------
+# Anti Plane of Magnificence Grief Script
+# @author: Tyler J. Sawyer
+# @version: 1.0
+# Last Updated: 15:08 on October 04, 2014 (Saturday)
+# -----------------------------------
+# This script will prevent anyone who is not Aayrl
+# from placing or breaking blocks in the Plane of Magnificence.
+
+"AntipomagGrief":
+  type: world
+  events:
+    on player places block:
+      - if <player.location.world.name> == "pomag" {
+        - if <player.name> != "Aayrl" && <player.name> != "lenois" && <player.name> != "undeamed" && <player.name> != "Presto159" {
+          - narrate "<&9>Magical forces prevent you from building here."
+          - determine cancelled
+          }
+        }
+    on player breaks block:
+      - if <player.location.world.name> == "pomag" {
+        - if <player.name> != "Aayrl" && <player.name> != "lenois" && <player.name> != "undeamed" && <player.name> != "Presto159" {
+          - narrate "<&9>Magical forces prevent you from breaking blocks here."
+          - determine cancelled
+          }
+        }
+    on player empties bucket:
+      - if <player.location.world.name> == "pomag" {
+        - if <player.name> != "Aayrl" && <player.name> != "lenois" && <player.name> != "undeamed" && <player.name> != "Presto159" {
+          - narrate "<&9>Magical forces prevent you from emptying your bucket here."
+          - determine cancelled
+          }
+        }
+    on player fills bucket:
+      - if <player.location.world.name> == "pomag" {
+        - if <player.name> != "Aayrl" && <player.name> != "lenois" && <player.name> != "undeamed" && <player.name> != "Presto159" {
+          - narrate "<&9>Magical forces prevent you from emptying your bucket here."
+          - determine cancelled
+          }
+        }

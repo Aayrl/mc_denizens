@@ -19,7 +19,7 @@
   type: world
   events:
     on player changes gamemode to CREATIVE:
-      - if <player.name> != "Aayrl" && <player.name> != "Jennavb13" && <player.name> != "mtotho" && <player.name> != "lenois" 
+      - if <player.name> != "Aayrl" && <player.name> != "Jennavb13" && <player.name> != "mtotho" && <player.name> != "lenois" && <player.name> != "undeamed" && <player.name> != "Presto159" 
         && <player.location.world.name> != "Creative" {
         - narrate "<red>You may not change your gamemode to Creative in this world."
         - determine cancelled

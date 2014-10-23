@@ -29,7 +29,7 @@
     - determine "<&B><player.name> was kicked from the server!"
     
     on command:
-    - if <player.name> != "Aayrl" && <player.name> != "Jennavb13" && <player.name> != "mtotho" && <player.name> != "lenois" && !<context.server> && <player.name> != "undeamed" && <player.name> != "Presto159" {
+    - if <player.name> != "Aayrl" && <player.name> != "Jennavb13" && <player.name> != "mtotho" && <player.name> != "lenois" && !<context.server> && <player.name> != "undeamed" && <player.name> != "Presto159" && <player.name> != "Elkuzar" {
       - determine FULFILLED
       }
 

@@ -51,4 +51,19 @@
       - flag player "FACTION_ChampionsOfTunare:0" }
     - if <player.flag[FACTION_HolyHand]> == "null" {
       - flag player "FACTION_HolyHand:5000" }
+    # PoMag Factions
+    - if <player.flag[FACTION_RedPaw]> == "null" {
+      - flag player "FACTION_RedPaw:2500" }
+    - if <player.flag[FACTION_ClanMurkLok]> == "null" {
+      - flag player "FACTION_ClanMurkLok:0" }
+    - if <player.flag[FACTION_TribunalTribe]> == "null" {
+      - flag player "FACTION_TribunalTribe:0" }
+    - if <player.flag[FACTION_IceboneOrcs]> == "null" {
+      - flag player "FACTION_IceboneOrcs:2500" }
+    - if <player.flag[FACTION_Doomhammer]> == "null" {
+      - flag player "FACTION_Doomhammer:5000" }
+    - if <player.flag[FACTION_TheGlade]> == "null" {
+      - flag player "FACTION_TheGlade:5000" }
+    - if <player.flag[FACTION_P32]> == "null" {
+      - flag player "FACTION_P32:0" }
     # Misc. Factions

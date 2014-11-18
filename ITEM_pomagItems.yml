@@ -1,0 +1,18 @@
+# -----------------------------------
+# PoMag Custom Items File
+# @author: Tyler J. Sawyer
+# @version: 1.0
+# Last Updated: 16:05 on November 18, 2014 (Tuesday)
+# -----------------------------------
+
+# ========================================================
+# Common Tier Items - White Tag
+
+"Peppermint_Patty":
+   type: item
+   material: 402
+   display name: "<green>Peppermint Patty"
+   lore:
+   - <white>Go on<&cm> take a bite..
+   enchantments:
+   - durability:1

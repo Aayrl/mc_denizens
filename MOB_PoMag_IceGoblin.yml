@@ -53,6 +53,7 @@ icegoblin:
     - execute as_server "sentry target add entity:monster"
     - execute as_server "sentry target add entity:player"
     - execute as_server "sentry equip 272"
+    - execute as_server "sentry equip 397"
 
     on spawn:
     # Clear previous targets from hate list

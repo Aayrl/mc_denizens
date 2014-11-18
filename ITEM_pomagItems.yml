@@ -16,3 +16,14 @@
    - <white>Go on<&cm> take a bite..
    enchantments:
    - durability:1
+   
+"PeppermintPattyUse":
+   type: world
+   events:
+     on player right clicks with i@Peppermint_Patty:
+       - if <player.flag[PattyUseCD]> queue clear
+       - flag player PattyUseCD duration:0.5s
+       - teleport <player> "-429,83,297,pomag"
+       - playeffect location:<player.location> effect:portal qty:1000
+       - narrate "<aqua>When you take a bite of a Peppermint Patty... it feels like the cold<&cm> mountain air blowing through your hair!"
+       - take i@Peppermint_Patty

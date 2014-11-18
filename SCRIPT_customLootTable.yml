@@ -36,6 +36,10 @@
           - run "Drop_Credits" d:<context.damager>|<util.random.int[1].to[7]>
           - queue clear
           }
+          else if <context.entity.name> == "Ice Goblin" {
+          - run "Drop_Credits" d:<context.damager>|<util.random.int[25].to[100]>
+          - queue clear
+          }
           else if <context.entity.name> == "Pig Sentry" {
           - run "Drop_Credits" d:<context.damager>|<util.random.int[20].to[30]>
           - queue clear
@@ -852,4 +856,34 @@
         - determine "Silent_Night"
         - determine "Storm_Diamond"
         - determine "Orb_of_Sunlight"
+        }
+        
+"LootTable_PoMag_IceGoblin":
+    type: procedure
+
+    script:
+    - define roll <util.random.int[1].to[5000]>
+    - if %roll% >= 0 && %roll% < 4000 define quality "Common"
+      else if %roll% >= 4000 && %roll% < 4750 define quality "Uncommon"
+      else if %roll% >= 4750 && %roll% < 4970 define quality "Rare"
+      else if %roll% >= 4970 define quality "Epic"
+ 
+    - if %quality% == Common {
+      - random 1
+      - determine "Jagged_Rock"
+      }
+ 
+    - if %quality% == Uncommon {
+        - random 1
+        - determine "Peppermint_Patty"
+        }
+ 
+    - if %quality% == Rare {
+        - random 1
+        - determine "Peppermint_Patty"
+        }
+ 
+    - if %quality% == Epic {
+        - random 1
+        - determine "Peppermint_Patty"
         }

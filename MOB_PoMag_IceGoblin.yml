@@ -53,7 +53,6 @@ icegoblin:
     - execute as_server "sentry target add entity:monster"
     - execute as_server "sentry target add entity:player"
     - execute as_server "sentry equip 272"
-    - execute as_server "sentry equip 397"
 
     on spawn:
     # Clear previous targets from hate list
@@ -71,9 +70,9 @@ icegoblin:
       - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:death message 3><&sq>"
       }
     - drop XP qty:<cons:goblin_xp> location:<npc.location>
-    #- drop "i@<proc:LootTable_PoM_IceGoblin>" location:<npc.location>
+    - drop "i@<proc:LootTable_PoMag_IceGoblin>" location:<npc.location>
     - if <util.random.int[1].to[100]> >= 75 drop "i@<proc:LootTable_SpellMat>" location:<npc.location>
-    - if <util.random.int[1].to[100]> >= 85 drop "i@<proc:LootTable_LowTierPotions>" location:<npc.location>
+    - if <util.random.int[1].to[100]> >= 85 drop "i@<proc:LootTable_MediumTierPotions>" location:<npc.location>
     # Reset npc effects and clear hate targets.
     - execute as_server "npc sel <npc.id>"
     - execute as_server "npc effect --play none"

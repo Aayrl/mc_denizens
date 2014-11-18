@@ -8,6 +8,14 @@
 # ========================================================
 # Common Tier Items - White Tag
 
+"Jagged_Rock":
+   type: item
+   material: 402
+   display name: "Jagged Rock"
+   lore:
+   - <white>Good for throwing.
+
+# Uncommon Tier Items - Green Tag
 "Peppermint_Patty":
    type: item
    material: 402
@@ -27,3 +35,7 @@
        - playeffect location:<player.location> effect:portal qty:1000
        - narrate "<aqua>When you take a bite of a Peppermint Patty... it feels like the cold<&cm> mountain air blowing through your hair!"
        - take i@Peppermint_Patty
+
+# Rare Tier Items - Blue Tag
+
+# Epic Tier Items - Purple Tag

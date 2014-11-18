@@ -14,8 +14,31 @@
    display name: "Jagged Rock"
    lore:
    - <white>Good for throwing.
+   
+"Pile_of_Snow":
+   type: item
+   material: 332
+   display name: "Pile of Snow"
+   lore:
+   - <white>Also good for throwing.
 
 # Uncommon Tier Items - Green Tag
+"Permafrost_Crystal":
+   type: item
+   material: 264
+   display name: "<green>Permafrost Crystal"
+   lore:
+   - <yellow>Someone may find a use for this.
+   
+"Unholy_Coldstone":
+   type: item
+   material: 264
+   display name: "<green>Unholy Coldstone"
+   lore:
+   - <yellow>Someone may find a use for this.
+   enchantments:
+   - durability:1
+
 "Peppermint_Patty":
    type: item
    material: 402

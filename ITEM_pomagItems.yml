@@ -21,8 +21,94 @@
    display name: "Pile of Snow"
    lore:
    - <white>Also good for throwing.
+   
+"Chunk_of_Meat":
+   type: item
+   material: 367
+   display name: "Chunk of Meat"
+   lore:
+   - <yellow>This may be used to fashion other items.
+   
+"Goblin_Meat":
+   type: item
+   material: 363
+   display name: "Goblin Meat"
+   lore:
+   - <yellow>This may be used to fashion other items.
+   
+"Orc_Meat":
+   type: item
+   material: 363
+   display name: "Orc Meat"
+   lore:
+   - <yellow>This may be used to fashion other items.
+   
+"Arctic_Wolf_Meat":
+   type: item
+   material: 363
+   display name: "Arctic Wolf Meat"
+   lore:
+   - <yellow>This may be used to fashion other items.
+   
+"Arctic_Wolf_Bones":
+   type: item
+   material: 352
+   display name: "Arctic Wolf Bones"
+   lore:
+   - <white>How gruesome.
+   
+"Tuft_Of_Arctic_Wolf_Fur":
+   type: item
+   material: 334
+   display name: "Tuft of Arctic Wolf Fur"
+   lore:
+   - <yellow>This may be used to fashion other items.
+   
+"Ruined_Arctic_Wolf_Pelt":
+   type: item
+   material: 334
+   display name: "Ruined Arctic Wolf Pelt"
+   recipe:
+     - i@air|i@air|i@air
+     - i@Tuft_Of_Arctic_Wolf_Fur|i@Tuft_Of_Arctic_Wolf_Fur|i@Tuft_Of_Arctic_Wolf_Fur
+     - i@air|i@air|i@air 
+   lore:
+   - <yellow>This may be used to fashion other items.
+   
+"Low_Quality_Arctic_Wolf_Pelt":
+   type: item
+   material: 334
+   display name: "Low Quality Arctic Wolf Pelt"
+   recipe:
+     - i@air|i@air|i@air
+     - i@Ruined_Arctic_Wolf_Pelt|i@Ruined_Arctic_Wolf_Pelt|i@Ruined_Arctic_Wolf_Pelt
+     - i@air|i@air|i@air 
+   lore:
+   - <yellow>This may be used to fashion other items.
+ 
+"Medium_Quality_Arctic_Wolf_Pelt":
+   type: item
+   material: 334
+   display name: "Medium Quality Arctic Wolf Pelt"
+   recipe:
+     - i@air|i@air|i@air
+     - i@Low_Quality_Arctic_Wolf_Pelt|i@Low_Quality_Arctic_Wolf_Pelt|i@Low_Quality_Arctic_Wolf_Pelt
+     - i@air|i@air|i@air 
+   lore:
+   - <yellow>This may be used to fashion other items.
 
 # Uncommon Tier Items - Green Tag
+"High_Quality_Arctic_Wolf_Pelt":
+   type: item
+   material: 334
+   display name: "<green>High Quality Arctic Wolf Pelt"
+   recipe:
+     - i@air|i@air|i@air
+     - i@Medium_Quality_Arctic_Wolf_Pelt|i@Medium_Quality_Arctic_Wolf_Pelt|i@Medium_Quality_Arctic_Wolf_Pelt
+     - i@air|i@air|i@air 
+   lore:
+   - <yellow>This may be used to fashion other items.
+
 "Permafrost_Crystal":
    type: item
    material: 264
@@ -60,5 +146,21 @@
        - take i@Peppermint_Patty
 
 # Rare Tier Items - Blue Tag
+"Pristine_Arctic_Wolf_Pelt":
+   type: item
+   material: 334
+   display name: "<&9>Pristine Arctic Wolf Pelt"
+   lore:
+   - <yellow>This may be used to fashion other items.
+   enchantments:
+   - durability:1
 
 # Epic Tier Items - Purple Tag
+"Exquisite_Arctic_Wolf_Pelt":
+   type: item
+   material: 334
+   display name: "<&5>Exquisite Arctic Wolf Pelt"
+   lore:
+   - <yellow>This may be used to fashion other items.
+   enchantments:
+   - durability:5

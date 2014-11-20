@@ -1,0 +1,40 @@
+# -----------------------------------
+# Forage Script
+# @author: Tyler J. Sawyer
+# @version: 1.0
+# Last Updated: 15:16 on November 20, 2014 (Thursday)
+# -----------------------------------
+
+# ========================================================
+"FORAGE_SCRIPT":
+    type: world
+    events:
+       on forage command:
+           - if "<flag.p:forageCD || false>" == true {
+             - narrate "<&9>You must wait <flag.p:forageCD.expiration> before you may forage again."
+             } 
+           - if "<flag.p:forageCD || false>" == false {
+             - narrate "<&9>You forage for any sign of nearby food..."
+             - playsound location:<player.location> sound:dig_grass
+             - drop "i@<proc:ForageAnItem>" location:<player.location>
+             - flag player "forageCD:true" duration:120
+             }
+
+"ForageAnItem":
+    type: procedure
+
+    script:
+    - define roll <util.random.int[1].to[10]>
+    
+    - if %roll% == 1 {
+      - narrate "<&9>You found <aqua>Seeds<&9>!"
+      - determine "SEEDS"
+      }
+    - if %roll% == 2 {
+      - narrate "<&9>You found a <aqua>Potato<&9>!"
+      - determine "392"
+      }
+    - if %roll% == 3 {
+      - narrate "<&9>You found an <aqua>Carrot<&9>!"
+      - determine "391"
+      }

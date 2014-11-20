@@ -164,3 +164,66 @@
    - <yellow>This may be used to fashion other items.
    enchantments:
    - durability:5
+   
+"Reins_Dire_Arctic_Wolf":
+   type: item
+   material: 420
+   display name: "<&5>Reins of the Dire Arctic Wolf"
+   lore:
+   - <green>Use<&co> Summon Swift Dire Arctic Wolf Mount 
+   - <green><&lb>Right Click to Activate<&rb>
+   - <&9>Type <gold>/mountHelp<&9> for assistance using Mounts.
+   enchantments:
+   - durability:1
+
+"summonArcticWolfMount":
+   type: world
+   events:
+     on player right clicks:
+        - if <player.item_in_hand.display> != "<&5>Reins of the Dire Arctic Wolf" queue clear
+        - if <player.flag[MOUNT_GCD]> queue clear
+        - flag player "MOUNT_GCD" duration:2
+        - if <player.flag[hasMount]> == null {
+          - narrate "<yellow>Summoning your Dire Arctic Wolf Mount."
+          - flag <player> "hasMount:summoned"
+          - execute as_server 'npc create "<player.name><&sq>s Mount" --at <player.location.simple> --type wolf'
+          - execute as_server 'npc select "<player.name><&sq>s Mount"'
+          - execute as_server 'npc owner <player.name>'
+          - execute as_server 'trait sentry'
+          - execute as_server 'sentry guard <player.name>'
+          - execute as_server 'sentry retaliate false'
+          - execute as_server 'sentry invincible true'
+          - execute as_server 'npc assignment --set "arcticwolfMountScript"'
+          - queue clear
+        - if <player.flag[hasMount]> == "summoned" {
+          - narrate "<yellow>Despawning your current mount."
+          - flag <player> hasMount:!
+          - execute as_server 'npc select "<player.name><&sq>s Mount"'
+          - execute as_server 'npc remove'
+          - queue clear
+        
+"arcticwolfMountScript":
+   type: assignment
+   
+   interact scripts:
+   - 10 arcticwolfMountInteract
+   
+   actions:
+     on assignment:
+     - trigger name:click toggle:true
+     - trigger name:proximity toggle:true
+     - execute as_server "npc sel <npc.id>"
+     - execute as_server "npc controllable"
+     - execute as_server "npc speed 4"
+     
+     on enter proximity:
+     - playsound location:<npc.location> sound:wolf_growl
+   
+"arcticwolfMountInteract":
+    type: interact
+    
+    steps:
+      1:
+        click trigger:
+          script:
+            - narrate "<yellow><npc.name>"

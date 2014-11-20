@@ -1,0 +1,101 @@
+# -----------------------------------
+# Arctic Wolf NPC
+# @author: Tyler J. Sawyer
+# @version: 1.0
+# Last Updated: 14:27 on November 20, 2014 (Thursday)
+# -----------------------------------
+# REQUIREMENTS:
+#   Sentry      Denizens        Citizens2
+
+arcticwolf:
+  type: assignment
+
+  default constants:
+    attack message 1: <white>Awoooo!
+    attack message 2: <white>Rrgrrwrrlrll...
+    attack message 3: <white>Raawwrr!
+    death message 1: <white>Arrrf!
+    death message 2: <white>Arr!
+    death message 3: <white>Arr!
+    victory message: <white>AWOOO!!
+
+    # Stats
+    wolf_str: 4
+    wolf_xp: 25
+    wolf_health: 125
+    wolf_respawn_delay: 45
+    
+  interact scripts:
+  - 10 arcticwolfInteractScript
+
+  actions:
+    on assignment:
+    - trigger name:damage toggle:true
+
+    # Setup wolf Stats
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "npc type wolf"
+    - execute as_server "npc speed 1"
+    - execute as_server "npc lookclose"
+    - execute as_server "trait sentry"
+    - execute as_server "sentry health <cons:wolf_health>"
+    - execute as_server "sentry spawn"
+    - execute as_server "sentry respawn <cons:wolf_respawn_delay>"
+    - execute as_server "sentry speed 1"
+    - execute as_server "sentry strength <cons:wolf_str>"
+    - execute as_server "sentry killdrops false"
+    - execute as_server "sentry healrate 1"
+    - execute as_server "sentry retaliate true"
+    - execute as_server "sentry targetable true"
+    - execute as_server "sentry target add entity:monster"
+    - execute as_server "sentry target add entity:player"
+    - execute as_server "sentry equip 272"
+
+    on spawn:
+    # Clear previous targets from hate list
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "sentry target clear"
+    - execute as_server "sentry target add entity:player"
+    - execute as_server "sentry target add entity:monster"
+    - flag npc AgroList:!
+
+    on death:
+    - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
+      - random 3
+      - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:death message 1><&sq>"
+      - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:death message 2><&sq>"
+      - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:death message 3><&sq>"
+      }
+    - drop XP qty:<cons:wolf_xp> location:<npc.location>
+    - drop "i@<proc:LootTable_PoMag_ArcticWolf>" location:<npc.location>
+    # Reset npc effects and clear hate targets.
+    - execute as_server "npc sel <npc.id>"
+    - execute as_server "npc effect --play none"
+    - execute as_server "sentry target clear"
+
+    on attack: 
+    - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
+      - random 3
+      - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:attack message 1><&sq>" 
+      - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:attack message 2><&sq>" 
+      - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:attack message 3><&sq>" }
+    
+    on kill:
+    - foreach <l@<npc.location>.find.players.within[<15>].aslist> {
+      - narrate targets:%value% "<npc.name> says<&cm> <&sq><cons:victory message><&sq>" }
+      
+    on enter proximity:
+    - attack
+    - if <npc.flag[AgroList].aslist> !contains <player> && <player.name> != <npc.name> flag npc AgroList:->:<player>
+    
+"arcticwolfInteractScript":
+   type: interact
+   steps:
+     1:
+       click trigger:
+         script:
+         - narrate "<yellow><npc.name><&co> <npc.health.percentage.as_int>%"
+       damage trigger:
+         script:
+           # Add player to the agro list when they hit the npc.
+           - if <npc.flag[AgroList].aslist> !contains <player> && <player.name> != <npc.name> flag npc AgroList:->:<player>

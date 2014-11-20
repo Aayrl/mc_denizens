@@ -40,6 +40,12 @@
           - run "Drop_Credits" d:<context.damager>|<util.random.int[25].to[100]>
           - queue clear
           }
+          else if <context.entity.name> == "Arctic Wolf" {
+          - queue clear
+          }
+          else if <context.entity.name> == "Dire Arctic Wolf" {
+          - queue clear
+          }
           else if <context.entity.name> == "Pig Sentry" {
           - run "Drop_Credits" d:<context.damager>|<util.random.int[20].to[30]>
           - queue clear
@@ -897,8 +903,8 @@
 
     script:
     - define roll <util.random.int[1].to[5000]>
-    - if %roll% >= 0 && %roll% < 4000 define quality "Common"
-      else if %roll% >= 4000 && %roll% < 4750 define quality "Uncommon"
+    - if %roll% >= 0 && %roll% < 4500 define quality "Common"
+      else if %roll% >= 4500 && %roll% < 4750 define quality "Uncommon"
       else if %roll% >= 4750 && %roll% < 4970 define quality "Rare"
       else if %roll% >= 4970 define quality "Epic"
  
@@ -916,6 +922,45 @@
     - if %quality% == Uncommon {
         - random 1
         - determine "High_Quality_Arctic_Wolf_Pelt"
+        }
+ 
+    - if %quality% == Rare {
+        - random 1
+        - determine "Pristine_Arctic_Wolf_Pelt"
+        }
+ 
+    - if %quality% == Epic {
+        - random 1
+        - determine "Exquisite_Arctic_Wolf_Pelt"
+        }
+        
+"LootTable_PoMag_DireArcticWolf":
+    type: procedure
+
+    script:
+    - define roll <util.random.int[1].to[5000]>
+    - if %roll% >= 0 && %roll% < 4500 define quality "Common"
+      else if %roll% >= 4500 && %roll% < 4750 define quality "Uncommon"
+      else if %roll% >= 4750 && %roll% < 4970 define quality "Rare"
+      else if %roll% >= 4970 define quality "Epic"
+ 
+    - if %quality% == Common {
+      - random 9
+      - determine "Chunk_of_Meat"
+      - determine "Arctic_Wolf_Bones"
+      - determine "Arctic_Wolf_Meat"
+      - determine "Tuft_Of_Arctic_Wolf_Fur"
+      - determine "Ruined_Arctic_Wolf_Pelt"
+      - determine "Low_Quality_Arctic_Wolf_Pelt"
+      - determine "Medium_Quality_Arctic_Wolf_Pelt"
+      - determine "High_Quality_Arctic_Wolf_Pelt"
+      - determine "Pristine_Arctic_Wolf_Pelt"
+      }
+ 
+    - if %quality% == Uncommon {
+        - random 2
+        - determine "High_Quality_Arctic_Wolf_Pelt"
+        - determine "Pristine_Arctic_Wolf_Pelt"
         }
  
     - if %quality% == Rare {

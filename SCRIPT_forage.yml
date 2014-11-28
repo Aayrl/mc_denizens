@@ -19,7 +19,7 @@
              - drop "i@<proc:ForageAnItem>" location:<player.location>
              - flag player "forageCD:true" duration:120
              - if <player.flag[SKILL_Forage]> < "100" {
-                - define skillupProcMax <math.as_int:<player.flag[SKILL_Forage]>*5>
+                - define skillupProcMax <math.as_int:<player.flag[SKILL_Forage]>*2>
                 - define skillupChance <util.random.int[1].to[%skillupProcMax%]>
                 - if %skillupChance% == 1 {
                    - flag player "SKILL_Forage:<math.as_int:<player.flag[SKILL_Forage]>+1>"
@@ -32,10 +32,9 @@
 
     script:
     - define roll <util.random.int[1].to[100]>
-    - define lootitem <util.random.int[1].to[7]>
     
     - if %roll% <= <player.flag[SKILL_Forage]> {
-        
+        - define lootitem <util.random.int[1].to[7]>
         - if %lootitem% == 1 {
           - narrate "<&9>You found <aqua>Seeds<&9>!"
           - determine "SEEDS"

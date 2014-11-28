@@ -1,0 +1,33 @@
+# -----------------------------------
+# Bind Wound Skill Script
+# @author: Tyler J. Sawyer
+# @version: 1.0
+# Last Updated: 00:44 on November 28, 2014 (Friday)
+# -----------------------------------
+
+# ========================================================
+"BIND_WOUND_SKILL":
+    type: world
+    events:
+       on bind command:
+           - if "<flag.p:bindwoundCD || false>" == true {
+             - narrate "<&9>You must wait <flag.p:bindwoundCD.expiration> before you may mend your wounds again."
+             } 
+           - if "<flag.p:bindwoundCD || false>" == false {
+             - narrate "<&9>You attempt to mend your wounds..."
+             - flag player "bindwoundCD:true" duration:10
+             - define roll <util.random.int[1].to[100]>
+             - if %roll% <= <player.flag[SKILL_BindWound]> {
+                - narrate "<&9>You mend your wounds and heal some of your health."
+                - heal <player> 2 }
+             - if %roll% > <player.flag[SKILL_BindWound]> {
+                - narrate "<&9>You failed to mend your wounds." }
+             - if <player.flag[SKILL_BindWound]> < "100" {
+                - define skillupProcMax <math.as_int:<player.flag[SKILL_BindWound]>*1>
+                - define skillupChance <util.random.int[1].to[%skillupProcMax%]>
+                - if %skillupChance% == 1 {
+                   - flag player "SKILL_BindWound:<math.as_int:<player.flag[SKILL_BindWound]>+1>"
+                   - narrate "<&e>Your skill in Bind Wound has increased to <player.flag[SKILL_BindWound]>!" }
+                }
+             }
+             

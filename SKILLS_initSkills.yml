@@ -15,6 +15,12 @@
     # SPECIAL SKILLS
     - if <player.flag[SKILL_Forage]> == "null" {
       - flag player "SKILL_Forage:1" }
+    - if <player.flag[SKILL_BindWound]> == "null" {
+      - flag player "SKILL_BindWound:1" }
+    - if <player.flag[SKILL_Beg]> == "null" {
+      - flag player "SKILL_Beg:1" }
+    - if <player.flag[SKILL_PickPocket]> == "null" {
+      - flag player "SKILL_PickPocket:1" }
       
     # COMBAT SKILLS
     - if <player.flag[SKILL_Melee]> == "null" {
@@ -25,6 +31,14 @@
       - flag player "SKILL_Defense:1" }
     - if <player.flag[SKILL_Block]> == "null" {
       - flag player "SKILL_Block:1" }
+    - if <player.flag[SKILL_Dodge]> == "null" {
+      - flag player "SKILL_Dodge:1" }
+    - if <player.flag[SKILL_Parry]> == "null" {
+      - flag player "SKILL_Parry:1" }
+    - if <player.flag[SKILL_Taunt]> == "null" {
+      - flag player "SKILL_Taunt:1" }
+    - if <player.flag[SKILL_Kick]> == "null" {
+      - flag player "SKILL_Kick:1" }
       
     # SPELL CASTING SKILLS
     - if <player.flag[SKILL_Spellcasting]> == "null" {
@@ -88,7 +102,11 @@
       - narrate "<yellow>--- Your Combat Skills ---"
       - narrate "<gold>Meele<&co> <green><player.flag[SKILL_Melee]> / 100"
       - narrate "<gold>Defense<&co> <green><player.flag[SKILL_Defense]> / 100"
+      - narrate "<gold>Dodge<&co> <green><player.flag[SKILL_Dodge]> / 100"
+      - narrate "<gold>Parry<&co> <green><player.flag[SKILL_Parry]> / 100"
       - narrate "<gold>Blocking<&co> <green><player.flag[SKILL_Block]> / 100"
+      - narrate "<gold>Taunt<&co> <green><player.flag[SKILL_Taunt]> / 100"
+      - narrate "<gold>Kick<&co> <green><player.flag[SKILL_Kick]> / 100"
       - narrate "<gold>Archery<&co> <green><player.flag[SKILL_Archery]> / 100"
       } 
     - if <context.args.get[1]> == "spell" {
@@ -126,4 +144,7 @@
     - if <context.args.get[1]> == "special" {
       - narrate "<yellow>--- Your Special Skills ---"
       - narrate "<gold>Foraging<&co> <green><player.flag[SKILL_Forage]> / 100"
+      - narrate "<gold>Bind Wound<&co> <green><player.flag[SKILL_BindWound]> / 100"
+      - narrate "<gold>Begging<&co> <green><player.flag[SKILL_Beg]> / 100"
+      - narrate "<gold>Pick Pocket<&co> <green><player.flag[SKILL_PickPocket]> / 100"
       } 

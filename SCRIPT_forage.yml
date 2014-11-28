@@ -64,6 +64,7 @@
           - narrate "<&9>You found some <aqua>Watermelon<&9>!"
           - determine "360"
           }
-    } else {
-        - narrate "<&9>You fail to locate any food nearby." }
-    
+        } 
+        else {
+          - narrate "<&9>You failed to locate any food nearby."
+        }

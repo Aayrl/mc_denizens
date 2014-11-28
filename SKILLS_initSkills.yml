@@ -90,7 +90,7 @@
       - narrate "<gold>Defense<&co> <green><player.flag[SKILL_Defense]> / 100"
       - narrate "<gold>Blocking<&co> <green><player.flag[SKILL_Block]> / 100"
       - narrate "<gold>Archery<&co> <green><player.flag[SKILL_Archery]> / 100"
-    } 
+      } 
     - if <context.args.get[1]> == "spell" {
       - narrate "<yellow>--- Your Spell Skills ---"
       - narrate "<gold>Meditate<&co> <green><player.flag[SKILL_Meditate]> / 100"
@@ -100,7 +100,7 @@
       - narrate "<gold>Conjuration<&co> <green><player.flag[SKILL_Conjuration]> / 100"
       - narrate "<gold>Divination<&co> <green><player.flag[SKILL_Divination]> / 100"
       - narrate "<gold>Evocation<&co> <green><player.flag[SKILL_Evocation]> / 100"
-    } 
+      } 
     - if <context.args.get[1]> == "crafting" {
       - narrate "<yellow>--- Your Crafting Skills ---"
       - narrate "<gold>Cooking<&co> <green><player.flag[SKILL_Cooking]> / 100"
@@ -109,21 +109,21 @@
       - narrate "<gold>Alchemy<&co> <green><player.flag[SKILL_Alchemy]> / 100"
       - narrate "<gold>Blacksmithing<&co> <green><player.flag[SKILL_Blacksmithing]> / 100"
       - narrate "<gold>Enchanting<&co> <green><player.flag[SKILL_Enchanting]> / 100"
-    } 
+      } 
     - if <context.args.get[1]> == "world" {
       - narrate "<yellow>--- Your World Skills ---"
       - narrate "<gold>Farming<&co> <green><player.flag[SKILL_Farming]> / 100"
       - narrate "<gold>Construction<&co> <green><player.flag[SKILL_Construction]> / 100"
       - narrate "<gold>Mining<&co> <green><player.flag[SKILL_Mining]> / 100"
-    } 
+      } 
     - if <context.args.get[1]> == "movement" {
       - narrate "<yellow>--- Your Movement Skills ---"
       - narrate "<gold>Stealthing<&co> <green><player.flag[SKILL_Stealth]> / 100"
       - narrate "<gold>Sprinting<&co> <green><player.flag[SKILL_Sprint]> / 100"
       - narrate "<gold>Safe Fall<&co> <green><player.flag[SKILL_SafeFall]> / 100"
       - narrate "<gold>Swimming<&co> <green><player.flag[SKILL_Swimming]> / 100"
-    } 
+      } 
     - if <context.args.get[1]> == "special" {
       - narrate "<yellow>--- Your Special Skills ---"
       - narrate "<gold>Foraging<&co> <green><player.flag[SKILL_Forage]> / 100"
-    } 
+      } 

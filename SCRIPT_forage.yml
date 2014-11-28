@@ -17,13 +17,13 @@
              - narrate "<&9>You forage for any sign of nearby food..."
              - playsound location:<player.location> sound:dig_grass
              - give "i@<proc:ForageAnItem>" 
-             - flag player "forageCD:true" duration:120
+             - flag player "forageCD:true" duration:60
              - if <player.flag[SKILL_Forage]> < "100" {
                 - define skillupProcMax <math.as_int:<player.flag[SKILL_Forage]>*1>
                 - define skillupChance <util.random.int[1].to[%skillupProcMax%]>
                 - if %skillupChance% == 1 {
                    - flag player "SKILL_Forage:<math.as_int:<player.flag[SKILL_Forage]>+1>"
-                   - narrate "<&9>Your skill in Foraging has increased to <player.flag[SKILL_Forage]>!" }
+                   - narrate "<&e>Your skill in Foraging has increased to <player.flag[SKILL_Forage]>!" }
                 }
              }
 

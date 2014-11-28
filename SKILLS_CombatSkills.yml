@@ -60,12 +60,12 @@
                - flag <context.damager> "SKILL_Defense:<math.as_int:<player.flag[SKILL_Defense]>+1>"
                - narrate "<&e>Your skill in Defense has increased to <player.flag[SKILL_Defense]>!" }
             }
-         - determine <math.as_int:<context.damage>-<math.as_int:0.1*<<context.damager>.flag[SKILL_Defense]>>>
+         - determine <math.as_int:<context.damage>-<math.as_int:0.1*<player.flag[SKILL_Defense]>>>
        on taunt command:
          - if <player.flag[SKILL_Taunt]> < "100" {
             - define skillupProcMax <math.as_int:<player.flag[SKILL_Taunt]>*1>
             - define skillupChance <util.random.int[1].to[%skillupProcMax%]>
             - if %skillupChance% == 1 {
-               - flag <context.damager> "SKILL_Taunt:<math.as_int:<<context.damager>.flag[SKILL_Taunt]>+1>"
-               - narrate targets:<context.damager> "<&e>Your skill in Taunt has increased to <<context.damager>.flag[SKILL_Taunt]>!" }
+               - flag <context.damager> "SKILL_Taunt:<math.as_int:<player.flag[SKILL_Taunt]>+1>"
+               - narrate targets:<context.damager> "<&e>Your skill in Taunt has increased to <player.flag[SKILL_Taunt]>!" }
             }

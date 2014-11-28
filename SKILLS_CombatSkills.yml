@@ -18,7 +18,7 @@
                    - flag <context.damager> "SKILL_Archery:<math.as_int:<<context.damager>.flag[SKILL_Archery]>+1>"
                    - narrate targets:<context.damager> "<&e>Your skill in Archery has increased to <player.flag[SKILL_Archery]>!" }
                 }
-             - determine <math.as_int:<context.damage>*<math.as_int:0.1*<<context.damager>.flag[SKILL_Archery]>>>
+             - determine <math.as_int:<context.damage>+<math.as_int:0.1*<<context.damager>.flag[SKILL_Archery]>>>
              }
        on entity damaged by player:
            - if <context.damager.is_player> {
@@ -29,5 +29,5 @@
                    - flag <context.damager> "SKILL_Melee:<math.as_int:<<context.damager>.flag[SKILL_Melee]>+1>"
                    - narrate targets:<context.damager> "<&e>Your skill in Melee has increased to <player.flag[SKILL_Melee]>!" }
                 }
-             - determine <math.as_int:<context.damage>*<math.as_int:0.1*<<context.damager>.flag[SKILL_Melee]>>>
+             - determine <math.as_int:<context.damage>+<math.as_int:0.1*<<context.damager>.flag[SKILL_Melee]>>>
              }

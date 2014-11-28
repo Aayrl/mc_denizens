@@ -1,0 +1,35 @@
+# -----------------------------------
+# Movement Skills
+# @author: Tyler J. Sawyer
+# @version: 1.0
+# Last Updated: 00:15 on November 28, 2014 (Friday)
+# -----------------------------------
+# Melee Archery Defense Block
+# ========================================================
+"SKILLS_MOVE_GLOBAL":
+    type: world
+    events:
+       on player starts sneaking:
+         - if <player.flag[SKILL_Stealth]> < "100" {
+            - define skillupProcMax <math.as_int:<player.flag[SKILL_Stealth]>*1>
+            - define skillupChance <util.random.int[1].to[%skillupProcMax%]>
+            - if %skillupChance% == 1 {
+               - flag player "SKILL_Stealth:<math.as_int:<player.flag[SKILL_Stealth]>+1>"
+               - narrate "<&e>Your skill in Stealthing has increased to <player.flag[SKILL_Stealth]>!" }
+            }
+       on player starts sprinting:
+         - if <player.flag[SKILL_Sprint]> < "100" {
+            - define skillupProcMax <math.as_int:<player.flag[SKILL_Sprint]>*1>
+            - define skillupChance <util.random.int[1].to[%skillupProcMax%]>
+            - if %skillupChance% == 1 {
+               - flag player "SKILL_Sprint:<math.as_int:<player.flag[SKILL_Sprint]>+1>"
+               - narrate "<&e>Your skill in Sprinting has increased to <player.flag[SKILL_Sprint]>!" }
+            }
+       on player damaged by fall:
+         - if <player.flag[SKILL_SafeFall]> < "100" {
+            - define skillupProcMax <math.as_int:<player.flag[SKILL_SafeFall]>*1>
+            - define skillupChance <util.random.int[1].to[%skillupProcMax%]>
+            - if %skillupChance% == 1 {
+               - flag player "SKILL_SafeFall:<math.as_int:<player.flag[SKILL_SafeFall]>+1>"
+               - narrate "<&e>Your skill in Safe Fall has increased to <player.flag[SKILL_SafeFall]>!" }
+            }

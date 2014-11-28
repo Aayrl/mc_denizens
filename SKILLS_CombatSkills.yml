@@ -1,0 +1,33 @@
+# -----------------------------------
+# Combat Skills
+# @author: Tyler J. Sawyer
+# @version: 1.0
+# Last Updated: 23:16 on November 27, 2014 (Thursday)
+# -----------------------------------
+# Melee Archery Defense Block
+# ========================================================
+"SKILLS_COMBAT_GLOBAL":
+    type: world
+    events:
+       on entity damaged by arrow:
+           - if <context.damager.is_player> {
+             - if <<context.damager>.flag[SKILL_Archery]> < "100" {
+                - define skillupProcMax <math.as_int:<<context.damager>.flag[SKILL_Archery]>*1>
+                - define skillupChance <util.random.int[1].to[%skillupProcMax%]>
+                - if %skillupChance% == 1 {
+                   - flag <context.damager> "SKILL_Archery:<math.as_int:<<context.damager>.flag[SKILL_Archery]>+1>"
+                   - narrate targets:<context.damager> "<&e>Your skill in Archery has increased to <player.flag[SKILL_Archery]>!" }
+                }
+             - determine <math.as_int:<context.damage>*<<context.damager>.flag[SKILL_Archery]>>
+             }
+       on entity damaged by player:
+           - if <context.damager.is_player> {
+             - if <<context.damager>.flag[SKILL_Melee]> < "100" {
+                - define skillupProcMax <math.as_int:<<context.damager>.flag[SKILL_Melee]>*1>
+                - define skillupChance <util.random.int[1].to[%skillupProcMax%]>
+                - if %skillupChance% == 1 {
+                   - flag <context.damager> "SKILL_Melee:<math.as_int:<<context.damager>.flag[SKILL_Melee]>+1>"
+                   - narrate targets:<context.damager> "<&e>Your skill in Melee has increased to <player.flag[SKILL_Melee]>!" }
+                }
+             - determine <math.as_int:<context.damage>*<<context.damager>.flag[SKILL_Melee]>>
+             }

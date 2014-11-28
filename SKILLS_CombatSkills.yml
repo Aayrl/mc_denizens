@@ -16,7 +16,7 @@
                 - define skillupChance <util.random.int[1].to[%skillupProcMax%]>
                 - if %skillupChance% == 1 {
                    - flag <context.damager> "SKILL_Archery:<math.as_int:<<context.damager>.flag[SKILL_Archery]>+1>"
-                   - narrate targets:<context.damager> "<&e>Your skill in Archery has increased to <player.flag[SKILL_Archery]>!" }
+                   - narrate targets:<context.damager> "<&e>Your skill in Archery has increased to <<context.damager>.flag[SKILL_Archery]>!" }
                 }
              - determine <math.as_int:<context.damage>+<math.as_int:0.1*<<context.damager>.flag[SKILL_Archery]>>>
              }
@@ -27,7 +27,45 @@
                 - define skillupChance <util.random.int[1].to[%skillupProcMax%]>
                 - if %skillupChance% == 1 {
                    - flag <context.damager> "SKILL_Melee:<math.as_int:<<context.damager>.flag[SKILL_Melee]>+1>"
-                   - narrate targets:<context.damager> "<&e>Your skill in Melee has increased to <player.flag[SKILL_Melee]>!" }
+                   - narrate targets:<context.damager> "<&e>Your skill in Melee has increased to <<context.damager>.flag[SKILL_Melee]>!" }
                 }
              - determine <math.as_int:<context.damage>+<math.as_int:0.1*<<context.damager>.flag[SKILL_Melee]>>>
              }
+       on player damaged by entity:
+         - define hasBeenBlocked <util.random.int[1].to[<math.as_int:200-<player.flag[SKILL_Block>>]>
+         - define hasBeenDodged <util.random.int[1].to[<math.as_int:200-<player.flag[SKILL_Dodge]>>]>
+         - define hasBeenParried <util.random.int[1].to[<math.as_int:200-<player.flag[SKILL_Parry]>>]>
+         - if %hasBeenBlocked% == 1 {
+            - narrate "<&9>You block an incoming attack!"
+            - if <player.flag[SKILL_Block]> < "100" {
+                - flag <player> "SKILL_Block:<math.as_int:<player.flag[SKILL_Block]>+1>"
+                - narrate "<&e>Your skill in Blocking has increased to <player.flag[SKILL_Block]>!" }
+            - determine 0 }
+         - if %hasBeenDodged% == 1 {
+            - narrate "<&9>You dodge an incoming attack!"
+            - if <player.flag[SKILL_Dodge]> < "100" {
+                - flag <player> "SKILL_Dodge:<math.as_int:<player.flag[SKILL_Dodge]>+1>"
+                - narrate "<&e>Your skill in Dodge has increased to <player.flag[SKILL_Dodge]>!" }
+            - determine 0 }
+         - if %hasBeenParried% == 1 {
+            - narrate "<&9>You parry an incoming attack!"
+            - if <player.flag[SKILL_Parry]> < "100" {
+                - flag <player> "SKILL_Parry:<math.as_int:<player.flag[SKILL_Parry]>+1>"
+                - narrate "<&e>Your skill in Parry has increased to <player.flag[SKILL_Parry]>!" }
+            - determine 0 }
+         - if <player.flag[SKILL_Defense]> < "100" {
+            - define skillupProcMax <math.as_int:<player.flag[SKILL_Defense]>*1>
+            - define skillupChance <util.random.int[1].to[%skillupProcMax%]>
+            - if %skillupChance% == 1 {
+               - flag <context.damager> "SKILL_Defense:<math.as_int:<player.flag[SKILL_Defense]>+1>"
+               - narrate "<&e>Your skill in Defense has increased to <player.flag[SKILL_Defense]>!" }
+            }
+         - determine <math.as_int:<context.damage>-<math.as_int:0.1*<<context.damager>.flag[SKILL_Defense]>>>
+       on taunt command:
+         - if <player.flag[SKILL_Taunt]> < "100" {
+            - define skillupProcMax <math.as_int:<player.flag[SKILL_Taunt]>*1>
+            - define skillupChance <util.random.int[1].to[%skillupProcMax%]>
+            - if %skillupChance% == 1 {
+               - flag <context.damager> "SKILL_Taunt:<math.as_int:<<context.damager>.flag[SKILL_Taunt]>+1>"
+               - narrate targets:<context.damager> "<&e>Your skill in Taunt has increased to <<context.damager>.flag[SKILL_Taunt]>!" }
+            }

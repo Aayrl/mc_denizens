@@ -1,0 +1,76 @@
+# -----------------------------------
+# Player Skills
+# @author: Tyler J. Sawyer
+# @version: 1.0
+# Last Updated: 22:29 on November 27, 2014 (Thursday)
+# -----------------------------------
+# This allows players to set their titles, visible by other players in-game
+# and via the online players window.
+
+"playerSkillInit":
+  type: world
+
+  events:
+    on player join:
+    # SPECIAL SKILLS
+    - if <player.flag[SKILL_Forage]> == "null" {
+      - flag player "SKILL_Forage:1" }
+      
+    # COMBAT SKILLS
+    - if <player.flag[SKILL_Melee]> == "null" {
+      - flag player "SKILL_Melee:1" }
+    - if <player.flag[SKILL_Archery]> == "null" {
+      - flag player "SKILL_Archery:1" }
+    - if <player.flag[SKILL_Defense]> == "null" {
+      - flag player "SKILL_Defense:1" }
+    - if <player.flag[SKILL_Block]> == "null" {
+      - flag player "SKILL_Block:1" }
+      
+    # SPELL CASTING SKILLS
+    - if <player.flag[SKILL_Spellcasting]> == "null" {
+      - flag player "SKILL_Spellcasting:1" }
+    - if <player.flag[SKILL_Alteration]> == "null" {
+      - flag player "SKILL_Alteration:1" }
+    - if <player.flag[SKILL_Abjuration]> == "null" {
+      - flag player "SKILL_Abjuration:1" }
+    - if <player.flag[SKILL_Conjuration]> == "null" {
+      - flag player "SKILL_Conjuration:1" }
+    - if <player.flag[SKILL_Divination]> == "null" {
+      - flag player "SKILL_Divination:1" }
+    - if <player.flag[SKILL_Evocation]> == "null" {
+      - flag player "SKILL_Evocation:1" }
+    - if <player.flag[SKILL_Meditate]> == "null" {
+      - flag player "SKILL_Meditate:1" }
+      
+    # CRAFTING SKILLS
+    - if <player.flag[SKILL_Cooking]> == "null" {
+      - flag player "SKILL_Cooking:1" }
+    - if <player.flag[SKILL_Smelting]> == "null" {
+      - flag player "SKILL_Smelting:1" }
+    - if <player.flag[SKILL_Crafting]> == "null" {
+      - flag player "SKILL_Crafting:1" }
+    - if <player.flag[SKILL_Alchemy]> == "null" {
+      - flag player "SKILL_Alchemy:1" }
+    - if <player.flag[SKILL_Blacksmithing]> == "null" {
+      - flag player "SKILL_Blacksmithing:1" }
+    - if <player.flag[SKILL_Enchanting]> == "null" {
+      - flag player "SKILL_Enchanting:1" }
+    
+    # BLOCK INTERACTION SKILLS
+    - if <player.flag[SKILL_Farming]> == "null" {
+      - flag player "SKILL_Farming:1" }
+    - if <player.flag[SKILL_Construction]> == "null" {
+      - flag player "SKILL_Construction:1" }
+    - if <player.flag[SKILL_Mining]> == "null" {
+      - flag player "SKILL_Mining:1" }
+    
+    # MOVEMENT SKILLS
+    - if <player.flag[SKILL_Stealth]> == "null" {
+      - flag player "SKILL_Stealth:1" }
+    - if <player.flag[SKILL_Sprint]> == "null" {
+      - flag player "SKILL_Sprint:1" }
+    - if <player.flag[SKILL_SafeFall]> == "null" {
+      - flag player "SKILL_SafeFall:1" }
+    - if <player.flag[SKILL_Swimming]> == "null" {
+      - flag player "SKILL_Swimming:1" }
+    

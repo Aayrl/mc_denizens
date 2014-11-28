@@ -18,23 +18,52 @@
              - playsound location:<player.location> sound:dig_grass
              - drop "i@<proc:ForageAnItem>" location:<player.location>
              - flag player "forageCD:true" duration:120
+             - if <player.flag[SKILL_Forage]> < "100" {
+                - define skillupProcMax <math.as_int:<player.flag[SKILL_Forage]>*5>
+                - define skillupChance <util.random.int[1].to[%skillupProcMax%]>
+                - if %skillupChance% == 1 {
+                   - flag player "SKILL_Forage:<math.as_int:<player.flag[SKILL_Forage]>+1>"
+                   - narrate "<&9>Your skill in Foraging has increased to <player.flag[SKILL_Forage]>!" }
+                }
              }
 
 "ForageAnItem":
     type: procedure
 
     script:
-    - define roll <util.random.int[1].to[10]>
+    - define roll <util.random.int[1].to[100]>
+    - define lootitem <util.random.int[1].to[7]>
     
-    - if %roll% == 1 {
-      - narrate "<&9>You found <aqua>Seeds<&9>!"
-      - determine "SEEDS"
-      }
-    - if %roll% == 2 {
-      - narrate "<&9>You found a <aqua>Potato<&9>!"
-      - determine "392"
-      }
-    - if %roll% == 3 {
-      - narrate "<&9>You found an <aqua>Carrot<&9>!"
-      - determine "391"
-      }
+    - if %roll% <= <player.flag[SKILL_Forage]> {
+        
+        - if %lootitem% == 1 {
+          - narrate "<&9>You found <aqua>Seeds<&9>!"
+          - determine "SEEDS"
+          }
+        - if %lootitem% == 2 {
+          - narrate "<&9>You found a <aqua>Potato<&9>!"
+          - determine "392"
+          }
+        - if %lootitem% == 3 {
+          - narrate "<&9>You found a <aqua>Carrot<&9>!"
+          - determine "391"
+          }
+        - if %lootitem% == 4 {
+          - narrate "<&9>You found a <aqua>Mushroom<&9>!"
+          - determine "40"
+          }
+        - if %lootitem% == 5 {
+          - narrate "<&9>You found an <aqua>Apple<&9>!"
+          - determine "260"
+          }
+        - if %lootitem% == 6 {
+          - narrate "<&9>You found some <aqua>Wheat<&9>!"
+          - determine "296"
+          }
+        - if %lootitem% == 7 {
+          - narrate "<&9>You found some <aqua>Watermelon<&9>!"
+          - determine "360"
+          }
+    } else {
+        - narrate "<&9>You fail to locate any food nearby." }
+    
